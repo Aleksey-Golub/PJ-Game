@@ -1,0 +1,1830 @@
+fileFormatVersion: 2
+guid: 18c03d6bde786a347b6aa3f245d42ff7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 52
+        width: 204
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3df2fff0ba01bb3439101697a18f4408
+      internalID: -2007972119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_1
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 188
+        width: 108
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57592686e3dafb54598e9ca1d132f17a
+      internalID: 1924533251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_2
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 128
+        width: 97
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 782620b98caca484ab05cc1dcaf84846
+      internalID: -1206609723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_3
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 52
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ebb4ff21cef2ac48aa32a5bc909532c
+      internalID: -1571978254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_4
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 188
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdfe40d346833a748ba2c896dcc3e643
+      internalID: 752955290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_5
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 128
+        width: 63
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee53beeb72728ad48889459dca4eb3d0
+      internalID: -989307427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_6
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 86
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 367073827533dfd469ba326524158c16
+      internalID: -2007050740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_7
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 224
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df3a02638458f994fbad7d4f209393a0
+      internalID: -1743317640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_8
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 232
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b77587e24ec0ae3469579ed688110792
+      internalID: -1030577411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_9
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 216
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca7a9cd3b02c4a94389f42271b7d9eda
+      internalID: 1041573145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_10
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 184
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18fc8f7b4f86f02469196c3054fce492
+      internalID: -1611873582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_11
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 192
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4536c9121abbf446a59c08155181662
+      internalID: -115722810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_12
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 110
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06b8d681cc4d8a24f8362011235dea69
+      internalID: -1272085339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 19
+        width: 49
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f1869351345e7b4fb1efe1ab0882d49
+      internalID: -1901630335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_14
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 3
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44bca1325a7990440bc557920224f4c0
+      internalID: -2142500503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_15
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a68937f1db4b1c43bc0f7268bd2d0cc
+      internalID: -706577608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_16
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 0
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98acc520e98411d4cabbdbca9e483eeb
+      internalID: -721475698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_17
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 32
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1edfe111d3947ad49b96f7c140142680
+      internalID: -1230980207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_18
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 54
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bded3a4729cef1a4db88ce9e613ea72b
+      internalID: -1045172846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_19
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb566d582c3930d4fa65bbe682bc5a87
+      internalID: 1269199810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_20
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d46c18d0e0c14e40ba9d328b16118be
+      internalID: 1708683217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_21
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 228
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ccf73d3ab665114f8d2b5bbb6490193
+      internalID: 174787419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_22
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 226
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 033707fd2cd8eaa47b5b2610bfaeb5c2
+      internalID: -1651462942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_23
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 190
+        width: 33
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 194e2f8838a92b64f83ec5204359cd34
+      internalID: 1598320641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_24
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 98
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b0775e65a290744ba3cac4884c664b
+      internalID: -1322168670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_25
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 19
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b653404e07d3af94b8df1999578e83d7
+      internalID: -691325619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_26
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 24
+        width: 36
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f0d7d7d03114e144a9fd2229e280070
+      internalID: 300748501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_27
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 197
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b7e884333d8fee47985002a4f7cfff0
+      internalID: 965695468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_28
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 171
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9982a28f2a60fa647ab09b546e76b6a0
+      internalID: -1977366518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_29
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 116
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 701c181412754a44399181f6037bbac7
+      internalID: -1672760803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_30
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 77
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28e4fa47bcd1d6d4e94ae9d19763d245
+      internalID: -320451106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_31
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 4
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e5df7bf537d41c46a0b226e897100d6
+      internalID: 1363477437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_32
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 3
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 139c8b55095e8f14b9116d307025e1d7
+      internalID: -13380755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_33
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 0
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 394bfa77bf8b9ca4f90a544ed5df1616
+      internalID: -158344966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_34
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ef8b17dba4f5d34bb23ec12617f91b8
+      internalID: 1605545508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_35
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 35
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 714286cc38261e441821ca56b99eb604
+      internalID: -667556626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_36
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 32
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 273b7d36197c36f49842229141f8c171
+      internalID: -1227099510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_37
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 36
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4792f09210dbc084eb553c59d9b64f11
+      internalID: 1759373326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_38
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 54
+        width: 25
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecbfead0e34f11d4b9a55517d73d0a6c
+      internalID: -1711002262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_39
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 132
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab9ea8760a58f544f932e7b2c7f3c1fd
+      internalID: -405565619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_40
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 119
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecb1769c323e3324b9a619dd114d9533
+      internalID: -1482988333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_42
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 17
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 544981ab37a398d4fa393e3854d6a226
+      internalID: 188050404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_43
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 2
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0119f022f7395344da463c49b2cead4b
+      internalID: -1288984483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_44
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 3
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6edc5f158b2b914eac7ee8e7dbf26b7
+      internalID: -1094742133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_45
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 3
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d50b2e2d8614944ba3d13db79d82540
+      internalID: 1933690828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_46
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 3
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85331454602327b42aa6f4dff3d27b6c
+      internalID: 623669451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_47
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 4
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c048e1ef2fb2f0a4ea461b93bf553c64
+      internalID: -1736698845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_41
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 67
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44deda3ff8cd5954f96dc78ef9dd8fa5
+      internalID: -756613953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_48
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 81
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dd35541b1e64194885064b067828209
+      internalID: -1107001721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_49
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 96
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc646fdc288c9754588413b52745fcde
+      internalID: -1335790571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_50
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 105
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c871cdefb25882a46a18cf4f6e6475d9
+      internalID: -1746096017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_51
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 117
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab363a19aa13a7438950e6b238c2d42
+      internalID: -1806721189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_52
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 134
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 268dd03441e3fd64180331dc3bae7396
+      internalID: 1147525784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_53
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 150
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d03653920d760f45adf0de269101983
+      internalID: 1368875871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_54
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 150
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f5cd4e9cea8c674c91d43fe42cc3230
+      internalID: 1881971156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_55
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 168
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 235eea622991bb84b8d576c139a1625e
+      internalID: -343440380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_56
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 151
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2af2743eee5c502488faeb1acab964db
+      internalID: -964180368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_57
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 168
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4765c87ddea441e4f9b2bf24f76b6a0c
+      internalID: 1356712221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_58
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 35
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fbd66b4d187def4eb6d9a32553d2dfe
+      internalID: 1218634206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_59
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 34
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91a75739ce88adc4fb85d615948e223f
+      internalID: 1402700907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_60
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 2
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf82cff8f3a74114a93a6f064618f6ad
+      internalID: -2135758067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_61
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 2
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abb9188315be14a4598f43deb5bb9b21
+      internalID: -535157519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_62
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 131
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 217f094c045992b4e8e7f1276abfc829
+      internalID: -998875238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_63
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 25
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0eb030cb7e332d46974bf5cc0db305c
+      internalID: 2038853318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_64
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 52
+        width: 25
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4770f31da00c5b4792580abf74e347f
+      internalID: 906421399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_65
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 32
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d39fb6b6313964cb55894b25a925eb
+      internalID: -1723563639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_66
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 17
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5da17c2a867075041a2ac7cd0697a4a5
+      internalID: -993347180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_67
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 16
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4e28f1a62ac59f489809a783a6e5aaa
+      internalID: 2134976006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_68
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 16
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7ff9d0ab764a1941b152a7f3bf6cbf5
+      internalID: 207369276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_69
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 18
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b8660ed80be2dc42b24c021dc2acdbc
+      internalID: -1482323162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_70
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 19
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d263bfeda3f086f439cb78778fbd85c5
+      internalID: 1670392460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_71
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 18
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30d7a1cfb57f1b64ca27c3663bb422e4
+      internalID: -2035225261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_72
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 16
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 115427c2c28a5a34eb3aa6b119568b31
+      internalID: 1330088374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_73
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 73
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b926555f4e03c714cbccf6803409864b
+      internalID: 1987201700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_74
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 135
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1d4d310ae2d3a46aff37f7cd22f3a1
+      internalID: -881988189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_75
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 135
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b6710666079273439603d340db4cc69
+      internalID: 350169177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_76
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 155
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5640a85f65eb92c4b8d2c9c81f43d0fb
+      internalID: -564811151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: __main.texturec-0-flipped_77
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 175
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1792a2437f6a6114ba9ddee8d27bfafb
+      internalID: -690717576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      __main.texturec-0-flipped_0: -2007972119
+      __main.texturec-0-flipped_1: 1924533251
+      __main.texturec-0-flipped_10: -1611873582
+      __main.texturec-0-flipped_11: -115722810
+      __main.texturec-0-flipped_12: -1272085339
+      __main.texturec-0-flipped_13: -1901630335
+      __main.texturec-0-flipped_14: -2142500503
+      __main.texturec-0-flipped_15: -706577608
+      __main.texturec-0-flipped_16: -721475698
+      __main.texturec-0-flipped_17: -1230980207
+      __main.texturec-0-flipped_18: -1045172846
+      __main.texturec-0-flipped_19: 1269199810
+      __main.texturec-0-flipped_2: -1206609723
+      __main.texturec-0-flipped_20: 1708683217
+      __main.texturec-0-flipped_21: 174787419
+      __main.texturec-0-flipped_22: -1651462942
+      __main.texturec-0-flipped_23: 1598320641
+      __main.texturec-0-flipped_24: -1322168670
+      __main.texturec-0-flipped_25: -691325619
+      __main.texturec-0-flipped_26: 300748501
+      __main.texturec-0-flipped_27: 965695468
+      __main.texturec-0-flipped_28: -1977366518
+      __main.texturec-0-flipped_29: -1672760803
+      __main.texturec-0-flipped_3: -1571978254
+      __main.texturec-0-flipped_30: -320451106
+      __main.texturec-0-flipped_31: 1363477437
+      __main.texturec-0-flipped_32: -13380755
+      __main.texturec-0-flipped_33: -158344966
+      __main.texturec-0-flipped_34: 1605545508
+      __main.texturec-0-flipped_35: -667556626
+      __main.texturec-0-flipped_36: -1227099510
+      __main.texturec-0-flipped_37: 1759373326
+      __main.texturec-0-flipped_38: -1711002262
+      __main.texturec-0-flipped_39: -405565619
+      __main.texturec-0-flipped_4: 752955290
+      __main.texturec-0-flipped_40: -1482988333
+      __main.texturec-0-flipped_41: -756613953
+      __main.texturec-0-flipped_42: 188050404
+      __main.texturec-0-flipped_43: -1288984483
+      __main.texturec-0-flipped_44: -1094742133
+      __main.texturec-0-flipped_45: 1933690828
+      __main.texturec-0-flipped_46: 623669451
+      __main.texturec-0-flipped_47: -1736698845
+      __main.texturec-0-flipped_48: -1107001721
+      __main.texturec-0-flipped_49: -1335790571
+      __main.texturec-0-flipped_5: -989307427
+      __main.texturec-0-flipped_50: -1746096017
+      __main.texturec-0-flipped_51: -1806721189
+      __main.texturec-0-flipped_52: 1147525784
+      __main.texturec-0-flipped_53: 1368875871
+      __main.texturec-0-flipped_54: 1881971156
+      __main.texturec-0-flipped_55: -343440380
+      __main.texturec-0-flipped_56: -964180368
+      __main.texturec-0-flipped_57: 1356712221
+      __main.texturec-0-flipped_58: 1218634206
+      __main.texturec-0-flipped_59: 1402700907
+      __main.texturec-0-flipped_6: -2007050740
+      __main.texturec-0-flipped_60: -2135758067
+      __main.texturec-0-flipped_61: -535157519
+      __main.texturec-0-flipped_62: -998875238
+      __main.texturec-0-flipped_63: 2038853318
+      __main.texturec-0-flipped_64: 906421399
+      __main.texturec-0-flipped_65: -1723563639
+      __main.texturec-0-flipped_66: -993347180
+      __main.texturec-0-flipped_67: 2134976006
+      __main.texturec-0-flipped_68: 207369276
+      __main.texturec-0-flipped_69: -1482323162
+      __main.texturec-0-flipped_7: -1743317640
+      __main.texturec-0-flipped_70: 1670392460
+      __main.texturec-0-flipped_71: -2035225261
+      __main.texturec-0-flipped_72: 1330088374
+      __main.texturec-0-flipped_73: 1987201700
+      __main.texturec-0-flipped_74: -881988189
+      __main.texturec-0-flipped_75: 350169177
+      __main.texturec-0-flipped_76: -564811151
+      __main.texturec-0-flipped_77: -690717576
+      __main.texturec-0-flipped_8: -1030577411
+      __main.texturec-0-flipped_9: 1041573145
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

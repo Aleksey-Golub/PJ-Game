@@ -64,7 +64,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.12}
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider2D: {fileID: 1621408763810201073}
   _view: {fileID: 6483354508862177738}
-  _hitPoints: 1
+  _hitPoints: 2
   _restoreTime: 8
 --- !u!114 &6483354508862177738
 MonoBehaviour:

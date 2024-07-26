@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 internal class PlayerView : MonoBehaviour
 {
@@ -8,8 +9,10 @@ internal class PlayerView : MonoBehaviour
     private int _dirYHash;
     private int _velocityHash;
     private int _attackHash;
-    
-    private void Awake()
+
+    internal event Action AttackDone;
+
+    internal void Construct()
     {
         _dirXHash = Animator.StringToHash("DirX");
         _dirYHash = Animator.StringToHash("DirY");
@@ -27,5 +30,10 @@ internal class PlayerView : MonoBehaviour
     internal void PlayAttack()
     {
         _animator.SetTrigger(_attackHash);
+    }
+
+    internal void HitDone()
+    {
+        AttackDone?.Invoke();
     }
 }

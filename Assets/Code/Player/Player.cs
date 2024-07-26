@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-internal class Player : MonoBehaviour
+internal class Player : MonoBehaviour, IDisposable
 {
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Collider2D _collider2D;
@@ -15,6 +16,41 @@ internal class Player : MonoBehaviour
 
     private Vector2 _direction = new Vector2(0, -1);
 
+    private Collider2D[] _buffer;
+
+    #region EDITOR_ONLY
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(GetOverlapCircleCenter(), _radius);
+    }
+#endif
+    #endregion
+
+    private void Start()
+    {
+        Construct();
+    }
+
+    private void OnDestroy()
+    {
+        Dispose();
+    }
+
+    private void Construct()
+    {
+        _buffer = new Collider2D[10];
+
+        _view.Construct();
+        _view.AttackDone += OnHitDone;
+    }
+
+    public void Dispose()
+    {
+        _view.AttackDone += OnHitDone;
+    }
+
     private void FixedUpdate()
     {
         if (HasMoveInput())
@@ -25,7 +61,7 @@ internal class Player : MonoBehaviour
             Vector2 direction = new Vector2(xMovement, yMovement).normalized;
             Vector2 startPos = _rb.position;
             Vector2 offset = direction * _speed * Time.fixedDeltaTime;
-            
+
             _rb.MovePosition(startPos + offset);
             _view.PlayMove(direction.x, direction.y, direction.magnitude);
 
@@ -41,11 +77,10 @@ internal class Player : MonoBehaviour
         {
             Vector2 center = GetOverlapCircleCenter();
 
-            Collider2D[] buffer = new Collider2D[10];
-
-            if (Physics2D.OverlapCircleNonAlloc(center, _radius, buffer) > 0)
+            if (Physics2D.OverlapCircleNonAlloc(center, _radius, _buffer) > 0)
             {
-                foreach (var collider in buffer)
+                int sCount = 0;
+                foreach (Collider2D collider in _buffer)
                 {
                     if (collider == null)
                         continue;
@@ -53,18 +88,19 @@ internal class Player : MonoBehaviour
                     if (collider.TryGetComponent<Player>(out _))
                         continue;
 
-                    int sCount = 0;
                     if (collider.TryGetComponent(out ResourceSource s))
                     {
-                        s.Interact();
                         sCount++;
                     }
-                    if (sCount > 0)
-                    {
-                        _attackTimer = 0;
-                        _view.PlayAttack();
-                    }
                 }
+
+                if (sCount > 0)
+                {
+                    _attackTimer = 0;
+                    _view.PlayAttack();
+                }
+
+                _buffer.Refresh();
             }
         }
     }
@@ -90,8 +126,27 @@ internal class Player : MonoBehaviour
             ;
     }
 
-    private void OnDrawGizmos()
+    private void OnHitDone()
     {
-        Gizmos.DrawWireSphere(GetOverlapCircleCenter(), _radius);
+        Vector2 center = GetOverlapCircleCenter();
+
+        if (Physics2D.OverlapCircleNonAlloc(center, _radius, _buffer) > 0)
+        {
+            foreach (Collider2D collider in _buffer)
+            {
+                if (collider == null)
+                    continue;
+
+                if (collider.TryGetComponent<Player>(out _))
+                    continue;
+
+                if (collider.TryGetComponent(out ResourceSource s))
+                {
+                    s.Interact();
+                }
+            }
+
+            _buffer.Refresh();
+        }
     }
 }

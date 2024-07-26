@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider2D: {fileID: 8856581366255247278}
   _view: {fileID: 6818939769758625644}
-  _hitPoints: 3
+  _hitPoints: 4
   _restoreTime: 10
 --- !u!114 &6818939769758625644
 MonoBehaviour:

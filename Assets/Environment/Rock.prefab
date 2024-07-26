@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8055819527901955754}
   - component: {fileID: 5268907875166550428}
+  - component: {fileID: 7829809790482380617}
+  - component: {fileID: 8085730185078847901}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -68,6 +70,37 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.12}
   serializedVersion: 2
   m_Radius: 0.1981818
+--- !u!114 &7829809790482380617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5078661243070803530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 748956965b092be40aae2fe8cc8b557e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider2D: {fileID: 5268907875166550428}
+  _view: {fileID: 8085730185078847901}
+  _hitPoints: 4
+  _restoreTime: 15
+--- !u!114 &8085730185078847901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5078661243070803530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2dec7bd8bfa48408572e6d18a61c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 5955214646702441625}
+  _diedSprite: {fileID: -1482988333, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
+  _wholeSprite: {fileID: -1309678510, guid: 6a3409ce0964ac349a4c228c4ec7bc49, type: 3}
 --- !u!1 &7090333142195999645
 GameObject:
   m_ObjectHideFlags: 0

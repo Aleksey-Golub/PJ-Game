@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: structures_0
+      name: pine
       rect:
         serializedVersion: 2
         x: 3
@@ -118,7 +118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: structures_1
+      name: bush
       rect:
         serializedVersion: 2
         x: 34
@@ -139,7 +139,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: structures_2
+      name: rock
       rect:
         serializedVersion: 2
         x: 34
@@ -170,9 +170,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      structures_0: -951334604
-      structures_1: 175938448
-      structures_2: -1309678510
+      bush: 175938448
+      pine: -951334604
+      rock: -1309678510
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

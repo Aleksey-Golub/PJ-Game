@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1173927828803009664}
   - component: {fileID: 1621408763810201073}
+  - component: {fileID: 7791035349006889402}
+  - component: {fileID: 6483354508862177738}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -68,6 +70,37 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.12}
   serializedVersion: 2
   m_Radius: 0.1981818
+--- !u!114 &7791035349006889402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751230111891515862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 748956965b092be40aae2fe8cc8b557e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider2D: {fileID: 1621408763810201073}
+  _view: {fileID: 6483354508862177738}
+  _hitPoints: 1
+  _restoreTime: 8
+--- !u!114 &6483354508862177738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751230111891515862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2dec7bd8bfa48408572e6d18a61c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 4493861247962964434}
+  _diedSprite: {fileID: 0}
+  _wholeSprite: {fileID: 175938448, guid: 6a3409ce0964ac349a4c228c4ec7bc49, type: 3}
 --- !u!1 &6888893588831709431
 GameObject:
   m_ObjectHideFlags: 0

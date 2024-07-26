@@ -7,7 +7,6 @@ internal class Player : MonoBehaviour
     [SerializeField] private PlayerView _view;
     [SerializeField] private float _speed = 1;
     [SerializeField] private float _attackDelay = 5;
-    [SerializeField] private LayerMask _hitLayerMask;
 
     [SerializeField] float _radius = 1f;
     [SerializeField] float _distanse = 1f;
@@ -44,11 +43,14 @@ internal class Player : MonoBehaviour
 
             Collider2D[] buffer = new Collider2D[10];
 
-            if (Physics2D.OverlapCircleNonAlloc(center, _radius, buffer, _hitLayerMask) > 0)
+            if (Physics2D.OverlapCircleNonAlloc(center, _radius, buffer) > 0)
             {
                 foreach (var collider in buffer)
                 {
                     if (collider == null)
+                        continue;
+
+                    if (collider.TryGetComponent<Player>(out _))
                         continue;
 
                     int sCount = 0;

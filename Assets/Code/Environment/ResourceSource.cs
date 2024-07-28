@@ -40,12 +40,20 @@ internal class ResourceSource : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Logger.Log($"Interact with {gameObject.name}");
+        Logger.Log($"Interact with {gameObject.name} {Time.frameCount}");
 
         _currentHitPoints -= PLAYER_DAMAGE;
+        _view.ShowHP(_currentHitPoints, _hitPoints);
+        _view.ShowHitEffect();
+        _view.PlayHitSound();
 
         if (_currentHitPoints <= 0)
+        {
             Exhaust();
+            return;
+        }
+
+        _view.ShowHitAnimation();
     }
 
     private void Exhaust()
@@ -64,5 +72,6 @@ internal class ResourceSource : MonoBehaviour, IInteractable
     private void RestoreHP()
     {
         _currentHitPoints = _hitPoints;
+        _view.ShowHP(_currentHitPoints, _hitPoints);
     }
 }

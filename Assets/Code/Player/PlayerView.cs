@@ -34,6 +34,8 @@ internal class PlayerView : MonoBehaviour
 
     internal void HitDone()
     {
+        Logger.Log($"HitDone rising {Time.frameCount}");
+
         AttackDone?.Invoke();
     }
 }

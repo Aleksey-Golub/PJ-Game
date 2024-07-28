@@ -48,7 +48,7 @@ internal class Player : MonoBehaviour, IDisposable
 
     public void Dispose()
     {
-        _view.AttackDone += OnHitDone;
+        _view.AttackDone -= OnHitDone;
     }
 
     private void FixedUpdate()

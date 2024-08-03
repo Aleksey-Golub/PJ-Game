@@ -811,15 +811,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_34
+      name: wood
       rect:
         serializedVersion: 2
         x: 141
         y: 34
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -832,15 +832,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_35
+      name: grass
       rect:
         serializedVersion: 2
         x: 181
         y: 35
         width: 15
         height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1042,15 +1042,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_46
+      name: stone
       rect:
         serializedVersion: 2
         x: 340
         y: 3
         width: 12
         height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1818,6 +1818,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: shadow
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 186
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a4fffae9e2d6c0489294e8465ab5ee1
+      internalID: 565068700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1857,8 +1878,6 @@ TextureImporter:
       __main.texturec-0-flipped_31: 1363477437
       __main.texturec-0-flipped_32: -13380755
       __main.texturec-0-flipped_33: -158344966
-      __main.texturec-0-flipped_34: 1605545508
-      __main.texturec-0-flipped_35: -667556626
       __main.texturec-0-flipped_36: -1227099510
       __main.texturec-0-flipped_37: 1759373326
       __main.texturec-0-flipped_38: -1711002262
@@ -1868,7 +1887,6 @@ TextureImporter:
       __main.texturec-0-flipped_43: -1288984483
       __main.texturec-0-flipped_44: -1094742133
       __main.texturec-0-flipped_45: 1933690828
-      __main.texturec-0-flipped_46: 623669451
       __main.texturec-0-flipped_47: -1736698845
       __main.texturec-0-flipped_48: -1107001721
       __main.texturec-0-flipped_49: -1335790571
@@ -1911,6 +1929,10 @@ TextureImporter:
       _hit_effect_1: 462397261
       _hit_effect_2: 1163979227
       _hit_effect_3: 1437209520
+      grass: -667556626
+      shadow: 565068700
+      stone: 623669451
+      wood: 1605545508
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

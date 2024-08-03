@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 internal class ResourceSource : MonoBehaviour, IInteractable
 {
@@ -6,9 +7,13 @@ internal class ResourceSource : MonoBehaviour, IInteractable
 
     [SerializeField] private Collider2D _collider2D;
     [SerializeField] private ResourceSourceView _view;
-    [SerializeField] private int _hitPoints = 1;
 
+    [SerializeField] private Resource _resourcePrefab;
+
+    [SerializeField] private ResourceConfig _resourceConfig;
+    [SerializeField] private int _hitPoints = 1;
     [SerializeField] private float _restoreTime = 10;
+
     private float _restorationTimer = 0;
     private int _currentHitPoints = 0;
 
@@ -50,10 +55,19 @@ internal class ResourceSource : MonoBehaviour, IInteractable
         if (_currentHitPoints <= 0)
         {
             Exhaust();
+            DropResource();
             return;
         }
 
         _view.ShowHitAnimation();
+    }
+
+    private void DropResource()
+    {
+        var resource = Instantiate(_resourcePrefab, transform.position, Quaternion.identity);
+        resource.Init(_resourceConfig);
+
+        resource.MoveAfterDrop();
     }
 
     private void Exhaust()

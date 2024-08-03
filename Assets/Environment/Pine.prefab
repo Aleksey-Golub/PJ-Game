@@ -87,6 +87,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider2D: {fileID: 8856581366255247278}
   _view: {fileID: 6818939769758625644}
+  _resourcePrefab: {fileID: 1551951821884112481, guid: 8584fb41cc8c06d4e8b33dd5b5858689, type: 3}
+  _resourceConfig: {fileID: 11400000, guid: 318ec1cfa5006ba418b1f426e11fd934, type: 2}
   _hitPoints: 4
   _restoreTime: 10
 --- !u!114 &6818939769758625644

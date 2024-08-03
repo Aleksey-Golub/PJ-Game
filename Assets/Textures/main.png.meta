@@ -1063,15 +1063,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_47
+      name: dung
       rect:
         serializedVersion: 2
         x: 356
         y: 4
         width: 13
         height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1084,15 +1084,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_41
+      name: coin
       rect:
         serializedVersion: 2
         x: 384
         y: 67
         width: 9
         height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1105,15 +1105,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_48
+      name: iron_ore
       rect:
         serializedVersion: 2
         x: 385
         y: 81
         width: 10
         height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1126,15 +1126,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_49
+      name: water
       rect:
         serializedVersion: 2
         x: 385
         y: 96
         width: 9
         height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1147,15 +1147,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_50
+      name: fruit
       rect:
         serializedVersion: 2
-        x: 430
-        y: 105
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 429
+        y: 104
+        width: 8
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1168,15 +1168,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_51
+      name: carrot
       rect:
         serializedVersion: 2
         x: 449
         y: 117
         width: 9
         height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1189,15 +1189,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_52
+      name: slime_egg
       rect:
         serializedVersion: 2
         x: 428
         y: 134
         width: 10
         height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1210,15 +1210,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_53
+      name: milk
       rect:
         serializedVersion: 2
         x: 427
         y: 150
         width: 12
         height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1231,15 +1231,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_54
+      name: gem
       rect:
         serializedVersion: 2
         x: 444
         y: 150
         width: 14
         height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1252,15 +1252,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_55
+      name: iron
       rect:
         serializedVersion: 2
         x: 426
         y: 168
         width: 14
         height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1827,7 +1827,7 @@ TextureImporter:
         width: 14
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1883,20 +1883,10 @@ TextureImporter:
       __main.texturec-0-flipped_38: -1711002262
       __main.texturec-0-flipped_39: -405565619
       __main.texturec-0-flipped_4: 752955290
-      __main.texturec-0-flipped_41: -756613953
       __main.texturec-0-flipped_43: -1288984483
       __main.texturec-0-flipped_44: -1094742133
       __main.texturec-0-flipped_45: 1933690828
-      __main.texturec-0-flipped_47: -1736698845
-      __main.texturec-0-flipped_48: -1107001721
-      __main.texturec-0-flipped_49: -1335790571
       __main.texturec-0-flipped_5: -989307427
-      __main.texturec-0-flipped_50: -1746096017
-      __main.texturec-0-flipped_51: -1806721189
-      __main.texturec-0-flipped_52: 1147525784
-      __main.texturec-0-flipped_53: 1368875871
-      __main.texturec-0-flipped_54: 1881971156
-      __main.texturec-0-flipped_55: -343440380
       __main.texturec-0-flipped_56: -964180368
       __main.texturec-0-flipped_57: 1356712221
       __main.texturec-0-flipped_58: 1218634206
@@ -1929,9 +1919,19 @@ TextureImporter:
       _hit_effect_1: 462397261
       _hit_effect_2: 1163979227
       _hit_effect_3: 1437209520
+      carrot: -1806721189
+      coin: -756613953
+      dung: -1736698845
+      fruit: -1746096017
+      gem: 1881971156
       grass: -667556626
+      iron: -343440380
+      iron_ore: -1107001721
+      milk: 1368875871
       shadow: 565068700
+      slime_egg: 1147525784
       stone: 623669451
+      water: -1335790571
       wood: 1605545508
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

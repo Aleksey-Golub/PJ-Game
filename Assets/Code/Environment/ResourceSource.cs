@@ -7,12 +7,12 @@ internal class ResourceSource : MonoBehaviour, IInteractable
     [SerializeField] private Collider2D _collider2D;
     [SerializeField] private ResourceSourceView _view;
 
-    [SerializeField] private Resource _resourcePrefab;
-
     [Header("Settings")]
     [SerializeField] private ResourceConfig _resourceConfig;
     [SerializeField] private int _hitPoints = 1;
     [SerializeField] private float _restoreTime = 10;
+
+    private ResourceFactory _resourceFactory;
 
     private float _restorationTimer = 0;
     private int _currentHitPoints = 0;
@@ -21,7 +21,7 @@ internal class ResourceSource : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        Init();
+        Construct();
     }
 
     private void Update()
@@ -38,8 +38,10 @@ internal class ResourceSource : MonoBehaviour, IInteractable
         }
     }
 
-    private void Init()
+    private void Construct()
     {
+        _resourceFactory = ResourceFactory.Instance;
+
         RestoreHP();
     }
 
@@ -66,7 +68,7 @@ internal class ResourceSource : MonoBehaviour, IInteractable
     {
         _view.PlayDropResourceSound();
 
-        var resource = Instantiate(_resourcePrefab, transform.position, Quaternion.identity);
+        Resource resource = _resourceFactory.Get(transform.position, Quaternion.identity);
         resource.Init(_resourceConfig);
 
         resource.MoveAfterDrop();

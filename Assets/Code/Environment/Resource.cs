@@ -6,6 +6,7 @@ internal class Resource : MonoBehaviour
     [SerializeField] private Collider2D _collider;
     [SerializeField] private ResourceView _view;
 
+    private ResourceFactory _factory;
     private ResourceConfig _config;
     private Coroutine _moveCoroutine;
 
@@ -51,5 +52,10 @@ internal class Resource : MonoBehaviour
         transform.position = finalPosition;
         _collider.enabled = true;
         _view.ShowEndDrop();
+    }
+
+    internal void Construct(ResourceFactory factory)
+    {
+        _factory = factory;
     }
 }

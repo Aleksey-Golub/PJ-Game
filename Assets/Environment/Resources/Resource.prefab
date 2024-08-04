@@ -66,7 +66,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -86,6 +86,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 2083854975268022743}
   _view: {fileID: 6735504037164286485}
+  _dropRadius: 1.3
+  _moveAfterDropTime: 0.6
 --- !u!114 &6735504037164286485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +103,44 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 8810992066290728902}
   _shadowRenderer: {fileID: 8931593111357123301}
   _animation: {fileID: 1598098538859376053}
+  _spriteMovementDropCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.5
+      outSlope: 3.6590166
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.032258064
+    - serializedVersion: 3
+      time: 0.5
+      value: 1.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -3.6895118
+      outSlope: -3.6895118
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.029325485
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _startSpritePositionY: 0.1
+  _minAlpha: 0
+  _maxAlpha: 1
+  _minSize: {x: 0.1, y: 0.1, z: 0.1}
+  _maxSize: {x: 1, y: 1, z: 1}
 --- !u!111 &1598098538859376053
 Animation:
   m_ObjectHideFlags: 0

@@ -113,6 +113,7 @@ MonoBehaviour:
   _changeSortingOrderWhenExhaust: 0
   _exhaustSortingOrder: 0
   _hitAudioClip: {fileID: 8300000, guid: 7042ef3e54153c4488cbdfbb3332174f, type: 3}
+  _dropResourceAudioClip: {fileID: 8300000, guid: 6551217db40144341aef431aed8d54c5, type: 3}
 --- !u!111 &6417419227623101482
 Animation:
   m_ObjectHideFlags: 0

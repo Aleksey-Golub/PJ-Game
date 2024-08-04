@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 internal class ResourceSource : MonoBehaviour, IInteractable
 {
@@ -10,6 +9,7 @@ internal class ResourceSource : MonoBehaviour, IInteractable
 
     [SerializeField] private Resource _resourcePrefab;
 
+    [Header("Settings")]
     [SerializeField] private ResourceConfig _resourceConfig;
     [SerializeField] private int _hitPoints = 1;
     [SerializeField] private float _restoreTime = 10;
@@ -45,7 +45,7 @@ internal class ResourceSource : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Logger.Log($"Interact with {gameObject.name} {Time.frameCount}");
+        //Logger.Log($"Interact with {gameObject.name} {Time.frameCount}");
 
         _currentHitPoints -= PLAYER_DAMAGE;
         _view.ShowHP(_currentHitPoints, _hitPoints);
@@ -64,6 +64,8 @@ internal class ResourceSource : MonoBehaviour, IInteractable
 
     private void DropResource()
     {
+        _view.PlayDropResourceSound();
+
         var resource = Instantiate(_resourcePrefab, transform.position, Quaternion.identity);
         resource.Init(_resourceConfig);
 

@@ -14,6 +14,7 @@ internal class ResourceSourceView : MonoBehaviour
     [SerializeField] private bool _changeSortingOrderWhenExhaust = false;
     [SerializeField] private int _exhaustSortingOrder;
     [SerializeField] private AudioClip _hitAudioClip;
+    [SerializeField] private AudioClip _dropResourceAudioClip;
 
     private int _oldSortingOrder;
 
@@ -52,6 +53,11 @@ internal class ResourceSourceView : MonoBehaviour
     internal void PlayHitSound()
     {
         AudioSource.PlayClipAtPoint(_hitAudioClip, transform.position);
+    }
+
+    internal void PlayDropResourceSound()
+    {
+        AudioSource.PlayClipAtPoint(_dropResourceAudioClip, transform.position);
     }
 
     internal void ShowHP(int currentHitPoints, int totalHitPoints)

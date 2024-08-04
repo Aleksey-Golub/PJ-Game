@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 internal class Resource : MonoBehaviour
@@ -6,16 +7,49 @@ internal class Resource : MonoBehaviour
     [SerializeField] private ResourceView _view;
 
     private ResourceConfig _config;
+    private Coroutine _moveCoroutine;
+
+    [Header("Settings")]
+    [SerializeField] private float _dropRadius = 1.3f;
+    [SerializeField] private float _moveAfterDropTime = 0.6f;
 
     internal void Init(ResourceConfig config)
     {
         _config = config;
 
         _view.Init(_config.Sprite);
+        _collider.enabled = false;
     }
 
     internal void MoveAfterDrop()
     {
-        transform.position = Random.insideUnitCircle + new Vector2(transform.position.x, transform.position.y);
+        if (_moveCoroutine != null)
+            StopCoroutine(_moveCoroutine);
+
+        _moveCoroutine = StartCoroutine(MoveAfterDropCor());
+    }
+
+    private IEnumerator MoveAfterDropCor()
+    {
+        _view.ShowStartDrop();
+        Vector3 finalPosition = Random.insideUnitCircle * _dropRadius + new Vector2(transform.position.x, transform.position.y);
+        
+        finalPosition.z = transform.position.z;
+        Vector3 startPosition = transform.position;
+        float timer = 0;
+
+        while (timer < _moveAfterDropTime)
+        {
+            float t = timer / _moveAfterDropTime;
+            transform.position = Vector3.Slerp(startPosition, finalPosition, t);
+            _view.ShowDropping(t);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = finalPosition;
+        _collider.enabled = true;
+        _view.ShowEndDrop();
     }
 }

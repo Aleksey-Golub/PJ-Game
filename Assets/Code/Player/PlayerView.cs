@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using UnityEngine;
 
 internal class PlayerView : MonoBehaviour
@@ -32,9 +33,10 @@ internal class PlayerView : MonoBehaviour
         _animator.SetTrigger(_attackHash);
     }
 
+    [UsedImplicitly]
     internal void HitDone()
     {
-        Logger.Log($"HitDone rising {Time.frameCount}");
+        //Logger.Log($"HitDone rising {Time.frameCount}");
 
         AttackDone?.Invoke();
     }

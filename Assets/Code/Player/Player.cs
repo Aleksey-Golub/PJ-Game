@@ -3,34 +3,41 @@ using UnityEngine;
 
 internal class Player : MonoBehaviour, IDisposable
 {
+    [Serializable]
+    internal struct OverlapSphereParams
+    {
+        public float Radius;
+        public float Offset;
+    }
+
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Collider2D _collider2D;
     [SerializeField] private PlayerView _view;
-    [SerializeField] private float _speed = 1;
-    [SerializeField] private float _attackDelay = 5;
 
-    [SerializeField] float _radius = 1f;
-    [SerializeField] float _distanse = 1f;
+    [Header("Settings")]
+    [SerializeField] private float _speed = 1.5f;
+    [SerializeField] private float _attackDelay = 0.7f;
+    [SerializeField] private OverlapSphereParams _overlapSphereParams = new OverlapSphereParams() { Radius = 0.4f, Offset = 0.4f };
 
     private float _attackTimer = 0;
-
     private Vector2 _direction = new Vector2(0, -1);
-
     private Collider2D[] _buffer;
+    private IPlayerInput _input;
 
     #region EDITOR_ONLY
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(GetOverlapCircleCenter(), _radius);
+        Gizmos.DrawWireSphere(GetOverlapCircleCenter(), _overlapSphereParams.Radius);
     }
 #endif
     #endregion
 
     private void Start()
     {
-        Construct();
+        var input = InputServiceProvider.Instance.GetService();
+        Construct(input);
     }
 
     private void OnDestroy()
@@ -38,9 +45,11 @@ internal class Player : MonoBehaviour, IDisposable
         Dispose();
     }
 
-    private void Construct()
+    private void Construct(IPlayerInput input)
     {
         _buffer = new Collider2D[10];
+
+        _input = input;
 
         _view.Construct();
         _view.AttackDone += OnHitDone;
@@ -53,10 +62,10 @@ internal class Player : MonoBehaviour, IDisposable
 
     private void FixedUpdate()
     {
-        if (HasMoveInput())
+        if (_input.HasMoveInput())
         {
-            float xMovement = Input.GetAxisRaw("Horizontal");
-            float yMovement = Input.GetAxisRaw("Vertical");
+            float xMovement = _input.GetHorizontalAxisRaw();
+            float yMovement = _input.GetVerticalAxisRaw();
 
             Vector2 direction = new Vector2(xMovement, yMovement).normalized;
             Vector2 startPos = _rb.position;
@@ -77,7 +86,7 @@ internal class Player : MonoBehaviour, IDisposable
         {
             Vector2 center = GetOverlapCircleCenter();
 
-            if (Physics2D.OverlapCircleNonAlloc(center, _radius, _buffer) > 0)
+            if (Physics2D.OverlapCircleNonAlloc(center, _overlapSphereParams.Radius, _buffer) > 0)
             {
                 int sCount = 0;
                 foreach (Collider2D collider in _buffer)
@@ -108,29 +117,15 @@ internal class Player : MonoBehaviour, IDisposable
     private Vector2 GetOverlapCircleCenter()
     {
         Vector2 center = (Vector2)transform.position + _collider2D.offset;
-        center += _direction * _distanse;
+        center += _direction * _overlapSphereParams.Offset;
         return center;
-    }
-
-    private bool HasMoveInput()
-    {
-        return
-            Input.GetKey(KeyCode.W)
-            || Input.GetKey(KeyCode.A)
-            || Input.GetKey(KeyCode.S)
-            || Input.GetKey(KeyCode.D)
-            || Input.GetKey(KeyCode.DownArrow)
-            || Input.GetKey(KeyCode.LeftArrow)
-            || Input.GetKey(KeyCode.RightArrow)
-            || Input.GetKey(KeyCode.UpArrow)
-            ;
     }
 
     private void OnHitDone()
     {
         Vector2 center = GetOverlapCircleCenter();
 
-        if (Physics2D.OverlapCircleNonAlloc(center, _radius, _buffer) > 0)
+        if (Physics2D.OverlapCircleNonAlloc(center, _overlapSphereParams.Radius, _buffer) > 0)
         {
             foreach (Collider2D collider in _buffer)
             {

@@ -19,9 +19,10 @@ internal class ResourceSource : MonoBehaviour, IInteractable
 
     private bool IsDied => _currentHitPoints <= 0;
 
-    private void Awake()
+    private void Start()
     {
-        Construct();
+        var resourceFactory = ResourceFactory.Instance;
+        Construct(resourceFactory);
     }
 
     private void Update()
@@ -38,9 +39,9 @@ internal class ResourceSource : MonoBehaviour, IInteractable
         }
     }
 
-    private void Construct()
+    private void Construct(ResourceFactory resourceFactory)
     {
-        _resourceFactory = ResourceFactory.Instance;
+        _resourceFactory = resourceFactory;
 
         RestoreHP();
     }

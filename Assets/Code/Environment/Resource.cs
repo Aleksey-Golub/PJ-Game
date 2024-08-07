@@ -14,9 +14,18 @@ internal class Resource : MonoBehaviour
     [SerializeField] private float _dropRadius = 1.3f;
     [SerializeField] private float _moveAfterDropTime = 0.6f;
 
+    internal int Count { get; private set; }
+    internal ResourceType Type => _config.Type;
+
+    internal void Construct(ResourceFactory factory)
+    {
+        _factory = factory;
+    }
+
     internal void Init(ResourceConfig config)
     {
         _config = config;
+        Count = 1;
 
         _view.Init(_config.Sprite);
         _collider.enabled = false;
@@ -54,8 +63,10 @@ internal class Resource : MonoBehaviour
         _view.ShowEndDrop();
     }
 
-    internal void Construct(ResourceFactory factory)
+    internal void Collect()
     {
-        _factory = factory;
+        AudioSource.PlayClipAtPoint(_config.PickupAudio, transform.position);
+
+        _factory.Recycle(this);
     }
 }

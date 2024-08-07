@@ -5,9 +5,11 @@ internal class ResourceConfig : ScriptableObject
 {
     [SerializeField] private ResourceType _type;
     [SerializeField] private Sprite _sprite;
+    [SerializeField] private AudioClip _pickupAudio;
 
     internal ResourceType Type => _type;
     internal Sprite Sprite => _sprite;
+    internal AudioClip PickupAudio => _pickupAudio;
 }
 
 internal enum ResourceType

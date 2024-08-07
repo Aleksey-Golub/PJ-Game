@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 internal class ResourceFactory : MonoSingleton<ResourceFactory>
@@ -29,6 +30,12 @@ internal class ResourceFactory : MonoSingleton<ResourceFactory>
 
         resource.transform.SetPositionAndRotation(position, rotation);
         return resource;
+    }
+
+    internal void Recycle(Resource resource)
+    {
+        resource.gameObject.SetActive(false);
+        _pool.Enqueue(resource);
     }
 
     private void FillPool()

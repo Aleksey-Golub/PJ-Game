@@ -23,6 +23,8 @@ internal class Player : MonoBehaviour, IDisposable
     private Vector2 _direction = new Vector2(0, -1);
     private Collider2D[] _buffer;
     private IPlayerInput _input;
+    private IInventoryView _inventoryView;
+    private Inventory _inventory;
 
     #region EDITOR_ONLY
 
@@ -34,10 +36,26 @@ internal class Player : MonoBehaviour, IDisposable
 #endif
     #endregion
 
+    private void Construct(IPlayerInput input, IInventoryView inventoryView)
+    {
+        _buffer = new Collider2D[10];
+        _inventory = new();
+
+        _input = input;
+        _inventoryView = inventoryView;
+        _inventoryView.Init(_inventory.Storage);
+
+        _view.Construct();
+
+        _inventory.ResourceCountChanged += _inventoryView.UpdateFor;
+        _view.AttackDone += OnHitDone;
+    }
+
     private void Start()
     {
         var input = InputServiceProvider.Instance.GetService();
-        Construct(input);
+        var inventoryView = UIService.Instance.GetPlayerInventoryView();
+        Construct(input, inventoryView);
     }
 
     private void OnDestroy()
@@ -45,19 +63,19 @@ internal class Player : MonoBehaviour, IDisposable
         Dispose();
     }
 
-    private void Construct(IPlayerInput input)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        _buffer = new Collider2D[10];
-
-        _input = input;
-
-        _view.Construct();
-        _view.AttackDone += OnHitDone;
+        if (other.TryGetComponent(out Resource resource))
+        {
+            _inventory.Add(resource.Type, resource.Count);
+            resource.Collect();
+        }
     }
 
     public void Dispose()
     {
         _view.AttackDone -= OnHitDone;
+        _inventory.ResourceCountChanged -= _inventoryView.UpdateFor;
     }
 
     private void FixedUpdate()

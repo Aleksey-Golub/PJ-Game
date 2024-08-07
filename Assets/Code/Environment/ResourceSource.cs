@@ -19,6 +19,13 @@ internal class ResourceSource : MonoBehaviour, IInteractable
 
     private bool IsDied => _currentHitPoints <= 0;
 
+    private void Construct(ResourceFactory resourceFactory)
+    {
+        _resourceFactory = resourceFactory;
+
+        RestoreHP();
+    }
+
     private void Start()
     {
         var resourceFactory = ResourceFactory.Instance;
@@ -37,13 +44,6 @@ internal class ResourceSource : MonoBehaviour, IInteractable
             _restorationTimer = 0;
             Restore();
         }
-    }
-
-    private void Construct(ResourceFactory resourceFactory)
-    {
-        _resourceFactory = resourceFactory;
-
-        RestoreHP();
     }
 
     public void Interact()

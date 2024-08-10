@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 internal class ResourceFactory : MonoSingleton<ResourceFactory>
@@ -8,11 +7,16 @@ internal class ResourceFactory : MonoSingleton<ResourceFactory>
     [SerializeField, Min(1)] private int _poolSize = 1;
 
     private Queue<Resource> _pool;
+    private List<Resource> _droppedResources;
+
+    public IReadOnlyList<Resource> DroppedResources => _droppedResources;
 
     protected override void Awake()
     {
         base.Awake();
 
+        _pool = new Queue<Resource>(_poolSize);
+        _droppedResources = new List<Resource>();
         FillPool();
     }
 
@@ -29,19 +33,21 @@ internal class ResourceFactory : MonoSingleton<ResourceFactory>
         }
 
         resource.transform.SetPositionAndRotation(position, rotation);
+
+        _droppedResources.Add(resource);
         return resource;
     }
 
     internal void Recycle(Resource resource)
     {
         resource.gameObject.SetActive(false);
+
+        _droppedResources.Remove(resource);
         _pool.Enqueue(resource);
     }
 
     private void FillPool()
     {
-        _pool = new Queue<Resource>(_poolSize);
-
         for (int i = 0; i < _poolSize; i++)
         {
             var resource = Instantiate(_resourcePrefab, transform);

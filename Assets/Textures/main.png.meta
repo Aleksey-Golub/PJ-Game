@@ -706,15 +706,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_29
+      name: BUCKET
       rect:
         serializedVersion: 2
-        x: 400
-        y: 116
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 399
+        y: 115
+        width: 11
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1273,15 +1273,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_56
+      name: SICKLE
       rect:
         serializedVersion: 2
         x: 368
         y: 151
         width: 12
         height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1294,15 +1294,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_57
+      name: SWORD
       rect:
         serializedVersion: 2
         x: 444
         y: 168
         width: 14
         height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1315,15 +1315,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_58
+      name: AXE
       rect:
         serializedVersion: 2
         x: 201
         y: 35
         width: 16
         height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1336,15 +1336,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_59
+      name: PICKAXE
       rect:
         serializedVersion: 2
         x: 221
         y: 34
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1850,6 +1850,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      AXE: 1218634206
+      BUCKET: -1672760803
+      PICKAXE: 1402700907
+      SICKLE: -964180368
+      SWORD: 1356712221
       __main.texturec-0-flipped_0: -2007972119
       __main.texturec-0-flipped_1: 1924533251
       __main.texturec-0-flipped_10: -1611873582
@@ -1872,7 +1877,6 @@ TextureImporter:
       __main.texturec-0-flipped_26: 300748501
       __main.texturec-0-flipped_27: 965695468
       __main.texturec-0-flipped_28: -1977366518
-      __main.texturec-0-flipped_29: -1672760803
       __main.texturec-0-flipped_3: -1571978254
       __main.texturec-0-flipped_30: -320451106
       __main.texturec-0-flipped_31: 1363477437
@@ -1887,10 +1891,6 @@ TextureImporter:
       __main.texturec-0-flipped_44: -1094742133
       __main.texturec-0-flipped_45: 1933690828
       __main.texturec-0-flipped_5: -989307427
-      __main.texturec-0-flipped_56: -964180368
-      __main.texturec-0-flipped_57: 1356712221
-      __main.texturec-0-flipped_58: 1218634206
-      __main.texturec-0-flipped_59: 1402700907
       __main.texturec-0-flipped_6: -2007050740
       __main.texturec-0-flipped_60: -2135758067
       __main.texturec-0-flipped_61: -535157519

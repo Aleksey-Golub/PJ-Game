@@ -1,22 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
-public class Resource : MonoBehaviour, IMergingResource
+internal class Resource : MonoBehaviour, IMergingResource
 {
     [SerializeField] private Collider2D _collider;
     [SerializeField] private ResourceView _view;
+    [SerializeField] private Dropper _dropper;
 
     private ResourceFactory _factory;
     private ResourceConfig _config;
-    private Coroutine _moveAfterDropCoroutine;
     private Coroutine _mergeCoroutine;
     private int _count;
     private float _mergeTimer;
     private bool _isMerging;
 
     [Header("Settings")]
-    [SerializeField] private float _dropRadius = 1.3f;
-    [SerializeField] private float _moveAfterDropTime = 0.6f;
     [SerializeField] private float _moveAfterMergeTime = 0.6f;
 
     public int Count => _count;
@@ -43,34 +41,7 @@ public class Resource : MonoBehaviour, IMergingResource
 
     internal void MoveAfterDrop()
     {
-        if (_moveAfterDropCoroutine != null)
-            StopCoroutine(_moveAfterDropCoroutine);
-
-        _moveAfterDropCoroutine = StartCoroutine(MoveAfterDropCor());
-    }
-
-    private IEnumerator MoveAfterDropCor()
-    {
-        _view.ShowStartDrop();
-        Vector3 finalPosition = Random.insideUnitCircle * _dropRadius + new Vector2(transform.position.x, transform.position.y);
-        
-        finalPosition.z = transform.position.z;
-        Vector3 startPosition = transform.position;
-        float timer = 0;
-
-        while (timer < _moveAfterDropTime)
-        {
-            float t = timer / _moveAfterDropTime;
-            transform.position = Vector3.Slerp(startPosition, finalPosition, t);
-            _view.ShowDropping(t);
-
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = finalPosition;
-        _collider.enabled = true;
-        _view.ShowEndDrop();
+        _dropper.MoveAfterDrop(this, _view, _collider);
     }
 
     internal void Collect()

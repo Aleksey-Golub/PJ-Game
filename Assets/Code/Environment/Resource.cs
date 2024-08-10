@@ -8,7 +8,7 @@ public class Resource : MonoBehaviour, IMergingResource
 
     private ResourceFactory _factory;
     private ResourceConfig _config;
-    private Coroutine _moveCoroutine;
+    private Coroutine _moveAfterDropCoroutine;
     private Coroutine _mergeCoroutine;
     private int _count;
     private float _mergeTimer;
@@ -19,12 +19,10 @@ public class Resource : MonoBehaviour, IMergingResource
     [SerializeField] private float _moveAfterDropTime = 0.6f;
     [SerializeField] private float _moveAfterMergeTime = 0.6f;
 
-    internal int Count => _count;
-    internal ResourceType Type => _config.Type;
+    public int Count => _count;
+    public ResourceType Type => _config.Type;
 
-    Vector3 IMergingResource.Position => transform.position;
-    int IMergingResource.Count => _count;
-    ResourceType IMergingResource.Type => Type;
+    public Vector3 Position => transform.position;
 
     internal void Construct(ResourceFactory factory)
     {
@@ -45,10 +43,10 @@ public class Resource : MonoBehaviour, IMergingResource
 
     internal void MoveAfterDrop()
     {
-        if (_moveCoroutine != null)
-            StopCoroutine(_moveCoroutine);
+        if (_moveAfterDropCoroutine != null)
+            StopCoroutine(_moveAfterDropCoroutine);
 
-        _moveCoroutine = StartCoroutine(MoveAfterDropCor());
+        _moveAfterDropCoroutine = StartCoroutine(MoveAfterDropCor());
     }
 
     private IEnumerator MoveAfterDropCor()

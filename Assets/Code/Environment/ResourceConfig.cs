@@ -12,7 +12,7 @@ internal class ResourceConfig : ScriptableObject
     internal AudioClip PickupAudio => _pickupAudio;
 }
 
-internal enum ResourceType
+public enum ResourceType
 {
     None = 0,
     COIN = 1,

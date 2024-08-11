@@ -1483,15 +1483,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_66
+      name: slime_1
       rect:
         serializedVersion: 2
         x: 142
         y: 17
         width: 14
         height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1504,15 +1504,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_67
+      name: slime_2
       rect:
         serializedVersion: 2
         x: 163
         y: 16
         width: 12
         height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1525,15 +1525,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_68
+      name: slime_3
       rect:
         serializedVersion: 2
         x: 183
         y: 16
         width: 12
         height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1546,15 +1546,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_69
+      name: slime_4
       rect:
         serializedVersion: 2
         x: 204
-        y: 18
+        y: 16
         width: 10
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1567,15 +1567,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_70
+      name: slime_5
       rect:
         serializedVersion: 2
         x: 224
-        y: 19
+        y: 16
         width: 10
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1588,15 +1588,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_71
+      name: slime_6
       rect:
         serializedVersion: 2
         x: 244
-        y: 18
+        y: 16
         width: 10
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1609,15 +1609,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_72
+      name: slime_7
       rect:
         serializedVersion: 2
         x: 263
         y: 16
         width: 12
         height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1630,15 +1630,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_73
+      name: slime_8
       rect:
         serializedVersion: 2
         x: 365
         y: 73
         width: 14
         height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1651,15 +1651,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_74
+      name: slime_21
       rect:
         serializedVersion: 2
         x: 387
         y: 135
         width: 14
         height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1672,15 +1672,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_75
+      name: slime_24
       rect:
         serializedVersion: 2
         x: 407
         y: 135
         width: 14
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1693,15 +1693,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_76
+      name: slime_23
       rect:
         serializedVersion: 2
         x: 407
         y: 155
         width: 14
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1714,15 +1714,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_77
+      name: slime_22
       rect:
         serializedVersion: 2
         x: 407
         y: 175
         width: 14
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1896,19 +1896,7 @@ TextureImporter:
       __main.texturec-0-flipped_63: 2038853318
       __main.texturec-0-flipped_64: 906421399
       __main.texturec-0-flipped_65: -1723563639
-      __main.texturec-0-flipped_66: -993347180
-      __main.texturec-0-flipped_67: 2134976006
-      __main.texturec-0-flipped_68: 207369276
-      __main.texturec-0-flipped_69: -1482323162
       __main.texturec-0-flipped_7: -1743317640
-      __main.texturec-0-flipped_70: 1670392460
-      __main.texturec-0-flipped_71: -2035225261
-      __main.texturec-0-flipped_72: 1330088374
-      __main.texturec-0-flipped_73: 1987201700
-      __main.texturec-0-flipped_74: -881988189
-      __main.texturec-0-flipped_75: 350169177
-      __main.texturec-0-flipped_76: -564811151
-      __main.texturec-0-flipped_77: -690717576
       __main.texturec-0-flipped_9: 1041573145
       __pine_stump: 188050404
       __rock_stump: -1482988333
@@ -1929,6 +1917,18 @@ TextureImporter:
       pot_damaged: 1933690828
       pot_whole: -1094742133
       shadow: 565068700
+      slime_1: -993347180
+      slime_2: 2134976006
+      slime_21: -881988189
+      slime_22: -690717576
+      slime_23: -564811151
+      slime_24: 350169177
+      slime_3: 207369276
+      slime_4: -1482323162
+      slime_5: 1670392460
+      slime_6: -2035225261
+      slime_7: 1330088374
+      slime_8: 1987201700
       slime_egg: 1147525784
       stone: 623669451
       water: -1335790571

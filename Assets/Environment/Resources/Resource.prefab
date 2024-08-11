@@ -86,8 +86,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 2083854975268022743}
   _view: {fileID: 6735504037164286485}
-  _dropRadius: 1.3
-  _moveAfterDropTime: 0.6
   _moveAfterMergeTime: 0.3
 --- !u!114 &6735504037164286485
 MonoBehaviour:
@@ -104,8 +102,6 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 8810992066290728902}
   _shadowRenderer: {fileID: 8931593111357123301}
   _animation: {fileID: 1598098538859376053}
-  _countText: {fileID: 6850560786463946468}
-  _countTextSortingOrder: 1
   _spriteMovementDropCurve:
     serializedVersion: 2
     m_Curve:
@@ -144,6 +140,8 @@ MonoBehaviour:
   _maxAlpha: 1
   _minSize: {x: 0.1, y: 0.1, z: 0.1}
   _maxSize: {x: 1, y: 1, z: 1}
+  _countText: {fileID: 6850560786463946468}
+  _countTextSortingOrder: 1
 --- !u!111 &1598098538859376053
 Animation:
   m_ObjectHideFlags: 0
@@ -488,7 +486,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_Sprite: {fileID: 1605545508, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

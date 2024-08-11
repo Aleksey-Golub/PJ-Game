@@ -8,6 +8,7 @@ internal class ResourceSource : MonoBehaviour, IInteractable
     [SerializeField] private ResourceSourceView _view;
 
     [Header("Settings")]
+    [SerializeField] private ToolType _needToolType;
     [SerializeField] private ResourceConfig _resourceConfig;
     [SerializeField] private int _hitPoints = 1;
     [SerializeField] private float _restoreTime = 10;
@@ -19,6 +20,8 @@ internal class ResourceSource : MonoBehaviour, IInteractable
     private int _currentHitPoints = 0;
 
     private bool IsDied => _currentHitPoints <= 0;
+
+    internal ToolType NeedToolType => _needToolType;
 
     private void Construct(ResourceFactory resourceFactory)
     {

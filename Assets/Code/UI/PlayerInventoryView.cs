@@ -7,10 +7,10 @@ namespace Assets.Code.UI
     {
         [SerializeField] private InventoryResourceView _prefab;
 
-        private ResourceConfigService _resourceConfigService;
+        private ConfigsService _resourceConfigService;
         private Dictionary<ResourceType, InventoryResourceView> _views;
 
-        internal void Coustruct(ResourceConfigService configService)
+        internal void Coustruct(ConfigsService configService)
         {
             _views = new();
 

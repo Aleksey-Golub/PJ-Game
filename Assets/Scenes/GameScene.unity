@@ -1303,7 +1303,7 @@ GameObject:
   - component: {fileID: 1172217154}
   - component: {fileID: 1172217153}
   m_Layer: 0
-  m_Name: ResourceConfigService
+  m_Name: ConfigService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1318,10 +1318,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1172217152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89607be0417ea474fbcabccd4ef6364b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c7852583d218a240b595b81a0ea695c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _configs:
+  _resourcesConfigs:
   - {fileID: 11400000, guid: 3dbf32a7b8508e94ab6b30762e58501d, type: 2}
   - {fileID: 11400000, guid: f8fc709eca8334b45aa174bba73f5d43, type: 2}
   - {fileID: 11400000, guid: 1ea333c67f1434b4e98822dd6ac9b742, type: 2}
@@ -1335,6 +1335,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7534274c1b46b45478559a7ed5733bda, type: 2}
   - {fileID: 11400000, guid: be0099c985df4ee4eb479cf234b33e24, type: 2}
   - {fileID: 11400000, guid: 318ec1cfa5006ba418b1f426e11fd934, type: 2}
+  _toolsConfigs:
+  - {fileID: 11400000, guid: 0011389236ca91845a35d36ecc59778a, type: 2}
+  - {fileID: 11400000, guid: aaafd23f23e7a8a42a7cb374af2a9d50, type: 2}
+  - {fileID: 11400000, guid: 280240f35eaeafc49b897b592ad80896, type: 2}
+  - {fileID: 11400000, guid: 86f599455fe7c1140b2c75f5009cd975, type: 2}
+  - {fileID: 11400000, guid: 50345fad5bfbb7e42a8d7657fb664364, type: 2}
 --- !u!4 &1172217154
 Transform:
   m_ObjectHideFlags: 0

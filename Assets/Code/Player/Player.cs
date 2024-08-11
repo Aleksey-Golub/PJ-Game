@@ -24,6 +24,7 @@ internal class Player : MonoBehaviour, IDisposable
     private Collider2D[] _buffer;
     private IPlayerInput _input;
     private IInventoryView _inventoryView;
+    private ConfigsService _configsService;
     private Inventory _inventory;
 
     #region EDITOR_ONLY
@@ -36,7 +37,16 @@ internal class Player : MonoBehaviour, IDisposable
 #endif
     #endregion
 
-    private void Construct(IPlayerInput input, IInventoryView inventoryView)
+    private void Start()
+    {
+        var input = InputServiceProvider.Instance.GetService();
+        var inventoryView = UIService.Instance.GetPlayerInventoryView();
+        var configsService = ConfigsService.Instance;
+
+        Construct(input, inventoryView, configsService);
+    }
+
+    private void Construct(IPlayerInput input, IInventoryView inventoryView, ConfigsService configsService)
     {
         _buffer = new Collider2D[10];
         _inventory = new();
@@ -44,18 +54,12 @@ internal class Player : MonoBehaviour, IDisposable
         _input = input;
         _inventoryView = inventoryView;
         _inventoryView.Init(_inventory.Storage);
+        _configsService = configsService;
 
         _view.Construct();
 
         _inventory.ResourceCountChanged += _inventoryView.UpdateFor;
         _view.AttackDone += OnHitDone;
-    }
-
-    private void Start()
-    {
-        var input = InputServiceProvider.Instance.GetService();
-        var inventoryView = UIService.Instance.GetPlayerInventoryView();
-        Construct(input, inventoryView);
     }
 
     private void OnDestroy()
@@ -113,6 +117,7 @@ internal class Player : MonoBehaviour, IDisposable
             if (Physics2D.OverlapCircleNonAlloc(center, _overlapSphereParams.Radius, _buffer) > 0)
             {
                 int sCount = 0;
+                ResourceSource lastBlocked = null;
                 foreach (Collider2D collider in _buffer)
                 {
                     if (collider == null)
@@ -121,11 +126,16 @@ internal class Player : MonoBehaviour, IDisposable
                     if (collider.TryGetComponent<Player>(out _))
                         continue;
 
-                    if (
-                        collider.TryGetComponent(out ResourceSource s)
-                        )
+                    if (collider.TryGetComponent(out ResourceSource s))
                     {
-                        sCount++;
+                        if (CanGatherWith(s.NeedToolType))
+                        {
+                            sCount++;
+                        }
+                        else
+                        {
+                            lastBlocked = s;
+                        }
                     }
                 }
 
@@ -134,6 +144,11 @@ internal class Player : MonoBehaviour, IDisposable
                     _attackTimer = 0;
                     _view.PlayAttack();
                 }
+
+                if (lastBlocked != null)
+                    _view.ShowGatheringBlocked(_configsService.GetConfigFor(lastBlocked.NeedToolType).Sprite);
+                else
+                    _view.ShowGatheringUnblocked();
 
                 _buffer.Refresh();
             }
@@ -163,6 +178,7 @@ internal class Player : MonoBehaviour, IDisposable
 
                 if (
                     collider.TryGetComponent(out ResourceSource s)
+                    && CanGatherWith(s.NeedToolType)
                     )
                 {
                     s.Interact();
@@ -171,5 +187,13 @@ internal class Player : MonoBehaviour, IDisposable
 
             _buffer.Refresh();
         }
+    }
+
+    private bool CanGatherWith(ToolType needToolType)
+    {
+        if (needToolType is ToolType.None)
+            return true;
+
+        return _inventory.Has(needToolType);
     }
 }

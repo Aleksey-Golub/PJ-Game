@@ -1,9 +1,12 @@
 ﻿using JetBrains.Annotations;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 internal class PlayerView : MonoBehaviour
 {
+    [SerializeField] private GameObject _mindCloud;
+    [SerializeField] private Image _toolMindImage;
     [SerializeField] private Animator _animator;
 
     private int _dirXHash;
@@ -39,5 +42,19 @@ internal class PlayerView : MonoBehaviour
         //Logger.Log($"HitDone rising {Time.frameCount}");
 
         AttackDone?.Invoke();
+    }
+
+    internal void ShowGatheringBlocked(Sprite sprite)
+    {
+        if (!_mindCloud.activeSelf)
+            _mindCloud.SetActive(true);
+
+        _toolMindImage.sprite = sprite;
+    }
+
+    internal void ShowGatheringUnblocked()
+    {
+        if (_mindCloud.activeSelf)
+            _mindCloud.SetActive(false);
     }
 }

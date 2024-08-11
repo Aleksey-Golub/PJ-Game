@@ -19,7 +19,6 @@ internal class Resource : MonoBehaviour, IMergingResource
 
     public int Count => _count;
     public ResourceType Type => _config.Type;
-
     public Vector3 Position => transform.position;
 
     internal void Construct(ResourceFactory factory)

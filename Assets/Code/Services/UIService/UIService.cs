@@ -7,7 +7,7 @@ internal class UIService : MonoSingleton<UIService>
 
     internal IInventoryView GetPlayerInventoryView()
     {
-        var configService = ResourceConfigService.Instance;
+        var configService = ConfigsService.Instance;
         _playerInventoryView.Coustruct(configService);
 
         return _playerInventoryView;

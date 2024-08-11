@@ -4,6 +4,7 @@ using System.Collections.Generic;
 internal class Inventory
 {
     private readonly Dictionary<ResourceType, int> _storage;
+    private readonly List<ToolType> _tools;
 
     internal event Action<ResourceType, int> ResourceCountChanged;
 
@@ -12,6 +13,7 @@ internal class Inventory
     internal Inventory()
     {
         _storage = new();
+        _tools = new();
 
         var resTypes = Enum.GetValues(typeof(ResourceType));
         foreach (ResourceType type in resTypes)
@@ -51,5 +53,15 @@ internal class Inventory
         }
 
         return false;
+    }
+
+    internal void Add(ToolType type)
+    {
+        _tools.Add(type);
+    }
+
+    internal bool Has(ToolType toolType)
+    {
+        return _tools.Contains(toolType);
     }
 }

@@ -70,6 +70,12 @@ internal class Player : MonoBehaviour, IDisposable
             _inventory.Add(resource.Type, resource.Count);
             resource.Collect();
         }
+
+        if (other.TryGetComponent(out Tool tool))
+        {
+            _inventory.Add(tool.Type);
+            tool.Collect();
+        }
     }
 
     public void Dispose()
@@ -115,7 +121,9 @@ internal class Player : MonoBehaviour, IDisposable
                     if (collider.TryGetComponent<Player>(out _))
                         continue;
 
-                    if (collider.TryGetComponent(out ResourceSource s))
+                    if (
+                        collider.TryGetComponent(out ResourceSource s)
+                        )
                     {
                         sCount++;
                     }
@@ -153,7 +161,9 @@ internal class Player : MonoBehaviour, IDisposable
                 if (collider.TryGetComponent<Player>(out _))
                     continue;
 
-                if (collider.TryGetComponent(out ResourceSource s))
+                if (
+                    collider.TryGetComponent(out ResourceSource s)
+                    )
                 {
                     s.Interact();
                 }

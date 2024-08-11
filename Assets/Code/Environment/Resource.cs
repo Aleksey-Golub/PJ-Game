@@ -5,8 +5,8 @@ internal class Resource : MonoBehaviour, IMergingResource
 {
     [SerializeField] private Collider2D _collider;
     [SerializeField] private ResourceView _view;
-    [SerializeField] private Dropper _dropper;
 
+    private Dropper _dropper;
     private ResourceFactory _factory;
     private ResourceConfig _config;
     private Coroutine _mergeCoroutine;
@@ -25,6 +25,7 @@ internal class Resource : MonoBehaviour, IMergingResource
     internal void Construct(ResourceFactory factory)
     {
         _factory = factory;
+        _dropper = new();
     }
 
     internal void Init(ResourceConfig config)
@@ -39,9 +40,9 @@ internal class Resource : MonoBehaviour, IMergingResource
         _collider.enabled = false;
     }
 
-    internal void MoveAfterDrop()
+    internal void MoveAfterDrop(DropData dropData)
     {
-        _dropper.MoveAfterDrop(this, _view, _collider);
+        _dropper.MoveAfterDrop(this, _view, _collider, dropData);
     }
 
     internal void Collect()

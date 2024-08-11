@@ -1,35 +1,32 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 internal class Dropper
 {
-    [Header("Settings")]
-    [SerializeField] private float _dropRadius = 1.3f;
-    [SerializeField] private float _moveAfterDropTime = 0.6f;
-
     private Coroutine _moveAfterDropCoroutine;
 
-    internal void MoveAfterDrop(MonoBehaviour drop, DropObjectViewBase view, Collider2D collider)
+    internal void MoveAfterDrop(MonoBehaviour drop, DropObjectViewBase view, Collider2D collider, DropData dropData)
     {
         if (_moveAfterDropCoroutine != null)
             drop.StopCoroutine(_moveAfterDropCoroutine);
 
-        _moveAfterDropCoroutine = drop.StartCoroutine(MoveAfterDropCor(drop.transform, view, collider));
+        _moveAfterDropCoroutine = drop.StartCoroutine(MoveAfterDropCor(drop.transform, view, collider, dropData));
     }
 
-    private IEnumerator MoveAfterDropCor(Transform transform, DropObjectViewBase view, Collider2D collider)
+    private IEnumerator MoveAfterDropCor(Transform transform, DropObjectViewBase view, Collider2D collider, DropData dropData)
     {
         view.ShowStartDrop();
-        Vector3 finalPosition = Random.insideUnitCircle * _dropRadius + new Vector2(transform.position.x, transform.position.y);
 
-        finalPosition.z = transform.position.z;
+        Vector3 finalPosition = dropData.FinalPosition;
         Vector3 startPosition = transform.position;
         float timer = 0;
+        var moveAfterDropTime = dropData.MoveAfterDropTime;
 
-        while (timer < _moveAfterDropTime)
+        while (timer < moveAfterDropTime)
         {
-            float t = timer / _moveAfterDropTime;
+            float t = timer / moveAfterDropTime;
             transform.position = Vector3.Slerp(startPosition, finalPosition, t);
             view.ShowDropping(t);
 
@@ -42,3 +39,83 @@ internal class Dropper
         view.ShowEndDrop();
     }
 }
+
+internal struct DropData
+{
+    internal float MoveAfterDropTime;
+    internal Vector3 FinalPosition;
+
+    public DropData(float moveAfterDropTime, Vector3 finalPosition)
+    {
+        MoveAfterDropTime = moveAfterDropTime;
+        FinalPosition = finalPosition;
+    }
+
+    internal static List<DropData> Get(Vector3 originePosition, DropSettings dropSettings, int count = 1)
+    {
+        List<DropData> result = new(count);
+
+        switch (dropSettings.DropStrategy)
+        {
+            case DropStrategy.RandomInsideCircle:
+                
+                for (int i = 0; i < count; i++)
+                {
+                    Vector3 offset = UnityEngine.Random.insideUnitCircle * dropSettings.DropRadius;
+                    offset.z = originePosition.z;
+
+                    Vector3 finalPosition = originePosition + offset;
+
+                    DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition);
+                    result.Add(newDropData);
+                }
+                return result;
+
+            case DropStrategy.SamePosition:
+
+                for (int i = 0; i < count; i++)
+                {
+                    Vector3 finalPosition = originePosition;
+
+                    DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition);
+                    result.Add(newDropData);
+                }
+                return result;
+
+            case DropStrategy.RadialByCircle:
+
+                Vector3 offsetStart = UnityEngine.Random.insideUnitCircle.normalized * dropSettings.DropRadius;
+                offsetStart.z = originePosition.z;
+                float step = 360f / count;
+
+                for (int i = 0; i < count; i++)
+                {
+                    Vector3 offset1 = Quaternion.AngleAxis(step * i, Vector3.forward) * offsetStart;
+                    Vector3 finalPosition = originePosition + offset1;
+
+                    DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition);
+                    result.Add(newDropData);
+                }
+                return result;
+
+            default:
+                throw new NotImplementedException();
+        }
+    }
+}
+
+[System.Serializable]
+public struct DropSettings
+{
+    public DropStrategy DropStrategy;
+    public float DropRadius;
+    public float MoveAfterDropTime;
+}
+
+public enum DropStrategy
+{
+    RandomInsideCircle = 1,
+    SamePosition = 2,
+    RadialByCircle = 3,
+}
+

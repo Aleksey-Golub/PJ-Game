@@ -87,10 +87,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider2D: {fileID: 1621408763810201073}
   _view: {fileID: 6483354508862177738}
-  _resourcePrefab: {fileID: 1551951821884112481, guid: 8584fb41cc8c06d4e8b33dd5b5858689, type: 3}
+  _needToolType: 1
   _resourceConfig: {fileID: 11400000, guid: 6f03ea9796cb38a4ea385f3fed27ed73, type: 2}
   _hitPoints: 2
   _restoreTime: 8
+  _dropSettings:
+    DropStrategy: 1
+    DropRadius: 1.3
+    MoveAfterDropTime: 0.6
 --- !u!114 &6483354508862177738
 MonoBehaviour:
   m_ObjectHideFlags: 0

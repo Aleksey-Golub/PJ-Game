@@ -89,6 +89,7 @@ MonoBehaviour:
   _dropper:
     _dropRadius: 1.3
     _moveAfterDropTime: 0.6
+  _configTEST: {fileID: 0}
 --- !u!114 &2632521766400549981
 MonoBehaviour:
   m_ObjectHideFlags: 0

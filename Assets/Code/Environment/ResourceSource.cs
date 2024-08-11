@@ -11,6 +11,7 @@ internal class ResourceSource : MonoBehaviour, IInteractable
     [SerializeField] private ResourceConfig _resourceConfig;
     [SerializeField] private int _hitPoints = 1;
     [SerializeField] private float _restoreTime = 10;
+    [SerializeField] private DropSettings _dropSettings = new() { DropRadius = 1.3f, MoveAfterDropTime = 0.6f, DropStrategy = DropStrategy.RandomInsideCircle};
 
     private ResourceFactory _resourceFactory;
 
@@ -72,7 +73,8 @@ internal class ResourceSource : MonoBehaviour, IInteractable
         Resource resource = _resourceFactory.Get(transform.position, Quaternion.identity);
         resource.Init(_resourceConfig);
 
-        resource.MoveAfterDrop();
+        var dropData = DropData.Get(transform.position, _dropSettings);
+        resource.MoveAfterDrop(dropData[0]);
     }
 
     private void Exhaust()

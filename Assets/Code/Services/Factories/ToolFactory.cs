@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-internal class ToolsFactory : MonoSingleton<ToolsFactory>
+internal class ToolFactory : MonoSingleton<ToolFactory>
 {
     [SerializeField] private Tool _toolPrefab;
     [SerializeField, Min(1)] private int _poolSize = 1;

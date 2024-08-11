@@ -1000,15 +1000,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_44
+      name: pot_whole
       rect:
         serializedVersion: 2
-        x: 304
-        y: 3
-        width: 12
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 303
+        y: 2
+        width: 14
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1021,13 +1021,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_45
+      name: pot_damaged
       rect:
         serializedVersion: 2
-        x: 322
-        y: 3
-        width: 12
-        height: 13
+        x: 321
+        y: 2
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1888,8 +1888,6 @@ TextureImporter:
       __main.texturec-0-flipped_39: -405565619
       __main.texturec-0-flipped_4: 752955290
       __main.texturec-0-flipped_43: -1288984483
-      __main.texturec-0-flipped_44: -1094742133
-      __main.texturec-0-flipped_45: 1933690828
       __main.texturec-0-flipped_5: -989307427
       __main.texturec-0-flipped_6: -2007050740
       __main.texturec-0-flipped_60: -2135758067
@@ -1928,6 +1926,8 @@ TextureImporter:
       iron_ore: -1107001721
       milk: 1368875871
       mind_cloud: -1030577411
+      pot_damaged: 1933690828
+      pot_whole: -1094742133
       shadow: 565068700
       slime_egg: 1147525784
       stone: 623669451

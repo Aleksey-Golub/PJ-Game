@@ -51,7 +51,7 @@ internal struct DropData
         FinalPosition = finalPosition;
     }
 
-    internal static List<DropData> Get(Vector3 originePosition, DropSettings dropSettings, int count = 1)
+    internal static List<DropData> Get(Vector3 originePosition, DropSettings dropSettings, int count)
     {
         List<DropData> result = new(count);
 

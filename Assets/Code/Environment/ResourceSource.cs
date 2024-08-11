@@ -10,6 +10,7 @@ internal class ResourceSource : MonoBehaviour, IInteractable
     [Header("Settings")]
     [SerializeField] private ToolType _needToolType;
     [SerializeField] private ResourceConfig _resourceConfig;
+    [SerializeField, Min(1)] private int _dropResourceCount = 1;
     [SerializeField] private int _hitPoints = 1;
     [SerializeField] private float _restoreTime = 10;
     [SerializeField] private DropSettings _dropSettings = new() { DropRadius = 1.3f, MoveAfterDropTime = 0.6f, DropStrategy = DropStrategy.RandomInsideCircle};
@@ -40,6 +41,9 @@ internal class ResourceSource : MonoBehaviour, IInteractable
     {
         if (!IsDied)
             return;
+
+        if (_restoreTime < 0)
+            gameObject.SetActive(false);
 
         _restorationTimer += Time.deltaTime;
 
@@ -73,11 +77,15 @@ internal class ResourceSource : MonoBehaviour, IInteractable
     {
         _view.PlayDropResourceSound();
 
-        Resource resource = _resourceFactory.Get(transform.position, Quaternion.identity);
-        resource.Init(_resourceConfig);
+        var dropData = DropData.Get(transform.position, _dropSettings, _dropResourceCount);
 
-        var dropData = DropData.Get(transform.position, _dropSettings);
-        resource.MoveAfterDrop(dropData[0]);
+        for (int i = 0; i < _dropResourceCount; i++)
+        {
+            Resource resource = _resourceFactory.Get(transform.position, Quaternion.identity);
+            resource.Init(_resourceConfig);
+
+            resource.MoveAfterDrop(dropData[i]);
+        }
     }
 
     private void Exhaust()

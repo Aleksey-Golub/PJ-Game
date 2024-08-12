@@ -1,23 +1,25 @@
 ﻿using System;
 using UnityEngine;
 
-internal class Slime : MonoBehaviour
+internal class Ramble : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private string _rambleBoolName = "Jump";
 
     [Header("Settings")]
     [SerializeField] private Vector2 _stayTime = new Vector2(2, 5);
     [SerializeField] private Vector2 _radiusToMove = new Vector2(1, 2);
     [SerializeField] private float _speed = 1f;
+
     private Vector3 _targetPoint;
     private bool _isMoving;
     private float _stayTimer;
     private float _stayDelay;
-    private int _jumpHash;
+    private int _rambleHash;
 
     private void Awake()
     {
-        _jumpHash = Animator.StringToHash("Jump");
+        _rambleHash = Animator.StringToHash(_rambleBoolName);
         SetNewStayDelay();
     }
 
@@ -30,7 +32,7 @@ internal class Slime : MonoBehaviour
             _targetPoint = GetTargetPoint();
 
             _isMoving = true;
-            _animator.SetBool(_jumpHash, true);
+            _animator.SetBool(_rambleHash, true);
         }
         
         if (_isMoving)
@@ -44,7 +46,7 @@ internal class Slime : MonoBehaviour
         if (transform.position == targetPoint)
         {
             _isMoving = false;
-            _animator.SetBool(_jumpHash, false);
+            _animator.SetBool(_rambleHash, false);
             _stayTimer = 0;
         }
     }

@@ -1,35 +1,28 @@
 ﻿using UnityEngine;
 
-internal class ResourceSource : MonoBehaviour, IInteractable
+internal class ResourceSource : MonoBehaviour
 {
-    private const int PLAYER_DAMAGE = 1;
+    protected const int PLAYER_DAMAGE = 1;
 
     [SerializeField] private Collider2D _collider2D;
-    [SerializeField] private ResourceSourceView _view;
+    [SerializeField] protected ResourceSourceViewBase _view;
 
     [Header("Settings")]
     [SerializeField] private ToolType _needToolType;
     [SerializeField] private ResourceConfig _resourceConfig;
     [SerializeField, Min(1)] private int _dropResourceCount = 1;
-    [SerializeField] private int _hitPoints = 1;
-    [SerializeField] private float _restoreTime = 10;
+    [SerializeField] protected int _hitPoints = 1;
+    [SerializeField] protected float _restoreTime = 10;
     [SerializeField] private DropSettings _dropSettings = new() { DropRadius = 1.3f, MoveAfterDropTime = 0.6f, DropStrategy = DropStrategy.RandomInsideCircle};
 
     private ResourceFactory _resourceFactory;
 
-    private float _restorationTimer = 0;
-    private int _currentHitPoints = 0;
+    protected float _restorationTimer = 0;
+    protected int _currentHitPoints = 0;
 
-    private bool IsDied => _currentHitPoints <= 0;
+    internal bool IsDied => _currentHitPoints <= 0;
 
     internal ToolType NeedToolType => _needToolType;
-
-    private void Construct(ResourceFactory resourceFactory)
-    {
-        _resourceFactory = resourceFactory;
-
-        RestoreHP();
-    }
 
     private void Start()
     {
@@ -37,7 +30,19 @@ internal class ResourceSource : MonoBehaviour, IInteractable
         Construct(resourceFactory);
     }
 
+    private void Construct(ResourceFactory resourceFactory)
+    {
+        _resourceFactory = resourceFactory;
+
+        RestoreHP(_hitPoints);
+    }
+
     private void Update()
+    {
+        OnUpdate();
+    }
+
+    protected virtual void OnUpdate()
     {
         if (!IsDied)
             return;
@@ -54,7 +59,7 @@ internal class ResourceSource : MonoBehaviour, IInteractable
         }
     }
 
-    public void Interact()
+    internal virtual void Interact()
     {
         //Logger.Log($"Interact with {gameObject.name} {Time.frameCount}");
 
@@ -73,7 +78,7 @@ internal class ResourceSource : MonoBehaviour, IInteractable
         _view.ShowHitAnimation();
     }
 
-    private void DropResource()
+    protected void DropResource()
     {
         _view.PlayDropResourceSound();
 
@@ -96,14 +101,14 @@ internal class ResourceSource : MonoBehaviour, IInteractable
 
     private void Restore()
     {
-        RestoreHP();
+        RestoreHP(_hitPoints);
         _collider2D.enabled = true;
         _view.ShowWhole();
     }
 
-    private void RestoreHP()
+    protected void RestoreHP(int value)
     {
-        _currentHitPoints = _hitPoints;
+        _currentHitPoints += value;
         _view.ShowHP(_currentHitPoints, _hitPoints);
     }
 }

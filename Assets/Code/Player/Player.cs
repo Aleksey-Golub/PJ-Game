@@ -126,7 +126,10 @@ internal class Player : MonoBehaviour, IDisposable
                     if (collider.TryGetComponent<Player>(out _))
                         continue;
 
-                    if (collider.TryGetComponent(out ResourceSource s))
+                    if (
+                        collider.TryGetComponent(out ResourceSource s)
+                        && !s.IsDied
+                        )
                     {
                         if (CanGatherWith(s.NeedToolType))
                         {
@@ -179,6 +182,7 @@ internal class Player : MonoBehaviour, IDisposable
                 if (
                     collider.TryGetComponent(out ResourceSource s)
                     && CanGatherWith(s.NeedToolType)
+                    && !s.IsDied
                     )
                 {
                     s.Interact();

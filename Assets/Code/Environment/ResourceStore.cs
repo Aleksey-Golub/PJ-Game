@@ -1,4 +1,4 @@
-﻿internal class ResourceStore : IInteractable
+﻿internal class ResourceStore
 {
     public void Interact()
     {

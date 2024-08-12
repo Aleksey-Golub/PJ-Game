@@ -141,7 +141,7 @@ MonoBehaviour:
   _minSize: {x: 0.1, y: 0.1, z: 0.1}
   _maxSize: {x: 1, y: 1, z: 1}
   _countText: {fileID: 6850560786463946468}
-  _countTextSortingOrder: 1
+  _countTextSortingOrder: 10
 --- !u!111 &1598098538859376053
 Animation:
   m_ObjectHideFlags: 0
@@ -319,7 +319,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &6850560786463946468
 MonoBehaviour:

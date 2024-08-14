@@ -27,10 +27,10 @@ internal class Resource : MonoBehaviour, IMergingResource
         _dropper = new();
     }
 
-    internal void Init(ResourceConfig config)
+    internal void Init(ResourceConfig config, int count)
     {
         _config = config;
-        _count = 1;
+        _count = count;
         _mergeTimer = 0;
         _isMerging = false;
 

@@ -82,12 +82,12 @@ internal class ResourceSource : MonoBehaviour
     {
         _view.PlayDropResourceSound();
 
-        var dropData = DropData.Get(transform.position, _dropSettings, _dropResourceCount);
+        var dropData = DropData.Get(transform.position, _dropSettings, _dropResourceCount, out int notFittedInPacksCount);
 
-        for (int i = 0; i < _dropResourceCount; i++)
+        for (int i = 0; i < dropData.Count; i++)
         {
             Resource resource = _resourceFactory.Get(transform.position, Quaternion.identity);
-            resource.Init(_resourceConfig);
+            resource.Init(_resourceConfig, dropData[i].ResourceInPackCount);
 
             resource.MoveAfterDrop(dropData[i]);
         }

@@ -23,7 +23,7 @@ internal class ToolSceneSpawner : MonoBehaviour
             var tool = toolFactory.Get(data.Point.position, Quaternion.identity);
             tool.Init(data.ToolConfig);
 
-            var dropData = DropData.Get(data.Point.position, _dropSettings, 1);
+            var dropData = DropData.Get(data.Point.position, _dropSettings, 1, out int _);
             tool.MoveAfterDrop(dropData[0]);
         }
     }

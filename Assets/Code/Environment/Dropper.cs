@@ -44,40 +44,46 @@ internal struct DropData
 {
     internal float MoveAfterDropTime;
     internal Vector3 FinalPosition;
+    internal int ResourceInPackCount;
 
-    public DropData(float moveAfterDropTime, Vector3 finalPosition)
+    public DropData(float moveAfterDropTime, Vector3 finalPosition, int resourceInPackCount)
     {
         MoveAfterDropTime = moveAfterDropTime;
         FinalPosition = finalPosition;
+        ResourceInPackCount = resourceInPackCount;
     }
 
-    internal static List<DropData> Get(Vector3 originePosition, DropSettings dropSettings, int count)
+    internal static List<DropData> Get(Vector3 originePosition, DropSettings dropSettings, int count, out int notFittedCount)
     {
-        List<DropData> result = new(count);
+        int packsCount = dropSettings.DropGroupingStrategy == DropGroupingStrategy.Individual ? count : 1;
+        int countInPack = count / packsCount;
+        notFittedCount = count % packsCount;
+
+        List<DropData> result = new(packsCount);
 
         switch (dropSettings.DropStrategy)
         {
             case DropStrategy.RandomInsideCircle:
                 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < packsCount; i++)
                 {
                     Vector3 offset = UnityEngine.Random.insideUnitCircle * dropSettings.DropRadius;
                     offset.z = originePosition.z;
 
                     Vector3 finalPosition = originePosition + offset;
 
-                    DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition);
+                    DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition, countInPack);
                     result.Add(newDropData);
                 }
                 return result;
 
             case DropStrategy.SamePosition:
 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < packsCount; i++)
                 {
                     Vector3 finalPosition = originePosition;
 
-                    DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition);
+                    DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition, countInPack);
                     result.Add(newDropData);
                 }
                 return result;
@@ -86,14 +92,14 @@ internal struct DropData
 
                 Vector3 offsetStart = UnityEngine.Random.insideUnitCircle.normalized * dropSettings.DropRadius;
                 offsetStart.z = originePosition.z;
-                float step = 360f / count;
+                float step = 360f / packsCount;
 
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < packsCount; i++)
                 {
                     Vector3 offset1 = Quaternion.AngleAxis(step * i, Vector3.forward) * offsetStart;
                     Vector3 finalPosition = originePosition + offset1;
 
-                    DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition);
+                    DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition, countInPack);
                     result.Add(newDropData);
                 }
                 return result;
@@ -108,6 +114,7 @@ internal struct DropData
 public struct DropSettings
 {
     public DropStrategy DropStrategy;
+    public DropGroupingStrategy DropGroupingStrategy;
     public float DropRadius;
     public float MoveAfterDropTime;
 }
@@ -117,5 +124,11 @@ public enum DropStrategy
     RandomInsideCircle = 1,
     SamePosition = 2,
     RadialByCircle = 3,
+}
+
+public enum DropGroupingStrategy
+{
+    Individual = 1,
+    AllTogether = 2,
 }
 

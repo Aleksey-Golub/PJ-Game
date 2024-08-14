@@ -80,6 +80,11 @@ internal class Player : MonoBehaviour, IDisposable
             _inventory.Add(tool.Type);
             tool.Collect();
         }
+
+        if (other.TryGetComponent(out ResourceStorage resourceStorage))
+        {
+            resourceStorage.Interact();
+        }
     }
 
     public void Dispose()

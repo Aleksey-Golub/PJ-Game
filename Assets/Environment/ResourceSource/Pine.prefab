@@ -94,6 +94,7 @@ MonoBehaviour:
   _restoreTime: 10
   _dropSettings:
     DropStrategy: 1
+    DropGroupingStrategy: 1
     DropRadius: 1.3
     MoveAfterDropTime: 0.6
 --- !u!114 &6818939769758625644
@@ -110,8 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 3057616130836425967}
   _animation: {fileID: 6417419227623101482}
-  _hpBg: {fileID: 6616538221769636537}
-  _hpFg: {fileID: 8115436538855955345}
   _hitEffect: {fileID: 8016709935254987723}
   _diedSprite: {fileID: 188050404, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   _wholeSprite: {fileID: -951334604, guid: 6a3409ce0964ac349a4c228c4ec7bc49, type: 3}
@@ -119,6 +118,8 @@ MonoBehaviour:
   _exhaustSortingOrder: 0
   _hitAudioClip: {fileID: 8300000, guid: 7042ef3e54153c4488cbdfbb3332174f, type: 3}
   _dropResourceAudioClip: {fileID: 8300000, guid: 6551217db40144341aef431aed8d54c5, type: 3}
+  _hpBg: {fileID: 6616538221769636537}
+  _hpFg: {fileID: 8115436538855955345}
 --- !u!111 &6417419227623101482
 Animation:
   m_ObjectHideFlags: 0

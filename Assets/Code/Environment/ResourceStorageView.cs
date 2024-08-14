@@ -22,7 +22,8 @@ internal class ResourceStorageView : MonoBehaviour
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        _countText.GetComponent<MeshRenderer>().sortingOrder = _countTextSortingOrder;
+        if (_countText)
+            _countText.GetComponent<MeshRenderer>().sortingOrder = _countTextSortingOrder;
     }
 #endif
 
@@ -52,7 +53,8 @@ internal class ResourceStorageView : MonoBehaviour
 
     internal void ShowResourceCount(int currentResourceCount, int dropResourceCount)
     {
-        _countText.text = $"{currentResourceCount}/{dropResourceCount}";
+        if (_countText)
+            _countText.text = $"{currentResourceCount}/{dropResourceCount}";
     }
 
     internal void ShowExhaust()

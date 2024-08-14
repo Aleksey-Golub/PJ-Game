@@ -1982,6 +1982,63 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e9ced7b775bc13e4c967ed385a50b011, type: 3}
+--- !u!1001 &4175397803330807725
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6002527102804235624, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: m_Name
+      value: Carrot in ground Store
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079859199580358695, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079859199580358695, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079859199580358695, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079859199580358695, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079859199580358695, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079859199580358695, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079859199580358695, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079859199580358695, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079859199580358695, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079859199580358695, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
 --- !u!1001 &4583020813491754067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2106,7 +2163,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6347430455194814507, guid: 87f2b338a55ab094fb4bca9b4bfbf085, type: 3}
       propertyPath: m_Name
-      value: Carrot Store
+      value: Carrot Crate Store
       objectReference: {fileID: 0}
     - target: {fileID: 6846640748252616036, guid: 87f2b338a55ab094fb4bca9b4bfbf085, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2216,6 +2273,66 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: aadf4ef6250ef4d42aa20fd4d34f19ca, type: 3}
+--- !u!1001 &8071878662234282555
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5909320699311546748, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909320699311546748, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909320699311546748, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909320699311546748, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909320699311546748, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909320699311546748, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909320699311546748, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909320699311546748, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909320699311546748, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909320699311546748, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6129578312650865715, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: m_Name
+      value: Water Store
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1222859454725258152, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
 --- !u!1001 &8291668786714643381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2534,3 +2651,5 @@ SceneRoots:
   - {fileID: 8519659637709126641}
   - {fileID: 8291668786714643381}
   - {fileID: 6730665167189339729}
+  - {fileID: 4175397803330807725}
+  - {fileID: 8071878662234282555}

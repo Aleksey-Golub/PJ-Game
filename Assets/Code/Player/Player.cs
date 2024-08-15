@@ -11,7 +11,7 @@ internal class Player : MonoBehaviour, IDisposable
     }
 
     [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private Collider2D _collider2D;
+    [SerializeField] private CircleCollider2D _collider2D;
     [SerializeField] private PlayerView _view;
 
     [Header("Settings")]
@@ -68,38 +68,10 @@ internal class Player : MonoBehaviour, IDisposable
         Dispose();
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        flag = false;
-
-        if (other != null)
-            Logger.Log($"OnTriggerStay2D with {other.gameObject.name} at {Time.frameCount} frame");
-
-        if (other.TryGetComponent(out Resource resource))
-        {
-            _inventory.Add(resource.Type, resource.Count);
-            resource.Collect();
-        }
-
-        if (other.TryGetComponent(out Tool tool))
-        {
-            _inventory.Add(tool.Type);
-            tool.Collect();
-        }
-
-        if (other.TryGetComponent(out ResourceStorage resourceStorage))
-        {
-            if (CanGatherWith(resourceStorage.NeedToolType))
-            {
-                if (resourceStorage.CanInteract)
-                    resourceStorage.Interact();
-            }
-            else
-            {
-                _lastAbsentTool = resourceStorage.NeedToolType;
-            }
-        }
-    }
+    //private void OnTriggerStay2D(Collider2D other)
+    //{
+    //    OnTrigger2D(other);
+    //}
 
     public void Dispose()
     {
@@ -107,12 +79,9 @@ internal class Player : MonoBehaviour, IDisposable
         _inventory.ResourceCountChanged -= _inventoryView.UpdateFor;
     }
 
-    bool flag = false;
     private void FixedUpdate()
     {
-        Logger.Log($"Player FixedUpdate at {Time.frameCount} frame");
-        Logger.Log($"flag is {flag}");
-        flag = true;
+        //Logger.Log($"Player FixedUpdate at {Time.frameCount} frame");
 
         if (_input.HasMoveInput())
         {
@@ -175,6 +144,23 @@ internal class Player : MonoBehaviour, IDisposable
             }
         }
 
+        Vector2 forTriggerCenter = (Vector2)transform.position + _collider2D.offset;
+        if (Physics2D.OverlapCircleNonAlloc(forTriggerCenter, _collider2D.radius, _buffer) > 0)
+        {
+            foreach (Collider2D collider in _buffer)
+            {
+                if (collider == null)
+                    continue;
+
+                if (!collider.isTrigger)
+                    continue;
+
+                OnTrigger2D(collider);
+            }
+
+            _buffer.Refresh();
+        }
+
         if (_lastAbsentTool != ToolType.None)
         {
             _view.ShowGatheringBlocked(_configsService.GetConfigFor(_lastAbsentTool).Sprite);
@@ -183,6 +169,36 @@ internal class Player : MonoBehaviour, IDisposable
         else
         {
             _view.ShowGatheringUnblocked();
+        }
+    }
+
+    private void OnTrigger2D(Collider2D other)
+    {
+        //Logger.Log($"OnTriggerStay2D with {other.gameObject.name} at {Time.frameCount} frame");
+
+        if (other.TryGetComponent(out Resource resource))
+        {
+            _inventory.Add(resource.Type, resource.Count);
+            resource.Collect();
+        }
+
+        if (other.TryGetComponent(out Tool tool))
+        {
+            _inventory.Add(tool.Type);
+            tool.Collect();
+        }
+
+        if (other.TryGetComponent(out ResourceStorage resourceStorage))
+        {
+            if (CanGatherWith(resourceStorage.NeedToolType))
+            {
+                if (resourceStorage.CanInteract)
+                    resourceStorage.Interact();
+            }
+            else
+            {
+                _lastAbsentTool = resourceStorage.NeedToolType;
+            }
         }
     }
 

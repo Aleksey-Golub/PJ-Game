@@ -6,6 +6,7 @@ internal class ResourceStorage : MonoBehaviour
     [SerializeField] private ResourceStorageView _view;
 
     [Header("Settings")]
+    [SerializeField] private ToolType _needToolType = ToolType.None;
     [SerializeField] private ResourceConfig _resourceConfig;
     [SerializeField, Min(1)] private int _dropResourceCount = 1;
     [SerializeField] private int _startResourceCount = 1;
@@ -23,8 +24,9 @@ internal class ResourceStorage : MonoBehaviour
     private float _restorationTimer = 0;
     private int _currentResourceCount;
 
-    private bool CanInteract => _currentResourceCount > 0;
     private bool IsFull => _currentResourceCount >= _dropResourceCount;
+    internal bool CanInteract => _currentResourceCount > 0;
+    internal ToolType NeedToolType => _needToolType;
 
     private void Start()
     {
@@ -69,9 +71,6 @@ internal class ResourceStorage : MonoBehaviour
     internal virtual void Interact()
     {
         //Logger.Log($"Interact with {gameObject.name} {Time.frameCount}");
-        
-        if (!CanInteract)
-            return;
 
         _view.ShowHitEffect();
         _view.PlayHitSound();

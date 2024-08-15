@@ -26,6 +26,7 @@ internal class Player : MonoBehaviour, IDisposable
     private IInventoryView _inventoryView;
     private ConfigsService _configsService;
     private Inventory _inventory;
+    private ToolType _lastAbsentTool;
 
     #region EDITOR_ONLY
 
@@ -67,8 +68,13 @@ internal class Player : MonoBehaviour, IDisposable
         Dispose();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
+        flag = false;
+
+        if (other != null)
+            Logger.Log($"OnTriggerStay2D with {other.gameObject.name} at {Time.frameCount} frame");
+
         if (other.TryGetComponent(out Resource resource))
         {
             _inventory.Add(resource.Type, resource.Count);
@@ -83,7 +89,15 @@ internal class Player : MonoBehaviour, IDisposable
 
         if (other.TryGetComponent(out ResourceStorage resourceStorage))
         {
-            resourceStorage.Interact();
+            if (CanGatherWith(resourceStorage.NeedToolType))
+            {
+                if (resourceStorage.CanInteract)
+                    resourceStorage.Interact();
+            }
+            else
+            {
+                _lastAbsentTool = resourceStorage.NeedToolType;
+            }
         }
     }
 
@@ -93,8 +107,13 @@ internal class Player : MonoBehaviour, IDisposable
         _inventory.ResourceCountChanged -= _inventoryView.UpdateFor;
     }
 
+    bool flag = false;
     private void FixedUpdate()
     {
+        Logger.Log($"Player FixedUpdate at {Time.frameCount} frame");
+        Logger.Log($"flag is {flag}");
+        flag = true;
+
         if (_input.HasMoveInput())
         {
             float xMovement = _input.GetHorizontalAxisRaw();
@@ -122,7 +141,6 @@ internal class Player : MonoBehaviour, IDisposable
             if (Physics2D.OverlapCircleNonAlloc(center, _overlapSphereParams.Radius, _buffer) > 0)
             {
                 int sCount = 0;
-                ResourceSource lastBlocked = null;
                 foreach (Collider2D collider in _buffer)
                 {
                     if (collider == null)
@@ -142,7 +160,7 @@ internal class Player : MonoBehaviour, IDisposable
                         }
                         else
                         {
-                            lastBlocked = s;
+                            _lastAbsentTool = s.NeedToolType;
                         }
                     }
                 }
@@ -153,13 +171,18 @@ internal class Player : MonoBehaviour, IDisposable
                     _view.PlayAttack();
                 }
 
-                if (lastBlocked != null)
-                    _view.ShowGatheringBlocked(_configsService.GetConfigFor(lastBlocked.NeedToolType).Sprite);
-                else
-                    _view.ShowGatheringUnblocked();
-
                 _buffer.Refresh();
             }
+        }
+
+        if (_lastAbsentTool != ToolType.None)
+        {
+            _view.ShowGatheringBlocked(_configsService.GetConfigFor(_lastAbsentTool).Sprite);
+            _lastAbsentTool = ToolType.None;
+        }
+        else
+        {
+            _view.ShowGatheringUnblocked();
         }
     }
 

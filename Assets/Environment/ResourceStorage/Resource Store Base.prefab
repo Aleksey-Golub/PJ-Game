@@ -231,10 +231,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _view: {fileID: 7527004072485970331}
+  _needToolType: 0
   _resourceConfig: {fileID: 0}
   _dropResourceCount: 1
   _startResourceCount: 0
   _restoreTime: 5
+  _collider: {fileID: 9198028648432701519}
   _dropSettings:
     DropStrategy: 1
     DropGroupingStrategy: 2

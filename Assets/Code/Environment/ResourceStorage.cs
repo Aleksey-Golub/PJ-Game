@@ -11,6 +11,7 @@ internal class ResourceStorage : MonoBehaviour
     [SerializeField, Min(1)] private int _dropResourceCount = 1;
     [SerializeField] private int _startResourceCount = 1;
     [SerializeField] private float _restoreTime = 10;
+    [SerializeField] private Collider2D _collider;
     [SerializeField] private DropSettings _dropSettings = new() 
         { 
             DropRadius = 1.3f, 
@@ -25,6 +26,7 @@ internal class ResourceStorage : MonoBehaviour
     private int _currentResourceCount;
 
     private bool IsFull => _currentResourceCount >= _dropResourceCount;
+    private bool IsSingleUse => _restoreTime < 0;
     internal bool CanInteract => _currentResourceCount > 0;
     internal ToolType NeedToolType => _needToolType;
 
@@ -50,7 +52,7 @@ internal class ResourceStorage : MonoBehaviour
 
     private void OnUpdate()
     {
-        if (_restoreTime < 0)
+        if (IsSingleUse)
         {
             enabled = (false);
             return;
@@ -101,6 +103,14 @@ internal class ResourceStorage : MonoBehaviour
         _currentResourceCount = 0;
         _view.ShowResourceCount(_currentResourceCount, _dropResourceCount);
         _view.ShowExhaust();
+
+        if (IsSingleUse)
+            Invoke(nameof(DisableCollider), 1f);
+    }
+
+    private void DisableCollider()
+    {
+        _collider.enabled = false;
     }
 
     private void Restore(int value)

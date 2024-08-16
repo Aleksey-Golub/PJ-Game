@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-internal class ResourceFactory : MonoSingleton<ResourceFactory>
+internal class ResourceFactory : MonoSingleton<ResourceFactory>, IRecyclableFactory
 {
     [SerializeField] private Resource _resourcePrefab;
     [SerializeField, Min(1)] private int _poolSize = 1;
@@ -15,24 +15,24 @@ internal class ResourceFactory : MonoSingleton<ResourceFactory>
     {
         base.Awake();
 
-        _pool = new Pool<Resource>(_resourcePrefab, transform, _poolSize);
+        _pool = new Pool<Resource>(_resourcePrefab, transform, _poolSize, this);
         _droppedResources = new List<Resource>();
     }
 
     internal Resource Get(Vector3 position, Quaternion rotation)
     {
         var res = _pool.Get(position, rotation);
-        res.Construct(this);
+        //res.Construct(this);
 
         _droppedResources.Add(res);
 
         return res;
     }
 
-    internal void Recycle(Resource resource)
+    public void Recycle(IPoolable resource)
     {
-        _droppedResources.Remove(resource);
+        _droppedResources.Remove(resource as Resource);
 
-        _pool.Recycle(resource);
+        _pool.Recycle(resource as Resource);
     }
 }

@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-internal class Resource : MonoBehaviour, IMergingResource
+internal class Resource : MonoBehaviour, IMergingResource, IPoolable
 {
     [SerializeField] private Collider2D _collider;
     [SerializeField] private ResourceView _view;
 
     private Dropper _dropper;
-    private ResourceFactory _factory;
+    private IRecyclableFactory _factory;
     private ResourceConfig _config;
     private Coroutine _mergeCoroutine;
     private int _count;
@@ -21,7 +21,7 @@ internal class Resource : MonoBehaviour, IMergingResource
     public ResourceType Type => _config.Type;
     public Vector3 Position => transform.position;
 
-    internal void Construct(ResourceFactory factory)
+    void IPoolable.Construct(IRecyclableFactory factory)
     {
         _factory = factory;
         _dropper = new();

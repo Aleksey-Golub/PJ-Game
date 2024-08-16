@@ -3,20 +3,20 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class Popup : MonoBehaviour
+public class Popup : MonoBehaviour, IPoolable
 {
     [SerializeField] private TextMeshPro _text;
     [SerializeField] private float _moveTime = 1f;
     [SerializeField] private float _hideTime = 0.5f;
     [SerializeField] private AnimationCurve _velocityCuve;
 
-    private PopupFactory _factory;
+    private IRecyclableFactory _factory;
     private Color _startColor;
     private Coroutine _moveCoroutine;
 
     internal event Action<Popup> ReadyToDetach; 
 
-    internal void Construct(PopupFactory popupFactory)
+    void IPoolable.Construct(IRecyclableFactory popupFactory)
     {
         _factory = popupFactory;
 

@@ -1,17 +1,17 @@
 using UnityEngine;
 
-internal class Tool : MonoBehaviour
+internal class Tool : MonoBehaviour, IPoolable
 {
     [SerializeField] private Collider2D _collider;
     [SerializeField] private ToolView _view;
 
     private Dropper _dropper;
-    private ToolFactory _factory;
+    private IRecyclableFactory _factory;
     private ToolConfig _config;
 
     internal ToolType Type => _config.Type;
 
-    internal void Construct(ToolFactory factory)
+    void IPoolable.Construct(IRecyclableFactory factory)
     {
         _factory = factory;
         _dropper = new();
@@ -37,3 +37,4 @@ internal class Tool : MonoBehaviour
         _factory.Recycle(this);
     }
 }
+

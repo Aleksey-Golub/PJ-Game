@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-internal class ToolFactory : MonoSingleton<ToolFactory>
+internal class ToolFactory : MonoSingleton<ToolFactory>, IRecyclableFactory
 {
     [SerializeField] private Tool _toolPrefab;
     [SerializeField, Min(1)] private int _poolSize = 1;
@@ -11,19 +11,19 @@ internal class ToolFactory : MonoSingleton<ToolFactory>
     {
         base.Awake();
 
-        _pool = new Pool<Tool>(_toolPrefab, transform, _poolSize);
+        _pool = new Pool<Tool>(_toolPrefab, transform, _poolSize, this);
     }
 
     internal Tool Get(Vector3 position, Quaternion rotation)
     {
         var tool = _pool.Get(position, rotation);
-        tool.Construct(this);
+        //(tool as IPoolable).Construct(this);
 
         return tool;
     }
 
-    internal void Recycle(Tool resource)
+    public void Recycle(IPoolable tool)
     {
-        _pool.Recycle(resource);
+        _pool.Recycle(tool as Tool);
     }
 }

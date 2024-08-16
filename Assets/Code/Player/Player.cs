@@ -43,11 +43,12 @@ internal class Player : MonoBehaviour, IDisposable
         var input = InputServiceProvider.Instance.GetService();
         var inventoryView = UIService.Instance.GetPlayerInventoryView();
         var configsService = ConfigsService.Instance;
+        var popupFactory = PopupFactory.Instance;
 
-        Construct(input, inventoryView, configsService);
+        Construct(input, inventoryView, configsService, popupFactory);
     }
 
-    private void Construct(IPlayerInput input, IInventoryView inventoryView, ConfigsService configsService)
+    private void Construct(IPlayerInput input, IInventoryView inventoryView, ConfigsService configsService, PopupFactory popupFactory)
     {
         _buffer = new Collider2D[10];
         _inventory = new();
@@ -57,7 +58,7 @@ internal class Player : MonoBehaviour, IDisposable
         _inventoryView.Init(_inventory.Storage);
         _configsService = configsService;
 
-        _view.Construct();
+        _view.Construct(popupFactory);
 
         _inventory.ResourceCountChanged += _inventoryView.UpdateFor;
         _view.AttackDone += OnHitDone;
@@ -67,11 +68,6 @@ internal class Player : MonoBehaviour, IDisposable
     {
         Dispose();
     }
-
-    //private void OnTriggerStay2D(Collider2D other)
-    //{
-    //    OnTrigger2D(other);
-    //}
 
     public void Dispose()
     {
@@ -179,6 +175,7 @@ internal class Player : MonoBehaviour, IDisposable
         if (other.TryGetComponent(out Resource resource))
         {
             _inventory.Add(resource.Type, resource.Count);
+            _view.ShowCollect(resource.Type, resource.Count);
             resource.Collect();
         }
 

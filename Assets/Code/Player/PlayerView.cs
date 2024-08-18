@@ -88,7 +88,7 @@ internal class PlayerView : MonoBehaviour
         else
         {
             Vector3 spawnPosition = transform.position + _popupSpawnOffset;
-            Vector3 toPosition = spawnPosition + Vector3.up;
+            Vector3 toPosition = spawnPosition + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 1, 0);
             newCount = count;
             popup = _popupFactory.Get(spawnPosition, Quaternion.identity);
             popup.Init();

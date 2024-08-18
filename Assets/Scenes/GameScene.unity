@@ -2334,7 +2334,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5516271038822587854, guid: 23bab3ca94ef1c44aa7519e9fc225f84, type: 3}
       propertyPath: m_Name
-      value: Fruit_bush
+      value: Fruit Bush
       objectReference: {fileID: 0}
     - target: {fileID: 7455250494219208994, guid: 23bab3ca94ef1c44aa7519e9fc225f84, type: 3}
       propertyPath: m_LocalPosition.x

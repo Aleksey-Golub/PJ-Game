@@ -79,6 +79,7 @@ internal class Player : MonoBehaviour, IDisposable
     {
         //Logger.Log($"Player FixedUpdate at {Time.frameCount} frame");
 
+        // movement
         if (_input.HasMoveInput())
         {
             float xMovement = _input.GetHorizontalAxisRaw();
@@ -98,6 +99,7 @@ internal class Player : MonoBehaviour, IDisposable
             _view.PlayMove(_direction.x, _direction.y, 0);
         }
 
+        // attack resource source
         _attackTimer += Time.fixedDeltaTime;
         if (_attackTimer >= _attackDelay)
         {
@@ -140,6 +142,7 @@ internal class Player : MonoBehaviour, IDisposable
             }
         }
 
+        // trigger interaction
         Vector2 forTriggerCenter = (Vector2)transform.position + _collider2D.offset;
         if (Physics2D.OverlapCircleNonAlloc(forTriggerCenter, _collider2D.radius, _buffer) > 0)
         {
@@ -157,6 +160,7 @@ internal class Player : MonoBehaviour, IDisposable
             _buffer.Refresh();
         }
 
+        // handle last absent tool feature
         if (_lastAbsentTool != ToolType.None)
         {
             _view.ShowGatheringBlocked(_configsService.GetConfigFor(_lastAbsentTool).Sprite);

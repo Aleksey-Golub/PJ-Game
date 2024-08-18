@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 2162323058981302472}
   - component: {fileID: 7009618060695402324}
   m_Layer: 0
-  m_Name: Fruit_bush
+  m_Name: Fruit Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

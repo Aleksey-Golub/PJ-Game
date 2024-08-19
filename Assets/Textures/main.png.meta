@@ -391,16 +391,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_14
+      name: Workshop cloud
       rect:
         serializedVersion: 2
         x: 2
         y: 3
         width: 24
         height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 3, y: 3, z: 3, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -580,15 +580,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_23
+      name: Workshop
       rect:
         serializedVersion: 2
         x: 383
-        y: 190
-        width: 33
-        height: 31
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 191
+        width: 32
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1951,13 +1951,14 @@ TextureImporter:
       Store Water: -1651462942
       Store Wood: -1227099510
       Workbench: -1322168670
+      Workshop: 1598320641
+      Workshop cloud: -2142500503
       __main.texturec-0-flipped_0: -2007972119
       __main.texturec-0-flipped_1: 1924533251
       __main.texturec-0-flipped_10: -1611873582
       __main.texturec-0-flipped_11: -115722810
       __main.texturec-0-flipped_12: -1272085339
       __main.texturec-0-flipped_13: -1901630335
-      __main.texturec-0-flipped_14: -2142500503
       __main.texturec-0-flipped_15: -706577608
       __main.texturec-0-flipped_17: -1230980207
       __main.texturec-0-flipped_18: -1045172846
@@ -1965,7 +1966,6 @@ TextureImporter:
       __main.texturec-0-flipped_2: -1206609723
       __main.texturec-0-flipped_20: 1708683217
       __main.texturec-0-flipped_21: 174787419
-      __main.texturec-0-flipped_23: 1598320641
       __main.texturec-0-flipped_25: -691325619
       __main.texturec-0-flipped_26: 300748501
       __main.texturec-0-flipped_28: -1977366518

@@ -11,6 +11,7 @@ internal class WorkbenchView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _needText;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animation _animation;
+    [SerializeField] private Effect _hitEffect;
 
     [Header("Settings")]
     [SerializeField] private Sprite _diedSprite;
@@ -56,5 +57,10 @@ internal class WorkbenchView : MonoBehaviour
     {
         if (_animation != null)
             _animation.Play();
+    }
+    internal void ShowHitEffect()
+    {
+        if (_hitEffect != null)
+            _hitEffect.Play();
     }
 }

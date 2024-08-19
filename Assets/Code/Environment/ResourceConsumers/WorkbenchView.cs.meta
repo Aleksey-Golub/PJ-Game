@@ -3,7 +3,16 @@ guid: 83fbdc2fcde8a004ea7a0da3bdb122d1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _cloud: {instanceID: 0}
+  - _resourceNeedImage: {instanceID: 0}
+  - _generateObjImage: {instanceID: 0}
+  - _needText: {instanceID: 0}
+  - _spriteRenderer: {instanceID: 0}
+  - _animation: {instanceID: 0}
+  - _diedSprite: {instanceID: 0}
+  - _wholeSprite: {instanceID: 0}
+  - _dropResourceAudioClip: {fileID: 8300000, guid: 35fb56be06240d147bc7edfd80a16a5c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

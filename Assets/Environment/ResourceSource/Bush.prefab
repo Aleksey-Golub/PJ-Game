@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 4493861247962964434}
   _animation: {fileID: 3935257495363378484}
-  _hitEffect: {fileID: 6698142987705276052}
+  _hitEffect: {fileID: 4498250152062499439}
   _diedSprite: {fileID: 0}
   _wholeSprite: {fileID: 175938448, guid: 6a3409ce0964ac349a4c228c4ec7bc49, type: 3}
   _changeSortingOrderWhenExhaust: 0
@@ -294,15 +294,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1850152876826255133, guid: 96f4af86988d1d347a1f82ced489052a, type: 3}
   m_PrefabInstance: {fileID: 2124395984919697251}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6698142987705276052 stripped
+--- !u!114 &4498250152062499439 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4724218197100052983, guid: 96f4af86988d1d347a1f82ced489052a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2528665958498675980, guid: 96f4af86988d1d347a1f82ced489052a, type: 3}
   m_PrefabInstance: {fileID: 2124395984919697251}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91638124f24dea1468729ee6f268bf65, type: 3}
+  m_Script: {fileID: 11500000, guid: 16a03ccac4ca38d43b9b75b8885de0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2246106087203895490

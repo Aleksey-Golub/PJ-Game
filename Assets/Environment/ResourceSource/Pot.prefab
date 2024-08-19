@@ -195,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 3912759969177317194}
   _animation: {fileID: 8982473257208504419}
-  _hitEffect: {fileID: 2352126228380810009}
+  _hitEffect: {fileID: 4772695711919511522}
   _diedSprite: {fileID: 0}
   _wholeSprite: {fileID: -1094742133, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   _changeSortingOrderWhenExhaust: 0
@@ -349,15 +349,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96f4af86988d1d347a1f82ced489052a, type: 3}
---- !u!114 &2352126228380810009 stripped
+--- !u!114 &4772695711919511522 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4724218197100052983, guid: 96f4af86988d1d347a1f82ced489052a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2528665958498675980, guid: 96f4af86988d1d347a1f82ced489052a, type: 3}
   m_PrefabInstance: {fileID: 7001871723365776110}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91638124f24dea1468729ee6f268bf65, type: 3}
+  m_Script: {fileID: 11500000, guid: 16a03ccac4ca38d43b9b75b8885de0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8684827947488830963 stripped

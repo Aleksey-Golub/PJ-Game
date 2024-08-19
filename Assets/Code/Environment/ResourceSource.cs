@@ -13,7 +13,7 @@ internal class ResourceSource : MonoBehaviour
     [SerializeField, Min(1)] private int _dropResourceCount = 1;
     [SerializeField] protected int _hitPoints = 1;
     [SerializeField] protected float _restoreTime = 10;
-    [SerializeField] private DropSettings _dropSettings = new() { DropRadius = 1.3f, MoveAfterDropTime = 0.6f, DropStrategy = DropStrategy.RandomInsideCircle};
+    [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
 
     private ResourceFactory _resourceFactory;
 

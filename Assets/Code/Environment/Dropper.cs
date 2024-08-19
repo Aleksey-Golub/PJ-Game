@@ -117,6 +117,14 @@ public struct DropSettings
     public DropGroupingStrategy DropGroupingStrategy;
     public float DropRadius;
     public float MoveAfterDropTime;
+
+    public static DropSettings Default = new()
+    {
+        DropRadius = 1.3f,
+        MoveAfterDropTime = 0.6f,
+        DropStrategy = DropStrategy.RandomInsideCircle,
+        DropGroupingStrategy = DropGroupingStrategy.AllTogether
+    };
 }
 
 public enum DropStrategy

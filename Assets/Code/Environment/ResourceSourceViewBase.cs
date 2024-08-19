@@ -27,6 +27,7 @@ internal abstract class ResourceSourceViewBase : MonoBehaviour
             _spriteRenderer.sortingOrder = _exhaustSortingOrder;
         }
     }
+
     [ContextMenu(nameof(ShowWhole))]
     internal void ShowWhole()
     {

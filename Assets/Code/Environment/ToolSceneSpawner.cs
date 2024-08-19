@@ -11,7 +11,7 @@ internal class ToolSceneSpawner : MonoBehaviour
     }
 
     [SerializeField] private Tool _toolPrefab;
-    [SerializeField] private DropSettings _dropSettings = new() { DropRadius = 1.3f, MoveAfterDropTime = 0.6f, DropStrategy = DropStrategy.RandomInsideCircle };
+    [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
     [SerializeField] private List<SpawnData> _spawnDatas;
 
     private void Start()

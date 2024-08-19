@@ -12,13 +12,7 @@ internal class ResourceStorage : MonoBehaviour
     [SerializeField] private int _startResourceCount = 1;
     [SerializeField] private float _restoreTime = 10;
     [SerializeField] private Collider2D _collider;
-    [SerializeField] private DropSettings _dropSettings = new() 
-        { 
-            DropRadius = 1.3f, 
-            MoveAfterDropTime = 0.6f, 
-            DropStrategy = DropStrategy.RandomInsideCircle,
-            DropGroupingStrategy = DropGroupingStrategy.AllTogether,
-        };
+    [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
 
     private ResourceFactory _resourceFactory;
 

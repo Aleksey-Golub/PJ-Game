@@ -123,6 +123,7 @@ MonoBehaviour:
   _mindCloud: {fileID: 4645883163574080471}
   _toolMindImage: {fileID: 4798000464402436571}
   _animator: {fileID: 5924786209612280253}
+  _popupSpawnOffset: {x: 0, y: 1, z: 0}
 --- !u!1 &513095244907423599
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +386,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4645883163574080471}
   m_LocalRotation: {x: 0.08715578, y: -0, z: -0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 0, z: 0.27}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children:

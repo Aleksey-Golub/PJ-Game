@@ -201,6 +201,11 @@ internal class Player : MonoBehaviour, IDisposable
                 _lastAbsentTool = resourceStorage.NeedToolType;
             }
         }
+
+        if (other.TryGetComponent(out IResourceConsumer resourceConsuner) && resourceConsuner.CanInteract)
+        {
+            InteractWith(resourceConsuner);
+        }
     }
 
     private Vector2 GetOverlapCircleCenter()
@@ -244,5 +249,23 @@ internal class Player : MonoBehaviour, IDisposable
             return true;
 
         return _inventory.Has(needToolType);
+    }
+
+    private void InteractWith(IResourceConsumer resourceConsumer)
+    {
+        //Logger.Log($"Interact with {(resourceConsumer as MonoBehaviour).gameObject.name} {Time.frameCount}");
+
+        // first visit
+
+        // dummy implementation
+        var needs = resourceConsumer.GetNeeds();
+        if (_inventory.Has(needs.ResourceType, needs.CurrentNeedResourceCount))
+        {
+            _inventory.Remove(needs.ResourceType, needs.CurrentNeedResourceCount);
+
+            resourceConsumer.Consume(needs.CurrentNeedResourceCount);
+        }
+
+        // revisitation
     }
 }

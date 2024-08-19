@@ -244,13 +244,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_7
+      name: arrow
       rect:
         serializedVersion: 2
-        x: 380
-        y: 224
-        width: 40
-        height: 32
+        x: 382
+        y: 226
+        width: 36
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -433,16 +433,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_16
+      name: cloud
       rect:
         serializedVersion: 2
-        x: 113
-        y: 0
-        width: 23
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        x: 115
+        y: 2
+        width: 19
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -601,15 +601,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_24
+      name: Workbench
       rect:
         serializedVersion: 2
         x: 340
-        y: 98
-        width: 22
-        height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 100
+        width: 20
+        height: 26
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1950,6 +1950,7 @@ TextureImporter:
       Store Stone: -1933862564
       Store Water: -1651462942
       Store Wood: -1227099510
+      Workbench: -1322168670
       __main.texturec-0-flipped_0: -2007972119
       __main.texturec-0-flipped_1: 1924533251
       __main.texturec-0-flipped_10: -1611873582
@@ -1958,7 +1959,6 @@ TextureImporter:
       __main.texturec-0-flipped_13: -1901630335
       __main.texturec-0-flipped_14: -2142500503
       __main.texturec-0-flipped_15: -706577608
-      __main.texturec-0-flipped_16: -721475698
       __main.texturec-0-flipped_17: -1230980207
       __main.texturec-0-flipped_18: -1045172846
       __main.texturec-0-flipped_19: 1269199810
@@ -1966,7 +1966,6 @@ TextureImporter:
       __main.texturec-0-flipped_20: 1708683217
       __main.texturec-0-flipped_21: 174787419
       __main.texturec-0-flipped_23: 1598320641
-      __main.texturec-0-flipped_24: -1322168670
       __main.texturec-0-flipped_25: -691325619
       __main.texturec-0-flipped_26: 300748501
       __main.texturec-0-flipped_28: -1977366518
@@ -1982,7 +1981,6 @@ TextureImporter:
       __main.texturec-0-flipped_63: 2038853318
       __main.texturec-0-flipped_64: 906421399
       __main.texturec-0-flipped_65: -1723563639
-      __main.texturec-0-flipped_7: -1743317640
       __main.texturec-0-flipped_9: 1041573145
       __pine_stump: 188050404
       __rock_stump: -1482988333
@@ -1990,7 +1988,9 @@ TextureImporter:
       _hit_effect_1: 462397261
       _hit_effect_2: 1163979227
       _hit_effect_3: 1437209520
+      arrow: -1743317640
       carrot: -1806721189
+      cloud: -721475698
       coin: -756613953
       dung: -1736698845
       fruit: -1746096017

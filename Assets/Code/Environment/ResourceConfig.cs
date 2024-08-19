@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "newResourceConfig", menuName = "Configs/ResourceConfig")]
-internal class ResourceConfig : ScriptableObject
+internal class ResourceConfig : ScriptableObject, IDropObjectConfig
 {
     [SerializeField] private ResourceType _type;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private AudioClip _pickupAudio;
 
     internal ResourceType Type => _type;
-    internal Sprite Sprite => _sprite;
+    public Sprite Sprite => _sprite;
     internal AudioClip PickupAudio => _pickupAudio;
 }
 

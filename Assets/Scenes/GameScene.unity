@@ -344,14 +344,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Workbench (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 243883957167352878, guid: 515b973e6f171e74caf236ccd882f2c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4026247334075091105, guid: 515b973e6f171e74caf236ccd882f2c1, type: 3}
       propertyPath: _dropCount
-      value: 32
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4026247334075091105, guid: 515b973e6f171e74caf236ccd882f2c1, type: 3}
       propertyPath: _dropConfig
       value: 
       objectReference: {fileID: 11400000, guid: 9b95cb37bd4f05e4bb3d8735c8ffd0d9, type: 2}
+    - target: {fileID: 4026247334075091105, guid: 515b973e6f171e74caf236ccd882f2c1, type: 3}
+      propertyPath: _dropConfigMono
+      value: 
+      objectReference: {fileID: 11400000, guid: aaafd23f23e7a8a42a7cb374af2a9d50, type: 2}
     - target: {fileID: 4026247334075091105, guid: 515b973e6f171e74caf236ccd882f2c1, type: 3}
       propertyPath: _needResourceCount
       value: 8
@@ -2140,6 +2148,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4026247334075091105, guid: 515b973e6f171e74caf236ccd882f2c1, type: 3}
       propertyPath: _dropConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 3dbf32a7b8508e94ab6b30762e58501d, type: 2}
+    - target: {fileID: 4026247334075091105, guid: 515b973e6f171e74caf236ccd882f2c1, type: 3}
+      propertyPath: _dropConfigMono
       value: 
       objectReference: {fileID: 11400000, guid: 3dbf32a7b8508e94ab6b30762e58501d, type: 2}
     - target: {fileID: 4026247334075091105, guid: 515b973e6f171e74caf236ccd882f2c1, type: 3}

@@ -8,25 +8,37 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
     [SerializeField] private ResourceConfig _needResourceConfig;
     [SerializeField] private int _needResourceCount = 1;
 
-    [SerializeField] private ResourceConfig _dropConfig;
+    [SerializeField] private ScriptableObject _dropConfigMono;
     [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
     [SerializeField] private int _dropCount = 1;
 
+    private IDropObjectConfig _dropConfig;
     private int _currentNeedResourceCount;
-    private ResourceFactory _factory;
+    private ResourceFactory _resourceFactory;
+    private ToolFactory _toolFactory;
 
     public bool CanInteract => _currentNeedResourceCount != 0;
 
+    private void OnValidate()
+    {
+        if (_dropConfigMono is IDropObjectConfig config)
+            _dropConfig = config;
+        else
+            _dropConfigMono = null;
+    }
+
     private void Start()
     {
-        var factory = ResourceFactory.Instance;
-        Construct(factory);
+        var resourceFactory = ResourceFactory.Instance;
+        var toolFactory = ToolFactory.Instance;
+        Construct(resourceFactory, toolFactory);
         Init();
     }
 
-    private void Construct(ResourceFactory factory)
+    private void Construct(ResourceFactory resourceFactory, ToolFactory toolFactory)
     {
-        _factory = factory;
+        _resourceFactory = resourceFactory;
+        _toolFactory = toolFactory;
     }
 
     internal void Init()
@@ -75,12 +87,29 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
 
         var dropData = DropData.Get(transform.position, _dropSettings, _dropCount, out int notFittedInPacksCount);
 
-        for (int i = 0; i < dropData.Count; i++)
+        if (_dropConfig is ResourceConfig resourceConfig)
         {
-            Resource dropObject = _factory.Get(transform.position, Quaternion.identity);
-            dropObject.Init(_dropConfig, dropData[i].ResourceInPackCount);
+            for (int i = 0; i < dropData.Count; i++)
+            {
+                Resource dropObject = _resourceFactory.Get(transform.position, Quaternion.identity);
+                dropObject.Init(resourceConfig, dropData[i].ResourceInPackCount);
 
-            dropObject.MoveAfterDrop(dropData[i]);
+                dropObject.MoveAfterDrop(dropData[i]);
+            }
+        }
+        else if (_dropConfig is ToolConfig toolConfig)
+        {
+            for (int i = 0; i < dropData.Count; i++)
+            {
+                Tool dropObject = _toolFactory.Get(transform.position, Quaternion.identity);
+                dropObject.Init(toolConfig);
+
+                dropObject.MoveAfterDrop(dropData[i]);
+            }
+        }
+        else
+        {
+            Logger.LogError($"[Workbench] DropObject() error : 'Not implemented for {_dropConfig.GetType()}'");
         }
     }
 }

@@ -1,14 +1,14 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "newToolConfig", menuName = "Configs/ToolConfig")]
-internal class ToolConfig : ScriptableObject
+internal class ToolConfig : ScriptableObject, IDropObjectConfig
 {
     [SerializeField] private ToolType _type;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private AudioClip _pickupAudio;
 
     internal ToolType Type => _type;
-    internal Sprite Sprite => _sprite;
+    public Sprite Sprite => _sprite;
     internal AudioClip PickupAudio => _pickupAudio;
 }
 

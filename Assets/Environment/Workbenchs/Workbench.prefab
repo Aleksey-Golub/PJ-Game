@@ -153,14 +153,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 243883957167352878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b40b1fb2c378a4ba74bb96e1f5d24b, type: 3}
+  m_Script: {fileID: 11500000, guid: ab58b3d3760675f439f522100cb90812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _view: {fileID: 4172678446958907170}
   _collider: {fileID: 6552640614675062389}
   _needResourceConfig: {fileID: 0}
   _needResourceCount: 1
-  _dropConfig: {fileID: 0}
   _dropSettings:
     DropStrategy: 1
     DropGroupingStrategy: 2
@@ -176,7 +175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 243883957167352878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1144b47b2c39a478a4ec586e24f17c, type: 3}
+  m_Script: {fileID: 11500000, guid: 83fbdc2fcde8a004ea7a0da3bdb122d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cloud: {fileID: 2426443489568337536}

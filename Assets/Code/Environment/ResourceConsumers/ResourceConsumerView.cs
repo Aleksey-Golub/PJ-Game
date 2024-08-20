@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-internal class WorkbenchView : MonoBehaviour
+internal class ResourceConsumerView : MonoBehaviour
 {
     [SerializeField] private GameObject _cloud;
     [SerializeField] private Image _resourceNeedImage;

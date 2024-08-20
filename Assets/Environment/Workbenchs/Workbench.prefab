@@ -160,6 +160,7 @@ MonoBehaviour:
   _collider: {fileID: 6552640614675062389}
   _needResourceConfig: {fileID: 0}
   _needResourceCount: 1
+  _dropConfigMono: {fileID: 0}
   _dropSettings:
     DropStrategy: 1
     DropGroupingStrategy: 2
@@ -184,6 +185,7 @@ MonoBehaviour:
   _needText: {fileID: 6089280009346870820}
   _spriteRenderer: {fileID: 9129579903287479438}
   _animation: {fileID: 1458050401937336200}
+  _hitEffect: {fileID: 0}
   _diedSprite: {fileID: -1322168670, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   _wholeSprite: {fileID: -1322168670, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   _changeSortingOrderWhenExhaust: 0
@@ -772,8 +774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1.89}
-  m_SizeDelta: {x: 1.0145, y: 0.148}
+  m_AnchoredPosition: {x: 0, y: 1.9377}
+  m_SizeDelta: {x: 1.0145, y: 0.0235}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7478645155163946956
 CanvasRenderer:

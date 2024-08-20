@@ -790,15 +790,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_33
+      name: Cow
       rect:
         serializedVersion: 2
-        x: 83
-        y: 0
-        width: 30
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 85
+        y: 2
+        width: 26
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -838,7 +838,7 @@ TextureImporter:
         x: 181
         y: 35
         width: 15
-        height: 14
+        height: 15
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -880,7 +880,7 @@ TextureImporter:
         x: 261
         y: 35
         width: 16
-        height: 14
+        height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -895,15 +895,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_38
+      name: Pig
       rect:
         serializedVersion: 2
         x: 282
         y: 54
         width: 25
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1045,9 +1045,9 @@ TextureImporter:
       name: stone
       rect:
         serializedVersion: 2
-        x: 340
+        x: 339
         y: 3
-        width: 12
+        width: 13
         height: 13
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1067,9 +1067,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 356
-        y: 4
+        y: 3
         width: 13
-        height: 11
+        height: 13
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1132,7 +1132,7 @@ TextureImporter:
         x: 383
         y: 96
         width: 13
-        height: 12
+        height: 13
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1171,9 +1171,9 @@ TextureImporter:
       name: carrot
       rect:
         serializedVersion: 2
-        x: 449
+        x: 448
         y: 117
-        width: 9
+        width: 11
         height: 11
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1213,9 +1213,9 @@ TextureImporter:
       name: milk
       rect:
         serializedVersion: 2
-        x: 427
+        x: 426
         y: 150
-        width: 12
+        width: 14
         height: 14
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1276,9 +1276,9 @@ TextureImporter:
       name: SICKLE
       rect:
         serializedVersion: 2
-        x: 368
+        x: 367
         y: 151
-        width: 12
+        width: 14
         height: 14
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -1319,9 +1319,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 201
-        y: 35
+        y: 34
         width: 16
-        height: 14
+        height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1867,7 +1867,7 @@ TextureImporter:
         x: 301
         y: 35
         width: 16
-        height: 14
+        height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1938,7 +1938,9 @@ TextureImporter:
       BUCKET: -1672760803
       Chest Closed: 1363477437
       Chest Opened: -13380755
+      Cow: -158344966
       PICKAXE: 1402700907
+      Pig: -1711002262
       SICKLE: -964180368
       SWORD: 1356712221
       Store Carrot: -320451106
@@ -1970,8 +1972,6 @@ TextureImporter:
       __main.texturec-0-flipped_26: 300748501
       __main.texturec-0-flipped_28: -1977366518
       __main.texturec-0-flipped_3: -1571978254
-      __main.texturec-0-flipped_33: -158344966
-      __main.texturec-0-flipped_38: -1711002262
       __main.texturec-0-flipped_4: 752955290
       __main.texturec-0-flipped_43: -1288984483
       __main.texturec-0-flipped_5: -989307427

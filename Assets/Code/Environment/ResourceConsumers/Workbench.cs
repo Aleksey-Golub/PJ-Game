@@ -2,7 +2,7 @@ using UnityEngine;
 
 internal class Workbench : MonoBehaviour, IResourceConsumer
 {
-    [SerializeField] private WorkbenchView _view;
+    [SerializeField] private ResourceConsumerView _view;
     [SerializeField] private Collider2D _collider;
 
     [SerializeField] private ResourceConfig _needResourceConfig;

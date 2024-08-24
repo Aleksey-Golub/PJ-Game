@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Converter : MonoBehaviour, IResourceConsumer
@@ -12,6 +10,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
     [SerializeField] private int _maxUpload = 25;
     [SerializeField] private float _converTime = 10f;
     [SerializeField] private int _preferedConsumedValue = -1;
+    [SerializeField] private Transform _transitionalResourceFinal;
 
     [SerializeField] private ResourceConfig _dropResourceConfig;
     [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
@@ -19,11 +18,13 @@ public class Converter : MonoBehaviour, IResourceConsumer
 
     private float _timer;
     private int _currentUpload;
+    private int _currentPreUpload;
     private ResourceFactory _resourceFactory;
 
-    public bool CanInteract => _currentUpload < _maxUpload;
+    public bool CanInteract => _currentUpload < _maxUpload && _currentPreUpload < _maxUpload;
     public int PreferedConsumedValue => _preferedConsumedValue;
-    public int FreeSpace => _maxUpload - _currentUpload;
+    public int FreeSpace => _maxUpload - _currentPreUpload;
+    public Vector3 TransitionalResourceFinalPosition => _transitionalResourceFinal.position;
 
     private void Start()
     {
@@ -45,6 +46,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
     internal void Init()
     {
         _currentUpload = 0;
+        _currentPreUpload = 0;
         _timer = 0;
 
         _view.Init(_needResourceConfig.Sprite, _currentUpload, _dropResourceConfig.Sprite);
@@ -65,6 +67,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
             _timer = 0;
             
             _currentUpload -= _singleUpload;
+            _currentPreUpload -= _singleUpload;
             _view.ShowUpload(_currentUpload, _maxUpload);
             DropResource();
         }
@@ -85,6 +88,11 @@ public class Converter : MonoBehaviour, IResourceConsumer
     {
         _currentUpload += value;
         _view.ShowUpload(_currentUpload, _maxUpload);
+    }
+
+    public void ApplyPreUpload(int consumedValue)
+    {
+        _currentPreUpload += consumedValue;
     }
 
     private void DropResource()

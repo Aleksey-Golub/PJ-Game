@@ -6,9 +6,9 @@ using UnityEngine.UI;
 internal class ResourceConsumerView : MonoBehaviour
 {
     [SerializeField] private GameObject _cloud;
-    [SerializeField] private Image _resourceNeedImage;
-    [SerializeField] private Image _generateObjImage;
-    [SerializeField] private TextMeshProUGUI _needText;
+    [SerializeField] private SpriteRenderer _resourceNeedImage;
+    [SerializeField] private SpriteRenderer _generateObjImage;
+    [SerializeField] private TextMeshPro _needText;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animation _animation;
     [SerializeField] private Effect _hitEffect;
@@ -19,8 +19,17 @@ internal class ResourceConsumerView : MonoBehaviour
     [SerializeField] private bool _changeSortingOrderWhenExhaust = false;
     [SerializeField] private int _exhaustSortingOrder;
     [SerializeField] private AudioClip _dropResourceAudioClip;
+    [SerializeField] private int _countTextSortingOrder = 11;
 
     private int _oldSortingOrder;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (_needText)
+            _needText.GetComponent<MeshRenderer>().sortingOrder = _countTextSortingOrder;
+    }
+#endif
 
     internal void Init(Sprite needResourceSprite, int initialNeedResourceCount, Sprite generateObjSprite)
     {

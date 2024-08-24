@@ -1,4 +1,6 @@
-﻿interface IResourceConsumer
+﻿using UnityEngine;
+
+interface IResourceConsumer
 {
     bool CanInteract { get; }
     
@@ -7,9 +9,11 @@
     /// </summary>
     int PreferedConsumedValue { get; }
     int FreeSpace { get; }
+    Vector3 TransitionalResourceFinalPosition { get; }
 
     ResourceConsumerNeeds GetNeeds();
     void Consume(int value);
+    void ApplyPreUpload(int consumedValue);
 }
 
 public struct ResourceConsumerNeeds

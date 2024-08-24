@@ -8,14 +8,18 @@ public class Workshop : MonoBehaviour, IResourceConsumer
     [SerializeField] private ResourceConfig _needResourceConfig;
     [SerializeField] private int _needResourceCount = 1;
     [SerializeField] private int _preferedConsumedValue = -1;
+    [SerializeField] private Transform _transitionalResourceFinal;
 
     [SerializeField] private GameObject _spawnObject;
 
     private int _currentNeedResourceCount;
+    private int _currentPreUpload;
 
-    public bool CanInteract => _currentNeedResourceCount != 0;
+    public bool CanInteract => _currentNeedResourceCount != 0 && _currentPreUpload < _needResourceCount;
     public int PreferedConsumedValue => _preferedConsumedValue;
-    public int FreeSpace => _currentNeedResourceCount;
+    public int FreeSpace => _needResourceCount - _currentPreUpload;
+
+    public Vector3 TransitionalResourceFinalPosition => _transitionalResourceFinal.position;
 
     private void Start()
     {
@@ -30,6 +34,7 @@ public class Workshop : MonoBehaviour, IResourceConsumer
     internal void Init()
     {
         _currentNeedResourceCount = _needResourceCount;
+        _currentPreUpload = 0;
 
         _view.Init(_needResourceConfig.Sprite, _currentNeedResourceCount, null);
     }
@@ -55,6 +60,11 @@ public class Workshop : MonoBehaviour, IResourceConsumer
             Exhaust();
         }
     }
+    public void ApplyPreUpload(int consumedValue)
+    {
+        _currentPreUpload += consumedValue;
+    }
+
     private void Exhaust()
     {
         _view.ShowExhaust();

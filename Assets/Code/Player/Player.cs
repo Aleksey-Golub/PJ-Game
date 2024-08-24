@@ -20,15 +20,16 @@ internal class Player : MonoBehaviour, IDisposable
     [SerializeField] private float _speed = 1.5f;
     [SerializeField] private float _attackDelay = 0.7f;
     [SerializeField] private OverlapSphereParams _overlapSphereParams = new OverlapSphereParams() { Radius = 0.4f, Offset = 0.4f };
-    [SerializeField] float _consumeDelay = 0.2f;
+    [SerializeField] private float _consumeDelay = 0.2f;
 
-    float _consumeTimer = 0;
+    private float _consumeTimer = 0;
     private float _attackTimer = 0;
     private Vector2 _direction = new Vector2(0, -1);
     private Collider2D[] _buffer;
     private IPlayerInput _input;
     private IInventoryView _inventoryView;
     private ConfigsService _configsService;
+    private TransitionalResourceFactory _transitionalResourceFactory;
     private Inventory _inventory;
     private ToolType _lastAbsentTool;
     private Dictionary<IResourceConsumer, ResourceConsumerNeeds> _lastConsumersData;
@@ -50,11 +51,12 @@ internal class Player : MonoBehaviour, IDisposable
         var inventoryView = UIService.Instance.GetPlayerInventoryView();
         var configsService = ConfigsService.Instance;
         var popupFactory = PopupFactory.Instance;
+        var transitionalResourceFactory = TransitionalResourceFactory.Instance;
 
-        Construct(input, inventoryView, configsService, popupFactory);
+        Construct(input, inventoryView, configsService, popupFactory, transitionalResourceFactory);
     }
 
-    private void Construct(IPlayerInput input, IInventoryView inventoryView, ConfigsService configsService, PopupFactory popupFactory)
+    private void Construct(IPlayerInput input, IInventoryView inventoryView, ConfigsService configsService, PopupFactory popupFactory, TransitionalResourceFactory transitionalResourceFactory)
     {
         _buffer = new Collider2D[10];
         _inventory = new();
@@ -65,6 +67,7 @@ internal class Player : MonoBehaviour, IDisposable
         _inventoryView = inventoryView;
         _inventoryView.Init(_inventory.Storage);
         _configsService = configsService;
+        _transitionalResourceFactory = transitionalResourceFactory;
 
         _view.Construct(popupFactory);
 
@@ -294,13 +297,14 @@ internal class Player : MonoBehaviour, IDisposable
 
         // do consume
         int consumersHandledCount = 0;
-        foreach (var consumer in _lastConsumersData)
+        foreach (var cPair in _lastConsumersData)
         {
-            var needs = consumer.Value;
+            var needs = cPair.Value;
+            IResourceConsumer consumer = cPair.Key;
             var resourceType = needs.ResourceType;
             _inventory.GetCount(resourceType, out int inInventoryCount);
-            int consumedValue = GetConsumesValue(inInventoryCount, needs.CurrentNeedResourceCount, consumer.Key.PreferedConsumedValue);
-            consumedValue = Mathf.Min(consumedValue, consumer.Key.FreeSpace);
+            int consumedValue = GetConsumesValue(inInventoryCount, needs.CurrentNeedResourceCount, consumer.PreferedConsumedValue);
+            consumedValue = Mathf.Min(consumedValue, consumer.FreeSpace);
 
             if (consumedValue == 0)
                 continue;
@@ -309,7 +313,11 @@ internal class Player : MonoBehaviour, IDisposable
             {
                 _inventory.Remove(resourceType, consumedValue);
 
-                consumer.Key.Consume(consumedValue);
+                var transitionalResource = _transitionalResourceFactory.Get(transform.position, Quaternion.identity);
+                transitionalResource.Init(consumer, consumedValue, _configsService.GetConfigFor(resourceType).Sprite);
+                transitionalResource.MoveTo(consumer.TransitionalResourceFinalPosition);
+
+                consumer.ApplyPreUpload(consumedValue);
                 consumersHandledCount++;
             }
         }

@@ -55,6 +55,18 @@ internal class Inventory
         return false;
     }
 
+    internal bool GetCount(ResourceType type, out int value)
+    {
+        value = 0;
+        if (_storage.TryGetValue(type, out int count))
+        {
+            value = count;
+            return count > 0;
+        }
+
+        return false;
+    }
+
     internal void Add(ToolType type)
     {
         _tools.Add(type);

@@ -36,6 +36,7 @@ Transform:
   m_Children:
   - {fileID: 6339859268210533032}
   - {fileID: 2259107465425503132}
+  - {fileID: 4789971689924516670}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2758457426539907985
@@ -160,6 +161,7 @@ MonoBehaviour:
   _collider: {fileID: 6552640614675062389}
   _needResourceConfig: {fileID: 0}
   _needResourceCount: 1
+  _preferedConsumedValue: -1
   _dropConfigMono: {fileID: 0}
   _dropSettings:
     DropStrategy: 1
@@ -266,6 +268,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2314513137787711260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4789971689924516670}
+  m_Layer: 0
+  m_Name: Resource Transition Finish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &4789971689924516670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2314513137787711260}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.6010001, y: 1.776, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6175135554110475447}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2426443489568337536
 GameObject:
   m_ObjectHideFlags: 0

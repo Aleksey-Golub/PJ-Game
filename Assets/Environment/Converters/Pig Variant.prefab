@@ -40,6 +40,10 @@ PrefabInstance:
       propertyPath: _needResourceConfig
       value: 
       objectReference: {fileID: 11400000, guid: 3dbf32a7b8508e94ab6b30762e58501d, type: 2}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _preferedConsumedValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6273235923941412761, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
       propertyPath: m_Sprite
       value: 

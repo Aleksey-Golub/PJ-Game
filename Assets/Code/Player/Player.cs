@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 internal class Player : MonoBehaviour, IDisposable
@@ -18,7 +20,9 @@ internal class Player : MonoBehaviour, IDisposable
     [SerializeField] private float _speed = 1.5f;
     [SerializeField] private float _attackDelay = 0.7f;
     [SerializeField] private OverlapSphereParams _overlapSphereParams = new OverlapSphereParams() { Radius = 0.4f, Offset = 0.4f };
+    [SerializeField] float _consumeDelay = 0.2f;
 
+    float _consumeTimer = 0;
     private float _attackTimer = 0;
     private Vector2 _direction = new Vector2(0, -1);
     private Collider2D[] _buffer;
@@ -27,6 +31,8 @@ internal class Player : MonoBehaviour, IDisposable
     private ConfigsService _configsService;
     private Inventory _inventory;
     private ToolType _lastAbsentTool;
+    private Dictionary<IResourceConsumer, ResourceConsumerNeeds> _lastConsumersData;
+    private HashSet<IResourceConsumer> _currentConsumers = new();
 
     #region EDITOR_ONLY
 
@@ -52,6 +58,8 @@ internal class Player : MonoBehaviour, IDisposable
     {
         _buffer = new Collider2D[10];
         _inventory = new();
+        _lastConsumersData = new();
+        _currentConsumers = new();
 
         _input = input;
         _inventoryView = inventoryView;
@@ -146,6 +154,7 @@ internal class Player : MonoBehaviour, IDisposable
         Vector2 forTriggerCenter = (Vector2)transform.position + _collider2D.offset;
         if (Physics2D.OverlapCircleNonAlloc(forTriggerCenter, _collider2D.radius, _buffer) > 0)
         {
+            _currentConsumers.Clear();
             foreach (Collider2D collider in _buffer)
             {
                 if (collider == null)
@@ -156,6 +165,7 @@ internal class Player : MonoBehaviour, IDisposable
 
                 OnTrigger2D(collider);
             }
+            HandleConsumers();
 
             _buffer.Refresh();
         }
@@ -202,9 +212,10 @@ internal class Player : MonoBehaviour, IDisposable
             }
         }
 
-        if (other.TryGetComponent(out IResourceConsumer resourceConsuner) && resourceConsuner.CanInteract)
+        if (other.TryGetComponent(out IResourceConsumer resourceConsumer) && resourceConsumer.CanInteract)
         {
-            InteractWith(resourceConsuner);
+            //Logger.Log($"Interact with {(resourceConsumer as MonoBehaviour).gameObject.name} {Time.frameCount}");
+            _currentConsumers.Add(resourceConsumer);
         }
     }
 
@@ -251,21 +262,71 @@ internal class Player : MonoBehaviour, IDisposable
         return _inventory.Has(needToolType);
     }
 
-    private void InteractWith(IResourceConsumer resourceConsumer)
+    private void HandleConsumers()
     {
-        //Logger.Log($"Interact with {(resourceConsumer as MonoBehaviour).gameObject.name} {Time.frameCount}");
-
-        // first visit
-
-        // dummy implementation
-        var needs = resourceConsumer.GetNeeds();
-        if (_inventory.Has(needs.ResourceType, needs.CurrentNeedResourceCount))
+        _consumeTimer += Time.fixedDeltaTime;
+        if (_consumeTimer < _consumeDelay)
         {
-            _inventory.Remove(needs.ResourceType, needs.CurrentNeedResourceCount);
-
-            resourceConsumer.Consume(needs.CurrentNeedResourceCount);
+            return;
         }
 
-        // revisitation
+        var lastConsumers = _lastConsumersData.Keys.ToHashSet();
+
+        // nothing to handle
+        if (lastConsumers.Count == 0 && _currentConsumers.Count == 0)
+            return;
+
+        // remove not used consumers
+        foreach (var last in lastConsumers)
+        {
+            if (!_currentConsumers.Contains(last))
+                _lastConsumersData.Remove(last);
+        }
+
+        _currentConsumers.ExceptWith(lastConsumers);
+
+        // add new consumers
+        foreach (var @new in _currentConsumers)
+        {
+            _lastConsumersData.Add(@new, @new.GetNeeds());
+        }
+        _currentConsumers.Clear();
+
+        // do consume
+        int consumersHandledCount = 0;
+        foreach (var consumer in _lastConsumersData)
+        {
+            var needs = consumer.Value;
+            var resourceType = needs.ResourceType;
+            _inventory.GetCount(resourceType, out int inInventoryCount);
+            int consumedValue = GetConsumesValue(inInventoryCount, needs.CurrentNeedResourceCount, consumer.Key.PreferedConsumedValue);
+            consumedValue = Mathf.Min(consumedValue, consumer.Key.FreeSpace);
+
+            if (consumedValue == 0)
+                continue;
+
+            if (_inventory.Has(resourceType, consumedValue))
+            {
+                _inventory.Remove(resourceType, consumedValue);
+
+                consumer.Key.Consume(consumedValue);
+                consumersHandledCount++;
+            }
+        }
+
+        if (consumersHandledCount > 0)
+            _consumeTimer = 0;
+    }
+
+    private static int GetConsumesValue(int inInventoryCount, int currentNeedResourceCount, int preferedConsumedValue)
+    {
+        int packSize = 0;
+        if (preferedConsumedValue < 1)
+            packSize = currentNeedResourceCount / 8 + 1;
+        else
+            packSize = preferedConsumedValue;
+
+        return inInventoryCount < packSize ? inInventoryCount : packSize;
     }
 }
+

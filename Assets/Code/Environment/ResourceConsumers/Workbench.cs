@@ -7,6 +7,7 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
 
     [SerializeField] private ResourceConfig _needResourceConfig;
     [SerializeField] private int _needResourceCount = 1;
+    [SerializeField] private int _preferedConsumedValue = -1;
 
     [SerializeField] private ScriptableObject _dropConfigMono;
     [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
@@ -18,6 +19,8 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
     private ToolFactory _toolFactory;
 
     public bool CanInteract => _currentNeedResourceCount != 0;
+    public int PreferedConsumedValue => _preferedConsumedValue;
+    public int FreeSpace => _currentNeedResourceCount;
 
     private void OnValidate()
     {

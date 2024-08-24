@@ -11,6 +11,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
     [SerializeField] private int _singleUpload = 5;
     [SerializeField] private int _maxUpload = 25;
     [SerializeField] private float _converTime = 10f;
+    [SerializeField] private int _preferedConsumedValue = -1;
 
     [SerializeField] private ResourceConfig _dropResourceConfig;
     [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
@@ -21,6 +22,8 @@ public class Converter : MonoBehaviour, IResourceConsumer
     private ResourceFactory _resourceFactory;
 
     public bool CanInteract => _currentUpload < _maxUpload;
+    public int PreferedConsumedValue => _preferedConsumedValue;
+    public int FreeSpace => _maxUpload - _currentUpload;
 
     private void Start()
     {

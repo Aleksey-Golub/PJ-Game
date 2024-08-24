@@ -7,12 +7,15 @@ public class Workshop : MonoBehaviour, IResourceConsumer
 
     [SerializeField] private ResourceConfig _needResourceConfig;
     [SerializeField] private int _needResourceCount = 1;
+    [SerializeField] private int _preferedConsumedValue = -1;
 
     [SerializeField] private GameObject _spawnObject;
 
     private int _currentNeedResourceCount;
 
     public bool CanInteract => _currentNeedResourceCount != 0;
+    public int PreferedConsumedValue => _preferedConsumedValue;
+    public int FreeSpace => _currentNeedResourceCount;
 
     private void Start()
     {

@@ -77,13 +77,16 @@ namespace Assets.Code.UI
         {
             foreach (ResourceType type in Enum.GetValues(typeof(ResourceType)))
             {
-                if (type is ResourceType.None or ResourceType.COIN or ResourceType.GEM or ResourceType.IRON_ORE or ResourceType.IRON)
+                if (type is ResourceType.None)
                     continue;
 
+                var config = _resourceConfigService.GetConfigFor(type);
+                if (!config.Sellable)
+                    continue;
+                
                 var resView = Instantiate(_prefab, _content);
                 resView.Construct();
 
-                var config = _resourceConfigService.GetConfigFor(type);
                 var sprite = config.Sprite;
                 resView.Init(sprite, 0, 0, type);
                 resView.SellButtonClicked += OnSellButtonClicked;

@@ -7,11 +7,13 @@ internal class ResourceConfig : ScriptableObject, IDropObjectConfig
     [SerializeField] private Sprite _sprite;
     [SerializeField] private AudioClip _pickupAudio;
     [SerializeField] private int _cost;
+    [SerializeField] private bool _sellable;
 
     internal ResourceType Type => _type;
     public Sprite Sprite => _sprite;
     internal AudioClip PickupAudio => _pickupAudio;
     internal int Cost => _cost;
+    public bool Sellable => _sellable;
 }
 
 public enum ResourceType

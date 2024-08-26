@@ -15,3 +15,4 @@ MonoBehaviour:
   _type: 9
   _sprite: {fileID: -1736698845, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   _pickupAudio: {fileID: 8300000, guid: f2772020d0ade4e49a8c5244bd94ac97, type: 3}
+  _cost: 25

@@ -118,7 +118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_1
+      name: sell item frame
       rect:
         serializedVersion: 2
         x: 204
@@ -127,7 +127,7 @@ TextureImporter:
         height: 68
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 6, y: 6, z: 6, w: 6}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -139,16 +139,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_2
+      name: sell board panel
       rect:
         serializedVersion: 2
-        x: 204
-        y: 128
-        width: 97
-        height: 60
+        x: 206
+        y: 130
+        width: 96
+        height: 56
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 12, y: 12, z: 12, w: 16}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -202,16 +202,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_5
+      name: sell button
       rect:
         serializedVersion: 2
-        x: 301
-        y: 128
-        width: 63
-        height: 60
+        x: 306
+        y: 130
+        width: 56
+        height: 56
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 8, y: 12, z: 8, w: 8}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -223,7 +223,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_6
+      name: close button
       rect:
         serializedVersion: 2
         x: 294
@@ -538,15 +538,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_21
+      name: sell board
       rect:
         serializedVersion: 2
         x: 424
-        y: 228
-        width: 32
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 230
+        width: 30
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1923,6 +1923,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: square marker
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 86
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc30df78aab65ed43a9dda521802458e
+      internalID: -1680720229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1956,7 +1977,6 @@ TextureImporter:
       Workshop: 1598320641
       Workshop cloud: -2142500503
       __main.texturec-0-flipped_0: -2007972119
-      __main.texturec-0-flipped_1: 1924533251
       __main.texturec-0-flipped_10: -1611873582
       __main.texturec-0-flipped_11: -115722810
       __main.texturec-0-flipped_12: -1272085339
@@ -1965,17 +1985,13 @@ TextureImporter:
       __main.texturec-0-flipped_17: -1230980207
       __main.texturec-0-flipped_18: -1045172846
       __main.texturec-0-flipped_19: 1269199810
-      __main.texturec-0-flipped_2: -1206609723
       __main.texturec-0-flipped_20: 1708683217
-      __main.texturec-0-flipped_21: 174787419
       __main.texturec-0-flipped_25: -691325619
       __main.texturec-0-flipped_26: 300748501
       __main.texturec-0-flipped_28: -1977366518
       __main.texturec-0-flipped_3: -1571978254
       __main.texturec-0-flipped_4: 752955290
       __main.texturec-0-flipped_43: -1288984483
-      __main.texturec-0-flipped_5: -989307427
-      __main.texturec-0-flipped_6: -2007050740
       __main.texturec-0-flipped_61: -535157519
       __main.texturec-0-flipped_62: -998875238
       __main.texturec-0-flipped_63: 2038853318
@@ -1990,6 +2006,7 @@ TextureImporter:
       _hit_effect_3: 1437209520
       arrow: -1743317640
       carrot: -1806721189
+      close button: -2007050740
       cloud: -721475698
       coin: -756613953
       dung: -1736698845
@@ -2004,6 +2021,10 @@ TextureImporter:
       mind_cloud: -1030577411
       pot_damaged: 1933690828
       pot_whole: -1094742133
+      sell board: 174787419
+      sell board panel: -1206609723
+      sell button: -989307427
+      sell item frame: 1924533251
       shadow: 565068700
       slime_1: -993347180
       slime_2: 2134976006
@@ -2018,6 +2039,7 @@ TextureImporter:
       slime_7: 1330088374
       slime_8: 1987201700
       slime_egg: 1147525784
+      square marker: -1680720229
       stone: 623669451
       water: -1335790571
       wood: 1605545508

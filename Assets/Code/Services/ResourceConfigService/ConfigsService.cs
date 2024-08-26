@@ -10,6 +10,9 @@ internal class ConfigsService : MonoSingleton<ConfigsService>
     private Dictionary<ResourceType, ResourceConfig> _cashedResourcesConfigs;
     private Dictionary<ToolType, ToolConfig> _cashedToolsConfigs;
 
+    internal IReadOnlyDictionary<ResourceType, ResourceConfig> ResourcesConfigs => _cashedResourcesConfigs;
+    internal IReadOnlyDictionary<ToolType, ToolConfig> ToolsConfigs => _cashedToolsConfigs;
+
     protected override void Awake()
     {
         base.Awake();

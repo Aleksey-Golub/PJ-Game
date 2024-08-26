@@ -34,6 +34,8 @@ internal class Player : MonoBehaviour, IDisposable
     private ToolType _lastAbsentTool;
     private Dictionary<IResourceConsumer, ResourceConsumerNeeds> _lastConsumersData;
     private HashSet<IResourceConsumer> _currentConsumers = new();
+    private SellBoard _sellBoard;
+    private bool _inSellBoard;
 
     #region EDITOR_ONLY
 
@@ -158,6 +160,7 @@ internal class Player : MonoBehaviour, IDisposable
         if (Physics2D.OverlapCircleNonAlloc(forTriggerCenter, _collider2D.radius, _buffer) > 0)
         {
             _currentConsumers.Clear();
+            _inSellBoard = false;
             foreach (Collider2D collider in _buffer)
             {
                 if (collider == null)
@@ -169,6 +172,7 @@ internal class Player : MonoBehaviour, IDisposable
                 OnTrigger2D(collider);
             }
             HandleConsumers();
+            HandleSellBoard();
 
             _buffer.Refresh();
         }
@@ -200,6 +204,12 @@ internal class Player : MonoBehaviour, IDisposable
         {
             _inventory.Add(tool.Type);
             tool.Collect();
+        }
+
+        if (other.TryGetComponent(out SellBoard sellBoard))
+        {
+            _sellBoard = sellBoard;
+            _inSellBoard = true;
         }
 
         if (other.TryGetComponent(out ResourceStorage resourceStorage))
@@ -324,17 +334,35 @@ internal class Player : MonoBehaviour, IDisposable
 
         if (consumersHandledCount > 0)
             _consumeTimer = 0;
+
+        // locals
+        static int GetConsumesValue(int inInventoryCount, int currentNeedResourceCount, int preferedConsumedValue)
+        {
+            int packSize = 0;
+            if (preferedConsumedValue < 1)
+                packSize = currentNeedResourceCount / 8 + 1;
+            else
+                packSize = preferedConsumedValue;
+
+            return inInventoryCount < packSize ? inInventoryCount : packSize;
+        }
     }
 
-    private static int GetConsumesValue(int inInventoryCount, int currentNeedResourceCount, int preferedConsumedValue)
+    private void HandleSellBoard()
     {
-        int packSize = 0;
-        if (preferedConsumedValue < 1)
-            packSize = currentNeedResourceCount / 8 + 1;
-        else
-            packSize = preferedConsumedValue;
+        if (_sellBoard == null)
+            return;
 
-        return inInventoryCount < packSize ? inInventoryCount : packSize;
+        if (_inSellBoard)
+        {
+            if (!_sellBoard.IsVisited)
+                _sellBoard.Open(_inventory);
+        }
+        else
+        {
+            _sellBoard.Close();
+            _sellBoard = null;
+        }
     }
 }
 

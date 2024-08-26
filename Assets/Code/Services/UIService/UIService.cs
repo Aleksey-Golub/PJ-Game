@@ -4,6 +4,7 @@ using UnityEngine;
 internal class UIService : MonoSingleton<UIService>
 {
     [SerializeField] private PlayerInventoryView _playerInventoryView;
+    [SerializeField] private SellBoardView _sellBoardView;
 
     internal IInventoryView GetPlayerInventoryView()
     {
@@ -11,5 +12,13 @@ internal class UIService : MonoSingleton<UIService>
         _playerInventoryView.Coustruct(configService);
 
         return _playerInventoryView;
+    }
+
+    internal SellBoardView GetSellBoardView()
+    {
+        var configService = ConfigsService.Instance;
+        _sellBoardView.Coustruct(configService);
+
+        return _sellBoardView;
     }
 }

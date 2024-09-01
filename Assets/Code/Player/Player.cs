@@ -30,6 +30,7 @@ internal class Player : MonoBehaviour, IDisposable
     private IInventoryView _inventoryView;
     private ConfigsService _configsService;
     private TransitionalResourceFactory _transitionalResourceFactory;
+    private PersistentProgressService _progressService;
     private Inventory _inventory;
     private ToolType _lastAbsentTool;
     private Dictionary<IResourceConsumer, ResourceConsumerNeeds> _lastConsumersData;
@@ -57,11 +58,18 @@ internal class Player : MonoBehaviour, IDisposable
         var configsService = ConfigsService.Instance;
         var popupFactory = PopupFactory.Instance;
         var transitionalResourceFactory = TransitionalResourceFactory.Instance;
+        var progressService = PersistentProgressService.Instance;
 
-        Construct(input, inventoryView, configsService, popupFactory, transitionalResourceFactory);
+        Construct(input, inventoryView, configsService, popupFactory, transitionalResourceFactory, progressService);
     }
 
-    private void Construct(IPlayerInput input, IInventoryView inventoryView, ConfigsService configsService, PopupFactory popupFactory, TransitionalResourceFactory transitionalResourceFactory)
+    private void Construct(
+        IPlayerInput input, 
+        IInventoryView inventoryView, 
+        ConfigsService configsService, 
+        PopupFactory popupFactory, 
+        TransitionalResourceFactory transitionalResourceFactory, 
+        PersistentProgressService progressService)
     {
         _buffer = new Collider2D[10];
         _inventory = new();
@@ -73,6 +81,8 @@ internal class Player : MonoBehaviour, IDisposable
         _inventoryView.Init(_inventory.Storage);
         _configsService = configsService;
         _transitionalResourceFactory = transitionalResourceFactory;
+
+        _progressService = progressService;
 
         _view.Construct(popupFactory);
 
@@ -209,6 +219,8 @@ internal class Player : MonoBehaviour, IDisposable
         {
             _inventory.Add(tool.Type);
             tool.Collect();
+            string toolID = _configsService.GetConfigFor(tool.Type).ID;
+            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Upgrade(toolID);
         }
 
         if (other.TryGetComponent(out SellBoard sellBoard))
@@ -384,7 +396,7 @@ internal class Player : MonoBehaviour, IDisposable
         if (_inUpgradeBoard)
         {
             if (!_upgradeBoard.IsVisited)
-                _upgradeBoard.Open();
+                _upgradeBoard.Open(_inventory);
         }
         else
         {

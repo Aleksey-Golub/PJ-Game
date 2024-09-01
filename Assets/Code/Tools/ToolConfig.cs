@@ -16,6 +16,7 @@ internal class ToolConfig : ScriptableObject, IDropObjectConfig
     internal AudioClip PickupAudio => _pickupAudio;
     internal bool IsUpgradable => _upgradable;
     internal IList<UpgradeStaticData> UpgradeStaticDatas => _upgradeDatas;
+    internal string ID => Type.ToString();
 }
 
 [Serializable]

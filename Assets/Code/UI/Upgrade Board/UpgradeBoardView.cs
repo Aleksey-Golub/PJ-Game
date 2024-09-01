@@ -15,15 +15,17 @@ namespace Assets.Code.UI
         [SerializeField] private AudioClip _closeButtonClickedClip;
 
         private ConfigsService _configService;
-        private Dictionary<ToolType, UpgradeItemView> _views;
-        private Action<ToolType> _upgradeResourceCalback;
+        private PersistentProgressService _progressService;
+        private Dictionary<string, UpgradeItemView> _views;
+        private Action<string> _upgradeResourceCalback;
 
         internal Action<ToolType> UpgradeButtonClicked;
 
-        internal void Coustruct(ConfigsService configService)
+        internal void Coustruct(ConfigsService configService, PersistentProgressService progressService)
         {
             _views = new();
             _configService = configService;
+            _progressService = progressService;
             FillViews();
 
             _closeButton.onClick.AddListener(CloseFromUI);
@@ -39,27 +41,39 @@ namespace Assets.Code.UI
             }
         }
 
-        internal void Open(Action<ToolType> upgradeResourceCalback)
+        internal void Open(Action<string> upgradeResourceCalback)
         {
             _upgradeResourceCalback = upgradeResourceCalback;
             gameObject.SetActive(true);
 
-            //Refresh(storage);
+            Refresh();
         }
 
-        //internal void Refresh(IReadOnlyDictionary<ResourceType, int> storage)
-        //{
-        //    foreach (var pair in storage)
-        //    {
-        //        ResourceType type = pair.Key;
+        internal void Refresh()
+        {
+            foreach (ToolConfig toolConfig in _configService.ToolsConfigs.Values)
+            {
+                if (!toolConfig.IsUpgradable)
+                    continue;
 
-        //        if (_views.TryGetValue(type, out SellItemView resView))
-        //        {
-        //            int itemsCount = pair.Value;
-        //            resView.SetData(itemsCount, itemsCount * _configService.ResourcesConfigs[type].Cost);
-        //        }
-        //    }
-        //}
+                int maxLevel = toolConfig.UpgradeStaticDatas.Count;
+                string MAX = "MAX";
+                string itemId = toolConfig.ID;
+                int currentLevel = _progressService.Progress.PlayerProgress.UpgradeItemsProgress.UpgradeItemsData.Dictionary[itemId];
+                int nextLevel = currentLevel + 1;
+                int nextLevelIndex = nextLevel - 1;
+                
+                string levelText = currentLevel >= maxLevel ? $"Lvl {MAX}" : $"Lvl {nextLevel}";
+                if (currentLevel >= maxLevel)
+                    nextLevelIndex = maxLevel - 1;
+
+                string upgradeText = $"Drop {toolConfig.UpgradeStaticDatas[nextLevelIndex].Value * 100}%";
+                string upgradeCostText = $"{toolConfig.UpgradeStaticDatas[nextLevelIndex].Cost}";
+                bool showButton = currentLevel < maxLevel && currentLevel != 0;
+
+                _views[toolConfig.ID].SetData(upgradeText, levelText, upgradeCostText, showButton);
+            }
+        }
 
         internal void Close()
         {
@@ -83,24 +97,21 @@ namespace Assets.Code.UI
                 var upgradeItemView = Instantiate(_prefab, _content);
                 upgradeItemView.Construct();
 
-                int nextLevel = 2;
-                int nextLevelIndex = nextLevel - 1;
-                ToolType type = toolConfig.Type;
+                string id = toolConfig.ID;
                 Sprite sprite = toolConfig.Sprite;
-                string upgradeText = $"Drop {toolConfig.UpgradeStaticDatas[nextLevelIndex].Value * 100}%";
-                string levelText = $"Lvl {nextLevelIndex}";
-                string upgradeCostText = $"{toolConfig.UpgradeStaticDatas[nextLevelIndex].Cost}";
-
-                upgradeItemView.Init(sprite, upgradeText, levelText, upgradeCostText, type);
+                
+                upgradeItemView.Init(sprite, id);
+                
                 upgradeItemView.UpgradeButtonClicked += OnUpgradeButtonClicked;
 
-                _views.Add(type, upgradeItemView);
+                _views.Add(id, upgradeItemView);
+                
             }
         }
 
-        private void OnUpgradeButtonClicked(ToolType type)
+        private void OnUpgradeButtonClicked(string itemID)
         {
-            _upgradeResourceCalback?.Invoke(type);
+            _upgradeResourceCalback?.Invoke(itemID);
         }
     }
 }

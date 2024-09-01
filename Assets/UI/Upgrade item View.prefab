@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 8890732472119421175}
+  _inactiveAlpha: 0.6
   _upgradeItemImage: {fileID: 6289666616198980952}
   _upgradeText: {fileID: 7100171682423009678}
   _levelText: {fileID: 7673141792278125333}

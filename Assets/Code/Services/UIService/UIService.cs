@@ -19,7 +19,8 @@ internal class UIService : MonoSingleton<UIService>
     internal UpgradeBoardView GetUpgradeBoardView()
     {
         var configService = ConfigsService.Instance;
-        _upgradeBoardView.Coustruct(configService);
+        var progressService = PersistentProgressService.Instance;
+        _upgradeBoardView.Coustruct(configService, progressService);
 
         return _upgradeBoardView;
     }

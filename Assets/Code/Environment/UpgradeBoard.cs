@@ -1,32 +1,41 @@
 using Assets.Code.UI;
 using System;
+using System.Linq;
 using UnityEngine;
 
 internal class UpgradeBoard : MonoBehaviour
 {
     private UpgradeBoardView _view;
     private ConfigsService _configService;
+    private PersistentProgressService _progressService;
 
     internal bool IsVisited { get; private set; }
-    
+
+    private Inventory _inventory;
+
     private void Start()
     {
         var upgradeBoardView = UIService.Instance.GetUpgradeBoardView();
         var configService = ConfigsService.Instance;
-        Construct(upgradeBoardView, configService);
+        var progressService = PersistentProgressService.Instance;
+
+        Construct(upgradeBoardView, configService, progressService);
     }
 
-    private void Construct(UpgradeBoardView sellBoardView, ConfigsService configService)
+    private void Construct(UpgradeBoardView sellBoardView, ConfigsService configService, PersistentProgressService progressService)
     {
         _configService = configService;
+        _progressService = progressService;
+
         _view = sellBoardView;
     }
 
-    internal void Open()
+    internal void Open(Inventory inventory)
     {
         Logger.Log($"[UpgradeBoard] Opened");
         IsVisited = true;
 
+        _inventory = inventory;
         _view.Open(UpgradeItem);
     }
 
@@ -35,20 +44,25 @@ internal class UpgradeBoard : MonoBehaviour
         Logger.Log($"[UpgradeBoard] Closed");
         IsVisited = false;
 
+        _inventory = null;
+
         if (_view.gameObject.activeSelf)
             _view.Close();
     }
 
-    private void UpgradeItem(ToolType type)
+    private void UpgradeItem(string itemId)
     {
-        Logger.Log($"[UpgradeBoard] {type} upgraded");
+        int nextLevelIndex = _progressService.Progress.PlayerProgress.UpgradeItemsProgress.UpgradeItemsData.Dictionary[itemId];
+        var cost = _configService.ToolsConfigs.First(p => p.Value.ID == itemId).Value.UpgradeStaticDatas[nextLevelIndex].Cost;
 
-        //_inventory.GetCount(type, out int count);
-        //_inventory.Remove(type, count);
+        if (_inventory.Has(ResourceType.COIN, cost))
+        {
+            Logger.Log($"[UpgradeBoard] {itemId} upgrading");
+    
+            _inventory.Remove(ResourceType.COIN, cost);
+            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Upgrade(itemId);
 
-        //int coinsCount = _configService.GetConfigFor(type).Cost * count;
-        //_inventory.Add(ResourceType.COIN, coinsCount);
-
-        //_view.Refresh(_inventory.Storage);
+            _view.Refresh();
+        }
     }
 }

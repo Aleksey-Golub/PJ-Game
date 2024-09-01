@@ -15,3 +15,15 @@ MonoBehaviour:
   _type: 4
   _sprite: {fileID: 1356712221, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   _pickupAudio: {fileID: 8300000, guid: f2772020d0ade4e49a8c5244bd94ac97, type: 3}
+  _upgradable: 1
+  _upgradeDatas:
+  - Value: 1
+    Cost: 0
+  - Value: 1.25
+    Cost: 50
+  - Value: 1.5
+    Cost: 100
+  - Value: 1.75
+    Cost: 200
+  - Value: 2
+    Cost: 400

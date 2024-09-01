@@ -643,15 +643,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_26
+      name: Upgrade Board
       rect:
         serializedVersion: 2
-        x: 83
-        y: 24
-        width: 36
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 85
+        y: 26
+        width: 32
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1973,6 +1973,7 @@ TextureImporter:
       Store Stone: -1933862564
       Store Water: -1651462942
       Store Wood: -1227099510
+      Upgrade Board: 300748501
       Workbench: -1322168670
       Workshop: 1598320641
       Workshop cloud: -2142500503
@@ -1987,7 +1988,6 @@ TextureImporter:
       __main.texturec-0-flipped_19: 1269199810
       __main.texturec-0-flipped_20: 1708683217
       __main.texturec-0-flipped_25: -691325619
-      __main.texturec-0-flipped_26: 300748501
       __main.texturec-0-flipped_28: -1977366518
       __main.texturec-0-flipped_3: -1571978254
       __main.texturec-0-flipped_4: 752955290

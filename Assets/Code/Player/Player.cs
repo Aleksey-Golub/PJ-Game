@@ -34,8 +34,11 @@ internal class Player : MonoBehaviour, IDisposable
     private ToolType _lastAbsentTool;
     private Dictionary<IResourceConsumer, ResourceConsumerNeeds> _lastConsumersData;
     private HashSet<IResourceConsumer> _currentConsumers = new();
+
     private SellBoard _sellBoard;
     private bool _inSellBoard;
+    private UpgradeBoard _upgradeBoard;
+    private bool _inUpgradeBoard;
 
     #region EDITOR_ONLY
 
@@ -161,6 +164,7 @@ internal class Player : MonoBehaviour, IDisposable
         {
             _currentConsumers.Clear();
             _inSellBoard = false;
+            _inUpgradeBoard = false;
             foreach (Collider2D collider in _buffer)
             {
                 if (collider == null)
@@ -173,6 +177,7 @@ internal class Player : MonoBehaviour, IDisposable
             }
             HandleConsumers();
             HandleSellBoard();
+            HandleUpgradeBoard();
 
             _buffer.Refresh();
         }
@@ -210,6 +215,12 @@ internal class Player : MonoBehaviour, IDisposable
         {
             _sellBoard = sellBoard;
             _inSellBoard = true;
+        }
+
+        if (other.TryGetComponent(out UpgradeBoard upgradeBoard))
+        {
+            _upgradeBoard = upgradeBoard;
+            _inUpgradeBoard = true;
         }
 
         if (other.TryGetComponent(out ResourceStorage resourceStorage))
@@ -362,6 +373,23 @@ internal class Player : MonoBehaviour, IDisposable
         {
             _sellBoard.Close();
             _sellBoard = null;
+        }
+    }
+
+    private void HandleUpgradeBoard()
+    {
+        if (_upgradeBoard == null)
+            return;
+
+        if (_inUpgradeBoard)
+        {
+            if (!_upgradeBoard.IsVisited)
+                _upgradeBoard.Open();
+        }
+        else
+        {
+            _upgradeBoard.Close();
+            _upgradeBoard = null;
         }
     }
 }

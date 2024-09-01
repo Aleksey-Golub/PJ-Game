@@ -20,12 +20,12 @@ namespace Assets.Code.UI
 
         internal void Construct()
         {
-            _sellButton.onClick.AddListener(OnSellButtonClicked);
+            _sellButton.onClick.AddListener(OnButtonClicked);
         }
 
         private void OnDestroy()
         {
-            _sellButton.onClick.RemoveListener(OnSellButtonClicked);
+            _sellButton.onClick.RemoveListener(OnButtonClicked);
         }
 
         internal void Init(Sprite sellItemSprite, int sellItemCount, int totalCost, ResourceType resourceType)
@@ -43,7 +43,7 @@ namespace Assets.Code.UI
             gameObject.SetActive(sellItemCount != 0);
         }
 
-        private void OnSellButtonClicked()
+        private void OnButtonClicked()
         {
             AudioSource.PlayClipAtPoint(_sellButtonClickedClip, Camera.main.transform.position);
             SellButtonClicked?.Invoke(_resourceType);

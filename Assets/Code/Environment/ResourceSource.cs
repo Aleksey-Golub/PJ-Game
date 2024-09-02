@@ -16,7 +16,7 @@ internal class ResourceSource : MonoBehaviour
     [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
 
     private ResourceFactory _resourceFactory;
-
+    private DropCountCalculatorService _dropCalculator;
     protected float _restorationTimer = 0;
     protected int _currentHitPoints = 0;
 
@@ -27,12 +27,15 @@ internal class ResourceSource : MonoBehaviour
     private void Start()
     {
         var resourceFactory = ResourceFactory.Instance;
-        Construct(resourceFactory);
+        var dropCountCalculatorService = DropCountCalculatorService.Instance;
+
+        Construct(resourceFactory, dropCountCalculatorService);
     }
 
-    private void Construct(ResourceFactory resourceFactory)
+    private void Construct(ResourceFactory resourceFactory, DropCountCalculatorService dropCountCalculatorService)
     {
         _resourceFactory = resourceFactory;
+        _dropCalculator = dropCountCalculatorService;
 
         RestoreHP(_hitPoints);
     }
@@ -81,8 +84,8 @@ internal class ResourceSource : MonoBehaviour
     protected void DropResource()
     {
         _view.PlayDropResourceSound();
-
-        var dropData = DropData.Get(transform.position, _dropSettings, _dropResourceCount, out int notFittedInPacksCount);
+        int count = _dropCalculator.Calculate(_dropResourceCount, _resourceConfig.Type, NeedToolType);
+        var dropData = DropData.Get(transform.position, _dropSettings, count, out int notFittedInPacksCount);
 
         for (int i = 0; i < dropData.Count; i++)
         {

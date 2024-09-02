@@ -1,10 +1,11 @@
-﻿using System;
-
-namespace Assets.Code.Data
+﻿namespace Assets.Code.Data
 {
     [System.Serializable]
     public class UpgradeItemsProgress
     {
+        /// <summary>
+        /// Contains dictionary of [upgradableItemId, currentLevel] data. Default level is 0
+        /// </summary>
         public UpgradeItemsDataDictionary UpgradeItemsData = new UpgradeItemsDataDictionary();
 
         internal void Upgrade(string itemID)

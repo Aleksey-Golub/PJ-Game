@@ -5,7 +5,7 @@ internal class PersistentProgressService : MonoSingleton<PersistentProgressServi
     internal GameProgress Progress {get; set;}
 
 #region Not PersistentProgressService, move to Load Progress game State
-
+    // TODO: see region
     private void Start()
     {
         GameProgress loadedProgress = null;

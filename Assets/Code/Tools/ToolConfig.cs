@@ -15,8 +15,21 @@ internal class ToolConfig : ScriptableObject, IDropObjectConfig
     public Sprite Sprite => _sprite;
     internal AudioClip PickupAudio => _pickupAudio;
     internal bool IsUpgradable => _upgradable;
-    internal IList<UpgradeStaticData> UpgradeStaticDatas => _upgradeDatas;
     internal string ID => Type.ToString();
+
+    internal UpgradeStaticData GetUpgradeData(int level)
+    {
+        int levelIndex = level - 1;
+        if (levelIndex < 0 || levelIndex >= _upgradeDatas.Count)
+        {
+            Logger.LogError($"[ToolConfig] for {_type} Error: level {level} is not implemented. Return default");
+            return default;
+        }
+        
+        return _upgradeDatas[levelIndex];
+    }
+
+    internal int GetMaxLevel() => _upgradeDatas.Count;
 }
 
 [Serializable]
@@ -44,6 +57,7 @@ internal class ResourceStorageConfig : ScriptableObject
 interface IUpgradable
 {
     Sprite Sprite { get; }
+
     /// <summary>
     /// Practiscal result of upgrade
     /// </summary>

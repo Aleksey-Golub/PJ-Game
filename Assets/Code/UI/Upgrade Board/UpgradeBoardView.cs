@@ -56,19 +56,18 @@ namespace Assets.Code.UI
                 if (!toolConfig.IsUpgradable)
                     continue;
 
-                int maxLevel = toolConfig.UpgradeStaticDatas.Count;
+                int maxLevel = toolConfig.GetMaxLevel();
                 string MAX = "MAX";
                 string itemId = toolConfig.ID;
                 int currentLevel = _progressService.Progress.PlayerProgress.UpgradeItemsProgress.UpgradeItemsData.Dictionary[itemId];
                 int nextLevel = currentLevel + 1;
-                int nextLevelIndex = nextLevel - 1;
                 
                 string levelText = currentLevel >= maxLevel ? $"Lvl {MAX}" : $"Lvl {nextLevel}";
                 if (currentLevel >= maxLevel)
-                    nextLevelIndex = maxLevel - 1;
+                    nextLevel = maxLevel;
 
-                string upgradeText = $"Drop {toolConfig.UpgradeStaticDatas[nextLevelIndex].Value * 100}%";
-                string upgradeCostText = $"{toolConfig.UpgradeStaticDatas[nextLevelIndex].Cost}";
+                string upgradeText = $"Drop {toolConfig.GetUpgradeData(nextLevel).Value * 100}%";
+                string upgradeCostText = $"{toolConfig.GetUpgradeData(nextLevel).Cost}";
                 bool showButton = currentLevel < maxLevel && currentLevel != 0;
 
                 _views[toolConfig.ID].SetData(upgradeText, levelText, upgradeCostText, showButton);

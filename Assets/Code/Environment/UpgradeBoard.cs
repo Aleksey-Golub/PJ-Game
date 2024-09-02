@@ -52,8 +52,8 @@ internal class UpgradeBoard : MonoBehaviour
 
     private void UpgradeItem(string itemId)
     {
-        int nextLevelIndex = _progressService.Progress.PlayerProgress.UpgradeItemsProgress.UpgradeItemsData.Dictionary[itemId];
-        var cost = _configService.ToolsConfigs.First(p => p.Value.ID == itemId).Value.UpgradeStaticDatas[nextLevelIndex].Cost;
+        int nextLevel = _progressService.Progress.PlayerProgress.UpgradeItemsProgress.UpgradeItemsData.Dictionary[itemId] + 1;
+        var cost = _configService.ToolsConfigs.First(p => p.Value.ID == itemId).Value.GetUpgradeData(nextLevel).Cost;
 
         if (_inventory.Has(ResourceType.COIN, cost))
         {

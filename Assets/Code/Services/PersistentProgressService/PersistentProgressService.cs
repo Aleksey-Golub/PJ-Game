@@ -6,8 +6,10 @@ internal class PersistentProgressService : MonoSingleton<PersistentProgressServi
 
 #region Not PersistentProgressService, move to Load Progress game State
     // TODO: see region
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
+
         GameProgress loadedProgress = null;
         Progress = loadedProgress ?? NewProgress();
 
@@ -34,9 +36,9 @@ internal class PersistentProgressService : MonoSingleton<PersistentProgressServi
         var upgradeItemsData = progress.PlayerProgress.UpgradeItemsProgress.UpgradeItemsData;
         int startUpgradeLevel = 0;
 
-        foreach (var toolConfig in configsService.ToolsConfigs)
-            if (toolConfig.Value.IsUpgradable)
-               upgradeItemsData.Dictionary.Add(toolConfig.Value.ID, startUpgradeLevel);
+        foreach (IUpgradable config in configsService.UpgradablesConfigs)
+            if (config.IsUpgradable)
+               upgradeItemsData.Dictionary.Add(config.ID, startUpgradeLevel);
     }
 #endregion
 }

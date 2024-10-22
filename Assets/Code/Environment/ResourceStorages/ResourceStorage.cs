@@ -6,6 +6,7 @@ internal class ResourceStorage : MonoBehaviour
     [SerializeField] private ResourceStorageView _view;
 
     [Header("Settings")]
+    [SerializeField] private ResourceStorageConfig _config;
     [SerializeField] private ToolType _needToolType = ToolType.None;
     [SerializeField] private ResourceConfig _resourceConfig;
     [SerializeField, Min(1)] private int _dropResourceCount = 1;
@@ -15,27 +16,50 @@ internal class ResourceStorage : MonoBehaviour
     [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
 
     private ResourceFactory _resourceFactory;
-
+    private PersistentProgressService _progressService;
     private float _restorationTimer = 0;
     private int _currentResourceCount;
 
-    private bool IsFull => _currentResourceCount >= _dropResourceCount;
+    private bool IsFull => _currentResourceCount >= GetDropResourceCount();
     private bool IsSingleUse => _restoreTime < 0;
     internal bool CanInteract => _currentResourceCount > 0;
     internal ToolType NeedToolType => _needToolType;
     private void Start()
     {
         var resourceFactory = ResourceFactory.Instance;
-        Construct(resourceFactory);
+        var progressService = PersistentProgressService.Instance;
+        Construct(resourceFactory, progressService);
     }
 
-    private void Construct(ResourceFactory resourceFactory)
+    private void Construct(ResourceFactory resourceFactory, PersistentProgressService progressService)
     {
         _resourceFactory = resourceFactory;
+        _progressService = progressService;
+
+        if (_config)
+        {
+            UnlockUpgrade(_progressService);
+            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed += OnUpgradeItemsProgressChanged;
+        }
 
         _currentResourceCount = _startResourceCount;
-        _view.ShowResourceCount(_currentResourceCount, _dropResourceCount);
+        _view.ShowResourceCount(_currentResourceCount, GetDropResourceCount());
         _view.ShowWhole();
+
+        void UnlockUpgrade(PersistentProgressService progressService)
+        {
+            Assets.Code.Data.UpgradeItemsProgress upgradeItemsProgress = progressService.Progress.PlayerProgress.UpgradeItemsProgress;
+            string id = _config.ID;
+            upgradeItemsProgress.TryGet(id, out int value);
+            if (value == 0)
+                upgradeItemsProgress.Set(id, 1);
+        }
+    }
+
+    private void OnUpgradeItemsProgressChanged(string itemId, int newValue)
+    {
+        if (itemId == _config.ID)
+            _view.ShowResourceCount(_currentResourceCount, GetDropResourceCount());
     }
 
     private void Update()
@@ -56,10 +80,18 @@ internal class ResourceStorage : MonoBehaviour
 
         _restorationTimer += Time.deltaTime;
 
-        if (_restorationTimer >= _restoreTime && _currentResourceCount < _dropResourceCount)
+        if (_restorationTimer >= _restoreTime && _currentResourceCount < GetDropResourceCount())
         {
             _restorationTimer = 0;
             Restore(1);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_config)
+        {
+            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed -= OnUpgradeItemsProgressChanged;
         }
     }
 
@@ -94,7 +126,7 @@ internal class ResourceStorage : MonoBehaviour
     private void Exhaust()
     {
         _currentResourceCount = 0;
-        _view.ShowResourceCount(_currentResourceCount, _dropResourceCount);
+        _view.ShowResourceCount(_currentResourceCount, GetDropResourceCount());
         _view.ShowExhaust();
 
         if (IsSingleUse)
@@ -112,7 +144,18 @@ internal class ResourceStorage : MonoBehaviour
             return;
 
         _currentResourceCount += value;
-        _view.ShowResourceCount(_currentResourceCount, _dropResourceCount);
+        _view.ShowResourceCount(_currentResourceCount, GetDropResourceCount());
         _view.ShowWhole();
+    }
+
+    private int GetDropResourceCount()
+    {
+        if (!_config)
+            return _dropResourceCount;
+        else
+        {
+            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(_config.ID, out int level);
+            return (int)_config.GetUpgradeData(level).Value;
+        }
     }
 }

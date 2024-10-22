@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 431913108fdeee441b7c5da09e491066, type: 3}
+  m_Name: egg_storage
+  m_EditorClassIdentifier: 
+  _type: 5
+  _sprite: {fileID: 965695468, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
+  _upgradable: 1
+  _upgradeDatas:
+  - Value: 5
+    Cost: 0
+  - Value: 10
+    Cost: 200
+  - Value: 15
+    Cost: 400
+  - Value: 20
+    Cost: 800

@@ -51,26 +51,41 @@ namespace Assets.Code.UI
 
         internal void Refresh()
         {
-            foreach (ToolConfig toolConfig in _configService.ToolsConfigs.Values)
+            foreach (IUpgradable config in _configService.UpgradablesConfigs)
             {
-                if (!toolConfig.IsUpgradable)
+                if (!config.IsUpgradable)
                     continue;
 
-                int maxLevel = toolConfig.GetMaxLevel();
+                int maxLevel = config.GetMaxLevel();
                 string MAX = "MAX";
-                string itemId = toolConfig.ID;
-                int currentLevel = _progressService.Progress.PlayerProgress.UpgradeItemsProgress.UpgradeItemsData.Dictionary[itemId];
+                string itemId = config.ID;
+                _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(itemId, out int currentLevel);
                 int nextLevel = currentLevel + 1;
-                
+
                 string levelText = currentLevel >= maxLevel ? $"Lvl {MAX}" : $"Lvl {nextLevel}";
                 if (currentLevel >= maxLevel)
                     nextLevel = maxLevel;
 
-                string upgradeText = $"Drop {toolConfig.GetUpgradeData(nextLevel).Value * 100}%";
-                string upgradeCostText = $"{toolConfig.GetUpgradeData(nextLevel).Cost}";
+                string upgradeText = GetUpgradeText(config, nextLevel);
+                string upgradeCostText = $"{config.GetUpgradeData(nextLevel).Cost}";
                 bool showButton = currentLevel < maxLevel && currentLevel != 0;
 
-                _views[toolConfig.ID].SetData(upgradeText, levelText, upgradeCostText, showButton);
+                _views[config.ID].SetData(upgradeText, levelText, upgradeCostText, showButton);
+            }
+        }
+
+        private static string GetUpgradeText(IUpgradable config, int nextLevel)
+        {
+            switch (config.UpgradableType)
+            {
+                case UpgradableType.Tool:
+                    return $"Drop: {config.GetUpgradeData(nextLevel).Value * 100}%";
+                case UpgradableType.ResourceStorage:
+                case UpgradableType.Converter:
+                    return $"Capacity: {config.GetUpgradeData(nextLevel).Value}";
+                case UpgradableType.None:
+                default:
+                    throw new NotImplementedException($"[UpgradeBoardView] Not implemented for {config.UpgradableType}");
             }
         }
 
@@ -88,16 +103,16 @@ namespace Assets.Code.UI
 
         private void FillViews()
         {
-            foreach (ToolConfig toolConfig in _configService.ToolsConfigs.Values)
+            foreach (IUpgradable config in _configService.UpgradablesConfigs)
             {
-                if (!toolConfig.IsUpgradable)
+                if (!config.IsUpgradable)
                     continue;
 
                 var upgradeItemView = Instantiate(_prefab, _content);
                 upgradeItemView.Construct();
 
-                string id = toolConfig.ID;
-                Sprite sprite = toolConfig.Sprite;
+                string id = config.ID;
+                Sprite sprite = config.Sprite;
                 
                 upgradeItemView.Init(sprite, id);
                 

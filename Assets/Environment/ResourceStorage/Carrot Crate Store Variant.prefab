@@ -53,6 +53,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2872169157991871229, guid: aaf1d4e122fdf004db64c4c42f759b69, type: 3}
+      propertyPath: _config
+      value: 
+      objectReference: {fileID: 11400000, guid: db28620e13a3bd942820c2db08c4a90b, type: 2}
+    - target: {fileID: 2872169157991871229, guid: aaf1d4e122fdf004db64c4c42f759b69, type: 3}
       propertyPath: _restoreTime
       value: 10
       objectReference: {fileID: 0}

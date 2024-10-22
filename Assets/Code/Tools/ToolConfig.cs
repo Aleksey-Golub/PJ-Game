@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "newToolConfig", menuName = "Configs/ToolConfig")]
-internal class ToolConfig : ScriptableObject, IDropObjectConfig
+internal class ToolConfig : ScriptableObject, IDropObjectConfig, IUpgradable
 {
     [SerializeField] private ToolType _type;
     [SerializeField] private Sprite _sprite;
@@ -11,13 +10,14 @@ internal class ToolConfig : ScriptableObject, IDropObjectConfig
     [SerializeField] private bool _upgradable;
     [SerializeField] private List<UpgradeStaticData> _upgradeDatas;
 
-    internal ToolType Type => _type;
     public Sprite Sprite => _sprite;
+    public bool IsUpgradable => _upgradable;
+    public UpgradableType UpgradableType => UpgradableType.Tool;
+    public string ID => Type.ToString();
+    internal ToolType Type => _type;
     internal AudioClip PickupAudio => _pickupAudio;
-    internal bool IsUpgradable => _upgradable;
-    internal string ID => Type.ToString();
 
-    internal UpgradeStaticData GetUpgradeData(int level)
+    public UpgradeStaticData GetUpgradeData(int level)
     {
         int levelIndex = level - 1;
         if (levelIndex < 0 || levelIndex >= _upgradeDatas.Count)
@@ -29,14 +29,7 @@ internal class ToolConfig : ScriptableObject, IDropObjectConfig
         return _upgradeDatas[levelIndex];
     }
 
-    internal int GetMaxLevel() => _upgradeDatas.Count;
-}
-
-[Serializable]
-public struct UpgradeStaticData
-{
-    public float Value;
-    public int Cost;
+    public int GetMaxLevel() => _upgradeDatas.Count;
 }
 
 internal enum ToolType
@@ -47,29 +40,4 @@ internal enum ToolType
     PICKAXE = 3,
     SWORD   = 4,
     BUCKET  = 5,
-}
-
-internal class ResourceStorageConfig : ScriptableObject
-{
-
-}
-
-interface IUpgradable
-{
-    Sprite Sprite { get; }
-
-    /// <summary>
-    /// Practiscal result of upgrade
-    /// </summary>
-    float Value { get; }
-    UpgradableType Type { get; }
-    
-}
-
-public enum UpgradableType
-{
-    None = 0,
-    Tool = 1,
-    ResourceStorage = 2,
-    Converter = 3,
 }

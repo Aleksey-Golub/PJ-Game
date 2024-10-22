@@ -1,5 +1,4 @@
 using Assets.Code.UI;
-using System;
 using System.Linq;
 using UnityEngine;
 
@@ -52,8 +51,9 @@ internal class UpgradeBoard : MonoBehaviour
 
     private void UpgradeItem(string itemId)
     {
-        int nextLevel = _progressService.Progress.PlayerProgress.UpgradeItemsProgress.UpgradeItemsData.Dictionary[itemId] + 1;
-        var cost = _configService.ToolsConfigs.First(p => p.Value.ID == itemId).Value.GetUpgradeData(nextLevel).Cost;
+        _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(itemId, out int value);
+        int nextLevel = value + 1;
+        var cost = _configService.UpgradablesConfigs.First(u => u.ID == itemId).GetUpgradeData(nextLevel).Cost;
 
         if (_inventory.Has(ResourceType.COIN, cost))
         {

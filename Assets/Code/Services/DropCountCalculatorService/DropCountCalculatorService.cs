@@ -28,7 +28,7 @@ internal class DropCountCalculatorService : MonoSingleton<DropCountCalculatorSer
     {
         ToolConfig toolConfig = _configsService.GetConfigFor(needToolType);
         string toolId = toolConfig.ID;
-        int toolUpgradeLevel = _progressService.Progress.PlayerProgress.UpgradeItemsProgress.UpgradeItemsData.Dictionary[toolId];
+        _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(toolId, out int toolUpgradeLevel);
 
         if (toolUpgradeLevel <= 0)
         {

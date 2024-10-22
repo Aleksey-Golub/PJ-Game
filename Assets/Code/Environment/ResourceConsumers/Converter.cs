@@ -5,6 +5,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
 {
     [SerializeField] private ConverterView _view;
 
+    [SerializeField] private ConverterConfig _config;
     [SerializeField] private ResourceConfig _needResourceConfig;
     [SerializeField] private int _singleUpload = 5;
     [SerializeField] private int _maxUpload = 25;
@@ -20,16 +21,18 @@ public class Converter : MonoBehaviour, IResourceConsumer
     private int _currentUpload;
     private int _currentPreUpload;
     private ResourceFactory _resourceFactory;
+    private PersistentProgressService _progressService;
 
-    public bool CanInteract => _currentUpload < _maxUpload && _currentPreUpload < _maxUpload;
+    public bool CanInteract => _currentUpload < GetMaxUpload() && _currentPreUpload < GetMaxUpload();
     public int PreferedConsumedValue => _preferedConsumedValue;
-    public int FreeSpace => _maxUpload - _currentPreUpload;
+    public int FreeSpace => GetMaxUpload() - _currentPreUpload;
     public Vector3 TransitionalResourceFinalPosition => _transitionalResourceFinal.position;
 
     private void Start()
     {
         var resourceFactory = ResourceFactory.Instance;
-        Construct(resourceFactory);
+        var progressService = PersistentProgressService.Instance;
+        Construct(resourceFactory, progressService);
         Init();
     }
 
@@ -37,10 +40,33 @@ public class Converter : MonoBehaviour, IResourceConsumer
     {
         OnUpdate(Time.deltaTime);
     }
+    private void OnDestroy()
+    {
+        if (_config)
+        {
+            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed -= OnUpgradeItemsProgressChanged;
+        }
+    }
 
-    private void Construct(ResourceFactory resourceFactory)
+    private void Construct(ResourceFactory resourceFactory, PersistentProgressService progressService)
     {
         _resourceFactory = resourceFactory;
+        _progressService = progressService;
+
+        if (_config)
+        {
+            UnlockUpgrade(_progressService);
+            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed += OnUpgradeItemsProgressChanged;
+        }
+
+        void UnlockUpgrade(PersistentProgressService progressService)
+        {
+            Assets.Code.Data.UpgradeItemsProgress upgradeItemsProgress = progressService.Progress.PlayerProgress.UpgradeItemsProgress;
+            string id = _config.ID;
+            upgradeItemsProgress.TryGet(id, out int value);
+            if (value == 0)
+                upgradeItemsProgress.Set(id, 1);
+        }
     }
 
     internal void Init()
@@ -51,7 +77,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
 
         _view.Init(_needResourceConfig.Sprite, _currentUpload, _dropResourceConfig.Sprite);
         _view.ShowNeeds(_singleUpload);
-        _view.ShowUpload(_currentUpload, _maxUpload);
+        _view.ShowUpload(_currentUpload, GetMaxUpload());
         _view.ShowProgress(_timer, _converTime);
     }
 
@@ -68,7 +94,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
             
             _currentUpload -= _singleUpload;
             _currentPreUpload -= _singleUpload;
-            _view.ShowUpload(_currentUpload, _maxUpload);
+            _view.ShowUpload(_currentUpload, GetMaxUpload());
             DropResource();
         }
 
@@ -80,14 +106,14 @@ public class Converter : MonoBehaviour, IResourceConsumer
         return new ResourceConsumerNeeds()
         {
             ResourceType = _needResourceConfig.Type,
-            CurrentNeedResourceCount = _maxUpload - _currentUpload
+            CurrentNeedResourceCount = GetMaxUpload() - _currentUpload
         };
     }
 
     public void Consume(int value)
     {
         _currentUpload += value;
-        _view.ShowUpload(_currentUpload, _maxUpload);
+        _view.ShowUpload(_currentUpload, GetMaxUpload());
     }
 
     public void ApplyPreUpload(int consumedValue)
@@ -108,5 +134,22 @@ public class Converter : MonoBehaviour, IResourceConsumer
 
             dropObject.MoveAfterDrop(dropData[i]);
         }
+    }
+
+    private int GetMaxUpload()
+    {
+        if (!_config)
+            return _maxUpload;
+        else
+        {
+            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(_config.ID, out int level);
+            return (int)_config.GetUpgradeData(level).Value;
+        }
+    }
+
+    private void OnUpgradeItemsProgressChanged(string itemId, int newValue)
+    {
+        if (itemId == _config.ID)
+            _view.ShowUpload(_currentUpload, GetMaxUpload());
     }
 }

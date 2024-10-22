@@ -21,6 +21,10 @@ PrefabInstance:
       value: Pig Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _config
+      value: 
+      objectReference: {fileID: 11400000, guid: d234cef0cc1378e41baf096c647ec823, type: 2}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
       propertyPath: _maxUpload
       value: 16
       objectReference: {fileID: 0}

@@ -56,12 +56,6 @@ internal class ResourceStorage : MonoBehaviour
         }
     }
 
-    private void OnUpgradeItemsProgressChanged(string itemId, int newValue)
-    {
-        if (itemId == _config.ID)
-            _view.ShowResourceCount(_currentResourceCount, GetDropResourceCount());
-    }
-
     private void Update()
     {
         OnUpdate();
@@ -157,5 +151,11 @@ internal class ResourceStorage : MonoBehaviour
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(_config.ID, out int level);
             return (int)_config.GetUpgradeData(level).Value;
         }
+    }
+
+    private void OnUpgradeItemsProgressChanged(string itemId, int newValue)
+    {
+        if (itemId == _config.ID)
+            _view.ShowResourceCount(_currentResourceCount, GetDropResourceCount());
     }
 }

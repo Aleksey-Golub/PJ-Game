@@ -2467,6 +2467,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8856505b827138c47a409d4eec18bd68, type: 2}
   - {fileID: 11400000, guid: db28620e13a3bd942820c2db08c4a90b, type: 2}
   - {fileID: 11400000, guid: df0bd730f81a83c49ab02197f44e85ec, type: 2}
+  _converterConfigs:
+  - {fileID: 11400000, guid: 1aa7180cd33b6a841af0fdc7bdd4e9b1, type: 2}
+  - {fileID: 11400000, guid: d234cef0cc1378e41baf096c647ec823, type: 2}
 --- !u!4 &1172217154
 Transform:
   m_ObjectHideFlags: 0
@@ -3366,10 +3369,6 @@ PrefabInstance:
     - target: {fileID: 1975188044804624738, guid: 09f365d54c778cf47a483a34b07505ba, type: 3}
       propertyPath: m_Name
       value: Grass Store
-      objectReference: {fileID: 0}
-    - target: {fileID: 1975188044804624738, guid: 09f365d54c778cf47a483a34b07505ba, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2052509130286976045, guid: 09f365d54c778cf47a483a34b07505ba, type: 3}
       propertyPath: m_LocalPosition.x

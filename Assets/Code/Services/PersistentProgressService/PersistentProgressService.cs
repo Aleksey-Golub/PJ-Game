@@ -13,10 +13,10 @@ internal class PersistentProgressService : MonoSingleton<PersistentProgressServi
         GameProgress loadedProgress = null;
         Progress = loadedProgress ?? NewProgress();
 
-        foreach (var item in Progress.PlayerProgress.UpgradeItemsProgress.UpgradeItemsData.Dictionary)
-        {
-            Logger.Log($"{item.Key} : {item.Value}");
-        }
+        //foreach (var item in Progress.PlayerProgress.UpgradeItemsProgress.UpgradeItemsData.Dictionary)
+        //{
+        //    Logger.Log($"{item.Key} : {item.Value}");
+        //}
     }
 
     private GameProgress NewProgress()

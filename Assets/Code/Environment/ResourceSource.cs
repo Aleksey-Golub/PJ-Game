@@ -84,7 +84,7 @@ internal class ResourceSource : MonoBehaviour
     protected void DropResource()
     {
         _view.PlayDropResourceSound();
-        int count = _dropCalculator.Calculate(_dropResourceCount, _resourceConfig.Type, NeedToolType);
+        int count = _needToolType == ToolType.None ? _dropResourceCount : _dropCalculator.Calculate(_dropResourceCount, _resourceConfig.Type, NeedToolType);
         var dropData = DropData.Get(transform.position, _dropSettings, count, out int notFittedInPacksCount);
 
         for (int i = 0; i < dropData.Count; i++)

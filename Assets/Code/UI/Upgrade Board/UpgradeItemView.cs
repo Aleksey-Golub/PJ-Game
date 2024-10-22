@@ -20,6 +20,7 @@ namespace Assets.Code.UI
         private float _startAlpha;
         private bool _showButton = true;
 
+        internal bool ShowButton => _showButton;
         internal event Action<string> UpgradeButtonClicked;
 
         internal void Construct()

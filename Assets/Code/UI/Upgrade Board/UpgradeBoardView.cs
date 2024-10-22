@@ -46,6 +46,8 @@ namespace Assets.Code.UI
             _upgradeResourceCalback = upgradeResourceCalback;
             gameObject.SetActive(true);
 
+            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed += UpgradeItemsProgress_Changed;
+
             Refresh();
         }
 
@@ -72,6 +74,40 @@ namespace Assets.Code.UI
 
                 _views[config.ID].SetData(upgradeText, levelText, upgradeCostText, showButton);
             }
+
+            SortViews();
+
+            void SortViews()
+            {
+                int index = 0;
+                foreach (IUpgradable config in _configService.UpgradablesConfigs)
+                {
+                    string id = config.ID;
+
+                    if (!config.IsUpgradable)
+                        continue;
+
+                    if (!_views[id].ShowButton)
+                        continue;
+
+                    _views[id].transform.SetSiblingIndex(index);
+                    index++;
+                }
+
+                foreach (IUpgradable config in _configService.UpgradablesConfigs)
+                {
+                    string id = config.ID;
+
+                    if (!config.IsUpgradable)
+                        continue;
+
+                    if (_views[id].ShowButton)
+                        continue;
+
+                    _views[id].transform.SetSiblingIndex(index);
+                    index++;
+                }
+            }
         }
 
         private static string GetUpgradeText(IUpgradable config, int nextLevel)
@@ -91,6 +127,8 @@ namespace Assets.Code.UI
 
         internal void Close()
         {
+            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed -= UpgradeItemsProgress_Changed;
+
             _upgradeResourceCalback = null;
             gameObject.SetActive(false);
         }
@@ -127,5 +165,7 @@ namespace Assets.Code.UI
         {
             _upgradeResourceCalback?.Invoke(itemID);
         }
+
+        private void UpgradeItemsProgress_Changed(string itemId, int newValue) => Refresh();
     }
 }

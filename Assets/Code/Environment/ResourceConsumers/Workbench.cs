@@ -38,14 +38,17 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
     {
         var resourceFactory = ResourceFactory.Instance;
         var toolFactory = ToolFactory.Instance;
-        Construct(resourceFactory, toolFactory);
+        var audio = AudioService.Instance;
+        Construct(resourceFactory, toolFactory, audio);
         Init();
     }
 
-    private void Construct(ResourceFactory resourceFactory, ToolFactory toolFactory)
+    private void Construct(ResourceFactory resourceFactory, ToolFactory toolFactory, AudioService audio)
     {
         _resourceFactory = resourceFactory;
         _toolFactory = toolFactory;
+
+        _view.Construct(audio);
     }
 
     internal void Init()

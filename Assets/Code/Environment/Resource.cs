@@ -8,6 +8,7 @@ internal class Resource : MonoBehaviour, IMergingResource, IPoolable
 
     private Dropper _dropper;
     private IRecyclableFactory _factory;
+    private AudioService _audio;
     private ResourceConfig _config;
     private Coroutine _mergeCoroutine;
     private int _count;
@@ -21,9 +22,10 @@ internal class Resource : MonoBehaviour, IMergingResource, IPoolable
     public ResourceType Type => _config.Type;
     public Vector3 Position => transform.position;
 
-    void IPoolable.Construct(IRecyclableFactory factory)
+    void IPoolable.Construct(IRecyclableFactory factory, AudioService audio)
     {
         _factory = factory;
+        _audio = audio;
         _dropper = new();
     }
 
@@ -46,7 +48,7 @@ internal class Resource : MonoBehaviour, IMergingResource, IPoolable
 
     internal void Collect()
     {
-        AudioSource.PlayClipAtPoint(_config.PickupAudio, transform.position);
+        _audio.PlaySfxAtPosition(_config.PickupAudio, transform.position);
 
         _factory.Recycle(this);
     }

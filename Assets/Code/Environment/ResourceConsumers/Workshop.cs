@@ -23,12 +23,15 @@ public class Workshop : MonoBehaviour, IResourceConsumer
 
     private void Start()
     {
-        Construct();
+        var audio = AudioService.Instance;
+
+        Construct(audio);
         Init();
     }
 
-    private void Construct()
+    private void Construct(AudioService audio)
     {
+        _view.Construct(audio);
     }
 
     internal void Init()

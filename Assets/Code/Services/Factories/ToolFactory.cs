@@ -11,7 +11,13 @@ internal class ToolFactory : MonoSingleton<ToolFactory>, IRecyclableFactory
     {
         base.Awake();
 
-        _pool = new Pool<Tool>(_toolPrefab, transform, _poolSize, this);
+        var audio = AudioService.Instance;
+        Construct(audio);
+    }
+
+    private void Construct(AudioService audio)
+    {
+        _pool = new Pool<Tool>(_toolPrefab, transform, _poolSize, this, audio);
     }
 
     internal Tool Get(Vector3 position, Quaternion rotation)

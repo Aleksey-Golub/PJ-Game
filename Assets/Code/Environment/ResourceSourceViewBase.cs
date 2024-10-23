@@ -15,6 +15,12 @@ internal abstract class ResourceSourceViewBase : MonoBehaviour
     [SerializeField] private AudioClip _dropResourceAudioClip;
 
     private int _oldSortingOrder;
+    private AudioService _audio;
+
+    internal void Construct(AudioService audio)
+    {
+        _audio = audio;
+    }
 
     [ContextMenu(nameof(ShowExhaust))]
     internal void ShowExhaust()
@@ -51,12 +57,12 @@ internal abstract class ResourceSourceViewBase : MonoBehaviour
 
     internal void PlayHitSound()
     {
-        AudioSource.PlayClipAtPoint(_hitAudioClip, transform.position);
+        _audio.PlaySfxAtPosition(_hitAudioClip, transform.position);
     }
 
     internal void PlayDropResourceSound()
     {
-        AudioSource.PlayClipAtPoint(_dropResourceAudioClip, transform.position);
+        _audio.PlaySfxAtPosition(_dropResourceAudioClip, transform.position);
     }
 
     internal abstract void ShowHP(int currentHitPoints, int totalHitPoints);

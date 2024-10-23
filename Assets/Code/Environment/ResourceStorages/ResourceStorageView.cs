@@ -18,6 +18,7 @@ internal class ResourceStorageView : MonoBehaviour
     [SerializeField] private AudioClip _dropResourceAudioClip;
 
     private int _oldSortingOrder;
+    private AudioService _audio;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -27,16 +28,21 @@ internal class ResourceStorageView : MonoBehaviour
     }
 #endif
 
+    internal void Construct(AudioService audio)
+    {
+        _audio = audio;
+    }
+
     internal void PlayDropResourceSound()
     {
         if (_dropResourceAudioClip != null)
-            AudioSource.PlayClipAtPoint(_dropResourceAudioClip, transform.position);
+            _audio.PlaySfxAtPosition(_dropResourceAudioClip, transform.position);
     }
 
     internal void PlayHitSound()
     {
         if (_hitAudioClip != null)
-            AudioSource.PlayClipAtPoint(_hitAudioClip, transform.position);
+            _audio.PlaySfxAtPosition(_hitAudioClip, transform.position);
     }
 
     internal void ShowHitAnimation()

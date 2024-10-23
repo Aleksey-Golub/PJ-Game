@@ -11,7 +11,13 @@ internal class TransitionalResourceFactory: MonoSingleton<TransitionalResourceFa
     {
         base.Awake();
 
-        _pool = new Pool<TransitionalResource>(_TransitionalResourcePrefab, transform, _poolSize, this);
+        var audio = AudioService.Instance;
+        Construct(audio);
+    }
+
+    private void Construct(AudioService audio)
+    {
+        _pool = new Pool<TransitionalResource>(_TransitionalResourcePrefab, transform, _poolSize, this, audio);
     }
 
     internal TransitionalResource Get(Vector3 position, Quaternion rotation)

@@ -28,14 +28,17 @@ internal class ResourceSource : MonoBehaviour
     {
         var resourceFactory = ResourceFactory.Instance;
         var dropCountCalculatorService = DropCountCalculatorService.Instance;
+        var audio = AudioService.Instance;
 
-        Construct(resourceFactory, dropCountCalculatorService);
+        Construct(resourceFactory, dropCountCalculatorService, audio);
     }
 
-    private void Construct(ResourceFactory resourceFactory, DropCountCalculatorService dropCountCalculatorService)
+    private void Construct(ResourceFactory resourceFactory, DropCountCalculatorService dropCountCalculatorService, AudioService audio)
     {
         _resourceFactory = resourceFactory;
         _dropCalculator = dropCountCalculatorService;
+
+        _view.Construct(audio);
 
         RestoreHP(_hitPoints);
     }

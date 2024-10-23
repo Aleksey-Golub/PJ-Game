@@ -15,11 +15,14 @@ namespace Assets.Code.UI
         [SerializeField] private AudioClip _sellButtonClickedClip;
 
         private ResourceType _resourceType;
+        private AudioService _audio;
 
         internal event Action<ResourceType> SellButtonClicked;
 
-        internal void Construct()
+        internal void Construct(AudioService audio)
         {
+            _audio = audio;
+
             _sellButton.onClick.AddListener(OnButtonClicked);
         }
 
@@ -45,7 +48,7 @@ namespace Assets.Code.UI
 
         private void OnButtonClicked()
         {
-            AudioSource.PlayClipAtPoint(_sellButtonClickedClip, Camera.main.transform.position);
+            _audio.PlaySfxAtPosition(_sellButtonClickedClip, Camera.main.transform.position);
             SellButtonClicked?.Invoke(_resourceType);
         }
     }

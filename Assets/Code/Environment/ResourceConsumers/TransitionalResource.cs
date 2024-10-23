@@ -11,13 +11,15 @@ internal class TransitionalResource : MonoBehaviour, IPoolable
     [SerializeField] private AudioClip _transferAudioClip;
 
     private IRecyclableFactory _factory;
+    private AudioService _audio;
     private IResourceConsumer _consumer;
     private int _consumedValue;
     private Coroutine _moveCoroutine;
 
-    void IPoolable.Construct(IRecyclableFactory factory)
+    void IPoolable.Construct(IRecyclableFactory factory, AudioService audio)
     {
         _factory = factory;
+        _audio = audio;
     }
 
     internal void Init(IResourceConsumer consumer, int consumedValue, Sprite sprite)
@@ -59,6 +61,6 @@ internal class TransitionalResource : MonoBehaviour, IPoolable
 
     internal void PlayTransferSound()
     {
-        AudioSource.PlayClipAtPoint(_transferAudioClip, transform.position);
+        _audio.PlaySfxAtPosition(_transferAudioClip, transform.position);
     }
 }

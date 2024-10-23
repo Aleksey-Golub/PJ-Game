@@ -7,12 +7,14 @@ internal class Pool<T> where T : MonoBehaviour, IPoolable
     private readonly T _prefab;
     private readonly Transform _parent;
     private readonly IRecyclableFactory _factory;
+    private readonly AudioService _audio;
 
-    public Pool(T prefab, Transform parent, int initialPoolSize, IRecyclableFactory factory)
+    public Pool(T prefab, Transform parent, int initialPoolSize, IRecyclableFactory factory, AudioService audio)
     {
         _prefab = prefab;
         _parent = parent;
         _factory = factory;
+        _audio = audio;
         _pool = new Queue<T>(initialPoolSize);
         FillPool(initialPoolSize);
     }
@@ -26,7 +28,7 @@ internal class Pool<T> where T : MonoBehaviour, IPoolable
         else
         {
             obj = UnityEngine.Object.Instantiate(_prefab, _parent);
-            obj.Construct(_factory);
+            obj.Construct(_factory, _audio);
         }
 
         obj.transform.SetPositionAndRotation(position, rotation);
@@ -46,7 +48,7 @@ internal class Pool<T> where T : MonoBehaviour, IPoolable
         for (int i = 0; i < initialPoolSize; i++)
         {
             var newGO = UnityEngine.Object.Instantiate(_prefab, _parent);
-            newGO.Construct(_factory);
+            newGO.Construct(_factory, _audio);
 
             newGO.gameObject.SetActive(false);
 
@@ -57,7 +59,7 @@ internal class Pool<T> where T : MonoBehaviour, IPoolable
 
 interface IPoolable
 {
-    void Construct(IRecyclableFactory factory);
+    void Construct(IRecyclableFactory factory, AudioService audio);
 }
 
 interface IRecyclableFactory

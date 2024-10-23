@@ -475,13 +475,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_18
+      name: sound_on
       rect:
         serializedVersion: 2
-        x: 336
-        y: 54
-        width: 18
-        height: 18
+        x: 338
+        y: 57
+        width: 14
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -496,13 +496,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_19
+      name: sound_off
       rect:
         serializedVersion: 2
-        x: 339
-        y: 36
-        width: 18
-        height: 18
+        x: 341
+        y: 39
+        width: 14
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -517,13 +517,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_20
+      name: settings
       rect:
         serializedVersion: 2
-        x: 339
-        y: 18
-        width: 18
-        height: 18
+        x: 341
+        y: 20
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1944,6 +1944,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: music_on
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 102
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 074c7c98710e6ea42abcb7696ad664ee
+      internalID: 496096163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: music_off
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 104
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979231f29b2e4f8409ea0204b8813334
+      internalID: 665058631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1984,9 +2026,6 @@ TextureImporter:
       __main.texturec-0-flipped_13: -1901630335
       __main.texturec-0-flipped_15: -706577608
       __main.texturec-0-flipped_17: -1230980207
-      __main.texturec-0-flipped_18: -1045172846
-      __main.texturec-0-flipped_19: 1269199810
-      __main.texturec-0-flipped_20: 1708683217
       __main.texturec-0-flipped_25: -691325619
       __main.texturec-0-flipped_28: -1977366518
       __main.texturec-0-flipped_3: -1571978254
@@ -2017,14 +2056,18 @@ TextureImporter:
       grass: -667556626
       iron: -343440380
       iron_ore: -1107001721
+      main_0: 1215068654
       milk: 1368875871
       mind_cloud: -1030577411
+      music_off: 665058631
+      music_on: 496096163
       pot_damaged: 1933690828
       pot_whole: -1094742133
       sell board: 174787419
       sell board panel: -1206609723
       sell button: -989307427
       sell item frame: 1924533251
+      settings: 1708683217
       shadow: 565068700
       slime_1: -993347180
       slime_2: 2134976006
@@ -2039,6 +2082,8 @@ TextureImporter:
       slime_7: 1330088374
       slime_8: 1987201700
       slime_egg: 1147525784
+      sound_off: 1269199810
+      sound_on: -1045172846
       square marker: -1680720229
       stone: 623669451
       water: -1335790571

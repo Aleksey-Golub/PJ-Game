@@ -20,12 +20,15 @@ namespace Assets.Code.UI
         private Action<string> _upgradeResourceCalback;
 
         internal Action<ToolType> UpgradeButtonClicked;
+        private AudioService _audio;
 
-        internal void Coustruct(ConfigsService configService, PersistentProgressService progressService)
+        internal void Coustruct(ConfigsService configService, PersistentProgressService progressService, AudioService audio)
         {
             _views = new();
             _configService = configService;
             _progressService = progressService;
+            _audio = audio;
+
             FillViews();
 
             _closeButton.onClick.AddListener(CloseFromUI);
@@ -135,7 +138,7 @@ namespace Assets.Code.UI
 
         private void CloseFromUI()
         {
-            AudioSource.PlayClipAtPoint(_closeButtonClickedClip, Camera.main.transform.position);
+            _audio.PlaySfxAtPosition(_closeButtonClickedClip, Camera.main.transform.position);
             Close();
         }
 
@@ -147,7 +150,7 @@ namespace Assets.Code.UI
                     continue;
 
                 var upgradeItemView = Instantiate(_prefab, _content);
-                upgradeItemView.Construct();
+                upgradeItemView.Construct(_audio);
 
                 string id = config.ID;
                 Sprite sprite = config.Sprite;

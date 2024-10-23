@@ -8,12 +8,15 @@ internal class Tool : MonoBehaviour, IPoolable
     private Dropper _dropper;
     private IRecyclableFactory _factory;
     private ToolConfig _config;
+    private AudioService _audio;
 
     internal ToolType Type => _config.Type;
 
-    void IPoolable.Construct(IRecyclableFactory factory)
+    void IPoolable.Construct(IRecyclableFactory factory, AudioService audio)
     {
         _factory = factory;
+        _audio = audio;
+
         _dropper = new();
     }
 
@@ -32,7 +35,7 @@ internal class Tool : MonoBehaviour, IPoolable
 
     internal void Collect()
     {
-        AudioSource.PlayClipAtPoint(_config.PickupAudio, transform.position);
+        _audio.PlaySfxAtPosition(_config.PickupAudio, transform.position);
 
         _factory.Recycle(this);
     }

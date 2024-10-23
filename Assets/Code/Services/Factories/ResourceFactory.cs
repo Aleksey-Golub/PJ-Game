@@ -15,7 +15,13 @@ internal class ResourceFactory : MonoSingleton<ResourceFactory>, IRecyclableFact
     {
         base.Awake();
 
-        _pool = new Pool<Resource>(_resourcePrefab, transform, _poolSize, this);
+        var audio = AudioService.Instance;
+        Construct(audio);
+    }
+
+    private void Construct(AudioService audio)
+    {
+        _pool = new Pool<Resource>(_resourcePrefab, transform, _poolSize, this, audio);
         _droppedResources = new List<Resource>();
     }
 

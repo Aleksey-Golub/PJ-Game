@@ -11,7 +11,13 @@ internal class PopupFactory : MonoSingleton<PopupFactory>, IRecyclableFactory
     {
         base.Awake();
 
-        _pool = new Pool<Popup>(_popupPrefab, transform, _poolSize, this);
+        var audio = AudioService.Instance;
+        Construct(audio);
+    }
+
+    private void Construct(AudioService audio)
+    {
+        _pool = new Pool<Popup>(_popupPrefab, transform, _poolSize, this, audio);
     }
 
     internal Popup Get(Vector3 position, Quaternion rotation)

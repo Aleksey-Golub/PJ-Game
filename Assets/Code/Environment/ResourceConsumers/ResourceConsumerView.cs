@@ -22,6 +22,7 @@ internal class ResourceConsumerView : MonoBehaviour
     [SerializeField] private int _countTextSortingOrder = 11;
 
     private int _oldSortingOrder;
+    private AudioService _audio;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -30,6 +31,11 @@ internal class ResourceConsumerView : MonoBehaviour
             _needText.GetComponent<MeshRenderer>().sortingOrder = _countTextSortingOrder;
     }
 #endif
+
+    internal void Construct(AudioService audio)
+    {
+        _audio = audio;
+    }
 
     internal void Init(Sprite needResourceSprite, int initialNeedResourceCount, Sprite generateObjSprite)
     {
@@ -48,7 +54,7 @@ internal class ResourceConsumerView : MonoBehaviour
     internal void PlayDropResourceSound()
     {
         if (_dropResourceAudioClip != null)
-            AudioSource.PlayClipAtPoint(_dropResourceAudioClip, transform.position);
+            _audio.PlaySfxAtPosition(_dropResourceAudioClip, transform.position);
     }
 
     internal void ShowExhaust()

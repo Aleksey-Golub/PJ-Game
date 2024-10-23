@@ -20,7 +20,9 @@ internal class UIService : MonoSingleton<UIService>
     {
         var configService = ConfigsService.Instance;
         var progressService = PersistentProgressService.Instance;
-        _upgradeBoardView.Coustruct(configService, progressService);
+        var audio = AudioService.Instance;
+
+        _upgradeBoardView.Coustruct(configService, progressService, audio);
 
         return _upgradeBoardView;
     }
@@ -28,7 +30,9 @@ internal class UIService : MonoSingleton<UIService>
     internal SellBoardView GetSellBoardView()
     {
         var configService = ConfigsService.Instance;
-        _sellBoardView.Coustruct(configService);
+        var audio = AudioService.Instance;
+
+        _sellBoardView.Coustruct(configService, audio);
 
         return _sellBoardView;
     }

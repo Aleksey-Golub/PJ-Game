@@ -19,12 +19,15 @@ namespace Assets.Code.UI
         private string _itemID;
         private float _startAlpha;
         private bool _showButton = true;
+        private AudioService _audio;
 
         internal bool ShowButton => _showButton;
         internal event Action<string> UpgradeButtonClicked;
 
-        internal void Construct()
+        internal void Construct(AudioService audio)
         {
+            _audio = audio;
+
             _upgradeButton.onClick.AddListener(OnButtonClicked);
 
             _startAlpha = _canvasGroup.alpha;
@@ -57,7 +60,7 @@ namespace Assets.Code.UI
 
         private void OnButtonClicked()
         {
-            AudioSource.PlayClipAtPoint(_upgradeButtonClickedClip, Camera.main.transform.position);
+            _audio.PlaySfxAtPosition(_upgradeButtonClickedClip, Camera.main.transform.position);
             UpgradeButtonClicked?.Invoke(_itemID);
         }
     }

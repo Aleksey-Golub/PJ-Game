@@ -16,7 +16,7 @@ public class Popup : MonoBehaviour, IPoolable
 
     internal event Action<Popup> ReadyToDetach; 
 
-    void IPoolable.Construct(IRecyclableFactory popupFactory)
+    void IPoolable.Construct(IRecyclableFactory popupFactory, AudioService audio)
     {
         _factory = popupFactory;
 

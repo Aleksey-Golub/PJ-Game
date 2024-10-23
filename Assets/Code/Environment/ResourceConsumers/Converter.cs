@@ -32,7 +32,9 @@ public class Converter : MonoBehaviour, IResourceConsumer
     {
         var resourceFactory = ResourceFactory.Instance;
         var progressService = PersistentProgressService.Instance;
-        Construct(resourceFactory, progressService);
+        var audio = AudioService.Instance;
+
+        Construct(resourceFactory, progressService, audio);
         Init();
     }
 
@@ -48,10 +50,12 @@ public class Converter : MonoBehaviour, IResourceConsumer
         }
     }
 
-    private void Construct(ResourceFactory resourceFactory, PersistentProgressService progressService)
+    private void Construct(ResourceFactory resourceFactory, PersistentProgressService progressService, AudioService audio)
     {
         _resourceFactory = resourceFactory;
         _progressService = progressService;
+
+        _view.Construct(audio);
 
         if (_config)
         {

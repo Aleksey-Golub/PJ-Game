@@ -19,11 +19,14 @@ namespace Assets.Code.UI
         private Action<ResourceType> _sellResourceCalback;
 
         internal Action<ResourceType> SellButtonClicked;
+        private AudioService _audio;
 
-        internal void Coustruct(ConfigsService configService)
+        internal void Coustruct(ConfigsService configService, AudioService audio)
         {
             _views = new();
             _resourceConfigService = configService;
+            _audio = audio;
+
             FillViews();
 
             _closeButton.onClick.AddListener(CloseFromUI);
@@ -69,7 +72,7 @@ namespace Assets.Code.UI
 
         private void CloseFromUI()
         {
-            AudioSource.PlayClipAtPoint(_closeButtonClickedClip, Camera.main.transform.position);
+            _audio.PlaySfxAtPosition(_closeButtonClickedClip, Camera.main.transform.position);
             Close();
         }
 
@@ -85,7 +88,7 @@ namespace Assets.Code.UI
                     continue;
                 
                 var resView = Instantiate(_prefab, _content);
-                resView.Construct();
+                resView.Construct(_audio);
 
                 var sprite = config.Sprite;
                 resView.Init(sprite, 0, 0, type);

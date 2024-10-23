@@ -48,7 +48,7 @@ namespace Assets.Code.UI
 
         private void OnButtonClicked()
         {
-            _audio.PlaySfxAtPosition(_sellButtonClickedClip, Camera.main.transform.position);
+            _audio.PlaySfxAtUI(_sellButtonClickedClip);
             SellButtonClicked?.Invoke(_resourceType);
         }
     }

@@ -9,12 +9,13 @@ internal class AudioService : MonoSingleton<AudioService>
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private AudioClip _music;
 
-    private const string MASTER = "Master";
-    private const string MUSIC = "Music";
-    private const string SFX = "sfx";
+    public const string MASTER = "Master";
+    public const string MUSIC = "Music";
+    public const string SFX = "sfx";
 
     private AudioSource _musicSource;
     private AudioMixerGroup _sfxGroup;
+    private AudioMixerGroup _musicGroup;
     private Queue<AudioSource> _sfxPool;
     private readonly List<AudioSource> _toCheckEnd = new();
     private WaitForSeconds _waitForSeconds;
@@ -27,12 +28,29 @@ internal class AudioService : MonoSingleton<AudioService>
 
     private void Construct()
     {
-        _sfxGroup = _audioMixer.FindMatchingGroups(SFX)[0];
-
+        CacheGroups();
         CreatePool();
 
         _waitForSeconds = new WaitForSeconds(1f);
         StartCoroutine(CheckClipsEndedCoroutine());
+    }
+
+    internal bool IsMuted(string group)
+    {
+        _audioMixer.GetFloat(group, out float value);
+
+        return value < -79f;
+    }
+
+    internal void SwitchMute(string group)
+    {
+        float newValue = IsMuted(group) ? 0f : -80f;
+        _audioMixer.SetFloat(group, newValue);
+    }
+
+    internal void PlaySfxAtUI(AudioClip clip)
+    {
+        PlaySfxAtPosition(clip, Camera.main.transform.position);
     }
 
     internal void PlaySfxAtPosition(AudioClip clip, Vector3 position)
@@ -53,7 +71,7 @@ internal class AudioService : MonoSingleton<AudioService>
         {
             _musicSource = Instantiate(_prefab, transform);
             _musicSource.name = MUSIC;
-            _musicSource.outputAudioMixerGroup = _audioMixer.FindMatchingGroups(MUSIC)[0];
+            _musicSource.outputAudioMixerGroup = _musicGroup;
             _musicSource.loop = true;
         }
 
@@ -101,5 +119,11 @@ internal class AudioService : MonoSingleton<AudioService>
         source.outputAudioMixerGroup = sfxGroup;
         source.loop = loop;
         return source;
+    }
+
+    private void CacheGroups()
+    {
+        _sfxGroup = _audioMixer.FindMatchingGroups(SFX)[0];
+        _musicGroup = _audioMixer.FindMatchingGroups(MUSIC)[0];
     }
 }

@@ -60,7 +60,7 @@ namespace Assets.Code.UI
 
         private void OnButtonClicked()
         {
-            _audio.PlaySfxAtPosition(_upgradeButtonClickedClip, Camera.main.transform.position);
+            _audio.PlaySfxAtUI(_upgradeButtonClickedClip);
             UpgradeButtonClicked?.Invoke(_itemID);
         }
     }

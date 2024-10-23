@@ -138,7 +138,7 @@ namespace Assets.Code.UI
 
         private void CloseFromUI()
         {
-            _audio.PlaySfxAtPosition(_closeButtonClickedClip, Camera.main.transform.position);
+            _audio.PlaySfxAtUI(_closeButtonClickedClip);
             Close();
         }
 

@@ -24,6 +24,7 @@ internal class ResourceStorage : MonoBehaviour
     private bool IsSingleUse => _restoreTime < 0;
     internal bool CanInteract => _currentResourceCount > 0;
     internal ToolType NeedToolType => _needToolType;
+
     private void Start()
     {
         var resourceFactory = ResourceFactory.Instance;

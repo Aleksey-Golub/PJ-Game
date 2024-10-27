@@ -85,7 +85,7 @@ namespace Code.Infrastructure
             audio.Load();
             _services.RegisterSingle(audio);
         }
-        
+
         private void RegisterInputService()
         {
             IInputService input = GetInputService();
@@ -105,27 +105,10 @@ namespace Code.Infrastructure
 
         private static IInputService GetInputService()
         {
-            /*
-            return Application.isEditor
-            ? (IInputService)new StandaloneInputService()
-            : new MobileInputService();
-
-            if (Application.platform is RuntimePlatform.wi RuntimePlatform.Android or RuntimePlatform.IPhonePlayer)
-            {
-                return new MobileInput(_joystick);
-            }
-            else
-            {
-                return new DesktopInput();
-            }
-            */
-
-            // TODO
-            //"Assets/Resources/Hud/Mobile Input Elements.prefab"
-            return new MobileInput();
-            //return new DesktopInput();
 #if UNITY_STANDALONE
+            return new DesktopInput();
 #else
+            return new MobileInput();
 #endif
         }
     }

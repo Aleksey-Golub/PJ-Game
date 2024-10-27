@@ -32,6 +32,8 @@ namespace Code.UI
             Cleanup();
         }
 
+        public abstract void Close();
+
         protected virtual void OnAwake()
         {
             _closeButton.onClick.AddListener(OnCloseButtonClicked);

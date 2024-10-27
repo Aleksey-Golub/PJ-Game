@@ -26,6 +26,11 @@ namespace Code.UI
             _musicSlider.normalizedValue = Audio.GetNormalizedVolume(AudioService.MUSIC);
         }
 
+        public override void Close()
+        {
+            CloseSelf();
+        }
+
         protected override void SubscribeUpdates()
         {
             _soundsButton.SubscribeUpdates();
@@ -55,9 +60,10 @@ namespace Code.UI
         protected override void OnCloseButtonClicked()
         {
             base.OnCloseButtonClicked();
-
-            gameObject.SetActive(false);
+            CloseSelf();
         }
+
+        private void CloseSelf() => gameObject.SetActive(false);
 
         private void OnSoundButtonClicked(ButtonSwitcher button)
         {

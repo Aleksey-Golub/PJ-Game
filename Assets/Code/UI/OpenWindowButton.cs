@@ -10,6 +10,7 @@ namespace Code.UI
         [SerializeField] private Button _button;
         [SerializeField] private WindowId _windowId;
         [SerializeField] private AudioClip _clip;
+        [SerializeField] private bool _closeWindowToo;
 
         private IUIMediator _uiService;
         private IAudioService _audio;
@@ -22,13 +23,22 @@ namespace Code.UI
 
         private void Awake()
         {
-            _button.onClick.AddListener(Open);
+            _button.onClick.AddListener(SwitchWindow);
         }
 
-        private void Open()
+        private void SwitchWindow()
         {
             _audio.PlaySfxAtUI(_clip);
-            _uiService.Open(_windowId);
+
+            if (_uiService.IsOpened(_windowId))
+            {
+                if (_closeWindowToo)
+                    _uiService.Close(_windowId);
+            }
+            else
+            {
+                _uiService.Open(_windowId);
+            }
         }
     }
 }

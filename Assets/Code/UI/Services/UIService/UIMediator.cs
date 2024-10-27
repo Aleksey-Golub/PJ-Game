@@ -29,7 +29,7 @@ namespace Code.UI.Services
 
         public void Open(WindowId windowId)
         {
-            if (IsWindowAlreadyOpened(windowId))
+            if (IsOpened(windowId))
                 return;
 
             if (!_windowsCache.TryGetValue(windowId, out WindowBase window))
@@ -56,7 +56,7 @@ namespace Code.UI.Services
             return _hud.PlayerInventoryView;
         }
 
-        private bool IsWindowAlreadyOpened(WindowId windowId)
+        public bool IsOpened(WindowId windowId)
         {
             return _windowsCache.TryGetValue(windowId, out WindowBase window) && window.IsOpened;
         }
@@ -67,6 +67,12 @@ namespace Code.UI.Services
         public void OpenUpgradeBoardView(Action<string> OnUpgradeItem) => UpgradeBoardView.Open(OnUpgradeItem);
         public void CloseUpgradeBoardView() => UpgradeBoardView.Close();
         public void RefreshUpgradeBoardView() => UpgradeBoardView.Refresh();
+
+        public void Close(WindowId windowId)
+        {
+            if (_windowsCache.TryGetValue(windowId, out WindowBase window) && window.IsOpened)
+                window.Close();
+        }
     }
 
     public enum WindowId

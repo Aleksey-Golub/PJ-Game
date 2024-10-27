@@ -16,5 +16,7 @@ namespace Code.UI.Services
         void OpenUpgradeBoardView(Action<string> upgradeItem);
         void CloseUpgradeBoardView();
         void RefreshUpgradeBoardView();
+        bool IsOpened(WindowId windowId);
+        void Close(WindowId windowId);
     }
 }

@@ -212,6 +212,7 @@ MonoBehaviour:
   _button: {fileID: 8362515682821105150}
   _windowId: 1
   _clip: {fileID: 8300000, guid: a82921465fe981d4aaea40eb0b2ff2cb, type: 3}
+  _closeWindowToo: 1
 --- !u!1 &8376075955479536795
 GameObject:
   m_ObjectHideFlags: 0

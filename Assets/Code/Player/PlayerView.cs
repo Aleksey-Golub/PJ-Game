@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using Code.Services;
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ internal class PlayerView : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Vector3 _popupSpawnOffset = Vector3.up;
 
-    private PopupFactory _popupFactory;
+    private IPopupFactory _popupFactory;
     private int _dirXHash;
     private int _dirYHash;
     private int _velocityHash;
@@ -21,7 +22,7 @@ internal class PlayerView : MonoBehaviour
 
     internal event Action AttackDone;
 
-    internal void Construct(PopupFactory popupFactory)
+    internal void Construct(IPopupFactory popupFactory)
     {
         _popupFactory = popupFactory;
 
@@ -31,14 +32,6 @@ internal class PlayerView : MonoBehaviour
         _attackHash = Animator.StringToHash("Attack");
 
         _gatheredResourcesPopups = new();
-    }
-
-    private void Update()
-    {
-        foreach (GatheredResourcesPopupInfo popupInfo in _gatheredResourcesPopups.Values)
-        {
-
-        }
     }
 
     internal void PlayMove(float dirX, float dirY, float velocity)

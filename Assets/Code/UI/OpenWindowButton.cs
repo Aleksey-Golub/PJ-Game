@@ -1,7 +1,9 @@
+using Code.Services;
+using Code.UI.Services;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Code.UI
+namespace Code.UI
 {
     internal class OpenWindowButton : MonoBehaviour
     {
@@ -9,10 +11,10 @@ namespace Assets.Code.UI
         [SerializeField] private WindowId _windowId;
         [SerializeField] private AudioClip _clip;
 
-        private UIService _uiService;
-        private AudioService _audio;
+        private IUIMediator _uiService;
+        private IAudioService _audio;
 
-        public void Construct(UIService uiService, AudioService audio)
+        public void Construct(IUIMediator uiService, IAudioService audio)
         {
             _uiService = uiService;
             _audio = audio;

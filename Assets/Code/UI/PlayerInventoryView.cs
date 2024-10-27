@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using Code.Services;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Code.UI
+namespace Code.UI
 {
     internal class PlayerInventoryView : MonoBehaviour, IInventoryView
     {
         [SerializeField] private InventoryResourceView _prefab;
 
-        private ConfigsService _resourceConfigService;
+        private IConfigsService _resourceConfigService;
         private Dictionary<ResourceType, InventoryResourceView> _views;
 
-        internal void Coustruct(ConfigsService configService)
+        internal void Construct(IConfigsService configService)
         {
             _views = new();
 

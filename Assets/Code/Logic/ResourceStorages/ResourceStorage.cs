@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Code.Services;
 using UnityEngine;
 
 internal class ResourceStorage : MonoBehaviour
@@ -15,8 +15,8 @@ internal class ResourceStorage : MonoBehaviour
     [SerializeField] private Collider2D _collider;
     [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
 
-    private ResourceFactory _resourceFactory;
-    private PersistentProgressService _progressService;
+    private IResourceFactory _resourceFactory;
+    private IPersistentProgressService _progressService;
     private float _restorationTimer = 0;
     private int _currentResourceCount;
 
@@ -27,14 +27,14 @@ internal class ResourceStorage : MonoBehaviour
 
     private void Start()
     {
-        var resourceFactory = ResourceFactory.Instance;
-        var progressService = PersistentProgressService.Instance;
-        var audio = AudioService.Instance;
+        var resourceFactory = AllServices.Container.Single<IResourceFactory>();
+        var progressService = AllServices.Container.Single<IPersistentProgressService>();
+        var audio = AllServices.Container.Single<IAudioService>();
 
         Construct(resourceFactory, progressService, audio);
     }
 
-    private void Construct(ResourceFactory resourceFactory, PersistentProgressService progressService, AudioService audio)
+    private void Construct(IResourceFactory resourceFactory, IPersistentProgressService progressService, IAudioService audio)
     {
         _resourceFactory = resourceFactory;
         _progressService = progressService;
@@ -51,9 +51,9 @@ internal class ResourceStorage : MonoBehaviour
         _view.ShowResourceCount(_currentResourceCount, GetDropResourceCount());
         _view.ShowWhole();
 
-        void UnlockUpgrade(PersistentProgressService progressService)
+        void UnlockUpgrade(IPersistentProgressService progressService)
         {
-            Assets.Code.Data.UpgradeItemsProgress upgradeItemsProgress = progressService.Progress.PlayerProgress.UpgradeItemsProgress;
+            Code.Data.UpgradeItemsProgress upgradeItemsProgress = progressService.Progress.PlayerProgress.UpgradeItemsProgress;
             string id = _config.ID;
             upgradeItemsProgress.TryGet(id, out int value);
             if (value == 0)
@@ -88,7 +88,7 @@ internal class ResourceStorage : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_config)
+        if (_config && _progressService != null)
         {
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed -= OnUpgradeItemsProgressChanged;
         }

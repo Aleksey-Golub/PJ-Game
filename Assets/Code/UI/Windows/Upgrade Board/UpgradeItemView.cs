@@ -1,9 +1,10 @@
+using Code.Services;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Code.UI
+namespace Code.UI
 {
     internal class UpgradeItemView : MonoBehaviour
     {
@@ -19,12 +20,12 @@ namespace Assets.Code.UI
         private string _itemID;
         private float _startAlpha;
         private bool _showButton = true;
-        private AudioService _audio;
+        private IAudioService _audio;
 
         internal bool ShowButton => _showButton;
         internal event Action<string> UpgradeButtonClicked;
 
-        internal void Construct(AudioService audio)
+        internal void Construct(IAudioService audio)
         {
             _audio = audio;
 

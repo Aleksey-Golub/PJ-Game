@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.Services;
+using UnityEngine;
 
 internal abstract class ResourceSourceViewBase : MonoBehaviour
 {
@@ -15,9 +16,9 @@ internal abstract class ResourceSourceViewBase : MonoBehaviour
     [SerializeField] private AudioClip _dropResourceAudioClip;
 
     private int _oldSortingOrder;
-    private AudioService _audio;
+    private IAudioService _audio;
 
-    internal void Construct(AudioService audio)
+    internal void Construct(IAudioService audio)
     {
         _audio = audio;
     }

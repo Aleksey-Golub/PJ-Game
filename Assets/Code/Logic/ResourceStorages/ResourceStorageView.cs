@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Code.Services;
+using TMPro;
 using UnityEngine;
 
 internal class ResourceStorageView : MonoBehaviour
@@ -18,7 +19,7 @@ internal class ResourceStorageView : MonoBehaviour
     [SerializeField] private AudioClip _dropResourceAudioClip;
 
     private int _oldSortingOrder;
-    private AudioService _audio;
+    private IAudioService _audio;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -28,7 +29,7 @@ internal class ResourceStorageView : MonoBehaviour
     }
 #endif
 
-    internal void Construct(AudioService audio)
+    internal void Construct(IAudioService audio)
     {
         _audio = audio;
     }

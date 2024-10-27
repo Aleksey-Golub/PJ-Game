@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "newResourceConfig", menuName = "Configs/ResourceConfig")]
-internal class ResourceConfig : ScriptableObject, IDropObjectConfig
+[CreateAssetMenu(fileName = "newResourceConfig", menuName = "Configs/Resources/Resource Config")]
+public class ResourceConfig : ScriptableObject, IDropObjectConfig
 {
     [SerializeField] private ResourceType _type;
     [SerializeField] private Sprite _sprite;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Code.Services;
+using System.Collections.Generic;
 using UnityEngine;
 
 internal class ToolSceneSpawner : MonoBehaviour
@@ -16,7 +17,7 @@ internal class ToolSceneSpawner : MonoBehaviour
 
     private void Start()
     {
-        var toolFactory = ToolFactory.Instance;
+        var toolFactory = AllServices.Container.Single<IToolFactory>();
 
         foreach (var data in _spawnDatas)
         {

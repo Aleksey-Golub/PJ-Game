@@ -1,44 +1,47 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Code.Infrastructure;
 
-internal class ResourceFactory : MonoSingleton<ResourceFactory>, IRecyclableFactory
+namespace Code.Services
 {
-    [SerializeField] private Resource _resourcePrefab;
-    [SerializeField, Min(1)] private int _poolSize = 1;
-
-    private Pool<Resource> _pool;
-    private List<Resource> _droppedResources;
-
-    public IReadOnlyList<Resource> DroppedResources => _droppedResources;
-
-    protected override void Awake()
+    internal class ResourceFactory : IResourceFactory
     {
-        base.Awake();
+        private readonly Pool<Resource> _pool;
+        private readonly List<Resource> _droppedResources;
 
-        var audio = AudioService.Instance;
-        Construct(audio);
-    }
+        public IReadOnlyList<Resource> DroppedResources => _droppedResources;
 
-    private void Construct(AudioService audio)
-    {
-        _pool = new Pool<Resource>(_resourcePrefab, transform, _poolSize, this, audio);
-        _droppedResources = new List<Resource>();
-    }
+        public ResourceFactory(IAudioService audio, IAssetProvider assets)
+        {
+            Transform container = CreateContainer();
+            Resource resourcePrefab = assets.Load<Resource>(AssetPath.RESOURCE_PREFAB_PATH);
+            int poolSize = 10;
 
-    internal Resource Get(Vector3 position, Quaternion rotation)
-    {
-        var res = _pool.Get(position, rotation);
-        //res.Construct(this);
+            _pool = new Pool<Resource>(resourcePrefab, container, poolSize, this, audio);
+            _droppedResources = new List<Resource>();
+        }
 
-        _droppedResources.Add(res);
+        public Resource Get(Vector3 position, Quaternion rotation)
+        {
+            var res = _pool.Get(position, rotation);
 
-        return res;
-    }
+            _droppedResources.Add(res);
 
-    public void Recycle(IPoolable resource)
-    {
-        _droppedResources.Remove(resource as Resource);
+            return res;
+        }
 
-        _pool.Recycle(resource as Resource);
+        public void Recycle(IPoolable resource)
+        {
+            _droppedResources.Remove(resource as Resource);
+
+            _pool.Recycle(resource as Resource);
+        }
+
+        private Transform CreateContainer()
+        {
+            var go = new GameObject("Resource Factory Container");
+            UnityEngine.Object.DontDestroyOnLoad(go);
+            return go.transform;
+        }
     }
 }

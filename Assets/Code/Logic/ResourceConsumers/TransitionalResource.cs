@@ -1,7 +1,8 @@
+using Code.Services;
 using System.Collections;
 using UnityEngine;
 
-internal class TransitionalResource : MonoBehaviour, IPoolable
+public class TransitionalResource : MonoBehaviour, IPoolable
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
@@ -11,12 +12,12 @@ internal class TransitionalResource : MonoBehaviour, IPoolable
     [SerializeField] private AudioClip _transferAudioClip;
 
     private IRecyclableFactory _factory;
-    private AudioService _audio;
+    private IAudioService _audio;
     private IResourceConsumer _consumer;
     private int _consumedValue;
     private Coroutine _moveCoroutine;
 
-    void IPoolable.Construct(IRecyclableFactory factory, AudioService audio)
+    void IPoolable.Construct(IRecyclableFactory factory, IAudioService audio)
     {
         _factory = factory;
         _audio = audio;

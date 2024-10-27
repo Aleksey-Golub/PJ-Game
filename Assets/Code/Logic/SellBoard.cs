@@ -1,25 +1,27 @@
-using Assets.Code.UI;
+using Code.Services;
 using UnityEngine;
+using Code.UI.Services;
 
 internal class SellBoard : MonoBehaviour
 {
-    private SellBoardView _view;
-    private ConfigsService _configService;
+    private IUIMediator _uiMediator;
+    private IConfigsService _configService;
     private Inventory _inventory;
-
+ 
     internal bool IsVisited { get; private set; }
 
     private void Start()
     {
-        var sellBoardView = UIService.Instance.GetSellBoardView();
-        var configService = ConfigsService.Instance;
-        Construct(sellBoardView, configService);
+        var configService = AllServices.Container.Single<IConfigsService>();
+        var uiMediator = AllServices.Container.Single<IUIMediator>();
+
+        Construct(uiMediator, configService);
     }
 
-    private void Construct(SellBoardView sellBoardView, ConfigsService configService)
+    private void Construct(IUIMediator uiMediator, IConfigsService configService)
     {
+        _uiMediator = uiMediator;
         _configService = configService;
-        _view = sellBoardView;
     }
 
     internal void Open(Inventory inventory)
@@ -28,7 +30,7 @@ internal class SellBoard : MonoBehaviour
         IsVisited = true;
 
         _inventory = inventory;
-        _view.Open(inventory.Storage, SellResource);
+        _uiMediator.OpenSellBoardView(inventory.Storage, SellResource);
     }
 
     internal void Close()
@@ -38,8 +40,7 @@ internal class SellBoard : MonoBehaviour
 
         _inventory = null;
 
-        if (_view.gameObject.activeSelf)
-            _view.Close();
+        _uiMediator.CloseSellBoardView();
     }
 
     private void SellResource(ResourceType resourceType)
@@ -50,6 +51,6 @@ internal class SellBoard : MonoBehaviour
         int coinsCount = _configService.GetConfigFor(resourceType).Cost * count;
         _inventory.Add(ResourceType.COIN, coinsCount);
 
-        _view.Refresh(_inventory.Storage);
+        _uiMediator.RefreshSellBoardView(_inventory.Storage);
     }
 }

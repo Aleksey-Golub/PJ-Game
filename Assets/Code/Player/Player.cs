@@ -1,8 +1,9 @@
-using Assets.Code.UI;
+using Code.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Code.UI;
 
 internal class Player : MonoBehaviour, IDisposable
 {
@@ -27,11 +28,11 @@ internal class Player : MonoBehaviour, IDisposable
     private float _attackTimer = 0;
     private Vector2 _direction = new Vector2(0, -1);
     private Collider2D[] _buffer;
-    private IPlayerInput _input;
+    private IInputService _input;
     private IInventoryView _inventoryView;
-    private ConfigsService _configsService;
-    private TransitionalResourceFactory _transitionalResourceFactory;
-    private PersistentProgressService _progressService;
+    private IConfigsService _configsService;
+    private ITransitionalResourceFactory _transitionalResourceFactory;
+    private IPersistentProgressService _progressService;
     private Inventory _inventory;
     private ToolType _lastAbsentTool;
     private Dictionary<IResourceConsumer, ResourceConsumerNeeds> _lastConsumersData;
@@ -42,7 +43,7 @@ internal class Player : MonoBehaviour, IDisposable
     private UpgradeBoard _upgradeBoard;
     private bool _inUpgradeBoard;
 
-    #region EDITOR_ONLY
+    #region EDITOR_ONLY Draw interact sphere
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
@@ -52,25 +53,13 @@ internal class Player : MonoBehaviour, IDisposable
 #endif
     #endregion
 
-    private void Start()
-    {
-        var input = InputServiceProvider.Instance.GetService();
-        var inventoryView = UIService.Instance.GetPlayerInventoryView();
-        var configsService = ConfigsService.Instance;
-        var popupFactory = PopupFactory.Instance;
-        var transitionalResourceFactory = TransitionalResourceFactory.Instance;
-        var progressService = PersistentProgressService.Instance;
-
-        Construct(input, inventoryView, configsService, popupFactory, transitionalResourceFactory, progressService);
-    }
-
-    private void Construct(
-        IPlayerInput input, 
+    internal void Construct(
+        IInputService input, 
         IInventoryView inventoryView, 
-        ConfigsService configsService, 
-        PopupFactory popupFactory, 
-        TransitionalResourceFactory transitionalResourceFactory, 
-        PersistentProgressService progressService)
+        IConfigsService configsService, 
+        IPopupFactory popupFactory, 
+        ITransitionalResourceFactory transitionalResourceFactory, 
+        IPersistentProgressService progressService)
     {
         _buffer = new Collider2D[10];
         _inventory = new();

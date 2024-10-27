@@ -1,3 +1,4 @@
+using Code.Services;
 using UnityEngine;
 
 internal class Tool : MonoBehaviour, IPoolable
@@ -8,11 +9,11 @@ internal class Tool : MonoBehaviour, IPoolable
     private Dropper _dropper;
     private IRecyclableFactory _factory;
     private ToolConfig _config;
-    private AudioService _audio;
+    private IAudioService _audio;
 
     internal ToolType Type => _config.Type;
 
-    void IPoolable.Construct(IRecyclableFactory factory, AudioService audio)
+    void IPoolable.Construct(IRecyclableFactory factory, IAudioService audio)
     {
         _factory = factory;
         _audio = audio;

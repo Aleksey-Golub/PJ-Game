@@ -1,34 +1,41 @@
-﻿internal class MobileInput : IPlayerInput
+﻿using UnityEngine;
+
+namespace Code.Services
 {
-    private const float THRESHOLD = 0.3f;
-
-    private readonly Joystick _joystick;
-
-    public float XMovement => _joystick.Horizontal;
-    public float YMovement => _joystick.Vertical;
-
-    public MobileInput(Joystick joystick)
+    internal class MobileInput : IInputService
     {
-        _joystick = joystick;
-        _joystick.gameObject.SetActive(true);
-    }
+        private const string ELEMENTS_PATH = "Hud/Mobile Input Elements";
+        private const float THRESHOLD = 0.3f;
 
-    public float GetHorizontalAxisRaw()
-    {
-        return _joystick.Horizontal > THRESHOLD ? 1 : _joystick.Horizontal < -THRESHOLD ? -1 : 0;
-    }
+        private MobileInputElements _elements;
 
-    public float GetVerticalAxisRaw()
-    {
-        return _joystick.Vertical > THRESHOLD ? 1 : _joystick.Vertical < -THRESHOLD ? -1 : 0;
-    }
+        private Joystick Joystick => _elements.Joystick;
 
-    public bool HasMoveInput()
-    {
-        return 
-            _joystick.Horizontal > THRESHOLD 
-            || _joystick.Horizontal < -THRESHOLD 
-            || _joystick.Vertical > THRESHOLD
-            || _joystick.Vertical < -THRESHOLD;
+        public float GetHorizontalAxisRaw()
+        {
+            return Joystick.Horizontal > THRESHOLD ? 1 : Joystick.Horizontal < -THRESHOLD ? -1 : 0;
+        }
+
+        public float GetVerticalAxisRaw()
+        {
+            return Joystick.Vertical > THRESHOLD ? 1 : Joystick.Vertical < -THRESHOLD ? -1 : 0;
+        }
+
+        public bool HasMoveInput()
+        {
+            return
+                Joystick.Horizontal > THRESHOLD
+                || Joystick.Horizontal < -THRESHOLD
+                || Joystick.Vertical > THRESHOLD
+                || Joystick.Vertical < -THRESHOLD;
+        }
+
+        public void Init()
+        {
+            var prefab = Resources.Load<MobileInputElements>(ELEMENTS_PATH);
+            _elements = Object.Instantiate(prefab);
+
+            Object.DontDestroyOnLoad(_elements);
+        }
     }
 }

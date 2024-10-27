@@ -1,35 +1,38 @@
 ﻿using UnityEngine;
+using Code.Infrastructure;
 
-internal class ToolFactory : MonoSingleton<ToolFactory>, IRecyclableFactory
+namespace Code.Services
 {
-    [SerializeField] private Tool _toolPrefab;
-    [SerializeField, Min(1)] private int _poolSize = 1;
-
-    private Pool<Tool> _pool;
-
-    protected override void Awake()
+    internal class ToolFactory : IToolFactory
     {
-        base.Awake();
+        private readonly Pool<Tool> _pool;
 
-        var audio = AudioService.Instance;
-        Construct(audio);
-    }
+        public ToolFactory(IAudioService audio, IAssetProvider assets)
+        {
+            Transform container = CreateContainer();
+            Tool prefab = assets.Load<Tool>(AssetPath.TOOL_PREFAB_PATH);
+            int poolSize = 10;
 
-    private void Construct(AudioService audio)
-    {
-        _pool = new Pool<Tool>(_toolPrefab, transform, _poolSize, this, audio);
-    }
+            _pool = new Pool<Tool>(prefab, container, poolSize, this, audio);
+        }
 
-    internal Tool Get(Vector3 position, Quaternion rotation)
-    {
-        var tool = _pool.Get(position, rotation);
-        //(tool as IPoolable).Construct(this);
+        public Tool Get(Vector3 position, Quaternion rotation)
+        {
+            var tool = _pool.Get(position, rotation);
 
-        return tool;
-    }
+            return tool;
+        }
 
-    public void Recycle(IPoolable tool)
-    {
-        _pool.Recycle(tool as Tool);
+        public void Recycle(IPoolable tool)
+        {
+            _pool.Recycle(tool as Tool);
+        }
+
+        private Transform CreateContainer()
+        {
+            var go = new GameObject("Tool Factory Container");
+            UnityEngine.Object.DontDestroyOnLoad(go);
+            return go.transform;
+        }
     }
 }

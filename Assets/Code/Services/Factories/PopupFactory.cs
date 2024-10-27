@@ -1,35 +1,38 @@
-﻿using UnityEngine;
+﻿using Code.Infrastructure;
+using UnityEngine;
 
-internal class PopupFactory : MonoSingleton<PopupFactory>, IRecyclableFactory
+namespace Code.Services
 {
-    [SerializeField] private Popup _popupPrefab;
-    [SerializeField, Min(1)] private int _poolSize = 1;
-
-    private Pool<Popup> _pool;
-
-    protected override void Awake()
+    internal class PopupFactory : IPopupFactory
     {
-        base.Awake();
+        private readonly Pool<Popup> _pool;
 
-        var audio = AudioService.Instance;
-        Construct(audio);
-    }
+        public PopupFactory(IAudioService audio, IAssetProvider assets)
+        {
+            Transform container = CreateContainer();
+            Popup prefab = assets.Load<Popup>(AssetPath.POPUP_PREFAB_PATH);
+            int poolSize = 10;
 
-    private void Construct(AudioService audio)
-    {
-        _pool = new Pool<Popup>(_popupPrefab, transform, _poolSize, this, audio);
-    }
+            _pool = new Pool<Popup>(prefab, container, poolSize, this, audio);
+        }
 
-    internal Popup Get(Vector3 position, Quaternion rotation)
-    {
-        var popup = _pool.Get(position, rotation);
-        //popup.Construct(this);
+        public Popup Get(Vector3 position, Quaternion rotation)
+        {
+            var popup = _pool.Get(position, rotation);
 
-        return popup;
-    }
+            return popup;
+        }
 
-    public void Recycle(IPoolable popup)
-    {
-        _pool.Recycle(popup as Popup);
+        public void Recycle(IPoolable popup)
+        {
+            _pool.Recycle(popup as Popup);
+        }
+
+        private Transform CreateContainer()
+        {
+            var go = new GameObject("Popup Factory Container");
+            UnityEngine.Object.DontDestroyOnLoad(go);
+            return go.transform;
+        }
     }
 }

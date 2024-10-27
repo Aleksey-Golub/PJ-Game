@@ -1,9 +1,9 @@
-﻿using System;
+﻿using TMPro;
 using UnityEngine;
 
 internal class ConverterView : ResourceConsumerView
 {
-    [SerializeField] private TMPro.TextMeshPro _uploadText;
+    [SerializeField] private TextMeshPro _uploadText;
     [SerializeField] private GameObject _progress;
     [SerializeField] private GameObject _progressFg;
 

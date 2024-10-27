@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newResourceStorageConfig", menuName = "Configs/ResourceStorageConfig")]
-internal class ResourceStorageConfig : ScriptableObject, IUpgradable
+[CreateAssetMenu(fileName = "newResourceStorageConfig", menuName = "Configs/Resource Storage/Resource Storage Config")]
+public class ResourceStorageConfig : ScriptableObject, IUpgradable
 {
     [SerializeField] private ResourceStorageType _type;
     [SerializeField] private Sprite _sprite;
@@ -30,7 +30,7 @@ internal class ResourceStorageConfig : ScriptableObject, IUpgradable
     public int GetMaxLevel() => _upgradeDatas.Count;
 }
 
-internal enum ResourceStorageType
+public enum ResourceStorageType
 {
     None = 0,
     CoinStorage = 1,

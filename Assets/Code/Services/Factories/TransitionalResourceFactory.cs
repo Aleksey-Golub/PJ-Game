@@ -1,35 +1,38 @@
 ﻿using UnityEngine;
+using Code.Infrastructure;
 
-internal class TransitionalResourceFactory: MonoSingleton<TransitionalResourceFactory>, IRecyclableFactory
+namespace Code.Services
 {
-    [SerializeField] private TransitionalResource _TransitionalResourcePrefab;
-    [SerializeField, Min(1)] private int _poolSize = 1;
-
-    private Pool<TransitionalResource> _pool;
-
-    protected override void Awake()
+    internal class TransitionalResourceFactory : ITransitionalResourceFactory
     {
-        base.Awake();
+        private readonly Pool<TransitionalResource> _pool;
 
-        var audio = AudioService.Instance;
-        Construct(audio);
-    }
+        public TransitionalResourceFactory(IAudioService audio, IAssetProvider assets)
+        {
+            Transform container = CreateContainer();
+            TransitionalResource prefab = assets.Load<TransitionalResource>(AssetPath.TRANSITIONALRESOURCE_PREFAB_PATH);
+            int poolSize = 10;
 
-    private void Construct(AudioService audio)
-    {
-        _pool = new Pool<TransitionalResource>(_TransitionalResourcePrefab, transform, _poolSize, this, audio);
-    }
+            _pool = new Pool<TransitionalResource>(prefab, container, poolSize, this, audio);
+        }
 
-    internal TransitionalResource Get(Vector3 position, Quaternion rotation)
-    {
-        var popup = _pool.Get(position, rotation);
-        //popup.Construct(this);
+        public TransitionalResource Get(Vector3 position, Quaternion rotation)
+        {
+            var popup = _pool.Get(position, rotation);
 
-        return popup;
-    }
+            return popup;
+        }
 
-    public void Recycle(IPoolable popup)
-    {
-        _pool.Recycle(popup as TransitionalResource);
+        public void Recycle(IPoolable popup)
+        {
+            _pool.Recycle(popup as TransitionalResource);
+        }
+
+        private Transform CreateContainer()
+        {
+            var go = new GameObject("Transitional Resource Factory Container");
+            UnityEngine.Object.DontDestroyOnLoad(go);
+            return go.transform;
+        }
     }
 }

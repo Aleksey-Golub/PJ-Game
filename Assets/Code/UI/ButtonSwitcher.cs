@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Code.UI
+namespace Code.UI
 {
     internal class ButtonSwitcher : MonoBehaviour
     {

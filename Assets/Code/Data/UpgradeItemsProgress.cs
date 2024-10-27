@@ -1,14 +1,15 @@
 ﻿using System;
 
-namespace Assets.Code.Data
+namespace Code.Data
 {
-    [System.Serializable]
+    [Serializable]
     public class UpgradeItemsProgress
     {
         /// <summary>
         /// Contains dictionary of [upgradableItemId, currentLevel] data. Default level is 0
         /// </summary>
         public UpgradeItemsDataDictionary UpgradeItemsData = new UpgradeItemsDataDictionary();
+
         public event Action<string, int> Changed;
 
         internal void Upgrade(string itemID)

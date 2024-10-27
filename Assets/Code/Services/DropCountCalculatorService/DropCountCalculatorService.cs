@@ -1,53 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-internal class DropCountCalculatorService : MonoSingleton<DropCountCalculatorService>
+namespace Code.Services
 {
-    private Dictionary<ResourceType, int> _dropCountStorage;
-
-    private PersistentProgressService _progressService;
-    private ConfigsService _configsService;
-
-    private void Start()
+    internal class DropCountCalculatorService : IDropCountCalculatorService
     {
-        var progressService = PersistentProgressService.Instance;
-        var configsService = ConfigsService.Instance;
+        private readonly Dictionary<ResourceType, int> _dropCountStorage;
 
-        Construct(progressService, configsService);
-    }
+        private readonly IPersistentProgressService _progressService;
+        private readonly IConfigsService _configsService;
 
-    internal void Construct(PersistentProgressService progressService, ConfigsService configsService)
-    {
-        _dropCountStorage = new();
-
-        _progressService = progressService;
-        _configsService = configsService;
-    }
-
-    internal int Calculate(int originCount, ResourceType resourceType, ToolType needToolType)
-    {
-        ToolConfig toolConfig = _configsService.GetConfigFor(needToolType);
-        string toolId = toolConfig.ID;
-        _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(toolId, out int toolUpgradeLevel);
-
-        if (toolUpgradeLevel <= 0)
+        public DropCountCalculatorService(IPersistentProgressService progressService, IConfigsService configs)
         {
-            Logger.LogError($"[DropCountCalculatorService] Some strange situation, gather resource without tool?");
-            return originCount;
+            _dropCountStorage = new();
+
+            _progressService = progressService;
+            _configsService = configs;
         }
 
-        float gatherEfficiency = toolConfig.GetUpgradeData(toolUpgradeLevel).Value;
-
-        // used 100 to convert into int to save precision
-        int gathered = (int)UnityEngine.Mathf.Round(gatherEfficiency * 100 * originCount);
-        if (_dropCountStorage.TryGetValue(resourceType, out int storedCount))
+        public int Calculate(int originCount, ResourceType resourceType, ToolType needToolType)
         {
-            gathered += storedCount;
+            ToolConfig toolConfig = _configsService.GetConfigFor(needToolType);
+            string toolId = toolConfig.ID;
+            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(toolId, out int toolUpgradeLevel);
+
+            if (toolUpgradeLevel <= 0)
+            {
+                Logger.LogError($"[DropCountCalculatorService] Some strange situation, gather resource without tool?");
+                return originCount;
+            }
+
+            float gatherEfficiency = toolConfig.GetUpgradeData(toolUpgradeLevel).Value;
+
+            // used 100 to convert into int to save precision
+            int gathered = (int)UnityEngine.Mathf.Round(gatherEfficiency * 100 * originCount);
+            if (_dropCountStorage.TryGetValue(resourceType, out int storedCount))
+            {
+                gathered += storedCount;
+            }
+
+            int result = gathered / 100;
+            _dropCountStorage[resourceType] = gathered - result * 100;
+
+            return result;
         }
-
-        int result = gathered / 100;
-        _dropCountStorage[resourceType] = gathered - result * 100;
-
-        return result;
     }
 }

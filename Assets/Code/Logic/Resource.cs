@@ -1,3 +1,4 @@
+using Code.Services;
 using System.Collections;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ internal class Resource : MonoBehaviour, IMergingResource, IPoolable
 
     private Dropper _dropper;
     private IRecyclableFactory _factory;
-    private AudioService _audio;
+    private IAudioService _audio;
     private ResourceConfig _config;
     private Coroutine _mergeCoroutine;
     private int _count;
@@ -22,7 +23,7 @@ internal class Resource : MonoBehaviour, IMergingResource, IPoolable
     public ResourceType Type => _config.Type;
     public Vector3 Position => transform.position;
 
-    void IPoolable.Construct(IRecyclableFactory factory, AudioService audio)
+    void IPoolable.Construct(IRecyclableFactory factory, IAudioService audio)
     {
         _factory = factory;
         _audio = audio;

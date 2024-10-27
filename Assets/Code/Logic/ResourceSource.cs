@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.Services;
+using UnityEngine;
 
 internal class ResourceSource : MonoBehaviour
 {
@@ -15,8 +16,8 @@ internal class ResourceSource : MonoBehaviour
     [SerializeField] protected float _restoreTime = 10;
     [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
 
-    private ResourceFactory _resourceFactory;
-    private DropCountCalculatorService _dropCalculator;
+    private IResourceFactory _resourceFactory;
+    private IDropCountCalculatorService _dropCalculator;
     protected float _restorationTimer = 0;
     protected int _currentHitPoints = 0;
 
@@ -26,14 +27,14 @@ internal class ResourceSource : MonoBehaviour
 
     private void Start()
     {
-        var resourceFactory = ResourceFactory.Instance;
-        var dropCountCalculatorService = DropCountCalculatorService.Instance;
-        var audio = AudioService.Instance;
+        var resourceFactory = AllServices.Container.Single<IResourceFactory>();
+        var dropCountCalculatorService = AllServices.Container.Single<IDropCountCalculatorService>();
+        var audio = AllServices.Container.Single<IAudioService>();
 
         Construct(resourceFactory, dropCountCalculatorService, audio);
     }
 
-    private void Construct(ResourceFactory resourceFactory, DropCountCalculatorService dropCountCalculatorService, AudioService audio)
+    private void Construct(IResourceFactory resourceFactory, IDropCountCalculatorService dropCountCalculatorService, IAudioService audio)
     {
         _resourceFactory = resourceFactory;
         _dropCalculator = dropCountCalculatorService;

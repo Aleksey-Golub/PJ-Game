@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-interface IUpgradable
+public interface IUpgradable
 {
     Sprite Sprite { get; }
     bool IsUpgradable { get; }

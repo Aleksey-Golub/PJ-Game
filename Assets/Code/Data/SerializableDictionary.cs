@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Code.Data
+namespace Code.Data
 {
     [Serializable]
     public abstract class SerializableDictionary<TKey, TValue> : ISerializationCallbackReceiver

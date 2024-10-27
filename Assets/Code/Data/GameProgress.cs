@@ -1,15 +1,15 @@
 using System;
 
-namespace Assets.Code.Data
+namespace Code.Data
 {
     [Serializable]
     public class GameProgress
     {
         public PlayerProgress PlayerProgress;
 
-        public GameProgress()
+        public GameProgress(string initialLevel)
         {
-            PlayerProgress = new PlayerProgress();
+            PlayerProgress = new PlayerProgress(initialLevel);
         }
     }
 }

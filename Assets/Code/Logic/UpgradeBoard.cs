@@ -1,12 +1,13 @@
-using Assets.Code.UI;
+using Code.Services;
+using Code.UI.Services;
 using System.Linq;
 using UnityEngine;
 
 internal class UpgradeBoard : MonoBehaviour
 {
-    private UpgradeBoardView _view;
-    private ConfigsService _configService;
-    private PersistentProgressService _progressService;
+    private IUIMediator _uiMediator;
+    private IConfigsService _configService;
+    private IPersistentProgressService _progressService;
 
     internal bool IsVisited { get; private set; }
 
@@ -14,19 +15,18 @@ internal class UpgradeBoard : MonoBehaviour
 
     private void Start()
     {
-        var upgradeBoardView = UIService.Instance.GetUpgradeBoardView();
-        var configService = ConfigsService.Instance;
-        var progressService = PersistentProgressService.Instance;
+        var configService = AllServices.Container.Single<IConfigsService>();
+        var progressService = AllServices.Container.Single<IPersistentProgressService>();
+        var uiMediator = AllServices.Container.Single<IUIMediator>();
 
-        Construct(upgradeBoardView, configService, progressService);
+        Construct(uiMediator, configService, progressService);
     }
 
-    private void Construct(UpgradeBoardView sellBoardView, ConfigsService configService, PersistentProgressService progressService)
+    private void Construct(IUIMediator uiMediator, IConfigsService configService, IPersistentProgressService progressService)
     {
+        _uiMediator = uiMediator;
         _configService = configService;
         _progressService = progressService;
-
-        _view = sellBoardView;
     }
 
     internal void Open(Inventory inventory)
@@ -35,7 +35,7 @@ internal class UpgradeBoard : MonoBehaviour
         IsVisited = true;
 
         _inventory = inventory;
-        _view.Open(UpgradeItem);
+        _uiMediator.OpenUpgradeBoardView(UpgradeItem);
     }
 
     internal void Close()
@@ -45,8 +45,7 @@ internal class UpgradeBoard : MonoBehaviour
 
         _inventory = null;
 
-        if (_view.gameObject.activeSelf)
-            _view.Close();
+        _uiMediator.CloseUpgradeBoardView();
     }
 
     private void UpgradeItem(string itemId)
@@ -62,7 +61,7 @@ internal class UpgradeBoard : MonoBehaviour
             _inventory.Remove(ResourceType.COIN, cost);
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Upgrade(itemId);
 
-            _view.Refresh();
+            _uiMediator.RefreshUpgradeBoardView();
         }
     }
 }

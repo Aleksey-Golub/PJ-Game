@@ -1,18 +1,19 @@
-﻿using UnityEngine;
+﻿using Code.Services;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Code.UI
+namespace Code.UI
 {
-    internal abstract class WindowBase : MonoBehaviour
+    public abstract class WindowBase : MonoBehaviour
     {
         [SerializeField] private Button _closeButton;
         [SerializeField] private AudioClip _closeButtonClip;
 
-        protected AudioService Audio;
+        protected IAudioService Audio;
 
         internal virtual bool IsOpened => gameObject.activeInHierarchy;
 
-        internal void Construct(AudioService audio)
+        protected void Construct(IAudioService audio)
         {
             Audio = audio;
         }

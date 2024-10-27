@@ -1,75 +1,87 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-internal class ResourceMergeService : MonoSingleton<ResourceMergeService>
+namespace Code.Services
 {
-    [SerializeField] private float _distanceToMerge = 1.5f;
-    [SerializeField] private float _timeToMerge = 1f;
-
-    private ResourceFactory _resourceFactory;
-    
-    private float DistanceToMergeSquare => _distanceToMerge * _distanceToMerge;
-
-    private void Start()
+    internal class ResourceMergeService : IResourceMergeService
     {
-        var resourceFactory = ResourceFactory.Instance;
-        Construct(resourceFactory);
-    }
+        private const string CONFIG_PATH = "Infrastructure/Configs/ResourceMergeServiceConfig";
+        
+        private readonly IResourceFactory _resourceFactory;
+        private ResourceMergeServiceConfig _config;
 
-    private void Construct(ResourceFactory resourceFactory)
-    {
-        _resourceFactory = resourceFactory;
-    }
+        private float DistanceToMergeSquare => _config.DistanceToMerge * _config.DistanceToMerge;
 
-    private void Update()
-    {
-        MergeDroppedResources();
-    }
-
-    private void MergeDroppedResources()
-    {
-        IReadOnlyList<IMergingResource> droppedResources = _resourceFactory.DroppedResources;
-
-        foreach (var res in droppedResources)
+        internal ResourceMergeService(IResourceFactory resourceFactory)
         {
-            res.UpdateDroppedTime(Time.deltaTime);
+            _resourceFactory = resourceFactory;
         }
 
-        for (int i = droppedResources.Count - 1; i >= 0; i--)
+        public void Load()
         {
-            IMergingResource current = droppedResources[i];
-            if (!current.IsReadyToMerge(_timeToMerge))
-                continue;
+            _config = Resources.Load<ResourceMergeServiceConfig>(CONFIG_PATH);
+        }
 
-            IMergingResource candidateToMergeTo = null;
-            float minFondSqrDistanse = DistanceToMergeSquare;
-            for (int n = i - 1; n >= 0; n--)
+        public void OnUpdate()
+        {
+            MergeDroppedResources();
+        }
+
+        private void MergeDroppedResources()
+        {
+            IReadOnlyList<IMergingResource> droppedResources = _resourceFactory.DroppedResources;
+
+            foreach (var res in droppedResources)
             {
-                IMergingResource next = droppedResources[n];
-                if (!next.IsReadyToMerge(_timeToMerge))
-                    continue;
-
-                if (next.Type != current.Type)
-                    continue;
-
-                Vector3 fromTo = current.Position - next.Position;
-                float fromToSqrMagnitude = fromTo.sqrMagnitude;
-                if (fromToSqrMagnitude <= minFondSqrDistanse)
-                {
-                    minFondSqrDistanse = fromToSqrMagnitude;
-                    candidateToMergeTo = next;
-                }
+                res.UpdateDroppedTime(Time.deltaTime);
             }
 
-            if (candidateToMergeTo != null)
-                DoMerge(current, candidateToMergeTo);
+            for (int i = droppedResources.Count - 1; i >= 0; i--)
+            {
+                IMergingResource current = droppedResources[i];
+                if (!current.IsReadyToMerge(_config.TimeToMerge))
+                    continue;
+
+                IMergingResource candidateToMergeTo = null;
+                float minFondSqrDistanse = DistanceToMergeSquare;
+                for (int n = i - 1; n >= 0; n--)
+                {
+                    IMergingResource next = droppedResources[n];
+                    if (!next.IsReadyToMerge(_config.TimeToMerge))
+                        continue;
+
+                    if (next.Type != current.Type)
+                        continue;
+
+                    Vector3 fromTo = current.Position - next.Position;
+                    float fromToSqrMagnitude = fromTo.sqrMagnitude;
+                    if (fromToSqrMagnitude <= minFondSqrDistanse)
+                    {
+                        minFondSqrDistanse = fromToSqrMagnitude;
+                        candidateToMergeTo = next;
+                    }
+                }
+
+                if (candidateToMergeTo != null)
+                    DoMerge(current, candidateToMergeTo);
+            }
+        }
+
+        private void DoMerge(IMergingResource from, IMergingResource to)
+        {
+            to.SetCount(to.Count + from.Count);
+            from.SetCount(0);
+            from.MoveAfterMerge(to.Position);
         }
     }
 
-    private void DoMerge(IMergingResource from, IMergingResource to)
+    internal interface IResourceMergeService : IService, IUpdatable
     {
-        to.SetCount(to.Count + from.Count);
-        from.SetCount(0);
-        from.MoveAfterMerge(to.Position);
+        void Load();
+    }
+
+    public interface IUpdatable
+    {
+        void OnUpdate();
     }
 }

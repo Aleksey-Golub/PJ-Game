@@ -1,12 +1,13 @@
+using Code.Services;
 using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Code.UI
+namespace Code.UI
 {
-    internal class UpgradeBoardView : MonoBehaviour
+    public class UpgradeBoardView : MonoBehaviour
     {
         [SerializeField] private UpgradeItemView _prefab;
         [SerializeField] private Transform _content;
@@ -14,15 +15,14 @@ namespace Assets.Code.UI
         [SerializeField] private Button _closeButton;
         [SerializeField] private AudioClip _closeButtonClickedClip;
 
-        private ConfigsService _configService;
-        private PersistentProgressService _progressService;
+        private IConfigsService _configService;
+        private IPersistentProgressService _progressService;
+        private IAudioService _audio;
+        
         private Dictionary<string, UpgradeItemView> _views;
         private Action<string> _upgradeResourceCalback;
 
-        internal Action<ToolType> UpgradeButtonClicked;
-        private AudioService _audio;
-
-        internal void Coustruct(ConfigsService configService, PersistentProgressService progressService, AudioService audio)
+        internal void Coustruct(IConfigsService configService, IPersistentProgressService progressService, IAudioService audio)
         {
             _views = new();
             _configService = configService;

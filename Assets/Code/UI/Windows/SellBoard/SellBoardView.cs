@@ -1,12 +1,13 @@
+using Code.Services;
 using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Code.UI
+namespace Code.UI
 {
-    internal class SellBoardView : MonoBehaviour
+    public class SellBoardView : MonoBehaviour
     {
         [SerializeField] private SellItemView _prefab;
         [SerializeField] private Transform _content;
@@ -14,14 +15,13 @@ namespace Assets.Code.UI
         [SerializeField] private Button _closeButton;
         [SerializeField] private AudioClip _closeButtonClickedClip;
 
-        private ConfigsService _resourceConfigService;
+        private IConfigsService _resourceConfigService;
+        private IAudioService _audio;
+        
         private Dictionary<ResourceType, SellItemView> _views;
         private Action<ResourceType> _sellResourceCalback;
 
-        internal Action<ResourceType> SellButtonClicked;
-        private AudioService _audio;
-
-        internal void Coustruct(ConfigsService configService, AudioService audio)
+        internal void Coustruct(IConfigsService configService, IAudioService audio)
         {
             _views = new();
             _resourceConfigService = configService;

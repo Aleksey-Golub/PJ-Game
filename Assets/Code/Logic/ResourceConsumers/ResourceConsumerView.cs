@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Code.Services;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 internal class ResourceConsumerView : MonoBehaviour
 {
@@ -22,7 +21,7 @@ internal class ResourceConsumerView : MonoBehaviour
     [SerializeField] private int _countTextSortingOrder = 11;
 
     private int _oldSortingOrder;
-    private AudioService _audio;
+    private IAudioService _audio;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -32,7 +31,7 @@ internal class ResourceConsumerView : MonoBehaviour
     }
 #endif
 
-    internal void Construct(AudioService audio)
+    internal void Construct(IAudioService audio)
     {
         _audio = audio;
     }

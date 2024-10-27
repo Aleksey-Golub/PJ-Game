@@ -1,4 +1,4 @@
-using System;
+using Code.Services;
 using UnityEngine;
 
 public class Converter : MonoBehaviour, IResourceConsumer
@@ -20,8 +20,8 @@ public class Converter : MonoBehaviour, IResourceConsumer
     private float _timer;
     private int _currentUpload;
     private int _currentPreUpload;
-    private ResourceFactory _resourceFactory;
-    private PersistentProgressService _progressService;
+    private IResourceFactory _resourceFactory;
+    private IPersistentProgressService _progressService;
 
     public bool CanInteract => _currentUpload < GetMaxUpload() && _currentPreUpload < GetMaxUpload();
     public int PreferedConsumedValue => _preferedConsumedValue;
@@ -30,9 +30,9 @@ public class Converter : MonoBehaviour, IResourceConsumer
 
     private void Start()
     {
-        var resourceFactory = ResourceFactory.Instance;
-        var progressService = PersistentProgressService.Instance;
-        var audio = AudioService.Instance;
+        var resourceFactory = AllServices.Container.Single<IResourceFactory>();
+        var progressService = AllServices.Container.Single<IPersistentProgressService>();
+        var audio = AllServices.Container.Single<IAudioService>();
 
         Construct(resourceFactory, progressService, audio);
         Init();
@@ -44,13 +44,13 @@ public class Converter : MonoBehaviour, IResourceConsumer
     }
     private void OnDestroy()
     {
-        if (_config)
+        if (_config && _progressService != null)
         {
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed -= OnUpgradeItemsProgressChanged;
         }
     }
 
-    private void Construct(ResourceFactory resourceFactory, PersistentProgressService progressService, AudioService audio)
+    private void Construct(IResourceFactory resourceFactory, IPersistentProgressService progressService, IAudioService audio)
     {
         _resourceFactory = resourceFactory;
         _progressService = progressService;
@@ -63,9 +63,9 @@ public class Converter : MonoBehaviour, IResourceConsumer
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed += OnUpgradeItemsProgressChanged;
         }
 
-        void UnlockUpgrade(PersistentProgressService progressService)
+        void UnlockUpgrade(IPersistentProgressService progressService)
         {
-            Assets.Code.Data.UpgradeItemsProgress upgradeItemsProgress = progressService.Progress.PlayerProgress.UpgradeItemsProgress;
+            Code.Data.UpgradeItemsProgress upgradeItemsProgress = progressService.Progress.PlayerProgress.UpgradeItemsProgress;
             string id = _config.ID;
             upgradeItemsProgress.TryGet(id, out int value);
             if (value == 0)

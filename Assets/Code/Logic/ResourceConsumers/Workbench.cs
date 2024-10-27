@@ -1,3 +1,4 @@
+using Code.Services;
 using UnityEngine;
 
 internal class Workbench : MonoBehaviour, IResourceConsumer
@@ -17,8 +18,8 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
     private IDropObjectConfig _dropConfig;
     private int _currentNeedResourceCount;
     private int _currentPreUpload;
-    private ResourceFactory _resourceFactory;
-    private ToolFactory _toolFactory;
+    private IResourceFactory _resourceFactory;
+    private IToolFactory _toolFactory;
 
     public bool CanInteract => _currentNeedResourceCount != 0 && _currentPreUpload < _needResourceCount;
     public int PreferedConsumedValue => _preferedConsumedValue;
@@ -36,14 +37,14 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
 
     private void Start()
     {
-        var resourceFactory = ResourceFactory.Instance;
-        var toolFactory = ToolFactory.Instance;
-        var audio = AudioService.Instance;
+        var resourceFactory = AllServices.Container.Single<IResourceFactory>();
+        var toolFactory = AllServices.Container.Single<IToolFactory>();
+        var audio = AllServices.Container.Single<IAudioService>();
         Construct(resourceFactory, toolFactory, audio);
         Init();
     }
 
-    private void Construct(ResourceFactory resourceFactory, ToolFactory toolFactory, AudioService audio)
+    private void Construct(IResourceFactory resourceFactory, IToolFactory toolFactory, IAudioService audio)
     {
         _resourceFactory = resourceFactory;
         _toolFactory = toolFactory;

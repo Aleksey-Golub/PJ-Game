@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newConverterConfig", menuName = "Configs/ConverterConfig")]
-internal class ConverterConfig : ScriptableObject, IUpgradable
+[CreateAssetMenu(fileName = "newConverterConfig", menuName = "Configs/Converters/Converter Config")]
+public class ConverterConfig : ScriptableObject, IUpgradable
 {
     [SerializeField] private ConverterType _type;
     [SerializeField] private Sprite _sprite;
@@ -30,7 +30,7 @@ internal class ConverterConfig : ScriptableObject, IUpgradable
     public int GetMaxLevel() => _upgradeDatas.Count;
 }
 
-internal enum ConverterType
+public enum ConverterType
 {
     None = 0,
     CowConverter = 1,

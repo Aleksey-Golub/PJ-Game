@@ -1,11 +1,17 @@
+using Code.Services;
 using UnityEngine;
 
-namespace Assets.Code.UI
+namespace Code.UI
 {
     internal class SettingsWindow : WindowBase
     {
         [SerializeField] private ButtonSwitcher _soundsButton;
         [SerializeField] private ButtonSwitcher _musicButton;
+
+        internal new void Construct(IAudioService audio)
+        {
+            base.Construct(audio);
+        }
 
         internal void Open()
         {

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newToolConfig", menuName = "Configs/ToolConfig")]
-internal class ToolConfig : ScriptableObject, IDropObjectConfig, IUpgradable
+[CreateAssetMenu(fileName = "newToolConfig", menuName = "Configs/Tools/Tool Config")]
+public class ToolConfig : ScriptableObject, IDropObjectConfig, IUpgradable
 {
     [SerializeField] private ToolType _type;
     [SerializeField] private Sprite _sprite;
@@ -32,7 +32,7 @@ internal class ToolConfig : ScriptableObject, IDropObjectConfig, IUpgradable
     public int GetMaxLevel() => _upgradeDatas.Count;
 }
 
-internal enum ToolType
+public enum ToolType
 {
     None    = 0,
     SICKLE  = 1,

@@ -1,3 +1,4 @@
+using Code.Services;
 using UnityEngine;
 
 public class Workshop : MonoBehaviour, IResourceConsumer
@@ -23,13 +24,13 @@ public class Workshop : MonoBehaviour, IResourceConsumer
 
     private void Start()
     {
-        var audio = AudioService.Instance;
+        var audio = AllServices.Container.Single<IAudioService>();
 
         Construct(audio);
         Init();
     }
 
-    private void Construct(AudioService audio)
+    private void Construct(IAudioService audio)
     {
         _view.Construct(audio);
     }

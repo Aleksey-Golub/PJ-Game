@@ -1,9 +1,10 @@
+using Code.Services;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Code.UI
+namespace Code.UI
 {
     internal class SellItemView : MonoBehaviour
     {
@@ -15,11 +16,11 @@ namespace Assets.Code.UI
         [SerializeField] private AudioClip _sellButtonClickedClip;
 
         private ResourceType _resourceType;
-        private AudioService _audio;
+        private IAudioService _audio;
 
         internal event Action<ResourceType> SellButtonClicked;
 
-        internal void Construct(AudioService audio)
+        internal void Construct(IAudioService audio)
         {
             _audio = audio;
 

@@ -1,6 +1,10 @@
-﻿internal interface IPlayerInput
+﻿namespace Code.Services
 {
-    float GetHorizontalAxisRaw();
-    float GetVerticalAxisRaw();
-    bool HasMoveInput();
+    public interface IInputService : IService
+    {
+        void Init();
+        float GetHorizontalAxisRaw();
+        float GetVerticalAxisRaw();
+        bool HasMoveInput();
+    }
 }

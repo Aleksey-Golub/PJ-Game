@@ -11,5 +11,7 @@ namespace Code.Services
         void PlaySfxAtPosition(AudioClip clip, Vector3 position);
         void PlaySfxAtUI(AudioClip clip);
         void SwitchMute(string group);
+        void SetNormalizedVolume(string group, float value);
+        float GetNormalizedVolume(string group);
     }
 }

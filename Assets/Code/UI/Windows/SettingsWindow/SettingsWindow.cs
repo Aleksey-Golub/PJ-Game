@@ -1,12 +1,15 @@
 using Code.Services;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Code.UI
 {
     internal class SettingsWindow : WindowBase
     {
         [SerializeField] private ButtonSwitcher _soundsButton;
+        [SerializeField] private Slider _soundSlider;
         [SerializeField] private ButtonSwitcher _musicButton;
+        [SerializeField] private Slider _musicSlider;
 
         internal new void Construct(IAudioService audio)
         {
@@ -16,7 +19,11 @@ namespace Code.UI
         internal void Open()
         {
             gameObject.SetActive(true);
-            RefreshUI();
+            
+            RefreshSounds();
+            RefreshMusic();
+            _soundSlider.normalizedValue = Audio.GetNormalizedVolume(AudioService.SFX);
+            _musicSlider.normalizedValue = Audio.GetNormalizedVolume(AudioService.MUSIC);
         }
 
         protected override void SubscribeUpdates()
@@ -26,6 +33,9 @@ namespace Code.UI
 
             _soundsButton.OnClicked += OnSoundButtonClicked;
             _musicButton.OnClicked += OnMusicButtonClicked;
+
+            _soundSlider.onValueChanged.AddListener(OnSoundSliderValueChanged);
+            _musicSlider.onValueChanged.AddListener(OnMusicSliderValueChanged);
         }
 
         protected override void Cleanup()
@@ -34,6 +44,9 @@ namespace Code.UI
 
             _soundsButton.OnClicked -= OnSoundButtonClicked;
             _musicButton.OnClicked -= OnMusicButtonClicked;
+
+            _soundSlider.onValueChanged.RemoveListener(OnSoundSliderValueChanged);
+            _musicSlider.onValueChanged.RemoveListener(OnMusicSliderValueChanged);
 
             _soundsButton.Cleanup();
             _musicButton.Cleanup();
@@ -49,24 +62,35 @@ namespace Code.UI
         private void OnSoundButtonClicked(ButtonSwitcher button)
         {
             Audio.SwitchMute(AudioService.SFX);
-            RefreshUI();
+            RefreshSounds();
         }
 
         private void OnMusicButtonClicked(ButtonSwitcher button)
         {
             Audio.SwitchMute(AudioService.MUSIC);
-            RefreshUI();
+            RefreshMusic();
         }
 
-        private void RefreshUI()
+        private void OnSoundSliderValueChanged(float newValue)
         {
-            bool sfxOn = !Audio.IsMuted(AudioService.SFX);
-            string sfxStateText = sfxOn ? "on" : "off";
-            _soundsButton.Set(sfxOn, $"Sounds {sfxStateText}");
+            Audio.SetNormalizedVolume(AudioService.SFX, _soundSlider.normalizedValue);
+        }
+        
+        private void OnMusicSliderValueChanged(float newValue)
+        {
+            Audio.SetNormalizedVolume(AudioService.MUSIC, _musicSlider.normalizedValue);
+        }
 
-            bool musicOn = !Audio.IsMuted(AudioService.MUSIC);
-            string musicStateText = musicOn ? "on" : "off";
-            _musicButton.Set(musicOn, $"Music {musicStateText}");
+        private void RefreshSounds() => Refresh(AudioService.SFX, _soundsButton, _soundSlider, "Sounds");
+
+        private void RefreshMusic() => Refresh(AudioService.MUSIC, _musicButton, _musicSlider, "Music");
+
+        private void Refresh(string group, ButtonSwitcher switcher, Slider slider, string label)
+        {
+            bool isOn = !Audio.IsMuted(group);
+            string stateText = isOn ? "on" : "off";
+            switcher.Set(isOn, $"{label} {stateText}");
+            slider.interactable = isOn;
         }
     }
 }

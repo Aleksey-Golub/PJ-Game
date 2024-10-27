@@ -8,6 +8,9 @@ namespace Code.Services
 {
     internal class AudioService : IAudioService
     {
+        private const float MIN_DB = -80f;
+        private const float MAX_DB = 0f;
+
         private const string AMBIENT_PATH = "Sounds/music_loop";
         private const string AUDIOMIXER_PATH = "Sounds/AudioMixer";
         private const string AUDIOSOURCE_PREFAB_PATH = "Sounds/AudioSource";
@@ -54,12 +57,28 @@ namespace Code.Services
         {
             _audioMixer.GetFloat(group, out float value);
 
-            return value < -79f;
+            return value < -79.9f;
         }
 
         public void SwitchMute(string group)
         {
-            float newValue = IsMuted(group) ? 0f : -80f;
+            float newValue = IsMuted(group) ? MAX_DB : MIN_DB;
+            _audioMixer.SetFloat(group, newValue);
+        }
+
+        public float GetNormalizedVolume(string group)
+        {
+            _audioMixer.GetFloat(group, out float value);
+
+            //10^value/20
+            return Mathf.Pow(10, value / 20);
+        }
+
+        public void SetNormalizedVolume(string group, float value)
+        {
+            value = Mathf.Max(0.0001f, value);
+            // value = (0, 1]
+            float newValue = Mathf.Log10(value) * 20f;
             _audioMixer.SetFloat(group, newValue);
         }
 

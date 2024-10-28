@@ -8,9 +8,6 @@ namespace Code.Services
 {
     internal class AudioService : IAudioService
     {
-        private const float MIN_DB = -80f;
-        private const float MAX_DB = 0f;
-
         private const string AMBIENT_PATH = "Sounds/music_loop";
         private const string AUDIOMIXER_PATH = "Sounds/AudioMixer";
         private const string AUDIOSOURCE_PREFAB_PATH = "Sounds/AudioSource";
@@ -21,8 +18,7 @@ namespace Code.Services
 
         private AudioClip _ambient;
         private AudioMixer _audioMixer;
-        private AudioMixerGroup _sfxGroup;
-        private AudioMixerGroup _musicGroup;
+        private readonly Dictionary<string, AudioGroupData> _groups = new();
         private AudioSource _prefab;
         private AudioSource _musicSource;
         private Queue<AudioSource> _sfxPool;
@@ -53,33 +49,22 @@ namespace Code.Services
             _coroutineRunner.StartCoroutine(CheckClipsEndedCoroutine());
         }
 
-        public bool IsMuted(string group)
-        {
-            _audioMixer.GetFloat(group, out float value);
-
-            return value < -79.9f;
-        }
+        public AudioGroupData GetData(string group) => _groups[group];
+        public bool IsMuted(string group) => _groups[group].IsMuted;
+        public float GetNormalizedVolume(string group) => _groups[group].LastNormalizedValue;
 
         public void SwitchMute(string group)
         {
-            float newValue = IsMuted(group) ? MAX_DB : MIN_DB;
-            _audioMixer.SetFloat(group, newValue);
-        }
+            _groups[group].IsMuted = !_groups[group].IsMuted;
 
-        public float GetNormalizedVolume(string group)
-        {
-            _audioMixer.GetFloat(group, out float value);
-
-            //10^value/20
-            return Mathf.Pow(10, value / 20);
+            float newNormValue = IsMuted(group) ? 0 : _groups[group].LastNormalizedValue;
+            SetNormalizedVolumeInner(group, newNormValue);
         }
 
         public void SetNormalizedVolume(string group, float value)
         {
-            value = Mathf.Max(0.0001f, value);
-            // value = (0, 1]
-            float newValue = Mathf.Log10(value) * 20f;
-            _audioMixer.SetFloat(group, newValue);
+            _groups[group].LastNormalizedValue = value;
+            SetNormalizedVolumeInner(group, value);
         }
 
         public void PlaySfxAtUI(AudioClip clip)
@@ -90,7 +75,7 @@ namespace Code.Services
         public void PlaySfxAtPosition(AudioClip clip, Vector3 position)
         {
             if (!_sfxPool.TryDequeue(out AudioSource sfx))
-                sfx = CreateAudioSource(_sfxGroup, false);
+                sfx = CreateAudioSource(_groups[SFX].AudioMixerGroup, false);
 
             sfx.transform.position = position;
             sfx.clip = clip;
@@ -108,7 +93,7 @@ namespace Code.Services
         {
             if (!_musicSource)
             {
-                _musicSource = CreateAudioSource(_musicGroup, true);
+                _musicSource = CreateAudioSource(_groups[MUSIC].AudioMixerGroup, true);
                 _musicSource.name = MUSIC;
             }
 
@@ -144,7 +129,7 @@ namespace Code.Services
             _sfxPool = new(capacity);
             for (int i = 0; i < capacity; i++)
             {
-                AudioSource source = CreateAudioSource(_sfxGroup, false);
+                AudioSource source = CreateAudioSource(_groups[SFX].AudioMixerGroup, false);
 
                 _sfxPool.Enqueue(source);
             }
@@ -160,8 +145,8 @@ namespace Code.Services
 
         private void CacheGroups()
         {
-            _sfxGroup = _audioMixer.FindMatchingGroups(SFX)[0];
-            _musicGroup = _audioMixer.FindMatchingGroups(MUSIC)[0];
+            _groups.Add(SFX, new AudioGroupData(SFX, _audioMixer.FindMatchingGroups(SFX)[0], false, 1));
+            _groups.Add(MUSIC, new AudioGroupData(MUSIC, _audioMixer.FindMatchingGroups(MUSIC)[0], false, 1));
         }
 
         private Transform CreateAudioSourceContainer()
@@ -169,6 +154,30 @@ namespace Code.Services
             var go = new GameObject("Audio Source Container");
             UnityEngine.Object.DontDestroyOnLoad(go);
             return go.transform;
+        }
+
+        private void SetNormalizedVolumeInner(string group, float value)
+        {
+            value = Mathf.Max(0.0001f, value);
+            // value = (0, 1]
+            float newValue = Mathf.Log10(value) * 20f;
+            _audioMixer.SetFloat(group, newValue);
+        }
+    }
+
+    public class AudioGroupData
+    {
+        public string Name;
+        public AudioMixerGroup AudioMixerGroup;
+        public bool IsMuted;
+        public float LastNormalizedValue;
+
+        public AudioGroupData(string name, AudioMixerGroup audioMixerGroup, bool isMuted, float lastNormalizedValue)
+        {
+            Name = name;
+            AudioMixerGroup = audioMixerGroup;
+            IsMuted = isMuted;
+            LastNormalizedValue = lastNormalizedValue;
         }
     }
 }

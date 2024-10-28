@@ -17,7 +17,7 @@ namespace Code.UI
 
         internal void SubscribeUpdates()
         {
-            _button.onClick.AddListener(() => OnClicked?.Invoke(this));
+            _button.onClick.AddListener(OnClick);
         }
 
         internal void Set(bool isOn, string labelText)
@@ -28,7 +28,9 @@ namespace Code.UI
 
         internal void Cleanup()
         {
-            _button.onClick.RemoveAllListeners();
+            _button.onClick.RemoveListener(OnClick);
         }
+
+        private void OnClick() => OnClicked?.Invoke(this);
     }
 }

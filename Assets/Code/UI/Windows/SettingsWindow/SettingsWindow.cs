@@ -93,10 +93,12 @@ namespace Code.UI
 
         private void Refresh(string group, ButtonSwitcher switcher, Slider slider, string label)
         {
-            bool isOn = !Audio.IsMuted(group);
+            AudioGroupData data = Audio.GetData(group);
+            bool isOn = !data.IsMuted;
             string stateText = isOn ? "on" : "off";
             switcher.Set(isOn, $"{label} {stateText}");
             slider.interactable = isOn;
+            slider.SetValueWithoutNotify(data.LastNormalizedValue * slider.maxValue);
         }
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3234601140915309039}
   m_Layer: 5
-  m_Name: Sfx Group
+  m_Name: Audio Group UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

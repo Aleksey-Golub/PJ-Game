@@ -33,8 +33,6 @@ internal class Ramble : MonoBehaviour
     {
         _stayTimer += Time.deltaTime;
 
-        print("moving()");
-        
         if (!_isMoving && _stayTimer >= _stayDelay)
         {
             _targetPoint = GetTargetPoint();
@@ -45,7 +43,6 @@ internal class Ramble : MonoBehaviour
 
         if (_isMoving)
         {
-            print("moving()");
             _mover.MoveTo(_targetPoint);
         }
     }
@@ -59,20 +56,25 @@ internal class Ramble : MonoBehaviour
 
     private Vector3 GetTargetPoint()
     {
-        print("GetTargetPoint()");
-
         Vector3 result;
+        int k = 0;
 
-        var radius = UnityEngine.Random.Range(_radiusToMove.x, _radiusToMove.y);
-        result = transform.position + UnityEngine.Random.insideUnitSphere * radius;
-        result.z = transform.position.z;
-
-        return IsValid(result) ? result : GetTargetPoint();
-
-        bool IsValid(Vector3 result)
+        do
         {
-            return true;
+            var radius = UnityEngine.Random.Range(_radiusToMove.x, _radiusToMove.y);
+            result = transform.position + UnityEngine.Random.insideUnitSphere * radius;
+            result.z = transform.position.z;
+
+            k++;
+
+            if (IsBreaked())
+                break;
         }
+        while (!_mover.IsValid(targetPoint: result));
+
+        return IsBreaked() ? transform.position : result;
+
+        bool IsBreaked() => k > 10;
     }
 
     private void SetNewStayDelay()

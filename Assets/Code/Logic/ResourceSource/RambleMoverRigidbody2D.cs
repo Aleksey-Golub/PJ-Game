@@ -3,16 +3,38 @@
 [RequireComponent(typeof(Rigidbody2D))]
 internal class RambleMoverRigidbody2D : RambleMoverBase
 {
+    [SerializeField] private CastParams _castParams;
     [SerializeField] private Rigidbody2D _rb;
+
+    private readonly RaycastHit2D[] _buffer = new RaycastHit2D[5];
+
+    internal override bool IsValid(Vector3 targetPoint)
+    {
+        Vector3 to = targetPoint - transform.position;
+        Vector2 direction = to.normalized;
+
+        int detectCount = Physics2D.CircleCastNonAlloc(transform.position + _castParams.Offset, _castParams.Radius, direction, _buffer, to.magnitude);
+        return 1 == detectCount || DetectSelfAndTriggersOnly();
+
+        bool DetectSelfAndTriggersOnly()
+        {
+            foreach (RaycastHit2D item in _buffer)
+            {
+                if (item.transform != null && item.transform.gameObject != gameObject && !item.collider.isTrigger)
+                    return false;
+            }
+
+            return true;
+        }
+    }
 
     internal override void MoveTo(Vector3 targetPosition)
     {
         Vector2 startPos = _rb.position;
-        Vector2 endPos = new Vector2(targetPosition.x, targetPosition.y);
+        Vector2 endPos = targetPosition;
 
         if (startPos == endPos)
         {
-            print("startPos == endPos");
             InvokeReached();
             return;
         }
@@ -21,17 +43,20 @@ internal class RambleMoverRigidbody2D : RambleMoverBase
         Vector2 direction = to.normalized;
         Vector2 offset = direction * Speed * Time.fixedDeltaTime;
 
-        if (offset.sqrMagnitude > to.sqrMagnitude)
+        if (offset.sqrMagnitude < to.sqrMagnitude)
         {
-
-            print("move to offset");
             _rb.MovePosition(startPos + offset);
         }
         else
         {
-            print("move to end");
-
             _rb.MovePosition(endPos);
         }
+    }
+
+    [System.Serializable]
+    public struct CastParams
+    {
+        public Vector3 Offset;
+        public float Radius;
     }
 }

@@ -8,6 +8,7 @@ internal abstract class RambleMoverBase : MonoBehaviour
     internal event Action Reached;
 
     internal abstract void MoveTo(Vector3 targetPosition);
+    internal abstract bool IsValid(Vector3 targetPoint);
 
     protected void InvokeReached() => Reached?.Invoke();
 }

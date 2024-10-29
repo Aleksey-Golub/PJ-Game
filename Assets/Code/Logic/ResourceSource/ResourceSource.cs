@@ -57,7 +57,9 @@ internal class ResourceSource : MonoBehaviour
             return;
 
         if (_restoreTime < 0)
+        {
             gameObject.SetActive(false);
+        }
 
         _restorationTimer += Time.deltaTime;
 
@@ -77,7 +79,7 @@ internal class ResourceSource : MonoBehaviour
         _view.ShowHitEffect();
         _view.PlayHitSound();
 
-        if (_currentHitPoints <= 0)
+        if (IsDied)
         {
             Exhaust();
             DropResource();

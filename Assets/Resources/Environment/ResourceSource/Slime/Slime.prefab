@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2970620002354288456}
   - component: {fileID: 7204539623675121511}
   - component: {fileID: 2893014479567276556}
-  - component: {fileID: 1804461717220622915}
+  - component: {fileID: 261829349685231436}
+  - component: {fileID: 497716900815104776}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -151,12 +152,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2582a70a0d468c640b3960d5aa926935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mover: {fileID: 1804461717220622915}
+  _mover: {fileID: 497716900815104776}
   _animator: {fileID: 693697947396229998}
   _rambleBoolName: Jump
   _stayTime: {x: 2, y: 5}
   _radiusToMove: {x: 1, y: 2}
---- !u!114 &1804461717220622915
+--- !u!50 &261829349685231436
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604511607954701181}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 20
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &497716900815104776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,10 +193,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3604511607954701181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0d54512c3d7994e9fe78d4dac1a8c6, type: 3}
+  m_Script: {fileID: 11500000, guid: d4bfe50e67f5c0c4a8f4df5bb23dec94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+  _castParams:
+    Offset: {x: 0, y: 0, z: 0}
+    Radius: 0.45
+  _rb: {fileID: 261829349685231436}
 --- !u!1 &4611619182349667098
 GameObject:
   m_ObjectHideFlags: 0

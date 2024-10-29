@@ -512,8 +512,8 @@ MonoBehaviour:
   _rb: {fileID: 3953877653977859354}
   _collider2D: {fileID: 5281159041745986837}
   _view: {fileID: 6585186599807485733}
-  _speed: 2
-  _attackDelay: 0.6
+  _speed: 3
+  _attackDelay: 0.55
   _overlapSphereParams:
     Radius: 0.4
     Offset: 0.4

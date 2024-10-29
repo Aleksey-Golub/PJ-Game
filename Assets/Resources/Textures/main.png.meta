@@ -1420,15 +1420,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_63
+      name: stairs_flat
       rect:
         serializedVersion: 2
-        x: 119
-        y: 25
-        width: 20
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 121
+        y: 27
+        width: 17
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1441,15 +1441,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_64
+      name: stairs_up
       rect:
         serializedVersion: 2
-        x: 309
-        y: 52
-        width: 25
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 315
+        y: 57
+        width: 17
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1462,15 +1462,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_65
+      name: stairs_down
       rect:
         serializedVersion: 2
-        x: 319
-        y: 32
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 321
+        y: 34
+        width: 16
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1953,7 +1953,7 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1974,7 +1974,7 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1982,6 +1982,27 @@ TextureImporter:
       bones: []
       spriteID: 979231f29b2e4f8409ea0204b8813334
       internalID: 665058631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4x4
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 81
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20495c9e3f91808478afceb75463425c
+      internalID: 602693871
       vertices: []
       indices: 
       edges: []
@@ -1997,6 +2018,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      4x4: 1215068654
       AXE: 1218634206
       BUCKET: -1672760803
       Chest Closed: 1363477437
@@ -2033,9 +2055,6 @@ TextureImporter:
       __main.texturec-0-flipped_43: -1288984483
       __main.texturec-0-flipped_61: -535157519
       __main.texturec-0-flipped_62: -998875238
-      __main.texturec-0-flipped_63: 2038853318
-      __main.texturec-0-flipped_64: 906421399
-      __main.texturec-0-flipped_65: -1723563639
       __main.texturec-0-flipped_9: 1041573145
       __pine_stump: 188050404
       __rock_stump: -1482988333
@@ -2056,7 +2075,6 @@ TextureImporter:
       grass: -667556626
       iron: -343440380
       iron_ore: -1107001721
-      main_0: 1215068654
       milk: 1368875871
       mind_cloud: -1030577411
       music_off: 665058631
@@ -2085,6 +2103,9 @@ TextureImporter:
       sound_off: 1269199810
       sound_on: -1045172846
       square marker: -1680720229
+      stairs_down: -1723563639
+      stairs_flat: 2038853318
+      stairs_up: 906421399
       stone: 623669451
       water: -1335790571
       wood: 1605545508

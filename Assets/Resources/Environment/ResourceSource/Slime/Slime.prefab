@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2970620002354288456}
   - component: {fileID: 7204539623675121511}
   - component: {fileID: 2893014479567276556}
+  - component: {fileID: 1804461717220622915}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -150,11 +151,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2582a70a0d468c640b3960d5aa926935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mover: {fileID: 1804461717220622915}
   _animator: {fileID: 693697947396229998}
   _rambleBoolName: Jump
   _stayTime: {x: 2, y: 5}
   _radiusToMove: {x: 1, y: 2}
-  _speed: 1
+--- !u!114 &1804461717220622915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604511607954701181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0d54512c3d7994e9fe78d4dac1a8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
 --- !u!1 &4611619182349667098
 GameObject:
   m_ObjectHideFlags: 0

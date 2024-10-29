@@ -1,4 +1,5 @@
 ﻿using Code.Services;
+using System;
 using UnityEngine;
 
 internal class ResourceSource : MonoBehaviour
@@ -22,8 +23,9 @@ internal class ResourceSource : MonoBehaviour
     protected int _currentHitPoints = 0;
 
     internal bool IsDied => _currentHitPoints <= 0;
-
     internal ToolType NeedToolType => _needToolType;
+
+    internal event Action<ResourceSource> Dropped;
 
     private void Start()
     {
@@ -98,6 +100,8 @@ internal class ResourceSource : MonoBehaviour
 
             resource.MoveAfterDrop(dropData[i]);
         }
+
+        Dropped?.Invoke(this);
     }
 
     private void Exhaust()

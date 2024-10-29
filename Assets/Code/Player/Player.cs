@@ -91,6 +91,16 @@ internal class Player : MonoBehaviour, IDisposable
         _inventory.ResourceCountChanged -= _inventoryView.UpdateFor;
     }
 
+    internal void Teleport(Vector3 to)
+    {
+        _rb.MovePosition(to);
+    }
+
+    internal void SetLastAbsentTool(ToolType type)
+    {
+        _lastAbsentTool = type;
+    }
+
     private void FixedUpdate()
     {
         //Logger.Log($"Player FixedUpdate at {Time.frameCount} frame");
@@ -137,7 +147,7 @@ internal class Player : MonoBehaviour, IDisposable
                         && !s.IsDied
                         )
                     {
-                        if (CanGatherWith(s.NeedToolType))
+                        if (Has(s.NeedToolType))
                         {
                             sCount++;
                         }
@@ -225,9 +235,15 @@ internal class Player : MonoBehaviour, IDisposable
             _inUpgradeBoard = true;
         }
 
+        if (other.TryGetComponent(out DungeonEntrance entrance))
+        {
+            if (entrance.CanInteract(this))
+                entrance.Interact(this);
+        }
+
         if (other.TryGetComponent(out ResourceStorage resourceStorage))
         {
-            if (CanGatherWith(resourceStorage.NeedToolType))
+            if (Has(resourceStorage.NeedToolType))
             {
                 if (resourceStorage.CanInteract)
                     resourceStorage.Interact();
@@ -268,7 +284,7 @@ internal class Player : MonoBehaviour, IDisposable
 
                 if (
                     collider.TryGetComponent(out ResourceSource s)
-                    && CanGatherWith(s.NeedToolType)
+                    && Has(s.NeedToolType)
                     && !s.IsDied
                     )
                 {
@@ -280,7 +296,7 @@ internal class Player : MonoBehaviour, IDisposable
         }
     }
 
-    private bool CanGatherWith(ToolType needToolType)
+    public bool Has(ToolType needToolType)
     {
         if (needToolType is ToolType.None)
             return true;

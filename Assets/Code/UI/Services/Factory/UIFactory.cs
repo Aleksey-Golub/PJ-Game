@@ -8,8 +8,8 @@ namespace Code.UI.Services
     public class UIFactory : IUIFactory
     {
         private const string UI_ROOT_PATH = "UI/UI Root";
-        private const string UPGRADEBOARDVIEW_PATH = "UI/Windows/Upgrade Board View";
-        private const string SELLBOARDVIEW_PATH = "UI/Windows/Sell Board View";
+        private const string UPGRADEBOARDVIEW_PATH = "UI/Windows/Upgrade/Upgrade Board View";
+        private const string SELLBOARDVIEW_PATH = "UI/Windows/Sell/Sell Board View";
 
         private readonly IAssetProvider _assets;
         private readonly IConfigsService _configs;

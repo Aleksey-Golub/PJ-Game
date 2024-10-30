@@ -205,4 +205,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitEffectAnimator: {fileID: 1681017633229993242}
+  <EffectId>k__BackingField: 1
   _toShowSprite: {fileID: 301836381, guid: cacd62855cbf0ce44afaf4cd98231b16, type: 3}

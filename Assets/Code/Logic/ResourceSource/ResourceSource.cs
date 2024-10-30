@@ -32,16 +32,17 @@ internal class ResourceSource : MonoBehaviour
         var resourceFactory = AllServices.Container.Single<IResourceFactory>();
         var dropCountCalculatorService = AllServices.Container.Single<IDropCountCalculatorService>();
         var audio = AllServices.Container.Single<IAudioService>();
+        var effectFactory = AllServices.Container.Single<IEffectFactory>();
 
-        Construct(resourceFactory, dropCountCalculatorService, audio);
+        Construct(resourceFactory, dropCountCalculatorService, audio, effectFactory);
     }
 
-    private void Construct(IResourceFactory resourceFactory, IDropCountCalculatorService dropCountCalculatorService, IAudioService audio)
+    private void Construct(IResourceFactory resourceFactory, IDropCountCalculatorService dropCountCalculatorService, IAudioService audio, IEffectFactory effectFactory)
     {
         _resourceFactory = resourceFactory;
         _dropCalculator = dropCountCalculatorService;
 
-        _view.Construct(audio);
+        _view.Construct(audio, effectFactory);
 
         RestoreHP(_hitPoints);
     }

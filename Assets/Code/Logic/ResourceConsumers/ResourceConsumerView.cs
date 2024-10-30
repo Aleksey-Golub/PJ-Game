@@ -10,7 +10,8 @@ internal class ResourceConsumerView : MonoBehaviour
     [SerializeField] private TextMeshPro _needText;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animation _animation;
-    [SerializeField] private Effect _hitEffect;
+    [SerializeField] private EffectId _hitEffectType;
+    [SerializeField] private Transform _effectTemplate;
 
     [Header("Settings")]
     [SerializeField] private Sprite _diedSprite;
@@ -22,6 +23,7 @@ internal class ResourceConsumerView : MonoBehaviour
 
     private int _oldSortingOrder;
     private IAudioService _audio;
+    private IEffectFactory _effectFactory;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -31,9 +33,10 @@ internal class ResourceConsumerView : MonoBehaviour
     }
 #endif
 
-    internal void Construct(IAudioService audio)
+    internal void Construct(IAudioService audio, IEffectFactory effectFactory)
     {
         _audio = audio;
+        _effectFactory = effectFactory;
     }
 
     internal void Init(Sprite needResourceSprite, int initialNeedResourceCount, Sprite generateObjSprite)
@@ -74,7 +77,7 @@ internal class ResourceConsumerView : MonoBehaviour
     }
     internal void ShowHitEffect()
     {
-        if (_hitEffect != null)
-            _hitEffect.Play();
+        if (_hitEffectType != EffectId.None)
+            _effectFactory.Get(_hitEffectType, _effectTemplate).Play();
     }
 }

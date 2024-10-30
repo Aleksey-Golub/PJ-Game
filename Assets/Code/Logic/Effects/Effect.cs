@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
+using Code.Services;
 
-internal abstract class Effect : MonoBehaviour
+public abstract class Effect : MonoBehaviour, IPoolable
 {
     [SerializeField] protected Animator _hitEffectAnimator;
+    [field: SerializeField] public EffectId EffectId { get; private set; }
 
     protected static readonly int _hitEffectHash = Animator.StringToHash("Hit Effect");
     protected static readonly int _explosionEffectHash = Animator.StringToHash("Explosion");
+
+    private IRecyclableFactory _factory;
+    private IAudioService _audio;
 
     #region EDITOR_ONLY
 #if UNITY_EDITOR
@@ -26,6 +31,18 @@ internal abstract class Effect : MonoBehaviour
 #endif
     #endregion
 
+    public void Construct(IRecyclableFactory factory, IAudioService audio)
+    {
+        _factory = factory;
+        _audio = audio;
+    }
+
     internal abstract void Play();
 }
 
+public enum EffectId
+{
+    None = 0,
+    Explosion = 1,
+    Hit = 2,
+}

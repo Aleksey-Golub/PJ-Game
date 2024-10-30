@@ -25,14 +25,15 @@ public class Workshop : MonoBehaviour, IResourceConsumer
     private void Start()
     {
         var audio = AllServices.Container.Single<IAudioService>();
+        var effectFactory = AllServices.Container.Single<IEffectFactory>();
 
-        Construct(audio);
+        Construct(audio, effectFactory);
         Init();
     }
 
-    private void Construct(IAudioService audio)
+    private void Construct(IAudioService audio, IEffectFactory effectFactory)
     {
-        _view.Construct(audio);
+        _view.Construct(audio, effectFactory);
     }
 
     internal void Init()

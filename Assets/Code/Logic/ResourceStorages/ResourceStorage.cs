@@ -30,16 +30,17 @@ internal class ResourceStorage : MonoBehaviour
         var resourceFactory = AllServices.Container.Single<IResourceFactory>();
         var progressService = AllServices.Container.Single<IPersistentProgressService>();
         var audio = AllServices.Container.Single<IAudioService>();
+        var effectFactory = AllServices.Container.Single<IEffectFactory>();
 
-        Construct(resourceFactory, progressService, audio);
+        Construct(resourceFactory, progressService, audio, effectFactory);
     }
 
-    private void Construct(IResourceFactory resourceFactory, IPersistentProgressService progressService, IAudioService audio)
+    private void Construct(IResourceFactory resourceFactory, IPersistentProgressService progressService, IAudioService audio, IEffectFactory effectFactory)
     {
         _resourceFactory = resourceFactory;
         _progressService = progressService;
 
-        _view.Construct(audio);
+        _view.Construct(audio, effectFactory);
 
         if (_config)
         {

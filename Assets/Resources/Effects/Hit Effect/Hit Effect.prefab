@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitEffectAnimator: {fileID: 1946034063615560289}
+  <EffectId>k__BackingField: 2
   _toShowSprite: {fileID: -1589627783, guid: 58f6e962ad52328428ce249673f670fd, type: 3}
   _childEffect: {fileID: 5241742811812215972}
   _offset: {x: 0, y: 0.1}

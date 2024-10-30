@@ -11,10 +11,12 @@ namespace Code.Services
         IReadOnlyDictionary<ResourceStorageType, ResourceStorageConfig> ResourceStorageConfigs { get; }
         IReadOnlyDictionary<ConverterType, ConverterConfig> ConverterConfigs { get; }
         IReadOnlyList<IUpgradable> UpgradablesConfigs { get; }
+        IReadOnlyDictionary<EffectId, EffectConfig> EffectsConfigs { get; }
 
         void Load();
         ResourceConfig GetConfigFor(ResourceType type);
         ToolConfig GetConfigFor(ToolType type);
         WindowConfig GetConfigFor(WindowId windowId);
+        EffectConfig GetConfigFor(EffectId effectType);
     }
 }

@@ -13,17 +13,20 @@ namespace Code.Services
         private const string RESOURCE_STORAGE_CONFIGS_PATH = "Configs/ResourceStorageConfigs/AllResourceStoragesConfigs";
         private const string CONVERTER_CONFIGS_PATH = "Configs/ConverterConfigs/AllConvertersConfigs";
         private const string WINDOWS_CONFIGS_PATH = "Configs/UI/WindowsConfigs";
+        private const string EFFECTS_CONFIGS_PATH = "Configs/EffectsConfigs/EffectsConfigs";
 
         private Dictionary<ResourceType, ResourceConfig> _resourcesConfigs;
         private Dictionary<ToolType, ToolConfig> _toolsConfigs;
         private Dictionary<ResourceStorageType, ResourceStorageConfig> _resourceStorageConfigs;
         private Dictionary<ConverterType, ConverterConfig> _converterConfigs;
         private Dictionary<WindowId, WindowConfig> _windowConfigs;
+        private Dictionary<EffectId, EffectConfig> _effectsConfigs;
 
         public IReadOnlyDictionary<ResourceType, ResourceConfig> ResourcesConfigs => _resourcesConfigs;
         public IReadOnlyDictionary<ToolType, ToolConfig> ToolsConfigs => _toolsConfigs;
         public IReadOnlyDictionary<ResourceStorageType, ResourceStorageConfig> ResourceStorageConfigs => _resourceStorageConfigs;
         public IReadOnlyDictionary<ConverterType, ConverterConfig> ConverterConfigs => _converterConfigs;
+        public IReadOnlyDictionary<EffectId, EffectConfig> EffectsConfigs => _effectsConfigs;
         public IReadOnlyList<IUpgradable> UpgradablesConfigs { get; private set; }
 
         public void Load()
@@ -33,6 +36,7 @@ namespace Code.Services
             _resourceStorageConfigs = Resources.Load<ResourceStoragesConfigs>(RESOURCE_STORAGE_CONFIGS_PATH).Configs.ToDictionary(c => c.Type, c => c);
             _converterConfigs = Resources.Load<ConvertersConfigs>(CONVERTER_CONFIGS_PATH).Configs.ToDictionary(c => c.Type, c => c);
             _windowConfigs = Resources.Load<WindowsConfigs>(WINDOWS_CONFIGS_PATH).Configs.ToDictionary(c => c.WindowId, c => c);
+            _effectsConfigs = Resources.Load<EffectsConfigs>(EFFECTS_CONFIGS_PATH).Configs.ToDictionary(c => c.Template.EffectId, c => c);
 
             UpgradablesConfigs = GetUpgradablesConfigs();
         }
@@ -60,6 +64,11 @@ namespace Code.Services
         public WindowConfig GetConfigFor(WindowId windowId)
         {
             return _windowConfigs[windowId];
+        }
+
+        public EffectConfig GetConfigFor(EffectId effectType)
+        {
+            return _effectsConfigs[effectType];
         }
     }
 }

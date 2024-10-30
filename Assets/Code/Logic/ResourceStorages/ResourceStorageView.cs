@@ -6,7 +6,8 @@ internal class ResourceStorageView : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animation _animation;
-    [SerializeField] private Effect _hitEffect;
+    [SerializeField] private EffectId _hitEffectType;
+    [SerializeField] private Transform _effectTemplate;
     [SerializeField] private TextMeshPro _countText;
     [SerializeField] private int _countTextSortingOrder = 1;
 
@@ -20,6 +21,7 @@ internal class ResourceStorageView : MonoBehaviour
 
     private int _oldSortingOrder;
     private IAudioService _audio;
+    private IEffectFactory _effectFactory;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -29,9 +31,10 @@ internal class ResourceStorageView : MonoBehaviour
     }
 #endif
 
-    internal void Construct(IAudioService audio)
+    internal void Construct(IAudioService audio, IEffectFactory effectFactory)
     {
         _audio = audio;
+        _effectFactory = effectFactory;
     }
 
     internal void PlayDropResourceSound()
@@ -54,8 +57,8 @@ internal class ResourceStorageView : MonoBehaviour
 
     internal void ShowHitEffect()
     {
-        if (_hitEffect != null)
-            _hitEffect.Play();
+        if (_hitEffectType != EffectId.None)
+            _effectFactory.Get(_hitEffectType, _effectTemplate).Play();
     }
 
     internal void ShowResourceCount(int currentResourceCount, int dropResourceCount)

@@ -9,16 +9,18 @@ public class DungeonEntranceView : MonoBehaviour
     [SerializeField] private GameObject _marker;
     [SerializeField] private GameObject _progress;
     [SerializeField] private GameObject _progressFg;
-    [Tooltip("Can be null")]
-    [SerializeField] private Effect _openEffect;
+    [SerializeField] private EffectId _openEffectType;
+    [SerializeField] private Transform _effectTemplate;
     [Tooltip("Can be null")]
     [SerializeField] private AudioClip _openAudioClip;
 
     private IAudioService _audio;
+    private IEffectFactory _effectFactory;
 
-    internal void Construct(IAudioService audio)
+    internal void Construct(IAudioService audio, IEffectFactory effectFactory)
     {
         _audio = audio;
+        _effectFactory = effectFactory;
     }
 
     internal void ShowProgress(float current, float total)
@@ -63,8 +65,8 @@ public class DungeonEntranceView : MonoBehaviour
 
     private void ShowOpenEffect()
     {
-        if (_openEffect != null)
-            _openEffect.Play();
+        if (_openEffectType != EffectId.None)
+            _effectFactory.Get(_openEffectType, _effectTemplate).Play();
     }
 
     private void PlayOpenSound()

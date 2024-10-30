@@ -120,6 +120,7 @@ Transform:
   m_Children:
   - {fileID: 8942004428019415687}
   - {fileID: 2602062306019472846}
+  - {fileID: 5646147945729086345}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1606797513041667097
@@ -231,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _view: {fileID: 7527004072485970331}
+  _config: {fileID: 0}
   _needToolType: 0
   _resourceConfig: {fileID: 0}
   _dropResourceCount: 1
@@ -256,7 +258,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 3654969139900557348}
   _animation: {fileID: 8855702563930804582}
-  _hitEffect: {fileID: 0}
+  _hitEffectType: 0
+  _effectTemplate: {fileID: 5646147945729086345}
   _countText: {fileID: 7596923759307046414}
   _countTextSortingOrder: -1
   _diedSprite: {fileID: 0}
@@ -265,6 +268,37 @@ MonoBehaviour:
   _exhaustSortingOrder: 0
   _hitAudioClip: {fileID: 0}
   _dropResourceAudioClip: {fileID: 8300000, guid: 6551217db40144341aef431aed8d54c5, type: 3}
+--- !u!1 &6756226741939031117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5646147945729086345}
+  m_Layer: 0
+  m_Name: Effect Template
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5646147945729086345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756226741939031117}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2096855700227798631}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6909613413084114099
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,11 +18,12 @@ public class DungeonEntrance : MonoBehaviour
     private void Start()
     {
         var audio = AllServices.Container.Single<IAudioService>();
+        var effectFactory = AllServices.Container.Single<IEffectFactory>();
 
-        Construct(audio);
+        Construct(audio, effectFactory);
     }
 
-    public void Construct(IAudioService audio)
+    public void Construct(IAudioService audio, IEffectFactory effectFactory)
     {
         _restoreTimer = new Timer();
         _restoreTimer.Changed += OnTimerChanged;
@@ -30,7 +31,7 @@ public class DungeonEntrance : MonoBehaviour
         if (_openIsStart)
             _restoreTimer.Start(Constants.EPSILON);
 
-        _view.Construct(audio);
+        _view.Construct(audio, effectFactory);
     }
 
     private void OnDestroy()

@@ -43,6 +43,7 @@ namespace Code.Infrastructure
             _services.RegisterSingle<IResourceFactory>(new ResourceFactory(_services.Single<IAudioService>(), _services.Single<IAssetProvider>()));
             _services.RegisterSingle<IToolFactory>(new ToolFactory(_services.Single<IAudioService>(), _services.Single<IAssetProvider>()));
             _services.RegisterSingle<ITransitionalResourceFactory>(new TransitionalResourceFactory(_services.Single<IAudioService>(), _services.Single<IAssetProvider>()));
+            _services.RegisterSingle<IEffectFactory>(new EffectFactory(_services.Single<IAudioService>(), _services.Single<IConfigsService>()));
 
             RegisterResourceMergeService();
             _services.RegisterSingle<IUIFactory>(new UIFactory(

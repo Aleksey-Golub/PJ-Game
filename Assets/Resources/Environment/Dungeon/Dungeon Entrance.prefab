@@ -36,6 +36,7 @@ Transform:
   - {fileID: 6488518571085708090}
   - {fileID: 8244966743389514935}
   - {fileID: 1650330692285778186}
+  - {fileID: 8201398975559290866}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &6372290992034751369
@@ -163,6 +164,9 @@ MonoBehaviour:
   _marker: {fileID: 3267053695869143549}
   _progress: {fileID: 3991010416889278735}
   _progressFg: {fileID: 2498420412475042215}
+  _openEffectType: 0
+  _effectTemplate: {fileID: 8201398975559290866}
+  _openAudioClip: {fileID: 0}
 --- !u!1 &3267053695869143549
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +251,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4643375901372562423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8201398975559290866}
+  m_Layer: 0
+  m_Name: Effect Template
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8201398975559290866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4643375901372562423}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7096253517291883319}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4882902025966522434
 GameObject:
   m_ObjectHideFlags: 0

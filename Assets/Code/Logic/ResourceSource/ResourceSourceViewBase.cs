@@ -5,7 +5,8 @@ internal abstract class ResourceSourceViewBase : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animation _animation;
-    [SerializeField] private Effect _hitEffect;
+    [SerializeField] private EffectId _hitEffectType;
+    [SerializeField] private Transform _effectTemplate;
 
     [Header("Settings")]
     [SerializeField] private Sprite _diedSprite;
@@ -17,10 +18,12 @@ internal abstract class ResourceSourceViewBase : MonoBehaviour
 
     private int _oldSortingOrder;
     private IAudioService _audio;
+    private IEffectFactory _effectFactory;
 
-    internal void Construct(IAudioService audio)
+    internal void Construct(IAudioService audio, IEffectFactory effectFactory)
     {
         _audio = audio;
+        _effectFactory = effectFactory;
     }
 
     [ContextMenu(nameof(ShowExhaust))]
@@ -53,7 +56,8 @@ internal abstract class ResourceSourceViewBase : MonoBehaviour
 
     internal void ShowHitEffect()
     {
-        _hitEffect.Play();
+        if (_hitEffectType != EffectId.None)
+            _effectFactory.Get(_hitEffectType, _effectTemplate).Play();
     }
 
     internal void PlayHitSound()

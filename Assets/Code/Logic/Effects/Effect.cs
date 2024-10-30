@@ -45,4 +45,5 @@ public enum EffectId
     None = 0,
     Explosion = 1,
     Hit = 2,
+    HitPine = 3,
 }

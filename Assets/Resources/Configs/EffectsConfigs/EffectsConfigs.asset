@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: EffectsConfigs
   m_EditorClassIdentifier: 
   Configs:
-  - EffectId: 1
-    Template: {fileID: 6042966412823520492, guid: ab07fb590e4de634bbe0744de64c017f, type: 3}
-  - EffectId: 2
-    Template: {fileID: 2528665958498675980, guid: 96f4af86988d1d347a1f82ced489052a, type: 3}
+  - Template: {fileID: 6042966412823520492, guid: ab07fb590e4de634bbe0744de64c017f, type: 3}
+  - Template: {fileID: 2528665958498675980, guid: 96f4af86988d1d347a1f82ced489052a, type: 3}
+  - Template: {fileID: 2528665958498675980, guid: a2354ce4d39e75547b1a89b5f724a1c6, type: 3}

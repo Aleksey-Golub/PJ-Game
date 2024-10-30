@@ -407,7 +407,7 @@ MonoBehaviour:
     - {fileID: 2240642969971567441}
     - {fileID: 2571667886575954517}
     - {fileID: 8408993165194118010}
-    Prefab: {fileID: 8441027890766188506, guid: 8321eefb7f7098742bdc11d07d6e52a3, type: 3}
+    Prefab: {fileID: 330676276781600645, guid: 0b00471b6e12d5543b6fc7a031379b3d, type: 3}
   _entrance: {fileID: 0}
   _exit: {fileID: 8126526437591796265}
 --- !u!1 &5758419150572127810

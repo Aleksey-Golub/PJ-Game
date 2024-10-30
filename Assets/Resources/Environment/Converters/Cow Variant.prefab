@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
       propertyPath: _converTime
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
       propertyPath: _singleUpload

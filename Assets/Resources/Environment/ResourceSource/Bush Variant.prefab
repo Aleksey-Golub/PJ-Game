@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: _hitEffectType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
+      propertyPath: _restoreTime
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

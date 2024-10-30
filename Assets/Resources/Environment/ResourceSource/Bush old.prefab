@@ -91,7 +91,7 @@ MonoBehaviour:
   _resourceConfig: {fileID: 11400000, guid: 6f03ea9796cb38a4ea385f3fed27ed73, type: 2}
   _dropResourceCount: 1
   _hitPoints: 2
-  _restoreTime: 8
+  _restoreTime: 6
   _dropSettings:
     DropStrategy: 1
     DropGroupingStrategy: 1
@@ -111,7 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 4493861247962964434}
   _animation: {fileID: 3935257495363378484}
-  _hitEffect: {fileID: 4498250152062499439}
+  _hitEffectType: 0
+  _effectTemplate: {fileID: 0}
   _diedSprite: {fileID: 0}
   _wholeSprite: {fileID: 175938448, guid: 6a3409ce0964ac349a4c228c4ec7bc49, type: 3}
   _changeSortingOrderWhenExhaust: 0
@@ -294,17 +295,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1850152876826255133, guid: 96f4af86988d1d347a1f82ced489052a, type: 3}
   m_PrefabInstance: {fileID: 2124395984919697251}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4498250152062499439 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2528665958498675980, guid: 96f4af86988d1d347a1f82ced489052a, type: 3}
-  m_PrefabInstance: {fileID: 2124395984919697251}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6b62713a4e93b5408eb9883418b08be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2246106087203895490
 PrefabInstance:
   m_ObjectHideFlags: 0

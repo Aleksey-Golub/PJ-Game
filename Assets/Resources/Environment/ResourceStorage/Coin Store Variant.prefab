@@ -142,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 354af7a14df50824a88813519618d496, type: 2}
     - target: {fileID: 2872169157991871229, guid: aaf1d4e122fdf004db64c4c42f759b69, type: 3}
       propertyPath: _restoreTime
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2872169157991871229, guid: aaf1d4e122fdf004db64c4c42f759b69, type: 3}
       propertyPath: _resourceConfig

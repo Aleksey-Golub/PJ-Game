@@ -9,6 +9,7 @@ internal class ResourceStorage : MonoBehaviour
     [SerializeField] private ResourceStorageConfig _config;
     [SerializeField] private ToolType _needToolType = ToolType.None;
     [SerializeField] private ResourceConfig _resourceConfig;
+    [Tooltip("Used when config is null")]
     [SerializeField, Min(1)] private int _dropResourceCount = 1;
     [SerializeField] private int _startResourceCount = 1;
     [SerializeField] private float _restoreTime = 10;

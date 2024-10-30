@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 751230111891515862, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: m_Name
-      value: Rock new Variant
+      value: Rock Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1173927828803009664, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: m_LocalPosition.x
@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _restoreTime
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _needToolType

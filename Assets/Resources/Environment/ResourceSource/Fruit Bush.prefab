@@ -256,7 +256,7 @@ MonoBehaviour:
   _resourceConfig: {fileID: 11400000, guid: cf34ac489ebd09f4ba63c3f028d3a94b, type: 2}
   _dropResourceCount: 1
   _hitPoints: 3
-  _restoreTime: 5
+  _restoreTime: 15
   _dropSettings:
     DropStrategy: 1
     DropGroupingStrategy: 1

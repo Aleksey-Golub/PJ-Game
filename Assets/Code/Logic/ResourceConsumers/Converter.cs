@@ -8,6 +8,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
     [SerializeField] private ConverterConfig _config;
     [SerializeField] private ResourceConfig _needResourceConfig;
     [SerializeField] private int _singleUpload = 5;
+    [Tooltip("Used when config is null")]
     [SerializeField] private int _maxUpload = 25;
     [SerializeField] private float _converTime = 10f;
     [SerializeField] private int _preferedConsumedValue = -1;

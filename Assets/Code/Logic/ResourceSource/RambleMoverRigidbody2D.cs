@@ -13,7 +13,7 @@ internal class RambleMoverRigidbody2D : RambleMoverBase
         Vector3 to = targetPoint - transform.position;
         Vector2 direction = to.normalized;
 
-        int detectCount = Physics2D.CircleCastNonAlloc(transform.position + _castParams.Offset, _castParams.Radius, direction, _buffer, to.magnitude);
+        int detectCount = Physics2D.CircleCastNonAlloc(transform.position + _castParams.Offset, _castParams.Radius * 1.05f, direction, _buffer, to.magnitude);
         return 1 == detectCount || DetectSelfAndTriggersOnly();
 
         bool DetectSelfAndTriggersOnly()

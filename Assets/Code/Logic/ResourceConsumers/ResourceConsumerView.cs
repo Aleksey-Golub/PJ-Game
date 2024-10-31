@@ -4,10 +4,10 @@ using UnityEngine;
 
 internal class ResourceConsumerView : MonoBehaviour
 {
-    [SerializeField] private GameObject _cloud;
+    [SerializeField] protected GameObject _cloud;
     [SerializeField] private SpriteRenderer _resourceNeedImage;
     [SerializeField] private SpriteRenderer _generateObjImage;
-    [SerializeField] private TextMeshPro _needText;
+    [SerializeField] protected TextMeshPro _needText;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animation _animation;
     [SerializeField] private EffectId _hitEffectType;

@@ -29,6 +29,7 @@ namespace Code.Infrastructure
 
         private void RegisterServices(ICoroutineRunner coroutineRunner, IUpdater updater)
         {
+            //RegisterLocalizationService();
             _services.RegisterSingle<IUpdater>(updater);
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<ICoroutineRunner>(coroutineRunner);
@@ -99,6 +100,13 @@ namespace Code.Infrastructure
             IConfigsService configs = new ConfigsService();
             configs.Load();
             _services.RegisterSingle(configs);
+        }
+        
+        private void RegisterLocalizationService()
+        {
+            ILocalizationService localization = new LocalizationService();
+            localization.Load();
+            _services.RegisterSingle(localization);
         }
 
         private void EnterLoadLevel() =>

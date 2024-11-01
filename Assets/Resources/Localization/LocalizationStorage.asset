@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c198fb6f0cb6a049841a7c6083d4afa, type: 3}
+  m_Name: LocalizationStorage
+  m_EditorClassIdentifier: 
+  Rows:
+  - Key: Key
+    Values:
+    - en
+    - ru
+  - Key: k_language_name
+    Values:
+    - English
+    - "\u0420\u0443\u0441\u0441\u043A\u0438\u0439"
+  - Key: k_Sell_Items
+    Values:
+    - Sell items
+    - "\u041F\u0440\u043E\u0434\u0430\u0442\u044C \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B"
+  - Key: k_Sell
+    Values:
+    - Sell
+    - "\u041F\u0440\u043E\u0434\u0430\u0442\u044C"
+  - Key: k_Upgrades
+    Values:
+    - Upgrades
+    - "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u044F"
+  - Key: k_Drop
+    Values:
+    - 'Drop:'
+    - "\u042D\u0444\u0444\u0435\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u044C"
+  - Key: k_Capacity
+    Values:
+    - 'Capacity:'
+    - "\u0412\u043C\u0435\u0441\u0442\u0438\u043C\u043E\u0441\u0442\u044C"
+  - Key: k_Lvl
+    Values:
+    - Lvl
+    - "\u0423\u0440."
+  - Key: k_MAX
+    Values:
+    - MAX
+    - "\u041C\u0410\u041A\u0421"
+  - Key: k_Settings
+    Values:
+    - Settings
+    - "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+  - Key: k_Sounds
+    Values:
+    - Sounds
+    - "\u0417\u0432\u0443\u043A"
+  - Key: k_Music
+    Values:
+    - Music
+    - "\u041C\u0443\u0437\u044B\u043A\u0430"
+  - Key: k_on
+    Values:
+    - on
+    - "\u0432\u043A\u043B"
+  - Key: k_off
+    Values:
+    - off
+    - "\u0432\u044B\u043A\u043B"

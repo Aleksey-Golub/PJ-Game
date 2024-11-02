@@ -28,6 +28,7 @@ namespace Code.UI
             _configService = configService;
             _progressService = progressService;
             _audio = audio;
+            LService.LanguageChanged += OnLanguageChanged;
 
             FillViews();
 
@@ -42,6 +43,7 @@ namespace Code.UI
             {
                 view.UpgradeButtonClicked -= OnUpgradeButtonClicked;
             }
+            LService.LanguageChanged -= OnLanguageChanged;
         }
 
         internal void Open(Action<string> upgradeResourceCalback)
@@ -52,6 +54,7 @@ namespace Code.UI
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed += UpgradeItemsProgress_Changed;
 
             Refresh();
+            RefreshUI();
         }
 
         internal void Refresh()
@@ -62,12 +65,13 @@ namespace Code.UI
                     continue;
 
                 int maxLevel = config.GetMaxLevel();
-                string MAX = "MAX";
+                string MAX = LService.Localize("k_MAX");
+                string lvl = LService.Localize("k_Lvl");
                 string itemId = config.ID;
                 _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(itemId, out int currentLevel);
                 int nextLevel = currentLevel + 1;
 
-                string levelText = currentLevel >= maxLevel ? $"Lvl {MAX}" : $"Lvl {nextLevel}";
+                string levelText = currentLevel >= maxLevel ? $"{lvl} {MAX}" : $"{lvl} {nextLevel}";
                 if (currentLevel >= maxLevel)
                     nextLevel = maxLevel;
 
@@ -118,10 +122,10 @@ namespace Code.UI
             switch (config.UpgradableType)
             {
                 case UpgradableType.Tool:
-                    return $"Drop: {config.GetUpgradeData(nextLevel).Value * 100}%";
+                    return $"{LService.Localize("k_Drop")} {config.GetUpgradeData(nextLevel).Value * 100}%";
                 case UpgradableType.ResourceStorage:
                 case UpgradableType.Converter:
-                    return $"Capacity: {config.GetUpgradeData(nextLevel).Value}";
+                    return $"{LService.Localize("k_Capacity")} {config.GetUpgradeData(nextLevel).Value}";
                 case UpgradableType.None:
                 default:
                     throw new NotImplementedException($"[UpgradeBoardView] Not implemented for {config.UpgradableType}");
@@ -170,5 +174,16 @@ namespace Code.UI
         }
 
         private void UpgradeItemsProgress_Changed(string itemId, int newValue) => Refresh();
+
+        private void RefreshUI()
+        {
+            _header.text = LService.Localize("k_Upgrades");
+        }
+
+        private void OnLanguageChanged()
+        {
+            RefreshUI();
+            Refresh();
+        }
     }
 }

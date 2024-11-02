@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -12,26 +13,43 @@ namespace Code.Services
         private readonly List<AvailableLanguage> _availableLanguages = new();
         private readonly Dictionary<string, string> _storage = new();
 
+        public AvailableLanguage CurrentLanguage { get; private set; }
         public IReadOnlyList<AvailableLanguage> AvailableLanguages => _availableLanguages;
+
+        public event Action LanguageChanged;
 
         public string Localize(string key) => _storage.TryGetValue(key, out var value) ? value : key;
 
+        public void LoadPreviousLanguage()
+        {
+            Load(_availableLanguages.PreviousCircular(CurrentLanguage).TwoLetterISOLanguageName);
+        }
+
+        public void LoadNextLanguage()
+        {
+            Load(_availableLanguages.NextCircular(CurrentLanguage).TwoLetterISOLanguageName);
+        }
+
         public void Load()
         {
-            string twoLetterISOLanguageName = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-            Logger.Log("CurrentCulture.Name = " + twoLetterISOLanguageName);
+            string systemTwoLetterISOLanguageName = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            Logger.Log("CurrentCulture.Name = " + systemTwoLetterISOLanguageName);
 
-            Load(twoLetterISOLanguageName);
+            var localizationStorage = Resources.Load<LocalizationStorage>(LOCALIZATIONSTORAGE_PATH);
+            CacheAvailableLanguages(localizationStorage);
+
+            string loadingTwoLetterISOLanguageName = AvailableLanguagesContains(systemTwoLetterISOLanguageName) ? systemTwoLetterISOLanguageName : "en";
+            Load(loadingTwoLetterISOLanguageName);
         }
 
         private void Load(string twoLetterISOLanguageName)
         {
             var localizationStorage = Resources.Load<LocalizationStorage>(LOCALIZATIONSTORAGE_PATH);
 
-            CacheAvailableLanguages(localizationStorage);
+            CurrentLanguage = _availableLanguages.First(l => l.TwoLetterISOLanguageName == twoLetterISOLanguageName);
+            CacheCurrentLang(localizationStorage, CurrentLanguage);
 
-            var cashingLang = AvailableLanguagesContains(twoLetterISOLanguageName) ? twoLetterISOLanguageName : "en";
-            CacheCurrentLang(localizationStorage, cashingLang);
+            LanguageChanged?.Invoke();
         }
 
         private bool AvailableLanguagesContains(string twoLetterISOLanguageName)
@@ -51,12 +69,12 @@ namespace Code.Services
             }
         }
 
-        private void CacheCurrentLang(LocalizationStorage localizationStorage, string twoLetterISOLanguageName)
+        private void CacheCurrentLang(LocalizationStorage localizationStorage, AvailableLanguage language)
         {
             _storage.Clear();
 
             var firstRow = localizationStorage.Rows[0];
-            int langIndex = firstRow.Values.IndexOf(twoLetterISOLanguageName);
+            int langIndex = firstRow.Values.IndexOf(language.TwoLetterISOLanguageName);
 
             for (int i = 1; i < localizationStorage.Rows.Count; i++)
             {

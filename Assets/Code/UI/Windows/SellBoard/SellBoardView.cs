@@ -26,6 +26,7 @@ namespace Code.UI
             _views = new();
             _resourceConfigService = configService;
             _audio = audio;
+            LService.LanguageChanged += RefreshUI;
 
             FillViews();
 
@@ -40,6 +41,8 @@ namespace Code.UI
             {
                 view.SellButtonClicked -= OnSellButtonClicked;
             }
+
+            LService.LanguageChanged -= RefreshUI;
         }
 
         internal void Open(IReadOnlyDictionary<ResourceType, int> storage, Action<ResourceType> sellResourceCalback)
@@ -48,6 +51,7 @@ namespace Code.UI
             gameObject.SetActive(true);
             
             Refresh(storage);
+            RefreshUI();
         }
 
         internal void Refresh(IReadOnlyDictionary<ResourceType, int> storage)
@@ -101,6 +105,16 @@ namespace Code.UI
         private void OnSellButtonClicked(ResourceType resourceType)
         {
             _sellResourceCalback?.Invoke(resourceType);
+        }
+
+        private void RefreshUI()
+        {
+            _header.text = LService.Localize("k_Sell_Items");
+
+            foreach (SellItemView view in _views.Values)
+            {
+                view.SetTexts(LService.Localize("k_Sell"));
+            }
         }
     }
 }

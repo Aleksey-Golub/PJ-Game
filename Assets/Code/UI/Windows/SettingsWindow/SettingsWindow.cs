@@ -1,4 +1,5 @@
 using Code.Services;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,10 +7,12 @@ namespace Code.UI
 {
     internal class SettingsWindow : WindowBase
     {
+        [SerializeField] private TextMeshProUGUI _header;
         [SerializeField] private ButtonSwitcher _soundsButton;
         [SerializeField] private Slider _soundSlider;
         [SerializeField] private ButtonSwitcher _musicButton;
         [SerializeField] private Slider _musicSlider;
+        [SerializeField] private SwitchableLabel _languageSwitchableLabel;
 
         internal new void Construct(IAudioService audio)
         {
@@ -19,9 +22,9 @@ namespace Code.UI
         internal void Open()
         {
             gameObject.SetActive(true);
-            
-            RefreshSounds();
-            RefreshMusic();
+
+            RefreshUI();
+
             _soundSlider.normalizedValue = Audio.GetNormalizedVolume(AudioService.SFX);
             _musicSlider.normalizedValue = Audio.GetNormalizedVolume(AudioService.MUSIC);
         }
@@ -41,6 +44,12 @@ namespace Code.UI
 
             _soundSlider.onValueChanged.AddListener(OnSoundSliderValueChanged);
             _musicSlider.onValueChanged.AddListener(OnMusicSliderValueChanged);
+
+            _languageSwitchableLabel.SubscribeUpdates();
+            _languageSwitchableLabel.LeftClicked += OnLanguageSwitchableLabelLeftClicked;
+            _languageSwitchableLabel.RightClicked += OnLanguageSwitchableLabelRightClicked;
+
+            LService.LanguageChanged += RefreshUI;
         }
 
         protected override void Cleanup()
@@ -55,6 +64,12 @@ namespace Code.UI
 
             _soundsButton.Cleanup();
             _musicButton.Cleanup();
+
+            _languageSwitchableLabel.Cleanup();
+            _languageSwitchableLabel.LeftClicked -= OnLanguageSwitchableLabelLeftClicked;
+            _languageSwitchableLabel.RightClicked -= OnLanguageSwitchableLabelRightClicked;
+
+            LService.LanguageChanged -= RefreshUI;
         }
 
         protected override void OnCloseButtonClicked()
@@ -81,24 +96,42 @@ namespace Code.UI
         {
             Audio.SetNormalizedVolume(AudioService.SFX, _soundSlider.normalizedValue);
         }
-        
+
         private void OnMusicSliderValueChanged(float newValue)
         {
             Audio.SetNormalizedVolume(AudioService.MUSIC, _musicSlider.normalizedValue);
         }
 
-        private void RefreshSounds() => Refresh(AudioService.SFX, _soundsButton, _soundSlider, "Sounds");
+        private void RefreshSounds() => Refresh(AudioService.SFX, _soundsButton, _soundSlider, LService.Localize("k_Sounds"));
 
-        private void RefreshMusic() => Refresh(AudioService.MUSIC, _musicButton, _musicSlider, "Music");
+        private void RefreshMusic() => Refresh(AudioService.MUSIC, _musicButton, _musicSlider, LService.Localize("k_Music"));
 
         private void Refresh(string group, ButtonSwitcher switcher, Slider slider, string label)
         {
             AudioGroupData data = Audio.GetData(group);
             bool isOn = !data.IsMuted;
-            string stateText = isOn ? "on" : "off";
+            string stateText = isOn ? LService.Localize("k_on") : LService.Localize("k_off");
             switcher.Set(isOn, $"{label} {stateText}");
             slider.interactable = isOn;
             slider.SetValueWithoutNotify(data.LastNormalizedValue * slider.maxValue);
+        }
+
+        private void OnLanguageSwitchableLabelLeftClicked()
+        {
+            LService.LoadPreviousLanguage();
+        }
+
+        private void OnLanguageSwitchableLabelRightClicked()
+        {
+            LService.LoadNextLanguage();
+        }
+
+        private void RefreshUI()
+        {
+            _header.text = LService.Localize("k_Settings");
+            _languageSwitchableLabel.Init(LService.Localize("k_language_name"));
+            RefreshSounds();
+            RefreshMusic();
         }
     }
 }

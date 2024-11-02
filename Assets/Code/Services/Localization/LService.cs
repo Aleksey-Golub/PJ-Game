@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Code.Services
 {
@@ -11,19 +12,37 @@ namespace Code.Services
 
         static LService()
         {
-            _localizationService = new LocalizationService();
+            LocalizationService = new LocalizationService();
             Load();
         }
 
+        public static AvailableLanguage CurrentLanguage => _localizationService.CurrentLanguage;
+
         public static ILocalizationService LocalizationService
         {
-            get { return _localizationService; }
-            internal set { _localizationService = value; }
+            get
+            {
+                return _localizationService;
+            }
+
+            internal set
+            {
+                if (_localizationService != null)
+                    _localizationService.LanguageChanged -= OnLanguageChanged;
+
+                _localizationService = value;
+                _localizationService.LanguageChanged += OnLanguageChanged;
+            }
         }
 
         public static IReadOnlyList<AvailableLanguage> AvailableLanguages => _localizationService.AvailableLanguages;
 
+        public static event Action LanguageChanged;
+
         public static string Localize(string key) => _localizationService.Localize(key);
+        public static void LoadPreviousLanguage() => _localizationService.LoadPreviousLanguage();
+        public static void LoadNextLanguage() => _localizationService.LoadNextLanguage();
         private static void Load() => _localizationService.Load();
+        private static void OnLanguageChanged() => LanguageChanged?.Invoke();
     }
 }

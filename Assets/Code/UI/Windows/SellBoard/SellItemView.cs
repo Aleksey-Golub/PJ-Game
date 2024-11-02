@@ -13,6 +13,7 @@ namespace Code.UI
         [SerializeField] private TextMeshProUGUI _cointCountText;
         [SerializeField] private TextMeshProUGUI _sellText;
         [SerializeField] private Button _sellButton;
+        [SerializeField] private TextMeshProUGUI _sellButtonText;
         [SerializeField] private AudioClip _sellButtonClickedClip;
 
         private ResourceType _resourceType;
@@ -45,6 +46,11 @@ namespace Code.UI
             _cointCountText.text = totalCost.ToString();
 
             gameObject.SetActive(sellItemCount != 0);
+        }
+
+        internal void SetTexts(string sellButtonText)
+        {
+            _sellButtonText.text = sellButtonText;
         }
 
         private void OnButtonClicked()

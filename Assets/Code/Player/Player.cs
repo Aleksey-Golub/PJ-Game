@@ -93,12 +93,36 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
         _inventory.ResourceCountChanged -= _inventoryView.UpdateFor;
     }
 
+    #region Progress Read - Write
     public void WriteToProgress(GameProgress progress)
+    {
+        WriteToPositionOnLevel(progress);
+        WriteInventoryData(progress);
+    }
+
+    public void ReadProgress(GameProgress progress)
+    {
+        ReadPositionOnLevel(progress);
+        ReadInventoryData(progress);
+    }
+
+    private void WriteInventoryData(GameProgress progress)
+    {
+        _inventory.WriteToProgress(progress);
+    }
+
+    private void ReadInventoryData(GameProgress progress)
+    {
+        _inventory.ReadProgress(progress);
+        _inventoryView.Init(_inventory.Storage);
+    }
+
+    private void WriteToPositionOnLevel(GameProgress progress)
     {
         progress.PlayerProgress.PositionOnLevel = new PositionOnLevel(CurrentLevel(), transform.position.AsVectorData());
     }
 
-    public void ReadProgress(GameProgress progress)
+    private void ReadPositionOnLevel(GameProgress progress)
     {
         if (CurrentLevel() != progress.PlayerProgress.PositionOnLevel.Level)
             return;
@@ -106,7 +130,8 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
         Vector3Data savedPosition = progress.PlayerProgress.PositionOnLevel.Position;
         if (savedPosition != null)
             Teleport(savedPosition.AsUnityVector());
-    }
+    } 
+    #endregion
 
     internal void Teleport(Vector3 to)
     {
@@ -237,7 +262,11 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
             _inventory.Add(tool.Type);
             tool.Collect();
             string toolID = _configsService.GetConfigFor(tool.Type).ID;
-            _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Upgrade(toolID);
+
+            UpgradeItemsProgress upgradeItemsProgress = _progressService.Progress.PlayerProgress.UpgradeItemsProgress;
+            upgradeItemsProgress.TryGet(toolID, out int value);
+            if (value == 0)
+                upgradeItemsProgress.Upgrade(toolID);
         }
 
         if (other.TryGetComponent(out SellBoard sellBoard))

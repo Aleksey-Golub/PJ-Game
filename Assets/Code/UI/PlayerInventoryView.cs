@@ -20,6 +20,11 @@ namespace Code.UI
 
         public void Init(IReadOnlyDictionary<ResourceType, int> storage)
         {
+            foreach (InventoryResourceView v in _views.Values)
+                Destroy(v.gameObject);
+
+            _views.Clear();
+
             foreach (var pair in storage)
             {
                 InventoryResourceView resView = CreateView(pair.Key, pair.Value);

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Code.Data;
+using Code.Services;
+using System;
 using System.Collections.Generic;
 
-internal class Inventory
+internal class Inventory : ISavedProgressReader, ISavedProgressWriter
 {
-    private readonly Dictionary<ResourceType, int> _storage;
-    private readonly List<ToolType> _tools;
+    private Dictionary<ResourceType, int> _storage;
+    private List<ToolType> _tools;
 
     internal event Action<ResourceType, int> ResourceCountChanged;
 
@@ -14,15 +16,18 @@ internal class Inventory
     {
         _storage = new();
         _tools = new();
+    }
 
-        var resTypes = Enum.GetValues(typeof(ResourceType));
-        foreach (ResourceType type in resTypes)
-        {
-            if (type is ResourceType.None)
-                continue;
+    public void WriteToProgress(GameProgress progress)
+    {
+        progress.PlayerProgress.InventoryData.Tools = _tools;
+        progress.PlayerProgress.InventoryData.ResourceStorageData.Dictionary = _storage;
+    }
 
-            _storage[type] = 0;
-        }
+    public void ReadProgress(GameProgress progress)
+    {
+        _tools = progress.PlayerProgress.InventoryData.Tools;
+        _storage = progress.PlayerProgress.InventoryData.ResourceStorageData.Dictionary;
     }
 
     internal void Add(ResourceType type, int value)

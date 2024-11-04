@@ -1,5 +1,6 @@
 using Code.Data;
 using Code.Services;
+using System;
 
 namespace Code.Infrastructure
 {
@@ -46,8 +47,21 @@ namespace Code.Infrastructure
 
             // set some data here
             SetInitialUpgradeData(_configs, progress);
+            SetInitialPlayerInventoryData(progress);
 
             return progress;
+        }
+
+        private void SetInitialPlayerInventoryData(GameProgress progress)
+        {
+            var resTypes = Enum.GetValues(typeof(ResourceType));
+            foreach (ResourceType type in resTypes)
+            {
+                if (type is ResourceType.None)
+                    continue;
+
+                progress.PlayerProgress.InventoryData.ResourceStorageData.Dictionary.Add(type, 0);
+            }
         }
 
         private static void SetInitialUpgradeData(IConfigsService configsService, GameProgress progress)

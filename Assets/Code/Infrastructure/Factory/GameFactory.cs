@@ -9,7 +9,7 @@ namespace Code.Infrastructure
     public class GameFactory : IGameFactory
     {
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
-        public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
+        public List<ISavedProgressWriter> ProgressWriters { get; } = new List<ISavedProgressWriter>();
 
         private readonly IAssetProvider _assets;
         private readonly IConfigsService _configs;
@@ -22,9 +22,9 @@ namespace Code.Infrastructure
         private GameObject _heroGameObject;
 
         public GameFactory(
-            IAssetProvider assets, 
-            IConfigsService configs, 
-            IPersistentProgressService persistentProgressService, 
+            IAssetProvider assets,
+            IConfigsService configs,
+            IPersistentProgressService persistentProgressService,
             IUIMediator uiMediator,
             IAudioService audio,
             IInputService input,
@@ -87,15 +87,10 @@ namespace Code.Infrastructure
         private void RegisterProgressWatchers(GameObject gameObject)
         {
             foreach (ISavedProgressReader progressReader in gameObject.GetComponentsInChildren<ISavedProgressReader>())
-                Register(progressReader);
-        }
+                ProgressReaders.Add(progressReader);
 
-        private void Register(ISavedProgressReader progressReader)
-        {
-            if (progressReader is ISavedProgress progressWriter)
+            foreach (ISavedProgressWriter progressWriter in gameObject.GetComponentsInChildren<ISavedProgressWriter>())
                 ProgressWriters.Add(progressWriter);
-
-            ProgressReaders.Add(progressReader);
         }
     }
 }

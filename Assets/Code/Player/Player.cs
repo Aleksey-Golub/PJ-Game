@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Code.UI;
+using Code.Data;
+using UnityEngine.SceneManagement;
 
-internal class Player : MonoBehaviour, IDisposable
+internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedProgressWriter
 {
     [Serializable]
     internal struct OverlapSphereParams
@@ -54,11 +56,11 @@ internal class Player : MonoBehaviour, IDisposable
     #endregion
 
     internal void Construct(
-        IInputService input, 
-        IInventoryView inventoryView, 
-        IConfigsService configsService, 
-        IPopupFactory popupFactory, 
-        ITransitionalResourceFactory transitionalResourceFactory, 
+        IInputService input,
+        IInventoryView inventoryView,
+        IConfigsService configsService,
+        IPopupFactory popupFactory,
+        ITransitionalResourceFactory transitionalResourceFactory,
         IPersistentProgressService progressService)
     {
         _buffer = new Collider2D[10];
@@ -89,6 +91,21 @@ internal class Player : MonoBehaviour, IDisposable
     {
         _view.AttackDone -= OnHitDone;
         _inventory.ResourceCountChanged -= _inventoryView.UpdateFor;
+    }
+
+    public void WriteToProgress(GameProgress progress)
+    {
+        progress.PlayerProgress.PositionOnLevel = new PositionOnLevel(CurrentLevel(), transform.position.AsVectorData());
+    }
+
+    public void ReadProgress(GameProgress progress)
+    {
+        if (CurrentLevel() != progress.PlayerProgress.PositionOnLevel.Level)
+            return;
+
+        Vector3Data savedPosition = progress.PlayerProgress.PositionOnLevel.Position;
+        if (savedPosition != null)
+            Teleport(savedPosition.AsUnityVector());
     }
 
     internal void Teleport(Vector3 to)
@@ -410,5 +427,7 @@ internal class Player : MonoBehaviour, IDisposable
             _upgradeBoard = null;
         }
     }
+
+    private static string CurrentLevel() => SceneManager.GetActiveScene().name;
 }
 

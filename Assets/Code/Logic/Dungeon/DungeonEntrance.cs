@@ -8,7 +8,7 @@ public class DungeonEntrance : MonoBehaviour
     [SerializeField] private InteractNeed _interactNeed;
     [SerializeField] private Transform _teleportPoint;
     [SerializeField] private float _restoreTime = 15f;
-    [SerializeField] private bool _openIsStart;
+    [SerializeField] private bool _openInStart;
 
     private Timer _restoreTimer;
     private bool _isForcedOpen;
@@ -28,7 +28,7 @@ public class DungeonEntrance : MonoBehaviour
         _restoreTimer = new Timer();
         _restoreTimer.Changed += OnTimerChanged;
 
-        if (_openIsStart)
+        if (_openInStart)
             _restoreTimer.Start(Constants.EPSILON);
 
         _view.Construct(audio, effectFactory);

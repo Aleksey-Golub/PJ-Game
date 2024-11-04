@@ -64,7 +64,7 @@ namespace Code.Infrastructure
         private void InformProgressReaders()
         {
             foreach (ISavedProgressReader progressReader in _gameFactory.ProgressReaders)
-                progressReader.LoadProgress(_progressService.Progress);
+                progressReader.ReadProgress(_progressService.Progress);
         }
 
         private void InitGameWorld()

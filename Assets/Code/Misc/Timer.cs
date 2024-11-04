@@ -35,9 +35,10 @@ public class Timer
 
         if (Passed >= Duration)
         {
-            Elapsed?.Invoke(this);
             IsElapsed = true;
             IsStarted = false;
+
+            Elapsed?.Invoke(this);
         }
     }
 }

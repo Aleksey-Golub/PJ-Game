@@ -29,10 +29,11 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
 
     private void OnValidate()
     {
-        if (_dropConfigMono is IDropObjectConfig config)
-            _dropConfig = config;
-        else
+        if (_dropConfigMono is not null && _dropConfigMono is not IDropObjectConfig config)
+        {
             _dropConfigMono = null;
+            Debug.LogError($"Wrong config used. Set IDropObjectConfig");
+        }
     }
 
     private void Start()
@@ -51,6 +52,7 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
         _resourceFactory = resourceFactory;
         _toolFactory = toolFactory;
 
+        _dropConfig = _dropConfigMono as IDropObjectConfig;
         _view.Construct(audio, effectFactory);
     }
 

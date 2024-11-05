@@ -34,21 +34,33 @@ namespace Code.Infrastructure
             _services.RegisterSingle<IUpdater>(updater);
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<ICoroutineRunner>(coroutineRunner);
-
             RegisterConfigService();
             RegisterInputService();
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IAppSettingsService>(new AppSettingsService());
             RegisterAudioService(coroutineRunner);
-            _services.RegisterSingle<IDropCountCalculatorService>(new DropCountCalculatorService(_services.Single<IPersistentProgressService>(), _services.Single<IConfigsService>()));
 
-            _services.RegisterSingle<IPopupFactory>(new PopupFactory(_services.Single<IAudioService>(), _services.Single<IAssetProvider>()));
-            _services.RegisterSingle<IResourceFactory>(new ResourceFactory(_services.Single<IAudioService>(), _services.Single<IAssetProvider>()));
-            _services.RegisterSingle<IToolFactory>(new ToolFactory(_services.Single<IAudioService>(), _services.Single<IAssetProvider>()));
-            _services.RegisterSingle<ITransitionalResourceFactory>(new TransitionalResourceFactory(_services.Single<IAudioService>(), _services.Single<IAssetProvider>()));
-            _services.RegisterSingle<IEffectFactory>(new EffectFactory(_services.Single<IAudioService>(), _services.Single<IConfigsService>()));
+            _services.RegisterSingle<IDropCountCalculatorService>(new DropCountCalculatorService(
+                _services.Single<IPersistentProgressService>(), 
+                _services.Single<IConfigsService>()));
 
+            _services.RegisterSingle<IPopupFactory>(new PopupFactory(
+                _services.Single<IAudioService>(), 
+                _services.Single<IAssetProvider>()));
+            _services.RegisterSingle<IResourceFactory>(new ResourceFactory(
+                _services.Single<IAudioService>(), 
+                _services.Single<IAssetProvider>()));
             RegisterResourceMergeService();
+            _services.RegisterSingle<IToolFactory>(new ToolFactory(
+                _services.Single<IAudioService>(), 
+                _services.Single<IAssetProvider>()));
+            _services.RegisterSingle<ITransitionalResourceFactory>(new TransitionalResourceFactory(
+                _services.Single<IAudioService>(), 
+                _services.Single<IAssetProvider>()));
+            _services.RegisterSingle<IEffectFactory>(new EffectFactory(
+                _services.Single<IAudioService>(), 
+                _services.Single<IConfigsService>()));
+
             
             _services.RegisterSingle<ISaveLoadAppSettingsService>(new SaveLoadAppSettingsService(
                 _services.Single<IAppSettingsService>(), 

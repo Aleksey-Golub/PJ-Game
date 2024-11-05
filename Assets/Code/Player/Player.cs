@@ -94,13 +94,13 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
     }
 
     #region Progress Read - Write
-    public void WriteToProgress(GameProgress progress)
+    void ISavedProgressWriter.WriteToProgress(GameProgress progress)
     {
         WriteToPositionOnLevel(progress);
         WriteInventoryData(progress);
     }
 
-    public void ReadProgress(GameProgress progress)
+    void ISavedProgressReader.ReadProgress(GameProgress progress)
     {
         ReadPositionOnLevel(progress);
         ReadInventoryData(progress);

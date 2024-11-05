@@ -6,7 +6,7 @@ namespace Code.Services
 {
     public class SaveLoadService : ISaveLoadService
     {
-        private const string PROGRESS_KEY = "Progress";
+        public const string PROGRESS_KEY = "Progress";
 
         private readonly IPersistentProgressService _progressService;
         private readonly IGameFactory _gameFactory;

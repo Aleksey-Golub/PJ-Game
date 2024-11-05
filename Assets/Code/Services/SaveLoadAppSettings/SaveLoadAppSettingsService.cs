@@ -5,7 +5,7 @@ namespace Code.Services
 {
     public class SaveLoadAppSettingsService : ISaveLoadAppSettingsService
     {
-        private const string APP_SETTINGS_KEY = "AppSettings";
+        public const string APP_SETTINGS_KEY = "AppSettings";
 
         private readonly IAppSettingsService _appSettingsService;
         private readonly IAudioService _audio;

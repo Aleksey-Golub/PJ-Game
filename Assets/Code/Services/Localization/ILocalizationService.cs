@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Code.Services
 {
-    public interface ILocalizationService : IService
+    public interface ILocalizationService : IService, ISavedAppSettingsReader, ISavedAppSettingsWriter
     {
         AvailableLanguage CurrentLanguage { get; }
         IReadOnlyList<AvailableLanguage> AvailableLanguages { get; }

@@ -1,27 +1,27 @@
-﻿using System;
+﻿using Code.Data;
+using System;
 using System.Collections.Generic;
 
 namespace Code.Services
 {
     /// <summary>
-    /// Localization service Ambient Context
+    /// Localization service
     /// </summary>
     public static class LService
     {
         private static ILocalizationService _localizationService;
 
-        static LService()
-        {
-            LocalizationService = new LocalizationService();
-            Load();
-        }
-
-        public static AvailableLanguage CurrentLanguage => _localizationService.CurrentLanguage;
+        public static AvailableLanguage CurrentLanguage => LocalizationService.CurrentLanguage;
 
         public static ILocalizationService LocalizationService
         {
             get
             {
+                if (_localizationService == null)
+                {
+                    _localizationService = new LocalizationService();
+                    _localizationService.LanguageChanged += OnLanguageChanged;
+                }
                 return _localizationService;
             }
 
@@ -34,15 +34,17 @@ namespace Code.Services
                 _localizationService.LanguageChanged += OnLanguageChanged;
             }
         }
-
-        public static IReadOnlyList<AvailableLanguage> AvailableLanguages => _localizationService.AvailableLanguages;
+        
+        public static IReadOnlyList<AvailableLanguage> AvailableLanguages => LocalizationService.AvailableLanguages;
 
         public static event Action LanguageChanged;
 
-        public static string Localize(string key) => _localizationService.Localize(key);
-        public static void LoadPreviousLanguage() => _localizationService.LoadPreviousLanguage();
-        public static void LoadNextLanguage() => _localizationService.LoadNextLanguage();
-        private static void Load() => _localizationService.Load();
+        public static void Load() => LocalizationService.Load();
+        public static void WriteToAppSettings(AppSettings settings) => LocalizationService.WriteToAppSettings(settings);
+        public static void ReadAppSettings(AppSettings appSettings) => LocalizationService.ReadAppSettings(appSettings);
+        public static string Localize(string key) => LocalizationService.Localize(key);
+        public static void LoadPreviousLanguage() => LocalizationService.LoadPreviousLanguage();
+        public static void LoadNextLanguage() => LocalizationService.LoadNextLanguage();
         private static void OnLanguageChanged() => LanguageChanged?.Invoke();
     }
 }

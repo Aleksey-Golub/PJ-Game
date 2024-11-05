@@ -17,13 +17,21 @@ namespace Code.UI.Services
         private Transform _uiRoot;
         private readonly IPersistentProgressService _progressService;
         private readonly IAudioService _audio;
+        private readonly ISaveLoadAppSettingsService _saveLoadAppSettingsService;
 
-        public UIFactory(IAssetProvider assets, IConfigsService configs, IPersistentProgressService progressService, IAudioService audio)
+        public UIFactory(
+            IAssetProvider assets,
+            IConfigsService configs,
+            IPersistentProgressService progressService,
+            IAudioService audio,
+            ISaveLoadAppSettingsService saveLoadAppSettingsService
+            )
         {
             _assets = assets;
             _configs = configs;
             _progressService = progressService;
             _audio = audio;
+            _saveLoadAppSettingsService = saveLoadAppSettingsService;
         }
 
         public void CreateUIRoot()
@@ -52,7 +60,7 @@ namespace Code.UI.Services
         {
             SellBoardView sellBoardView = _assets.Instantiate(SELLBOARDVIEW_PATH, _uiRoot).GetComponent<SellBoardView>();
             sellBoardView.Coustruct(_configs, _audio);
-            
+
             return sellBoardView;
         }
 
@@ -61,7 +69,7 @@ namespace Code.UI.Services
             switch (windowId)
             {
                 case WindowId.Settings:
-                    ((SettingsWindow)window).Construct(_audio);
+                    ((SettingsWindow)window).Construct(_audio, _saveLoadAppSettingsService);
                     break;
                 //case WindowId.Sell:
                 //case WindowId.Upgrade:

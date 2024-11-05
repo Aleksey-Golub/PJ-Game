@@ -1,3 +1,4 @@
+using Code.Data;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -32,14 +33,32 @@ namespace Code.Services
 
         public void Load()
         {
-            string systemTwoLetterISOLanguageName = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-            Logger.Log("CurrentCulture.Name = " + systemTwoLetterISOLanguageName);
-
             var localizationStorage = Resources.Load<LocalizationStorage>(LOCALIZATIONSTORAGE_PATH);
             CacheAvailableLanguages(localizationStorage);
+        }
 
-            string loadingTwoLetterISOLanguageName = AvailableLanguagesContains(systemTwoLetterISOLanguageName) ? systemTwoLetterISOLanguageName : "en";
+        public void ReadAppSettings(AppSettings appSettings)
+        {
+            string systemLang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            Logger.Log("systemTwoLetterISOLanguageName = " + systemLang);
+            string settingLang = appSettings.LanguageSettings.TwoLetterISOLanguageName;
+            string defaultLang = "en";
+
+            string loadingTwoLetterISOLanguageName = 
+                !string.IsNullOrWhiteSpace(settingLang) && AvailableLanguagesContains(settingLang) ? 
+                    settingLang : 
+                    AvailableLanguagesContains(systemLang) ?
+                        systemLang : 
+                        AvailableLanguagesContains(defaultLang) ?
+                            defaultLang : 
+                            _availableLanguages[0].TwoLetterISOLanguageName;
+            
             Load(loadingTwoLetterISOLanguageName);
+        }
+
+        public void WriteToAppSettings(AppSettings appSettings)
+        {
+            appSettings.LanguageSettings.TwoLetterISOLanguageName = CurrentLanguage.TwoLetterISOLanguageName;
         }
 
         private void Load(string twoLetterISOLanguageName)

@@ -12,10 +12,11 @@ namespace Code.Infrastructure
         private readonly ISaveLoadService _saveLoadProgress;
 
         public LoadProgressState(
-            GameStateMachine gameStateMachine, 
-            IPersistentProgressService progressService, 
-            IConfigsService configs, 
-            ISaveLoadService saveLoadProgress)
+            GameStateMachine gameStateMachine,
+            IPersistentProgressService progressService,
+            IConfigsService configs,
+            ISaveLoadService saveLoadProgress
+            )
         {
             _gameStateMachine = gameStateMachine;
             _progressService = progressService;

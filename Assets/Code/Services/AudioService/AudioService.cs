@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using Code.Infrastructure;
+using Code.Data;
 
 namespace Code.Services
 {
@@ -36,7 +37,6 @@ namespace Code.Services
 
         public void Load()
         {
-
             _audioSourceContainer = CreateAudioSourceContainer();
             _audioMixer = Resources.Load<AudioMixer>(AUDIOMIXER_PATH);
             _prefab = Resources.Load<AudioSource>(AUDIOSOURCE_PREFAB_PATH);
@@ -101,6 +101,35 @@ namespace Code.Services
             _musicSource.clip = clip;
 
             _musicSource.Play();
+        }
+
+        public void ReadAppSettings(AppSettings appSettings)
+        {
+            if (appSettings.AudioSettings.AudioGroupSettings == null)
+                return;
+
+            foreach (AudioGroupData g in _groups.Values)
+            {
+                AudioGroupSettings gSetting = appSettings.AudioSettings.AudioGroupSettings.Find(s => s.Name == g.Name);
+                if (gSetting != null)
+                {
+                    g.IsMuted = gSetting.IsMuted;
+                    g.LastNormalizedValue = gSetting.LastNormalizedValue;
+                }
+            }
+
+            foreach (AudioGroupData g in _groups.Values)
+                SetNormalizedVolumeInner(g.Name, g.IsMuted ? 0 : g.LastNormalizedValue);
+        }
+
+        public void WriteToAppSettings(AppSettings appSettings)
+        {
+            List<AudioGroupSettings> list = new();
+
+            foreach (AudioGroupData g in _groups.Values)
+                list.Add(new AudioGroupSettings(g.Name, g.IsMuted, g.LastNormalizedValue));
+
+            appSettings.AudioSettings.AudioGroupSettings = list;
         }
 
         private IEnumerator CheckClipsEndedCoroutine()

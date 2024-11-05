@@ -13,10 +13,14 @@ namespace Code.UI
         [SerializeField] private ButtonSwitcher _musicButton;
         [SerializeField] private Slider _musicSlider;
         [SerializeField] private SwitchableLabel _languageSwitchableLabel;
+        
+        private ISaveLoadAppSettingsService _saveLoadAppSettingsService;
 
-        internal new void Construct(IAudioService audio)
+        internal void Construct(IAudioService audio, ISaveLoadAppSettingsService saveLoadAppSettingsService)
         {
             base.Construct(audio);
+
+            _saveLoadAppSettingsService = saveLoadAppSettingsService;
         }
 
         internal void Open()
@@ -32,6 +36,7 @@ namespace Code.UI
         public override void Close()
         {
             CloseSelf();
+            _saveLoadAppSettingsService.SaveAppSettings();
         }
 
         protected override void SubscribeUpdates()
@@ -76,6 +81,8 @@ namespace Code.UI
         {
             base.OnCloseButtonClicked();
             CloseSelf();
+
+            _saveLoadAppSettingsService.SaveAppSettings();
         }
 
         private void CloseSelf() => gameObject.SetActive(false);

@@ -2,7 +2,7 @@
 
 namespace Code.Services
 {
-    public interface IAudioService : IService
+    public interface IAudioService : IService, ISavedAppSettingsReader, ISavedAppSettingsWriter
     {
         bool IsMuted(string group);
         void Load();

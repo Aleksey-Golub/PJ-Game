@@ -15,6 +15,18 @@ namespace Code.Infrastructure
       _states = new Dictionary<Type, IExitableState>
       {
         [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services, coroutineRunner, updater),
+        [typeof(LoadAppSettingsState)] = new LoadAppSettingsState(
+            this, 
+            services.Single<IAppSettingsService>(), 
+            services.Single<ISaveLoadAppSettingsService>(),
+            services.Single<IAudioService>()
+            ),
+        [typeof(LoadProgressState)] = new LoadProgressState(
+            this, 
+            services.Single<IPersistentProgressService>(), 
+            services.Single<IConfigsService>(), 
+            services.Single<ISaveLoadService>()
+            ),
         [typeof(LoadLevelState)] = new LoadLevelState(
             this, 
             sceneLoader, 
@@ -25,7 +37,6 @@ namespace Code.Infrastructure
             services.Single<IUIMediator>(),
             services.Single<IAudioService>()
             ),
-        [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IPersistentProgressService>(), services.Single<IConfigsService>(), services.Single<ISaveLoadService>()),
         [typeof(GameLoopState)] = new GameLoopState(this),
       };
     }

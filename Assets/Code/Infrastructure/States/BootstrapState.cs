@@ -21,7 +21,7 @@ namespace Code.Infrastructure
         }
 
         public void Enter() =>
-          _sceneLoader.Load(INITIAL, onLoaded: EnterLoadLevel);
+          _sceneLoader.Load(INITIAL, onLoaded: OnSceneLoaded);
 
         public void Exit()
         {
@@ -30,6 +30,7 @@ namespace Code.Infrastructure
         private void RegisterServices(ICoroutineRunner coroutineRunner, IUpdater updater)
         {
             //RegisterLocalizationService();
+            LService.Load();
             _services.RegisterSingle<IUpdater>(updater);
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<ICoroutineRunner>(coroutineRunner);
@@ -37,6 +38,7 @@ namespace Code.Infrastructure
             RegisterConfigService();
             RegisterInputService();
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
+            _services.RegisterSingle<IAppSettingsService>(new AppSettingsService());
             RegisterAudioService(coroutineRunner);
             _services.RegisterSingle<IDropCountCalculatorService>(new DropCountCalculatorService(_services.Single<IPersistentProgressService>(), _services.Single<IConfigsService>()));
 
@@ -47,11 +49,17 @@ namespace Code.Infrastructure
             _services.RegisterSingle<IEffectFactory>(new EffectFactory(_services.Single<IAudioService>(), _services.Single<IConfigsService>()));
 
             RegisterResourceMergeService();
+            
+            _services.RegisterSingle<ISaveLoadAppSettingsService>(new SaveLoadAppSettingsService(
+                _services.Single<IAppSettingsService>(), 
+                _services.Single<IAudioService>()));
+
             _services.RegisterSingle<IUIFactory>(new UIFactory(
               _services.Single<IAssetProvider>(),
               _services.Single<IConfigsService>(),
               _services.Single<IPersistentProgressService>(),
-              _services.Single<IAudioService>()
+              _services.Single<IAudioService>(),
+              _services.Single<ISaveLoadAppSettingsService>()
               ));
 
             _services.RegisterSingle<IUIMediator>(new UIMediator(_services.Single<IUIFactory>()));
@@ -102,15 +110,15 @@ namespace Code.Infrastructure
             _services.RegisterSingle(configs);
         }
         
-        private void RegisterLocalizationService()
+        /*private void RegisterLocalizationService()
         {
             ILocalizationService localization = new LocalizationService();
             localization.Load();
             _services.RegisterSingle(localization);
-        }
+        }*/
 
-        private void EnterLoadLevel() =>
-          _stateMachine.Enter<LoadProgressState>();
+        private void OnSceneLoaded() =>
+          _stateMachine.Enter<LoadAppSettingsState>();
 
         private static IInputService GetInputService()
         {

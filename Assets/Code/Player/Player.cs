@@ -129,7 +129,7 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
 
         Vector3Data savedPosition = progress.PlayerProgress.PositionOnLevel.Position;
         if (savedPosition != null)
-            Teleport(savedPosition.AsUnityVector());
+            transform.position = savedPosition.AsUnityVector();
     } 
     #endregion
 

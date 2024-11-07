@@ -11,11 +11,15 @@ namespace Code.Services
         private readonly List<Tool> _inUseItems;
         private readonly IAudioService _audio;
         private readonly IAssetProvider _assets;
+        private readonly IPersistentProgressService _progressService;
 
-        public ToolFactory(IAudioService audio, IAssetProvider assets)
+        public IReadOnlyList<Tool> DroppedResources => _inUseItems;
+
+        public ToolFactory(IAudioService audio, IAssetProvider assets, IPersistentProgressService progressService)
         {
             _audio = audio;
             _assets = assets;
+            _progressService = progressService;
 
             _inUseItems = new List<Tool>();
         }
@@ -43,8 +47,10 @@ namespace Code.Services
             var tool = _pool.Get(position, rotation);
 
             if (!tool.IsConstructed)
-                tool.Construct(this, _audio);
+                tool.Construct(this, _audio, _progressService);
 
+            tool.UniqueId.GenerateId();
+            
             _inUseItems.Add(tool);
             return tool;
         }

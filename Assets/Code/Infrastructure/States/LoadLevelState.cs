@@ -110,6 +110,7 @@ namespace Code.Infrastructure
         private void InitGameWorld(string loadedSceneName)
         {
             InitDroppedResources(loadedSceneName);
+            InitDroppedTools(loadedSceneName);
             //InitSpawners();
             //InitLootPieces();
 
@@ -130,6 +131,19 @@ namespace Code.Infrastructure
                 resource.UniqueId.Id = item.Key;
                 resource.Init(_configs.GetConfigFor(item.Value.Type), count);
                 resource.MoveAfterDrop(new DropData(0f, position, count));
+            }
+        }
+        
+        private void InitDroppedTools(string loadedSceneName)
+        {
+            foreach (KeyValuePair<string, ToolOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].ToolsDatas.ToolsOnScene.Dictionary)
+            {
+                Vector3 position = item.Value.Position.AsUnityVector();
+
+                Tool tool = _toolFactory.Get(position, Quaternion.identity);
+                tool.UniqueId.Id = item.Key;
+                tool.Init(_configs.GetConfigFor(item.Value.Type));
+                tool.MoveAfterDrop(new DropData(0f, position, 1));
             }
         }
 

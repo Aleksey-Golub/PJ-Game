@@ -55,7 +55,9 @@ namespace Code.Infrastructure
             RegisterResourceMergeService();
             _services.RegisterSingle<IToolFactory>(new ToolFactory(
                 _services.Single<IAudioService>(), 
-                _services.Single<IAssetProvider>()));
+                _services.Single<IAssetProvider>(),
+                _services.Single<IPersistentProgressService>()
+                ));
             _services.RegisterSingle<ITransitionalResourceFactory>(new TransitionalResourceFactory(
                 _services.Single<IAudioService>(), 
                 _services.Single<IAssetProvider>()));
@@ -91,7 +93,8 @@ namespace Code.Infrastructure
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
               _services.Single<IPersistentProgressService>(),
               _services.Single<IGameFactory>(),
-              _services.Single<IResourceFactory>()
+              _services.Single<IResourceFactory>(),
+              _services.Single<IToolFactory>()
               ));
         }
 

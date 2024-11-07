@@ -49,7 +49,9 @@ namespace Code.Infrastructure
                 _services.Single<IAssetProvider>()));
             _services.RegisterSingle<IResourceFactory>(new ResourceFactory(
                 _services.Single<IAudioService>(), 
-                _services.Single<IAssetProvider>()));
+                _services.Single<IAssetProvider>(),
+                _services.Single<IPersistentProgressService>()
+                ));
             RegisterResourceMergeService();
             _services.RegisterSingle<IToolFactory>(new ToolFactory(
                 _services.Single<IAudioService>(), 

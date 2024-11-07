@@ -79,9 +79,4 @@ namespace Code.Services
     {
         void Load();
     }
-
-    public interface IUpdatable
-    {
-        void OnUpdate();
-    }
 }

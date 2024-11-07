@@ -13,6 +13,7 @@ public class Resource : MonoBehaviour, IMergingResource, IPoolable, ISavedProgre
     private Dropper _dropper;
     private IRecyclableFactory _factory;
     private IAudioService _audio;
+    private IPersistentProgressService _progressService;
     private ResourceConfig _config;
     private Coroutine _mergeCoroutine;
     private int _count;
@@ -27,6 +28,7 @@ public class Resource : MonoBehaviour, IMergingResource, IPoolable, ISavedProgre
     public int Count => _count;
     public ResourceType Type => _config.Type;
     public Vector3 Position => transform.position;
+    public bool IsConstructed { get; private set; }
 
     void IPoolable.Construct(IRecyclableFactory factory, IAudioService audio)
     {
@@ -46,6 +48,16 @@ public class Resource : MonoBehaviour, IMergingResource, IPoolable, ISavedProgre
         _view.Init(_config.Sprite);
         _view.ShowCount(_count);
         _collider.enabled = false;
+    }
+    public void Construct(IRecyclableFactory factory, IAudioService audio, IPersistentProgressService progressService)
+    {
+        _factory = factory;
+        _audio = audio;
+        _progressService = progressService;
+
+        _dropper = new();
+
+        IsConstructed = true;
     }
 
     internal void MoveAfterDrop(DropData dropData)
@@ -71,6 +83,7 @@ public class Resource : MonoBehaviour, IMergingResource, IPoolable, ISavedProgre
     void IMergingResource.SetCount(int value)
     {
         _count = value;
+        RemoveResourceFromSavedResources();
 
         _view.ShowCount(_count);
     }
@@ -115,7 +128,7 @@ public class Resource : MonoBehaviour, IMergingResource, IPoolable, ISavedProgre
 
     void ISavedProgressWriter.WriteToProgress(GameProgress progress)
     {
-        if (_pickedUp)
+        if (_pickedUp || _count == 0)
             return;
 
         var resourcesOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[CurrentLevel()].ResourcesDatas.ResourcesOnScene;
@@ -127,6 +140,15 @@ public class Resource : MonoBehaviour, IMergingResource, IPoolable, ISavedProgre
 
     private void UpdateWorldData()
     {
-        //RemoveResourceFromSavedResources();
+        // possible place for pickuper inventory data changing
+        RemoveResourceFromSavedResources();
+    }
+
+    private void RemoveResourceFromSavedResources()
+    {
+        ResourcesDataDictionary resourcesOnScene = _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[CurrentLevel()].ResourcesDatas.ResourcesOnScene;
+
+        if (resourcesOnScene.Dictionary.ContainsKey(Id))
+            resourcesOnScene.Dictionary.Remove(Id);
     }
 }

@@ -105,9 +105,12 @@ namespace Code.Infrastructure
         {
             foreach (KeyValuePair<string, ResourceOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].ResourcesDatas.ResourcesOnScene.Dictionary)
             {
-                Resource resource = _resourceFactory.Get(item.Value.Position.AsUnityVector(), Quaternion.identity);
+                Vector3 position = item.Value.Position.AsUnityVector();
+                int count = item.Value.Count;
+
+                Resource resource = _resourceFactory.Get(position, Quaternion.identity);
                 resource.UniqueId.Id = item.Key;
-                resource.Init(_configs.GetConfigFor(item.Value.Type), item.Value.Count);
+                resource.Init(_configs.GetConfigFor(item.Value.Type), count);
             }
         }
 

@@ -8,11 +8,16 @@ namespace Code.Services
     {
         private readonly Pool<Resource> _pool;
         private readonly List<Resource> _droppedResources;
+        private readonly IAudioService _audio;
+        private readonly IPersistentProgressService _progressService;
 
         public IReadOnlyList<Resource> DroppedResources => _droppedResources;
 
-        public ResourceFactory(IAudioService audio, IAssetProvider assets)
+        public ResourceFactory(IAudioService audio, IAssetProvider assets, IPersistentProgressService progressService)
         {
+            _audio = audio;
+            _progressService = progressService;
+
             Transform container = CreateContainer();
             Resource resourcePrefab = assets.Load<Resource>(AssetPath.RESOURCE_PREFAB_PATH);
             int poolSize = 10;
@@ -24,6 +29,10 @@ namespace Code.Services
         public Resource Get(Vector3 position, Quaternion rotation)
         {
             Resource res = _pool.Get(position, rotation);
+
+            if (!res.IsConstructed)
+                res.Construct(this, _audio, _progressService);
+            
             res.UniqueId.GenerateId();
 
             _droppedResources.Add(res);

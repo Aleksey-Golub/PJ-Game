@@ -272,7 +272,9 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
 
         if (other.TryGetComponent(out Tool tool))
         {
-            _inventory.Add(tool.Type);
+            if (!_inventory.Has(tool.Type))
+                _inventory.Add(tool.Type);
+
             tool.Collect();
             string toolID = _configsService.GetConfigFor(tool.Type).ID;
 

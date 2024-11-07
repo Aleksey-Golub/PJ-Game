@@ -32,10 +32,12 @@ namespace Code.Infrastructure
             sceneLoader, 
             loadingCurtain, 
             services.Single<IGameFactory>(), 
+            services.Single<IResourceFactory>(), 
             services.Single<IPersistentProgressService>(), 
             services.Single<IUIFactory>(),
             services.Single<IUIMediator>(),
-            services.Single<IAudioService>()
+            services.Single<IAudioService>(),
+            services.Single<IConfigsService>()
             ),
         [typeof(GameLoopState)] = new GameLoopState(this),
       };

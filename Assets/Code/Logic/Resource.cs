@@ -1,9 +1,12 @@
+using Code.Data;
 using Code.Services;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-internal class Resource : MonoBehaviour, IMergingResource, IPoolable
+public class Resource : MonoBehaviour, IMergingResource, IPoolable, ISavedProgressWriter, IUniqueIdHolder
 {
+    [field: SerializeField] public UniqueId UniqueId { get; private set; }
     [SerializeField] private Collider2D _collider;
     [SerializeField] private ResourceView _view;
 
@@ -15,10 +18,12 @@ internal class Resource : MonoBehaviour, IMergingResource, IPoolable
     private int _count;
     private float _mergeTimer;
     private bool _isMerging;
+    private bool _pickedUp;
 
     [Header("Settings")]
     [SerializeField] private float _moveAfterMergeTime = 0.6f;
 
+    private string Id => UniqueId.Id;
     public int Count => _count;
     public ResourceType Type => _config.Type;
     public Vector3 Position => transform.position;
@@ -36,6 +41,7 @@ internal class Resource : MonoBehaviour, IMergingResource, IPoolable
         _count = count;
         _mergeTimer = 0;
         _isMerging = false;
+        _pickedUp = false;
 
         _view.Init(_config.Sprite);
         _view.ShowCount(_count);
@@ -49,6 +55,9 @@ internal class Resource : MonoBehaviour, IMergingResource, IPoolable
 
     internal void Collect()
     {
+        _pickedUp = true;
+        UpdateWorldData();
+
         _audio.PlaySfxAtPosition(_config.PickupAudio, transform.position);
 
         _factory.Recycle(this);
@@ -62,7 +71,7 @@ internal class Resource : MonoBehaviour, IMergingResource, IPoolable
     void IMergingResource.SetCount(int value)
     {
         _count = value;
-        
+
         _view.ShowCount(_count);
     }
 
@@ -102,5 +111,22 @@ internal class Resource : MonoBehaviour, IMergingResource, IPoolable
         _view.ShowEndMerge();
 
         _factory.Recycle(this);
+    }
+
+    void ISavedProgressWriter.WriteToProgress(GameProgress progress)
+    {
+        if (_pickedUp)
+            return;
+
+        var resourcesOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[CurrentLevel()].ResourcesDatas.ResourcesOnScene;
+
+        resourcesOnScene.Dictionary[Id] = new ResourceOnSceneData(transform.position.AsVectorData(), _count, Type);
+    }
+
+    private static string CurrentLevel() => SceneManager.GetActiveScene().name;
+
+    private void UpdateWorldData()
+    {
+        //RemoveResourceFromSavedResources();
     }
 }

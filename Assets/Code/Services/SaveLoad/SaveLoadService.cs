@@ -10,19 +10,28 @@ namespace Code.Services
 
         private readonly IPersistentProgressService _progressService;
         private readonly IGameFactory _gameFactory;
+        private readonly IResourceFactory _resourceFactory;
 
-        public SaveLoadService(IPersistentProgressService progressService, IGameFactory gameFactory)
+        public SaveLoadService(IPersistentProgressService progressService, IGameFactory gameFactory, IResourceFactory resourceFactory)
         {
             _progressService = progressService;
             _gameFactory = gameFactory;
+            _resourceFactory = resourceFactory;
         }
 
         public void SaveProgress()
         {
-            foreach (ISavedProgressWriter progressWriter in _gameFactory.ProgressWriters)
-                progressWriter.WriteToProgress(_progressService.Progress);
+            GameProgress progress = _progressService.Progress;
 
-            PlayerPrefs.SetString(PROGRESS_KEY, _progressService.Progress.ToJson());
+            foreach (ISavedProgressWriter progressWriter in _gameFactory.ProgressWriters)
+                progressWriter.WriteToProgress(progress);
+
+            foreach (ISavedProgressWriter resource in _resourceFactory.DroppedResources)
+                resource.WriteToProgress(progress);
+
+            Debug.Log(progress.ToJson());
+
+            PlayerPrefs.SetString(PROGRESS_KEY, progress.ToJson());
         }
 
         public GameProgress LoadProgress()

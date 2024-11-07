@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Services
 {
-    interface IResourceFactory : IRecyclableFactory
+    public interface IResourceFactory : IRecyclableFactory
     {
         IReadOnlyList<Resource> DroppedResources { get; }
 

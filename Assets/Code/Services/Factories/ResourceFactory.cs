@@ -23,7 +23,8 @@ namespace Code.Services
 
         public Resource Get(Vector3 position, Quaternion rotation)
         {
-            var res = _pool.Get(position, rotation);
+            Resource res = _pool.Get(position, rotation);
+            res.UniqueId.GenerateId();
 
             _droppedResources.Add(res);
 

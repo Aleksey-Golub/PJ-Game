@@ -89,7 +89,9 @@ namespace Code.Infrastructure
 
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
               _services.Single<IPersistentProgressService>(),
-              _services.Single<IGameFactory>()));
+              _services.Single<IGameFactory>(),
+              _services.Single<IResourceFactory>()
+              ));
         }
 
         private void RegisterResourceMergeService()

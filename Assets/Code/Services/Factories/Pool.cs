@@ -8,16 +8,13 @@ namespace Code.Services
         private readonly Queue<T> _pool;
         private readonly T _prefab;
         private readonly Transform _parent;
-        private readonly IRecyclableFactory _factory;
-        private readonly IAudioService _audio;
 
-        public Pool(T prefab, Transform parent, int initialPoolSize, IRecyclableFactory factory, IAudioService audio)
+        public Pool(T prefab, Transform parent, int initialPoolSize)
         {
             _prefab = prefab;
             _parent = parent;
-            _factory = factory;
-            _audio = audio;
             _pool = new Queue<T>(initialPoolSize);
+            
             FillPool(initialPoolSize);
         }
 
@@ -30,7 +27,6 @@ namespace Code.Services
             else
             {
                 obj = Object.Instantiate(_prefab, _parent);
-                obj.Construct(_factory, _audio);
             }
 
             obj.transform.SetPositionAndRotation(position, rotation);
@@ -50,7 +46,6 @@ namespace Code.Services
             for (int i = 0; i < initialPoolSize; i++)
             {
                 var newGO = Object.Instantiate(_prefab, _parent);
-                newGO.Construct(_factory, _audio);
 
                 newGO.gameObject.SetActive(false);
 
@@ -61,7 +56,7 @@ namespace Code.Services
 
     public interface IPoolable
     {
-        void Construct(IRecyclableFactory factory, IAudioService audio);
+        bool IsConstructed { get; }
     }
 
     public interface IRecyclableFactory : IService

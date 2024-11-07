@@ -45,7 +45,6 @@ namespace Code.Infrastructure
                 _services.Single<IConfigsService>()));
 
             _services.RegisterSingle<IPopupFactory>(new PopupFactory(
-                _services.Single<IAudioService>(), 
                 _services.Single<IAssetProvider>()));
             _services.RegisterSingle<IResourceFactory>(new ResourceFactory(
                 _services.Single<IAudioService>(), 
@@ -60,7 +59,6 @@ namespace Code.Infrastructure
                 _services.Single<IAudioService>(), 
                 _services.Single<IAssetProvider>()));
             _services.RegisterSingle<IEffectFactory>(new EffectFactory(
-                _services.Single<IAudioService>(), 
                 _services.Single<IConfigsService>()));
 
             

@@ -22,7 +22,7 @@ namespace Code.Services
             Resource resourcePrefab = assets.Load<Resource>(AssetPath.RESOURCE_PREFAB_PATH);
             int poolSize = 10;
 
-            _pool = new Pool<Resource>(resourcePrefab, container, poolSize, this, audio);
+            _pool = new Pool<Resource>(resourcePrefab, container, poolSize);
             _droppedResources = new List<Resource>();
         }
 

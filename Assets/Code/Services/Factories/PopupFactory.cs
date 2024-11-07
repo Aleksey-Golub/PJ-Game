@@ -7,18 +7,21 @@ namespace Code.Services
     {
         private readonly Pool<Popup> _pool;
 
-        public PopupFactory(IAudioService audio, IAssetProvider assets)
+        public PopupFactory(IAssetProvider assets)
         {
             Transform container = CreateContainer();
             Popup prefab = assets.Load<Popup>(AssetPath.POPUP_PREFAB_PATH);
             int poolSize = 10;
 
-            _pool = new Pool<Popup>(prefab, container, poolSize, this, audio);
+            _pool = new Pool<Popup>(prefab, container, poolSize);
         }
 
         public Popup Get(Vector3 position, Quaternion rotation)
         {
             var popup = _pool.Get(position, rotation);
+
+            if (!popup.IsConstructed)
+                popup.Construct(this);
 
             return popup;
         }

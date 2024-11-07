@@ -17,10 +17,14 @@ public class TransitionalResource : MonoBehaviour, IPoolable
     private int _consumedValue;
     private Coroutine _moveCoroutine;
 
-    void IPoolable.Construct(IRecyclableFactory factory, IAudioService audio)
+    public bool IsConstructed { get; private set; }
+
+    public void Construct(IRecyclableFactory factory, IAudioService audio)
     {
         _factory = factory;
         _audio = audio;
+
+        IsConstructed = true;
     }
 
     internal void Init(IResourceConsumer consumer, int consumedValue, Sprite sprite)

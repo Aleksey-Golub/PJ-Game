@@ -15,13 +15,17 @@ public class Popup : MonoBehaviour, IPoolable
     private Color _startColor;
     private Coroutine _moveCoroutine;
 
-    internal event Action<Popup> ReadyToDetach; 
+    public bool IsConstructed { get; private set; }
 
-    void IPoolable.Construct(IRecyclableFactory popupFactory, IAudioService audio)
+    internal event Action<Popup> ReadyToDetach;
+
+    public void Construct(IRecyclableFactory popupFactory)
     {
         _factory = popupFactory;
 
         _startColor = _text.color;
+
+        IsConstructed = true;
     }
 
     internal void Init()
@@ -46,7 +50,7 @@ public class Popup : MonoBehaviour, IPoolable
     {
         Vector3 startPosition = transform.position;
         float timer = 0;
-        
+
         while (timer < _moveTime)
         {
             float t = _velocityCuve.Evaluate(timer / _moveTime);

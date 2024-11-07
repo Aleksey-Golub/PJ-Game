@@ -30,11 +30,15 @@ public class Resource : MonoBehaviour, IMergingResource, IPoolable, ISavedProgre
     public Vector3 Position => transform.position;
     public bool IsConstructed { get; private set; }
 
-    void IPoolable.Construct(IRecyclableFactory factory, IAudioService audio)
+    public void Construct(IRecyclableFactory factory, IAudioService audio, IPersistentProgressService progressService)
     {
         _factory = factory;
         _audio = audio;
+        _progressService = progressService;
+
         _dropper = new();
+
+        IsConstructed = true;
     }
 
     internal void Init(ResourceConfig config, int count)
@@ -48,16 +52,6 @@ public class Resource : MonoBehaviour, IMergingResource, IPoolable, ISavedProgre
         _view.Init(_config.Sprite);
         _view.ShowCount(_count);
         _collider.enabled = false;
-    }
-    public void Construct(IRecyclableFactory factory, IAudioService audio, IPersistentProgressService progressService)
-    {
-        _factory = factory;
-        _audio = audio;
-        _progressService = progressService;
-
-        _dropper = new();
-
-        IsConstructed = true;
     }
 
     internal void MoveAfterDrop(DropData dropData)

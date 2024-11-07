@@ -10,7 +10,8 @@ public abstract class Effect : MonoBehaviour, IPoolable
     protected static readonly int _explosionEffectHash = Animator.StringToHash("Explosion");
 
     private IRecyclableFactory _factory;
-    private IAudioService _audio;
+
+    public bool IsConstructed { get; private set; }
 
     #region EDITOR_ONLY
 #if UNITY_EDITOR
@@ -31,10 +32,11 @@ public abstract class Effect : MonoBehaviour, IPoolable
 #endif
     #endregion
 
-    public void Construct(IRecyclableFactory factory, IAudioService audio)
+    public void Construct(IRecyclableFactory factory)
     {
         _factory = factory;
-        _audio = audio;
+
+        IsConstructed = true;
     }
 
     internal abstract void Play();

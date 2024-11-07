@@ -11,14 +11,17 @@ internal class Tool : MonoBehaviour, IPoolable
     private ToolConfig _config;
     private IAudioService _audio;
 
+    public bool IsConstructed { get; private set; }
     internal ToolType Type => _config.Type;
 
-    void IPoolable.Construct(IRecyclableFactory factory, IAudioService audio)
+    public void Construct(IRecyclableFactory factory, IAudioService audio)
     {
         _factory = factory;
         _audio = audio;
 
         _dropper = new();
+
+        IsConstructed = true;
     }
 
     internal void Init(ToolConfig config)

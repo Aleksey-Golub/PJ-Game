@@ -34,6 +34,8 @@ internal class PlayerView : MonoBehaviour
         _gatheredResourcesPopups = new();
     }
 
+    internal void PlayMove(Vector2 direction, float velocity) => PlayMove(direction.x, direction.y, velocity);
+
     internal void PlayMove(float dirX, float dirY, float velocity)
     {
         _animator.SetFloat(_dirXHash, dirX);

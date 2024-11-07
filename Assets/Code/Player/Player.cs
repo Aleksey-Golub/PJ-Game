@@ -119,7 +119,12 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
 
     private void WriteToPositionOnLevel(GameProgress progress)
     {
-        progress.PlayerProgress.PositionOnLevel = new PositionOnLevel(CurrentLevel(), transform.position.AsVectorData());
+        progress.PlayerProgress.PositionOnLevel = 
+            new PositionOnLevel(
+                CurrentLevel(), 
+                transform.position.AsVectorData(), 
+                _direction.AsVectorData()
+                );
     }
 
     private void ReadPositionOnLevel(GameProgress progress)
@@ -127,9 +132,17 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
         if (CurrentLevel() != progress.PlayerProgress.PositionOnLevel.Level)
             return;
 
-        Vector3Data savedPosition = progress.PlayerProgress.PositionOnLevel.Position;
+        PositionOnLevel positionOnLevel = progress.PlayerProgress.PositionOnLevel;
+        Vector3Data savedPosition = positionOnLevel.Position;
         if (savedPosition != null)
             transform.position = savedPosition.AsUnityVector();
+
+        Vector2Data savedDirection = positionOnLevel.Direction;
+        if (savedDirection != null)
+        {
+            _direction = savedDirection.AsUnityVector();
+            _view.PlayMove(_direction, 0);
+        }
     } 
     #endregion
 
@@ -164,7 +177,7 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
         }
         else
         {
-            _view.PlayMove(_direction.x, _direction.y, 0);
+            _view.PlayMove(_direction, 0);
         }
 
         // attack resource source

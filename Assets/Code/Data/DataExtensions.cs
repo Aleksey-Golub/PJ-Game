@@ -10,6 +10,12 @@ namespace Code.Data
     public static Vector3 AsUnityVector(this Vector3Data vector3Data) => 
       new Vector3(vector3Data.X, vector3Data.Y, vector3Data.Z);
 
+    public static Vector2Data AsVectorData(this Vector2 vector) =>
+        new Vector2Data(vector.x, vector.y);
+
+    public static Vector2 AsUnityVector(this Vector2Data vector3Data) =>
+        new Vector2(vector3Data.X, vector3Data.Y);
+
     public static Vector3 AddY(this Vector3 vector, float y)
     {
       vector.y = y;

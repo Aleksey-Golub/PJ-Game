@@ -21,7 +21,6 @@ namespace Code.Services
             _progressService = progressService;
 
             _droppedResources = new List<Resource>();
-            Load();
         }
 
         public void Load()
@@ -63,7 +62,6 @@ namespace Code.Services
         private Transform CreateContainer()
         {
             var go = new GameObject("Resource Factory Container");
-            UnityEngine.Object.DontDestroyOnLoad(go);
             return go.transform;
         }
     }

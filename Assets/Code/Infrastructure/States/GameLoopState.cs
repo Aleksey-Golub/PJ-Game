@@ -21,6 +21,8 @@ namespace Code.Infrastructure
 
         public void Exit()
         {
+            _gameFactory.Cleanup();
+            _resourceFactory.Cleanup();
         }
     }
 }

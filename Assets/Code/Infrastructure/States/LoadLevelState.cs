@@ -52,7 +52,7 @@ namespace Code.Infrastructure
             _loadingSceneName = sceneName;
 
             _loadingCurtain.Show();
-            _gameFactory.Cleanup();
+
             _sceneLoader.Load(sceneName, OnLoaded);
         }
 
@@ -61,6 +61,8 @@ namespace Code.Infrastructure
 
         private void OnLoaded()
         {
+            _resourceFactory.Load();
+
             string loadedSceneName = _loadingSceneName;
             InitProgressForLevel(loadedSceneName);
 

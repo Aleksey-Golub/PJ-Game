@@ -17,10 +17,13 @@ namespace Code.Infrastructure
         [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services, coroutineRunner, updater),
         [typeof(LoadAppSettingsState)] = new LoadAppSettingsState(
             this, 
-            sceneLoader,
             services.Single<IAppSettingsService>(), 
             services.Single<ISaveLoadAppSettingsService>(),
             services.Single<IAudioService>()
+            ),
+        [typeof(LoadMainMenuState)] = new LoadMainMenuState(
+            this,
+            sceneLoader
             ),
         [typeof(MainMenuState)] = new MainMenuState(
             this
@@ -37,6 +40,10 @@ namespace Code.Infrastructure
             loadingCurtain, 
             services.Single<IGameFactory>(), 
             services.Single<IResourceFactory>(), 
+            services.Single<IEffectFactory>(), 
+            services.Single<IPopupFactory>(), 
+            services.Single<IToolFactory>(), 
+            services.Single<ITransitionalResourceFactory>(), 
             services.Single<IPersistentProgressService>(), 
             services.Single<IUIFactory>(),
             services.Single<IUIMediator>(),
@@ -46,7 +53,11 @@ namespace Code.Infrastructure
         [typeof(GameLoopState)] = new GameLoopState(
             this,
             services.Single<IGameFactory>(), 
-            services.Single<IResourceFactory>()
+            services.Single<IResourceFactory>(),
+            services.Single<IEffectFactory>(),
+            services.Single<IPopupFactory>(),
+            services.Single<IToolFactory>(),
+            services.Single<ITransitionalResourceFactory>()
             ),
       };
     }

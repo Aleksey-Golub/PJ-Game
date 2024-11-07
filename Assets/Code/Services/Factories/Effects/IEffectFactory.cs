@@ -4,6 +4,8 @@ namespace Code.Services
 {
     public interface IEffectFactory : IRecyclableFactory
     {
+        void Load();
+
         /// <summary>
         /// Return effect. Use 'transformTemplate' as dto to pass position, rotation and scale.
         /// </summary>
@@ -11,5 +13,6 @@ namespace Code.Services
         /// <param name="transformTemplate">Used as dto for position, rotation and scale</param>
         /// <returns></returns>
         Effect Get(EffectId effectId, Transform transformTemplate);
+        void Cleanup();
     }
 }

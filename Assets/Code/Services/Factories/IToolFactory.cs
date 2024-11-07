@@ -2,8 +2,10 @@
 
 namespace Code.Services
 {
-    internal interface IToolFactory : IRecyclableFactory
+    public interface IToolFactory : IRecyclableFactory
     {
+        void Load();
         Tool Get(Vector3 position, Quaternion rotation);
+        void Cleanup();
     }
 }

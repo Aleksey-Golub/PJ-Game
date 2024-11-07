@@ -15,6 +15,10 @@ namespace Code.Infrastructure
         private readonly LoadingCurtain _loadingCurtain;
         private readonly IGameFactory _gameFactory;
         private readonly IResourceFactory _resourceFactory;
+        private readonly IEffectFactory _effectFactory;
+        private readonly IPopupFactory _popupFactory;
+        private readonly IToolFactory _toolFactory;
+        private readonly ITransitionalResourceFactory _transitionalResourceFactory;
         private readonly IPersistentProgressService _progressService;
         private readonly IUIFactory _uiFactory;
         private readonly IUIMediator _uIMediator;
@@ -28,6 +32,10 @@ namespace Code.Infrastructure
             LoadingCurtain loadingCurtain, 
             IGameFactory gameFactory, 
             IResourceFactory resourceFactory,
+            IEffectFactory effectFactory,
+            IPopupFactory popupFactory,
+            IToolFactory toolFactory,
+            ITransitionalResourceFactory transitionalResourceFactory,
             IPersistentProgressService progressService, 
             IUIFactory uiFactory,
             IUIMediator uIMediator,
@@ -40,6 +48,10 @@ namespace Code.Infrastructure
             _loadingCurtain = loadingCurtain;
             _gameFactory = gameFactory;
             _resourceFactory = resourceFactory;
+            _effectFactory = effectFactory;
+            _popupFactory = popupFactory;
+            _toolFactory = toolFactory;
+            _transitionalResourceFactory = transitionalResourceFactory;
             _progressService = progressService;
             _uiFactory = uiFactory;
             _uIMediator = uIMediator;
@@ -53,6 +65,12 @@ namespace Code.Infrastructure
 
             _loadingCurtain.Show();
 
+            _resourceFactory.Load();
+            _effectFactory.Load();
+            _popupFactory.Load();
+            _toolFactory.Load();
+            _transitionalResourceFactory.Load();
+
             _sceneLoader.Load(sceneName, OnLoaded);
         }
 
@@ -61,8 +79,6 @@ namespace Code.Infrastructure
 
         private void OnLoaded()
         {
-            _resourceFactory.Load();
-
             string loadedSceneName = _loadingSceneName;
             InitProgressForLevel(loadedSceneName);
 

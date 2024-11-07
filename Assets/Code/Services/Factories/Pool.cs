@@ -8,14 +8,16 @@ namespace Code.Services
         private readonly Queue<T> _pool;
         private readonly T _prefab;
         private readonly Transform _parent;
+        private readonly int _initialPoolSize;
 
         public Pool(T prefab, Transform parent, int initialPoolSize)
         {
             _prefab = prefab;
             _parent = parent;
-            _pool = new Queue<T>(initialPoolSize);
-            
-            FillPool(initialPoolSize);
+            _initialPoolSize = initialPoolSize;
+            _pool = new Queue<T>(_initialPoolSize);
+
+            FillPool(_initialPoolSize);
         }
 
         internal T Get(Vector3 position, Quaternion rotation)

@@ -19,7 +19,7 @@ public class TEST_MAIN_MENU_load_trigger : MonoBehaviour
 
         if (collision.TryGetComponent<Player>(out Player player))
         {
-            _stateMachine.Enter<MainMenuState>();
+            _stateMachine.Enter<LoadMainMenuState>();
             _isTriggered = true;
         }
     }

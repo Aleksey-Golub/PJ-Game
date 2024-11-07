@@ -7,12 +7,13 @@ namespace Code.Services
     internal class ResourceFactory : IResourceFactory
     {
         private Pool<Resource> _pool;
-        private readonly List<Resource> _droppedResources;
+        private Transform _container;
+        private readonly List<Resource> _inUseItems;
         private readonly IAudioService _audio;
         private readonly IAssetProvider _assets;
         private readonly IPersistentProgressService _progressService;
 
-        public IReadOnlyList<Resource> DroppedResources => _droppedResources;
+        public IReadOnlyList<Resource> DroppedResources => _inUseItems;
 
         public ResourceFactory(IAudioService audio, IAssetProvider assets, IPersistentProgressService progressService)
         {
@@ -20,21 +21,24 @@ namespace Code.Services
             _assets = assets;
             _progressService = progressService;
 
-            _droppedResources = new List<Resource>();
+            _inUseItems = new List<Resource>();
         }
 
         public void Load()
         {
-            Transform container = CreateContainer();
+            _container = CreateContainer();
             Resource resourcePrefab = _assets.Load<Resource>(AssetPath.RESOURCE_PREFAB_PATH);
             int poolSize = 10;
 
-            _pool = new Pool<Resource>(resourcePrefab, container, poolSize);
+            _pool = new Pool<Resource>(resourcePrefab, _container, poolSize);
         }
 
         public void Cleanup()
         {
-            _droppedResources.Clear();
+            _inUseItems.ForEach(i => _pool.Recycle(i));
+            _inUseItems.Clear();
+            Object.Destroy(_container.gameObject);
+
             _pool = null;
         }
 
@@ -47,21 +51,23 @@ namespace Code.Services
 
             res.UniqueId.GenerateId();
 
-            _droppedResources.Add(res);
+            _inUseItems.Add(res);
 
             return res;
         }
 
         public void Recycle(IPoolable resource)
         {
-            _droppedResources.Remove(resource as Resource);
+            Resource item = resource as Resource;
+            _inUseItems.Remove(item);
 
-            _pool.Recycle(resource as Resource);
+            _pool.Recycle(item);
         }
 
         private Transform CreateContainer()
         {
             var go = new GameObject("Resource Factory Container");
+            UnityEngine.Object.DontDestroyOnLoad(go);
             return go.transform;
         }
     }

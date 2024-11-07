@@ -1,7 +1,7 @@
 using Code.Services;
 using UnityEngine;
 
-internal class Tool : MonoBehaviour, IPoolable
+public class Tool : MonoBehaviour, IPoolable
 {
     [SerializeField] private Collider2D _collider;
     [SerializeField] private ToolView _view;

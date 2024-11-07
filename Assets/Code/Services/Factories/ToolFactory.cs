@@ -1,22 +1,41 @@
 ﻿using UnityEngine;
 using Code.Infrastructure;
+using System.Collections.Generic;
 
 namespace Code.Services
 {
     internal class ToolFactory : IToolFactory
     {
+        private Pool<Tool> _pool;
+        private Transform _container;
+        private readonly List<Tool> _inUseItems;
         private readonly IAudioService _audio;
-        private readonly Pool<Tool> _pool;
+        private readonly IAssetProvider _assets;
 
         public ToolFactory(IAudioService audio, IAssetProvider assets)
         {
             _audio = audio;
+            _assets = assets;
 
-            Transform container = CreateContainer();
-            Tool prefab = assets.Load<Tool>(AssetPath.TOOL_PREFAB_PATH);
+            _inUseItems = new List<Tool>();
+        }
+
+        public void Load()
+        {
+            _container = CreateContainer();
+            Tool prefab = _assets.Load<Tool>(AssetPath.TOOL_PREFAB_PATH);
             int poolSize = 10;
 
-            _pool = new Pool<Tool>(prefab, container, poolSize);
+            _pool = new Pool<Tool>(prefab, _container, poolSize);
+        }
+
+        public void Cleanup()
+        {
+            _inUseItems.ForEach(i => _pool.Recycle(i));
+            _inUseItems.Clear();
+            Object.Destroy(_container.gameObject);
+
+            _pool = null;
         }
 
         public Tool Get(Vector3 position, Quaternion rotation)
@@ -26,12 +45,16 @@ namespace Code.Services
             if (!tool.IsConstructed)
                 tool.Construct(this, _audio);
 
+            _inUseItems.Add(tool);
             return tool;
         }
 
         public void Recycle(IPoolable tool)
         {
-            _pool.Recycle(tool as Tool);
+            Tool item = tool as Tool;
+            _inUseItems.Remove(item);
+
+            _pool.Recycle(item);
         }
 
         private Transform CreateContainer()

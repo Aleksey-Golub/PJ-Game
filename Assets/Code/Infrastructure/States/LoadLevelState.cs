@@ -111,6 +111,7 @@ namespace Code.Infrastructure
                 Resource resource = _resourceFactory.Get(position, Quaternion.identity);
                 resource.UniqueId.Id = item.Key;
                 resource.Init(_configs.GetConfigFor(item.Value.Type), count);
+                resource.MoveAfterDrop(new DropData(0f, position, count));
             }
         }
 

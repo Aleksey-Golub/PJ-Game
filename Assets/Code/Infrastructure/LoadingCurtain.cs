@@ -6,6 +6,7 @@ namespace Code.Infrastructure
     public class LoadingCurtain : MonoBehaviour
     {
         [SerializeField] private float _stepAndDelay = 0.03f;
+        [SerializeField] private AnimationCurve _animationCurve;
         [SerializeField] private CanvasGroup _curtain;
 
         private void Awake()
@@ -24,13 +25,16 @@ namespace Code.Infrastructure
         private IEnumerator DoFadeIn()
         {
             WaitForSeconds waitForSeconds = new WaitForSeconds(_stepAndDelay);
-            
-            while (_curtain.alpha > 0)
+            float t = 0;
+
+            while (t < 1)
             {
-                _curtain.alpha -= _stepAndDelay;
+                _curtain.alpha = _animationCurve.Evaluate(t);
+                t += _stepAndDelay;
                 yield return waitForSeconds;
             }
 
+            _curtain.alpha = 0;
             gameObject.SetActive(false);
         }
     }

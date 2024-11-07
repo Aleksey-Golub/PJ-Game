@@ -6,9 +6,10 @@ namespace Code.Services
 {
     internal class ResourceFactory : IResourceFactory
     {
-        private readonly Pool<Resource> _pool;
+        private Pool<Resource> _pool;
         private readonly List<Resource> _droppedResources;
         private readonly IAudioService _audio;
+        private readonly IAssetProvider _assets;
         private readonly IPersistentProgressService _progressService;
 
         public IReadOnlyList<Resource> DroppedResources => _droppedResources;
@@ -16,14 +17,26 @@ namespace Code.Services
         public ResourceFactory(IAudioService audio, IAssetProvider assets, IPersistentProgressService progressService)
         {
             _audio = audio;
+            _assets = assets;
             _progressService = progressService;
 
+            _droppedResources = new List<Resource>();
+            Load();
+        }
+
+        public void Load()
+        {
             Transform container = CreateContainer();
-            Resource resourcePrefab = assets.Load<Resource>(AssetPath.RESOURCE_PREFAB_PATH);
+            Resource resourcePrefab = _assets.Load<Resource>(AssetPath.RESOURCE_PREFAB_PATH);
             int poolSize = 10;
 
             _pool = new Pool<Resource>(resourcePrefab, container, poolSize);
-            _droppedResources = new List<Resource>();
+        }
+
+        public void Cleanup()
+        {
+            _droppedResources.Clear();
+            _pool = null;
         }
 
         public Resource Get(Vector3 position, Quaternion rotation)
@@ -32,7 +45,7 @@ namespace Code.Services
 
             if (!res.IsConstructed)
                 res.Construct(this, _audio, _progressService);
-            
+
             res.UniqueId.GenerateId();
 
             _droppedResources.Add(res);

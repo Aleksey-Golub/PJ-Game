@@ -7,6 +7,8 @@ namespace Code.Services
     {
         IReadOnlyList<Resource> DroppedResources { get; }
 
+        void Load();
         Resource Get(Vector3 position, Quaternion rotation);
+        void Cleanup();
     }
 }

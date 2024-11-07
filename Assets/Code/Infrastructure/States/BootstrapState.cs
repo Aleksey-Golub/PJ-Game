@@ -29,6 +29,7 @@ namespace Code.Infrastructure
 
         private void RegisterServices(ICoroutineRunner coroutineRunner, IUpdater updater)
         {
+            _services.RegisterSingle<IGameStateMachine>(_stateMachine);
             //RegisterLocalizationService();
             LService.Load();
             _services.RegisterSingle<IUpdater>(updater);

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Code.Infrastructure
 {
-  public class GameStateMachine
+  public class GameStateMachine : IGameStateMachine
   {
     private readonly Dictionary<Type, IExitableState> _states;
     private IExitableState _activeState;
@@ -17,9 +17,13 @@ namespace Code.Infrastructure
         [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services, coroutineRunner, updater),
         [typeof(LoadAppSettingsState)] = new LoadAppSettingsState(
             this, 
+            sceneLoader,
             services.Single<IAppSettingsService>(), 
             services.Single<ISaveLoadAppSettingsService>(),
             services.Single<IAudioService>()
+            ),
+        [typeof(MainMenuState)] = new MainMenuState(
+            this
             ),
         [typeof(LoadProgressState)] = new LoadProgressState(
             this, 
@@ -39,7 +43,11 @@ namespace Code.Infrastructure
             services.Single<IAudioService>(),
             services.Single<IConfigsService>()
             ),
-        [typeof(GameLoopState)] = new GameLoopState(this),
+        [typeof(GameLoopState)] = new GameLoopState(
+            this,
+            services.Single<IGameFactory>(), 
+            services.Single<IResourceFactory>()
+            ),
       };
     }
     

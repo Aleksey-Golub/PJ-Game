@@ -1,18 +1,21 @@
 ﻿using Code.Data;
 using Code.Services;
-using System;
 
 namespace Code.Infrastructure
 {
     public class LoadAppSettingsState : IState
     {
+        private const string MAIN_MENU = "MainMenu";
+
         private readonly GameStateMachine _gameStateMachine;
+        private readonly SceneLoader _sceneLoader;
         private readonly IAppSettingsService _appSettingsService;
         private readonly ISaveLoadAppSettingsService _saveLoadAppSettingsService;
         private readonly IAudioService _audio;
 
         public LoadAppSettingsState(
             GameStateMachine gameStateMachine,
+            SceneLoader sceneLoader,
             IAppSettingsService appSettingsService,
             ISaveLoadAppSettingsService saveLoadAppSettingsService,
             IAudioService audio
@@ -22,6 +25,7 @@ namespace Code.Infrastructure
             _appSettingsService = appSettingsService;
             _saveLoadAppSettingsService = saveLoadAppSettingsService;
             _audio = audio;
+            _sceneLoader = sceneLoader;
         }
 
         public void Enter()
@@ -30,7 +34,7 @@ namespace Code.Infrastructure
 
             InformAppSettingsReaders();
 
-            _gameStateMachine.Enter<LoadProgressState>();
+            _sceneLoader.Load(MAIN_MENU, onLoaded: OnSceneLoaded);
         }
 
         public void Exit()
@@ -54,9 +58,14 @@ namespace Code.Infrastructure
         private void InformAppSettingsReaders()
         {
             AppSettings appSettings = _appSettingsService.Settings;
-            
+
             _audio.ReadAppSettings(appSettings);
             LService.ReadAppSettings(appSettings);
+        }
+
+        private void OnSceneLoaded()
+        {
+            _gameStateMachine.Enter<MainMenuState>();
         }
     }
 }

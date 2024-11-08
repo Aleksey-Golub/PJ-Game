@@ -112,28 +112,11 @@ namespace Code.Infrastructure
         {
             InitDroppedResources(loadedSceneName);
             InitDroppedTools(loadedSceneName);
-            InitScenePlacedObjects(loadedSceneName);
 
             Hud hud = _gameFactory.CreateHud();
             InitUIMediator(hud);
             GameObject hero = _gameFactory.CreateHero(GameObject.FindWithTag(INITIAL_POINT_TAG));
             CameraFollow(hero);
-        }
-
-        /// <summary>
-        /// Initialize objects which were placed on scene in editor, not at runtime
-        /// </summary>
-        private void InitScenePlacedObjects(string loadedSceneName)
-        {
-            InitSceneSpawners(loadedSceneName);
-        }
-
-        private void InitSceneSpawners(string loadedSceneName)
-        {
-            var containerGo = _sceneLoader.GetSceneRoots(loadedSceneName).FirstOrDefault(go => go.GetComponent<SceneSpawnersContainer>() != null);
-
-            foreach (SceneSpawnerBase spawner in containerGo.GetComponent<SceneSpawnersContainer>().SceneSpawners)
-                _gameFactory.RegisterProgressWatchers(spawner.gameObject);
         }
 
         private void InitDroppedResources(string loadedSceneName)

@@ -1030,17 +1030,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8981443296398710617, guid: 60948b0b3b0aaa74082fb4d0b5548590, type: 3}
   m_PrefabInstance: {fileID: 4701923767115266424}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &782699568 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4081324034380273834, guid: 5b4ec38d68e9ef34c9572c0b9eb31fdf, type: 3}
-  m_PrefabInstance: {fileID: 9108491474472502123}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d171ca03fbb9734185bb4eb014b00dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &782699570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8214495611862681011, guid: 5b4ec38d68e9ef34c9572c0b9eb31fdf, type: 3}
@@ -1238,17 +1227,6 @@ Transform:
   - {fileID: 1467576699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1030459596 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2759700325844146027, guid: 5c172d951e8137d46ac793c0d1e02dba, type: 3}
-  m_PrefabInstance: {fileID: 7205288997190853370}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3688fb3c8cb6ccd4f8130bf461b474fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1030459597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1360067537916255787, guid: 5c172d951e8137d46ac793c0d1e02dba, type: 3}
@@ -1601,7 +1579,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1392767506}
-  - component: {fileID: 1392767505}
   m_Layer: 0
   m_Name: Scene Spawners Container
   m_TagString: Untagged
@@ -1609,21 +1586,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1392767505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392767504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da9e296b2d8d50b448ec697c8477b4fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <SceneSpawners>k__BackingField:
-  - {fileID: 1030459596}
-  - {fileID: 782699568}
 --- !u!4 &1392767506
 Transform:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using Code.Services;
+﻿using Code.Infrastructure;
+using Code.Services;
 using UnityEngine;
 
 internal class ToolSceneSpawner : SceneSpawnerBase<ToolConfig>
@@ -8,13 +9,16 @@ internal class ToolSceneSpawner : SceneSpawnerBase<ToolConfig>
     private void Start()
     {
         var factory = AllServices.Container.Single<IToolFactory>();
+        var gameFactory = AllServices.Container.Single<IGameFactory>();
         
-        Construct(factory);
+        Construct(factory, gameFactory);
     }
 
-    private void Construct(IToolFactory toolFactory)
+    private void Construct(IToolFactory toolFactory, IGameFactory gameFactory)
     {
         _toolFactory = toolFactory;
+
+        gameFactory.RegisterProgressWatchers(gameObject);
     }
 
     protected override void SpawnInner()

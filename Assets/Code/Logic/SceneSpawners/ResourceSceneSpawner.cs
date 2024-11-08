@@ -1,4 +1,5 @@
-﻿using Code.Services;
+﻿using Code.Infrastructure;
+using Code.Services;
 using UnityEngine;
 
 internal class ResourceSceneSpawner : SceneSpawnerBase<ResourceConfig>
@@ -8,13 +9,16 @@ internal class ResourceSceneSpawner : SceneSpawnerBase<ResourceConfig>
     private void Start()
     {
         var factory = AllServices.Container.Single<IResourceFactory>();
+        var gameFactory = AllServices.Container.Single<IGameFactory>();
 
-        Construct(factory);
+        Construct(factory, gameFactory);
     }
 
-    private void Construct(IResourceFactory resourceFactory)
+    private void Construct(IResourceFactory resourceFactory, IGameFactory gameFactory)
     {
         _resourceFactory = resourceFactory;
+
+        gameFactory.RegisterProgressWatchers(gameObject);
     }
 
     protected override void SpawnInner()

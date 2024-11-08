@@ -68,6 +68,15 @@ namespace Code.Infrastructure
             ProgressWriters.Clear();
         }
 
+        public void RegisterProgressWatchers(GameObject gameObject)
+        {
+            foreach (ISavedProgressReader progressReader in gameObject.GetComponentsInChildren<ISavedProgressReader>())
+                ProgressReaders.Add(progressReader);
+
+            foreach (ISavedProgressWriter progressWriter in gameObject.GetComponentsInChildren<ISavedProgressWriter>())
+                ProgressWriters.Add(progressWriter);
+        }
+
         private GameObject InstantiateRegistered(string prefabPath, Vector3 at)
         {
             GameObject gameObject = _assets.Instantiate(path: prefabPath, at: at);
@@ -82,15 +91,6 @@ namespace Code.Infrastructure
             RegisterProgressWatchers(gameObject);
 
             return gameObject;
-        }
-
-        private void RegisterProgressWatchers(GameObject gameObject)
-        {
-            foreach (ISavedProgressReader progressReader in gameObject.GetComponentsInChildren<ISavedProgressReader>())
-                ProgressReaders.Add(progressReader);
-
-            foreach (ISavedProgressWriter progressWriter in gameObject.GetComponentsInChildren<ISavedProgressWriter>())
-                ProgressWriters.Add(progressWriter);
         }
     }
 }

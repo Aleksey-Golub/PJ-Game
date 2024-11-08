@@ -11,5 +11,6 @@ namespace Code.Infrastructure
         GameObject CreateHero(GameObject at);
         Hud CreateHud();
         void Cleanup();
+        void RegisterProgressWatchers(GameObject gameObject);
     }
 }

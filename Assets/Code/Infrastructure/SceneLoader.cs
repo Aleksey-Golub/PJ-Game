@@ -12,10 +12,12 @@ namespace Code.Infrastructure
     public SceneLoader(ICoroutineRunner coroutineRunner) => 
       _coroutineRunner = coroutineRunner;
 
+    public static string CurrentLevel() => SceneManager.GetActiveScene().name;
+
     public void Load(string name, Action onLoaded = null) =>
       _coroutineRunner.StartCoroutine(LoadScene(name, onLoaded));
     
-    public IEnumerator LoadScene(string nextScene, Action onLoaded = null)
+    private IEnumerator LoadScene(string nextScene, Action onLoaded = null)
     {
       if (SceneManager.GetActiveScene().name == nextScene)
       {
@@ -30,5 +32,7 @@ namespace Code.Infrastructure
       
       onLoaded?.Invoke();
     }
+
+    public GameObject[] GetSceneRoots(string sceneName) => SceneManager.GetSceneByName(sceneName).GetRootGameObjects();
   }
 }

@@ -1,4 +1,5 @@
 using Code.Data;
+using Code.Infrastructure;
 using Code.Services;
 using System.Collections;
 using UnityEngine;
@@ -130,7 +131,7 @@ public class Resource : MonoBehaviour, IMergingResource, IPoolable, ISavedProgre
         resourcesOnScene.Dictionary[Id] = new ResourceOnSceneData(transform.position.AsVectorData(), _count, Type);
     }
 
-    private static string CurrentLevel() => SceneManager.GetActiveScene().name;
+    private string CurrentLevel() => SceneLoader.CurrentLevel();
 
     private void UpdateWorldData()
     {

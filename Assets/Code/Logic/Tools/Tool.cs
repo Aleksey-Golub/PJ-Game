@@ -1,4 +1,5 @@
 using Code.Data;
+using Code.Infrastructure;
 using Code.Services;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -65,7 +66,7 @@ public class Tool : MonoBehaviour, IPoolable, ISavedProgressWriter, IUniqueIdHol
         toolsOnScene.Dictionary[Id] = new ToolOnSceneData(transform.position.AsVectorData(), Type);
     }
 
-    private static string CurrentLevel() => SceneManager.GetActiveScene().name;
+    private string CurrentLevel() => SceneLoader.CurrentLevel();
     
     private void UpdateWorldData()
     {

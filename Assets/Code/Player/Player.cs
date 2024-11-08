@@ -6,6 +6,7 @@ using UnityEngine;
 using Code.UI;
 using Code.Data;
 using UnityEngine.SceneManagement;
+using Code.Infrastructure;
 
 internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedProgressWriter
 {
@@ -472,6 +473,6 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
         }
     }
 
-    private static string CurrentLevel() => SceneManager.GetActiveScene().name;
+    private string CurrentLevel() => SceneLoader.CurrentLevel();
 }
 

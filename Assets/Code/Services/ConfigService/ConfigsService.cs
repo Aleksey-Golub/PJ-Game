@@ -16,6 +16,7 @@ namespace Code.Services
         
         private const string WINDOWS_MATCHERS_PATH = "Configs/UI/WindowsConfigs";
         private const string RESOURCESOURCES_MATCHERS_PATH = "Configs/ResourceSourceConfigs/ResourceSourcesMatchers";
+        private const string RESOURCESTORAGES_MATCHERS_PATH = "Configs/ResourceStorageConfigs/ResourceStoragesMatchers";
 
         private Dictionary<ResourceType, ResourceConfig> _resourcesConfigs;
         private Dictionary<ToolType, ToolConfig> _toolsConfigs;
@@ -24,6 +25,7 @@ namespace Code.Services
         private Dictionary<EffectId, EffectConfig> _effectsConfigs;
         private Dictionary<WindowId, WindowMatcher> _windowMatchers;
         private Dictionary<ResourceSourceType, ResourceSourceMatcher> _resourceSourcesMatchers;
+        private Dictionary<ResourceStorageType, ResourceStorageMatcher> _resourceStoragesMatchers;
 
         public IReadOnlyDictionary<ResourceType, ResourceConfig> ResourcesConfigs => _resourcesConfigs;
         public IReadOnlyDictionary<ToolType, ToolConfig> ToolsConfigs => _toolsConfigs;
@@ -42,6 +44,7 @@ namespace Code.Services
             
             _windowMatchers = Resources.Load<WindowsMatchers>(WINDOWS_MATCHERS_PATH).Matchers.ToDictionary(c => c.WindowId, c => c);
             _resourceSourcesMatchers = Resources.Load<ResourceSourcesMatchers>(RESOURCESOURCES_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
+            _resourceStoragesMatchers = Resources.Load<ResourceStoragesMatchers>(RESOURCESTORAGES_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
 
             UpgradablesConfigs = GetUpgradablesConfigs();
         }
@@ -56,29 +59,11 @@ namespace Code.Services
             return list;
         }
 
-        public ResourceConfig GetConfigFor(ResourceType type)
-        {
-            return _resourcesConfigs[type];
-        }
-
-        public ToolConfig GetConfigFor(ToolType type)
-        {
-            return _toolsConfigs[type];
-        }
-
-        public EffectConfig GetConfigFor(EffectId effectType)
-        {
-            return _effectsConfigs[effectType];
-        }
-
-        public WindowMatcher GetMatcherFor(WindowId windowId)
-        {
-            return _windowMatchers[windowId];
-        }
-
-        public ResourceSourceMatcher GetMatcherFor(ResourceSourceType type)
-        {
-            return _resourceSourcesMatchers[type];
-        }
+        public ResourceConfig GetConfigFor(ResourceType type) => _resourcesConfigs[type];
+        public ToolConfig GetConfigFor(ToolType type) => _toolsConfigs[type];
+        public EffectConfig GetConfigFor(EffectId effectType) => _effectsConfigs[effectType];
+        public WindowMatcher GetMatcherFor(WindowId windowId) => _windowMatchers[windowId];
+        public ResourceSourceMatcher GetMatcherFor(ResourceSourceType type) => _resourceSourcesMatchers[type];
+        public ResourceStorageMatcher GetMatcherFor(ResourceStorageType type) => _resourceStoragesMatchers[type];
     }
 }

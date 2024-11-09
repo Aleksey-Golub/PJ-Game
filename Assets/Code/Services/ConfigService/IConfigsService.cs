@@ -19,5 +19,6 @@ namespace Code.Services
         EffectConfig GetConfigFor(EffectId effectType);
         WindowMatcher GetMatcherFor(WindowId windowId);
         ResourceSourceMatcher GetMatcherFor(ResourceSourceType type);
+        ResourceStorageMatcher GetMatcherFor(ResourceStorageType type);
     }
 }

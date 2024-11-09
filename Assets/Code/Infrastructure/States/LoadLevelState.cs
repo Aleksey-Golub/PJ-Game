@@ -112,11 +112,28 @@ namespace Code.Infrastructure
             InitDroppedResources(loadedSceneName);
             InitDroppedTools(loadedSceneName);
             InitResourceSources(loadedSceneName);
+            InitResourceStorages(loadedSceneName);
 
             Hud hud = _gameFactory.CreateHud();
             InitUIMediator(hud);
             GameObject hero = _gameFactory.CreateHero(GameObject.FindWithTag(INITIAL_POINT_TAG));
             CameraFollow(hero);
+        }
+
+        private void InitResourceStorages(string loadedSceneName)
+        {
+            foreach (KeyValuePair<string, ResourceStorageOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].ResourceStoragesDatas.ResourceStoragesOnScene.Dictionary)
+            {
+                if (item.Value.SceneBuiltInItem)
+                    continue;
+
+                Vector3 position = item.Value.Position.AsUnityVector();
+                ResourceStorage rStorage = _gameFactory.CreateResourceStorage(item.Value.Type, position);
+                rStorage.UniqueId.Id = item.Key;
+
+                if (item.Value.Type is ResourceStorageType.Chest)
+                    rStorage.Init(_configs.GetConfigFor(item.Value.DropResourceType));
+            }
         }
 
         private void InitResourceSources(string loadedSceneName)
@@ -126,7 +143,8 @@ namespace Code.Infrastructure
                 if (item.Value.SceneBuiltInItem)
                     continue;
 
-                ResourceSource rSource = _gameFactory.CreateResourceSource(item.Value.Type);
+                Vector3 position = item.Value.Position.AsUnityVector();
+                ResourceSource rSource = _gameFactory.CreateResourceSource(item.Value.Type, position);
                 rSource.UniqueId.Id = item.Key;
 
                 if (item.Value.Type is ResourceSourceType.Pot)

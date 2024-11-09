@@ -2542,6 +2542,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2790406210311211191, guid: 09f365d54c778cf47a483a34b07505ba, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948508600135931061, guid: 09f365d54c778cf47a483a34b07505ba, type: 3}
+      propertyPath: Id
+      value: GameScene_eb07f529-c656-4d86-a184-1ae9839ea4bf
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2904,6 +2912,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1208737722}
     m_Modifications:
+    - target: {fileID: 6165487743378306736, guid: 330b9f57a0f2112489adb717b47019e2, type: 3}
+      propertyPath: Id
+      value: GameScene_dcfcbadb-d290-4647-8e02-e64c7a0589bb
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611989274210020018, guid: 330b9f57a0f2112489adb717b47019e2, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6989860062422347304, guid: 330b9f57a0f2112489adb717b47019e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.07
@@ -3203,6 +3219,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8180757370018971481, guid: e9ced7b775bc13e4c967ed385a50b011, type: 3}
+      propertyPath: Id
+      value: GameScene_a514b47f-615d-4270-a2e3-6d700a9d3f92
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211361131708162907, guid: e9ced7b775bc13e4c967ed385a50b011, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3262,6 +3286,14 @@ PrefabInstance:
     - target: {fileID: 6079859199580358695, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6975848653825626303, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: Id
+      value: GameScene_f075a5c9-b0b3-43bc-8b60-aad3fa36da51
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970674512784280765, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3808,6 +3840,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7333653478065787390, guid: 87f2b338a55ab094fb4bca9b4bfbf085, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752077743038582268, guid: 87f2b338a55ab094fb4bca9b4bfbf085, type: 3}
+      propertyPath: Id
+      value: GameScene_988426d1-4f8f-47e8-bd29-983d21105b96
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3989,6 +4029,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1208737722}
     m_Modifications:
+    - target: {fileID: 249838953654766014, guid: aadf4ef6250ef4d42aa20fd4d34f19ca, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 947212144691664316, guid: aadf4ef6250ef4d42aa20fd4d34f19ca, type: 3}
+      propertyPath: Id
+      value: GameScene_b34c373d-c5c4-443a-a9aa-5d0c3ca4cc29
+      objectReference: {fileID: 0}
     - target: {fileID: 4158479091688885540, guid: aadf4ef6250ef4d42aa20fd4d34f19ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.17
@@ -4093,6 +4141,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water Store
       objectReference: {fileID: 0}
+    - target: {fileID: 7391199749872482788, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: Id
+      value: GameScene_984fd279-b057-4f48-ae79-497958b5bc49
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548145512541021670, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4170,6 +4226,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1208737722}
     m_Modifications:
+    - target: {fileID: 5168142915235043438, guid: 88dd6c277b80ece44908f2d6b0b20460, type: 3}
+      propertyPath: Id
+      value: GameScene_f0ebe182-c86d-4922-aac9-9bcb7d901eaf
+      objectReference: {fileID: 0}
+    - target: {fileID: 5326168191626691692, guid: 88dd6c277b80ece44908f2d6b0b20460, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8297917805601243382, guid: 88dd6c277b80ece44908f2d6b0b20460, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.7
@@ -4230,6 +4294,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1208737722}
     m_Modifications:
+    - target: {fileID: 6298457359375850815, guid: a8e06c810456b1f4cb31656d9190efec, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6429498422992519485, guid: a8e06c810456b1f4cb31656d9190efec, type: 3}
+      propertyPath: Id
+      value: GameScene_119eaffb-924c-492b-a906-f568ef19a83e
+      objectReference: {fileID: 0}
     - target: {fileID: 7689994481407591658, guid: a8e06c810456b1f4cb31656d9190efec, type: 3}
       propertyPath: m_Name
       value: Coin Store

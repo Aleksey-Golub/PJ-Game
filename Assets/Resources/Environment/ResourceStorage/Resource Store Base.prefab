@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 8855702563930804582}
   - component: {fileID: 2872169157991871229}
   - component: {fileID: 7527004072485970331}
+  - component: {fileID: 2993004759215877887}
   m_Layer: 0
   m_Name: Resource Store Base
   m_TagString: Untagged
@@ -231,11 +232,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b05f6dc4b7a914f87d2d55dc9ce3b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SceneBuiltInItem>k__BackingField: 0
+  <UniqueId>k__BackingField: {fileID: 2993004759215877887}
   _view: {fileID: 7527004072485970331}
   _config: {fileID: 0}
   _needToolType: 0
   _resourceConfig: {fileID: 0}
-  _dropResourceCount: 1
+  _maxResourceCount: 1
   _startResourceCount: 0
   _restoreTime: 5
   _collider: {fileID: 9198028648432701519}
@@ -268,6 +271,19 @@ MonoBehaviour:
   _exhaustSortingOrder: 0
   _hitAudioClip: {fileID: 0}
   _dropResourceAudioClip: {fileID: 8300000, guid: 6551217db40144341aef431aed8d54c5, type: 3}
+--- !u!114 &2993004759215877887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876657460521560872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cde00d5d7303064c81e2a668778cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
 --- !u!1 &6756226741939031117
 GameObject:
   m_ObjectHideFlags: 0

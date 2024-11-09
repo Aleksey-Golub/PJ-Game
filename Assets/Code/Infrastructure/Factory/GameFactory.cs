@@ -62,12 +62,20 @@ namespace Code.Infrastructure
             return hud;
         }
 
-        public ResourceSource CreateResourceSource(ResourceSourceType type)
+        public ResourceSource CreateResourceSource(ResourceSourceType type, Vector3 at)
         {
             ResourceSourceMatcher rSourceMatcher = _configs.GetMatcherFor(type);
-            ResourceSource resourceSource = InstantiateRegistered(rSourceMatcher.Template);
+            ResourceSource resourceSource = InstantiateRegistered(rSourceMatcher.Template, at);
 
             return resourceSource;
+        }
+        
+        public ResourceStorage CreateResourceStorage(ResourceStorageType type, Vector3 at)
+        {
+            ResourceStorageMatcher rStorageMatcher = _configs.GetMatcherFor(type);
+            ResourceStorage resourceStorage = InstantiateRegistered(rStorageMatcher.Template, at);
+
+            return resourceStorage;
         }
 
         public void Cleanup()
@@ -96,6 +104,14 @@ namespace Code.Infrastructure
         private T InstantiateRegistered<T>(T prefab) where T : MonoBehaviour
         {
             T monoDehaviour = Object.Instantiate<T>(prefab);
+            RegisterProgressWatchers(monoDehaviour.gameObject);
+
+            return monoDehaviour;
+        }
+        
+        private T InstantiateRegistered<T>(T prefab, Vector3 at) where T : MonoBehaviour
+        {
+            T monoDehaviour = Object.Instantiate<T>(prefab, at, Quaternion.identity);
             RegisterProgressWatchers(monoDehaviour.gameObject);
 
             return monoDehaviour;

@@ -10,6 +10,7 @@ namespace Code.Data
         public ToolsDatas ToolsDatas;
         public SpawnersDatas SpawnersDatas;
         public ResourceSourcesDatas ResourceSourcesDatas;
+        public ResourceStoragesDatas ResourceStoragesDatas;
 
         public LevelData(string name)
         {
@@ -18,6 +19,7 @@ namespace Code.Data
             ToolsDatas = new ToolsDatas();
             SpawnersDatas = new SpawnersDatas();
             ResourceSourcesDatas = new ResourceSourcesDatas();
+            ResourceStoragesDatas = new ResourceStoragesDatas();
         }
     }
 }

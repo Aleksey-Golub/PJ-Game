@@ -40,4 +40,6 @@ public enum ResourceStorageType
     EggStorage = 5,
     CarrotStorage = 6,
     WaterStorage = 7,
+    Chest = 8,
+    CarrotInGround = 9,
 }

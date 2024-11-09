@@ -1,16 +1,22 @@
-﻿using Code.Services;
+﻿using Code.Data;
+using Code.Infrastructure;
+using Code.Services;
+using System.Collections;
 using UnityEngine;
 
-internal class ResourceStorage : MonoBehaviour
+[SelectionBase]
+public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem
 {
+    [field: SerializeField] public bool SceneBuiltInItem { get; private set; }
+    [field: SerializeField] public UniqueId UniqueId { get; private set; }
     [SerializeField] private ResourceStorageView _view;
 
     [Header("Settings")]
     [SerializeField] private ResourceStorageConfig _config;
     [SerializeField] private ToolType _needToolType = ToolType.None;
     [SerializeField] private ResourceConfig _resourceConfig;
-    [Tooltip("Used when config is null")]
-    [SerializeField, Min(1)] private int _dropResourceCount = 1;
+    [Tooltip("Used when item is unupgradable")]
+    [SerializeField, Min(1)] private int _maxResourceCount = 1;
     [SerializeField] private int _startResourceCount = 1;
     [SerializeField] private float _restoreTime = 10;
     [SerializeField] private Collider2D _collider;
@@ -21,19 +27,25 @@ internal class ResourceStorage : MonoBehaviour
     private float _restorationTimer = 0;
     private int _currentResourceCount;
 
-    private bool IsFull => _currentResourceCount >= GetDropResourceCount();
+    private string Id => UniqueId.Id;
+    private bool IsFull => _currentResourceCount >= GetMaxResourceCount();
     private bool IsSingleUse => _restoreTime < 0;
     internal bool CanInteract => _currentResourceCount > 0;
     internal ToolType NeedToolType => _needToolType;
 
     private void Start()
     {
-        var resourceFactory = AllServices.Container.Single<IResourceFactory>();
-        var progressService = AllServices.Container.Single<IPersistentProgressService>();
-        var audio = AllServices.Container.Single<IAudioService>();
-        var effectFactory = AllServices.Container.Single<IEffectFactory>();
+        if (SceneBuiltInItem)
+        {
+            var resourceFactory = AllServices.Container.Single<IResourceFactory>();
+            var progressService = AllServices.Container.Single<IPersistentProgressService>();
+            var audio = AllServices.Container.Single<IAudioService>();
+            var effectFactory = AllServices.Container.Single<IEffectFactory>();
+            var gameFactory = AllServices.Container.Single<IGameFactory>();
 
-        Construct(resourceFactory, progressService, audio, effectFactory);
+            Construct(resourceFactory, progressService, audio, effectFactory);
+            gameFactory.RegisterProgressWatchers(gameObject);
+        }
     }
 
     private void Construct(IResourceFactory resourceFactory, IPersistentProgressService progressService, IAudioService audio, IEffectFactory effectFactory)
@@ -43,14 +55,14 @@ internal class ResourceStorage : MonoBehaviour
 
         _view.Construct(audio, effectFactory);
 
-        if (_config)
+        if (_config.IsUpgradable)
         {
             UnlockUpgrade(_progressService);
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed += OnUpgradeItemsProgressChanged;
         }
 
         _currentResourceCount = _startResourceCount;
-        _view.ShowResourceCount(_currentResourceCount, GetDropResourceCount());
+        _view.ShowResourceCount(_currentResourceCount, GetMaxResourceCount());
         _view.ShowWhole();
 
         void UnlockUpgrade(IPersistentProgressService progressService)
@@ -63,25 +75,69 @@ internal class ResourceStorage : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void Init(ResourceConfig resourceConfig)
     {
-        OnUpdate();
+        _resourceConfig = resourceConfig;
     }
 
-    private void OnUpdate()
+    public void WriteToProgress(GameProgress progress)
     {
-        if (IsSingleUse)
-        {
-            enabled = (false);
-            return;
-        }
+        var resourceStorageOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].ResourceStoragesDatas.ResourceStoragesOnScene;
 
+        // just to optimize
+        resourceStorageOnScene.Dictionary.TryGetValue(Id, out var data);
+        if (data != null && !HasChangesBetweenSavedStateAndCurrentState(data))
+            return;
+
+        resourceStorageOnScene.Dictionary[Id] = new ResourceStorageOnSceneData(
+            transform.position.AsVectorData(),
+            _config.Type,
+            _resourceConfig.Type,
+            _currentResourceCount,
+            _restorationTimer,
+            SceneBuiltInItem
+            );
+    }
+
+    public void ReadProgress(GameProgress progress)
+    {
+        var rStoragesOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].ResourceStoragesDatas.ResourceStoragesOnScene;
+
+        // we are in scene object and it is first start of level
+        if (!rStoragesOnScene.Dictionary.TryGetValue(Id, out var myState))
+            return;
+
+        // restore state
+        transform.position = myState.Position.AsUnityVector();
+        _currentResourceCount = myState.CurrentResourceCount;
+        _restorationTimer = myState.RestorationTimer;
+
+        _view.ShowResourceCount(_currentResourceCount, GetMaxResourceCount());
+        if (!CanInteract)
+        {
+            _view.ShowExhaust();
+
+            if (IsSingleUse)
+                InactivateSelf();
+        }
+    }
+
+    private void Update()
+    {
+        OnUpdate(Time.deltaTime);
+    }
+
+    private void OnUpdate(float deltaTime)
+    {
         if (IsFull)
             return;
 
-        _restorationTimer += Time.deltaTime;
+        if (IsSingleUse)
+            return;
 
-        if (_restorationTimer >= _restoreTime && _currentResourceCount < GetDropResourceCount())
+        _restorationTimer += deltaTime;
+
+        if (_restorationTimer >= _restoreTime && _currentResourceCount < GetMaxResourceCount())
         {
             _restorationTimer = 0;
             Restore(1);
@@ -90,7 +146,7 @@ internal class ResourceStorage : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_config && _progressService != null)
+        if (_config.IsUpgradable && _progressService != null)
         {
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed -= OnUpgradeItemsProgressChanged;
         }
@@ -127,16 +183,11 @@ internal class ResourceStorage : MonoBehaviour
     private void Exhaust()
     {
         _currentResourceCount = 0;
-        _view.ShowResourceCount(_currentResourceCount, GetDropResourceCount());
+        _view.ShowResourceCount(_currentResourceCount, GetMaxResourceCount());
         _view.ShowExhaust();
 
         if (IsSingleUse)
-            Invoke(nameof(DisableCollider), 1f);
-    }
-
-    private void DisableCollider()
-    {
-        _collider.enabled = false;
+            OnSingleUseExhaust(1f);
     }
 
     private void Restore(int value)
@@ -145,14 +196,14 @@ internal class ResourceStorage : MonoBehaviour
             return;
 
         _currentResourceCount += value;
-        _view.ShowResourceCount(_currentResourceCount, GetDropResourceCount());
+        _view.ShowResourceCount(_currentResourceCount, GetMaxResourceCount());
         _view.ShowWhole();
     }
 
-    private int GetDropResourceCount()
+    private int GetMaxResourceCount()
     {
-        if (!_config)
-            return _dropResourceCount;
+        if (!_config.IsUpgradable)
+            return _maxResourceCount;
         else
         {
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(_config.ID, out int level);
@@ -163,6 +214,40 @@ internal class ResourceStorage : MonoBehaviour
     private void OnUpgradeItemsProgressChanged(string itemId, int newValue)
     {
         if (itemId == _config.ID)
-            _view.ShowResourceCount(_currentResourceCount, GetDropResourceCount());
+            _view.ShowResourceCount(_currentResourceCount, GetMaxResourceCount());
+    }
+
+    private bool HasChangesBetweenSavedStateAndCurrentState(ResourceStorageOnSceneData data)
+    {
+        return
+            data.RestorationTimer != _restorationTimer ||
+            data.CurrentResourceCount != _currentResourceCount ||
+            data.Position.AsUnityVector() != transform.position
+            ;
+    }
+
+    private void OnSingleUseExhaust(float delay)
+    {
+        StartCoroutine(OnSingleUseExhaustCor(delay));
+    }
+
+    private IEnumerator OnSingleUseExhaustCor(float delay)
+    {
+        WaitForSeconds waitDelay = new WaitForSeconds(delay);
+
+        yield return waitDelay;
+        DisableCollider();
+        yield return waitDelay;
+        InactivateSelf();
+    }
+
+    private void InactivateSelf()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void DisableCollider()
+    {
+        _collider.enabled = false;
     }
 }

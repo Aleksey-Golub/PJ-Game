@@ -6,6 +6,6 @@ namespace Code.Data
     public class InventoryData
     {
         public List<ToolType> Tools = new();
-        public ResourceStorageDataDictionary ResourceStorageData = new();
+        public ResourceInventoryStorageDataDictionary ResourceStorageData = new();
     }
 }

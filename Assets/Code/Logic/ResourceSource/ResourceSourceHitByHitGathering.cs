@@ -2,28 +2,17 @@
 
 internal class ResourceSourceHitByHitGathering : ResourceSource
 {
-    internal override void Interact()
-    {
-        //Logger.Log($"Interact with {gameObject.name} {Time.frameCount}");
+    protected override bool DropConditionIsTrue() => true;
 
-        _currentHitPoints -= PLAYER_DAMAGE;
-        _view.ShowHP(_currentHitPoints, _hitPoints);
-        _view.ShowHitEffect();
-        _view.PlayHitSound();
-
-        DropResource();
-        _view.ShowHitAnimation();
-    }
-
-    protected override void OnUpdate()
+    protected override void OnUpdate(float deltaTime)
     {
         if (_currentHitPoints == _hitPoints)
             return;
 
-        if (_restoreTime < 0)
-            gameObject.SetActive(false);
+        if (IsSingleUse)
+            return;
 
-        _restorationTimer += Time.deltaTime;
+        _restorationTimer += deltaTime;
 
         if (_restorationTimer >= _restoreTime)
         {

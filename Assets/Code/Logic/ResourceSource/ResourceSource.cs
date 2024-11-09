@@ -3,11 +3,12 @@ using System;
 using UnityEngine;
 
 internal class ResourceSource : MonoBehaviour
+[SelectionBase]
 {
-    protected const int PLAYER_DAMAGE = 1;
+    private const int PLAYER_DAMAGE = 1;
 
     [SerializeField] private Collider2D _collider2D;
-    [SerializeField] protected ResourceSourceViewBase _view;
+    [SerializeField] private ResourceSourceViewBase _view;
 
     [Header("Settings")]
     [SerializeField] private ToolType _needToolType;
@@ -22,6 +23,7 @@ internal class ResourceSource : MonoBehaviour
     protected float _restorationTimer = 0;
     protected int _currentHitPoints = 0;
 
+    protected bool IsSingleUse => _restoreTime < 0;
     internal bool IsDied => _currentHitPoints <= 0;
     internal ToolType NeedToolType => _needToolType;
 
@@ -54,20 +56,18 @@ internal class ResourceSource : MonoBehaviour
 
     private void Update()
     {
-        OnUpdate();
+        OnUpdate(Time.deltaTime);
     }
 
-    protected virtual void OnUpdate()
+    protected virtual void OnUpdate(float deltaTime)
     {
         if (!IsDied)
             return;
 
-        if (_restoreTime < 0)
-        {
-            gameObject.SetActive(false);
-        }
+        if (IsSingleUse)
+            return;
 
-        _restorationTimer += Time.deltaTime;
+        _restorationTimer += deltaTime;
 
         if (_restorationTimer >= _restoreTime)
         {
@@ -76,7 +76,7 @@ internal class ResourceSource : MonoBehaviour
         }
     }
 
-    internal virtual void Interact()
+    internal void Interact()
     {
         //Logger.Log($"Interact with {gameObject.name} {Time.frameCount}");
 
@@ -85,17 +85,25 @@ internal class ResourceSource : MonoBehaviour
         _view.ShowHitEffect();
         _view.PlayHitSound();
 
+        if (DropConditionIsTrue())
+            DropResource();
+
         if (IsDied)
         {
             Exhaust();
-            DropResource();
+
+            if (IsSingleUse)
+                InactivateSelf();
+
             return;
         }
 
         _view.ShowHitAnimation();
     }
 
-    protected void DropResource()
+    protected virtual bool DropConditionIsTrue() => IsDied;
+
+    private void DropResource()
     {
         _view.PlayDropResourceSound();
         int count = _needToolType == ToolType.None ? _dropResourceCount : _dropCalculator.Calculate(_dropResourceCount, _resourceConfig.Type, NeedToolType);
@@ -129,5 +137,10 @@ internal class ResourceSource : MonoBehaviour
     {
         _currentHitPoints += value;
         _view.ShowHP(_currentHitPoints, _hitPoints);
+    }
+
+    private void InactivateSelf()
+    {
+        gameObject.SetActive(false);
     }
 }

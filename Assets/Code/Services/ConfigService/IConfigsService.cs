@@ -16,7 +16,7 @@ namespace Code.Services
         void Load();
         ResourceConfig GetConfigFor(ResourceType type);
         ToolConfig GetConfigFor(ToolType type);
-        WindowConfig GetConfigFor(WindowId windowId);
         EffectConfig GetConfigFor(EffectId effectType);
+        WindowMatcher GetMatcherFor(WindowId windowId);
     }
 }

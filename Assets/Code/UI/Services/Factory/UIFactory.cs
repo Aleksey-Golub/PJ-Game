@@ -41,7 +41,7 @@ namespace Code.UI.Services
 
         public WindowBase CreateWindow(WindowId windowId)
         {
-            WindowConfig config = _configs.GetConfigFor(windowId);
+            WindowMatcher config = _configs.GetMatcherFor(windowId);
             WindowBase window = UnityEngine.Object.Instantiate(config.Template, _uiRoot);
             ConstructWindow(window, windowId);
 

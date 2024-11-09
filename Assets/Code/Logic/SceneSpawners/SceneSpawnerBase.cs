@@ -27,7 +27,7 @@ internal abstract class SceneSpawnerBase<T> : SceneSpawnerBase, ISavedProgressRe
 
     public void WriteToProgress(GameProgress progress)
     {
-        List<string> exhaustedSpawners = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].SpawnersData.Exhausted;
+        List<string> exhaustedSpawners = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].SpawnersDatas.Exhausted;
 
         if (_exhausted && !exhaustedSpawners.Contains(Id))
             exhaustedSpawners.Add(Id);
@@ -35,7 +35,7 @@ internal abstract class SceneSpawnerBase<T> : SceneSpawnerBase, ISavedProgressRe
 
     public void ReadProgress(GameProgress progress)
     {
-        if (progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].SpawnersData.Exhausted.Contains(Id))
+        if (progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].SpawnersDatas.Exhausted.Contains(Id))
             _exhausted = true;
         else
             Spawn();

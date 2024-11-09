@@ -12,15 +12,16 @@ namespace Code.Services
         private const string TOOLS_CONFIGS_PATH = "Configs/ToolConfigs/AllToolsConfigs";
         private const string RESOURCE_STORAGE_CONFIGS_PATH = "Configs/ResourceStorageConfigs/AllResourceStoragesConfigs";
         private const string CONVERTER_CONFIGS_PATH = "Configs/ConverterConfigs/AllConvertersConfigs";
-        private const string WINDOWS_CONFIGS_PATH = "Configs/UI/WindowsConfigs";
         private const string EFFECTS_CONFIGS_PATH = "Configs/EffectsConfigs/EffectsConfigs";
+        
+        private const string WINDOWS_MATCHERS_PATH = "Configs/UI/WindowsConfigs";
 
         private Dictionary<ResourceType, ResourceConfig> _resourcesConfigs;
         private Dictionary<ToolType, ToolConfig> _toolsConfigs;
         private Dictionary<ResourceStorageType, ResourceStorageConfig> _resourceStorageConfigs;
         private Dictionary<ConverterType, ConverterConfig> _converterConfigs;
-        private Dictionary<WindowId, WindowConfig> _windowConfigs;
         private Dictionary<EffectId, EffectConfig> _effectsConfigs;
+        private Dictionary<WindowId, WindowMatcher> _windowMatchers;
 
         public IReadOnlyDictionary<ResourceType, ResourceConfig> ResourcesConfigs => _resourcesConfigs;
         public IReadOnlyDictionary<ToolType, ToolConfig> ToolsConfigs => _toolsConfigs;
@@ -35,8 +36,9 @@ namespace Code.Services
             _toolsConfigs = Resources.Load<ToolsConfigs>(TOOLS_CONFIGS_PATH).Configs.ToDictionary(c => c.Type, c => c);
             _resourceStorageConfigs = Resources.Load<ResourceStoragesConfigs>(RESOURCE_STORAGE_CONFIGS_PATH).Configs.ToDictionary(c => c.Type, c => c);
             _converterConfigs = Resources.Load<ConvertersConfigs>(CONVERTER_CONFIGS_PATH).Configs.ToDictionary(c => c.Type, c => c);
-            _windowConfigs = Resources.Load<WindowsConfigs>(WINDOWS_CONFIGS_PATH).Configs.ToDictionary(c => c.WindowId, c => c);
             _effectsConfigs = Resources.Load<EffectsConfigs>(EFFECTS_CONFIGS_PATH).Configs.ToDictionary(c => c.Template.EffectId, c => c);
+            
+            _windowMatchers = Resources.Load<WindowsMatchers>(WINDOWS_MATCHERS_PATH).Matchers.ToDictionary(c => c.WindowId, c => c);
 
             UpgradablesConfigs = GetUpgradablesConfigs();
         }
@@ -61,14 +63,14 @@ namespace Code.Services
             return _toolsConfigs[type];
         }
 
-        public WindowConfig GetConfigFor(WindowId windowId)
-        {
-            return _windowConfigs[windowId];
-        }
-
         public EffectConfig GetConfigFor(EffectId effectType)
         {
             return _effectsConfigs[effectType];
+        }
+
+        public WindowMatcher GetMatcherFor(WindowId windowId)
+        {
+            return _windowMatchers[windowId];
         }
     }
 }

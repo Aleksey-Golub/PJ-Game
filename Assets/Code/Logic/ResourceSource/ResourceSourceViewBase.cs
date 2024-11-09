@@ -1,7 +1,7 @@
 ﻿using Code.Services;
 using UnityEngine;
 
-internal abstract class ResourceSourceViewBase : MonoBehaviour
+public abstract class ResourceSourceViewBase : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animation _animation;

@@ -37,7 +37,12 @@ internal class ResourceSource : MonoBehaviour
         Construct(resourceFactory, dropCountCalculatorService, audio, effectFactory);
     }
 
-    private void Construct(IResourceFactory resourceFactory, IDropCountCalculatorService dropCountCalculatorService, IAudioService audio, IEffectFactory effectFactory)
+    private void Construct(
+        IResourceFactory resourceFactory,
+        IDropCountCalculatorService dropCountCalculatorService,
+        IAudioService audio,
+        IEffectFactory effectFactory
+        )
     {
         _resourceFactory = resourceFactory;
         _dropCalculator = dropCountCalculatorService;

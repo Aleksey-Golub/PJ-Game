@@ -8,14 +8,14 @@ namespace Code.Data
         public string Name;
         public ResourcesDatas ResourcesDatas;
         public ToolsDatas ToolsDatas;
-        public SpawnersData SpawnersData;
+        public SpawnersDatas SpawnersDatas;
 
         public LevelData(string name)
         {
             Name = name;
             ResourcesDatas = new ResourcesDatas();
             ToolsDatas = new ToolsDatas();
-            SpawnersData = new SpawnersData();
+            SpawnersDatas = new SpawnersDatas();
         }
     }
 }

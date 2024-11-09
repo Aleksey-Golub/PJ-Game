@@ -2,7 +2,6 @@
 using Code.Services;
 using Code.UI.Services;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Code.Infrastructure
@@ -28,16 +27,16 @@ namespace Code.Infrastructure
         private string _loadingSceneName;
 
         public LoadLevelState(
-            GameStateMachine gameStateMachine, 
-            SceneLoader sceneLoader, 
-            LoadingCurtain loadingCurtain, 
-            IGameFactory gameFactory, 
+            GameStateMachine gameStateMachine,
+            SceneLoader sceneLoader,
+            LoadingCurtain loadingCurtain,
+            IGameFactory gameFactory,
             IResourceFactory resourceFactory,
             IEffectFactory effectFactory,
             IPopupFactory popupFactory,
             IToolFactory toolFactory,
             ITransitionalResourceFactory transitionalResourceFactory,
-            IPersistentProgressService progressService, 
+            IPersistentProgressService progressService,
             IUIFactory uiFactory,
             IUIMediator uIMediator,
             IAudioService audio,
@@ -84,7 +83,7 @@ namespace Code.Infrastructure
             InitProgressForLevel(loadedSceneName);
 
             InitUIRoot();
-            InitGameWorld(loadedSceneName) ;
+            InitGameWorld(loadedSceneName);
             InformProgressReaders();
             _audio.PlayAmbient();
             _loadingSceneName = null;
@@ -132,7 +131,7 @@ namespace Code.Infrastructure
                 resource.MoveAfterDrop(new DropData(0f, position, count));
             }
         }
-        
+
         private void InitDroppedTools(string loadedSceneName)
         {
             foreach (KeyValuePair<string, ToolOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].ToolsDatas.ToolsOnScene.Dictionary)
@@ -150,7 +149,7 @@ namespace Code.Infrastructure
         {
             _uIMediator.Init(hud);
         }
-        
+
         private void CameraFollow(GameObject hero)
         {
             Camera.main.GetComponent<CameraMover>().SetTarget(hero.transform);

@@ -12,5 +12,6 @@ namespace Code.Infrastructure
         Hud CreateHud();
         void Cleanup();
         void RegisterProgressWatchers(GameObject gameObject);
+        ResourceSource CreateResourceSource(ResourceSourceType type);
     }
 }

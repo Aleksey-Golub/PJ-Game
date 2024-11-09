@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 751230111891515862, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: m_Name
-      value: Pot new Variant
+      value: Pot Variant Base
       objectReference: {fileID: 0}
     - target: {fileID: 1173927828803009664, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3495017704277940155, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
+      propertyPath: Id
+      value: Pot Variant Base_37d5e90e-2089-4a56-a06b-8658cd3d3068
+      objectReference: {fileID: 0}
     - target: {fileID: 4493861247962964434, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: m_Size.x
       value: 0.875
@@ -81,6 +85,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
+      propertyPath: _type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _hitPoints
       value: 1
       objectReference: {fileID: 0}
@@ -93,8 +101,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
+      propertyPath: _resourceConfig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _dropResourceCount
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _dropSettings.DropRadius

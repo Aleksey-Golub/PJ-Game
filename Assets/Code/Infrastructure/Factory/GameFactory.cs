@@ -62,6 +62,14 @@ namespace Code.Infrastructure
             return hud;
         }
 
+        public ResourceSource CreateResourceSource(ResourceSourceType type)
+        {
+            ResourceSourceMatcher rSourceMatcher = _configs.GetMatcherFor(type);
+            ResourceSource resourceSource = InstantiateRegistered(rSourceMatcher.Template);
+
+            return resourceSource;
+        }
+
         public void Cleanup()
         {
             ProgressReaders.Clear();
@@ -83,6 +91,14 @@ namespace Code.Infrastructure
             RegisterProgressWatchers(gameObject);
 
             return gameObject;
+        }
+
+        private T InstantiateRegistered<T>(T prefab) where T : MonoBehaviour
+        {
+            T monoDehaviour = Object.Instantiate<T>(prefab);
+            RegisterProgressWatchers(monoDehaviour.gameObject);
+
+            return monoDehaviour;
         }
 
         private GameObject InstantiateRegistered(string prefabPath)

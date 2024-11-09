@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 751230111891515862, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1173927828803009664, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.888
@@ -175,6 +179,14 @@ PrefabInstance:
     - target: {fileID: 6483354508862177738, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _hitEffectType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888893588831709431, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
+      propertyPath: _type
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _hitPoints

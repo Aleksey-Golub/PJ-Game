@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 769821377449367768}
   - component: {fileID: 2162323058981302472}
   - component: {fileID: 7009618060695402324}
+  - component: {fileID: 8396888883397751615}
   m_Layer: 0
   m_Name: Fruit Bush
   m_TagString: Untagged
@@ -250,6 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f35cd5ea4369704483c8ca476307784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SpawnedByFactory>k__BackingField: 1
+  _type: 4
+  <UniqueId>k__BackingField: {fileID: 8396888883397751615}
   _collider2D: {fileID: 759807607781964172}
   _view: {fileID: 7009618060695402324}
   _needToolType: 0
@@ -288,6 +292,19 @@ MonoBehaviour:
   - {fileID: 6587495818388383821}
   - {fileID: 8976532766722882218}
   - {fileID: 5057607836236896443}
+--- !u!114 &8396888883397751615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516271038822587854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cde00d5d7303064c81e2a668778cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
 --- !u!1 &6345413691312827096
 GameObject:
   m_ObjectHideFlags: 0

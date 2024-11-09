@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7791035349006889402}
   - component: {fileID: 6483354508862177738}
   - component: {fileID: 3935257495363378484}
+  - component: {fileID: 3495017704277940155}
   m_Layer: 0
   m_Name: Resource Source Base
   m_TagString: Untagged
@@ -85,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748956965b092be40aae2fe8cc8b557e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <UniqueId>k__BackingField: {fileID: 3495017704277940155}
   _collider2D: {fileID: 1621408763810201073}
   _view: {fileID: 6483354508862177738}
   _needToolType: 1
@@ -137,6 +139,19 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &3495017704277940155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751230111891515862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cde00d5d7303064c81e2a668778cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
 --- !u!1 &1871298893840952280
 GameObject:
   m_ObjectHideFlags: 0

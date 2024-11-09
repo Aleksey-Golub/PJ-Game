@@ -15,6 +15,7 @@ namespace Code.Services
         private const string EFFECTS_CONFIGS_PATH = "Configs/EffectsConfigs/EffectsConfigs";
         
         private const string WINDOWS_MATCHERS_PATH = "Configs/UI/WindowsConfigs";
+        private const string RESOURCESOURCES_MATCHERS_PATH = "Configs/ResourceSourceConfigs/ResourceSourcesMatchers";
 
         private Dictionary<ResourceType, ResourceConfig> _resourcesConfigs;
         private Dictionary<ToolType, ToolConfig> _toolsConfigs;
@@ -22,6 +23,7 @@ namespace Code.Services
         private Dictionary<ConverterType, ConverterConfig> _converterConfigs;
         private Dictionary<EffectId, EffectConfig> _effectsConfigs;
         private Dictionary<WindowId, WindowMatcher> _windowMatchers;
+        private Dictionary<ResourceSourceType, ResourceSourceMatcher> _resourceSourcesMatchers;
 
         public IReadOnlyDictionary<ResourceType, ResourceConfig> ResourcesConfigs => _resourcesConfigs;
         public IReadOnlyDictionary<ToolType, ToolConfig> ToolsConfigs => _toolsConfigs;
@@ -39,6 +41,7 @@ namespace Code.Services
             _effectsConfigs = Resources.Load<EffectsConfigs>(EFFECTS_CONFIGS_PATH).Configs.ToDictionary(c => c.Template.EffectId, c => c);
             
             _windowMatchers = Resources.Load<WindowsMatchers>(WINDOWS_MATCHERS_PATH).Matchers.ToDictionary(c => c.WindowId, c => c);
+            _resourceSourcesMatchers = Resources.Load<ResourceSourcesMatchers>(RESOURCESOURCES_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
 
             UpgradablesConfigs = GetUpgradablesConfigs();
         }
@@ -71,6 +74,11 @@ namespace Code.Services
         public WindowMatcher GetMatcherFor(WindowId windowId)
         {
             return _windowMatchers[windowId];
+        }
+
+        public ResourceSourceMatcher GetMatcherFor(ResourceSourceType type)
+        {
+            return _resourceSourcesMatchers[type];
         }
     }
 }

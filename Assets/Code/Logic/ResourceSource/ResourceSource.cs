@@ -1,12 +1,17 @@
-﻿using Code.Services;
+﻿using Code.Data;
+using Code.Infrastructure;
+using Code.Services;
 using System;
 using UnityEngine;
 
-internal class ResourceSource : MonoBehaviour
 [SelectionBase]
+public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem
 {
     private const int PLAYER_DAMAGE = 1;
 
+    [field: SerializeField] public bool SceneBuiltInItem { get; private set; }
+    [SerializeField] private ResourceSourceType _type;
+    [field: SerializeField] public UniqueId UniqueId { get; private set; }
     [SerializeField] private Collider2D _collider2D;
     [SerializeField] private ResourceSourceViewBase _view;
 
@@ -23,6 +28,7 @@ internal class ResourceSource : MonoBehaviour
     protected float _restorationTimer = 0;
     protected int _currentHitPoints = 0;
 
+    private string Id => UniqueId.Id;
     protected bool IsSingleUse => _restoreTime < 0;
     internal bool IsDied => _currentHitPoints <= 0;
     internal ToolType NeedToolType => _needToolType;
@@ -31,12 +37,17 @@ internal class ResourceSource : MonoBehaviour
 
     private void Start()
     {
-        var resourceFactory = AllServices.Container.Single<IResourceFactory>();
-        var dropCountCalculatorService = AllServices.Container.Single<IDropCountCalculatorService>();
-        var audio = AllServices.Container.Single<IAudioService>();
-        var effectFactory = AllServices.Container.Single<IEffectFactory>();
+        if (SceneBuiltInItem)
+        {
+            var resourceFactory = AllServices.Container.Single<IResourceFactory>();
+            var dropCountCalculatorService = AllServices.Container.Single<IDropCountCalculatorService>();
+            var audio = AllServices.Container.Single<IAudioService>();
+            var effectFactory = AllServices.Container.Single<IEffectFactory>();
+            var gameFactory = AllServices.Container.Single<IGameFactory>();
 
-        Construct(resourceFactory, dropCountCalculatorService, audio, effectFactory);
+            Construct(resourceFactory, dropCountCalculatorService, audio, effectFactory);
+            gameFactory.RegisterProgressWatchers(gameObject);
+        }
     }
 
     private void Construct(
@@ -52,6 +63,54 @@ internal class ResourceSource : MonoBehaviour
         _view.Construct(audio, effectFactory);
 
         RestoreHP(_hitPoints);
+    }
+
+    public void Init(ResourceConfig resourceConfig, int dropResourceCount)
+    {
+        _resourceConfig = resourceConfig;
+        _dropResourceCount = dropResourceCount;
+    }
+
+    public void WriteToProgress(GameProgress progress)
+    {
+        var resourceSourceOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].ResourceSourcesDatas.ResourceSourcesOnScene;
+
+        // just to optimize
+        resourceSourceOnScene.Dictionary.TryGetValue(Id, out var data);
+        if (data != null && !HasChangesBetweenSavedStateAndCurrentState(data))
+            return;
+
+        resourceSourceOnScene.Dictionary[Id] = new ResourceSourceOnSceneData(
+            transform.position.AsVectorData(),
+            _type,
+            _resourceConfig.Type,
+            _dropResourceCount,
+            _restorationTimer,
+            _currentHitPoints,
+            SceneBuiltInItem
+            );
+    }
+
+    public void ReadProgress(GameProgress progress)
+    {
+        var rSourceOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].ResourceSourcesDatas.ResourceSourcesOnScene;
+
+        // we are in scene object and it is first start of level
+        if (!rSourceOnScene.Dictionary.TryGetValue(Id, out var myState))
+            return;
+
+        // restore state
+        transform.position = myState.Position.AsUnityVector();
+        _restorationTimer = myState.RestorationTimer;
+        _currentHitPoints = myState.CurrentHitPoints;
+
+        _view.ShowHP(_currentHitPoints, _hitPoints);
+        if (IsDied)
+        {
+            Exhaust();
+            if (IsSingleUse)
+                InactivateSelf();
+        }
     }
 
     private void Update()
@@ -143,4 +202,24 @@ internal class ResourceSource : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    private bool HasChangesBetweenSavedStateAndCurrentState(ResourceSourceOnSceneData data)
+    {
+        return
+            data.CurrentHitPoints != _currentHitPoints ||
+            data.RestorationTimer != _restorationTimer ||
+            data.Position.AsUnityVector() != transform.position
+            ;
+    }
+}
+
+public enum ResourceSourceType
+{
+    None = 0,
+    GrassBush = 1,
+    Pine = 2,
+    Rock = 3,
+    FruitBush = 4,
+    Slime = 5,
+    Pot = 6,
 }

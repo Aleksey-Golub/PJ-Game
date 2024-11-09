@@ -111,11 +111,27 @@ namespace Code.Infrastructure
         {
             InitDroppedResources(loadedSceneName);
             InitDroppedTools(loadedSceneName);
+            InitResourceSources(loadedSceneName);
 
             Hud hud = _gameFactory.CreateHud();
             InitUIMediator(hud);
             GameObject hero = _gameFactory.CreateHero(GameObject.FindWithTag(INITIAL_POINT_TAG));
             CameraFollow(hero);
+        }
+
+        private void InitResourceSources(string loadedSceneName)
+        {
+            foreach (KeyValuePair<string, ResourceSourceOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].ResourceSourcesDatas.ResourceSourcesOnScene.Dictionary)
+            {
+                if (item.Value.SceneBuiltInItem)
+                    continue;
+
+                ResourceSource rSource = _gameFactory.CreateResourceSource(item.Value.Type);
+                rSource.UniqueId.Id = item.Key;
+
+                if (item.Value.Type is ResourceSourceType.Pot)
+                    rSource.Init(_configs.GetConfigFor(item.Value.DropResourceType), item.Value.DropResourceCount);
+            }
         }
 
         private void InitDroppedResources(string loadedSceneName)

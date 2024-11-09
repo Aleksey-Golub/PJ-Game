@@ -1,6 +1,7 @@
 ﻿using Code.Data;
 using Code.Services;
 using Code.UI.Services;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -113,11 +114,25 @@ namespace Code.Infrastructure
             InitDroppedTools(loadedSceneName);
             InitResourceSources(loadedSceneName);
             InitResourceStorages(loadedSceneName);
+            InitSimpleObjects(loadedSceneName);
 
             Hud hud = _gameFactory.CreateHud();
             InitUIMediator(hud);
             GameObject hero = _gameFactory.CreateHero(GameObject.FindWithTag(INITIAL_POINT_TAG));
             CameraFollow(hero);
+        }
+
+        private void InitSimpleObjects(string loadedSceneName)
+        {
+            foreach (KeyValuePair<string, SimpleObjectOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].SimpleObjectsDatas.SimpleObjectsOnScene.Dictionary)
+            {
+                if (item.Value.SceneBuiltInItem)
+                    continue;
+
+                Vector3 position = item.Value.Position.AsUnityVector();
+                SimpleObject sObject = _gameFactory.CreateSimpleObject(item.Value.Type, position);
+                sObject.UniqueId.Id = item.Key;
+            }
         }
 
         private void InitResourceStorages(string loadedSceneName)

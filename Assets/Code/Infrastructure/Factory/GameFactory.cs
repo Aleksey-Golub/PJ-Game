@@ -78,6 +78,14 @@ namespace Code.Infrastructure
             return resourceStorage;
         }
 
+        public SimpleObject CreateSimpleObject(SimpleObjectType type, Vector3 at)
+        {
+            SimpleObjectMatcher simpleObjectMatcher = _configs.GetMatcherFor(type);
+            SimpleObject simpleObject = InstantiateRegistered(simpleObjectMatcher.Template, at);
+
+            return simpleObject;
+        }
+
         public void Cleanup()
         {
             ProgressReaders.Clear();

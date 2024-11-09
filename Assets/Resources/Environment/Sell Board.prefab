@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 4988952011858111556}
   - component: {fileID: 1836705223949847773}
   - component: {fileID: 6463234277368591850}
+  - component: {fileID: 1270443124789801523}
   m_Layer: 0
   m_Name: Sell Board
   m_TagString: Untagged
@@ -306,3 +307,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea31709b4a697b241bf6bd737472e5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SceneBuiltInItem>k__BackingField: 0
+  <UniqueId>k__BackingField: {fileID: 1270443124789801523}
+--- !u!114 &1270443124789801523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5468609326228704530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cde00d5d7303064c81e2a668778cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 

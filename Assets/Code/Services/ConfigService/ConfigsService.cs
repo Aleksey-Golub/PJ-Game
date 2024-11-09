@@ -17,6 +17,7 @@ namespace Code.Services
         private const string WINDOWS_MATCHERS_PATH = "Configs/UI/WindowsConfigs";
         private const string RESOURCESOURCES_MATCHERS_PATH = "Configs/ResourceSourceConfigs/ResourceSourcesMatchers";
         private const string RESOURCESTORAGES_MATCHERS_PATH = "Configs/ResourceStorageConfigs/ResourceStoragesMatchers";
+        private const string SIMPLEOBJECTS_MATCHERS_PATH = "Configs/SimpleObjects/SimpleObjectsMatchers";
 
         private Dictionary<ResourceType, ResourceConfig> _resourcesConfigs;
         private Dictionary<ToolType, ToolConfig> _toolsConfigs;
@@ -26,6 +27,7 @@ namespace Code.Services
         private Dictionary<WindowId, WindowMatcher> _windowMatchers;
         private Dictionary<ResourceSourceType, ResourceSourceMatcher> _resourceSourcesMatchers;
         private Dictionary<ResourceStorageType, ResourceStorageMatcher> _resourceStoragesMatchers;
+        private Dictionary<SimpleObjectType, SimpleObjectMatcher> _simpleObjectsMatchers;
 
         public IReadOnlyDictionary<ResourceType, ResourceConfig> ResourcesConfigs => _resourcesConfigs;
         public IReadOnlyDictionary<ToolType, ToolConfig> ToolsConfigs => _toolsConfigs;
@@ -45,6 +47,7 @@ namespace Code.Services
             _windowMatchers = Resources.Load<WindowsMatchers>(WINDOWS_MATCHERS_PATH).Matchers.ToDictionary(c => c.WindowId, c => c);
             _resourceSourcesMatchers = Resources.Load<ResourceSourcesMatchers>(RESOURCESOURCES_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
             _resourceStoragesMatchers = Resources.Load<ResourceStoragesMatchers>(RESOURCESTORAGES_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
+            _simpleObjectsMatchers = Resources.Load<SimpleObjectsMatchers>(SIMPLEOBJECTS_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
 
             UpgradablesConfigs = GetUpgradablesConfigs();
         }
@@ -65,5 +68,6 @@ namespace Code.Services
         public WindowMatcher GetMatcherFor(WindowId windowId) => _windowMatchers[windowId];
         public ResourceSourceMatcher GetMatcherFor(ResourceSourceType type) => _resourceSourcesMatchers[type];
         public ResourceStorageMatcher GetMatcherFor(ResourceStorageType type) => _resourceStoragesMatchers[type];
+        public SimpleObjectMatcher GetMatcherFor(SimpleObjectType type) => _simpleObjectsMatchers[type];
     }
 }

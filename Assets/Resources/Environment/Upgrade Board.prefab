@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3639248114890936581}
   - component: {fileID: 8496871220276997395}
   - component: {fileID: 8738319825101915137}
+  - component: {fileID: -8467951576890444685}
   m_Layer: 0
   m_Name: Upgrade Board
   m_TagString: Untagged
@@ -138,6 +139,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93dc4aeb043f144a9120d64dd13131a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SceneBuiltInItem>k__BackingField: 0
+  <UniqueId>k__BackingField: {fileID: -8467951576890444685}
+--- !u!114 &-8467951576890444685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7298435369027114144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cde00d5d7303064c81e2a668778cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
 --- !u!1 &7821014318685178201
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ namespace Code.Data
         public SpawnersDatas SpawnersDatas;
         public ResourceSourcesDatas ResourceSourcesDatas;
         public ResourceStoragesDatas ResourceStoragesDatas;
+        public SimpleObjectsDatas SimpleObjectsDatas;
 
         public LevelData(string name)
         {
@@ -20,6 +21,7 @@ namespace Code.Data
             SpawnersDatas = new SpawnersDatas();
             ResourceSourcesDatas = new ResourceSourcesDatas();
             ResourceStoragesDatas = new ResourceStoragesDatas();
+            SimpleObjectsDatas = new SimpleObjectsDatas();
         }
     }
 }

@@ -3118,6 +3118,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1270443124789801523, guid: 00d1604afd7f56041811867e1d22c7b9, type: 3}
+      propertyPath: Id
+      value: GameScene_022c51fd-cfd1-4339-8c00-1526ba8fa49f
+      objectReference: {fileID: 0}
     - target: {fileID: 2081290802503960103, guid: 00d1604afd7f56041811867e1d22c7b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7
@@ -3161,6 +3165,10 @@ PrefabInstance:
     - target: {fileID: 5468609326228704530, guid: 00d1604afd7f56041811867e1d22c7b9, type: 3}
       propertyPath: m_Name
       value: Sell Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 6463234277368591850, guid: 00d1604afd7f56041811867e1d22c7b9, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3666,6 +3674,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8467951576890444685, guid: 649be69bc675fbb428ce605e3f344240, type: 3}
+      propertyPath: Id
+      value: GameScene_c59791d3-a344-48ce-a28b-d234a89e1879
+      objectReference: {fileID: 0}
     - target: {fileID: 5370473860286467121, guid: 649be69bc675fbb428ce605e3f344240, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.07
@@ -3709,6 +3721,10 @@ PrefabInstance:
     - target: {fileID: 7298435369027114144, guid: 649be69bc675fbb428ce605e3f344240, type: 3}
       propertyPath: m_Name
       value: Upgrade Board
+      objectReference: {fileID: 0}
+    - target: {fileID: 8738319825101915137, guid: 649be69bc675fbb428ce605e3f344240, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

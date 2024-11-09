@@ -14,5 +14,6 @@ namespace Code.Infrastructure
         void RegisterProgressWatchers(GameObject gameObject);
         ResourceSource CreateResourceSource(ResourceSourceType type, Vector3 at);
         ResourceStorage CreateResourceStorage(ResourceStorageType type, Vector3 at);
+        SimpleObject CreateSimpleObject(SimpleObjectType type, Vector3 position);
     }
 }

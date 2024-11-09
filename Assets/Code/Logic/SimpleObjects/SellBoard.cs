@@ -1,21 +1,26 @@
+using Code.Infrastructure;
 using Code.Services;
-using UnityEngine;
 using Code.UI.Services;
 
-internal class SellBoard : MonoBehaviour
+internal class SellBoard : SimpleObject
 {
     private IUIMediator _uiMediator;
     private IConfigsService _configService;
     private Inventory _inventory;
- 
+
     internal bool IsVisited { get; private set; }
 
     private void Start()
     {
-        var configService = AllServices.Container.Single<IConfigsService>();
-        var uiMediator = AllServices.Container.Single<IUIMediator>();
+        if (SceneBuiltInItem)
+        {
+            var configService = AllServices.Container.Single<IConfigsService>();
+            var uiMediator = AllServices.Container.Single<IUIMediator>();
+            var gameFactory = AllServices.Container.Single<IGameFactory>();
 
-        Construct(uiMediator, configService);
+            Construct(uiMediator, configService);
+            gameFactory.RegisterProgressWatchers(gameObject);
+        }
     }
 
     private void Construct(IUIMediator uiMediator, IConfigsService configService)

@@ -1,25 +1,29 @@
+using Code.Infrastructure;
 using Code.Services;
 using Code.UI.Services;
 using System.Linq;
-using UnityEngine;
 
-internal class UpgradeBoard : MonoBehaviour
+internal class UpgradeBoard : SimpleObject
 {
     private IUIMediator _uiMediator;
     private IConfigsService _configService;
     private IPersistentProgressService _progressService;
+    private Inventory _inventory;
 
     internal bool IsVisited { get; private set; }
 
-    private Inventory _inventory;
-
     private void Start()
     {
-        var configService = AllServices.Container.Single<IConfigsService>();
-        var progressService = AllServices.Container.Single<IPersistentProgressService>();
-        var uiMediator = AllServices.Container.Single<IUIMediator>();
+        if (SceneBuiltInItem)
+        {
+            var configService = AllServices.Container.Single<IConfigsService>();
+            var progressService = AllServices.Container.Single<IPersistentProgressService>();
+            var uiMediator = AllServices.Container.Single<IUIMediator>();
+            var gameFactory = AllServices.Container.Single<IGameFactory>();
 
-        Construct(uiMediator, configService, progressService);
+            Construct(uiMediator, configService, progressService);
+            gameFactory.RegisterProgressWatchers(gameObject);
+        }
     }
 
     private void Construct(IUIMediator uiMediator, IConfigsService configService, IPersistentProgressService progressService)
@@ -57,7 +61,7 @@ internal class UpgradeBoard : MonoBehaviour
         if (_inventory.Has(ResourceType.COIN, cost))
         {
             Logger.Log($"[UpgradeBoard] {itemId} upgrading");
-    
+
             _inventory.Remove(ResourceType.COIN, cost);
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Upgrade(itemId);
 

@@ -20,5 +20,6 @@ namespace Code.Services
         WindowMatcher GetMatcherFor(WindowId windowId);
         ResourceSourceMatcher GetMatcherFor(ResourceSourceType type);
         ResourceStorageMatcher GetMatcherFor(ResourceStorageType type);
+        SimpleObjectMatcher GetMatcherFor(SimpleObjectType type);
     }
 }

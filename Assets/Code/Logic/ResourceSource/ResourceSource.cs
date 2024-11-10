@@ -50,7 +50,7 @@ public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgres
         }
     }
 
-    private void Construct(
+    public void Construct(
         IResourceFactory resourceFactory,
         IDropCountCalculatorService dropCountCalculatorService,
         IAudioService audio,

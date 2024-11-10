@@ -23,7 +23,7 @@ internal class SellBoard : SimpleObject
         }
     }
 
-    private void Construct(IUIMediator uiMediator, IConfigsService configService)
+    internal void Construct(IUIMediator uiMediator, IConfigsService configService)
     {
         _uiMediator = uiMediator;
         _configService = configService;

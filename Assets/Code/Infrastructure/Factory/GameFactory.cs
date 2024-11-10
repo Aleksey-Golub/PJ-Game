@@ -18,6 +18,9 @@ namespace Code.Infrastructure
         private readonly IAudioService _audio;
         private readonly IInputService _input;
         private readonly IPopupFactory _popupFactory;
+        private readonly IResourceFactory _resourceFactory;
+        private readonly IEffectFactory _effectFactory;
+        private readonly IDropCountCalculatorService _dropCountCalculatorService;
         private readonly ITransitionalResourceFactory _transitionalResourceFactory;
         private GameObject _heroGameObject;
 
@@ -29,7 +32,10 @@ namespace Code.Infrastructure
             IAudioService audio,
             IInputService input,
             IPopupFactory popupFactory,
-            ITransitionalResourceFactory transitionalResourceFactory
+            ITransitionalResourceFactory transitionalResourceFactory,
+            IResourceFactory resourceFactory,
+            IEffectFactory effectFactory,
+            IDropCountCalculatorService dropCountCalculatorService
             )
         {
             _assets = assets;
@@ -39,6 +45,9 @@ namespace Code.Infrastructure
             _audio = audio;
             _input = input;
             _popupFactory = popupFactory;
+            _resourceFactory = resourceFactory;
+            _effectFactory = effectFactory;
+            _dropCountCalculatorService = dropCountCalculatorService;
             _transitionalResourceFactory = transitionalResourceFactory;
         }
 
@@ -67,13 +76,17 @@ namespace Code.Infrastructure
             ResourceSourceMatcher rSourceMatcher = _configs.GetMatcherFor(type);
             ResourceSource resourceSource = InstantiateRegistered(rSourceMatcher.Template, at);
 
+            resourceSource.Construct(_resourceFactory, _dropCountCalculatorService, _audio, _effectFactory);
+
             return resourceSource;
         }
-        
+
         public ResourceStorage CreateResourceStorage(ResourceStorageType type, Vector3 at)
         {
             ResourceStorageMatcher rStorageMatcher = _configs.GetMatcherFor(type);
             ResourceStorage resourceStorage = InstantiateRegistered(rStorageMatcher.Template, at);
+
+            resourceStorage.Construct(_resourceFactory, _progressService, _audio, _effectFactory);
 
             return resourceStorage;
         }
@@ -82,6 +95,19 @@ namespace Code.Infrastructure
         {
             SimpleObjectMatcher simpleObjectMatcher = _configs.GetMatcherFor(type);
             SimpleObject simpleObject = InstantiateRegistered(simpleObjectMatcher.Template, at);
+
+            switch (type)
+            {
+                case SimpleObjectType.SellBoard:
+                    (simpleObject as SellBoard).Construct(_uiMediator, _configs);
+                    break;
+                case SimpleObjectType.UpgradeBoard:
+                    (simpleObject as UpgradeBoard).Construct(_uiMediator, _configs, _progressService);
+                    break;
+                case SimpleObjectType.None:
+                default:
+                    break;
+            }
 
             return simpleObject;
         }
@@ -116,7 +142,7 @@ namespace Code.Infrastructure
 
             return monoDehaviour;
         }
-        
+
         private T InstantiateRegistered<T>(T prefab, Vector3 at) where T : MonoBehaviour
         {
             T monoDehaviour = Object.Instantiate<T>(prefab, at, Quaternion.identity);

@@ -26,7 +26,7 @@ internal class UpgradeBoard : SimpleObject
         }
     }
 
-    private void Construct(IUIMediator uiMediator, IConfigsService configService, IPersistentProgressService progressService)
+    internal void Construct(IUIMediator uiMediator, IConfigsService configService, IPersistentProgressService progressService)
     {
         _uiMediator = uiMediator;
         _configService = configService;

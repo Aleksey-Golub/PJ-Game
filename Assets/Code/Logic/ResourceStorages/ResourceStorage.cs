@@ -48,7 +48,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
         }
     }
 
-    private void Construct(IResourceFactory resourceFactory, IPersistentProgressService progressService, IAudioService audio, IEffectFactory effectFactory)
+    public void Construct(IResourceFactory resourceFactory, IPersistentProgressService progressService, IAudioService audio, IEffectFactory effectFactory)
     {
         _resourceFactory = resourceFactory;
         _progressService = progressService;

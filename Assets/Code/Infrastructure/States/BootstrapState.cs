@@ -87,7 +87,10 @@ namespace Code.Infrastructure
               _services.Single<IAudioService>(),
               _services.Single<IInputService>(),
               _services.Single<IPopupFactory>(),
-              _services.Single<ITransitionalResourceFactory>()
+              _services.Single<ITransitionalResourceFactory>(),
+              _services.Single<IResourceFactory>(),
+              _services.Single<IEffectFactory>(),
+              _services.Single<IDropCountCalculatorService>()
               ));
 
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(

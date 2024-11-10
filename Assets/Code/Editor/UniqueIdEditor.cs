@@ -15,10 +15,14 @@ namespace Code.Editor
             if (IsPrefab(uniqueId))
                 return;
 
+            if (IsEditingInOwnScene(uniqueId))
+                return;
+
             if (string.IsNullOrEmpty(uniqueId.Id))
                 Generate(uniqueId);
             else
             {
+                //Debug.Log($"{uniqueId.gameObject.name} FindObjectsOfType() called");
                 UniqueId[] uniqueIds = FindObjectsOfType<UniqueId>();
 
                 if (uniqueIds.Any(other => other != uniqueId && other.Id == uniqueId.Id))
@@ -29,14 +33,19 @@ namespace Code.Editor
         private bool IsPrefab(UniqueId uniqueId) =>
           uniqueId.gameObject.scene.rootCount == 0;
 
+        private bool IsEditingInOwnScene(UniqueId uniqueId) =>
+            uniqueId.gameObject.scene.name == uniqueId.gameObject.name;
+
         private void Generate(UniqueId uniqueId)
         {
             uniqueId.GenerateId();
 
             if (!Application.isPlaying)
             {
-                EditorUtility.SetDirty(uniqueId);
-                EditorSceneManager.MarkSceneDirty(uniqueId.gameObject.scene);
+                //Debug.Log($"{uniqueId.gameObject.name} Generate called");
+                Undo.RecordObject(target, "Generated Id");
+                //EditorUtility.SetDirty(uniqueId);
+                //EditorSceneManager.MarkSceneDirty(uniqueId.gameObject.scene);
             }
         }
     }

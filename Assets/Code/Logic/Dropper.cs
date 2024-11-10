@@ -64,7 +64,7 @@ internal struct DropData
         switch (dropSettings.DropStrategy)
         {
             case DropStrategy.RandomInsideCircle:
-                
+
                 for (int i = 0; i < packsCount; i++)
                 {
                     Vector3 offset = UnityEngine.Random.insideUnitCircle * dropSettings.DropRadius;
@@ -125,6 +125,15 @@ public struct DropSettings
         DropStrategy = DropStrategy.RandomInsideCircle,
         DropGroupingStrategy = DropGroupingStrategy.AllTogether
     };
+
+    public void DrawRadius(Vector3 position, Color color = default)
+    {
+        if (color == default)
+            color = Color.gray;
+
+        Gizmos.color = color;
+        Gizmos.DrawWireSphere(position, DropRadius);
+    }
 }
 
 public enum DropStrategy

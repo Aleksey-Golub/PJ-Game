@@ -19,7 +19,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
     [SerializeField] private int _startResourceCount = 1;
     [SerializeField] private float _restoreTime = 10;
     [SerializeField] private Collider2D _collider;
-    [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
+    [field: SerializeField] public DropSettings DropSettings { get; private set; } = DropSettings.Default;
 
     private IResourceFactory _resourceFactory;
     private IPersistentProgressService _progressService;
@@ -172,7 +172,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
     {
         _view.PlayDropResourceSound();
 
-        var dropData = DropData.Get(transform.position, _dropSettings, _currentResourceCount, out int notFittedInPacksCount);
+        var dropData = DropData.Get(transform.position, DropSettings, _currentResourceCount, out int notFittedInPacksCount);
         Restore(notFittedInPacksCount);
 
         for (int i = 0; i < dropData.Count; i++)

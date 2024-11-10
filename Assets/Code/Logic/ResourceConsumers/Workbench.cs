@@ -2,7 +2,7 @@ using Code.Services;
 using UnityEngine;
 
 [SelectionBase]
-internal class Workbench : MonoBehaviour, IResourceConsumer
+public class Workbench : MonoBehaviour, IResourceConsumer
 {
     [SerializeField] private ResourceConsumerView _view;
     [SerializeField] private Collider2D _collider;
@@ -13,7 +13,7 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
     [SerializeField] private Transform _transitionalResourceFinal;
 
     [SerializeField] private ScriptableObject _dropConfigMono;
-    [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
+    [field: SerializeField] public DropSettings DropSettings { get; private set; } = DropSettings.Default;
     [SerializeField] private int _dropCount = 1;
 
     private IDropObjectConfig _dropConfig;
@@ -98,7 +98,7 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
     {
         _view.PlayDropResourceSound();
 
-        var dropData = DropData.Get(transform.position, _dropSettings, _dropCount, out int notFittedInPacksCount);
+        var dropData = DropData.Get(transform.position, DropSettings, _dropCount, out int notFittedInPacksCount);
 
         if (_dropConfig is ResourceConfig resourceConfig)
         {

@@ -4,11 +4,13 @@ using Code.Infrastructure;
 using Code.Services;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 internal abstract class SceneSpawnerBase<T> : SceneSpawnerBase, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder where T : ScriptableObject
 {
     [field: SerializeField] public UniqueId UniqueId { get; private set; }
-    [SerializeField] protected DropSettings _dropSettings = DropSettings.Default;
-    [SerializeField] protected List<SpawnData> _spawnDatas;
 
     private bool _exhausted;
     private string Id => UniqueId.Id;
@@ -50,4 +52,21 @@ internal abstract class SceneSpawnerBase<T> : SceneSpawnerBase, ISavedProgressRe
     }
 }
 
-internal abstract class SceneSpawnerBase : MonoBehaviour { }
+internal abstract class SceneSpawnerBase : MonoBehaviour
+{
+    [SerializeField] protected DropSettings _dropSettings = DropSettings.Default;
+    [SerializeField] protected List<SpawnData> _spawnDatas;
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(SceneSpawnerBase))]
+    public class SceneSpawnerBaseEditor : Editor
+    {
+        [DrawGizmo(GizmoType.InSelectionHierarchy)]
+        public static void RenderCustomGizmo(SceneSpawnerBase sceneSpawner, GizmoType gizmo)
+        {
+            foreach (var data in sceneSpawner._spawnDatas)
+                sceneSpawner._dropSettings.DrawRadius(data.Point.transform.position);
+        }
+    }
+#endif
+}

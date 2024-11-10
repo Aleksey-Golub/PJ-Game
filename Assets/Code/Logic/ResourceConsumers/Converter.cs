@@ -16,7 +16,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
     [SerializeField] private Transform _transitionalResourceFinal;
 
     [SerializeField] private ResourceConfig _dropResourceConfig;
-    [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
+    [field: SerializeField] public DropSettings DropSettings { get; private set; } = DropSettings.Default;
     [SerializeField] private int _dropCount = 1;
 
     private float _timer;
@@ -98,7 +98,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
         if (_timer >= _converTime)
         {
             _timer = 0;
-            
+
             _currentUpload -= _singleUpload;
             _currentPreUpload -= _singleUpload;
             _view.ShowUpload(_currentUpload, GetMaxUpload());
@@ -132,7 +132,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
     {
         _view.PlayDropResourceSound();
 
-        var dropData = DropData.Get(transform.position, _dropSettings, _dropCount, out int notFittedInPacksCount);
+        var dropData = DropData.Get(transform.position, DropSettings, _dropCount, out int notFittedInPacksCount);
 
         for (int i = 0; i < dropData.Count; i++)
         {

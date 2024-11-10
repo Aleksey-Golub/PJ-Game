@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f35cd5ea4369704483c8ca476307784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <SpawnedByFactory>k__BackingField: 1
+  <SceneBuiltInItem>k__BackingField: 0
   _type: 4
   <UniqueId>k__BackingField: {fileID: 8396888883397751615}
   _collider2D: {fileID: 759807607781964172}
@@ -261,7 +261,7 @@ MonoBehaviour:
   _dropResourceCount: 1
   _hitPoints: 3
   _restoreTime: 15
-  _dropSettings:
+  <DropSettings>k__BackingField:
     DropStrategy: 1
     DropGroupingStrategy: 1
     DropRadius: 1.3

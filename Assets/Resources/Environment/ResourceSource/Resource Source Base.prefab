@@ -86,6 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748956965b092be40aae2fe8cc8b557e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SceneBuiltInItem>k__BackingField: 0
+  _type: 0
   <UniqueId>k__BackingField: {fileID: 3495017704277940155}
   _collider2D: {fileID: 1621408763810201073}
   _view: {fileID: 6483354508862177738}
@@ -94,7 +96,7 @@ MonoBehaviour:
   _dropResourceCount: 1
   _hitPoints: 2
   _restoreTime: 8
-  _dropSettings:
+  <DropSettings>k__BackingField:
     DropStrategy: 1
     DropGroupingStrategy: 1
     DropRadius: 1.3

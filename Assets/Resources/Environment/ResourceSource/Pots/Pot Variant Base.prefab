@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3495017704277940155, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: Id
-      value: Pot Variant Base_37d5e90e-2089-4a56-a06b-8658cd3d3068
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4493861247962964434, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: m_Size.x
@@ -114,6 +114,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _dropSettings.DropStrategy
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
+      propertyPath: <DropSettings>k__BackingField.DropRadius
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
+      propertyPath: <DropSettings>k__BackingField.DropStrategy
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []

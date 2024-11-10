@@ -21,7 +21,7 @@ public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgres
     [SerializeField, Min(1)] private int _dropResourceCount = 1;
     [SerializeField] protected int _hitPoints = 1;
     [SerializeField] protected float _restoreTime = 10;
-    [SerializeField] private DropSettings _dropSettings = DropSettings.Default;
+    [field: SerializeField] public DropSettings DropSettings { get; private set; } = DropSettings.Default;
 
     private IResourceFactory _resourceFactory;
     private IDropCountCalculatorService _dropCalculator;
@@ -169,7 +169,7 @@ public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgres
     {
         _view.PlayDropResourceSound();
         int count = _needToolType == ToolType.None ? _dropResourceCount : _dropCalculator.Calculate(_dropResourceCount, _resourceConfig.Type, NeedToolType);
-        var dropData = DropData.Get(transform.position, _dropSettings, count, out int notFittedInPacksCount);
+        var dropData = DropData.Get(transform.position, DropSettings, count, out int notFittedInPacksCount);
 
         for (int i = 0; i < dropData.Count; i++)
         {

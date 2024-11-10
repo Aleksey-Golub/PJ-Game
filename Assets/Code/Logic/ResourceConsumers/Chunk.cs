@@ -18,8 +18,9 @@ public class Chunk : MonoBehaviour, IResourceConsumer
     [Space()]
     [SerializeField] private SpawnData[] _spawnDatas;
     [SerializeField] private Chunk[] _chunksToOpen;
-    [SerializeField] private float _otherChunkOpenDelay = 0.5f;
+    [SerializeField] private float _openDelay = 0.5f;
 
+    private IExhaustStrategy _exhaust;
     private int _currentNeedResourceCount;
     private int _currentPreUpload;
 
@@ -40,6 +41,8 @@ public class Chunk : MonoBehaviour, IResourceConsumer
 
     private void Construct(IAudioService audio, IEffectFactory effectFactory)
     {
+        _exhaust = new ExhaustStrategy(this, _collider);
+
         _view.Construct(audio, effectFactory);
     }
 
@@ -76,37 +79,18 @@ public class Chunk : MonoBehaviour, IResourceConsumer
         _currentPreUpload += consumedValue;
     }
 
-    private void Exhaust()
-    {
-        _view.ShowExhaust();
-
-        Invoke(nameof(DisableCollider), 1f);
-    }
-
-    private void DisableCollider()
-    {
-        _collider.enabled = false;
-    }
-
     private void DropObject()
     {
         _view.PlayDropResourceSound();
         _view.ShowHitEffect();
 
         foreach (SpawnData data in _spawnDatas)
-        {
             Instantiate(data.Prefab, data.Point.position, Quaternion.identity);
-        }
-
-        foreach (Chunk chunk in _chunksToOpen)
-        {
-            chunk.StartCoroutine(chunk.OpenDelayed());
-        }
     }
 
     private IEnumerator OpenDelayed()
     {
-        yield return new WaitForSeconds(_otherChunkOpenDelay);
+        yield return new WaitForSeconds(_openDelay);
 
         Open();
     }
@@ -115,7 +99,21 @@ public class Chunk : MonoBehaviour, IResourceConsumer
     {
         _view.ShowHitAnimation();
         DropObject();
+        OpenChainedChunks();
         Exhaust();
+    }
+
+    private void OpenChainedChunks()
+    {
+        foreach (Chunk chunk in _chunksToOpen)
+            chunk.StartCoroutine(chunk.OpenDelayed());
+    }
+
+    private void Exhaust()
+    {
+        _view.ShowExhaust();
+
+        _exhaust.ExhaustDelayed(1f);
     }
 
     [System.Serializable]

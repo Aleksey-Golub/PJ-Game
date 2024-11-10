@@ -17,10 +17,11 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
     [SerializeField] private int _dropCount = 1;
 
     private IDropObjectConfig _dropConfig;
-    private int _currentNeedResourceCount;
-    private int _currentPreUpload;
     private IResourceFactory _resourceFactory;
     private IToolFactory _toolFactory;
+    private IExhaustStrategy _exhaust;
+    private int _currentNeedResourceCount;
+    private int _currentPreUpload;
 
     public bool CanInteract => _currentNeedResourceCount != 0 && _currentPreUpload < _needResourceCount;
     public int PreferedConsumedValue => _preferedConsumedValue;
@@ -52,6 +53,7 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
     {
         _resourceFactory = resourceFactory;
         _toolFactory = toolFactory;
+        _exhaust = new ExhaustStrategy(this, _collider);
 
         _dropConfig = _dropConfigMono as IDropObjectConfig;
         _view.Construct(audio, effectFactory);
@@ -92,18 +94,6 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
         _currentPreUpload += consumedValue;
     }
 
-    private void Exhaust()
-    {
-        _view.ShowExhaust();
-
-        Invoke(nameof(DisableCollider), 1f);
-    }
-
-    private void DisableCollider()
-    {
-        _collider.enabled = false;
-    }
-
     private void DropObject()
     {
         _view.PlayDropResourceSound();
@@ -134,6 +124,13 @@ internal class Workbench : MonoBehaviour, IResourceConsumer
         {
             Logger.LogError($"[Workbench] DropObject() error : 'Not implemented for {_dropConfig.GetType()}'");
         }
+    }
+
+    private void Exhaust()
+    {
+        _view.ShowExhaust();
+
+        _exhaust.ExhaustDelayed(1f);
     }
 }
 

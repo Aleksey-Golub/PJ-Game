@@ -14,6 +14,7 @@ public class Workshop : MonoBehaviour, IResourceConsumer
 
     [SerializeField] private GameObject _spawnObject;
 
+    private IExhaustStrategy _exhaust;
     private int _currentNeedResourceCount;
     private int _currentPreUpload;
 
@@ -34,6 +35,8 @@ public class Workshop : MonoBehaviour, IResourceConsumer
 
     private void Construct(IAudioService audio, IEffectFactory effectFactory)
     {
+        _exhaust = new ExhaustStrategy(this, _collider);
+
         _view.Construct(audio, effectFactory);
     }
 
@@ -71,23 +74,18 @@ public class Workshop : MonoBehaviour, IResourceConsumer
         _currentPreUpload += consumedValue;
     }
 
-    private void Exhaust()
-    {
-        _view.ShowExhaust();
-
-        Invoke(nameof(DisableCollider), 1f);
-    }
-
-    private void DisableCollider()
-    {
-        _collider.enabled = false;
-    }
-
     private void DropObject()
     {
         _view.PlayDropResourceSound();
         _view.ShowHitEffect();
 
         Instantiate(_spawnObject, transform.position, Quaternion.identity);
+    }
+
+    private void Exhaust()
+    {
+        _view.ShowExhaust();
+
+        _exhaust.ExhaustDelayed(1f);
     }
 }

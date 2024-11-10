@@ -1,7 +1,6 @@
 ﻿using Code.Data;
 using Code.Infrastructure;
 using Code.Services;
-using System.Collections;
 using UnityEngine;
 
 [SelectionBase]
@@ -24,6 +23,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
 
     private IResourceFactory _resourceFactory;
     private IPersistentProgressService _progressService;
+    private IExhaustStrategy _exhaust;
     private float _restorationTimer = 0;
     private int _currentResourceCount;
 
@@ -52,6 +52,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
     {
         _resourceFactory = resourceFactory;
         _progressService = progressService;
+        _exhaust = new ExhaustStrategy(this, _collider);
 
         _view.Construct(audio, effectFactory);
 
@@ -121,7 +122,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
             _view.ShowExhaust();
 
             if (IsSingleUse)
-                InactivateSelf();
+                _exhaust.ExhaustImmediately();
         }
     }
 
@@ -190,7 +191,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
         _view.ShowExhaust();
 
         if (IsSingleUse)
-            OnSingleUseExhaust(1f);
+            _exhaust.ExhaustDelayed(1f);
     }
 
     private void Restore(int value)
@@ -227,30 +228,5 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
             data.CurrentResourceCount != _currentResourceCount ||
             data.Position.AsUnityVector() != transform.position
             ;
-    }
-
-    private void OnSingleUseExhaust(float delay)
-    {
-        StartCoroutine(OnSingleUseExhaustCor(delay));
-    }
-
-    private IEnumerator OnSingleUseExhaustCor(float delay)
-    {
-        WaitForSeconds waitDelay = new WaitForSeconds(delay);
-
-        yield return waitDelay;
-        DisableCollider();
-        yield return waitDelay;
-        InactivateSelf();
-    }
-
-    private void InactivateSelf()
-    {
-        gameObject.SetActive(false);
-    }
-
-    private void DisableCollider()
-    {
-        _collider.enabled = false;
     }
 }

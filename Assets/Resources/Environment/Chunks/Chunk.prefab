@@ -201,7 +201,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5549933558427383657}
-  - {fileID: 7808551827007144030}
   m_Father: {fileID: 922291359284162267}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2470257851162305283
@@ -351,37 +350,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &3596872586885464798
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7808551827007144030}
-  m_Layer: 0
-  m_Name: p (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7808551827007144030
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3596872586885464798}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1299998, y: -0.7599997, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5554270241645749558}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4233425146993645028
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,16 +596,13 @@ MonoBehaviour:
   _view: {fileID: 5822955048464810056}
   _collider: {fileID: 4150247686637877270}
   _openByOtherOnly: 0
-  _needResourceConfig: {fileID: 11400000, guid: 318ec1cfa5006ba418b1f426e11fd934, type: 2}
-  _needResourceCount: 5
+  _needResourceConfig: {fileID: 0}
+  _needResourceCount: 0
   _preferedConsumedValue: -1
   _transitionalResourceFinal: {fileID: 870836654738548796}
-  _spawnDatas:
-  - Point: {fileID: 5549933558427383657}
-    Prefab: {fileID: 6193472656297073183, guid: 95386233d68939749a9aadead7f72081, type: 3}
-  - Point: {fileID: 7808551827007144030}
-    Prefab: {fileID: 5301705876624799288, guid: 7c114fcbd3fd30540b1804d4d43bf06b, type: 3}
+  _spawnDatas: []
   _chunksToOpen: []
+  _otherChunkOpenDelay: 0.5
 --- !u!114 &5822955048464810056
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -65,6 +65,9 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
         _view.ShowResourceCount(_currentResourceCount, GetMaxResourceCount());
         _view.ShowWhole();
 
+        if (IsSingleUse)
+            enabled = false;
+
         void UnlockUpgrade(IPersistentProgressService progressService)
         {
             Code.Data.UpgradeItemsProgress upgradeItemsProgress = progressService.Progress.PlayerProgress.UpgradeItemsProgress;

@@ -63,6 +63,9 @@ public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgres
         _view.Construct(audio, effectFactory);
 
         RestoreHP(_hitPoints);
+
+        if (IsSingleUse)
+            enabled = false;
     }
 
     public void Init(ResourceConfig resourceConfig, int dropResourceCount)

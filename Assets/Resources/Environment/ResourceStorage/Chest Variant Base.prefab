@@ -64,14 +64,6 @@ PrefabInstance:
       propertyPath: _restoreTime
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 2872169157991871229, guid: aaf1d4e122fdf004db64c4c42f759b69, type: 3}
-      propertyPath: _resourceConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: ab299d3c5278ea24d828166789623b05, type: 2}
-    - target: {fileID: 2872169157991871229, guid: aaf1d4e122fdf004db64c4c42f759b69, type: 3}
-      propertyPath: _startResourceCount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3654969139900557348, guid: aaf1d4e122fdf004db64c4c42f759b69, type: 3}
       propertyPath: m_Size.x
       value: 1

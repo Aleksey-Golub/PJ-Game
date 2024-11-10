@@ -15,7 +15,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
     [SerializeField] private ResourceStorageConfig _config;
     [SerializeField] private ToolType _needToolType = ToolType.None;
     [SerializeField] private ResourceConfig _resourceConfig;
-    [Tooltip("Used when item is unupgradable")]
+    [Tooltip("Used when item is unUpgradable")]
     [SerializeField, Min(1)] private int _maxResourceCount = 1;
     [SerializeField] private int _startResourceCount = 1;
     [SerializeField] private float _restoreTime = 10;

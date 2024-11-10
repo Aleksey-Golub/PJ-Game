@@ -2,6 +2,7 @@ using Code.Services;
 using System;
 using UnityEngine;
 
+[SelectionBase]
 public class DungeonEntrance : MonoBehaviour
 {
     [SerializeField] private DungeonEntranceView _view;

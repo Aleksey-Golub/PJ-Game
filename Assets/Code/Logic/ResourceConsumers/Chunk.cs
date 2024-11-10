@@ -2,6 +2,7 @@ using Code.Services;
 using System.Collections;
 using UnityEngine;
 
+[SelectionBase]
 public class Chunk : MonoBehaviour, IResourceConsumer
 {
     [SerializeField] private ChunkView _view;

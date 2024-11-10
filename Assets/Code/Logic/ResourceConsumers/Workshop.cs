@@ -1,6 +1,7 @@
 using Code.Services;
 using UnityEngine;
 
+[SelectionBase]
 public class Workshop : MonoBehaviour, IResourceConsumer
 {
     [SerializeField] private ResourceConsumerView _view;

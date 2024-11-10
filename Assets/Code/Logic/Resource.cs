@@ -3,8 +3,8 @@ using Code.Infrastructure;
 using Code.Services;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
+[SelectionBase]
 public class Resource : MonoBehaviour, IMergingResource, IPoolable, ISavedProgressWriter, IUniqueIdHolder
 {
     [field: SerializeField] public UniqueId UniqueId { get; private set; }

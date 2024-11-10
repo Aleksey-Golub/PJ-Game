@@ -1,6 +1,7 @@
 using Code.Services;
 using UnityEngine;
 
+[SelectionBase]
 public class Converter : MonoBehaviour, IResourceConsumer
 {
     [SerializeField] private ConverterView _view;

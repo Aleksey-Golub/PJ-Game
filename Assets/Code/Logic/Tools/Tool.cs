@@ -2,8 +2,8 @@ using Code.Data;
 using Code.Infrastructure;
 using Code.Services;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
+[SelectionBase]
 public class Tool : MonoBehaviour, IPoolable, ISavedProgressWriter, IUniqueIdHolder
 {
     [field: SerializeField] public UniqueId UniqueId { get; private set; }

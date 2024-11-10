@@ -5,7 +5,6 @@ using System.Linq;
 using UnityEngine;
 using Code.UI;
 using Code.Data;
-using UnityEngine.SceneManagement;
 using Code.Infrastructure;
 
 internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedProgressWriter
@@ -412,10 +411,10 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
 
             if (_inventory.Has(resourceType, consumedValue))
             {
-                _inventory.Remove(resourceType, consumedValue);
+                _inventory.Reserve(resourceType, consumedValue);
 
                 var transitionalResource = _transitionalResourceFactory.Get(transform.position, Quaternion.identity);
-                transitionalResource.Init(consumer, consumedValue, _configsService.GetConfigFor(resourceType).Sprite);
+                transitionalResource.Init(_inventory, resourceType, consumer, consumedValue, _configsService.GetConfigFor(resourceType).Sprite);
                 transitionalResource.MoveTo(consumer.TransitionalResourceFinalPosition);
 
                 consumer.ApplyPreUpload(consumedValue);

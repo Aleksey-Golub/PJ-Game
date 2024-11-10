@@ -13,6 +13,8 @@ public class TransitionalResource : MonoBehaviour, IPoolable
 
     private IRecyclableFactory _factory;
     private IAudioService _audio;
+    private Inventory _inventory;
+    private ResourceType _resourceType;
     private IResourceConsumer _consumer;
     private int _consumedValue;
     private Coroutine _moveCoroutine;
@@ -27,8 +29,10 @@ public class TransitionalResource : MonoBehaviour, IPoolable
         IsConstructed = true;
     }
 
-    internal void Init(IResourceConsumer consumer, int consumedValue, Sprite sprite)
+    internal void Init(Inventory inventory, ResourceType resourceType, IResourceConsumer consumer, int consumedValue, Sprite sprite)
     {
+        _inventory = inventory;
+        _resourceType = resourceType;
         _consumer = consumer;
         _consumedValue = consumedValue;
         _spriteRenderer.sprite = sprite;
@@ -59,6 +63,7 @@ public class TransitionalResource : MonoBehaviour, IPoolable
         }
 
         transform.position = finalPosition;
+        _inventory.RemoveReserved(_resourceType, _consumedValue);
         _consumer.Consume(_consumedValue);
 
         _factory.Recycle(this);

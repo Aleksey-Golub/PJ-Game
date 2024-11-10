@@ -6,6 +6,7 @@ using System.Collections.Generic;
 internal class Inventory : ISavedProgressReader, ISavedProgressWriter
 {
     private Dictionary<ResourceType, int> _storage;
+    private readonly Dictionary<ResourceType, int> _reserved;
     private List<ToolType> _tools;
 
     internal event Action<ResourceType, int> ResourceCountChanged;
@@ -15,6 +16,7 @@ internal class Inventory : ISavedProgressReader, ISavedProgressWriter
     internal Inventory()
     {
         _storage = new();
+        _reserved = new();
         _tools = new();
     }
 
@@ -50,11 +52,26 @@ internal class Inventory : ISavedProgressReader, ISavedProgressWriter
         }
     }
 
+    internal void Reserve(ResourceType type, int value)
+    {
+        if (_reserved.ContainsKey(type))
+            _reserved[type] += value;
+        else
+            _reserved[type] = value;
+    }
+
+    internal bool RemoveReserved(ResourceType type, int value)
+    {
+        _reserved[type] -= value;
+        return Remove(type, value);
+    }
+
     internal bool Has(ResourceType type, int value)
     {
         if (_storage.TryGetValue(type, out int count))
         {
-            return count >= value;
+            _reserved.TryGetValue(type, out int countR);
+            return count - countR >= value;
         }
 
         return false;
@@ -65,8 +82,10 @@ internal class Inventory : ISavedProgressReader, ISavedProgressWriter
         value = 0;
         if (_storage.TryGetValue(type, out int count))
         {
-            value = count;
-            return count > 0;
+            _reserved.TryGetValue(type, out int countR);
+            int availableCount = count - countR;
+            value = availableCount;
+            return availableCount > 0;
         }
 
         return false;

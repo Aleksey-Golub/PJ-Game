@@ -67,10 +67,7 @@ internal struct DropData
 
                 for (int i = 0; i < packsCount; i++)
                 {
-                    Vector3 offset = UnityEngine.Random.insideUnitCircle * dropSettings.DropRadius;
-                    offset.z = originePosition.z;
-
-                    Vector3 finalPosition = originePosition + offset;
+                    Vector3 finalPosition = GetRandomInsideCirclePosition(originePosition, dropSettings);
 
                     DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition, countInPack);
                     result.Add(newDropData);
@@ -98,6 +95,7 @@ internal struct DropData
                 {
                     Vector3 offset1 = Quaternion.AngleAxis(step * i, Vector3.forward) * offsetStart;
                     Vector3 finalPosition = originePosition + offset1;
+                    finalPosition = IsValid(finalPosition) ? finalPosition : originePosition;
 
                     DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition, countInPack);
                     result.Add(newDropData);
@@ -107,6 +105,43 @@ internal struct DropData
             default:
                 throw new NotImplementedException();
         }
+    }
+
+    private static Vector3 GetRandomInsideCirclePosition(Vector3 originePosition, DropSettings dropSettings)
+    {
+        Vector3 finalPosition;
+        int @try = 0;
+        int maxTryCount = 5;
+
+        do
+        {
+            @try++;
+
+            if (@try > maxTryCount)
+            {
+                finalPosition = originePosition;
+                break;
+            }
+
+            Vector3 offset = UnityEngine.Random.insideUnitCircle * dropSettings.DropRadius;
+            offset.z = originePosition.z;
+
+            finalPosition = originePosition + offset;
+
+        } while (!IsValid(finalPosition));
+
+        return finalPosition;
+    }
+
+    private static bool IsValid(Vector3 finalPosition)
+    {
+        const float checkRadius = 0.1f;
+
+        foreach (Collider2D c in Physics2D.OverlapCircleAll(finalPosition, checkRadius))
+            if (!c.isTrigger)
+                return false;
+
+        return true;
     }
 }
 

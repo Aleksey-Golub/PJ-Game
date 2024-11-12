@@ -593,16 +593,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89238ba7450a92c4eb9f782917391805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _view: {fileID: 5822955048464810056}
+  View: {fileID: 5822955048464810056}
   _collider: {fileID: 4150247686637877270}
-  _openByOtherOnly: 0
   _needResourceConfig: {fileID: 0}
   _needResourceCount: 0
   _preferedConsumedValue: -1
   _transitionalResourceFinal: {fileID: 870836654738548796}
+  _openByOtherOnly: 0
   _spawnDatas: []
   _chunksToOpen: []
-  _otherChunkOpenDelay: 0.5
+  _openDelay: 0.5
 --- !u!114 &5822955048464810056
 MonoBehaviour:
   m_ObjectHideFlags: 0

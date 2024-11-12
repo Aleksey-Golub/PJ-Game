@@ -2938,10 +2938,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2998547351671331081, guid: 37800749ca0d21a448db979f816fb563, type: 3}
-      propertyPath: _dropSettings.DropRadius
-      value: 1.4
-      objectReference: {fileID: 0}
     - target: {fileID: 4605980977504968842, guid: 37800749ca0d21a448db979f816fb563, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.19

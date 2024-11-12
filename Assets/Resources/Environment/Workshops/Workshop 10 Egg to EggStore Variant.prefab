@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: _needResourceConfig
       value: 
       objectReference: {fileID: 11400000, guid: ea835031138f40f41afb27a7ff3b6ebd, type: 2}
+    - target: {fileID: 7498350011098356694, guid: f0089661c698e7940a6d4750713422a4, type: 3}
+      propertyPath: _spawnDatas.Array.data[0].Prefab
+      value: 
+      objectReference: {fileID: 8375179516522110393, guid: 88dd6c277b80ece44908f2d6b0b20460, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

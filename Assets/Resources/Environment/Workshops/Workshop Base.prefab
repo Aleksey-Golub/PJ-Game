@@ -528,13 +528,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427018c82d42f4d419382b15d9590f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _view: {fileID: 1154796092626054508}
+  View: {fileID: 1154796092626054508}
   _collider: {fileID: 7434099847781800317}
   _needResourceConfig: {fileID: 0}
   _needResourceCount: 1
   _preferedConsumedValue: -1
   _transitionalResourceFinal: {fileID: 3290852168821790381}
-  _spawnObject: {fileID: 0}
+  _spawnDatas:
+  - Point: {fileID: 7149906763114512797}
+    Prefab: {fileID: 0}
 --- !u!114 &1154796092626054508
 MonoBehaviour:
   m_ObjectHideFlags: 0

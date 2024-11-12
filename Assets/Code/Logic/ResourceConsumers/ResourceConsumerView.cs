@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-internal class ResourceConsumerView : MonoBehaviour
+public class ResourceConsumerView : MonoBehaviour
 {
     [SerializeField] protected GameObject _cloud;
     [SerializeField] private SpriteRenderer _resourceNeedImage;
@@ -46,7 +46,7 @@ internal class ResourceConsumerView : MonoBehaviour
         _generateObjImage.sprite = generateObjSprite;
     }
 
-    internal void ShowNeeds(int currentNeedResourceCount)
+    internal virtual void ShowNeeds(int currentNeedResourceCount, int totalNeedResourceCount)
     {
         _needText.text = currentNeedResourceCount.ToString();
 

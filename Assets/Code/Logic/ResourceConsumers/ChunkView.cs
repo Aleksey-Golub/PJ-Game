@@ -1,6 +1,6 @@
-﻿internal class ChunkView : ResourceConsumerView
+﻿public class ChunkView : ResourceConsumerView
 {
-    internal void ShowNeeds(int currentNeedResourceCount, int totalNeedResourceCount)
+    internal override void ShowNeeds(int currentNeedResourceCount, int totalNeedResourceCount)
     {
         int uploaded = totalNeedResourceCount - currentNeedResourceCount;
         _needText.text = $"{uploaded}/{totalNeedResourceCount}";

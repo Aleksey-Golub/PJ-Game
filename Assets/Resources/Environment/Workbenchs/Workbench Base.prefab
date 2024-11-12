@@ -328,14 +328,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab58b3d3760675f439f522100cb90812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _view: {fileID: 4172678446958907170}
+  View: {fileID: 4172678446958907170}
   _collider: {fileID: 6552640614675062389}
   _needResourceConfig: {fileID: 0}
   _needResourceCount: 1
   _preferedConsumedValue: -1
   _transitionalResourceFinal: {fileID: 1126556147460533878}
   _dropConfigMono: {fileID: 0}
-  _dropSettings:
+  <DropSettings>k__BackingField:
     DropStrategy: 1
     DropGroupingStrategy: 2
     DropRadius: 1.3

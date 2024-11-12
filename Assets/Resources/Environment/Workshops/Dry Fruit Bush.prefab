@@ -795,13 +795,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427018c82d42f4d419382b15d9590f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _view: {fileID: 757873309983448514}
+  View: {fileID: 757873309983448514}
   _collider: {fileID: 711750896507664534}
   _needResourceConfig: {fileID: 11400000, guid: be0099c985df4ee4eb479cf234b33e24, type: 2}
   _needResourceCount: 5
   _preferedConsumedValue: -1
   _transitionalResourceFinal: {fileID: 2694871646836225384}
-  _spawnObject: {fileID: 5516271038822587854, guid: 23bab3ca94ef1c44aa7519e9fc225f84, type: 3}
+  _spawnDatas:
+  - Point: {fileID: 4416775832208801865}
+    Prefab: {fileID: 5516271038822587854, guid: 23bab3ca94ef1c44aa7519e9fc225f84, type: 3}
 --- !u!114 &757873309983448514
 MonoBehaviour:
   m_ObjectHideFlags: 0

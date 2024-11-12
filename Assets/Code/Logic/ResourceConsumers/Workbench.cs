@@ -2,16 +2,8 @@ using Code.Services;
 using UnityEngine;
 
 [SelectionBase]
-public class Workbench : MonoBehaviour, IResourceConsumer
+public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
 {
-    [SerializeField] private ResourceConsumerView _view;
-    [SerializeField] private Collider2D _collider;
-
-    [SerializeField] private ResourceConfig _needResourceConfig;
-    [SerializeField] private int _needResourceCount = 1;
-    [SerializeField] private int _preferedConsumedValue = -1;
-    [SerializeField] private Transform _transitionalResourceFinal;
-
     [SerializeField] private ScriptableObject _dropConfigMono;
     [field: SerializeField] public DropSettings DropSettings { get; private set; } = DropSettings.Default;
     [SerializeField] private int _dropCount = 1;
@@ -19,15 +11,6 @@ public class Workbench : MonoBehaviour, IResourceConsumer
     private IDropObjectConfig _dropConfig;
     private IResourceFactory _resourceFactory;
     private IToolFactory _toolFactory;
-    private IExhaustStrategy _exhaust;
-    private int _currentNeedResourceCount;
-    private int _currentPreUpload;
-
-    public bool CanInteract => _currentNeedResourceCount != 0 && _currentPreUpload < _needResourceCount;
-    public int PreferedConsumedValue => _preferedConsumedValue;
-    public int FreeSpace => _needResourceCount - _currentPreUpload;
-
-    public Vector3 TransitionalResourceFinalPosition => _transitionalResourceFinal.position;
 
     private void OnValidate()
     {
@@ -51,52 +34,20 @@ public class Workbench : MonoBehaviour, IResourceConsumer
 
     private void Construct(IResourceFactory resourceFactory, IToolFactory toolFactory, IAudioService audio, IEffectFactory effectFactory)
     {
+        Construct();
+
         _resourceFactory = resourceFactory;
         _toolFactory = toolFactory;
-        _exhaust = new ExhaustStrategy(this, _collider);
 
         _dropConfig = _dropConfigMono as IDropObjectConfig;
-        _view.Construct(audio, effectFactory);
+        View.Construct(audio, effectFactory);
     }
 
-    internal void Init()
+    protected override Sprite GetGenerateObjSprite() => _dropConfig.Sprite;
+
+    protected override void DropObject()
     {
-        _currentNeedResourceCount = _needResourceCount;
-        _currentPreUpload = 0;
-
-        _view.Init(_needResourceConfig.Sprite, _currentNeedResourceCount, _dropConfig.Sprite);
-    }
-
-    public ResourceConsumerNeeds GetNeeds()
-    {
-        return new ResourceConsumerNeeds()
-        {
-            ResourceType = _needResourceConfig.Type,
-            CurrentNeedResourceCount = _currentNeedResourceCount
-        };
-    }
-
-    public void Consume(int value)
-    {
-        _currentNeedResourceCount -= value;
-        _view.ShowNeeds(_currentNeedResourceCount);
-
-        if (_currentNeedResourceCount == 0)
-        {
-            _view.ShowHitAnimation();
-            DropObject();
-            Exhaust();
-        }
-    }
-
-    public void ApplyPreUpload(int consumedValue)
-    {
-        _currentPreUpload += consumedValue;
-    }
-
-    private void DropObject()
-    {
-        _view.PlayDropResourceSound();
+        View.PlayDropResourceSound();
 
         var dropData = DropData.Get(transform.position, DropSettings, _dropCount, out int notFittedInPacksCount);
 
@@ -124,13 +75,6 @@ public class Workbench : MonoBehaviour, IResourceConsumer
         {
             Logger.LogError($"[Workbench] DropObject() error : 'Not implemented for {_dropConfig.GetType()}'");
         }
-    }
-
-    private void Exhaust()
-    {
-        _view.ShowExhaust();
-
-        _exhaust.ExhaustDelayed(1f);
     }
 }
 

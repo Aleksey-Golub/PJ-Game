@@ -83,7 +83,7 @@ public class Converter : MonoBehaviour, IResourceConsumer
         _timer = 0;
 
         _view.Init(_needResourceConfig.Sprite, _currentUpload, _dropResourceConfig.Sprite);
-        _view.ShowNeeds(_singleUpload);
+        _view.ShowNeeds(_singleUpload, 0);
         _view.ShowUpload(_currentUpload, GetMaxUpload());
         _view.ShowProgress(_timer, _converTime);
     }

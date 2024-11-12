@@ -17,7 +17,7 @@ internal abstract class SceneSpawnerBase<T> : SceneSpawnerBase, ISavedProgressRe
 
     private void OnValidate()
     {
-        foreach (SpawnData d in _spawnDatas)
+        foreach (SceneSpawnerSpawnData d in _spawnDatas)
         {
             if (d.Config is not null && d.Config is not T)
             {
@@ -55,7 +55,7 @@ internal abstract class SceneSpawnerBase<T> : SceneSpawnerBase, ISavedProgressRe
 internal abstract class SceneSpawnerBase : MonoBehaviour
 {
     [SerializeField] protected DropSettings _dropSettings = DropSettings.Default;
-    [SerializeField] protected List<SpawnData> _spawnDatas;
+    [SerializeField] protected List<SceneSpawnerSpawnData> _spawnDatas;
 
 #if UNITY_EDITOR
     [CustomEditor(typeof(SceneSpawnerBase))]

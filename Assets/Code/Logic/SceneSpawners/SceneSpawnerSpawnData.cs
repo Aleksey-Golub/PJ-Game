@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-internal class SpawnData
+internal class SceneSpawnerSpawnData
 {
     [SerializeField] internal Transform Point;
     [SerializeField] internal ScriptableObject Config;

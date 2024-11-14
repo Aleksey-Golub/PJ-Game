@@ -19,7 +19,7 @@ internal class SellBoard : SimpleObject
             var gameFactory = AllServices.Container.Single<IGameFactory>();
 
             Construct(uiMediator, configService);
-            gameFactory.RegisterProgressWatchers(gameObject);
+            gameFactory.RegisterProgressWatchersExternal(gameObject);
         }
     }
 

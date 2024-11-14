@@ -1,23 +1,28 @@
+using Code.Infrastructure;
 using Code.Services;
 using UnityEngine;
 
 [SelectionBase]
 public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
 {
-    [SerializeField] private SpawnData[] _spawnDatas;
+    [SerializeField] private SpawnGameObjectData[] _spawnDatas;
+
+    private IGameFactory _gameFactory;
 
     private void Start()
     {
         var audio = AllServices.Container.Single<IAudioService>();
         var effectFactory = AllServices.Container.Single<IEffectFactory>();
+        var gameFactory = AllServices.Container.Single<IGameFactory>();
 
-        Construct(audio, effectFactory);
+        Construct(audio, effectFactory, gameFactory);
         Init();
     }
 
-    private void Construct(IAudioService audio, IEffectFactory effectFactory)
+    public void Construct(IAudioService audio, IEffectFactory effectFactory, IGameFactory gameFactory)
     {
         Construct();
+        _gameFactory = gameFactory;
 
         View.Construct(audio, effectFactory);
     }
@@ -29,7 +34,7 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
         View.PlayDropResourceSound();
         View.ShowHitEffect();
 
-        foreach (SpawnData data in _spawnDatas)
-            Instantiate(data.Prefab, data.Point.position, Quaternion.identity);
+        foreach (SpawnGameObjectData data in _spawnDatas)
+            _gameFactory.GetGameObject(data.GameObjectId, at: data.Point.position);
     }
 }

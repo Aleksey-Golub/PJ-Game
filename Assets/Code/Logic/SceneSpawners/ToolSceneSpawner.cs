@@ -18,7 +18,7 @@ internal class ToolSceneSpawner : SceneSpawnerBase<ToolConfig>
     {
         _toolFactory = toolFactory;
 
-        gameFactory.RegisterProgressWatchers(gameObject);
+        gameFactory.RegisterProgressWatchersExternal(gameObject);
     }
 
     protected override void SpawnInner()

@@ -18,7 +18,7 @@ internal class ResourceSceneSpawner : SceneSpawnerBase<ResourceConfig>
     {
         _resourceFactory = resourceFactory;
 
-        gameFactory.RegisterProgressWatchers(gameObject);
+        gameFactory.RegisterProgressWatchersExternal(gameObject);
     }
 
     protected override void SpawnInner()

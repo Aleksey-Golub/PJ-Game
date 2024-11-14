@@ -22,7 +22,7 @@ internal class UpgradeBoard : SimpleObject
             var gameFactory = AllServices.Container.Single<IGameFactory>();
 
             Construct(uiMediator, configService, progressService);
-            gameFactory.RegisterProgressWatchers(gameObject);
+            gameFactory.RegisterProgressWatchersExternal(gameObject);
         }
     }
 

@@ -65,9 +65,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 318ec1cfa5006ba418b1f426e11fd934, type: 2}
     - target: {fileID: 7498350011098356694, guid: f0089661c698e7940a6d4750713422a4, type: 3}
-      propertyPath: _spawnDatas.Array.data[0].Prefab
-      value: 
-      objectReference: {fileID: 4514682230725709931, guid: aadf4ef6250ef4d42aa20fd4d34f19ca, type: 3}
+      propertyPath: _spawnDatas.Array.data[0].GameObjectId
+      value: Wood  storage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

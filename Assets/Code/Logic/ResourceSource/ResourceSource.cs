@@ -46,7 +46,7 @@ public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgres
             var gameFactory = AllServices.Container.Single<IGameFactory>();
 
             Construct(resourceFactory, dropCountCalculatorService, audio, effectFactory);
-            gameFactory.RegisterProgressWatchers(gameObject);
+            gameFactory.RegisterProgressWatchersExternal(gameObject);
         }
     }
 

@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c84e8af6b4bd643a5661c627a815d1, type: 3}
+  m_Name: ObjectsMatchers
+  m_EditorClassIdentifier: 
+  Configs:
+  - GameObjectId: Sell Board
+    Template: {fileID: 5468609326228704530, guid: 00d1604afd7f56041811867e1d22c7b9, type: 3}
+  - GameObjectId: Upgrade Board
+    Template: {fileID: 7298435369027114144, guid: 649be69bc675fbb428ce605e3f344240, type: 3}
+  - GameObjectId: Bush
+    Template: {fileID: 2478993273050370983, guid: 89eaa2b354cda3545a8c093c64bd9b3a, type: 3}
+  - GameObjectId: Pine
+    Template: {fileID: 6193472656297073183, guid: 95386233d68939749a9aadead7f72081, type: 3}
+  - GameObjectId: Rock
+    Template: {fileID: 7386530085354455567, guid: 60948b0b3b0aaa74082fb4d0b5548590, type: 3}
+  - GameObjectId: Fruit bush
+    Template: {fileID: 5516271038822587854, guid: 23bab3ca94ef1c44aa7519e9fc225f84, type: 3}
+  - GameObjectId: Slime
+    Template: {fileID: 7126236964075378665, guid: 0b00471b6e12d5543b6fc7a031379b3d, type: 3}
+  - GameObjectId: Carrot crate
+    Template: {fileID: 6347430455194814507, guid: 87f2b338a55ab094fb4bca9b4bfbf085, type: 3}
+  - GameObjectId: Carrot in ground
+    Template: {fileID: 6002527102804235624, guid: 78a3a02fea370bb459a5a1999a98426b, type: 3}
+  - GameObjectId: Coin storage
+    Template: {fileID: 7689994481407591658, guid: a8e06c810456b1f4cb31656d9190efec, type: 3}
+  - GameObjectId: Grass  storage
+    Template: {fileID: 1975188044804624738, guid: 09f365d54c778cf47a483a34b07505ba, type: 3}
+  - GameObjectId: Egg  storage
+    Template: {fileID: 8375179516522110393, guid: 88dd6c277b80ece44908f2d6b0b20460, type: 3}
+  - GameObjectId: Stone  storage
+    Template: {fileID: 4757367464957278862, guid: e9ced7b775bc13e4c967ed385a50b011, type: 3}
+  - GameObjectId: Water  storage
+    Template: {fileID: 6129578312650865715, guid: 1ea2b6df9f24dbd47964c334d63f71e6, type: 3}
+  - GameObjectId: Wood  storage
+    Template: {fileID: 4514682230725709931, guid: aadf4ef6250ef4d42aa20fd4d34f19ca, type: 3}
+  - GameObjectId: Cow
+    Template: {fileID: 6751174208672137423, guid: 37800749ca0d21a448db979f816fb563, type: 3}
+  - GameObjectId: Pig
+    Template: {fileID: 613217426882335278, guid: 94700ca3fe878644ab8ffcf5f01e65b2, type: 3}
+  - GameObjectId: Pot base
+    Template: {fileID: 5301705876624799288, guid: 7c114fcbd3fd30540b1804d4d43bf06b, type: 3}
+  - GameObjectId: Pot 5 grass
+    Template: {fileID: 6878690249142335436, guid: 922319fc585e8c24eac5de3443590654, type: 3}
+  - GameObjectId: Chest base
+    Template: {fileID: 7355017640260301671, guid: 330b9f57a0f2112489adb717b47019e2, type: 3}
+  - GameObjectId: Chest 1 Gem
+    Template: {fileID: 7355017640260301671, guid: 29b05830b1dcaf147a21bc02fe567095, type: 3}
+  - GameObjectId: Workbench Base
+    Template: {fileID: 243883957167352878, guid: 515b973e6f171e74caf236ccd882f2c1, type: 3}
+  - GameObjectId: Workbench 5 Milk to Sword
+    Template: {fileID: 8205934742663997677, guid: fb322b68fb502b94f95b7c82ef1aa0bd, type: 3}
+  - GameObjectId: Workbench 10 Grass to Axe
+    Template: {fileID: 2645941934724138516, guid: e9300e21afe69f94fbd74e2e90ec680f, type: 3}
+  - GameObjectId: Workbench 20 Carrot to Gem
+    Template: {fileID: 5587037891802329689, guid: 2483931563175854a94d10bff9f76496, type: 3}
+  - GameObjectId: Workbench 20 Egg to Gem
+    Template: {fileID: 410053835367323695, guid: 5611168acf0e0044eaf8a87c98d86983, type: 3}
+  - GameObjectId: Workbench 50 Coin to PickAxe
+    Template: {fileID: 1830128835946951623, guid: 06c3c32d8e8ac184aaae71e21d90ca7a, type: 3}
+  - GameObjectId: Workbench 50 Wood to Gem
+    Template: {fileID: 4151842295495097555, guid: c95b60262ad9eed44b8c0fb49387952f, type: 3}
+  - GameObjectId: Workbench 150 Wood to Bucket
+    Template: {fileID: 8268293617339757368, guid: bcb6ff1de23b7fb4bb3f504b012f6a5a, type: 3}
+  - GameObjectId: Workbench 25 Dung to Gem
+    Template: {fileID: 7988530919723443325, guid: df5901e46aa67ca4896c5e5df6751c94, type: 3}
+  - GameObjectId: Workbench 25 Milk to Gem
+    Template: {fileID: 7988530919723443325, guid: d639e865c2ec38d4c836e84c51048dbd, type: 3}
+  - GameObjectId: Workbench 40 Fruit to Gem
+    Template: {fileID: 7988530919723443325, guid: d5862e142fc43d446bf9dfaa51337e5c, type: 3}
+  - GameObjectId: Workbench 40 Water to Gem
+    Template: {fileID: 7988530919723443325, guid: ef296d76e2257464391aeb494e726453, type: 3}
+  - GameObjectId: Workbench 50 Carrot to Gem
+    Template: {fileID: 7988530919723443325, guid: 2e69b52f64b780b41bf3878942dd498a, type: 3}
+  - GameObjectId: Workbench 50 Egg to Gem
+    Template: {fileID: 7988530919723443325, guid: f9cf426f9d64c7e40b486309a65fa33d, type: 3}
+  - GameObjectId: Workbench 50 Stone to Gem
+    Template: {fileID: 7988530919723443325, guid: e9aa812b23614074fbd41e5d2f887a0a, type: 3}
+  - GameObjectId: Workbench 100 Wood to Gem
+    Template: {fileID: 7988530919723443325, guid: b8e5aba88b4cc4a43a20be0110d6f2cd, type: 3}
+  - GameObjectId: Workbench 200 Grass to Gem
+    Template: {fileID: 7988530919723443325, guid: 44f092afb8aa08f4090c966e53d2e14b, type: 3}
+  - GameObjectId: Workbench 999 Coin to Gem
+    Template: {fileID: 7988530919723443325, guid: e93329c22e7fa66449e1ad228599a5b3, type: 3}
+  - GameObjectId: Workshop Base
+    Template: {fileID: 3508747559550001708, guid: f0089661c698e7940a6d4750713422a4, type: 3}
+  - GameObjectId: Dry Fruit Bush
+    Template: {fileID: 8377299975734826862, guid: 422903e07b505314bbdb6b25ea26ad3b, type: 3}
+  - GameObjectId: Workshop 5 Stone to StoneStore
+    Template: {fileID: 6581872928603576592, guid: f22d786bd965fed4196a97f2e410daa3, type: 3}
+  - GameObjectId: Workshop 8 Carrot to CarrotStore
+    Template: {fileID: 4434470586017047460, guid: de46d95d61a4ef643a571bbfc9711a2d, type: 3}
+  - GameObjectId: Workshop 10 Egg to EggStore
+    Template: {fileID: 527929976361184694, guid: f37d3efde0e336245a7bd5798cfe2c6a, type: 3}
+  - GameObjectId: Workshop 20 Coin to CoinStore
+    Template: {fileID: 7794450671133472128, guid: 809aa236285781942b2082a69f964f80, type: 3}
+  - GameObjectId: Workshop 20 Wood to WoodStore
+    Template: {fileID: 4345366506313223764, guid: 5f2eb46fc699dba4cb64d0ce1efde3a1, type: 3}
+  - GameObjectId: Workshop 25 Coin to Cow
+    Template: {fileID: 34774306316643939, guid: 70e596e10143bab4295bac2d4e593627, type: 3}
+  - GameObjectId: Workshop 150 Coin to Pig
+    Template: {fileID: 2351629663921552638, guid: 92da7f59781f9cf41947cca6ec004459, type: 3}

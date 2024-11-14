@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3508747559550001708, guid: f0089661c698e7940a6d4750713422a4, type: 3}
       propertyPath: m_Name
-      value: Workshop 25 Coin to Caw Variant
+      value: Workshop 25 Coin to Cow Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7149906763114512797, guid: f0089661c698e7940a6d4750713422a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,9 +65,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f8fc709eca8334b45aa174bba73f5d43, type: 2}
     - target: {fileID: 7498350011098356694, guid: f0089661c698e7940a6d4750713422a4, type: 3}
-      propertyPath: _spawnDatas.Array.data[0].Prefab
-      value: 
-      objectReference: {fileID: 6751174208672137423, guid: 37800749ca0d21a448db979f816fb563, type: 3}
+      propertyPath: _spawnDatas.Array.data[0].GameObjectId
+      value: Cow
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

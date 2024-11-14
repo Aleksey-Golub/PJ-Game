@@ -19,6 +19,7 @@ namespace Code.Infrastructure
         private readonly IInputService _input;
         private readonly IPopupFactory _popupFactory;
         private readonly IResourceFactory _resourceFactory;
+        private readonly IToolFactory _toolFactory;
         private readonly IEffectFactory _effectFactory;
         private readonly IDropCountCalculatorService _dropCountCalculatorService;
         private readonly ITransitionalResourceFactory _transitionalResourceFactory;
@@ -34,6 +35,7 @@ namespace Code.Infrastructure
             IPopupFactory popupFactory,
             ITransitionalResourceFactory transitionalResourceFactory,
             IResourceFactory resourceFactory,
+            IToolFactory toolFactory,
             IEffectFactory effectFactory,
             IDropCountCalculatorService dropCountCalculatorService
             )
@@ -46,6 +48,7 @@ namespace Code.Infrastructure
             _input = input;
             _popupFactory = popupFactory;
             _resourceFactory = resourceFactory;
+            _toolFactory = toolFactory;
             _effectFactory = effectFactory;
             _dropCountCalculatorService = dropCountCalculatorService;
             _transitionalResourceFactory = transitionalResourceFactory;
@@ -112,13 +115,47 @@ namespace Code.Infrastructure
             return simpleObject;
         }
 
+        public GameObject GetGameObject(string gameObjectId, Vector3 at)
+        {
+            GameObjectMatcher gameObjectMatcher = _configs.GetMatcherFor(gameObjectId);
+            GameObject go = InstantiateRegistered(gameObjectMatcher.Template, at);
+
+            if (go.TryGetComponent(out SellBoard sellBoard))
+                sellBoard.Construct(_uiMediator, _configs);
+            else if (go.TryGetComponent(out UpgradeBoard upgradeBoard))
+                upgradeBoard.Construct(_uiMediator, _configs, _progressService);
+            else if (go.TryGetComponent(out ResourceSource resourceSource))
+                resourceSource.Construct(_resourceFactory, _dropCountCalculatorService, _audio, _effectFactory);
+            else if (go.TryGetComponent(out ResourceStorage resourceStorage))
+                resourceStorage.Construct(_resourceFactory, _progressService, _audio, _effectFactory);
+            else if (go.TryGetComponent(out Converter converter))
+                converter.Construct(_resourceFactory, _progressService, _audio, _effectFactory);
+            else if (go.TryGetComponent(out Workbench workbench))
+                workbench.Construct(_resourceFactory, _toolFactory, _audio, _effectFactory);
+            else if (go.TryGetComponent(out Workshop workshop))
+                workshop.Construct(_audio, _effectFactory, this);
+            else if (go.TryGetComponent(out Chunk chunk))
+                chunk.Construct(_audio, _effectFactory, this);
+            else
+            {
+                Logger.LogError($"[GameFactory] try to create game object with unknown type. Id= {gameObjectId}");
+            }
+
+            if (go.TryGetComponent(out UniqueId uniqueId))
+                uniqueId.GenerateId();
+
+            return go;
+        }
+
         public void Cleanup()
         {
             ProgressReaders.Clear();
             ProgressWriters.Clear();
         }
 
-        public void RegisterProgressWatchers(GameObject gameObject)
+        public void RegisterProgressWatchersExternal(GameObject gameObject) => RegisterProgressWatchers(gameObject);
+
+        private void RegisterProgressWatchers(GameObject gameObject)
         {
             foreach (ISavedProgressReader progressReader in gameObject.GetComponentsInChildren<ISavedProgressReader>())
                 ProgressReaders.Add(progressReader);
@@ -157,6 +194,14 @@ namespace Code.Infrastructure
             RegisterProgressWatchers(gameObject);
 
             return gameObject;
+        }
+
+        private GameObject InstantiateRegistered(GameObject prefab, Vector3 at)
+        {
+            GameObject go = Object.Instantiate(prefab, at, Quaternion.identity);
+            RegisterProgressWatchers(go);
+
+            return go;
         }
     }
 }

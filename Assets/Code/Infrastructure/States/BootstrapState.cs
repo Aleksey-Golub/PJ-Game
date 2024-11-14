@@ -89,6 +89,7 @@ namespace Code.Infrastructure
               _services.Single<IPopupFactory>(),
               _services.Single<ITransitionalResourceFactory>(),
               _services.Single<IResourceFactory>(),
+              _services.Single<IToolFactory>(),
               _services.Single<IEffectFactory>(),
               _services.Single<IDropCountCalculatorService>()
               ));

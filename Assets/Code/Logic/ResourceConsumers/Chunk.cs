@@ -1,3 +1,4 @@
+using Code.Infrastructure;
 using Code.Services;
 using System.Collections;
 using UnityEngine;
@@ -7,22 +8,25 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
 {
     [Space()]
     [SerializeField] private bool _openByOtherOnly;
-    [SerializeField] private SpawnData[] _spawnDatas;
+    [SerializeField] private SpawnGameObjectData[] _spawnDatas;
     [SerializeField] private Chunk[] _chunksToOpen;
     [SerializeField] private float _openDelay = 0.5f;
+    private IGameFactory _gameFactory;
 
     private void Start()
     {
         var audio = AllServices.Container.Single<IAudioService>();
         var effectFactory = AllServices.Container.Single<IEffectFactory>();
+        var gameFactory = AllServices.Container.Single<IGameFactory>();
 
-        Construct(audio, effectFactory);
+        Construct(audio, effectFactory, gameFactory);
         Init();
     }
 
-    private void Construct(IAudioService audio, IEffectFactory effectFactory)
+    public void Construct(IAudioService audio, IEffectFactory effectFactory, IGameFactory gameFactory)
     {
         Construct();
+        _gameFactory = gameFactory;
 
         View.Construct(audio, effectFactory);
     }
@@ -41,8 +45,8 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
         View.PlayDropResourceSound();
         View.ShowHitEffect();
 
-        foreach (SpawnData data in _spawnDatas)
-            Instantiate(data.Prefab, data.Point.position, Quaternion.identity);
+        foreach (SpawnGameObjectData data in _spawnDatas)
+            _gameFactory.GetGameObject(data.GameObjectId, at: data.Point.position);
     }
 
     private IEnumerator OpenDelayed()

@@ -21,5 +21,6 @@ namespace Code.Services
         ResourceSourceMatcher GetMatcherFor(ResourceSourceType type);
         ResourceStorageMatcher GetMatcherFor(ResourceStorageType type);
         SimpleObjectMatcher GetMatcherFor(SimpleObjectType type);
+        GameObjectMatcher GetMatcherFor(string gameObjectId);
     }
 }

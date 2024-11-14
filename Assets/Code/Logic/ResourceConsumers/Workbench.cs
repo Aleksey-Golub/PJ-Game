@@ -32,7 +32,7 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
         Init();
     }
 
-    private void Construct(IResourceFactory resourceFactory, IToolFactory toolFactory, IAudioService audio, IEffectFactory effectFactory)
+    public void Construct(IResourceFactory resourceFactory, IToolFactory toolFactory, IAudioService audio, IEffectFactory effectFactory)
     {
         Construct();
 

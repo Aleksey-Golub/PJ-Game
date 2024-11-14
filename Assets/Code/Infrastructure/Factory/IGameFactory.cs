@@ -11,9 +11,10 @@ namespace Code.Infrastructure
         GameObject CreateHero(GameObject at);
         Hud CreateHud();
         void Cleanup();
-        void RegisterProgressWatchers(GameObject gameObject);
+        void RegisterProgressWatchersExternal(GameObject gameObject);
         ResourceSource CreateResourceSource(ResourceSourceType type, Vector3 at);
         ResourceStorage CreateResourceStorage(ResourceStorageType type, Vector3 at);
         SimpleObject CreateSimpleObject(SimpleObjectType type, Vector3 position);
+        GameObject GetGameObject(string gameObjectId, Vector3 at);
     }
 }

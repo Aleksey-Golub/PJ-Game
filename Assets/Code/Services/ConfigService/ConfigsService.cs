@@ -13,11 +13,12 @@ namespace Code.Services
         private const string RESOURCE_STORAGE_CONFIGS_PATH = "Configs/ResourceStorageConfigs/AllResourceStoragesConfigs";
         private const string CONVERTER_CONFIGS_PATH = "Configs/ConverterConfigs/AllConvertersConfigs";
         private const string EFFECTS_CONFIGS_PATH = "Configs/EffectsConfigs/EffectsConfigs";
-        
+
         private const string WINDOWS_MATCHERS_PATH = "Configs/UI/WindowsConfigs";
         private const string RESOURCESOURCES_MATCHERS_PATH = "Configs/ResourceSourceConfigs/ResourceSourcesMatchers";
         private const string RESOURCESTORAGES_MATCHERS_PATH = "Configs/ResourceStorageConfigs/ResourceStoragesMatchers";
         private const string SIMPLEOBJECTS_MATCHERS_PATH = "Configs/SimpleObjects/SimpleObjectsMatchers";
+        private const string GAMEOBJECTS_MATCHERS_PATH = "Configs/ObjectsMatchers";
 
         private Dictionary<ResourceType, ResourceConfig> _resourcesConfigs;
         private Dictionary<ToolType, ToolConfig> _toolsConfigs;
@@ -28,6 +29,7 @@ namespace Code.Services
         private Dictionary<ResourceSourceType, ResourceSourceMatcher> _resourceSourcesMatchers;
         private Dictionary<ResourceStorageType, ResourceStorageMatcher> _resourceStoragesMatchers;
         private Dictionary<SimpleObjectType, SimpleObjectMatcher> _simpleObjectsMatchers;
+        private Dictionary<string, GameObjectMatcher> _gameObjectsMatchers;
 
         public IReadOnlyDictionary<ResourceType, ResourceConfig> ResourcesConfigs => _resourcesConfigs;
         public IReadOnlyDictionary<ToolType, ToolConfig> ToolsConfigs => _toolsConfigs;
@@ -43,11 +45,12 @@ namespace Code.Services
             _resourceStorageConfigs = Resources.Load<ResourceStoragesConfigs>(RESOURCE_STORAGE_CONFIGS_PATH).Configs.ToDictionary(c => c.Type, c => c);
             _converterConfigs = Resources.Load<ConvertersConfigs>(CONVERTER_CONFIGS_PATH).Configs.ToDictionary(c => c.Type, c => c);
             _effectsConfigs = Resources.Load<EffectsConfigs>(EFFECTS_CONFIGS_PATH).Configs.ToDictionary(c => c.Template.EffectId, c => c);
-            
+
             _windowMatchers = Resources.Load<WindowsMatchers>(WINDOWS_MATCHERS_PATH).Matchers.ToDictionary(c => c.WindowId, c => c);
             _resourceSourcesMatchers = Resources.Load<ResourceSourcesMatchers>(RESOURCESOURCES_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
             _resourceStoragesMatchers = Resources.Load<ResourceStoragesMatchers>(RESOURCESTORAGES_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
             _simpleObjectsMatchers = Resources.Load<SimpleObjectsMatchers>(SIMPLEOBJECTS_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
+            _gameObjectsMatchers = Resources.Load<ObjectsMatchers>(GAMEOBJECTS_MATCHERS_PATH).Configs.ToDictionary(c => c.GameObjectId, c => c);
 
             UpgradablesConfigs = GetUpgradablesConfigs();
         }
@@ -69,5 +72,6 @@ namespace Code.Services
         public ResourceSourceMatcher GetMatcherFor(ResourceSourceType type) => _resourceSourcesMatchers[type];
         public ResourceStorageMatcher GetMatcherFor(ResourceStorageType type) => _resourceStoragesMatchers[type];
         public SimpleObjectMatcher GetMatcherFor(SimpleObjectType type) => _simpleObjectsMatchers[type];
+        public GameObjectMatcher GetMatcherFor(string gameObjectId) => _gameObjectsMatchers[gameObjectId];
     }
 }

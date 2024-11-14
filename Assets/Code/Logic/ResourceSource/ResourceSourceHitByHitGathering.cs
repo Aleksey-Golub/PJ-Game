@@ -20,4 +20,6 @@ internal class ResourceSourceHitByHitGathering : ResourceSource
             RestoreHP(1);
         }
     }
+
+    protected override void Exhaust() { }
 }

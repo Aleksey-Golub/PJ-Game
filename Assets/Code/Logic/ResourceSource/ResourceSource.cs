@@ -182,7 +182,7 @@ public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgres
         Dropped?.Invoke(this);
     }
 
-    private void Exhaust()
+    protected virtual void Exhaust()
     {
         _collider2D.enabled = false;
         _view.ShowExhaust();

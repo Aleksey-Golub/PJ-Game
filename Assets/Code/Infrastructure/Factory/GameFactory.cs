@@ -23,6 +23,7 @@ namespace Code.Infrastructure
         private readonly IEffectFactory _effectFactory;
         private readonly IDropCountCalculatorService _dropCountCalculatorService;
         private readonly ITransitionalResourceFactory _transitionalResourceFactory;
+        private readonly CreatedByIdGameObjectsConstructor _createdByIdGameObjectsConstructor;
         private GameObject _heroGameObject;
 
         public GameFactory(
@@ -52,6 +53,8 @@ namespace Code.Infrastructure
             _effectFactory = effectFactory;
             _dropCountCalculatorService = dropCountCalculatorService;
             _transitionalResourceFactory = transitionalResourceFactory;
+
+            _createdByIdGameObjectsConstructor = new(this);
         }
 
         public GameObject CreateHero(GameObject at)
@@ -120,29 +123,7 @@ namespace Code.Infrastructure
             GameObjectMatcher gameObjectMatcher = _configs.GetMatcherFor(gameObjectId);
             GameObject go = InstantiateRegistered(gameObjectMatcher.Template, at);
 
-            if (go.TryGetComponent(out SellBoard sellBoard))
-                sellBoard.Construct(_uiMediator, _configs);
-            else if (go.TryGetComponent(out UpgradeBoard upgradeBoard))
-                upgradeBoard.Construct(_uiMediator, _configs, _progressService);
-            else if (go.TryGetComponent(out ResourceSource resourceSource))
-                resourceSource.Construct(_resourceFactory, _dropCountCalculatorService, _audio, _effectFactory);
-            else if (go.TryGetComponent(out ResourceStorage resourceStorage))
-                resourceStorage.Construct(_resourceFactory, _progressService, _audio, _effectFactory);
-            else if (go.TryGetComponent(out Converter converter))
-                converter.Construct(_resourceFactory, _progressService, _audio, _effectFactory);
-            else if (go.TryGetComponent(out Workbench workbench))
-                workbench.Construct(_resourceFactory, _toolFactory, _audio, _effectFactory);
-            else if (go.TryGetComponent(out Workshop workshop))
-                workshop.Construct(_audio, _effectFactory, this);
-            else if (go.TryGetComponent(out Chunk chunk))
-                chunk.Construct(_audio, _effectFactory, this);
-            else
-            {
-                Logger.LogError($"[GameFactory] try to create game object with unknown type. Id= {gameObjectId}");
-            }
-
-            if (go.TryGetComponent(out UniqueId uniqueId))
-                uniqueId.GenerateId();
+            go.GetComponent<ICreatedByIdGameObject>().Accept(_createdByIdGameObjectsConstructor);
 
             return go;
         }
@@ -202,6 +183,64 @@ namespace Code.Infrastructure
             RegisterProgressWatchers(go);
 
             return go;
+        }
+
+        private class CreatedByIdGameObjectsConstructor : ICreatedByIdGameObjectVisitor
+        {
+            private readonly GameFactory _gameFactory;
+
+            public CreatedByIdGameObjectsConstructor(GameFactory gameFactory)
+            {
+                _gameFactory = gameFactory;
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(SellBoard sellBoard)
+            {
+                sellBoard.Construct(_gameFactory._uiMediator, _gameFactory._configs);
+                GenerateIdIfApplicable(sellBoard);
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(UpgradeBoard upgradeBoard)
+            {
+                upgradeBoard.Construct(_gameFactory._uiMediator, _gameFactory._configs, _gameFactory._progressService);
+                GenerateIdIfApplicable(upgradeBoard);
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(ResourceSource resourceSource)
+            {
+                resourceSource.Construct(_gameFactory._resourceFactory, _gameFactory._dropCountCalculatorService, _gameFactory._audio, _gameFactory._effectFactory);
+                GenerateIdIfApplicable(resourceSource);
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(ResourceStorage resourceStorage)
+            {
+                resourceStorage.Construct(_gameFactory._resourceFactory, _gameFactory._progressService, _gameFactory._audio, _gameFactory._effectFactory);
+                GenerateIdIfApplicable(resourceStorage);
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(Converter converter)
+            {
+                converter.Construct(_gameFactory._resourceFactory, _gameFactory._progressService, _gameFactory._audio, _gameFactory._effectFactory);
+                GenerateIdIfApplicable(converter);
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(Workbench workbench)
+            {
+                workbench.Construct(_gameFactory._resourceFactory, _gameFactory._toolFactory, _gameFactory._audio, _gameFactory._effectFactory);
+                GenerateIdIfApplicable(workbench);
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(Workshop workshop)
+            {
+                workshop.Construct(_gameFactory._audio, _gameFactory._effectFactory, _gameFactory);
+                GenerateIdIfApplicable(workshop);
+            }
+
+            private void GenerateIdIfApplicable(MonoBehaviour monoBehaviour)
+            {
+                if (monoBehaviour.TryGetComponent(out UniqueId uniqueId))
+                    uniqueId.GenerateId();
+            }
         }
     }
 }

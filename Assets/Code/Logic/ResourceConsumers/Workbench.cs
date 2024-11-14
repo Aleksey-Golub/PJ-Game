@@ -2,7 +2,7 @@ using Code.Services;
 using UnityEngine;
 
 [SelectionBase]
-public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
+public class Workbench : SingleUseConsumerBase<ResourceConsumerView>, ICreatedByIdGameObject
 {
     [SerializeField] private ScriptableObject _dropConfigMono;
     [field: SerializeField] public DropSettings DropSettings { get; private set; } = DropSettings.Default;
@@ -76,5 +76,7 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
             Logger.LogError($"[Workbench] DropObject() error : 'Not implemented for {_dropConfig.GetType()}'");
         }
     }
+
+    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
 }
 

@@ -3,7 +3,7 @@ using Code.Services;
 using UnityEngine;
 
 [SelectionBase]
-public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
+public class Workshop : SingleUseConsumerBase<ResourceConsumerView>, ICreatedByIdGameObject
 {
     [SerializeField] private SpawnGameObjectData[] _spawnDatas;
 
@@ -37,4 +37,6 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
         foreach (SpawnGameObjectData data in _spawnDatas)
             _gameFactory.GetGameObject(data.GameObjectId, at: data.Point.position);
     }
+
+    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
 }

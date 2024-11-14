@@ -2,7 +2,7 @@ using Code.Infrastructure;
 using Code.Services;
 using Code.UI.Services;
 
-internal class SellBoard : SimpleObject
+public class SellBoard : SimpleObject, ICreatedByIdGameObject
 {
     private IUIMediator _uiMediator;
     private IConfigsService _configService;
@@ -58,4 +58,6 @@ internal class SellBoard : SimpleObject
 
         _uiMediator.RefreshSellBoardView(_inventory.Storage);
     }
+
+    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
 }

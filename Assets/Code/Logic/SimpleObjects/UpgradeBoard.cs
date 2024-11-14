@@ -3,7 +3,7 @@ using Code.Services;
 using Code.UI.Services;
 using System.Linq;
 
-internal class UpgradeBoard : SimpleObject
+public class UpgradeBoard : SimpleObject, ICreatedByIdGameObject
 {
     private IUIMediator _uiMediator;
     private IConfigsService _configService;
@@ -68,4 +68,6 @@ internal class UpgradeBoard : SimpleObject
             _uiMediator.RefreshUpgradeBoardView();
         }
     }
+
+    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
 }

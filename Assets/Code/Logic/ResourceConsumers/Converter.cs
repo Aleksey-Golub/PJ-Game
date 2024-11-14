@@ -2,7 +2,7 @@ using Code.Services;
 using UnityEngine;
 
 [SelectionBase]
-public class Converter : MonoBehaviour, IResourceConsumer
+public class Converter : MonoBehaviour, IResourceConsumer, ICreatedByIdGameObject
 {
     [SerializeField] private ConverterView _view;
 
@@ -159,4 +159,6 @@ public class Converter : MonoBehaviour, IResourceConsumer
         if (itemId == _config.ID)
             _view.ShowUpload(_currentUpload, GetMaxUpload());
     }
+
+    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
 }

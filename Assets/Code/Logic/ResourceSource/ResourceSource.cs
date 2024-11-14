@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 
 [SelectionBase]
-public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem
+public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem, ICreatedByIdGameObject
 {
     private const int PLAYER_DAMAGE = 1;
 
@@ -214,6 +214,8 @@ public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgres
             data.Position.AsUnityVector() != transform.position
             ;
     }
+
+    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
 }
 
 public enum ResourceSourceType

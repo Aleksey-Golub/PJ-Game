@@ -4,7 +4,7 @@ using Code.Services;
 using UnityEngine;
 
 [SelectionBase]
-public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem
+public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem, ICreatedByIdGameObject
 {
     [field: SerializeField] public bool SceneBuiltInItem { get; private set; }
     [field: SerializeField] public UniqueId UniqueId { get; private set; }
@@ -229,4 +229,6 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
             data.Position.AsUnityVector() != transform.position
             ;
     }
+
+    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
 }

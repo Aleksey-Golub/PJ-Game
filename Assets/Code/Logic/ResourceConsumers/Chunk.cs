@@ -3,6 +3,10 @@ using Code.Services;
 using System.Collections;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 [SelectionBase]
 public class Chunk : SingleUseConsumerBase<ChunkView>
 {
@@ -61,5 +65,15 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
         foreach (Chunk chunk in _chunksToOpen)
             chunk.StartCoroutine(chunk.OpenDelayed());
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        foreach (SpawnGameObjectData data in _spawnDatas)
+        {
+            Handles.Label(data.Point.position, data.GameObjectId);
+        }
+    }
+#endif
 }
 

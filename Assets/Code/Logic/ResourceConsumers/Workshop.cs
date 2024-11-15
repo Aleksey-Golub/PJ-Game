@@ -2,6 +2,10 @@ using Code.Infrastructure;
 using Code.Services;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 [SelectionBase]
 public class Workshop : SingleUseConsumerBase<ResourceConsumerView>, ICreatedByIdGameObject
 {
@@ -39,4 +43,14 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>, ICreatedByI
     }
 
     void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        foreach (SpawnGameObjectData data in _spawnDatas)
+        {
+            Handles.Label(data.Point.position, data.GameObjectId);
+        }
+    }
+#endif
 }

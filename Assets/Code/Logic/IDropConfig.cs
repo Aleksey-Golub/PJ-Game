@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-interface IDropObjectConfig
+public interface IDropObjectConfig
 {
     Sprite Sprite { get; }
 }

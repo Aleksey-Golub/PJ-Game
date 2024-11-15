@@ -1,8 +1,10 @@
+using Code.Data;
+using Code.Infrastructure;
 using Code.Services;
 using UnityEngine;
 
 [SelectionBase]
-public class Workbench : SingleUseConsumerBase<ResourceConsumerView>, ICreatedByIdGameObject
+public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
 {
     [SerializeField] private ScriptableObject _dropConfigMono;
     [field: SerializeField] public DropSettings DropSettings { get; private set; } = DropSettings.Default;
@@ -11,6 +13,8 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>, ICreatedBy
     private IDropObjectConfig _dropConfig;
     private IResourceFactory _resourceFactory;
     private IToolFactory _toolFactory;
+
+    private string Id => UniqueId.Id;
 
     private void OnValidate()
     {
@@ -23,13 +27,19 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>, ICreatedBy
 
     private void Start()
     {
-        var resourceFactory = AllServices.Container.Single<IResourceFactory>();
-        var toolFactory = AllServices.Container.Single<IToolFactory>();
-        var audio = AllServices.Container.Single<IAudioService>();
-        var effectFactory = AllServices.Container.Single<IEffectFactory>();
+        if (SceneBuiltInItem)
+        {
+            var resourceFactory = AllServices.Container.Single<IResourceFactory>();
+            var toolFactory = AllServices.Container.Single<IToolFactory>();
+            var audio = AllServices.Container.Single<IAudioService>();
+            var effectFactory = AllServices.Container.Single<IEffectFactory>();
+            var gameFactory = AllServices.Container.Single<IGameFactory>();
 
-        Construct(resourceFactory, toolFactory, audio, effectFactory);
-        Init();
+            Construct(resourceFactory, toolFactory, audio, effectFactory);
+            Init();
+
+            gameFactory.RegisterProgressWatchersExternal(gameObject);
+        }
     }
 
     public void Construct(IResourceFactory resourceFactory, IToolFactory toolFactory, IAudioService audio, IEffectFactory effectFactory)
@@ -41,6 +51,56 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>, ICreatedBy
 
         _dropConfig = _dropConfigMono as IDropObjectConfig;
         View.Construct(audio, effectFactory);
+    }
+
+    public void InitOnLoad(ResourceConfig resourceConfig, IDropObjectConfig dropObjectConfig)
+    {
+        _needResourceConfig = resourceConfig;
+        _dropConfig = dropObjectConfig;
+    }
+
+    public override void WriteToProgress(GameProgress progress)
+    {
+        var workbenchesOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].WorkbenchesDatas.WorkbenchesOnScene;
+
+        // just to optimize
+        workbenchesOnScene.Dictionary.TryGetValue(Id, out var data);
+        if (data != null && !HasChangesBetweenSavedStateAndCurrentState(data))
+            return;
+
+        workbenchesOnScene.Dictionary[Id] = new WorkbenchOnSceneData(
+            transform.position.AsVectorData(),
+            SceneBuiltInItem,
+            _needResourceConfig.Type,
+            _needResourceCount,
+            _currentNeedResourceCount,
+
+            _dropConfig is ResourceConfig rc ? rc.Type : ResourceType.None,
+            _dropConfig is ToolConfig tc ? tc.Type : ToolType.None,
+            _dropCount
+            );
+    }
+
+    public override void ReadProgress(GameProgress progress)
+    {
+        var workbenchesOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].WorkbenchesDatas.WorkbenchesOnScene;
+
+        // we are in scene object and it is first start of level
+        if (!workbenchesOnScene.Dictionary.TryGetValue(Id, out var myState))
+            return;
+
+        // restore state
+        transform.position = myState.Position.AsUnityVector();
+        _needResourceCount = myState.NeedResourceCount;
+        _currentNeedResourceCount = myState.CurrentNeedResourceCount;
+        _currentPreUpload = _needResourceCount - _currentNeedResourceCount;
+
+        View.ShowNeeds(_currentNeedResourceCount, _needResourceCount);
+        if (_currentNeedResourceCount == 0)
+        {
+            View.ShowExhaust();
+            _exhaust.ExhaustImmediately();
+        }
     }
 
     protected override Sprite GetGenerateObjSprite() => _dropConfig.Sprite;
@@ -77,6 +137,14 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>, ICreatedBy
         }
     }
 
-    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
+    protected override void Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
+
+    private bool HasChangesBetweenSavedStateAndCurrentState(WorkbenchOnSceneData data)
+    {
+        return
+            data.CurrentNeedResourceCount != _currentNeedResourceCount ||
+            data.Position.AsUnityVector() != transform.position
+            ;
+    }
 }
 

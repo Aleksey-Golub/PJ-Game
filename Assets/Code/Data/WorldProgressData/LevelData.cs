@@ -12,6 +12,10 @@ namespace Code.Data
         public ResourceSourcesDatas ResourceSourcesDatas;
         public ResourceStoragesDatas ResourceStoragesDatas;
         public SimpleObjectsDatas SimpleObjectsDatas;
+        public WorkbenchesDatas WorkbenchesDatas;
+        //public WorkshopsDatas WorkshopsDatas;
+        //public ChunksDatas ChunksDatas;
+        //public ConvertersDatas ConvertersDatas;
 
         public LevelData(string name)
         {
@@ -22,6 +26,7 @@ namespace Code.Data
             ResourceSourcesDatas = new ResourceSourcesDatas();
             ResourceStoragesDatas = new ResourceStoragesDatas();
             SimpleObjectsDatas = new SimpleObjectsDatas();
+            WorkbenchesDatas = new WorkbenchesDatas();
         }
     }
 }

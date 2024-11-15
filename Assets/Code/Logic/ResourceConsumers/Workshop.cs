@@ -1,17 +1,30 @@
 using Code.Infrastructure;
 using Code.Services;
 using UnityEngine;
+using Code.Data;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 [SelectionBase]
-public class Workshop : SingleUseConsumerBase<ResourceConsumerView>, ICreatedByIdGameObject
+public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
 {
     [SerializeField] private SpawnGameObjectData[] _spawnDatas;
 
     private IGameFactory _gameFactory;
+
+    #region EDITOR
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        foreach (SpawnGameObjectData data in _spawnDatas)
+        {
+            Handles.Label(data.Point.position, data.GameObjectId);
+        }
+    }
+#endif
+    #endregion
 
     private void Start()
     {
@@ -42,15 +55,15 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>, ICreatedByI
             _gameFactory.GetGameObject(data.GameObjectId, at: data.Point.position);
     }
 
-    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
-
-#if UNITY_EDITOR
-    private void OnDrawGizmosSelected()
+    public override void WriteToProgress(GameProgress progress)
     {
-        foreach (SpawnGameObjectData data in _spawnDatas)
-        {
-            Handles.Label(data.Point.position, data.GameObjectId);
-        }
+        //throw new System.NotImplementedException();
     }
-#endif
+
+    public override void ReadProgress(GameProgress progress)
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    protected override void Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
 }

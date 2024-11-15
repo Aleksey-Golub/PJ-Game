@@ -12,9 +12,10 @@ namespace Code.Infrastructure
         Hud CreateHud();
         void Cleanup();
         void RegisterProgressWatchersExternal(GameObject gameObject);
+        GameObject GetGameObject(string gameObjectId, Vector3 at);
         ResourceSource CreateResourceSource(ResourceSourceType type, Vector3 at);
         ResourceStorage CreateResourceStorage(ResourceStorageType type, Vector3 at);
         SimpleObject CreateSimpleObject(SimpleObjectType type, Vector3 position);
-        GameObject GetGameObject(string gameObjectId, Vector3 at);
+        Workbench CreateWorkbench(Vector3 position);
     }
 }

@@ -118,6 +118,14 @@ namespace Code.Infrastructure
             return simpleObject;
         }
 
+        public Workbench CreateWorkbench(Vector3 at)
+        {
+            Workbench workbench = InstantiateRegistered(AssetPath.WORKBENCH_BASE_PATH, at).GetComponent<Workbench>();
+            workbench.Construct(_resourceFactory, _toolFactory, _audio, _effectFactory);
+
+            return workbench;
+        }
+
         public GameObject GetGameObject(string gameObjectId, Vector3 at)
         {
             GameObjectMatcher gameObjectMatcher = _configs.GetMatcherFor(gameObjectId);
@@ -145,6 +153,14 @@ namespace Code.Infrastructure
                 ProgressWriters.Add(progressWriter);
         }
 
+        private GameObject InstantiateRegistered(string prefabPath)
+        {
+            GameObject gameObject = _assets.Instantiate(path: prefabPath);
+            RegisterProgressWatchers(gameObject);
+
+            return gameObject;
+        }
+
         private GameObject InstantiateRegistered(string prefabPath, Vector3 at)
         {
             GameObject gameObject = _assets.Instantiate(path: prefabPath, at: at);
@@ -167,14 +183,6 @@ namespace Code.Infrastructure
             RegisterProgressWatchers(monoDehaviour.gameObject);
 
             return monoDehaviour;
-        }
-
-        private GameObject InstantiateRegistered(string prefabPath)
-        {
-            GameObject gameObject = _assets.Instantiate(path: prefabPath);
-            RegisterProgressWatchers(gameObject);
-
-            return gameObject;
         }
 
         private GameObject InstantiateRegistered(GameObject prefab, Vector3 at)
@@ -227,6 +235,7 @@ namespace Code.Infrastructure
             void ICreatedByIdGameObjectVisitor.Visit(Workbench workbench)
             {
                 workbench.Construct(_gameFactory._resourceFactory, _gameFactory._toolFactory, _gameFactory._audio, _gameFactory._effectFactory);
+                workbench.Init();
                 GenerateIdIfApplicable(workbench);
             }
 
@@ -234,6 +243,12 @@ namespace Code.Infrastructure
             {
                 workshop.Construct(_gameFactory._audio, _gameFactory._effectFactory, _gameFactory);
                 GenerateIdIfApplicable(workshop);
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(Chunk chunk)
+            {
+                chunk.Construct(_gameFactory._audio, _gameFactory._effectFactory, _gameFactory);
+                GenerateIdIfApplicable(chunk);
             }
 
             private void GenerateIdIfApplicable(MonoBehaviour monoBehaviour)

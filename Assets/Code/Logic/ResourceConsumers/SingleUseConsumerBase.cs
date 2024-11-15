@@ -1,19 +1,23 @@
-﻿using UnityEngine;
+﻿using Code.Data;
+using Code.Services;
+using UnityEngine;
 
 [SelectionBase]
-public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsumer where T : ResourceConsumerView
+public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsumer, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem, ICreatedByIdGameObject where T : ResourceConsumerView
 {
+    [field: SerializeField] public bool SceneBuiltInItem { get; private set; }
+    [field: SerializeField] public UniqueId UniqueId { get; private set; }
     [SerializeField] protected T View;
     [SerializeField] private Collider2D _collider;
 
-    [SerializeField] private ResourceConfig _needResourceConfig;
-    [SerializeField] private int _needResourceCount = 1;
+    [SerializeField] protected ResourceConfig _needResourceConfig;
+    [SerializeField] protected int _needResourceCount = 1;
     [SerializeField] private int _preferedConsumedValue = -1;
     [SerializeField] private Transform _transitionalResourceFinal;
 
-    private IExhaustStrategy _exhaust;
-    private int _currentNeedResourceCount;
-    private int _currentPreUpload;
+    protected int _currentNeedResourceCount;
+    protected IExhaustStrategy _exhaust;
+    protected int _currentPreUpload;
 
     public bool CanInteract => _currentNeedResourceCount != 0 && _currentPreUpload < _needResourceCount;
     public int PreferedConsumedValue => _preferedConsumedValue;
@@ -25,6 +29,9 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
     {
         _exhaust = new ExhaustStrategy(this, _collider);
     }
+
+    public abstract void WriteToProgress(GameProgress progress);
+    public abstract void ReadProgress(GameProgress progress);
 
     public void ApplyPreUpload(int consumedValue)
     {
@@ -51,7 +58,7 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
         };
     }
 
-    protected virtual void Init()
+    public virtual void Init()
     {
         _currentNeedResourceCount = _needResourceCount;
         _currentPreUpload = 0;
@@ -76,4 +83,7 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
 
         _exhaust.ExhaustDelayed(1f);
     }
+
+    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => Accept(visitor);
+    protected abstract void Accept(ICreatedByIdGameObjectVisitor visitor);
 }

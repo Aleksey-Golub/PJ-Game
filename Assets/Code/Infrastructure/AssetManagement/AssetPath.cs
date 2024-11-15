@@ -8,5 +8,6 @@ namespace Code.Infrastructure
         public const string TOOL_PREFAB_PATH = "Environment/Tools/Tool";
         public const string POPUP_PREFAB_PATH = "UI/Popup";
         public const string HERO_PATH = "Player/Player";
+        public const string WORKBENCH_BASE_PATH = "Environment/Workbenchs/Workbench Base";
     }
 }

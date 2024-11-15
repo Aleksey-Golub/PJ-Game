@@ -114,11 +114,35 @@ namespace Code.Infrastructure
             InitResourceSources(loadedSceneName);
             InitResourceStorages(loadedSceneName);
             InitSimpleObjects(loadedSceneName);
+            InitWorkbenches(loadedSceneName);
 
             Hud hud = _gameFactory.CreateHud();
             InitUIMediator(hud);
             GameObject hero = _gameFactory.CreateHero(GameObject.FindWithTag(INITIAL_POINT_TAG));
             CameraFollow(hero);
+        }
+
+        private void InitWorkbenches(string loadedSceneName)
+        {
+            foreach (KeyValuePair<string, WorkbenchOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].WorkbenchesDatas.WorkbenchesOnScene.Dictionary)
+            {
+                if (item.Value.SceneBuiltInItem)
+                    continue;
+
+                Vector3 position = item.Value.Position.AsUnityVector();
+                Workbench workbench = _gameFactory.CreateWorkbench(position);
+                workbench.UniqueId.Id = item.Key;
+
+                IDropObjectConfig dropConfig =
+                    item.Value.DropResourceType != ResourceType.None ?
+                        _configs.GetConfigFor(item.Value.DropResourceType) :
+                        item.Value.DropToolType != ToolType.None ?
+                            _configs.GetConfigFor(item.Value.DropToolType) :
+                            throw new System.ArgumentException("No one valid drop object config found");
+
+                workbench.InitOnLoad(_configs.GetConfigFor(item.Value.NeedResourceType), dropConfig);
+                workbench.Init();
+            }
         }
 
         private void InitSimpleObjects(string loadedSceneName)

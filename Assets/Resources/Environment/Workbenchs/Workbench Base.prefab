@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 1458050401937336200}
   - component: {fileID: 4026247334075091105}
   - component: {fileID: 4172678446958907170}
+  - component: {fileID: 6485278861810701488}
   m_Layer: 0
   m_Name: Workbench Base
   m_TagString: Untagged
@@ -328,6 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab58b3d3760675f439f522100cb90812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SceneBuiltInItem>k__BackingField: 0
+  <UniqueId>k__BackingField: {fileID: 6485278861810701488}
   View: {fileID: 4172678446958907170}
   _collider: {fileID: 6552640614675062389}
   _needResourceConfig: {fileID: 0}
@@ -367,6 +370,19 @@ MonoBehaviour:
   _exhaustSortingOrder: 0
   _dropResourceAudioClip: {fileID: 8300000, guid: 3ab57de827cd43f4e8d6ed4aadbe6c21, type: 3}
   _countTextSortingOrder: 11
+--- !u!114 &6485278861810701488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243883957167352878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cde00d5d7303064c81e2a668778cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
 --- !u!1 &1523873355326629331
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ namespace Code.Services
 {
     public class EffectFactory : IEffectFactory
     {
+        private const string CONTAINER_NAME = "Effect Factory Container";
+
         private readonly Dictionary<EffectId, Pool<Effect>> _pools = new();
         private Transform _container;
         private readonly List<Effect> _inUseItems;
@@ -19,7 +21,7 @@ namespace Code.Services
 
         public void Load()
         {
-            _container = CreateContainer();
+            _container = FactoryHelper.CreateDontDestroyOnLoadGameObject(CONTAINER_NAME).transform;
 
             int poolSize = 10;
             foreach (EffectConfig c in _configs.EffectsConfigs.Values)
@@ -58,13 +60,6 @@ namespace Code.Services
             _inUseItems.Remove(effect);
 
             _pools[effect.EffectId].Recycle(effect);
-        }
-
-        private Transform CreateContainer()
-        {
-            var go = new GameObject("Effect Factory Container");
-            UnityEngine.Object.DontDestroyOnLoad(go);
-            return go.transform;
         }
     }
 }

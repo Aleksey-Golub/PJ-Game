@@ -6,6 +6,8 @@ namespace Code.Services
 {
     internal class ResourceFactory : IResourceFactory
     {
+        private const string CONTAINER_NAME = "Resource Factory Container";
+
         private Pool<Resource> _pool;
         private Transform _container;
         private readonly List<Resource> _inUseItems;
@@ -26,7 +28,7 @@ namespace Code.Services
 
         public void Load()
         {
-            _container = CreateContainer();
+            _container = FactoryHelper.CreateDontDestroyOnLoadGameObject(CONTAINER_NAME).transform;
             Resource resourcePrefab = _assets.Load<Resource>(AssetPath.RESOURCE_PREFAB_PATH);
             int poolSize = 10;
 
@@ -62,13 +64,6 @@ namespace Code.Services
             _inUseItems.Remove(item);
 
             _pool.Recycle(item);
-        }
-
-        private Transform CreateContainer()
-        {
-            var go = new GameObject("Resource Factory Container");
-            UnityEngine.Object.DontDestroyOnLoad(go);
-            return go.transform;
         }
     }
 }

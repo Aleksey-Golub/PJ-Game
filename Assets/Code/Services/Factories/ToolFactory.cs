@@ -6,6 +6,8 @@ namespace Code.Services
 {
     internal class ToolFactory : IToolFactory
     {
+        private const string CONTAINER_NAME = "Tool Factory Container";
+
         private Pool<Tool> _pool;
         private Transform _container;
         private readonly List<Tool> _inUseItems;
@@ -26,7 +28,7 @@ namespace Code.Services
 
         public void Load()
         {
-            _container = CreateContainer();
+            _container = FactoryHelper.CreateDontDestroyOnLoadGameObject(CONTAINER_NAME).transform;
             Tool prefab = _assets.Load<Tool>(AssetPath.TOOL_PREFAB_PATH);
             int poolSize = 10;
 
@@ -50,7 +52,7 @@ namespace Code.Services
                 tool.Construct(this, _audio, _progressService);
 
             tool.UniqueId.GenerateId();
-            
+
             _inUseItems.Add(tool);
             return tool;
         }
@@ -61,13 +63,6 @@ namespace Code.Services
             _inUseItems.Remove(item);
 
             _pool.Recycle(item);
-        }
-
-        private Transform CreateContainer()
-        {
-            var go = new GameObject("Tool Factory Container");
-            UnityEngine.Object.DontDestroyOnLoad(go);
-            return go.transform;
         }
     }
 }

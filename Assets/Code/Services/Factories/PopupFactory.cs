@@ -6,6 +6,8 @@ namespace Code.Services
 {
     internal class PopupFactory : IPopupFactory
     {
+        private const string CONTAINER_NAME = "Popup Factory Container";
+
         private Pool<Popup> _pool;
         private Transform _container;
         private readonly List<Popup> _inUseItems;
@@ -20,7 +22,7 @@ namespace Code.Services
 
         public void Load()
         {
-            _container = CreateContainer();
+            _container = FactoryHelper.CreateDontDestroyOnLoadGameObject(CONTAINER_NAME).transform;
             Popup prefab = _assets.Load<Popup>(AssetPath.POPUP_PREFAB_PATH);
             int poolSize = 10;
 
@@ -53,13 +55,6 @@ namespace Code.Services
             _inUseItems.Remove(item);
 
             _pool.Recycle(item);
-        }
-
-        private Transform CreateContainer()
-        {
-            var go = new GameObject("Popup Factory Container");
-            UnityEngine.Object.DontDestroyOnLoad(go);
-            return go.transform;
         }
     }
 }

@@ -6,6 +6,8 @@ namespace Code.Services
 {
     internal class TransitionalResourceFactory : ITransitionalResourceFactory
     {
+        private const string CONTAINER_NAME = "Transitional Resource Factory Container";
+
         private Pool<TransitionalResource> _pool;
         private Transform _container;
         private readonly List<TransitionalResource> _inUseItems;
@@ -22,7 +24,7 @@ namespace Code.Services
 
         public void Load()
         {
-            _container = CreateContainer();
+            _container = FactoryHelper.CreateDontDestroyOnLoadGameObject(CONTAINER_NAME).transform;
             TransitionalResource prefab = _assets.Load<TransitionalResource>(AssetPath.TRANSITIONALRESOURCE_PREFAB_PATH);
             int poolSize = 10;
 
@@ -55,13 +57,6 @@ namespace Code.Services
             _inUseItems.Remove(item);
 
             _pool.Recycle(item);
-        }
-
-        private Transform CreateContainer()
-        {
-            var go = new GameObject("Transitional Resource Factory Container");
-            UnityEngine.Object.DontDestroyOnLoad(go);
-            return go.transform;
         }
     }
 }

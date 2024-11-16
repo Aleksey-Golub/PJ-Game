@@ -672,6 +672,7 @@ GameObject:
   - component: {fileID: 3038428441021045121}
   - component: {fileID: 1315607478251406289}
   - component: {fileID: 757873309983448514}
+  - component: {fileID: 8712205242452939932}
   m_Layer: 0
   m_Name: Dry Fruit Bush
   m_TagString: Untagged
@@ -795,6 +796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427018c82d42f4d419382b15d9590f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SceneBuiltInItem>k__BackingField: 0
+  <UniqueId>k__BackingField: {fileID: 8712205242452939932}
   View: {fileID: 757873309983448514}
   _collider: {fileID: 711750896507664534}
   _needResourceConfig: {fileID: 11400000, guid: be0099c985df4ee4eb479cf234b33e24, type: 2}
@@ -803,7 +806,7 @@ MonoBehaviour:
   _transitionalResourceFinal: {fileID: 2694871646836225384}
   _spawnDatas:
   - GameObjectId: Fruit bush
-    Point: {fileID: 4416775832208801865}
+    Position: {x: 0, y: 0, z: 0}
 --- !u!114 &757873309983448514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,3 +833,16 @@ MonoBehaviour:
   _exhaustSortingOrder: 0
   _dropResourceAudioClip: {fileID: 0}
   _countTextSortingOrder: 11
+--- !u!114 &8712205242452939932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8377299975734826862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cde00d5d7303064c81e2a668778cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 

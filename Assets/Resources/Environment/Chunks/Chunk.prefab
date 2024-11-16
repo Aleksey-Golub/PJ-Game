@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 3784962417177573447}
   - component: {fileID: 3518718039559736877}
   - component: {fileID: 5822955048464810056}
+  - component: {fileID: 3677699562348318455}
   m_Layer: 0
   m_Name: Chunk
   m_TagString: Untagged
@@ -593,6 +594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89238ba7450a92c4eb9f782917391805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SceneBuiltInItem>k__BackingField: 0
+  <UniqueId>k__BackingField: {fileID: 3677699562348318455}
   View: {fileID: 5822955048464810056}
   _collider: {fileID: 4150247686637877270}
   _needResourceConfig: {fileID: 0}
@@ -629,6 +632,19 @@ MonoBehaviour:
   _exhaustSortingOrder: 0
   _dropResourceAudioClip: {fileID: 8300000, guid: 35fb56be06240d147bc7edfd80a16a5c, type: 3}
   _countTextSortingOrder: 11
+--- !u!114 &3677699562348318455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5976456484715342169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cde00d5d7303064c81e2a668778cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
 --- !u!1 &6118140523911051942
 GameObject:
   m_ObjectHideFlags: 0

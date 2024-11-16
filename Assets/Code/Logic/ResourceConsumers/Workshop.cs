@@ -20,7 +20,8 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
     {
         foreach (SpawnGameObjectData data in _spawnDatas)
         {
-            Handles.Label(data.Point.position, data.GameObjectId);
+            Vector3 pos = data.Point != null ? data.Point.position : data.Position;
+            Handles.Label(pos, data.GameObjectId);
         }
     }
 #endif
@@ -52,7 +53,7 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
         View.ShowHitEffect();
 
         foreach (SpawnGameObjectData data in _spawnDatas)
-            _gameFactory.GetGameObject(data.GameObjectId, at: data.Point.position);
+            _gameFactory.GetGameObject(data.GameObjectId, at: data.Point != null ? data.Point.position : data.Position);
     }
 
     public override void WriteToProgress(GameProgress progress)

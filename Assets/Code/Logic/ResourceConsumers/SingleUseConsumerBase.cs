@@ -15,19 +15,21 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
     [SerializeField] private int _preferedConsumedValue = -1;
     [SerializeField] private Transform _transitionalResourceFinal;
 
-    protected int _currentNeedResourceCount;
-    protected IExhaustStrategy _exhaust;
-    protected int _currentPreUpload;
+    protected int CurrentNeedResourceCount;
+    protected IExhaustStrategy ExhaustStrategy;
+    protected int CurrentPreUpload;
 
-    public bool CanInteract => _currentNeedResourceCount != 0 && _currentPreUpload < _needResourceCount;
+    public bool CanInteract => CurrentNeedResourceCount != 0 && CurrentPreUpload < _needResourceCount;
     public int PreferedConsumedValue => _preferedConsumedValue;
-    public int FreeSpace => _needResourceCount - _currentPreUpload;
+    public int FreeSpace => _needResourceCount - CurrentPreUpload;
 
     public Vector3 TransitionalResourceFinalPosition => _transitionalResourceFinal.position;
 
+    protected string Id => UniqueId.Id;
+
     protected void Construct()
     {
-        _exhaust = new ExhaustStrategy(this, _collider);
+        ExhaustStrategy = new ExhaustStrategy(this, _collider);
     }
 
     public abstract void WriteToProgress(GameProgress progress);
@@ -35,15 +37,15 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
 
     public void ApplyPreUpload(int consumedValue)
     {
-        _currentPreUpload += consumedValue;
+        CurrentPreUpload += consumedValue;
     }
 
     public void Consume(int value)
     {
-        _currentNeedResourceCount -= value;
-        View.ShowNeeds(_currentNeedResourceCount, _needResourceCount);
+        CurrentNeedResourceCount -= value;
+        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount);
 
-        if (_currentNeedResourceCount == 0)
+        if (CurrentNeedResourceCount == 0)
         {
             OnFilled();
         }
@@ -54,17 +56,17 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
         return new ResourceConsumerNeeds()
         {
             ResourceType = _needResourceConfig.Type,
-            CurrentNeedResourceCount = _currentNeedResourceCount
+            CurrentNeedResourceCount = CurrentNeedResourceCount
         };
     }
 
     public virtual void Init()
     {
-        _currentNeedResourceCount = _needResourceCount;
-        _currentPreUpload = 0;
+        CurrentNeedResourceCount = _needResourceCount;
+        CurrentPreUpload = 0;
 
-        View.Init(_needResourceConfig.Sprite, _currentNeedResourceCount, GetGenerateObjSprite());
-        View.ShowNeeds(_currentNeedResourceCount, _needResourceCount);
+        View.Init(_needResourceConfig.Sprite, CurrentNeedResourceCount, GetGenerateObjSprite());
+        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount);
     }
 
     protected abstract Sprite GetGenerateObjSprite();
@@ -77,11 +79,19 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
         Exhaust();
     }
 
+    protected virtual bool HasChangesBetweenSavedStateAndCurrentState(SingleUseConsumerBaseOnScene data)
+    {
+        return
+            data.CurrentNeedResourceCount != CurrentNeedResourceCount ||
+            data.Position.AsUnityVector() != transform.position
+            ;
+    }
+
     private void Exhaust()
     {
         View.ShowExhaust();
 
-        _exhaust.ExhaustDelayed(1f);
+        ExhaustStrategy.ExhaustDelayed(1f);
     }
 
     void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => Accept(visitor);

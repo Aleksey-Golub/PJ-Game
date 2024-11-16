@@ -115,11 +115,28 @@ namespace Code.Infrastructure
             InitResourceStorages(loadedSceneName);
             InitSimpleObjects(loadedSceneName);
             InitWorkbenches(loadedSceneName);
+            InitChunks(loadedSceneName);
 
             Hud hud = _gameFactory.CreateHud();
             InitUIMediator(hud);
             GameObject hero = _gameFactory.CreateHero(GameObject.FindWithTag(INITIAL_POINT_TAG));
             CameraFollow(hero);
+        }
+
+        private void InitChunks(string loadedSceneName)
+        {
+            foreach (var item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].ChunksDatas.ChunksOnScene.Dictionary)
+            {
+                if (item.Value.SceneBuiltInItem)
+                    continue;
+
+                Vector3 position = item.Value.Position.AsUnityVector();
+                Chunk chunk = _gameFactory.CreateChunk(position);
+                chunk.UniqueId.Id = item.Key;
+
+                chunk.InitOnLoad(_configs.GetConfigFor(item.Value.NeedResourceType));
+                chunk.Init();
+            }
         }
 
         private void InitWorkbenches(string loadedSceneName)

@@ -126,6 +126,14 @@ namespace Code.Infrastructure
             return workbench;
         }
 
+        public Chunk CreateChunk(Vector3 at)
+        {
+            Chunk chunk = InstantiateRegistered(AssetPath.CHUNK_BASE_PATH, at).GetComponent<Chunk>();
+            chunk.Construct(_audio, _effectFactory, this);
+
+            return chunk;
+        }
+
         public GameObject GetGameObject(string gameObjectId, Vector3 at)
         {
             GameObjectMatcher gameObjectMatcher = _configs.GetMatcherFor(gameObjectId);
@@ -242,12 +250,14 @@ namespace Code.Infrastructure
             void ICreatedByIdGameObjectVisitor.Visit(Workshop workshop)
             {
                 workshop.Construct(_gameFactory._audio, _gameFactory._effectFactory, _gameFactory);
+                workshop.Init();
                 GenerateIdIfApplicable(workshop);
             }
 
             void ICreatedByIdGameObjectVisitor.Visit(Chunk chunk)
             {
                 chunk.Construct(_gameFactory._audio, _gameFactory._effectFactory, _gameFactory);
+                chunk.Init();
                 GenerateIdIfApplicable(chunk);
             }
 

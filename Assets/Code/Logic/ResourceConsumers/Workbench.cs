@@ -14,8 +14,6 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
     private IResourceFactory _resourceFactory;
     private IToolFactory _toolFactory;
 
-    private string Id => UniqueId.Id;
-
     private void OnValidate()
     {
         if (_dropConfigMono is not null && _dropConfigMono is not IDropObjectConfig config)
@@ -53,9 +51,9 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
         View.Construct(audio, effectFactory);
     }
 
-    public void InitOnLoad(ResourceConfig resourceConfig, IDropObjectConfig dropObjectConfig)
+    public void InitOnLoad(ResourceConfig needResourceConfig, IDropObjectConfig dropObjectConfig)
     {
-        _needResourceConfig = resourceConfig;
+        _needResourceConfig = needResourceConfig;
         _dropConfig = dropObjectConfig;
     }
 
@@ -73,7 +71,7 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
             SceneBuiltInItem,
             _needResourceConfig.Type,
             _needResourceCount,
-            _currentNeedResourceCount,
+            CurrentNeedResourceCount,
 
             _dropConfig is ResourceConfig rc ? rc.Type : ResourceType.None,
             _dropConfig is ToolConfig tc ? tc.Type : ToolType.None,
@@ -92,14 +90,16 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
         // restore state
         transform.position = myState.Position.AsUnityVector();
         _needResourceCount = myState.NeedResourceCount;
-        _currentNeedResourceCount = myState.CurrentNeedResourceCount;
-        _currentPreUpload = _needResourceCount - _currentNeedResourceCount;
+        CurrentNeedResourceCount = myState.CurrentNeedResourceCount;
+        CurrentPreUpload = _needResourceCount - CurrentNeedResourceCount;
 
-        View.ShowNeeds(_currentNeedResourceCount, _needResourceCount);
-        if (_currentNeedResourceCount == 0)
+        _dropCount = myState.DropCount;
+
+        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount);
+        if (CurrentNeedResourceCount == 0)
         {
             View.ShowExhaust();
-            _exhaust.ExhaustImmediately();
+            ExhaustStrategy.ExhaustImmediately();
         }
     }
 
@@ -138,13 +138,5 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
     }
 
     protected override void Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
-
-    private bool HasChangesBetweenSavedStateAndCurrentState(WorkbenchOnSceneData data)
-    {
-        return
-            data.CurrentNeedResourceCount != _currentNeedResourceCount ||
-            data.Position.AsUnityVector() != transform.position
-            ;
-    }
 }
 

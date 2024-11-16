@@ -9,5 +9,6 @@ namespace Code.Infrastructure
         public const string POPUP_PREFAB_PATH = "UI/Popup";
         public const string HERO_PATH = "Player/Player";
         public const string WORKBENCH_BASE_PATH = "Environment/Workbenchs/Workbench Base";
+        public const string CHUNK_BASE_PATH = "Environment/Chunks/Chunk";
     }
 }

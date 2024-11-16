@@ -17,5 +17,6 @@ namespace Code.Infrastructure
         ResourceStorage CreateResourceStorage(ResourceStorageType type, Vector3 at);
         SimpleObject CreateSimpleObject(SimpleObjectType type, Vector3 position);
         Workbench CreateWorkbench(Vector3 position);
+        Chunk CreateChunk(Vector3 position);
     }
 }

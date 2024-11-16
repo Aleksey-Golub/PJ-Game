@@ -302,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 3dbf32a7b8508e94ab6b30762e58501d, type: 2}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.data[0].Point
@@ -317,6 +317,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2090663793}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _spawnDatas.Array.data[3].Point
+      value: 
+      objectReference: {fileID: 1802390980}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.data[0].GameObjectId
       value: Workshop 5 Stone to StoneStore
       objectReference: {fileID: 0}
@@ -327,6 +335,14 @@ PrefabInstance:
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.data[2].GameObjectId
       value: Workbench 40 Water to Gem
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _spawnDatas.Array.data[3].GameObjectId
+      value: Cow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677699562348318455, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: Id
+      value: GameScene_179ef305-ae55-48b6-abc9-76b119bcb89c
       objectReference: {fileID: 0}
     - target: {fileID: 5976456484715342169, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: m_Name
@@ -341,6 +357,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5554270241645749558, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2090663793}
+    - targetCorrespondingSourceObject: {fileID: 5554270241645749558, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1802390980}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 251683558586394055, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       insertIndex: -1
@@ -644,6 +663,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7126236964075378665, guid: 0b00471b6e12d5543b6fc7a031379b3d, type: 3}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.data[0].GameObjectId
       value: Pine
       objectReference: {fileID: 0}
@@ -654,6 +677,10 @@ PrefabInstance:
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.data[2].GameObjectId
       value: Dry Fruit Bush
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677699562348318455, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: Id
+      value: GameScene_333e5500-983a-4da8-a1c4-aec0b7b6103e
       objectReference: {fileID: 0}
     - target: {fileID: 5976456484715342169, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: m_Name
@@ -2519,6 +2546,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6613979676420224672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1802390979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1802390980}
+  m_Layer: 0
+  m_Name: p (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1802390980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802390979}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.97, y: -1.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 197627110}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1809020374
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,6 +3156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dry Fruit Bush
       objectReference: {fileID: 0}
+    - target: {fileID: 8712205242452939932, guid: 422903e07b505314bbdb6b25ea26ad3b, type: 3}
+      propertyPath: Id
+      value: GameScene_939a6091-35b6-486a-b156-a22b14a4a9c8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3188,9 +3250,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1079248933125590498, guid: 5f2eb46fc699dba4cb64d0ce1efde3a1, type: 3}
+      propertyPath: Id
+      value: GameScene_615fb191-1f4b-44df-bcb4-ee0797f51959
+      objectReference: {fileID: 0}
     - target: {fileID: 4345366506313223764, guid: 5f2eb46fc699dba4cb64d0ce1efde3a1, type: 3}
       propertyPath: m_Name
       value: Workshop 20 Wood to WoodStore
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274220612531353518, guid: 5f2eb46fc699dba4cb64d0ce1efde3a1, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8054079704414268901, guid: 5f2eb46fc699dba4cb64d0ce1efde3a1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3945,6 +4015,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4514682230725709931, guid: aadf4ef6250ef4d42aa20fd4d34f19ca, type: 3}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.data[0].GameObjectId
       value: Bush
       objectReference: {fileID: 0}
@@ -3955,6 +4029,10 @@ PrefabInstance:
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.data[2].GameObjectId
       value: Pot 5 grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677699562348318455, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: Id
+      value: GameScene_303afb89-1b80-403d-903b-ab31478b11ff
       objectReference: {fileID: 0}
     - target: {fileID: 5976456484715342169, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: m_Name
@@ -4312,6 +4390,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1303016142290632520, guid: 92da7f59781f9cf41947cca6ec004459, type: 3}
+      propertyPath: Id
+      value: GameScene_80caa603-5a09-4b36-90ff-b24f04f3a5ab
+      objectReference: {fileID: 0}
     - target: {fileID: 2351629663921552638, guid: 92da7f59781f9cf41947cca6ec004459, type: 3}
       propertyPath: m_Name
       value: Workshop 150 Coin to Pig
@@ -4355,6 +4437,10 @@ PrefabInstance:
     - target: {fileID: 8298634075593580367, guid: 92da7f59781f9cf41947cca6ec004459, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654867847048054020, guid: 92da7f59781f9cf41947cca6ec004459, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

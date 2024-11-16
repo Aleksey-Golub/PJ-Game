@@ -14,7 +14,7 @@ namespace Code.Data
         public SimpleObjectsDatas SimpleObjectsDatas;
         public WorkbenchesDatas WorkbenchesDatas;
         public ChunksDatas ChunksDatas;
-        //public WorkshopsDatas WorkshopsDatas;
+        public WorkshopsDatas WorkshopsDatas;
         //public ConvertersDatas ConvertersDatas;
 
         public LevelData(string name)
@@ -28,6 +28,7 @@ namespace Code.Data
             SimpleObjectsDatas = new SimpleObjectsDatas();
             WorkbenchesDatas = new WorkbenchesDatas();
             ChunksDatas = new ChunksDatas();
+            WorkshopsDatas = new WorkshopsDatas();
         }
     }
 }

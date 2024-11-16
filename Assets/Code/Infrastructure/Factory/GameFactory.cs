@@ -134,6 +134,28 @@ namespace Code.Infrastructure
             return chunk;
         }
 
+        public Workshop CreateWorkshop(WorkshopType type, Vector3 at)
+        {
+            string assetPath;
+            switch (type)
+            {
+                case WorkshopType.WorkshopBase:
+                    assetPath = AssetPath.WORKSHOP_BASE_PATH;
+                    break;
+                case WorkshopType.DryFruitBush:
+                    assetPath = AssetPath.DRYFRUITBUSH_PATH;
+                    break;
+                case WorkshopType.None:
+                default:
+                    throw new System.NotImplementedException($"[GameFactory] CreateWorkshop(). Not implemented for {type}");
+            }
+
+            Workshop workshop = InstantiateRegistered(assetPath, at).GetComponent<Workshop>();
+            workshop.Construct(_audio, _effectFactory, this);
+
+            return workshop;
+        }
+
         public GameObject GetGameObject(string gameObjectId, Vector3 at)
         {
             GameObjectMatcher gameObjectMatcher = _configs.GetMatcherFor(gameObjectId);

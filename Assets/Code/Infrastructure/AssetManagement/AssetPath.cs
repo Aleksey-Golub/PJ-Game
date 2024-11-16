@@ -10,5 +10,7 @@ namespace Code.Infrastructure
         public const string HERO_PATH = "Player/Player";
         public const string WORKBENCH_BASE_PATH = "Environment/Workbenchs/Workbench Base";
         public const string CHUNK_BASE_PATH = "Environment/Chunks/Chunk";
+        public const string WORKSHOP_BASE_PATH = "Environment/Workshops/Workshop Base";
+        public const string DRYFRUITBUSH_PATH = "Environment/Workshops/Dry Fruit Bush";
     }
 }

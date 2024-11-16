@@ -3112,6 +3112,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1315607478251406289, guid: 422903e07b505314bbdb6b25ea26ad3b, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4416775832208801865, guid: 422903e07b505314bbdb6b25ea26ad3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5

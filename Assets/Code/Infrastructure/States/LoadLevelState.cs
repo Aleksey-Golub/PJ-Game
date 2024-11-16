@@ -116,6 +116,7 @@ namespace Code.Infrastructure
             InitSimpleObjects(loadedSceneName);
             InitWorkbenches(loadedSceneName);
             InitChunks(loadedSceneName);
+            InitWorkshops(loadedSceneName);
 
             Hud hud = _gameFactory.CreateHud();
             InitUIMediator(hud);
@@ -123,9 +124,25 @@ namespace Code.Infrastructure
             CameraFollow(hero);
         }
 
+        private void InitWorkshops(string loadedSceneName)
+        {
+            foreach (KeyValuePair<string, WorkshopOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].WorkshopsDatas.WorkshopsOnScene.Dictionary)
+            {
+                if (item.Value.SceneBuiltInItem)
+                    continue;
+
+                Vector3 position = item.Value.Position.AsUnityVector();
+                Workshop workshop = _gameFactory.CreateWorkshop(item.Value.Type, position);
+                workshop.UniqueId.Id = item.Key;
+
+                workshop.InitOnLoad(_configs.GetConfigFor(item.Value.NeedResourceType));
+                workshop.Init();
+            }
+        }
+
         private void InitChunks(string loadedSceneName)
         {
-            foreach (var item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].ChunksDatas.ChunksOnScene.Dictionary)
+            foreach (KeyValuePair<string, ChunkOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].ChunksDatas.ChunksOnScene.Dictionary)
             {
                 if (item.Value.SceneBuiltInItem)
                     continue;

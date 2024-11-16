@@ -537,6 +537,7 @@ MonoBehaviour:
   _needResourceCount: 1
   _preferedConsumedValue: -1
   _transitionalResourceFinal: {fileID: 3290852168821790381}
+  _type: 1
   _spawnDatas:
   - GameObjectId: none
     Point: {fileID: 7149906763114512797}

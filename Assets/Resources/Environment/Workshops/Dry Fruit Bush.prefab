@@ -804,8 +804,10 @@ MonoBehaviour:
   _needResourceCount: 5
   _preferedConsumedValue: -1
   _transitionalResourceFinal: {fileID: 2694871646836225384}
+  _type: 2
   _spawnDatas:
   - GameObjectId: Fruit bush
+    Point: {fileID: 4416775832208801865}
     Position: {x: 0, y: 0, z: 0}
 --- !u!114 &757873309983448514
 MonoBehaviour:

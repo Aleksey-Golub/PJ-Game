@@ -3049,6 +3049,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2998547351671331081, guid: 37800749ca0d21a448db979f816fb563, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4605980977504968842, guid: 37800749ca0d21a448db979f816fb563, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.19
@@ -3092,6 +3096,10 @@ PrefabInstance:
     - target: {fileID: 6751174208672137423, guid: 37800749ca0d21a448db979f816fb563, type: 3}
       propertyPath: m_Name
       value: Cow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8783212380690859616, guid: 37800749ca0d21a448db979f816fb563, type: 3}
+      propertyPath: Id
+      value: GameScene_a8ba787b-4aba-4373-b897-9884e902dad8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3795,6 +3803,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pig
       objectReference: {fileID: 0}
+    - target: {fileID: 3230864562650371201, guid: 94700ca3fe878644ab8ffcf5f01e65b2, type: 3}
+      propertyPath: Id
+      value: GameScene_a4917a3e-547b-4bc3-9e4f-d39687bd7cf3
+      objectReference: {fileID: 0}
     - target: {fileID: 7699414182955577963, guid: 94700ca3fe878644ab8ffcf5f01e65b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03
@@ -3834,6 +3846,10 @@ PrefabInstance:
     - target: {fileID: 7699414182955577963, guid: 94700ca3fe878644ab8ffcf5f01e65b2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984278567806749672, guid: 94700ca3fe878644ab8ffcf5f01e65b2, type: 3}
+      propertyPath: <SceneBuiltInItem>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

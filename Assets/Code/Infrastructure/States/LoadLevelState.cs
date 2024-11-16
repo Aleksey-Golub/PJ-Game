@@ -117,11 +117,27 @@ namespace Code.Infrastructure
             InitWorkbenches(loadedSceneName);
             InitChunks(loadedSceneName);
             InitWorkshops(loadedSceneName);
+            InitConverters(loadedSceneName);
 
             Hud hud = _gameFactory.CreateHud();
             InitUIMediator(hud);
             GameObject hero = _gameFactory.CreateHero(GameObject.FindWithTag(INITIAL_POINT_TAG));
             CameraFollow(hero);
+        }
+
+        private void InitConverters(string loadedSceneName)
+        {
+            foreach (KeyValuePair<string, ConverterOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].ConvertersDatas.ConvertersOnScene.Dictionary)
+            {
+                if (item.Value.SceneBuiltInItem)
+                    continue;
+
+                Vector3 position = item.Value.Position.AsUnityVector();
+                Converter converter = _gameFactory.CreateConverter(item.Value.Type, position);
+                converter.UniqueId.Id = item.Key;
+
+                converter.Init();
+            }
         }
 
         private void InitWorkshops(string loadedSceneName)

@@ -19,5 +19,6 @@ namespace Code.Infrastructure
         Workbench CreateWorkbench(Vector3 position);
         Chunk CreateChunk(Vector3 position);
         Workshop CreateWorkshop(WorkshopType type, Vector3 position);
+        Converter CreateConverter(ConverterType type, Vector3 position);
     }
 }

@@ -156,6 +156,29 @@ namespace Code.Infrastructure
             return workshop;
         }
 
+        public Converter CreateConverter(ConverterType type, Vector3 at)
+        {
+            string assetPath;
+            switch (type)
+            {
+                case ConverterType.CowConverter:
+                    assetPath = AssetPath.COW_PATH;
+                    break;
+                case ConverterType.PigConverter:
+                    assetPath = AssetPath.PIG_PATH;
+                    break;
+                case ConverterType.FurnaceConverter:
+                case ConverterType.None:
+                default:
+                    throw new System.NotImplementedException($"[GameFactory] CreateWorkshop(). Not implemented for {type}");
+            }
+
+            Converter converter = InstantiateRegistered(assetPath, at).GetComponent<Converter>();
+            converter.Construct(_resourceFactory, _progressService, _audio, _effectFactory);
+
+            return converter;
+        }
+
         public GameObject GetGameObject(string gameObjectId, Vector3 at)
         {
             GameObjectMatcher gameObjectMatcher = _configs.GetMatcherFor(gameObjectId);
@@ -259,6 +282,7 @@ namespace Code.Infrastructure
             void ICreatedByIdGameObjectVisitor.Visit(Converter converter)
             {
                 converter.Construct(_gameFactory._resourceFactory, _gameFactory._progressService, _gameFactory._audio, _gameFactory._effectFactory);
+                converter.Init();
                 GenerateIdIfApplicable(converter);
             }
 

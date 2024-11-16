@@ -611,6 +611,7 @@ GameObject:
   - component: {fileID: 8117329054102748089}
   - component: {fileID: 5623336128910246262}
   - component: {fileID: 2660675285612508292}
+  - component: {fileID: 2194059615455043103}
   m_Layer: 0
   m_Name: Converter Base
   m_TagString: Untagged
@@ -757,6 +758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cde38585109e72489f40afcd8fe6073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SceneBuiltInItem>k__BackingField: 0
+  <UniqueId>k__BackingField: {fileID: 2194059615455043103}
   _view: {fileID: 2660675285612508292}
   _config: {fileID: 0}
   _needResourceConfig: {fileID: 0}
@@ -766,7 +769,7 @@ MonoBehaviour:
   _preferedConsumedValue: -1
   _transitionalResourceFinal: {fileID: 1073683285250529884}
   _dropResourceConfig: {fileID: 0}
-  _dropSettings:
+  <DropSettings>k__BackingField:
     DropStrategy: 1
     DropGroupingStrategy: 2
     DropRadius: 1.3
@@ -801,6 +804,19 @@ MonoBehaviour:
   _uploadText: {fileID: 2059744760853433954}
   _progress: {fileID: 3611104134612729988}
   _progressFg: {fileID: 2869917655759853612}
+--- !u!114 &2194059615455043103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190069127457577136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cde00d5d7303064c81e2a668778cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
 --- !u!1 &4957346829216237473
 GameObject:
   m_ObjectHideFlags: 0

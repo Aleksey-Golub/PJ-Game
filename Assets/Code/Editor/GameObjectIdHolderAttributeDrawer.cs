@@ -11,6 +11,13 @@ public class GameObjectIdHolderAttributeDrawer : PropertyDrawer
     {
         if (property.propertyType == SerializedPropertyType.String)
         {
+            if (property.hasMultipleDifferentValues)
+            {
+                //EditorGUI.LabelField(position, label, new GUIContent("—"));
+                EditorGUI.PropertyField(position, property);
+                return;
+            }
+
             EditorGUI.BeginProperty(position, label, property);
 
             _choiceIndex = Array.IndexOf(GameObjectsIds.Ids, property.stringValue);

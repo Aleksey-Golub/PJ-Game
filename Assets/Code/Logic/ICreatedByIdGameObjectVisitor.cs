@@ -9,4 +9,5 @@ public interface ICreatedByIdGameObjectVisitor
     void Visit(Workbench workbench);
     void Visit(Workshop workshop);
     void Visit(Chunk chunk);
+    void Visit(Dungeon dungeon);
 }

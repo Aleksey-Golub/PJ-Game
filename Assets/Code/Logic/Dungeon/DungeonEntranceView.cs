@@ -36,12 +36,13 @@ public class DungeonEntranceView : MonoBehaviour
 
         _progress.SetActive(!done);
         _marker.SetActive(done);
+    }
 
-        if (done)
-        {
-            ShowOpenEffect();
-            PlayOpenSound();
-        }
+    internal void HideProgress()
+    {
+        _spriteRenderer.sprite = _readySprite;
+        _progress.SetActive(false);
+        _marker.SetActive(true);
     }
 
     internal void ShowForceOpened()
@@ -50,9 +51,6 @@ public class DungeonEntranceView : MonoBehaviour
 
         _progress.SetActive(false);
         _marker.SetActive(true);
-
-        ShowOpenEffect();
-        PlayOpenSound();
     }
 
     internal void ShowForceClosed()
@@ -63,13 +61,13 @@ public class DungeonEntranceView : MonoBehaviour
         _marker.SetActive(false);
     }
 
-    private void ShowOpenEffect()
+    internal void ShowOpenEffect()
     {
         if (_openEffectType != EffectId.None)
             _effectFactory.Get(_openEffectType, _effectTemplate).Play();
     }
 
-    private void PlayOpenSound()
+    internal void PlayOpenSound()
     {
         if (_openAudioClip != null)
             _audio.PlaySfxAtPosition(_openAudioClip, transform.position);

@@ -5,7 +5,12 @@ using System;
 using UnityEngine;
 
 [SelectionBase]
-public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem, ICreatedByIdGameObject
+public class ResourceSource : MonoBehaviour,
+    ISavedProgressReader,
+    ISavedProgressWriter,
+    IUniqueIdHolder,
+    IPossibleSceneBuiltInItem,
+    ICreatedByIdGameObject
 {
     private const int PLAYER_DAMAGE = 1;
 
@@ -85,12 +90,12 @@ public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgres
 
         resourceSourceOnScene.Dictionary[Id] = new ResourceSourceOnSceneData(
             transform.position.AsVectorData(),
+            SceneBuiltInItem,
             _type,
             _resourceConfig.Type,
             _dropResourceCount,
             _restorationTimer,
-            _currentHitPoints,
-            SceneBuiltInItem
+            _currentHitPoints
             );
     }
 
@@ -98,7 +103,7 @@ public class ResourceSource : MonoBehaviour, ISavedProgressReader, ISavedProgres
     {
         var rSourceOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].ResourceSourcesDatas.ResourceSourcesOnScene;
 
-        // we are in scene object and it is first start of level
+        // we are build-in-scene object and it is first start of level
         if (!rSourceOnScene.Dictionary.TryGetValue(Id, out var myState))
             return;
 

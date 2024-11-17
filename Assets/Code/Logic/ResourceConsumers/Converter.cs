@@ -120,7 +120,7 @@ public class Converter : MonoBehaviour, IResourceConsumer, ISavedProgressReader,
     {
         var convertersOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].ConvertersDatas.ConvertersOnScene;
 
-        // we are in scene object and it is first start of level
+        // we are build-in-scene object and it is first start of level
         if (!convertersOnScene.Dictionary.TryGetValue(Id, out var myState))
             return;
 

@@ -77,10 +77,10 @@ namespace Code.Infrastructure
             return hud;
         }
 
-        public ResourceSource CreateResourceSource(ResourceSourceType type, Vector3 at)
+        public ResourceSource CreateResourceSource(ResourceSourceType type, Vector3 at, bool registerProgressWatchers = true)
         {
             ResourceSourceMatcher rSourceMatcher = _configs.GetMatcherFor(type);
-            ResourceSource resourceSource = InstantiateRegistered(rSourceMatcher.Template, at);
+            ResourceSource resourceSource = InstantiateRegistered(rSourceMatcher.Template, at, registerProgressWatchers);
 
             resourceSource.Construct(_resourceFactory, _dropCountCalculatorService, _audio, _effectFactory);
 
@@ -179,14 +179,29 @@ namespace Code.Infrastructure
             return converter;
         }
 
-        public GameObject GetGameObject(string gameObjectId, Vector3 at)
+        public Dungeon CreateDungeon(Vector3 at)
+        {
+            Dungeon dungeon = InstantiateRegistered(AssetPath.DUNGEON_BASE_PATH, at).GetComponent<Dungeon>();
+            dungeon.Construct(this, _audio, _effectFactory, _progressService);
+
+            return dungeon;
+        }
+
+        public GameObject GetGameObject(string gameObjectId, Vector3 at, bool registerProgressWatchers = true)
         {
             GameObjectMatcher gameObjectMatcher = _configs.GetMatcherFor(gameObjectId);
-            GameObject go = InstantiateRegistered(gameObjectMatcher.Template, at);
+            GameObject go = InstantiateRegistered(gameObjectMatcher.Template, at, registerProgressWatchers);
 
             go.GetComponent<ICreatedByIdGameObject>().Accept(_createdByIdGameObjectsConstructor);
 
             return go;
+        }
+
+        public void Recycle(GameObject gameObject)
+        {
+            UnRegisterProgressWatchers(gameObject);
+
+            Object.Destroy(gameObject);
         }
 
         public void Cleanup()
@@ -206,42 +221,61 @@ namespace Code.Infrastructure
                 ProgressWriters.Add(progressWriter);
         }
 
-        private GameObject InstantiateRegistered(string prefabPath)
+        private void UnRegisterProgressWatchers(GameObject gameObject)
+        {
+            foreach (ISavedProgressReader progressReader in gameObject.GetComponentsInChildren<ISavedProgressReader>())
+                ProgressReaders.Remove(progressReader);
+
+            foreach (ISavedProgressWriter progressWriter in gameObject.GetComponentsInChildren<ISavedProgressWriter>())
+                ProgressWriters.Remove(progressWriter);
+        }
+
+        private GameObject InstantiateRegistered(string prefabPath, bool registerProgressWatchers = true)
         {
             GameObject gameObject = _assets.Instantiate(path: prefabPath);
-            RegisterProgressWatchers(gameObject);
+
+            if (registerProgressWatchers)
+                RegisterProgressWatchers(gameObject);
 
             return gameObject;
         }
 
-        private GameObject InstantiateRegistered(string prefabPath, Vector3 at)
+        private GameObject InstantiateRegistered(string prefabPath, Vector3 at, bool registerProgressWatchers = true)
         {
             GameObject gameObject = _assets.Instantiate(path: prefabPath, at: at);
-            RegisterProgressWatchers(gameObject);
+
+            if (registerProgressWatchers)
+                RegisterProgressWatchers(gameObject);
 
             return gameObject;
         }
 
-        private T InstantiateRegistered<T>(T prefab) where T : MonoBehaviour
+        private T InstantiateRegistered<T>(T prefab, bool registerProgressWatchers = true) where T : MonoBehaviour
         {
             T monoDehaviour = Object.Instantiate<T>(prefab);
-            RegisterProgressWatchers(monoDehaviour.gameObject);
+
+            if (registerProgressWatchers)
+                RegisterProgressWatchers(monoDehaviour.gameObject);
 
             return monoDehaviour;
         }
 
-        private T InstantiateRegistered<T>(T prefab, Vector3 at) where T : MonoBehaviour
+        private T InstantiateRegistered<T>(T prefab, Vector3 at, bool registerProgressWatchers = true) where T : MonoBehaviour
         {
             T monoDehaviour = Object.Instantiate<T>(prefab, at, Quaternion.identity);
-            RegisterProgressWatchers(monoDehaviour.gameObject);
+
+            if (registerProgressWatchers)
+                RegisterProgressWatchers(monoDehaviour.gameObject);
 
             return monoDehaviour;
         }
 
-        private GameObject InstantiateRegistered(GameObject prefab, Vector3 at)
+        private GameObject InstantiateRegistered(GameObject prefab, Vector3 at, bool registerProgressWatchers = true)
         {
             GameObject go = Object.Instantiate(prefab, at, Quaternion.identity);
-            RegisterProgressWatchers(go);
+
+            if (registerProgressWatchers)
+                RegisterProgressWatchers(go);
 
             return go;
         }
@@ -305,6 +339,14 @@ namespace Code.Infrastructure
                 chunk.Construct(_gameFactory._audio, _gameFactory._effectFactory, _gameFactory);
                 chunk.Init();
                 GenerateIdIfApplicable(chunk);
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(Dungeon dungeon)
+            {
+                dungeon.Construct(_gameFactory, _gameFactory._audio, _gameFactory._effectFactory, _gameFactory._progressService);
+
+                dungeon.Spawn();
+                GenerateIdIfApplicable(dungeon);
             }
 
             private void GenerateIdIfApplicable(MonoBehaviour monoBehaviour)

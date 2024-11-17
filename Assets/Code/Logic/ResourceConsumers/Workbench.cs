@@ -83,7 +83,7 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
     {
         var workbenchesOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].WorkbenchesDatas.WorkbenchesOnScene;
 
-        // we are in scene object and it is first start of level
+        // we are build-in-scene object and it is first start of level
         if (!workbenchesOnScene.Dictionary.TryGetValue(Id, out var myState))
             return;
 

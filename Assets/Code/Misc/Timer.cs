@@ -10,7 +10,17 @@ public class Timer
     public event Action<Timer> Elapsed;
     public event Action<Timer> Changed;
 
+    public Timer(bool isElapsed = false)
+    {
+        IsElapsed = isElapsed;
+    }
+
     public void Start(float timer)
+    {
+        StartAsPartialPassed(timer, 0);
+    }
+
+    public void StartAsPartialPassed(float timer, float timerPassed)
     {
         if (timer <= 0)
         {
@@ -19,7 +29,7 @@ public class Timer
         }
 
         Duration = timer;
-        Passed = 0;
+        Passed = timerPassed;
         IsElapsed = false;
 
         IsStarted = true;

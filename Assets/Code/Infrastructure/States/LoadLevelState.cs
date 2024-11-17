@@ -71,6 +71,8 @@ namespace Code.Infrastructure
             _toolFactory.Load();
             _transitionalResourceFactory.Load();
 
+            InitProgressForLevel(sceneName);
+
             _sceneLoader.Load(sceneName, OnLoaded);
         }
 
@@ -80,7 +82,6 @@ namespace Code.Infrastructure
         private void OnLoaded()
         {
             string loadedSceneName = _loadingSceneName;
-            InitProgressForLevel(loadedSceneName);
 
             InitUIRoot();
             InitGameWorld(loadedSceneName);
@@ -118,11 +119,28 @@ namespace Code.Infrastructure
             InitChunks(loadedSceneName);
             InitWorkshops(loadedSceneName);
             InitConverters(loadedSceneName);
+            InitDungeons(loadedSceneName);
 
             Hud hud = _gameFactory.CreateHud();
             InitUIMediator(hud);
             GameObject hero = _gameFactory.CreateHero(GameObject.FindWithTag(INITIAL_POINT_TAG));
             CameraFollow(hero);
+        }
+
+        private void InitDungeons(string loadedSceneName)
+        {
+            foreach (KeyValuePair<string, DungeonOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].DungeonsDatas.DungeonsOnScene.Dictionary)
+            {
+                if (item.Value.SceneBuiltInItem)
+                    continue;
+
+                Vector3 position = item.Value.Position.AsUnityVector();
+                Dungeon dungeon = _gameFactory.CreateDungeon(position);
+                dungeon.UniqueId.Id = item.Key;
+
+                //dungeon.InitOnLoad(_configs.GetConfigFor(item.Value.NeedResourceType));
+                //dungeon.Init();
+            }
         }
 
         private void InitConverters(string loadedSceneName)

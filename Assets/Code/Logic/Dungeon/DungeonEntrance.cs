@@ -1,9 +1,10 @@
+using Code.Data;
 using Code.Services;
 using System;
 using UnityEngine;
 
 [SelectionBase]
-public class DungeonEntrance : MonoBehaviour
+public class DungeonEntrance : MonoBehaviour, ISaveState<DungeonEntranceOnScene>, IRestoreState<DungeonEntranceOnScene>
 {
     [SerializeField] private DungeonEntranceView _view;
     [SerializeField] private InteractNeed _interactNeed;
@@ -16,34 +17,55 @@ public class DungeonEntrance : MonoBehaviour
 
     public event Action<DungeonEntrance> InteractedByPlayer;
 
-    private void Start()
-    {
-        var audio = AllServices.Container.Single<IAudioService>();
-        var effectFactory = AllServices.Container.Single<IEffectFactory>();
-
-        Construct(audio, effectFactory);
-    }
-
     public void Construct(IAudioService audio, IEffectFactory effectFactory)
     {
-        _restoreTimer = new Timer();
+        _restoreTimer = new Timer(_openInStart);
         _restoreTimer.Changed += OnTimerChanged;
-
-        if (_openInStart)
-            _restoreTimer.Start(Constants.EPSILON);
+        _restoreTimer.Elapsed += OnTimerElapsed;
 
         _view.Construct(audio, effectFactory);
+
+        if (_openInStart)
+            _view.HideProgress();
     }
 
     private void OnDestroy()
     {
         if (_restoreTimer != null)
+        {
             _restoreTimer.Changed -= OnTimerChanged;
+            _restoreTimer.Elapsed -= OnTimerElapsed;
+        }
     }
 
     private void Update()
     {
         _restoreTimer.OnUpdate(Time.deltaTime);
+    }
+
+    public DungeonEntranceOnScene SaveState()
+    {
+        return new DungeonEntranceOnScene(
+            _isForcedOpen,
+            new TimerData(_restoreTimer.IsStarted, _restoreTimer.Passed, _restoreTimer.Duration)
+            );
+    }
+
+    public void RestoreState(DungeonEntranceOnScene state)
+    {
+        _isForcedOpen = state.IsForcedOpen;
+        if (_isForcedOpen)
+            _view.ShowForceOpened();
+
+        if (state.TimerData.IsStarted)
+        {
+            _restoreTimer.StartAsPartialPassed(state.TimerData.Duration, state.TimerData.Passed);
+        }
+        else
+        {
+            if (_openInStart)
+                _view.HideProgress();
+        }
     }
 
     internal bool CanInteract(Player player)
@@ -62,6 +84,8 @@ public class DungeonEntrance : MonoBehaviour
     {
         _isForcedOpen = true;
         _view.ShowForceOpened();
+        _view.ShowOpenEffect();
+        _view.PlayOpenSound();
     }
 
     internal void ForceClose()
@@ -83,5 +107,13 @@ public class DungeonEntrance : MonoBehaviour
     private void OnTimerChanged(Timer timer)
     {
         _view.ShowProgress(timer.Passed, timer.Duration);
+    }
+
+    private void OnTimerElapsed(Timer timer)
+    {
+        OnTimerChanged(timer);
+
+        _view.ShowOpenEffect();
+        _view.PlayOpenSound();
     }
 }

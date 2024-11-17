@@ -16,6 +16,7 @@ namespace Code.Data
         public ChunksDatas ChunksDatas;
         public WorkshopsDatas WorkshopsDatas;
         public ConvertersDatas ConvertersDatas;
+        public DungeonsDatas DungeonsDatas;
 
         public LevelData(string name)
         {
@@ -30,6 +31,7 @@ namespace Code.Data
             ChunksDatas = new ChunksDatas();
             WorkshopsDatas = new WorkshopsDatas();
             ConvertersDatas = new ConvertersDatas();
+            DungeonsDatas = new DungeonsDatas();
         }
     }
 }

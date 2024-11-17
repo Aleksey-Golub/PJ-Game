@@ -14,5 +14,6 @@ namespace Code.Infrastructure
         public const string DRYFRUITBUSH_PATH = "Environment/Workshops/Dry Fruit Bush";
         public const string COW_PATH = "Environment/Converters/Cow Variant";
         public const string PIG_PATH = "Environment/Converters/Pig Variant";
+        public const string DUNGEON_BASE_PATH = "Environment/Dungeon/Dungeon Base";
     }
 }

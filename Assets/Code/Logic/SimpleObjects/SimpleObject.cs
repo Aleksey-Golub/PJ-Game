@@ -16,7 +16,7 @@ public class SimpleObject : MonoBehaviour, ISavedProgressReader, ISavedProgressW
     {
         var simpleObjectsOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].SimpleObjectsDatas.SimpleObjectsOnScene;
 
-        // we are in scene object and it is first start of level
+        // we are build-in-scene object and it is first start of level
         if (!simpleObjectsOnScene.Dictionary.TryGetValue(Id, out var myState))
             return;
 

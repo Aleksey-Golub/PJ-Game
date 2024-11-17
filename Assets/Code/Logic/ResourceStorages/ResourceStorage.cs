@@ -107,7 +107,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
     {
         var rStoragesOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].ResourceStoragesDatas.ResourceStoragesOnScene;
 
-        // we are in scene object and it is first start of level
+        // we are build-in-scene object and it is first start of level
         if (!rStoragesOnScene.Dictionary.TryGetValue(Id, out var myState))
             return;
 

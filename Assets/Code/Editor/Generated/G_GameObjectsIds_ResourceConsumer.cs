@@ -1,29 +1,10 @@
-public static class GameObjectsIds 
+public static class G_GameObjectsIds_ResourceConsumer 
 {
     public static readonly string[] Ids = new string[]
     {
         "none",
-        "Sell Board",
-        "Upgrade Board",
-        "Bush",
-        "Pine",
-        "Rock",
-        "Fruit bush",
-        "Slime",
-        "Carrot crate",
-        "Carrot in ground",
-        "Coin storage",
-        "Grass  storage",
-        "Egg  storage",
-        "Stone  storage",
-        "Water  storage",
-        "Wood  storage",
         "Cow",
         "Pig",
-        "Pot base",
-        "Pot 5 grass",
-        "Chest base",
-        "Chest 1 Gem",
         "Workbench Base",
         "Workbench 5 Milk to Sword",
         "Workbench 10 Grass to Axe",
@@ -50,8 +31,6 @@ public static class GameObjectsIds
         "Workshop 20 Coin to CoinStore",
         "Workshop 20 Wood to WoodStore",
         "Workshop 25 Coin to Cow",
-        "Workshop 150 Coin to Pig",
-        "Dungeon Base",
-        "Dungeon Slimes First"
+        "Workshop 150 Coin to Pig"
     };
 }

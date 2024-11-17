@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEditor;
@@ -20,24 +21,33 @@ public class ObjectsMatchersEditor : Editor
 
         if (GUILayout.Button("Generate Ids"))
         {
-            List<string> ids = new();
-            foreach (GameObjectMatcher matcher in _target.Configs)
+            foreach (GameObjectType t in Enum.GetValues(typeof(GameObjectType)))
             {
-                string id = matcher.GameObjectId;
-                if (!ids.Contains(id))
-                {
-                    ids.Add(id);
-                }
-                else
-                {
-                    Debug.LogError($"Id= {id} for '{matcher.Template.name}' already exists for gameObject= '{_target.Configs.Find(m => m.GameObjectId == id).Template.name}'. Ids have to be unique.\nGenerating stopped.");
-                    return;
-                }
-            }
+                if (t is GameObjectType.All or GameObjectType.None)
+                    continue;
 
-            //ids.Sort();
-            ids.Insert(0, "none");
-            Generate("Assets/Code/Editor/Generated/GameObjectsIds.cs", "GameObjectsIds", ids);
+                List<string> ids = new();
+                foreach (GameObjectMatcher matcher in _target.Configs)
+                {
+                    if (matcher.Type != t)
+                        continue;
+
+                    string id = matcher.GameObjectId;
+                    if (!ids.Contains(id))
+                    {
+                        ids.Add(id);
+                    }
+                    else
+                    {
+                        Debug.LogError($"Id= {id} for '{matcher.Template.name}' already exists for gameObject= '{_target.Configs.Find(m => m.GameObjectId == id).Template.name}'. Ids have to be unique.\nGenerating stopped.");
+                        return;
+                    }
+                }
+
+                //ids.Sort();
+                ids.Insert(0, "none");
+                Generate($"Assets/Code/Editor/Generated/G_GameObjectsIds_{t}.cs", $"G_GameObjectsIds_{t}", ids);
+            }
         }
     }
 
@@ -60,7 +70,7 @@ public class ObjectsMatchersEditor : Editor
 
         WriteText(path, builder.ToString());
 
-        Debug.Log("Ids generating success!");
+        Debug.Log($"Ids '{@class}' generating success!");
     }
 
     private static void WriteText(string path, string text)
@@ -75,7 +85,7 @@ public class ObjectsMatchersEditor : Editor
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"Exception while generate: {e.Message}");
+            Debug.LogError($"Exception while generate: {e.Message}. Path= '{path}'");
         }
     }
 }

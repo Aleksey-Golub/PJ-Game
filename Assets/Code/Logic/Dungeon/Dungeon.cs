@@ -187,7 +187,7 @@ public class Dungeon : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter
     [System.Serializable]
     internal struct DungeonSpawnData
     {
-        [GameObjectIdHolder]
+        [GameObjectIdHolder(GameObjectType.ResourceSource)]
         public string ResourceSourceId;
         public Vector3[] LocalPositions;
     }

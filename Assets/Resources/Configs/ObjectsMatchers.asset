@@ -109,3 +109,7 @@ MonoBehaviour:
     Template: {fileID: 34774306316643939, guid: 70e596e10143bab4295bac2d4e593627, type: 3}
   - GameObjectId: Workshop 150 Coin to Pig
     Template: {fileID: 2351629663921552638, guid: 92da7f59781f9cf41947cca6ec004459, type: 3}
+  - GameObjectId: Dungeon Base
+    Template: {fileID: 4832262605655957631, guid: 2aef2a424de892e4e9938cdae3eba559, type: 3}
+  - GameObjectId: Dungeon Slimes First
+    Template: {fileID: 8181099005682108660, guid: b3133d088abcc1e45ab03e7c0a3ac0fa, type: 3}

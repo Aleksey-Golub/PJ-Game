@@ -50,6 +50,8 @@ public static class GameObjectsIds
         "Workshop 20 Coin to CoinStore",
         "Workshop 20 Wood to WoodStore",
         "Workshop 25 Coin to Cow",
-        "Workshop 150 Coin to Pig"
+        "Workshop 150 Coin to Pig",
+        "Dungeon Base",
+        "Dungeon Slimes First"
     };
 }

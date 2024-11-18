@@ -5,6 +5,7 @@ using UnityEngine;
 [SelectionBase]
 public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsumer, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem, ICreatedByIdGameObject where T : ResourceConsumerView
 {
+    [field: SerializeField] public bool Available { get; protected set; } = true;
     [field: SerializeField] public bool SceneBuiltInItem { get; private set; }
     [field: SerializeField] public UniqueId UniqueId { get; private set; }
     [SerializeField] protected T View;
@@ -19,7 +20,7 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
     protected IExhaustStrategy ExhaustStrategy;
     protected int CurrentPreUpload;
 
-    public bool CanInteract => CurrentNeedResourceCount != 0 && CurrentPreUpload < _needResourceCount;
+    public bool CanInteract => Available && CurrentNeedResourceCount != 0 && CurrentPreUpload < _needResourceCount;
     public int PreferedConsumedValue => _preferedConsumedValue;
     public int FreeSpace => _needResourceCount - CurrentPreUpload;
 
@@ -43,7 +44,7 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
     public void Consume(int value)
     {
         CurrentNeedResourceCount -= value;
-        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount);
+        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount, Available);
 
         if (CurrentNeedResourceCount == 0)
         {
@@ -60,13 +61,19 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
         };
     }
 
+    public void SetAvailable()
+    {
+        Available = true;
+        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount, Available);
+    }
+
     public virtual void Init()
     {
         CurrentNeedResourceCount = _needResourceCount;
         CurrentPreUpload = 0;
 
         View.Init(_needResourceConfig.Sprite, CurrentNeedResourceCount, GetGenerateObjSprite());
-        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount);
+        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount, Available);
     }
 
     protected abstract Sprite GetGenerateObjSprite();
@@ -82,6 +89,7 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
     protected virtual bool HasChangesBetweenSavedStateAndCurrentState(SingleUseConsumerBaseOnScene data)
     {
         return
+            data.IsAvailable != Available ||
             data.CurrentNeedResourceCount != CurrentNeedResourceCount ||
             data.Position.AsUnityVector() != transform.position
             ;

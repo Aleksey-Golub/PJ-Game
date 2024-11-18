@@ -16,6 +16,7 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
     [SerializeField] private bool _openByOtherOnly;
     [SerializeField] private SpawnGameObjectData[] _spawnDatas;
     [SerializeField] private Chunk[] _chunksToOpen;
+    [SerializeField] private Chunk[] _chunksToSetAvailable;
     [SerializeField] private float _openDelay = 0.5f;
 
     private IGameFactory _gameFactory;
@@ -79,6 +80,7 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
             _needResourceConfig.Type,
             _needResourceCount,
             CurrentNeedResourceCount,
+            Available,
 
             _spawnDatas.Select(sd => new Code.Data.SpawnGameObjectData(sd.GameObjectId, sd.Point != null ? sd.Point.position.AsVectorData() : sd.Position.AsVectorData())).ToArray(),
             opened: _opened,
@@ -101,6 +103,7 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
         _needResourceCount = myState.NeedResourceCount;
         CurrentNeedResourceCount = myState.CurrentNeedResourceCount;
         CurrentPreUpload = _needResourceCount - CurrentNeedResourceCount;
+        Available = myState.IsAvailable;
 
         _spawnDatas = myState.SpawnData.Select(sd => new SpawnGameObjectData() { GameObjectId = sd.GameObjectId, Position = sd.Position.AsUnityVector() }).ToArray();
         _opened = myState.Opened;
@@ -108,7 +111,7 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
         _delayedOpenStart = myState.DelayedOpenStart;
         _delayedOpenElapsedTime = myState.DelayedOpenElapsedTime;
 
-        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount);
+        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount, Available);
         if (_opened)
         {
             View.ShowExhaust();
@@ -125,6 +128,7 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
     protected override void OnFilled()
     {
         OpenChainedChunks();
+        SetChunksAvailable();
 
         base.OnFilled();
 
@@ -171,6 +175,12 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
     {
         foreach (Chunk chunk in _chunksToOpen)
             chunk.StartCoroutine(chunk.OpenDelayed());
+    }
+
+    private void SetChunksAvailable()
+    {
+        foreach (Chunk chunk in _chunksToSetAvailable)
+            chunk.SetAvailable();
     }
 
     protected override void Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);

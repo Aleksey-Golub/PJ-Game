@@ -15,11 +15,13 @@
             ResourceType needResourceType,
             int needResourceCount,
             int currentNeedResourceCount,
+            bool isAvailable,
             SpawnGameObjectData[] spawnData,
             bool opened,
             bool openByOtherOnly,
             bool delayedOpenStart,
-            float delayedOpenElapsedTime) : base(position, sceneBuiltInItem, needResourceType, needResourceCount, currentNeedResourceCount)
+            float delayedOpenElapsedTime
+            ) : base(position, sceneBuiltInItem, needResourceType, needResourceCount, currentNeedResourceCount, isAvailable)
         {
             SpawnData = spawnData;
             Opened = opened;

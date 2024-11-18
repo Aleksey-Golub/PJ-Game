@@ -594,6 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89238ba7450a92c4eb9f782917391805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Available>k__BackingField: 0
   <SceneBuiltInItem>k__BackingField: 0
   <UniqueId>k__BackingField: {fileID: 3677699562348318455}
   View: {fileID: 5822955048464810056}
@@ -605,6 +606,7 @@ MonoBehaviour:
   _openByOtherOnly: 0
   _spawnDatas: []
   _chunksToOpen: []
+  _chunksToSetAvailable: []
   _openDelay: 0.5
 --- !u!114 &5822955048464810056
 MonoBehaviour:

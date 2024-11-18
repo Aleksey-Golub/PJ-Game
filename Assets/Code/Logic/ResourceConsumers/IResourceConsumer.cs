@@ -3,7 +3,7 @@
 interface IResourceConsumer
 {
     bool CanInteract { get; }
-    
+    bool Available { get; }
     /// <summary>
     /// Ignored if less then 1
     /// </summary>
@@ -14,6 +14,7 @@ interface IResourceConsumer
     ResourceConsumerNeeds GetNeeds();
     void Consume(int value);
     void ApplyPreUpload(int consumedValue);
+    void SetAvailable();
 }
 
 public struct ResourceConsumerNeeds

@@ -13,9 +13,11 @@
             ResourceType needResourceType,
             int needResourceCount,
             int currentNeedResourceCount,
+            bool isAvailable,
             ResourceType dropResourceType,
             ToolType dropToolType,
-            int dropCount) : base(position, sceneBuiltInItem, needResourceType, needResourceCount, currentNeedResourceCount)
+            int dropCount
+            ) : base(position, sceneBuiltInItem, needResourceType, needResourceCount, currentNeedResourceCount, isAvailable)
         {
             DropResourceType = dropResourceType;
             DropToolType = dropToolType;

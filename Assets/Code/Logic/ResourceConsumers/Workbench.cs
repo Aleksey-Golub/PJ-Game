@@ -72,6 +72,7 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
             _needResourceConfig.Type,
             _needResourceCount,
             CurrentNeedResourceCount,
+            Available,
 
             _dropConfig is ResourceConfig rc ? rc.Type : ResourceType.None,
             _dropConfig is ToolConfig tc ? tc.Type : ToolType.None,
@@ -95,7 +96,7 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
 
         _dropCount = myState.DropCount;
 
-        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount);
+        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount, Available);
         if (CurrentNeedResourceCount == 0)
         {
             View.ShowExhaust();

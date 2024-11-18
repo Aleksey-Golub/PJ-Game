@@ -71,6 +71,7 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
             _needResourceConfig.Type,
             _needResourceCount,
             CurrentNeedResourceCount,
+            Available,
 
             _spawnDatas.Select(sd => new Code.Data.SpawnGameObjectData(sd.GameObjectId, sd.Point != null ? sd.Point.position.AsVectorData() : sd.Position.AsVectorData())).ToArray(),
             type: _type
@@ -93,7 +94,7 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
 
         _spawnDatas = myState.SpawnData.Select(sd => new SpawnGameObjectData() { GameObjectId = sd.GameObjectId, Position = sd.Position.AsUnityVector() }).ToArray();
 
-        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount);
+        View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount, Available);
         if (CurrentNeedResourceCount == 0)
         {
             View.ShowExhaust();

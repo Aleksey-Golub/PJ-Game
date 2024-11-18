@@ -46,11 +46,11 @@ public class ResourceConsumerView : MonoBehaviour
         _generateObjImage.sprite = generateObjSprite;
     }
 
-    internal virtual void ShowNeeds(int currentNeedResourceCount, int totalNeedResourceCount)
+    internal virtual void ShowNeeds(int currentNeedResourceCount, int totalNeedResourceCount, bool isAvailable)
     {
         _needText.text = currentNeedResourceCount.ToString();
 
-        _cloud.SetActive(currentNeedResourceCount != 0);
+        _cloud.SetActive(isAvailable && currentNeedResourceCount != 0);
     }
 
     internal void PlayDropResourceSound()

@@ -12,9 +12,10 @@
             ResourceType needResourceType,
             int needResourceCount,
             int currentNeedResourceCount,
+            bool isAvailable,
             SpawnGameObjectData[] spawnData,
             WorkshopType type
-            ) : base(position, sceneBuiltInItem, needResourceType, needResourceCount, currentNeedResourceCount)
+            ) : base(position, sceneBuiltInItem, needResourceType, needResourceCount, currentNeedResourceCount, isAvailable)
         {
             SpawnData = spawnData;
             Type = type;

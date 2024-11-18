@@ -6,6 +6,7 @@ using UnityEngine;
 [SelectionBase]
 public class Converter : MonoBehaviour, IResourceConsumer, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem, ICreatedByIdGameObject
 {
+    [field: SerializeField] public bool Available { get; private set; } = true;
     [field: SerializeField] public bool SceneBuiltInItem { get; private set; }
     [field: SerializeField] public UniqueId UniqueId { get; private set; }
     [SerializeField] private ConverterView _view;
@@ -29,7 +30,7 @@ public class Converter : MonoBehaviour, IResourceConsumer, ISavedProgressReader,
     private IResourceFactory _resourceFactory;
     private IPersistentProgressService _progressService;
 
-    public bool CanInteract => _currentUpload < GetMaxUpload() && _currentPreUpload < GetMaxUpload();
+    public bool CanInteract => Available && _currentUpload < GetMaxUpload() && _currentPreUpload < GetMaxUpload();
     public int PreferedConsumedValue => _preferedConsumedValue;
     public int FreeSpace => GetMaxUpload() - _currentPreUpload;
     public Vector3 TransitionalResourceFinalPosition => _transitionalResourceFinal.position;
@@ -93,7 +94,7 @@ public class Converter : MonoBehaviour, IResourceConsumer, ISavedProgressReader,
         _timer = 0;
 
         _view.Init(_needResourceConfig.Sprite, _currentUpload, _dropResourceConfig.Sprite);
-        _view.ShowNeeds(_singleUpload, 0);
+        _view.ShowNeeds(_singleUpload, 0, Available);
         _view.ShowUpload(_currentUpload, GetMaxUpload());
         _view.ShowProgress(_timer, _converTime);
     }
@@ -110,6 +111,7 @@ public class Converter : MonoBehaviour, IResourceConsumer, ISavedProgressReader,
         convertersOnScene.Dictionary[Id] = new ConverterOnSceneData(
             transform.position.AsVectorData(),
             SceneBuiltInItem,
+            Available,
             _config.Type,
             _currentUpload,
             _timer
@@ -172,6 +174,12 @@ public class Converter : MonoBehaviour, IResourceConsumer, ISavedProgressReader,
     public void ApplyPreUpload(int consumedValue)
     {
         _currentPreUpload += consumedValue;
+    }
+
+    public void SetAvailable()
+    {
+        Available = true;
+        _view.ShowNeeds(_singleUpload, 0, Available);
     }
 
     private bool HasChangesBetweenSavedStateAndCurrentState(ConverterOnSceneData data)

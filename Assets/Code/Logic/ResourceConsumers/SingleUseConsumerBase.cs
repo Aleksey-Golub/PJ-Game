@@ -27,6 +27,7 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
     public Vector3 TransitionalResourceFinalPosition => _transitionalResourceFinal.position;
 
     protected string Id => UniqueId.Id;
+    protected Collider2D Collider => _collider;
 
     protected void Construct()
     {

@@ -130,6 +130,7 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
         OpenChainedChunks();
         SetChunksAvailable();
 
+        Collider.enabled = false;
         base.OnFilled();
 
         _opened = true;

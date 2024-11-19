@@ -11,8 +11,11 @@ using UnityEditor;
 
 public class Dungeon : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem, ICreatedByIdGameObject
 {
+    [GameObjectIdHolder(GameObjectType.Dungeon)]
+    [SerializeField] private string _gameObjectId;
     [field: SerializeField] public bool SceneBuiltInItem { get; private set; }
     [field: SerializeField] public UniqueId UniqueId { get; private set; }
+    [SerializeField] private Transform _containerSelf;
     [Space]
     [SerializeField] private DungeonSpawnData[] _spawnDatas;
     [SerializeField] private DungeonEntrance _entrance;
@@ -32,7 +35,7 @@ public class Dungeon : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter
         {
             foreach (Vector3 localPos in data.LocalPositions)
             {
-                Vector3 pos = localPos + transform.position;
+                Vector3 pos = localPos + _containerSelf.position;
                 Handles.Label(pos, data.ResourceSourceId);
             }
         }
@@ -97,6 +100,7 @@ public class Dungeon : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter
         dungeonsOnScene.Dictionary[Id] = new DungeonOnSceneData(
             transform.position.AsVectorData(),
             SceneBuiltInItem,
+            _gameObjectId,
             spawnData: _spawnDatas.Select(sd => new Code.Data.DungeonSpawnData(sd.ResourceSourceId, sd.LocalPositions.Select(lp => lp.AsVectorData()).ToArray())).ToArray(),
             resourceSourcesIds: _spawnedResourceSources.Select(rs => rs.UniqueId.Id).ToArray(),
             entranceState: _entrance.SaveState(),
@@ -143,7 +147,7 @@ public class Dungeon : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter
         {
             foreach (var localPos in data.LocalPositions)
             {
-                ResourceSource r = _gameFactory.GetGameObject(data.ResourceSourceId, localPos + transform.position).GetComponent<ResourceSource>();
+                ResourceSource r = _gameFactory.GetGameObject(data.ResourceSourceId, localPos + _containerSelf.position).GetComponent<ResourceSource>();
 
                 r.Dropped += ResourceSourceDropped;
 

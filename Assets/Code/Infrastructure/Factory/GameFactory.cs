@@ -179,9 +179,11 @@ namespace Code.Infrastructure
             return converter;
         }
 
-        public Dungeon CreateDungeon(Vector3 at)
+        public Dungeon CreateDungeon(string gameObjectId, Vector3 at)
         {
-            Dungeon dungeon = InstantiateRegistered(AssetPath.DUNGEON_BASE_PATH, at).GetComponent<Dungeon>();
+            GameObjectMatcher gameObjectMatcher = _configs.GetMatcherFor(gameObjectId);
+            Dungeon dungeon = InstantiateRegistered(gameObjectMatcher.Template, at).GetComponent<Dungeon>();
+
             dungeon.Construct(this, _audio, _effectFactory, _progressService);
 
             return dungeon;

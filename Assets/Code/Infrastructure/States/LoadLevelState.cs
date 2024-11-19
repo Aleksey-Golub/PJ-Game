@@ -135,7 +135,7 @@ namespace Code.Infrastructure
                     continue;
 
                 Vector3 position = item.Value.Position.AsUnityVector();
-                Dungeon dungeon = _gameFactory.CreateDungeon(position);
+                Dungeon dungeon = _gameFactory.CreateDungeon(item.Value.GameObjectId, position);
                 dungeon.UniqueId.Id = item.Key;
 
                 //dungeon.InitOnLoad(_configs.GetConfigFor(item.Value.NeedResourceType));

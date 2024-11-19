@@ -21,6 +21,6 @@ namespace Code.Infrastructure
         Chunk CreateChunk(Vector3 position);
         Workshop CreateWorkshop(WorkshopType type, Vector3 position);
         Converter CreateConverter(ConverterType type, Vector3 position);
-        Dungeon CreateDungeon(Vector3 position);
+        Dungeon CreateDungeon(string gameObjectId, Vector3 position);
     }
 }

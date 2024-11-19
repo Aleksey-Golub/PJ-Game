@@ -4,11 +4,12 @@ using Code.Data;
 using Code.Infrastructure;
 
 [SelectionBase]
-public class SimpleObject : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem
+public abstract class SimpleObject : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem
 {
-    private readonly SimpleObjectType _type = SimpleObjectType.SellBoard;
     [field: SerializeField] public bool SceneBuiltInItem { get; private set; }
     [field: SerializeField] public UniqueId UniqueId { get; private set; }
+
+    protected abstract SimpleObjectType Type { get; }
 
     private string Id => UniqueId.Id;
 
@@ -35,7 +36,7 @@ public class SimpleObject : MonoBehaviour, ISavedProgressReader, ISavedProgressW
 
         simpleObjectsOnScene.Dictionary[Id] = new SimpleObjectOnSceneData(
             transform.position.AsVectorData(),
-            _type,
+            Type,
             SceneBuiltInItem
             );
     }

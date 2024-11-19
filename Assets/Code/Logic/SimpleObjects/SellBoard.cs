@@ -9,6 +9,7 @@ public class SellBoard : SimpleObject, ICreatedByIdGameObject
     private Inventory _inventory;
 
     internal bool IsVisited { get; private set; }
+    protected override SimpleObjectType Type => SimpleObjectType.SellBoard;
 
     private void Start()
     {

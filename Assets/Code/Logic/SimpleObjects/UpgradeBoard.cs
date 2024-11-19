@@ -12,6 +12,8 @@ public class UpgradeBoard : SimpleObject, ICreatedByIdGameObject
 
     internal bool IsVisited { get; private set; }
 
+    protected override SimpleObjectType Type => SimpleObjectType.UpgradeBoard;
+
     private void Start()
     {
         if (SceneBuiltInItem)

@@ -31,8 +31,14 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
         foreach (SpawnGameObjectData data in _spawnDatas)
         {
             Vector3 pos = data.Point != null ? data.Point.position : data.Position;
-            Handles.Label(pos, data.GameObjectId);
+            Handles.Label(pos + new Vector3(0.15f, 0, 0), data.GameObjectId);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        string resName = _needResourceConfig != null ? _needResourceConfig.Type.ToString() : "none";
+        Handles.Label(transform.position + new Vector3(-0.5f, -0.9f, 0), $"{resName}\n   0/{_needResourceCount}");
     }
 #endif
     #endregion

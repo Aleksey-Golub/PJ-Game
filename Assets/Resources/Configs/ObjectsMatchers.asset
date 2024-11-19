@@ -67,8 +67,23 @@ MonoBehaviour:
   - GameObjectId: Pot base
     Template: {fileID: 5301705876624799288, guid: 7c114fcbd3fd30540b1804d4d43bf06b, type: 3}
     Type: 2
+  - GameObjectId: Pot 3 egg
+    Template: {fileID: 6878690249142335436, guid: dd5b666a46b95f943b2a8fd2f03d36aa, type: 3}
+    Type: 2
+  - GameObjectId: Pot 3 grass
+    Template: {fileID: 6878690249142335436, guid: b0701ae5fecc4964ab36a70cf4dc8ea3, type: 3}
+    Type: 2
+  - GameObjectId: Pot 3 water
+    Template: {fileID: 6878690249142335436, guid: 5cd2d740578fa5746b340685f817ca70, type: 3}
+    Type: 2
   - GameObjectId: Pot 5 grass
     Template: {fileID: 6878690249142335436, guid: 922319fc585e8c24eac5de3443590654, type: 3}
+    Type: 2
+  - GameObjectId: Pot 10 coin
+    Template: {fileID: 6878690249142335436, guid: 371fc26094dd85c4fa06911b2c5b3767, type: 3}
+    Type: 2
+  - GameObjectId: Pot 20 coin
+    Template: {fileID: 6878690249142335436, guid: 2f60694470796d4408c50a90ae214ab7, type: 3}
     Type: 2
   - GameObjectId: Chest base
     Template: {fileID: 7355017640260301671, guid: 330b9f57a0f2112489adb717b47019e2, type: 3}
@@ -96,6 +111,9 @@ MonoBehaviour:
     Type: 8
   - GameObjectId: Workbench 50 Wood to Gem
     Template: {fileID: 4151842295495097555, guid: c95b60262ad9eed44b8c0fb49387952f, type: 3}
+    Type: 8
+  - GameObjectId: Workbench 50 Grass to Gem
+    Template: {fileID: 4151842295495097555, guid: ffb78953eb25bfe418314284ed893e34, type: 3}
     Type: 8
   - GameObjectId: Workbench 150 Wood to Bucket
     Template: {fileID: 8268293617339757368, guid: bcb6ff1de23b7fb4bb3f504b012f6a5a, type: 3}

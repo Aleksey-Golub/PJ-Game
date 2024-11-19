@@ -515,7 +515,7 @@ MonoBehaviour:
   _speed: 3
   _attackDelay: 0.55
   _overlapSphereParams:
-    Radius: 0.4
+    Radius: 0.5
     Offset: 0.4
   _consumeDelay: 0.2
 --- !u!58 &5281159041745986837

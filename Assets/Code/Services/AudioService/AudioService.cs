@@ -4,11 +4,15 @@ using UnityEngine;
 using UnityEngine.Audio;
 using Code.Infrastructure;
 using Code.Data;
+using System;
+using Object = UnityEngine.Object;
 
 namespace Code.Services
 {
     internal class AudioService : IAudioService
     {
+        private const string CONTAINER_NAME = "Audio Source Container";
+
         private const string AMBIENT_PATH = "Sounds/music_loop";
         private const string AUDIOMIXER_PATH = "Sounds/AudioMixer";
         private const string AUDIOSOURCE_PREFAB_PATH = "Sounds/AudioSource";
@@ -21,9 +25,10 @@ namespace Code.Services
         private AudioMixer _audioMixer;
         private readonly Dictionary<string, AudioGroupData> _groups = new();
         private AudioSource _prefab;
-        private AudioSource _musicSource;
-        private Queue<AudioSource> _sfxPool;
-        private readonly List<AudioSource> _toCheckEnd = new();
+        private CreatedAudioSource _musicSource;
+        private Queue<CreatedAudioSource> _sfxPool;
+        private readonly Dictionary<string, CreatedAudioSource> _toCheckEnd = new();
+        private readonly List<CreatedAudioSource> _cache = new();
         private readonly WaitForSeconds _waitForSeconds;
         private Transform _audioSourceContainer;
         private readonly ICoroutineRunner _coroutineRunner;
@@ -37,7 +42,7 @@ namespace Code.Services
 
         public void Load()
         {
-            _audioSourceContainer = CreateAudioSourceContainer();
+            _audioSourceContainer = FactoryHelper.CreateDontDestroyOnLoadGameObject(CONTAINER_NAME).transform;
             _audioMixer = Resources.Load<AudioMixer>(AUDIOMIXER_PATH);
             _prefab = Resources.Load<AudioSource>(AUDIOSOURCE_PREFAB_PATH);
 
@@ -67,21 +72,50 @@ namespace Code.Services
             SetNormalizedVolumeInner(group, value);
         }
 
-        public void PlaySfxAtUI(AudioClip clip)
+        public void PlaySfxAtUI(AudioClip clip, string objectUniqueId = default, bool looping = false)
         {
-            PlaySfxAtPosition(clip, Camera.main.transform.position);
+            PlaySfxAtPosition(clip, Camera.main.transform.position, objectUniqueId, looping);
         }
 
-        public void PlaySfxAtPosition(AudioClip clip, Vector3 position)
+        public string PlaySfxAtPosition(AudioClip clip, Vector3 position, string objectUniqueId = default, bool looping = false)
         {
-            if (!_sfxPool.TryDequeue(out AudioSource sfx))
+            if (!_sfxPool.TryDequeue(out CreatedAudioSource sfx))
                 sfx = CreateAudioSource(_groups[SFX].AudioMixerGroup, false);
 
-            sfx.transform.position = position;
-            sfx.clip = clip;
+            sfx.AudioSource.transform.position = position;
+            sfx.AudioSource.clip = clip;
+            sfx.AudioSource.loop = looping;
+            sfx.ObjectUniqueId = objectUniqueId;
 
-            _toCheckEnd.Add(sfx);
-            sfx.Play();
+            _toCheckEnd.Add(sfx.Id, sfx);
+            sfx.AudioSource.Play();
+
+            return sfx.Id;
+        }
+
+        public bool IsSfxPlaying(AudioClip clip, string audioSourceId, string objectUniqueId)
+        {
+            return FindPlaying(clip, audioSourceId, objectUniqueId) != null;
+        }
+
+        public void StopSfx(AudioClip clip, string audioSourceId, string objectUniqueId)
+        {
+            CreatedAudioSource s = FindPlaying(clip, audioSourceId, objectUniqueId);
+            
+            if (s != null)
+                s.AudioSource.Stop();
+        }
+
+        private CreatedAudioSource FindPlaying(AudioClip clip, string audioSourceId, string objectUniqueId)
+        {
+            if (string.IsNullOrWhiteSpace(audioSourceId))
+                return default;
+
+            if (_toCheckEnd.TryGetValue(audioSourceId, out CreatedAudioSource s))
+                if (s.ObjectUniqueId == objectUniqueId && s.AudioSource.clip == clip && s.AudioSource.isPlaying)
+                    return s;
+
+            return default;
         }
 
         public void PlayAmbient()
@@ -91,16 +125,16 @@ namespace Code.Services
 
         public void PlayAmbient(AudioClip clip)
         {
-            if (!_musicSource)
+            if (_musicSource == null)
             {
                 _musicSource = CreateAudioSource(_groups[MUSIC].AudioMixerGroup, true);
-                _musicSource.name = MUSIC;
+                _musicSource.AudioSource.name = MUSIC;
             }
 
-            _musicSource.Stop();
-            _musicSource.clip = clip;
+            _musicSource.AudioSource.Stop();
+            _musicSource.AudioSource.clip = clip;
 
-            _musicSource.Play();
+            _musicSource.AudioSource.Play();
         }
 
         public void ReadAppSettings(AppSettings appSettings)
@@ -138,16 +172,21 @@ namespace Code.Services
             {
                 yield return _waitForSeconds;
 
-                for (int i = 0; i < _toCheckEnd.Count; i++)
+                foreach (KeyValuePair<string, CreatedAudioSource> item in _toCheckEnd)
                 {
-                    if (_toCheckEnd[i].isPlaying == false)
+                    if (item.Value.AudioSource.isPlaying == false && Application.isFocused)
                     {
-                        _sfxPool.Enqueue(_toCheckEnd[i]);
-
-                        _toCheckEnd.RemoveAt(i);
-                        i--;
+                        _cache.Add(item.Value);
                     }
                 }
+
+                foreach (var s in _cache)
+                {
+                    _sfxPool.Enqueue(s);
+                    _toCheckEnd.Remove(s.Id);
+                }
+
+                _cache.Clear();
             }
         }
 
@@ -158,31 +197,25 @@ namespace Code.Services
             _sfxPool = new(capacity);
             for (int i = 0; i < capacity; i++)
             {
-                AudioSource source = CreateAudioSource(_groups[SFX].AudioMixerGroup, false);
+                CreatedAudioSource source = CreateAudioSource(_groups[SFX].AudioMixerGroup, false);
 
                 _sfxPool.Enqueue(source);
             }
         }
 
-        private AudioSource CreateAudioSource(AudioMixerGroup group, bool loop)
+        private CreatedAudioSource CreateAudioSource(AudioMixerGroup group, bool loop)
         {
             AudioSource source = Object.Instantiate(_prefab, _audioSourceContainer);
             source.outputAudioMixerGroup = group;
             source.loop = loop;
-            return source;
+
+            return new CreatedAudioSource(source, Guid.NewGuid().ToString());
         }
 
         private void CacheGroups()
         {
             _groups.Add(SFX, new AudioGroupData(SFX, _audioMixer.FindMatchingGroups(SFX)[0], false, 1));
             _groups.Add(MUSIC, new AudioGroupData(MUSIC, _audioMixer.FindMatchingGroups(MUSIC)[0], false, 1));
-        }
-
-        private Transform CreateAudioSourceContainer()
-        {
-            var go = new GameObject("Audio Source Container");
-            UnityEngine.Object.DontDestroyOnLoad(go);
-            return go.transform;
         }
 
         private void SetNormalizedVolumeInner(string group, float value)
@@ -207,6 +240,19 @@ namespace Code.Services
             AudioMixerGroup = audioMixerGroup;
             IsMuted = isMuted;
             LastNormalizedValue = lastNormalizedValue;
+        }
+    }
+
+    public class CreatedAudioSource
+    {
+        public AudioSource AudioSource { get; }
+        public string Id { get; }
+        public string ObjectUniqueId { get; set; }
+
+        public CreatedAudioSource(AudioSource audioSource, string id)
+        {
+            AudioSource = audioSource;
+            Id = id;
         }
     }
 }

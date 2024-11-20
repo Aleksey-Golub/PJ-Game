@@ -110,6 +110,9 @@ namespace Code.Infrastructure
                 case SimpleObjectType.UpgradeBoard:
                     (simpleObject as UpgradeBoard).Construct(_uiMediator, _configs, _progressService);
                     break;
+                case SimpleObjectType.Prize_First:
+                    (simpleObject as FinalPrize).Construct(_audio);
+                    break;
                 case SimpleObjectType.None:
                 default:
                     break;
@@ -349,6 +352,13 @@ namespace Code.Infrastructure
 
                 dungeon.Spawn();
                 GenerateIdIfApplicable(dungeon);
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(FinalPrize finalPrize)
+            {
+                finalPrize.Construct(_gameFactory._audio);
+
+                GenerateIdIfApplicable(finalPrize);
             }
 
             private void GenerateIdIfApplicable(MonoBehaviour monoBehaviour)

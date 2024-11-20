@@ -4,6 +4,7 @@ public static class G_GameObjectsIds_SimpleObject
     {
         "none",
         "Sell Board",
-        "Upgrade Board"
+        "Upgrade Board",
+        "Prize_First"
     };
 }

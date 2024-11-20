@@ -19,6 +19,9 @@ MonoBehaviour:
   - GameObjectId: Upgrade Board
     Template: {fileID: 7298435369027114144, guid: 649be69bc675fbb428ce605e3f344240, type: 3}
     Type: 1
+  - GameObjectId: Prize_First
+    Template: {fileID: 7186441436483478544, guid: cea4af2aee0db0940b18d0faa9d76f4f, type: 3}
+    Type: 1
   - GameObjectId: Bush
     Template: {fileID: 2478993273050370983, guid: 89eaa2b354cda3545a8c093c64bd9b3a, type: 3}
     Type: 2

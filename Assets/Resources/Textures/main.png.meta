@@ -1378,7 +1378,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_61
+      name: heart
       rect:
         serializedVersion: 2
         x: 204
@@ -2053,7 +2053,6 @@ TextureImporter:
       __main.texturec-0-flipped_3: -1571978254
       __main.texturec-0-flipped_4: 752955290
       __main.texturec-0-flipped_43: -1288984483
-      __main.texturec-0-flipped_61: -535157519
       __main.texturec-0-flipped_62: -998875238
       __main.texturec-0-flipped_9: 1041573145
       __pine_stump: 188050404
@@ -2073,6 +2072,7 @@ TextureImporter:
       fruit_bush_whole: 1759373326
       gem: 1881971156
       grass: -667556626
+      heart: -535157519
       iron: -343440380
       iron_ore: -1107001721
       milk: 1368875871

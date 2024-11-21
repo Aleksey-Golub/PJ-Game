@@ -374,9 +374,11 @@ MonoBehaviour:
   <SceneBuiltInItem>k__BackingField: 0
   <UniqueId>k__BackingField: {fileID: 1174326039239846817}
   _type: 10
-  _view: {fileID: 8772750931942031960}
+  View: {fileID: 8772750931942031960}
   _adsStartDelay: 3
   _restoreTime: 180
+  _boostSpeed: 5
+  _boostTime: 180
 --- !u!114 &8772750931942031960
 MonoBehaviour:
   m_ObjectHideFlags: 0

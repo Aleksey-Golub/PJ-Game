@@ -115,6 +115,7 @@ namespace Code.Infrastructure
             InitResourceSources(loadedSceneName);
             InitResourceStorages(loadedSceneName);
             InitSimpleObjects(loadedSceneName);
+            InitAdsBoxesObjects(loadedSceneName);
             InitWorkbenches(loadedSceneName);
             InitChunks(loadedSceneName);
             InitWorkshops(loadedSceneName);
@@ -223,6 +224,22 @@ namespace Code.Infrastructure
             }
         }
 
+        private void InitAdsBoxesObjects(string loadedSceneName)
+        {
+            foreach (KeyValuePair<string, AdsBoxOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].AdsBoxesDatas.AdsBoxesOnScene.Dictionary)
+            {
+                if (item.Value.SceneBuiltInItem)
+                    continue;
+
+                Vector3 position = item.Value.Position.AsUnityVector();
+                AdsResourceBox adsBox = _gameFactory.CreateSimpleObject(item.Value.Type, position) as AdsResourceBox;
+                adsBox.UniqueId.Id = item.Key;
+
+                adsBox.InitOnLoad(_configs.GetConfigFor(item.Value.DropResourceType), item.Value.DropResourceCount);
+                adsBox.Init();
+            }
+        }
+
         private void InitResourceStorages(string loadedSceneName)
         {
             foreach (KeyValuePair<string, ResourceStorageOnSceneData> item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].ResourceStoragesDatas.ResourceStoragesOnScene.Dictionary)
@@ -235,7 +252,7 @@ namespace Code.Infrastructure
                 rStorage.UniqueId.Id = item.Key;
 
                 if (item.Value.Type is ResourceStorageType.Chest)
-                    rStorage.Init(_configs.GetConfigFor(item.Value.DropResourceType));
+                    rStorage.InitOnLoad(_configs.GetConfigFor(item.Value.DropResourceType));
             }
         }
 
@@ -251,7 +268,7 @@ namespace Code.Infrastructure
                 rSource.UniqueId.Id = item.Key;
 
                 if (item.Value.Type is ResourceSourceType.Pot)
-                    rSource.Init(_configs.GetConfigFor(item.Value.DropResourceType), item.Value.DropResourceCount);
+                    rSource.InitOnLoad(_configs.GetConfigFor(item.Value.DropResourceType), item.Value.DropResourceCount);
             }
         }
 

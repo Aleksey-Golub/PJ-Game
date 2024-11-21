@@ -117,7 +117,10 @@ namespace Code.Infrastructure
                     (simpleObject as FinalPrize).Construct(_audio);
                     break;
                 case SimpleObjectType.Boots:
-                    (simpleObject as AdsObjectBase).Construct(_adsService);
+                    (simpleObject as BootsAdsObject).Construct(_adsService);
+                    break;
+                case SimpleObjectType.AdsResourceBox:
+                    (simpleObject as AdsResourceBox).Construct(_adsService, _resourceFactory, _audio);
                     break;
                 case SimpleObjectType.None:
                 default:
@@ -367,11 +370,18 @@ namespace Code.Infrastructure
                 GenerateIdIfApplicable(finalPrize);
             }
 
-            void ICreatedByIdGameObjectVisitor.Visit(AdsObjectBase adsObject)
+            void ICreatedByIdGameObjectVisitor.Visit(BootsAdsObject boots)
             {
-                adsObject.Construct(_gameFactory._adsService);
+                boots.Construct(_gameFactory._adsService);
 
-                GenerateIdIfApplicable(adsObject);
+                GenerateIdIfApplicable(boots);
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(AdsResourceBox adsResourceBox)
+            {
+                adsResourceBox.Construct(_gameFactory._adsService, _gameFactory._resourceFactory, _gameFactory._audio);
+                adsResourceBox.Init();
+                GenerateIdIfApplicable(adsResourceBox);
             }
 
             private void GenerateIdIfApplicable(MonoBehaviour monoBehaviour)

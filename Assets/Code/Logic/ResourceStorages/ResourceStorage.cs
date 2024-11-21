@@ -79,7 +79,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
         }
     }
 
-    public void Init(ResourceConfig resourceConfig)
+    public void InitOnLoad(ResourceConfig resourceConfig)
     {
         _resourceConfig = resourceConfig;
     }

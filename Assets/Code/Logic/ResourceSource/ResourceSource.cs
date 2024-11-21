@@ -73,7 +73,7 @@ public class ResourceSource : MonoBehaviour,
             enabled = false;
     }
 
-    public void Init(ResourceConfig resourceConfig, int dropResourceCount)
+    public void InitOnLoad(ResourceConfig resourceConfig, int dropResourceCount)
     {
         _resourceConfig = resourceConfig;
         _dropResourceCount = dropResourceCount;

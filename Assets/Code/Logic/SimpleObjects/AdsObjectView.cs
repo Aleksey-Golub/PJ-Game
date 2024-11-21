@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-internal class AdsObjectView : MonoBehaviour
+public class AdsObjectView : MonoBehaviour
 {
+    [Tooltip("Can be null")]
     [SerializeField] protected Animation _animation;
     [SerializeField] private GameObject _cloud;
     [SerializeField] private GameObject _progressFg;
@@ -9,12 +10,14 @@ internal class AdsObjectView : MonoBehaviour
     [SerializeField] private GameObject _shadow;
 
     [Header("Settings")]
+    [Tooltip("Can be null")]
     [SerializeField] private Sprite _diedSprite;
     [SerializeField] private Sprite _wholeSprite;
 
     internal void Construct()
     {
-        _animation.Play();
+        if (_animation != null)
+            _animation.Play();
     }
 
     internal void ShowProgress(float passed, float total)
@@ -33,13 +36,13 @@ internal class AdsObjectView : MonoBehaviour
         _cloud.SetActive(false);
     }
 
-    internal void ShowExhaust()
+    internal virtual void ShowExhaust()
     {
         _spriteRenderer.sprite = _diedSprite;
         _shadow.SetActive(false);
     }
 
-    internal void ShowWhole()
+    internal virtual void ShowWhole()
     {
         _spriteRenderer.sprite = _wholeSprite;
         _shadow.SetActive(true);

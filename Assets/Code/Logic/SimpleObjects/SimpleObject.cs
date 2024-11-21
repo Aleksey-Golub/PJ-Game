@@ -11,9 +11,9 @@ public abstract class SimpleObject : MonoBehaviour, ISavedProgressReader, ISaved
 
     protected abstract SimpleObjectType Type { get; }
 
-    private string Id => UniqueId.Id;
+    protected string Id => UniqueId.Id;
 
-    public void ReadProgress(GameProgress progress)
+    public virtual void ReadProgress(GameProgress progress)
     {
         var simpleObjectsOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].SimpleObjectsDatas.SimpleObjectsOnScene;
 
@@ -25,7 +25,7 @@ public abstract class SimpleObject : MonoBehaviour, ISavedProgressReader, ISaved
         transform.position = myState.Position.AsUnityVector();
     }
 
-    public void WriteToProgress(GameProgress progress)
+    public virtual void WriteToProgress(GameProgress progress)
     {
         var simpleObjectsOnScene = progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].SimpleObjectsDatas.SimpleObjectsOnScene;
 
@@ -41,7 +41,7 @@ public abstract class SimpleObject : MonoBehaviour, ISavedProgressReader, ISaved
             );
     }
 
-    private bool HasChangesBetweenSavedStateAndCurrentState(SimpleObjectOnSceneData data)
+    protected bool HasChangesBetweenSavedStateAndCurrentState(SimpleObjectOnSceneData data)
     {
         return
             data.Position.AsUnityVector() != transform.position

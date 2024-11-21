@@ -1,11 +1,10 @@
-﻿using Code.Infrastructure;
-using Code.Services;
+﻿using Code.Services;
 using UnityEngine;
 
-public abstract class AdsObjectBase : SimpleObject, ICreatedByIdGameObject
+public abstract class AdsObjectBase<T> : SimpleObject, ICreatedByIdGameObject where T : AdsObjectView
 {
     [SerializeField] private SimpleObjectType _type;
-    [SerializeField] private AdsObjectView _view;
+    [SerializeField] protected T View;
     [SerializeField] private float _adsStartDelay = 3f;
     [SerializeField] private float _restoreTime = 180f;
 
@@ -20,19 +19,7 @@ public abstract class AdsObjectBase : SimpleObject, ICreatedByIdGameObject
 
     protected override SimpleObjectType Type => _type;
 
-    private void Start()
-    {
-        if (SceneBuiltInItem)
-        {
-            var adsService = AllServices.Container.Single<IAdsService>();
-            var gameFactory = AllServices.Container.Single<IGameFactory>();
-
-            Construct(adsService);
-            gameFactory.RegisterProgressWatchersExternal(gameObject);
-        }
-    }
-
-    internal void Construct(IAdsService adsService)
+    protected void Construct(IAdsService adsService)
     {
         _adsService = adsService;
         _adsService.RewardedVideoReady += OnRewardedVideoReady;
@@ -43,14 +30,14 @@ public abstract class AdsObjectBase : SimpleObject, ICreatedByIdGameObject
         _restorationTimer = new Timer();
         _restorationTimer.Elapsed += OnRestorationTimerElapsed;
 
-        _view.Construct();
+        View.Construct();
 
         if (!AdsReady())
         {
             _isExhaust = true;
 
             _restorationTimer.Start(1f);
-            _view.ShowExhaust();
+            View.ShowExhaust();
         }
     }
 
@@ -112,9 +99,9 @@ public abstract class AdsObjectBase : SimpleObject, ICreatedByIdGameObject
 
         if (_adsTimer.IsElapsed)
         {
-            Logger.Log($"[AdsObject] {gameObject.name} - show ads");
+            //Logger.Log($"[AdsObject] {gameObject.name} - show ads");
 
-            _view.HideProgress();
+            View.HideProgress();
             Exhaust();
             _adsService.ShowRewardedVideo(OnRewardedVideoEndSuccessfully);
         }
@@ -130,7 +117,7 @@ public abstract class AdsObjectBase : SimpleObject, ICreatedByIdGameObject
 
         _playerInTrigger = false;
 
-        _view.HideProgress();
+        View.HideProgress();
     }
 
     private void OnUpdate(float deltaTime)
@@ -156,12 +143,12 @@ public abstract class AdsObjectBase : SimpleObject, ICreatedByIdGameObject
     private void Restore()
     {
         _isExhaust = false;
-        _view.ShowWhole();
+        View.ShowWhole();
     }
 
     private void OnAdsTimerChanged(Timer timer)
     {
-        _view.ShowProgress(timer.Passed, _adsTimer.Duration);
+        View.ShowProgress(timer.Passed, _adsTimer.Duration);
     }
 
     private void Exhaust()
@@ -169,10 +156,11 @@ public abstract class AdsObjectBase : SimpleObject, ICreatedByIdGameObject
         _isExhaust = true;
 
         _restorationTimer.Start(_restoreTime);
-        _view.ShowExhaust();
+        View.ShowExhaust();
     }
 
     private bool AdsReady() => _adsService.IsRewardedVideoReady();
 
-    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);
+    void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => Accept(visitor);
+    protected abstract void Accept(ICreatedByIdGameObjectVisitor visitor);
 }

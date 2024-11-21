@@ -25,6 +25,36 @@ MonoBehaviour:
   - GameObjectId: Boots
     Template: {fileID: 8538924100102640495, guid: 20122c66ea862a6479cc41bc2eabd0fc, type: 3}
     Type: 1
+  - GameObjectId: Ads Resource Box Base
+    Template: {fileID: 4766073212332298050, guid: a8752735b90536e4886f35e28b174464, type: 3}
+    Type: 1
+  - GameObjectId: Ads Box 4 Dung
+    Template: {fileID: 3023318839267767259, guid: fbe1095885a840946b718b9d3941c125, type: 3}
+    Type: 1
+  - GameObjectId: Ads Box 5 Milk
+    Template: {fileID: 3023318839267767259, guid: 982536cb2e63f644eafd3b8f7f629d87, type: 3}
+    Type: 1
+  - GameObjectId: Ads Box 5 Water
+    Template: {fileID: 3023318839267767259, guid: dcb0fc9f7b30f5a439e0e549fd4d0b51, type: 3}
+    Type: 1
+  - GameObjectId: Ads Box 8 Carrot
+    Template: {fileID: 3023318839267767259, guid: 369a9013e92464c4fb42ea6211170e1a, type: 3}
+    Type: 1
+  - GameObjectId: Ads Box 8 Fruit
+    Template: {fileID: 3023318839267767259, guid: e07921141a3865343ba5ba1b70466717, type: 3}
+    Type: 1
+  - GameObjectId: Ads Box 10 Egg
+    Template: {fileID: 3023318839267767259, guid: 323c35b61d3dcd3408a323ee373801f3, type: 3}
+    Type: 1
+  - GameObjectId: Ads Box 10 Stone
+    Template: {fileID: 3023318839267767259, guid: 8e0718ab318c4a540b3e0f3a172c65bc, type: 3}
+    Type: 1
+  - GameObjectId: Ads Box 20 Wood
+    Template: {fileID: 3023318839267767259, guid: c191c883317315c40ac7174e4a59c6ab, type: 3}
+    Type: 1
+  - GameObjectId: Ads Box 30 Grass
+    Template: {fileID: 3023318839267767259, guid: 17e035843b851bf4cb6034bc1fd9115c, type: 3}
+    Type: 1
   - GameObjectId: Bush
     Template: {fileID: 2478993273050370983, guid: 89eaa2b354cda3545a8c093c64bd9b3a, type: 3}
     Type: 2

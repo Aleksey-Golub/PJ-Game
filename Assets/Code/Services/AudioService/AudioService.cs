@@ -101,7 +101,7 @@ namespace Code.Services
         public void StopSfx(AudioClip clip, string audioSourceId, string objectUniqueId)
         {
             CreatedAudioSource s = FindPlaying(clip, audioSourceId, objectUniqueId);
-            
+
             if (s != null)
                 s.AudioSource.Stop();
         }
@@ -139,8 +139,17 @@ namespace Code.Services
 
         public void ReadAppSettings(AppSettings appSettings)
         {
+            // becuse of Unity bug
+            // _audioMixer.SetFloat(..) not work correct in Awake()
+            _coroutineRunner.StartCoroutine(ReadAppSettingsCor(appSettings));
+        }
+
+        private IEnumerator ReadAppSettingsCor(AppSettings appSettings)
+        {
+            yield return null;
+
             if (appSettings.AudioSettings.AudioGroupSettings == null)
-                return;
+                yield break;
 
             foreach (AudioGroupData g in _groups.Values)
             {

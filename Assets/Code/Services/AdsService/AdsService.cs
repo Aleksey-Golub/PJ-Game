@@ -1,0 +1,41 @@
+﻿using System;
+
+namespace Code.Services
+{
+    public class AdsService : IAdsService
+    {
+        public event Action RewardedVideoReady;
+
+        private Action _onVideoFinished;
+
+        public void Initialize()
+        {
+            Logger.Log($"[AdsService] initializing...");
+        }
+
+        public bool IsRewardedVideoReady()
+        {
+#if FAKE_LOADED_ADS
+            return true;
+#else
+            //return Advertisement.IsReady(_placementId);
+            return false;
+#endif
+        }
+
+        public void ShowRewardedVideo(Action onVideoFinished)
+        {
+            _onVideoFinished = onVideoFinished;
+
+            //Advertisement.Show(_placementId);
+
+            OnRewardedVideoFinished();
+        }
+
+        private void OnRewardedVideoFinished()
+        {
+            _onVideoFinished?.Invoke();
+            _onVideoFinished = null;
+        }
+    }
+}

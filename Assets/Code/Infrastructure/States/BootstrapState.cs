@@ -30,11 +30,12 @@ namespace Code.Infrastructure
         private void RegisterServices(ICoroutineRunner coroutineRunner, IUpdater updater)
         {
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
-            //RegisterLocalizationService();
-            LService.Load();
-            _services.RegisterSingle<IUpdater>(updater);
-            _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<ICoroutineRunner>(coroutineRunner);
+            _services.RegisterSingle<IUpdater>(updater);
+
+            RegisterAdsService();
+            RegisterLocalizationService();
+            _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             RegisterConfigService();
             RegisterInputService();
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
@@ -42,31 +43,31 @@ namespace Code.Infrastructure
             RegisterAudioService(coroutineRunner);
 
             _services.RegisterSingle<IDropCountCalculatorService>(new DropCountCalculatorService(
-                _services.Single<IPersistentProgressService>(), 
+                _services.Single<IPersistentProgressService>(),
                 _services.Single<IConfigsService>()));
 
             _services.RegisterSingle<IPopupFactory>(new PopupFactory(
                 _services.Single<IAssetProvider>()));
             _services.RegisterSingle<IResourceFactory>(new ResourceFactory(
-                _services.Single<IAudioService>(), 
+                _services.Single<IAudioService>(),
                 _services.Single<IAssetProvider>(),
                 _services.Single<IPersistentProgressService>()
                 ));
             RegisterResourceMergeService();
             _services.RegisterSingle<IToolFactory>(new ToolFactory(
-                _services.Single<IAudioService>(), 
+                _services.Single<IAudioService>(),
                 _services.Single<IAssetProvider>(),
                 _services.Single<IPersistentProgressService>()
                 ));
             _services.RegisterSingle<ITransitionalResourceFactory>(new TransitionalResourceFactory(
-                _services.Single<IAudioService>(), 
+                _services.Single<IAudioService>(),
                 _services.Single<IAssetProvider>()));
             _services.RegisterSingle<IEffectFactory>(new EffectFactory(
                 _services.Single<IConfigsService>()));
 
-            
+
             _services.RegisterSingle<ISaveLoadAppSettingsService>(new SaveLoadAppSettingsService(
-                _services.Single<IAppSettingsService>(), 
+                _services.Single<IAppSettingsService>(),
                 _services.Single<IAudioService>()));
 
             _services.RegisterSingle<IUIFactory>(new UIFactory(
@@ -91,7 +92,8 @@ namespace Code.Infrastructure
               _services.Single<IResourceFactory>(),
               _services.Single<IToolFactory>(),
               _services.Single<IEffectFactory>(),
-              _services.Single<IDropCountCalculatorService>()
+              _services.Single<IDropCountCalculatorService>(),
+              _services.Single<IAdsService>()
               ));
 
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
@@ -131,13 +133,22 @@ namespace Code.Infrastructure
             configs.Load();
             _services.RegisterSingle(configs);
         }
-        
-        /*private void RegisterLocalizationService()
+
+        private void RegisterAdsService()
         {
-            ILocalizationService localization = new LocalizationService();
-            localization.Load();
-            _services.RegisterSingle(localization);
-        }*/
+            IAdsService adsService = new AdsService();
+            adsService.Initialize();
+            _services.RegisterSingle<IAdsService>(adsService);
+        }
+
+        private void RegisterLocalizationService()
+        {
+            LService.Load();
+
+            //ILocalizationService localization = new LocalizationService();
+            //localization.Load();
+            //_services.RegisterSingle(localization);
+        }
 
         private void OnSceneLoaded() =>
           _stateMachine.Enter<LoadAppSettingsState>();

@@ -22,6 +22,7 @@ namespace Code.Infrastructure
         private readonly IToolFactory _toolFactory;
         private readonly IEffectFactory _effectFactory;
         private readonly IDropCountCalculatorService _dropCountCalculatorService;
+        private readonly IAdsService _adsService;
         private readonly ITransitionalResourceFactory _transitionalResourceFactory;
         private readonly CreatedByIdGameObjectsConstructor _createdByIdGameObjectsConstructor;
         private GameObject _heroGameObject;
@@ -38,7 +39,8 @@ namespace Code.Infrastructure
             IResourceFactory resourceFactory,
             IToolFactory toolFactory,
             IEffectFactory effectFactory,
-            IDropCountCalculatorService dropCountCalculatorService
+            IDropCountCalculatorService dropCountCalculatorService,
+            IAdsService adsService
             )
         {
             _assets = assets;
@@ -52,6 +54,7 @@ namespace Code.Infrastructure
             _toolFactory = toolFactory;
             _effectFactory = effectFactory;
             _dropCountCalculatorService = dropCountCalculatorService;
+            _adsService = adsService;
             _transitionalResourceFactory = transitionalResourceFactory;
 
             _createdByIdGameObjectsConstructor = new(this);
@@ -112,6 +115,9 @@ namespace Code.Infrastructure
                     break;
                 case SimpleObjectType.Prize_First:
                     (simpleObject as FinalPrize).Construct(_audio);
+                    break;
+                case SimpleObjectType.Boots:
+                    (simpleObject as AdsObjectBase).Construct(_adsService);
                     break;
                 case SimpleObjectType.None:
                 default:
@@ -359,6 +365,13 @@ namespace Code.Infrastructure
                 finalPrize.Construct(_gameFactory._audio);
 
                 GenerateIdIfApplicable(finalPrize);
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(AdsObjectBase adsObject)
+            {
+                adsObject.Construct(_gameFactory._adsService);
+
+                GenerateIdIfApplicable(adsObject);
             }
 
             private void GenerateIdIfApplicable(MonoBehaviour monoBehaviour)

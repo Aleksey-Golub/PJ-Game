@@ -7,7 +7,7 @@ using Code.UI;
 using Code.Data;
 using Code.Infrastructure;
 
-internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedProgressWriter
+public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedProgressWriter
 {
     [Serializable]
     internal struct OverlapSphereParams
@@ -45,6 +45,12 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
     private UpgradeBoard _upgradeBoard;
     private bool _inUpgradeBoard;
 
+    private bool _isSpeedUp;
+    private float _speedUpSpeed = 1f;
+    private Timer _speedUpTimer;
+
+    private float CurrentSpeed => _isSpeedUp ? _speedUpSpeed : _speed;
+
     #region EDITOR_ONLY Draw interact sphere
 
 #if UNITY_EDITOR
@@ -80,6 +86,8 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
 
         _inventory.ResourceCountChanged += _inventoryView.UpdateFor;
         _view.AttackDone += OnHitDone;
+
+        _speedUpTimer = new Timer();
     }
 
     private void OnDestroy()
@@ -119,10 +127,10 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
 
     private void WriteToPositionOnLevel(GameProgress progress)
     {
-        progress.PlayerProgress.PositionOnLevel = 
+        progress.PlayerProgress.PositionOnLevel =
             new PositionOnLevel(
-                CurrentLevel(), 
-                transform.position.AsVectorData(), 
+                CurrentLevel(),
+                transform.position.AsVectorData(),
                 _direction.AsVectorData()
                 );
     }
@@ -143,12 +151,36 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
             _direction = savedDirection.AsUnityVector();
             _view.PlayMove(_direction, 0);
         }
-    } 
+    }
     #endregion
 
     internal void Teleport(Vector3 to)
     {
-        _rb.MovePosition(to);
+        _view.BeforeTeleport();
+        //_rb.MovePosition(to);
+        transform.position = to;
+        _view.AfterTeleport();
+    }
+
+    internal void SpeedUp(float newSpeed, float time)
+    {
+        if (!_isSpeedUp)
+        {
+            _isSpeedUp = true;
+            _speedUpTimer.Elapsed += OnSpeedUpTimerElapsed;
+            _view.ShowSpeedUp();
+        }
+
+        _speedUpSpeed = newSpeed;
+        _speedUpTimer.Start(time);
+    }
+
+    private void OnSpeedUpTimerElapsed(Timer speedUpTimer)
+    {
+        speedUpTimer.Elapsed -= OnSpeedUpTimerElapsed;
+
+        _isSpeedUp = false;
+        _view.HideSpeedUp();
     }
 
     internal void SetLastAbsentTool(ToolType type)
@@ -161,6 +193,8 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
         //Logger.Log($"Player FixedUpdate at {Time.frameCount} frame");
 
         // movement
+        _speedUpTimer.OnUpdate(Time.fixedDeltaTime);
+
         if (_input.HasMoveInput())
         {
             float xMovement = _input.GetHorizontalAxisRaw();
@@ -168,7 +202,7 @@ internal class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISaved
 
             Vector2 direction = new Vector2(xMovement, yMovement).normalized;
             Vector2 startPos = _rb.position;
-            Vector2 offset = direction * _speed * Time.fixedDeltaTime;
+            Vector2 offset = direction * CurrentSpeed * Time.fixedDeltaTime;
 
             _rb.MovePosition(startPos + offset);
             _view.PlayMove(direction.x, direction.y, direction.magnitude);

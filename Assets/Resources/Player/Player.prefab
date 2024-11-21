@@ -124,6 +124,7 @@ MonoBehaviour:
   _toolMindImage: {fileID: 4798000464402436571}
   _animator: {fileID: 5924786209612280253}
   _popupSpawnOffset: {x: 0, y: 1, z: 0}
+  _speedUpParticlesPrefab: {fileID: 430736956253513100, guid: 094bcd1e5245f5340adb27f33e6032b8, type: 3}
 --- !u!1 &513095244907423599
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,6 +578,6 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4

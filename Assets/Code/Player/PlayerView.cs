@@ -11,12 +11,15 @@ internal class PlayerView : MonoBehaviour
     [SerializeField] private Image _toolMindImage;
     [SerializeField] private Animator _animator;
     [SerializeField] private Vector3 _popupSpawnOffset = Vector3.up;
+    [SerializeField] private TargetFollower _speedUpParticlesPrefab;
 
     private IPopupFactory _popupFactory;
     private int _dirXHash;
     private int _dirYHash;
     private int _velocityHash;
     private int _attackHash;
+
+    private ParticleSystem _speedUpParticles;
 
     private Dictionary<ResourceType, GatheredResourcesPopupInfo> _gatheredResourcesPopups;
 
@@ -94,6 +97,37 @@ internal class PlayerView : MonoBehaviour
         }
 
         popup.ShowText($"+{newCount}");
+    }
+
+    internal void ShowSpeedUp()
+    {
+        var follower = Instantiate(_speedUpParticlesPrefab, transform.position, Quaternion.identity);
+        follower.SetTarget(transform);
+        _speedUpParticles = follower.GetComponent<ParticleSystem>();
+        _speedUpParticles.Play();
+    }
+
+    internal void HideSpeedUp()
+    {
+        _speedUpParticles.Stop();
+        Destroy(_speedUpParticles.gameObject);
+    }
+
+    internal void BeforeTeleport()
+    {
+        if (_speedUpParticles != null)
+        {
+            _speedUpParticles.Stop();
+        }
+    }
+
+    internal void AfterTeleport()
+    {
+        if (_speedUpParticles != null)
+        {
+            _speedUpParticles.transform.position = transform.position;
+            _speedUpParticles.Play();
+        }
     }
 
     private void OnPopupReady(Popup popup)

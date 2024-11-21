@@ -19,3 +19,5 @@ MonoBehaviour:
     Template: {fileID: 8738319825101915137, guid: 649be69bc675fbb428ce605e3f344240, type: 3}
   - Type: 3
     Template: {fileID: -2070636323162149814, guid: cea4af2aee0db0940b18d0faa9d76f4f, type: 3}
+  - Type: 10
+    Template: {fileID: 8664462723367386185, guid: 20122c66ea862a6479cc41bc2eabd0fc, type: 3}

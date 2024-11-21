@@ -412,13 +412,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_15
+      name: ads icon
       rect:
         serializedVersion: 2
-        x: 67
-        y: 1
-        width: 18
-        height: 15
+        x: 69
+        y: 3
+        width: 14
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -979,15 +979,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_43
+      name: boots
       rect:
         serializedVersion: 2
         x: 281
-        y: 2
+        y: 0
         width: 15
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2007,6 +2007,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ad_box
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 196
+        width: 15
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b621f0a604aa64a80ab81adacc949a
+      internalID: 2040156088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: speedUp_0
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 208
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa7d34ca546b1c4181d0a68bb9166ee
+      internalID: -1845647192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: speedUp_1
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 211
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 490440966f707c640b0bc9b17ded25b4
+      internalID: -2147216923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: speedUp_2
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 211
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 474b3fc4ecc6c654183f833ed9afa9e3
+      internalID: 1280338266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: speedUp_3
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 216
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85773f9454e746146b61f0eb75979040
+      internalID: 666959028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2046,13 +2151,11 @@ TextureImporter:
       __main.texturec-0-flipped_11: -115722810
       __main.texturec-0-flipped_12: -1272085339
       __main.texturec-0-flipped_13: -1901630335
-      __main.texturec-0-flipped_15: -706577608
       __main.texturec-0-flipped_17: -1230980207
       __main.texturec-0-flipped_25: -691325619
       __main.texturec-0-flipped_28: -1977366518
       __main.texturec-0-flipped_3: -1571978254
       __main.texturec-0-flipped_4: 752955290
-      __main.texturec-0-flipped_43: -1288984483
       __main.texturec-0-flipped_62: -998875238
       __main.texturec-0-flipped_9: 1041573145
       __pine_stump: 188050404
@@ -2061,7 +2164,10 @@ TextureImporter:
       _hit_effect_1: 462397261
       _hit_effect_2: 1163979227
       _hit_effect_3: 1437209520
+      ad_box: 2040156088
+      ads icon: -706577608
       arrow: -1743317640
+      boots: -1288984483
       carrot: -1806721189
       close button: -2007050740
       cloud: -721475698
@@ -2102,6 +2208,10 @@ TextureImporter:
       slime_egg: 1147525784
       sound_off: 1269199810
       sound_on: -1045172846
+      speedUp_0: -1845647192
+      speedUp_1: -2147216923
+      speedUp_2: 1280338266
+      speedUp_3: 666959028
       square marker: -1680720229
       stairs_down: -1723563639
       stairs_flat: 2038853318

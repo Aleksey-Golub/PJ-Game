@@ -137,9 +137,6 @@ namespace Code.Infrastructure
                 Vector3 position = item.Value.Position.AsUnityVector();
                 Dungeon dungeon = _gameFactory.CreateDungeon(item.Value.GameObjectId, position);
                 dungeon.UniqueId.Id = item.Key;
-
-                //dungeon.InitOnLoad(_configs.GetConfigFor(item.Value.NeedResourceType));
-                //dungeon.Init();
             }
         }
 
@@ -292,7 +289,7 @@ namespace Code.Infrastructure
 
         private void CameraFollow(GameObject hero)
         {
-            Camera.main.GetComponent<CameraMover>().SetTarget(hero.transform);
+            Camera.main.GetComponent<TargetFollower>().SetTarget(hero.transform);
         }
     }
 }

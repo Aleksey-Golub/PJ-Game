@@ -22,18 +22,18 @@ namespace Code.Services
             _config = Resources.Load<ResourceMergeServiceConfig>(CONFIG_PATH);
         }
 
-        public void OnUpdate()
+        public void OnUpdate(float deltaTime)
         {
-            MergeDroppedResources();
+            MergeDroppedResources(deltaTime);
         }
 
-        private void MergeDroppedResources()
+        private void MergeDroppedResources(float deltaTime)
         {
             IReadOnlyList<IMergingResource> droppedResources = _resourceFactory.DroppedResources;
 
             foreach (var res in droppedResources)
             {
-                res.UpdateDroppedTime(Time.deltaTime);
+                res.UpdateDroppedTime(deltaTime);
             }
 
             for (int i = droppedResources.Count - 1; i >= 0; i--)

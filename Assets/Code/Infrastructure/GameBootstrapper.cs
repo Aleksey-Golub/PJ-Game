@@ -23,7 +23,7 @@ namespace Code.Infrastructure
         private void Update()
         {
             foreach (var item in Updatables)
-                item.OnUpdate();
+                item.OnUpdate(Time.deltaTime);
         }
     }
 }

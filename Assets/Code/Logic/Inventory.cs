@@ -3,7 +3,7 @@ using Code.Services;
 using System;
 using System.Collections.Generic;
 
-internal class Inventory : ISavedProgressReader, ISavedProgressWriter
+public class Inventory : ISavedProgressReader, ISavedProgressWriter
 {
     private Dictionary<ResourceType, int> _storage;
     private readonly Dictionary<ResourceType, int> _reserved;

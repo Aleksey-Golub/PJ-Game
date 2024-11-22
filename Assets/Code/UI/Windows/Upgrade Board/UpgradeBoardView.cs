@@ -1,3 +1,4 @@
+using Code.Infrastructure;
 using Code.Services;
 using System;
 using System.Collections.Generic;
@@ -14,29 +15,41 @@ namespace Code.UI
         [SerializeField] private TextMeshProUGUI _header;
         [SerializeField] private Button _closeButton;
         [SerializeField] private AudioClip _closeButtonClickedClip;
+        [SerializeField] private ShowAdsButton _adsButton;
 
-        private IConfigsService _configService;
+        private IConfigsService _configs;
         private IPersistentProgressService _progressService;
         private IAudioService _audio;
-        
+
         private Dictionary<string, UpgradeItemView> _views;
         private Action<string> _upgradeResourceCalback;
 
-        internal void Coustruct(IConfigsService configService, IPersistentProgressService progressService, IAudioService audio)
+        internal void Coustruct(
+            IConfigsService configs,
+            IPersistentProgressService progressService,
+            IAudioService audio,
+            IAdsService adsService,
+            IUpdater updater
+            )
         {
             _views = new();
-            _configService = configService;
+            _configs = configs;
             _progressService = progressService;
             _audio = audio;
             LService.LanguageChanged += OnLanguageChanged;
 
             FillViews();
 
+            _adsButton.Construct(adsService, configs, updater);
+            _adsButton.SubscribeUpdates();
+
             _closeButton.onClick.AddListener(CloseFromUI);
         }
 
         private void OnDestroy()
         {
+            _adsButton.Cleanup();
+
             _closeButton.onClick.RemoveListener(CloseFromUI);
 
             foreach (var view in _views.Values)
@@ -46,10 +59,11 @@ namespace Code.UI
             LService.LanguageChanged -= OnLanguageChanged;
         }
 
-        internal void Open(Action<string> upgradeResourceCalback)
+        internal void Open(Action<string> upgradeResourceCalback, Inventory inventory)
         {
             _upgradeResourceCalback = upgradeResourceCalback;
             gameObject.SetActive(true);
+            _adsButton.Init(inventory);
 
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed += UpgradeItemsProgress_Changed;
 
@@ -59,7 +73,7 @@ namespace Code.UI
 
         internal void Refresh()
         {
-            foreach (IUpgradable config in _configService.UpgradablesConfigs)
+            foreach (IUpgradable config in _configs.UpgradablesConfigs)
             {
                 if (!config.IsUpgradable)
                     continue;
@@ -87,7 +101,7 @@ namespace Code.UI
             void SortViews()
             {
                 int index = 0;
-                foreach (IUpgradable config in _configService.UpgradablesConfigs)
+                foreach (IUpgradable config in _configs.UpgradablesConfigs)
                 {
                     string id = config.ID;
 
@@ -101,7 +115,7 @@ namespace Code.UI
                     index++;
                 }
 
-                foreach (IUpgradable config in _configService.UpgradablesConfigs)
+                foreach (IUpgradable config in _configs.UpgradablesConfigs)
                 {
                     string id = config.ID;
 
@@ -148,7 +162,7 @@ namespace Code.UI
 
         private void FillViews()
         {
-            foreach (IUpgradable config in _configService.UpgradablesConfigs)
+            foreach (IUpgradable config in _configs.UpgradablesConfigs)
             {
                 if (!config.IsUpgradable)
                     continue;
@@ -158,13 +172,13 @@ namespace Code.UI
 
                 string id = config.ID;
                 Sprite sprite = config.Sprite;
-                
+
                 upgradeItemView.Init(sprite, id);
-                
+
                 upgradeItemView.UpgradeButtonClicked += OnUpgradeButtonClicked;
 
                 _views.Add(id, upgradeItemView);
-                
+
             }
         }
 

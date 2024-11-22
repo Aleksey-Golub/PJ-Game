@@ -13,7 +13,7 @@ namespace Code.UI.Services
         void OpenSellBoardView(IReadOnlyDictionary<ResourceType, int> storage, Action<ResourceType> sellResource);
         void CloseSellBoardView();
         void RefreshSellBoardView(IReadOnlyDictionary<ResourceType, int> storage);
-        void OpenUpgradeBoardView(Action<string> upgradeItem);
+        void OpenUpgradeBoardView(Action<string> upgradeItem, Inventory inventory);
         void CloseUpgradeBoardView();
         void RefreshUpgradeBoardView();
         bool IsOpened(WindowId windowId);

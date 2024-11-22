@@ -9,5 +9,6 @@ namespace Code.Services
         void Initialize();
         bool IsRewardedVideoReady();
         void ShowRewardedVideo(Action onVideoFinished);
+        int GetRewardBasedOnInventory(ResourceType resourceType, int inInventory);
     }
 }

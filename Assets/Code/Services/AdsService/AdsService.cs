@@ -32,6 +32,17 @@ namespace Code.Services
             OnRewardedVideoFinished();
         }
 
+        public int GetRewardBasedOnInventory(ResourceType resourceType, int inInventory)
+        {
+            return inInventory switch
+            {
+                < 250 => 25,
+                < 500 => 50,
+                < 750 => 75,
+                _ => 100,
+            };
+        }
+
         private void OnRewardedVideoFinished()
         {
             _onVideoFinished?.Invoke();

@@ -64,7 +64,7 @@ namespace Code.UI.Services
         public void OpenSellBoardView(IReadOnlyDictionary<ResourceType, int> storage, Action<ResourceType> onSellResource) => SellBoardView.Open(storage, onSellResource);
         public void CloseSellBoardView() => SellBoardView.Close();
         public void RefreshSellBoardView(IReadOnlyDictionary<ResourceType, int> storage) => SellBoardView.Refresh(storage);
-        public void OpenUpgradeBoardView(Action<string> OnUpgradeItem) => UpgradeBoardView.Open(OnUpgradeItem);
+        public void OpenUpgradeBoardView(Action<string> OnUpgradeItem, Inventory inventory) => UpgradeBoardView.Open(OnUpgradeItem, inventory);
         public void CloseUpgradeBoardView() => UpgradeBoardView.Close();
         public void RefreshUpgradeBoardView() => UpgradeBoardView.Refresh();
 

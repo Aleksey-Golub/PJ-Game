@@ -328,13 +328,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_11
+      name: ads icon dark
       rect:
         serializedVersion: 2
-        x: 490
-        y: 194
-        width: 21
-        height: 16
+        x: 492
+        y: 196
+        width: 17
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2148,7 +2148,6 @@ TextureImporter:
       Workshop cloud: -2142500503
       __main.texturec-0-flipped_0: -2007972119
       __main.texturec-0-flipped_10: -1611873582
-      __main.texturec-0-flipped_11: -115722810
       __main.texturec-0-flipped_12: -1272085339
       __main.texturec-0-flipped_13: -1901630335
       __main.texturec-0-flipped_17: -1230980207
@@ -2165,6 +2164,7 @@ TextureImporter:
       _hit_effect_2: 1163979227
       _hit_effect_3: 1437209520
       ads icon: -706577608
+      ads icon dark: -115722810
       ads_box: 2040156088
       arrow: -1743317640
       boots: -1288984483

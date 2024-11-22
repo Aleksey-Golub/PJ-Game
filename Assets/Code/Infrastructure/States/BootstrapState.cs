@@ -75,7 +75,9 @@ namespace Code.Infrastructure
               _services.Single<IConfigsService>(),
               _services.Single<IPersistentProgressService>(),
               _services.Single<IAudioService>(),
-              _services.Single<ISaveLoadAppSettingsService>()
+              _services.Single<ISaveLoadAppSettingsService>(),
+              _services.Single<IAdsService>(),
+              _services.Single<IUpdater>()
               ));
 
             _services.RegisterSingle<IUIMediator>(new UIMediator(_services.Single<IUIFactory>()));

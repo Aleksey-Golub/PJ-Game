@@ -41,7 +41,7 @@ public class UpgradeBoard : SimpleObject, ICreatedByIdGameObject
         IsVisited = true;
 
         _inventory = inventory;
-        _uiMediator.OpenUpgradeBoardView(UpgradeItem);
+        _uiMediator.OpenUpgradeBoardView(UpgradeItem, inventory);
     }
 
     internal void Close()

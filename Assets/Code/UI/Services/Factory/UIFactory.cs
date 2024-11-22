@@ -18,13 +18,17 @@ namespace Code.UI.Services
         private readonly IPersistentProgressService _progressService;
         private readonly IAudioService _audio;
         private readonly ISaveLoadAppSettingsService _saveLoadAppSettingsService;
+        private readonly IAdsService _adsService;
+        private readonly IUpdater _updater;
 
         public UIFactory(
             IAssetProvider assets,
             IConfigsService configs,
             IPersistentProgressService progressService,
             IAudioService audio,
-            ISaveLoadAppSettingsService saveLoadAppSettingsService
+            ISaveLoadAppSettingsService saveLoadAppSettingsService,
+            IAdsService adsService,
+            IUpdater updater
             )
         {
             _assets = assets;
@@ -32,6 +36,8 @@ namespace Code.UI.Services
             _progressService = progressService;
             _audio = audio;
             _saveLoadAppSettingsService = saveLoadAppSettingsService;
+            _adsService = adsService;
+            _updater = updater;
         }
 
         public void CreateUIRoot()
@@ -51,7 +57,7 @@ namespace Code.UI.Services
         public UpgradeBoardView CreateUpgradeBoardView()
         {
             UpgradeBoardView upgradeBoardView = _assets.Instantiate(UPGRADEBOARDVIEW_PATH, _uiRoot).GetComponent<UpgradeBoardView>();
-            upgradeBoardView.Coustruct(_configs, _progressService, _audio);
+            upgradeBoardView.Coustruct(_configs, _progressService, _audio, _adsService, _updater);
 
             return upgradeBoardView;
         }

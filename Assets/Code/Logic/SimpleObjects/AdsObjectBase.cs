@@ -1,7 +1,7 @@
 ﻿using Code.Services;
 using UnityEngine;
 
-public abstract class AdsObjectBase<T> : SimpleObject, ICreatedByIdGameObject where T : AdsObjectView
+public abstract class AdsObjectBase<T> : SimpleObjectBase, ICreatedByIdGameObject where T : AdsObjectView
 {
     [SerializeField] private SimpleObjectType _type;
     [SerializeField] protected T View;

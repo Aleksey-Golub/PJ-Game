@@ -100,10 +100,10 @@ namespace Code.Infrastructure
             return resourceStorage;
         }
 
-        public SimpleObject CreateSimpleObject(SimpleObjectType type, Vector3 at)
+        public SimpleObjectBase CreateSimpleObject(SimpleObjectType type, Vector3 at)
         {
             SimpleObjectMatcher simpleObjectMatcher = _configs.GetMatcherFor(type);
-            SimpleObject simpleObject = InstantiateRegistered(simpleObjectMatcher.Template, at);
+            SimpleObjectBase simpleObject = InstantiateRegistered(simpleObjectMatcher.Template, at);
 
             switch (type)
             {
@@ -122,9 +122,10 @@ namespace Code.Infrastructure
                 case SimpleObjectType.AdsResourceBox:
                     (simpleObject as AdsResourceBox).Construct(_adsService, _resourceFactory, _audio);
                     break;
+                case SimpleObjectType.TutorialOnly:
                 case SimpleObjectType.None:
                 default:
-                    break;
+                    throw new System.NotSupportedException($"[GameFactory] CreateSimpleObject() not supported for {type}");
             }
 
             return simpleObject;
@@ -201,6 +202,16 @@ namespace Code.Infrastructure
             return dungeon;
         }
 
+        public Tutorial CreateTutorial(string sceneName)
+        {
+            TutorialMatcher tutorialMatcher = _configs.GetMatcherForTutorial(sceneName);
+            Tutorial tutorial = InstantiateRegistered(tutorialMatcher.Template).GetComponent<Tutorial>();
+
+            tutorial.Construct(this, _progressService, _heroGameObject.GetComponent<Player>());
+
+            return tutorial;
+        }
+
         public GameObject GetGameObject(string gameObjectId, Vector3 at, bool registerProgressWatchers = true)
         {
             GameObjectMatcher gameObjectMatcher = _configs.GetMatcherFor(gameObjectId);
@@ -266,22 +277,22 @@ namespace Code.Infrastructure
 
         private T InstantiateRegistered<T>(T prefab, bool registerProgressWatchers = true) where T : MonoBehaviour
         {
-            T monoDehaviour = Object.Instantiate<T>(prefab);
+            T monoBehaviour = Object.Instantiate<T>(prefab);
 
             if (registerProgressWatchers)
-                RegisterProgressWatchers(monoDehaviour.gameObject);
+                RegisterProgressWatchers(monoBehaviour.gameObject);
 
-            return monoDehaviour;
+            return monoBehaviour;
         }
 
         private T InstantiateRegistered<T>(T prefab, Vector3 at, bool registerProgressWatchers = true) where T : MonoBehaviour
         {
-            T monoDehaviour = Object.Instantiate<T>(prefab, at, Quaternion.identity);
+            T monoBehaviour = Object.Instantiate<T>(prefab, at, Quaternion.identity);
 
             if (registerProgressWatchers)
-                RegisterProgressWatchers(monoDehaviour.gameObject);
+                RegisterProgressWatchers(monoBehaviour.gameObject);
 
-            return monoDehaviour;
+            return monoBehaviour;
         }
 
         private GameObject InstantiateRegistered(GameObject prefab, Vector3 at, bool registerProgressWatchers = true)
@@ -301,6 +312,12 @@ namespace Code.Infrastructure
             public CreatedByIdGameObjectsConstructor(GameFactory gameFactory)
             {
                 _gameFactory = gameFactory;
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(TutorialOnly simpleObject)
+            {
+                simpleObject.Construct();
+                GenerateIdIfApplicable(simpleObject);
             }
 
             void ICreatedByIdGameObjectVisitor.Visit(SellBoard sellBoard)

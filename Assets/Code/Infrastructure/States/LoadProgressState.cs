@@ -44,7 +44,7 @@ namespace Code.Infrastructure
 
         private GameProgress NewProgress()
         {
-            var progress = new GameProgress(initialLevel: "GameScene");
+            var progress = new GameProgress(initialLevel: Scenes.LEVEL_1_SCENE);
 
             // set some data here
             SetInitialUpgradeData(_configs, progress);

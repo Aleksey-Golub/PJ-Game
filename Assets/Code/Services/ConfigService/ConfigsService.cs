@@ -19,6 +19,7 @@ namespace Code.Services
         private const string RESOURCESTORAGES_MATCHERS_PATH = "Configs/ResourceStorageConfigs/ResourceStoragesMatchers";
         private const string SIMPLEOBJECTS_MATCHERS_PATH = "Configs/SimpleObjects/SimpleObjectsMatchers";
         private const string GAMEOBJECTS_MATCHERS_PATH = "Configs/ObjectsMatchers";
+        private const string TUTORIALS_MATCHERS_PATH = "Configs/Tutorial/TutorialsMatchers";
 
         private Dictionary<ResourceType, ResourceConfig> _resourcesConfigs;
         private Dictionary<ToolType, ToolConfig> _toolsConfigs;
@@ -30,6 +31,7 @@ namespace Code.Services
         private Dictionary<ResourceStorageType, ResourceStorageMatcher> _resourceStoragesMatchers;
         private Dictionary<SimpleObjectType, SimpleObjectMatcher> _simpleObjectsMatchers;
         private Dictionary<string, GameObjectMatcher> _gameObjectsMatchers;
+        private Dictionary<string, TutorialMatcher> _tutorialsMatchers;
 
         public IReadOnlyDictionary<ResourceType, ResourceConfig> ResourcesConfigs => _resourcesConfigs;
         public IReadOnlyDictionary<ToolType, ToolConfig> ToolsConfigs => _toolsConfigs;
@@ -37,6 +39,7 @@ namespace Code.Services
         public IReadOnlyDictionary<ConverterType, ConverterConfig> ConverterConfigs => _converterConfigs;
         public IReadOnlyDictionary<EffectId, EffectConfig> EffectsConfigs => _effectsConfigs;
         public IReadOnlyList<IUpgradable> UpgradablesConfigs { get; private set; }
+        public IReadOnlyDictionary<string, TutorialMatcher> TutorialsMatchers => _tutorialsMatchers;
 
         public void Load()
         {
@@ -51,6 +54,7 @@ namespace Code.Services
             _resourceStoragesMatchers = Resources.Load<ResourceStoragesMatchers>(RESOURCESTORAGES_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
             _simpleObjectsMatchers = Resources.Load<SimpleObjectsMatchers>(SIMPLEOBJECTS_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
             _gameObjectsMatchers = Resources.Load<ObjectsMatchers>(GAMEOBJECTS_MATCHERS_PATH).Configs.ToDictionary(c => c.GameObjectId, c => c);
+            _tutorialsMatchers = Resources.Load<TutorialsMatchers>(TUTORIALS_MATCHERS_PATH).Matchers.ToDictionary(c => c.SceneName, c => c);
 
             UpgradablesConfigs = GetUpgradablesConfigs();
         }
@@ -73,5 +77,6 @@ namespace Code.Services
         public ResourceStorageMatcher GetMatcherFor(ResourceStorageType type) => _resourceStoragesMatchers[type];
         public SimpleObjectMatcher GetMatcherFor(SimpleObjectType type) => _simpleObjectsMatchers[type];
         public GameObjectMatcher GetMatcherFor(string gameObjectId) => _gameObjectsMatchers[gameObjectId];
+        public TutorialMatcher GetMatcherForTutorial(string sceneName) => _tutorialsMatchers[sceneName];
     }
 }

@@ -4,7 +4,7 @@ using Code.Data;
 using Code.Infrastructure;
 
 [SelectionBase]
-public abstract class SimpleObject : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem
+public abstract class SimpleObjectBase : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem
 {
     [field: SerializeField] public bool SceneBuiltInItem { get; private set; }
     [field: SerializeField] public UniqueId UniqueId { get; private set; }

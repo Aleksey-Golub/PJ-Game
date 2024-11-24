@@ -10,6 +10,8 @@ public class Inventory : ISavedProgressReader, ISavedProgressWriter
     private List<ToolType> _tools;
 
     internal event Action<ResourceType, int> ResourceCountChanged;
+    internal event Action<ResourceType, int> ResourceAdded;
+    internal event Action<ResourceType, int> ResourceRemoveed;
 
     internal IReadOnlyDictionary<ResourceType, int> Storage => _storage;
 
@@ -36,6 +38,7 @@ public class Inventory : ISavedProgressReader, ISavedProgressWriter
     {
         _storage[type] += value;
         ResourceCountChanged?.Invoke(type, _storage[type]);
+        ResourceAdded?.Invoke(type, value);
     }
 
     internal bool Remove(ResourceType type, int value)
@@ -44,6 +47,7 @@ public class Inventory : ISavedProgressReader, ISavedProgressWriter
         {
             _storage[type] -= value;
             ResourceCountChanged?.Invoke(type, _storage[type]);
+            ResourceRemoveed?.Invoke(type, value);
             return true;
         }
         else

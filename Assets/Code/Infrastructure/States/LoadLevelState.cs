@@ -85,6 +85,8 @@ namespace Code.Infrastructure
 
             InitUIRoot();
             InitGameWorld(loadedSceneName);
+            InitTutorial(loadedSceneName);
+            InitTutorialObjects(loadedSceneName);
             InformProgressReaders();
             _audio.PlayAmbient();
             _loadingSceneName = null;
@@ -126,6 +128,38 @@ namespace Code.Infrastructure
             InitUIMediator(hud);
             GameObject hero = _gameFactory.CreateHero(GameObject.FindWithTag(INITIAL_POINT_TAG));
             CameraFollow(hero);
+        }
+
+        private void InitTutorial(string loadedSceneName)
+        {
+            var tutorialProgress = _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].TutorialProgress;
+
+            if (tutorialProgress.IsCompleted)
+                return;
+
+            // There is no tutorial for this scene
+            // This is valid state
+            if (!_configs.TutorialsMatchers.ContainsKey(loadedSceneName))
+            {
+                tutorialProgress.IsCompleted = true;
+                tutorialProgress.Stage = -10;
+                return;
+            }
+
+            Tutorial tutorial = _gameFactory.CreateTutorial(loadedSceneName);
+        }
+
+        private void InitTutorialObjects(string loadedSceneName)
+        {
+            foreach (var item in _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[loadedSceneName].TutorialProgress.TutorialObjectsDatas.TutorialObjectsOnScene.Dictionary)
+            {
+                if (item.Value.SceneBuiltInItem)
+                    continue;
+
+                Vector3 position = item.Value.Position.AsUnityVector();
+                TutorialOnly tutorialOnly = _gameFactory.GetGameObject(item.Value.GameObjectId, position).GetComponent<TutorialOnly>();
+                tutorialOnly.UniqueId.Id = item.Key;
+            }
         }
 
         private void InitDungeons(string loadedSceneName)
@@ -219,7 +253,15 @@ namespace Code.Infrastructure
                     continue;
 
                 Vector3 position = item.Value.Position.AsUnityVector();
-                SimpleObject sObject = _gameFactory.CreateSimpleObject(item.Value.Type, position);
+
+                if (item.Value.Type == SimpleObjectType.TutorialOnly)
+                {
+                    Logger.LogError($"[LoadLevelState] InitSimpleObjects() not supported for {item.Value.Type}");
+                    continue;
+                }
+
+                SimpleObjectBase sObject = _gameFactory.CreateSimpleObject(item.Value.Type, position);
+
                 sObject.UniqueId.Id = item.Key;
             }
         }

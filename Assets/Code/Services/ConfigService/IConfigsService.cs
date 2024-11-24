@@ -12,6 +12,7 @@ namespace Code.Services
         IReadOnlyDictionary<ConverterType, ConverterConfig> ConverterConfigs { get; }
         IReadOnlyList<IUpgradable> UpgradablesConfigs { get; }
         IReadOnlyDictionary<EffectId, EffectConfig> EffectsConfigs { get; }
+        IReadOnlyDictionary<string, TutorialMatcher> TutorialsMatchers { get; }
 
         void Load();
         ResourceConfig GetConfigFor(ResourceType type);
@@ -22,5 +23,6 @@ namespace Code.Services
         ResourceStorageMatcher GetMatcherFor(ResourceStorageType type);
         SimpleObjectMatcher GetMatcherFor(SimpleObjectType type);
         GameObjectMatcher GetMatcherFor(string gameObjectId);
+        TutorialMatcher GetMatcherForTutorial(string sceneName);
     }
 }

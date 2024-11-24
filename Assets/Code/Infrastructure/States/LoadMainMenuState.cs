@@ -13,7 +13,7 @@
 
         public void Enter()
         {
-            _sceneLoader.Load(Constants.MAIN_MENU_SCENE, onLoaded: OnSceneLoaded);
+            _sceneLoader.Load(Scenes.MAIN_MENU_SCENE, onLoaded: OnSceneLoaded);
         }
 
         public void Exit()

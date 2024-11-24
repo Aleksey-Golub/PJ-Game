@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: ObjectsMatchers
   m_EditorClassIdentifier: 
   Configs:
+  - GameObjectId: Input hint object
+    Template: {fileID: 5538979070672612155, guid: 9cfa83fe79bb79c4cae378db78ebf360, type: 3}
+    Type: 32
+  - GameObjectId: Resource UI Pointer Anim
+    Template: {fileID: 8376075955479536795, guid: 53501d482807bf04db9bb5d363dc0eb5, type: 3}
+    Type: 32
+  - GameObjectId: Resource UI Pointer NotAnim
+    Template: {fileID: 8376075955479536795, guid: b2f195ad120bf1645be357328937cca5, type: 3}
+    Type: 32
+  - GameObjectId: Chunk Pointer
+    Template: {fileID: 5538979070672612155, guid: 75d3b0ea490130047894d55677fb08c9, type: 3}
+    Type: 32
   - GameObjectId: Sell Board
     Template: {fileID: 5468609326228704530, guid: 00d1604afd7f56041811867e1d22c7b9, type: 3}
     Type: 1

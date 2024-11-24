@@ -370,7 +370,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_13
+      name: input_image
       rect:
         serializedVersion: 2
         x: 2
@@ -1399,12 +1399,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_62
+      name: pointer
       rect:
         serializedVersion: 2
-        x: 364
+        x: 366
         y: 131
-        width: 18
+        width: 16
         height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2149,13 +2149,11 @@ TextureImporter:
       __main.texturec-0-flipped_0: -2007972119
       __main.texturec-0-flipped_10: -1611873582
       __main.texturec-0-flipped_12: -1272085339
-      __main.texturec-0-flipped_13: -1901630335
       __main.texturec-0-flipped_17: -1230980207
       __main.texturec-0-flipped_25: -691325619
       __main.texturec-0-flipped_28: -1977366518
       __main.texturec-0-flipped_3: -1571978254
       __main.texturec-0-flipped_4: 752955290
-      __main.texturec-0-flipped_62: -998875238
       __main.texturec-0-flipped_9: 1041573145
       __pine_stump: 188050404
       __rock_stump: -1482988333
@@ -2179,12 +2177,14 @@ TextureImporter:
       gem: 1881971156
       grass: -667556626
       heart: -535157519
+      input_image: -1901630335
       iron: -343440380
       iron_ore: -1107001721
       milk: 1368875871
       mind_cloud: -1030577411
       music_off: 665058631
       music_on: 496096163
+      pointer: -998875238
       pot_damaged: 1933690828
       pot_whole: -1094742133
       sell board: 174787419

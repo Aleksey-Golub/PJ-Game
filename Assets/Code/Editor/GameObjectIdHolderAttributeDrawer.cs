@@ -74,6 +74,9 @@ public class GameObjectIdHolderAttributeDrawer : PropertyDrawer
                 case GameObjectType.Dungeon:
                     ids.AddRange(G_GameObjectsIds_Dungeon.Ids);
                     break;
+                case GameObjectType.Special:
+                    ids.AddRange(G_GameObjectsIds_Special.Ids);
+                    break;
                 case GameObjectType.All:
                 case GameObjectType.None:
                 default:

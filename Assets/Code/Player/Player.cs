@@ -51,6 +51,8 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
 
     private float CurrentSpeed => _isSpeedUp ? _speedUpSpeed : _speed;
 
+    public Inventory Inventory => _inventory;
+
     #region EDITOR_ONLY Draw interact sphere
 
 #if UNITY_EDITOR

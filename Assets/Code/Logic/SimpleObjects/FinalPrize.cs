@@ -2,7 +2,7 @@
 using Code.Services;
 using UnityEngine;
 
-public class FinalPrize : SimpleObject, ICreatedByIdGameObject
+public class FinalPrize : SimpleObjectBase, ICreatedByIdGameObject
 {
     [SerializeField] private SimpleObjectType _type;
     [SerializeField] private FinalPrizeView _view;

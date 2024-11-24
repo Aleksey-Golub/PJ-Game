@@ -16,11 +16,12 @@ namespace Code.Infrastructure
         void Recycle(GameObject gameObject);
         ResourceSource CreateResourceSource(ResourceSourceType type, Vector3 at, bool registerProgressWatchers = true);
         ResourceStorage CreateResourceStorage(ResourceStorageType type, Vector3 at);
-        SimpleObject CreateSimpleObject(SimpleObjectType type, Vector3 position);
+        SimpleObjectBase CreateSimpleObject(SimpleObjectType type, Vector3 position);
         Workbench CreateWorkbench(Vector3 position);
         Chunk CreateChunk(Vector3 position);
         Workshop CreateWorkshop(WorkshopType type, Vector3 position);
         Converter CreateConverter(ConverterType type, Vector3 position);
         Dungeon CreateDungeon(string gameObjectId, Vector3 position);
+        Tutorial CreateTutorial(string loadedSceneName);
     }
 }

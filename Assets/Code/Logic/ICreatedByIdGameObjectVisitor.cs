@@ -1,6 +1,7 @@
 ﻿
 public interface ICreatedByIdGameObjectVisitor
 {
+    void Visit(TutorialOnly simpleObject);
     void Visit(SellBoard sellBoard);
     void Visit(UpgradeBoard upgradeBoard);
     void Visit(ResourceSource resourceSource);

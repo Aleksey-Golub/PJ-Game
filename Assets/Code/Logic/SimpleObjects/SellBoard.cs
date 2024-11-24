@@ -2,7 +2,7 @@ using Code.Infrastructure;
 using Code.Services;
 using Code.UI.Services;
 
-public class SellBoard : SimpleObject, ICreatedByIdGameObject
+public class SellBoard : SimpleObjectBase, ICreatedByIdGameObject
 {
     private IUIMediator _uiMediator;
     private IConfigsService _configService;

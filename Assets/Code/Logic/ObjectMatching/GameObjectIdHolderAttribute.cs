@@ -21,5 +21,6 @@ public enum GameObjectType
     ResourceStorage = 4,
     ResourceConsumer = 8,
     Dungeon = 16,
+    Special = 32,
     All = ~0,
 }

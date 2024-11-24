@@ -2,5 +2,5 @@
 public class SimpleObjectMatcher
 {
     public SimpleObjectType Type;
-    public SimpleObject Template;
+    public SimpleObjectBase Template;
 }

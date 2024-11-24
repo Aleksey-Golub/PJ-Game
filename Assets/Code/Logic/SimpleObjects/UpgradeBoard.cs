@@ -3,7 +3,7 @@ using Code.Services;
 using Code.UI.Services;
 using System.Linq;
 
-public class UpgradeBoard : SimpleObject, ICreatedByIdGameObject
+public class UpgradeBoard : SimpleObjectBase, ICreatedByIdGameObject
 {
     private IUIMediator _uiMediator;
     private IConfigsService _configService;

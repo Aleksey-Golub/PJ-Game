@@ -5,7 +5,7 @@ namespace Code.Infrastructure
 {
     public class BootstrapState : IState
     {
-        private const string INITIAL = "Initial";
+        
 
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
@@ -21,7 +21,7 @@ namespace Code.Infrastructure
         }
 
         public void Enter() =>
-          _sceneLoader.Load(INITIAL, onLoaded: OnSceneLoaded);
+          _sceneLoader.Load(Scenes.INITIAL, onLoaded: OnSceneLoaded);
 
         public void Exit()
         {

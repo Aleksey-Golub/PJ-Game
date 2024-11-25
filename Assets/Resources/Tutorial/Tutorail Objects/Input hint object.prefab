@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5824615326252757086}
   - component: {fileID: 1127056979510257970}
   - component: {fileID: 35797724718934022}
+  - component: {fileID: 3450446838153352198}
   m_Layer: 0
   m_Name: Hint Text (TMP)
   m_TagString: Untagged
@@ -171,6 +172,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1127056979510257970}
   m_maskType: 0
+--- !u!114 &3450446838153352198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3956804770758132604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c645c49f29b13429b4040c59a25659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: k_Hint_movement
+  _text: {fileID: 35797724718934022}
 --- !u!1 &4660948053813748434
 GameObject:
   m_ObjectHideFlags: 0

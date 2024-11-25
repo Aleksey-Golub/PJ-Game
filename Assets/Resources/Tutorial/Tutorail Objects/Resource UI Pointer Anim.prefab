@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 4981119528075310198}
   - component: {fileID: 7963732764319516260}
   - component: {fileID: 4773140565390653624}
+  - component: {fileID: 2959311447851578696}
   m_Layer: 5
   m_Name: Resource UI Pointer Anim
   m_TagString: Untagged
@@ -408,3 +409,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 
+--- !u!114 &2959311447851578696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376075955479536795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c645c49f29b13429b4040c59a25659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: k_UI_resource_pointer
+  _text: {fileID: 872498201354474456}

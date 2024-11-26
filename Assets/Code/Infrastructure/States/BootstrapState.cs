@@ -5,8 +5,6 @@ namespace Code.Infrastructure
 {
     public class BootstrapState : IState
     {
-        
-
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _services;
@@ -157,11 +155,10 @@ namespace Code.Infrastructure
 
         private static IInputService GetInputService()
         {
-#if UNITY_STANDALONE
-            return new DesktopInput();
-#else
-            return new MobileInput();
-#endif
+            if (UnityEngine.Application.isMobilePlatform)
+                return new MobileInput();
+            else
+                return new DesktopInput();
         }
     }
 }

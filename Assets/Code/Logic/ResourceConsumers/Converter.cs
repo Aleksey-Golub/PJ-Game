@@ -37,6 +37,13 @@ public class Converter : MonoBehaviour, IResourceConsumer, ISavedProgressReader,
 
     private string Id => UniqueId.Id;
 
+#if DEBUG && FAST_DEBUG
+    private void Awake()
+    {
+        _converTime = 1f;
+    }
+#endif
+
     private void Start()
     {
         if (SceneBuiltInItem)

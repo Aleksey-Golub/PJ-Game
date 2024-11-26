@@ -15,7 +15,7 @@ namespace Code.Services
 
         public bool IsRewardedVideoReady()
         {
-#if FAKE_LOADED_ADS
+#if DEBUG && FAKE_LOADED_ADS
             return true;
 #else
             //return Advertisement.IsReady(_placementId);

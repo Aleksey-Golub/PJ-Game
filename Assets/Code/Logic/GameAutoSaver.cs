@@ -8,6 +8,10 @@ public class GameAutoSaver : MonoBehaviour
     private ISaveLoadService _saveLoadService;
     private Timer _autoSaveTimer;
 
+#if DEBUG && FAST_DEBUG
+    private void Awake() => _autosaveInterval = 2f;
+#endif
+
     private void Start()
     {
         var saveLoadService = AllServices.Container.Single<ISaveLoadService>();

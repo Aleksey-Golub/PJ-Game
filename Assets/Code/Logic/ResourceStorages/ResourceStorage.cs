@@ -33,6 +33,14 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
     internal bool CanInteract => _currentResourceCount > 0;
     internal ToolType NeedToolType => _needToolType;
 
+#if DEBUG && FAST_DEBUG
+    private void Awake()
+    {
+        if (_config.Type is not ResourceStorageType.Chest)
+            _restoreTime = 0.01f;
+    }
+#endif
+
     private void Start()
     {
         if (SceneBuiltInItem)

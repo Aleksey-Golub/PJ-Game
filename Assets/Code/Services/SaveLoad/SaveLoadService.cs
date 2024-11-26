@@ -14,8 +14,8 @@ namespace Code.Services
         private readonly IToolFactory _toolFactory;
 
         public SaveLoadService(
-            IPersistentProgressService progressService, 
-            IGameFactory gameFactory, 
+            IPersistentProgressService progressService,
+            IGameFactory gameFactory,
             IResourceFactory resourceFactory,
             IToolFactory toolFactory
             )
@@ -35,11 +35,13 @@ namespace Code.Services
 
             foreach (ISavedProgressWriter resource in _resourceFactory.DroppedResources)
                 resource.WriteToProgress(progress);
-            
+
             foreach (ISavedProgressWriter resource in _toolFactory.DroppedResources)
                 resource.WriteToProgress(progress);
 
+#if LOG_SAVING
             Debug.Log(progress.ToJson());
+#endif
 
             PlayerPrefs.SetString(PROGRESS_KEY, progress.ToJson());
         }

@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: _dropResourceCount
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2872169157991871229, guid: aaf1d4e122fdf004db64c4c42f759b69, type: 3}
+      propertyPath: _startResourceCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3654969139900557348, guid: aaf1d4e122fdf004db64c4c42f759b69, type: 3}
       propertyPath: m_Size.x
       value: 1

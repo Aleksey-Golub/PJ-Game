@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnedGameObjectId: Chunk Pointer
   <AssignedId>k__BackingField: Chunk Pointer
-  <Position>k__BackingField: {x: -2, y: 3.6, z: 0}
+  <Position>k__BackingField: {x: -2, y: 3.85, z: 0}

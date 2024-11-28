@@ -13,7 +13,8 @@ namespace Code.UI
         [SerializeField] private ButtonSwitcher _musicButton;
         [SerializeField] private Slider _musicSlider;
         [SerializeField] private SwitchableLabel _languageSwitchableLabel;
-        
+        [SerializeField] private Button _removeProgressBtn;
+
         private ISaveLoadAppSettingsService _saveLoadAppSettingsService;
 
         internal void Construct(IAudioService audio, ISaveLoadAppSettingsService saveLoadAppSettingsService)
@@ -21,6 +22,12 @@ namespace Code.UI
             base.Construct(audio);
 
             _saveLoadAppSettingsService = saveLoadAppSettingsService;
+
+#if DEBUG
+            _removeProgressBtn.gameObject.SetActive(true);
+#else
+            _removeProgressBtn.gameObject.SetActive(false);
+#endif
         }
 
         internal void Open()
@@ -54,6 +61,8 @@ namespace Code.UI
             _languageSwitchableLabel.LeftClicked += OnLanguageSwitchableLabelLeftClicked;
             _languageSwitchableLabel.RightClicked += OnLanguageSwitchableLabelRightClicked;
 
+            _removeProgressBtn.onClick.AddListener(OnRemoveProgressButtonClick);
+
             LService.LanguageChanged += RefreshUI;
         }
 
@@ -73,6 +82,8 @@ namespace Code.UI
             _languageSwitchableLabel.Cleanup();
             _languageSwitchableLabel.LeftClicked -= OnLanguageSwitchableLabelLeftClicked;
             _languageSwitchableLabel.RightClicked -= OnLanguageSwitchableLabelRightClicked;
+
+            _removeProgressBtn.onClick.RemoveListener(OnRemoveProgressButtonClick);
 
             LService.LanguageChanged -= RefreshUI;
         }
@@ -139,6 +150,11 @@ namespace Code.UI
             _languageSwitchableLabel.Init(LService.Localize("k_language_name"));
             RefreshSounds();
             RefreshMusic();
+        }
+
+        private void OnRemoveProgressButtonClick()
+        {
+            PlayerPrefs.DeleteKey(SaveLoadService.PROGRESS_KEY);
         }
     }
 }

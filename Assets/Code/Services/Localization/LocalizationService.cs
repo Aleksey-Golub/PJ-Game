@@ -39,6 +39,7 @@ namespace Code.Services
 
         public void ReadAppSettings(AppSettings appSettings)
         {
+            // ISO 639-1 ('ru', 'en', 'fr')
             string systemLang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             Logger.Log("systemTwoLetterISOLanguageName = " + systemLang);
             string settingLang = appSettings.LanguageSettings.TwoLetterISOLanguageName;

@@ -1,4 +1,5 @@
 ﻿using System;
+using GamePush;
 
 namespace Code.Services
 {
@@ -28,6 +29,7 @@ namespace Code.Services
 
 #if DEBUG && FAKE_ADS
 #else
+            SubscribeOnGP_AdsEvents();
 #endif
             Logger.Log($"[AdsService] end initializing...");
         }
@@ -41,6 +43,7 @@ namespace Code.Services
             StickyClose?.Invoke();
             AdsClose?.Invoke(true);
 #else
+            GP_Ads.ShowSticky();
 #endif
         }
 
@@ -55,6 +58,7 @@ namespace Code.Services
             AdsClose?.Invoke(true);
             AdsExceptStickyClose?.Invoke(true);
 #else
+            GP_Ads.ShowPreloader();
 #endif
         }
 
@@ -69,6 +73,7 @@ namespace Code.Services
             AdsClose?.Invoke(true);
             AdsExceptStickyClose?.Invoke(true);
 #else
+            GP_Ads.ShowFullscreen();
 #endif
         }
 
@@ -77,7 +82,7 @@ namespace Code.Services
 #if DEBUG && FAKE_ADS
             return true;
 #else
-            return false;
+            return GP_Ads.IsRewardedAvailable();
 #endif
         }
 
@@ -96,6 +101,7 @@ namespace Code.Services
             AdsClose?.Invoke(true);
             AdsExceptStickyClose?.Invoke(true);
 #else
+            GP_Ads.ShowRewarded(onRewardedReward: OnRewardedVideoFinished);
 #endif
         }
 
@@ -117,6 +123,108 @@ namespace Code.Services
 
             RewardedVideoReady?.Invoke();
         }
+
+#if DEBUG && FAKE_ADS
+        private void SubscribeOnGP_AdsEvents()
+        {
+            GP_Ads.OnAdsStart += OnAdsStart;
+            GP_Ads.OnStickyStart += OnStickyStart;
+            GP_Ads.OnPreloaderStart += OnPreloaderStart;
+            GP_Ads.OnFullscreenStart += OnFullscreenStart;
+            GP_Ads.OnRewardedStart += OnRewardedStart;
+
+            GP_Ads.OnAdsClose += OnAdsClose;
+            GP_Ads.OnStickyClose += OnStickyClose;
+            GP_Ads.OnPreloaderClose += OnPreloaderClose;
+            GP_Ads.OnFullscreenClose += OnFullScreenClose;
+            GP_Ads.OnRewardedClose += OnRewardedClose;
         }
+
+        #region Ads Events Handlers
+        private void OnAdsStart()
+        {
+            Logger.Log($"[AdsService] ADs start");
+
+            AdsStart?.Invoke();
+        }
+
+        private void OnStickyStart()
+        {
+            Logger.Log($"[AdsService] Sticky start");
+
+            StickyStart?.Invoke();
+            AdsStart?.Invoke();
+        }
+
+        private void OnPreloaderStart()
+        {
+            Logger.Log($"[AdsService] Preloader start");
+
+            PreloaderStart?.Invoke();
+            AdsStart?.Invoke();
+            AdsExceptStickyStart?.Invoke();
+        }
+
+        private void OnFullscreenStart()
+        {
+            Logger.Log($"[AdsService] Fullscreen start");
+
+            FullscreenStart?.Invoke();
+            AdsStart?.Invoke();
+            AdsExceptStickyStart?.Invoke();
+        }
+
+        private void OnRewardedStart()
+        {
+            Logger.Log($"[AdsService] Rewarded start");
+
+            RewardedStart?.Invoke();
+            AdsStart?.Invoke();
+            AdsExceptStickyStart?.Invoke();
+        }
+
+        private void OnAdsClose(bool success)
+        {
+            Logger.Log($"[AdsService] Ads close {success}");
+
+            AdsClose?.Invoke(success);
+        }
+
+        private void OnStickyClose()
+        {
+            Logger.Log($"[AdsService] Sticky close");
+
+            StickyClose?.Invoke();
+            AdsClose?.Invoke(true);
+        }
+
+        private void OnPreloaderClose(bool success)
+        {
+            Logger.Log($"[AdsService] Preloader close {success}");
+
+            PreloaderClose?.Invoke(success);
+            AdsClose?.Invoke(success);
+            AdsExceptStickyClose?.Invoke(success);
+        }
+
+        private void OnFullScreenClose(bool success)
+        {
+            Logger.Log($"[AdsService] Fullscreen close {success}");
+
+            FullscreenClose?.Invoke(success);
+            AdsClose?.Invoke(success);
+            AdsExceptStickyClose?.Invoke(success);
+        }
+
+        private void OnRewardedClose(bool success)
+        {
+            Logger.Log($"[AdsService] Rewarded close {success}");
+
+            RewardedClose?.Invoke(success);
+            AdsClose?.Invoke(success);
+            AdsExceptStickyClose?.Invoke(success);
+        }
+        #endregion
+#endif
     }
 }

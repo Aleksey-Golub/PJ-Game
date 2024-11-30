@@ -16,5 +16,7 @@ namespace Code.Services
         void SetNormalizedVolume(string group, float value);
         float GetNormalizedVolume(string group);
         AudioGroupData GetData(string group);
+        void PauseAll();
+        void UnPauseAll();
     }
 }

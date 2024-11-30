@@ -31,6 +31,7 @@ namespace Code.Services
         private readonly List<CreatedAudioSource> _cache = new();
         private readonly WaitForSeconds _waitForSeconds;
         private Transform _audioSourceContainer;
+        private bool _pause;
         private readonly ICoroutineRunner _coroutineRunner;
 
         internal AudioService(ICoroutineRunner coroutineRunner)
@@ -183,7 +184,7 @@ namespace Code.Services
 
                 foreach (KeyValuePair<string, CreatedAudioSource> item in _toCheckEnd)
                 {
-                    if (item.Value.AudioSource.isPlaying == false && Application.isFocused)
+                    if (!item.Value.AudioSource.isPlaying && Application.isFocused && !_pause)
                     {
                         _cache.Add(item.Value);
                     }
@@ -233,6 +234,27 @@ namespace Code.Services
             // value = (0, 1]
             float newValue = Mathf.Log10(value) * 20f;
             _audioMixer.SetFloat(group, newValue);
+        }
+
+        public void PauseAll()
+        {
+            Logger.Log($"[Audio] PauseAll()");
+            _pause = true;
+
+            _musicSource.AudioSource.Pause();
+            foreach (var s in _toCheckEnd)
+                s.Value.AudioSource.Pause();
+        }
+
+        public void UnPauseAll()
+        {
+            Logger.Log($"[Audio] UnPauseAll()");
+            _pause = false;
+
+            _musicSource.AudioSource.UnPause();
+            foreach (var s in _toCheckEnd)
+                s.Value.AudioSource.Pause();
+
         }
     }
 

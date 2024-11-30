@@ -11,15 +11,17 @@ namespace Code.Infrastructure
         private readonly IPopupFactory _popupFactory;
         private readonly IToolFactory _toolFactory;
         private readonly ITransitionalResourceFactory _transitionalResourceFactory;
+        private readonly IAdsService _adsService;
 
         public GameLoopState(
-            GameStateMachine stateMachine, 
-            IGameFactory gameFactory, 
-            IResourceFactory resourceFactory, 
+            GameStateMachine stateMachine,
+            IGameFactory gameFactory,
+            IResourceFactory resourceFactory,
             IEffectFactory effectFactory,
             IPopupFactory popupFactory,
             IToolFactory toolFactory,
-            ITransitionalResourceFactory transitionalResourceFactory
+            ITransitionalResourceFactory transitionalResourceFactory,
+            IAdsService adsService
             )
         {
             _stateMachine = stateMachine;
@@ -29,10 +31,13 @@ namespace Code.Infrastructure
             _popupFactory = popupFactory;
             _toolFactory = toolFactory;
             _transitionalResourceFactory = transitionalResourceFactory;
+            _adsService = adsService;
         }
 
         public void Enter()
         {
+            _adsService.ShowSticky();
+            _adsService.ShowPreloader();
         }
 
         public void Exit()

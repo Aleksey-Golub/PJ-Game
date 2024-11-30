@@ -50,12 +50,12 @@ namespace Code.Infrastructure
             _audio = audio;
             _input = input;
             _popupFactory = popupFactory;
+            _transitionalResourceFactory = transitionalResourceFactory;
             _resourceFactory = resourceFactory;
             _toolFactory = toolFactory;
             _effectFactory = effectFactory;
             _dropCountCalculatorService = dropCountCalculatorService;
             _adsService = adsService;
-            _transitionalResourceFactory = transitionalResourceFactory;
 
             _createdByIdGameObjectsConstructor = new(this);
         }
@@ -117,7 +117,7 @@ namespace Code.Infrastructure
                     (simpleObject as FinalPrize).Construct(_audio);
                     break;
                 case SimpleObjectType.Boots:
-                    (simpleObject as BootsAdsObject).Construct(_adsService);
+                    (simpleObject as BootsAdsObject).Construct(_adsService, _audio);
                     break;
                 case SimpleObjectType.AdsResourceBox:
                     (simpleObject as AdsResourceBox).Construct(_adsService, _resourceFactory, _audio);
@@ -389,7 +389,7 @@ namespace Code.Infrastructure
 
             void ICreatedByIdGameObjectVisitor.Visit(BootsAdsObject boots)
             {
-                boots.Construct(_gameFactory._adsService);
+                boots.Construct(_gameFactory._adsService, _gameFactory._audio);
 
                 GenerateIdIfApplicable(boots);
             }

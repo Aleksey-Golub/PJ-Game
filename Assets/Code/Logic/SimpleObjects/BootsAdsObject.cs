@@ -13,14 +13,15 @@ public class BootsAdsObject : AdsObjectBase<AdsObjectView>
         if (SceneBuiltInItem)
         {
             var adsService = AllServices.Container.Single<IAdsService>();
+            var audio = AllServices.Container.Single<IAudioService>();
             var gameFactory = AllServices.Container.Single<IGameFactory>();
 
-            Construct(adsService);
+            Construct(adsService, audio);
             gameFactory.RegisterProgressWatchersExternal(gameObject);
         }
     }
 
-    internal new void Construct(IAdsService adsService) => base.Construct(adsService);
+    internal new void Construct(IAdsService adsService, IAudioService audio) => base.Construct(adsService, audio);
 
     protected override void OnRewardedVideoEndSuccessfully()
     {

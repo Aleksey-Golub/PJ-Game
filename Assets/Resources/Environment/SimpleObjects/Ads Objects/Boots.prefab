@@ -398,6 +398,7 @@ MonoBehaviour:
   _shadow: {fileID: 3016162299340886619}
   _diedSprite: {fileID: 0}
   _wholeSprite: {fileID: -1288984483, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
+  _rewardAcceptedClip: {fileID: 8300000, guid: d4561b7cd9c13464b8cbf03dfbedaec7, type: 3}
 --- !u!111 &8278311045930723801
 Animation:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public abstract class AdsObjectBase<T> : SimpleObjectBase, ICreatedByIdGameObjec
 
     protected override SimpleObjectType Type => _type;
 
-    protected void Construct(IAdsService adsService)
+    protected void Construct(IAdsService adsService, IAudioService audio)
     {
         _adsService = adsService;
         _adsService.RewardedVideoReady += OnRewardedVideoReady;
@@ -30,7 +30,7 @@ public abstract class AdsObjectBase<T> : SimpleObjectBase, ICreatedByIdGameObjec
         _restorationTimer = new Timer();
         _restorationTimer.Elapsed += OnRestorationTimerElapsed;
 
-        View.Construct();
+        View.Construct(audio);
 
         if (!AdsReady())
         {
@@ -60,7 +60,7 @@ public abstract class AdsObjectBase<T> : SimpleObjectBase, ICreatedByIdGameObjec
 
     protected virtual void OnRewardedVideoEndSuccessfully()
     {
-
+        View.PlayRewardAcceptSound();
     }
 
     private void TriggerEnterHandler(Collider2D collision)

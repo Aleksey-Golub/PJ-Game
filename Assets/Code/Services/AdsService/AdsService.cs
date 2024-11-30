@@ -117,6 +117,5 @@ namespace Code.Services
 
             RewardedVideoReady?.Invoke();
         }
-        }
     }
 }

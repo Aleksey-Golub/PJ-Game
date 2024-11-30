@@ -1,5 +1,6 @@
 ﻿using Code.Services;
 using Code.UI.Services;
+using System.Collections;
 
 namespace Code.Infrastructure
 {
@@ -62,7 +63,6 @@ namespace Code.Infrastructure
                 _services.Single<IAssetProvider>()));
             _services.RegisterSingle<IEffectFactory>(new EffectFactory(
                 _services.Single<IConfigsService>()));
-
 
             _services.RegisterSingle<ISaveLoadAppSettingsService>(new SaveLoadAppSettingsService(
                 _services.Single<IAppSettingsService>(),
@@ -150,15 +150,27 @@ namespace Code.Infrastructure
             //_services.RegisterSingle(localization);
         }
 
-        private void OnSceneLoaded() =>
-          _stateMachine.Enter<LoadAppSettingsState>();
-
         private static IInputService GetInputService()
         {
             if (UnityEngine.Application.isMobilePlatform)
                 return new MobileInput();
             else
                 return new DesktopInput();
+        }
+
+        private void OnSceneLoaded()
+        {
+            _services.Single<ICoroutineRunner>().StartCoroutine(OnSceneLoadedCor());
+        }
+
+        private IEnumerator OnSceneLoadedCor()
+        {
+            while (!PlatformLayer.IsInitialized)
+            {
+                yield return null;
+            }
+
+            _stateMachine.Enter<LoadAppSettingsState>();
         }
     }
 }

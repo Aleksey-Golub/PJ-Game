@@ -108,12 +108,14 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
     {
         WriteToPositionOnLevel(progress);
         WriteInventoryData(progress);
+        WriteSpeedUpData(progress);
     }
 
     void ISavedProgressReader.ReadProgress(GameProgress progress)
     {
         ReadPositionOnLevel(progress);
         ReadInventoryData(progress);
+        ReadSpeedUpData(progress);
     }
 
     private void WriteInventoryData(GameProgress progress)
@@ -154,6 +156,23 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
             _view.PlayMove(_direction, 0);
         }
     }
+
+    private void WriteSpeedUpData(GameProgress progress)
+    {
+        progress.PlayerProgress.SpeedUpTimerData = new TimerData(_speedUpTimer.IsStarted, _speedUpTimer.Passed, _speedUpTimer.Duration);
+        progress.PlayerProgress.SpeedUpSpeed = _speedUpSpeed;
+    }
+
+    private void ReadSpeedUpData(GameProgress progress)
+    {
+        var timerData = progress.PlayerProgress.SpeedUpTimerData;
+        float speed = progress.PlayerProgress.SpeedUpSpeed;
+
+        if (timerData.IsStarted)
+        {
+            SpeedUp(speed, timerData.Duration, timerData.Passed);
+        }
+    }
     #endregion
 
     internal void Teleport(Vector3 to)
@@ -164,7 +183,7 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
         _view.AfterTeleport();
     }
 
-    internal void SpeedUp(float newSpeed, float time)
+    internal void SpeedUp(float newSpeed, float time, float passed = 0)
     {
         if (!_isSpeedUp)
         {
@@ -174,7 +193,7 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
         }
 
         _speedUpSpeed = newSpeed;
-        _speedUpTimer.Start(time);
+        _speedUpTimer.StartAsPartialPassed(time, passed);
     }
 
     private void OnSpeedUpTimerElapsed(Timer speedUpTimer)

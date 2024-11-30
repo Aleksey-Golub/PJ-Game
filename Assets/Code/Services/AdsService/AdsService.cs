@@ -125,6 +125,7 @@ namespace Code.Services
         }
 
 #if DEBUG && FAKE_ADS
+#else
         private void SubscribeOnGP_AdsEvents()
         {
             GP_Ads.OnAdsStart += OnAdsStart;

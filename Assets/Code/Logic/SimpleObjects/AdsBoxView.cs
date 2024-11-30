@@ -1,5 +1,4 @@
-﻿using Code.Services;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class AdsBoxView : AdsObjectView
@@ -10,13 +9,6 @@ public class AdsBoxView : AdsObjectView
     [SerializeField] private SpriteRenderer _dropResourceRenderer;
     [SerializeField] private TMP_Text _dropCounText;
 
-    private IAudioService _audio;
-
-    internal void Construct(IAudioService audio)
-    {
-        _audio = audio;
-    }
-
     internal void Init(Sprite dropResourceSprite, int dropResourceCount)
     {
         _dropResourceRenderer.sprite = dropResourceSprite;
@@ -25,7 +17,7 @@ public class AdsBoxView : AdsObjectView
 
     internal void PlayDropResourceSound()
     {
-        _audio.PlaySfxAtPosition(_dropResourceAudioClip, transform.position);
+        Audio.PlaySfxAtPosition(_dropResourceAudioClip, transform.position);
     }
 
     internal override void ShowWhole()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.Services;
+using UnityEngine;
 
 public class AdsObjectView : MonoBehaviour
 {
@@ -13,9 +14,14 @@ public class AdsObjectView : MonoBehaviour
     [Tooltip("Can be null")]
     [SerializeField] private Sprite _diedSprite;
     [SerializeField] private Sprite _wholeSprite;
+    [SerializeField] private AudioClip _rewardAcceptedClip;
 
-    internal void Construct()
+    protected IAudioService Audio;
+
+    internal void Construct(IAudioService audio)
     {
+        Audio = audio;
+
         if (_animation != null)
             _animation.Play();
     }
@@ -46,5 +52,10 @@ public class AdsObjectView : MonoBehaviour
     {
         _spriteRenderer.sprite = _wholeSprite;
         _shadow.SetActive(true);
+    }
+
+    internal void PlayRewardAcceptSound()
+    {
+        Audio.PlaySfxAtPosition(_rewardAcceptedClip, transform.position);
     }
 }

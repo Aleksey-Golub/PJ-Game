@@ -38,7 +38,7 @@ public class AdsResourceBox : AdsObjectBase<AdsBoxView>
 
         View.Construct(audio);
 
-        Construct(adsService);
+        Construct(adsService, audio);
     }
 
     public void Init()

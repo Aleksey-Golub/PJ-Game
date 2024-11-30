@@ -600,8 +600,8 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: ENEBLE_LOGS;ENEBLE_WARNINGS;FAKE_LOADED_ADS;LOG_SAVING;FAST_DEBUG
-    WebGL: ENEBLE_LOGS;ENEBLE_WARNINGS;FAKE_LOADED_ADS;LOG_SAVING;FAST_DEBUG
+    Standalone: ENEBLE_LOGS;ENEBLE_WARNINGS;LOG_SAVING;FAST_DEBUG;FAKE_ADS
+    WebGL: ENEBLE_LOGS;ENEBLE_WARNINGS;LOG_SAVING;FAST_DEBUG;FAKE_ADS
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

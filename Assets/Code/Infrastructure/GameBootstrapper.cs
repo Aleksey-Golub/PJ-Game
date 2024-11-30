@@ -6,6 +6,7 @@ namespace Code.Infrastructure
 {
     public class GameBootstrapper : MonoBehaviour, ICoroutineRunner, IUpdater
     {
+        [SerializeField] private PlatformLayer _platformLayer;
         [SerializeField] private LoadingCurtain _curtainPrefab;
 
         private Game _game;
@@ -14,6 +15,8 @@ namespace Code.Infrastructure
 
         private void Awake()
         {
+            _platformLayer.Initialize();
+
             _game = new Game(this, this, Instantiate(_curtainPrefab));
             _game.StateMachine.Enter<BootstrapState>();
 

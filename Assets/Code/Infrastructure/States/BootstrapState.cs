@@ -33,6 +33,7 @@ namespace Code.Infrastructure
             _services.RegisterSingle<IUpdater>(updater);
 
             RegisterAdsService();
+            _services.RegisterSingle<ITimeService>(new TimeService());
             RegisterLocalizationService();
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             RegisterConfigService();

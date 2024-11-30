@@ -81,6 +81,8 @@ namespace Code.Infrastructure
 
         private void OnLoaded()
         {
+            Logger.Log($"[LoadLevelState] OnLoaded() start...");
+
             string loadedSceneName = _loadingSceneName;
 
             InitUIRoot();

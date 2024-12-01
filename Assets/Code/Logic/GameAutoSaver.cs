@@ -23,10 +23,19 @@ public class GameAutoSaver : MonoBehaviour
     {
         _saveLoadService = saveLoadService;
 
+        PlatformLayer.WebGameResumed += OnGameResumed;
+        PlatformLayer.WebGlWindowClosedOrRefreshed += OnWebGlWindowClosedOrRefreshed;
+
         _autoSaveTimer = new Timer();
         _autoSaveTimer.Elapsed += AutoSaveProgress;
 
         StartTimer();
+    }
+
+    private void OnDestroy()
+    {
+        PlatformLayer.WebGameResumed -= OnGameResumed;
+        PlatformLayer.WebGlWindowClosedOrRefreshed -= OnWebGlWindowClosedOrRefreshed;
     }
 
     private void Update()
@@ -42,8 +51,19 @@ public class GameAutoSaver : MonoBehaviour
         StartTimer();
     }
 
+    private void SaveProgress()
+    {
+        Logger.Log("[GameAutoSaver] Save Progress");
+
+        _saveLoadService.SaveProgress();
+    }
+
     private void StartTimer()
     {
         _autoSaveTimer.Start(_autosaveInterval);
     }
+
+    private void OnGameResumed() => SaveProgress();
+
+    private void OnWebGlWindowClosedOrRefreshed() => SaveProgress();
 }

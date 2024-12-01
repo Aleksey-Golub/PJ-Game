@@ -1,4 +1,5 @@
 ﻿using Code.Services;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +28,15 @@ namespace Code.Infrastructure
         {
             foreach (var item in Updatables)
                 item.OnUpdate(Time.deltaTime);
+        }
+
+        /// <summary>
+        /// Used from index.html
+        /// </summary>
+        [UsedImplicitly()]
+        public void WindowCloseOrRefresh()
+        {
+            _platformLayer.WindowClosedOrRefreshed();
         }
     }
 }

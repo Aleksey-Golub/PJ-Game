@@ -65,5 +65,12 @@ public class GameAutoSaver : MonoBehaviour
 
     private void OnGameResumed() => SaveProgress();
 
-    private void OnWebGlWindowClosedOrRefreshed() => SaveProgress();
+    private void OnWebGlWindowClosedOrRefreshed()
+    {
+#if DEBUG
+        Logger.LogWarning($"[GameAutoSaver] On WebGlWindowClosedOrRefreshed save progress disabled");
+#else
+        SaveProgress();
+#endif
+    }
 }

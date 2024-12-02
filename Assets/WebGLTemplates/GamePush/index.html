@@ -91,6 +91,10 @@
         window.unityInstance = unityInstance;
         //_unityAwaiter.done(unityInstance);
         loadingCover.style.display = "none";
+        window.onbeforeunload = () => {
+          window.unityInstance.SendMessage("GameBootstrapper", "WindowCloseOrRefresh");
+          //return "Close?";
+        };
       }).catch((message) => {
         //_unityAwaiter.abort(message);
         alert(message);

@@ -93,6 +93,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -286,13 +299,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_9
+      name: finger
       rect:
         serializedVersion: 2
-        x: 489
-        y: 216
-        width: 12
-        height: 13
+        x: 488
+        y: 215
+        width: 14
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2112,6 +2125,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: arrow_swipe
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 11
+        width: 72
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 18, y: 0, z: 18, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd8da1476bb1e74f8eb208acdee8bef
+      internalID: 986111177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arrow_swipe_small
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 47
+        width: 47
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 0, z: 8, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c55659f68acb3d4688edf2a4d1148ae
+      internalID: 262159369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2154,7 +2209,6 @@ TextureImporter:
       __main.texturec-0-flipped_28: -1977366518
       __main.texturec-0-flipped_3: -1571978254
       __main.texturec-0-flipped_4: 752955290
-      __main.texturec-0-flipped_9: 1041573145
       __pine_stump: 188050404
       __rock_stump: -1482988333
       _hit_effect_0: 1833739912
@@ -2165,12 +2219,15 @@ TextureImporter:
       ads icon dark: -115722810
       ads_box: 2040156088
       arrow: -1743317640
+      arrow_swipe: 986111177
+      arrow_swipe_small: 262159369
       boots: -1288984483
       carrot: -1806721189
       close button: -2007050740
       cloud: -721475698
       coin: -756613953
       dung: -1736698845
+      finger: 1041573145
       fruit: -1746096017
       fruit_bush_dry: -363025930
       fruit_bush_whole: 1759373326

@@ -71,11 +71,17 @@ MonoBehaviour:
     Values:
     - off
     - "\u0432\u044B\u043A\u043B"
-  - Key: k_Hint_movement
+  - Key: k_Hint_movement_desktop
     Values:
     - "Use arrows or WASD \nto move"
     - "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u0441\u0442\u0440\u0435\u043B\u043A\u0438
       \u0438\u043B\u0438 WASD \n\u0434\u043B\u044F \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F"
+  - Key: k_Hint_movement_mobile
+    Values:
+    - "Swipe horizontal and vertical \nto move"
+    - "\u0414\u0432\u0438\u0433\u0430\u0439 \u043F\u0430\u043B\u044C\u0446\u0435\u043C
+      \n\u0432\u0432\u0435\u0440\u0445-\u0432\u043D\u0438\u0437 \u0438 \u0432\u043F\u0440\u0430\u0432\u043E-\u0432\u043B\u0435\u0432\u043E
+      \n\u0434\u043B\u044F \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F"
   - Key: k_UI_resource_pointer
     Values:
     - Your resources

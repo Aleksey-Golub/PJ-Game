@@ -12,7 +12,11 @@ k_Sounds,Sounds,Звук,
 k_Music,Music,Музыка,
 k_on,on,вкл,
 k_off,off,выкл,
-k_Hint_movement,"Use arrows or WASD 
+k_Hint_movement_desktop,"Use arrows or WASD 
 to move","Используй стрелки или WASD 
+для движения",
+k_Hint_movement_mobile,"Swipe horizontal and vertical 
+to move","Двигай пальцем 
+вверх-вниз и вправо-влево 
 для движения",
 k_UI_resource_pointer,Your resources,Твои ресурсы,

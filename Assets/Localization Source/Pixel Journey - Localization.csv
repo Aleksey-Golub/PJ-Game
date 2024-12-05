@@ -1,22 +1,24 @@
-Key,en,ru,Comments
-k_language_name,English,Русский,
-k_Sell_Items,Sell items,Продать предметы,
-k_Sell,Sell,Продать,
-k_Upgrades,Upgrades,Улучшения,
-k_Drop,Drop:,Эффективность,
-k_Capacity,Capacity:,Вместимость,
-k_Lvl,Lvl,Ур.,
-k_MAX,MAX,МАКС,
-k_Settings,Settings,Настройки,
-k_Sounds,Sounds,Звук,
-k_Music,Music,Музыка,
-k_on,on,вкл,
-k_off,off,выкл,
+Key,en,ru,tr,Comments
+k_language_name,English,Русский,Türkçe,
+k_Sell_Items,Sell items,Продать предметы,Ürün satmak,
+k_Sell,Sell,Продать,Satmak,
+k_Upgrades,Upgrades,Улучшения,Yükseltmeler,
+k_Drop,Drop:,Эффективность,Verimlilik:,
+k_Capacity,Capacity:,Вместимость,Kapasite:,
+k_Lvl,Lvl,Ур.,Seviye,
+k_MAX,MAX,МАКС,MAX,
+k_Settings,Settings,Настройки,Ayarlar,
+k_Sounds,Sounds,Звук,Sesler,
+k_Music,Music,Музыка,Müzik,
+k_on,on,вкл,üzerinde,
+k_off,off,выкл,kapalı,
 k_Hint_movement_desktop,"Use arrows or WASD 
 to move","Используй стрелки или WASD 
-для движения",
+для движения","Hareket etmek için okları veya WASD 
+tuşlarını kullanın",
 k_Hint_movement_mobile,"Swipe horizontal and vertical 
 to move","Двигай пальцем 
 вверх-вниз и вправо-влево 
-для движения",
-k_UI_resource_pointer,Your resources,Твои ресурсы,
+для движения","Hareket ettirmek için parmağınızı yatay 
+ve dikey olarak sürükleyin",
+k_UI_resource_pointer,Your resources,Твои ресурсы,Kaynaklarınız,

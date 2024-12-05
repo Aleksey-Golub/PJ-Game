@@ -44,6 +44,14 @@ namespace Code.Services
             //Application.focusChanged += (r) => Logger.Log($"[PlatformLayer] focus= {r}");
         }
 
+        public static void SetGameReady()
+        {
+#if DEBUG && FAKE_ADS
+#else
+            GamePush.GP_Game.GameReady();
+#endif
+        }
+
         public void WindowClosedOrRefreshed()
         {
             Logger.Log("[PlatformLayer] WindowCloseOrRefresh() called");

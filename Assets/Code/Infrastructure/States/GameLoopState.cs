@@ -36,6 +36,8 @@ namespace Code.Infrastructure
 
         public void Enter()
         {
+            PlatformLayer.SetGameReady();
+            
             _adsService.ShowSticky();
             _adsService.ShowPreloader();
         }

@@ -171,7 +171,7 @@ namespace Code.Infrastructure
                 yield return null;
             }
 
-            Logger.Log($"[BootstrapState] PlatformLayer is isInitialized");
+            Logger.LogWarning($"[BootstrapState] PlatformLayer is isInitialized on {PlatformLayer.PlatformName}");
             _stateMachine.Enter<LoadAppSettingsState>();
         }
     }

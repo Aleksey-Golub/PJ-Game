@@ -21,6 +21,18 @@ namespace Code.Services
             }
         }
 
+        public static string PlatformName
+        {
+            get
+            {
+#if DEBUG && FAKE_ADS
+                return "Not GamePush";
+#else
+                return GamePush.GP_Platform.Type().ToString();
+#endif
+            }
+        }
+
         public static event Action WebGamePaused;
         public static event Action WebGameResumed;
         public static event Action WebGlWindowClosedOrRefreshed;

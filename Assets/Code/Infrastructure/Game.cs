@@ -20,6 +20,17 @@ namespace Code.Infrastructure
             var ads = services.Single<IAdsService>();
             ads.AdsExceptStickyStart += OnAdsExceptStickyStart;
             ads.AdsExceptStickyClose += OnAdsExceptStickyClose;
+            UnityEngine.Application.focusChanged += OnApplicationFocusChanged;
+        }
+
+        private void OnApplicationFocusChanged(bool focus)
+        {
+            Logger.Log($"[Game] focus chanded to {focus}");
+
+            if (focus)
+                OnAdsExceptStickyClose(false);
+            else
+                OnAdsExceptStickyStart();
         }
 
         private void OnAdsExceptStickyStart()
@@ -28,7 +39,7 @@ namespace Code.Infrastructure
             _time.StopTime();
         }
 
-        private void OnAdsExceptStickyClose(bool obj)
+        private void OnAdsExceptStickyClose(bool result)
         {
             _audio.UnPauseAll();
             _time.ResumeTime();

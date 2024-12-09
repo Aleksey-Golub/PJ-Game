@@ -172,6 +172,10 @@ namespace Code.Infrastructure
             }
 
             Logger.LogWarning($"[BootstrapState] PlatformLayer is isInitialized on {PlatformLayer.PlatformName}");
+
+            var ads = AllServices.Container.Single<IAdsService>();
+            Logger.Log($"[BootstrapState] available ads: sticky= {ads.IsStickyAvailable()}, preload= {ads.IsPreloaderAvailable()}, fullscreen= {ads.IsFullscreenAvailable()}, rewarded= {ads.IsRewardedAvailable()}");
+
             _stateMachine.Enter<LoadAppSettingsState>();
         }
     }

@@ -1,11 +1,17 @@
 ﻿using System;
+
+#if DEBUG && FAKE_ADS
+#else
 using GamePush;
+#endif
 
 namespace Code.Services
 {
     public class AdsService : IAdsService
     {
         public event Action RewardedVideoReady;
+
+        public event Action AdsExceptStickyCalling;
 
         public event Action AdsStart;
         public event Action AdsExceptStickyStart;
@@ -34,8 +40,52 @@ namespace Code.Services
             Logger.Log($"[AdsService] end initializing...");
         }
 
+        public bool IsStickyAvailable()
+        {
+#if DEBUG && FAKE_ADS
+            return true;
+#else
+            return GP_Ads.IsStickyAvailable();
+#endif
+        }
+
+        public bool IsPreloaderAvailable()
+        {
+#if DEBUG && FAKE_ADS
+            return true;
+#else
+            return GP_Ads.IsPreloaderAvailable();
+#endif
+        }
+
+        public bool IsFullscreenAvailable()
+        {
+#if DEBUG && FAKE_ADS
+            return true;
+#else
+            return GP_Ads.IsFullscreenAvailable();
+#endif
+        }
+
+        public bool IsRewardedAvailable()
+        {
+#if DEBUG && FAKE_ADS
+            return true;
+#else
+            return GP_Ads.IsRewardedAvailable();
+#endif
+        }
+
         public void ShowSticky()
         {
+            Logger.Log($"[AdsService] start ShowSticky()");
+
+            if (!IsStickyAvailable())
+            {
+                Logger.LogWarning($"[AdsService] trying to show Sticky, but it is not available");
+                return;
+            }
+
 #if DEBUG && FAKE_ADS
             StickyStart?.Invoke();
             AdsStart?.Invoke();
@@ -49,6 +99,16 @@ namespace Code.Services
 
         public void ShowPreloader()
         {
+            Logger.Log($"[AdsService] start ShowPreloader()");
+
+            if (!IsPreloaderAvailable())
+            {
+                Logger.LogWarning($"[AdsService] trying to show Preload, but it is not available");
+                return;
+            }
+
+            AdsExceptStickyCalling?.Invoke();
+
 #if DEBUG && FAKE_ADS
             PreloaderStart?.Invoke();
             AdsStart?.Invoke();
@@ -64,6 +124,16 @@ namespace Code.Services
 
         public void ShowFullscreen()
         {
+            Logger.Log($"[AdsService] start ShowFullScreen()");
+
+            if (!IsFullscreenAvailable())
+            {
+                Logger.LogWarning($"[AdsService] trying to show Fullscreen, but it is not available");
+                return;
+            }
+
+            AdsExceptStickyCalling?.Invoke();
+
 #if DEBUG && FAKE_ADS
             FullscreenStart?.Invoke();
             AdsStart?.Invoke();
@@ -88,7 +158,17 @@ namespace Code.Services
 
         public void ShowRewardedVideo(Action onVideoFinished)
         {
+            Logger.Log($"[AdsService] start ShowRewarded()");
+
+            if (!IsRewardedAvailable())
+            {
+                Logger.LogWarning($"[AdsService] trying to show Rewarded, but it is not available");
+                return;
+            }
+
             _onVideoFinished = onVideoFinished;
+            
+            AdsExceptStickyCalling?.Invoke();
 
 #if DEBUG && FAKE_ADS
             RewardedStart?.Invoke();

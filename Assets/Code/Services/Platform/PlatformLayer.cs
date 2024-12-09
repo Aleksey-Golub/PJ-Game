@@ -28,7 +28,8 @@ namespace Code.Services
 #if DEBUG && FAKE_ADS
                 return "Not GamePush";
 #else
-                return GamePush.GP_Platform.Type().ToString();
+                string device = GamePush.GP_Device.IsMobile() ? "mobile" : "desktop";
+                return $"{GamePush.GP_Platform.Type().ToString()} {device}";
 #endif
             }
         }
@@ -56,6 +57,9 @@ namespace Code.Services
             //Application.focusChanged += (r) => Logger.Log($"[PlatformLayer] focus= {r}");
         }
 
+        /// <summary>
+        /// Call this when game fully available to player: all progress bars, downloads etc ended; MainMenu or level avalable.
+        /// </summary>
         public static void SetGameReady()
         {
 #if DEBUG && FAKE_ADS

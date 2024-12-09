@@ -6,6 +6,7 @@ namespace Code.UI.Services
     {
         void CreateUIRoot();
         WindowBase CreateWindow(WindowId windowId);
+        UIPopup CreatePopup(UIPopupId uiPopupId);
         UpgradeBoardView CreateUpgradeBoardView();
         SellBoardView CreateSellBoardView();
     }

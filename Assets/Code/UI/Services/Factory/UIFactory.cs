@@ -10,6 +10,7 @@ namespace Code.UI.Services
         private const string UI_ROOT_PATH = "UI/UI Root";
         private const string UPGRADEBOARDVIEW_PATH = "UI/Windows/Upgrade/Upgrade Board View";
         private const string SELLBOARDVIEW_PATH = "UI/Windows/Sell/Sell Board View";
+        private const string UI_POPUP_PATH = "UI/UI Popups/UI Popup";
 
         private readonly IAssetProvider _assets;
         private readonly IConfigsService _configs;
@@ -54,6 +55,14 @@ namespace Code.UI.Services
             return window;
         }
 
+        public UIPopup CreatePopup(UIPopupId uiPopupId)
+        {
+            UIPopup popup = _assets.Instantiate(UI_POPUP_PATH, _uiRoot).GetComponent<UIPopup>();
+            ConstructUiPopup(popup, uiPopupId);
+
+            return popup;
+        }
+
         public UpgradeBoardView CreateUpgradeBoardView()
         {
             UpgradeBoardView upgradeBoardView = _assets.Instantiate(UPGRADEBOARDVIEW_PATH, _uiRoot).GetComponent<UpgradeBoardView>();
@@ -82,6 +91,21 @@ namespace Code.UI.Services
                 case WindowId.None:
                 default:
                     throw new NotImplementedException($"Not implemented for {windowId}");
+            }
+        }
+        
+        private void ConstructUiPopup(UIPopup popup, UIPopupId popupId)
+        {
+            popup.gameObject.name = $"{popupId.ToString()} popup";
+
+            switch (popupId)
+            {
+                case UIPopupId.AdWaiting:
+                    popup.Construct("k_waitingForAd");
+                    break;
+                case UIPopupId.None:
+                default:
+                    throw new NotImplementedException($"Not implemented for {popupId}");
             }
         }
     }

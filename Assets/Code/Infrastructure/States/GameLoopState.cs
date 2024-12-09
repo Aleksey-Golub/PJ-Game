@@ -1,4 +1,5 @@
 ﻿using Code.Services;
+using Code.UI.Services;
 
 namespace Code.Infrastructure
 {
@@ -12,6 +13,7 @@ namespace Code.Infrastructure
         private readonly IToolFactory _toolFactory;
         private readonly ITransitionalResourceFactory _transitionalResourceFactory;
         private readonly IAdsService _adsService;
+        private readonly IUIMediator _uiMediator;
 
         public GameLoopState(
             GameStateMachine stateMachine,
@@ -21,7 +23,8 @@ namespace Code.Infrastructure
             IPopupFactory popupFactory,
             IToolFactory toolFactory,
             ITransitionalResourceFactory transitionalResourceFactory,
-            IAdsService adsService
+            IAdsService adsService,
+            IUIMediator uiMediator
             )
         {
             _stateMachine = stateMachine;
@@ -32,18 +35,25 @@ namespace Code.Infrastructure
             _toolFactory = toolFactory;
             _transitionalResourceFactory = transitionalResourceFactory;
             _adsService = adsService;
+            _uiMediator = uiMediator;
         }
 
         public void Enter()
         {
             PlatformLayer.SetGameReady();
-            
+
+            _adsService.AdsExceptStickyCalling += OnAdsExceptStickyCalling;
+            _adsService.AdsExceptStickyClose += OnAdsExceptStickyClose;
+
             _adsService.ShowSticky();
             _adsService.ShowPreloader();
         }
 
         public void Exit()
         {
+            _adsService.AdsExceptStickyCalling -= OnAdsExceptStickyCalling;
+            _adsService.AdsExceptStickyClose -= OnAdsExceptStickyClose;
+
             _gameFactory.Cleanup();
             _resourceFactory.Cleanup();
             _effectFactory.Cleanup();
@@ -51,5 +61,8 @@ namespace Code.Infrastructure
             _toolFactory.Cleanup();
             _transitionalResourceFactory.Cleanup();
         }
+
+        private void OnAdsExceptStickyCalling() => _uiMediator.OpenPopup(UIPopupId.AdWaiting);
+        private void OnAdsExceptStickyClose(bool result) => _uiMediator.ClosePopup(UIPopupId.AdWaiting);
     }
 }

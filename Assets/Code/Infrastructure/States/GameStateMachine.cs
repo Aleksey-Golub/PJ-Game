@@ -58,7 +58,8 @@ namespace Code.Infrastructure
             services.Single<IPopupFactory>(),
             services.Single<IToolFactory>(),
             services.Single<ITransitionalResourceFactory>(),
-            services.Single<IAdsService>()
+            services.Single<IAdsService>(),
+            services.Single<IUIMediator>()
             ),
       };
     }

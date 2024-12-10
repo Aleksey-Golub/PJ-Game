@@ -21,11 +21,26 @@ namespace Code.Services
             _audio.WriteToAppSettings(_appSettingsService.Settings);
             LService.WriteToAppSettings(_appSettingsService.Settings);
 
-            PlayerPrefs.SetString(APP_SETTINGS_KEY, _appSettingsService.Settings.ToJson());
+            string appSettingsJSON = _appSettingsService.Settings.ToJson();
+
+            PlayerPrefs.SetString(APP_SETTINGS_KEY, appSettingsJSON);
+
+#if GAME_PUSH && VK_GAMES
+            GamePush.GP_Player.Set(APP_SETTINGS_KEY, appSettingsJSON);
+            GamePush.GP_Player.Sync();
+#endif
         }
 
         public AppSettings LoadAppSettings()
         {
+#if GAME_PUSH && VK_GAMES
+            var gpAppSettingsJson = GamePush.GP_Player.GetString(APP_SETTINGS_KEY);
+            if (!string.IsNullOrWhiteSpace(gpAppSettingsJson))
+            {
+                return gpAppSettingsJson.ToDeserialized<AppSettings>();
+            }
+#endif
+
             return PlayerPrefs.GetString(APP_SETTINGS_KEY)?
               .ToDeserialized<AppSettings>();
         }

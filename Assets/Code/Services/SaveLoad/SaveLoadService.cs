@@ -39,17 +39,32 @@ namespace Code.Services
             foreach (ISavedProgressWriter resource in _toolFactory.DroppedResources)
                 resource.WriteToProgress(progress);
 
+            string progressJSON = progress.ToJson();
+
 #if LOG_SAVING
-            Debug.Log(progress.ToJson());
+            Debug.Log(progressJSON);
 #endif
 
-            PlayerPrefs.SetString(PROGRESS_KEY, progress.ToJson());
+            PlayerPrefs.SetString(PROGRESS_KEY, progressJSON);
+
+#if GAME_PUSH && VK_GAMES
+            GamePush.GP_Player.Set(PROGRESS_KEY, progressJSON);
+            GamePush.GP_Player.Sync();
+#endif
         }
 
         public GameProgress LoadProgress()
         {
+#if GAME_PUSH && VK_GAMES
+            var gpProgressJson = GamePush.GP_Player.GetString(PROGRESS_KEY);
+            if (!string.IsNullOrWhiteSpace(gpProgressJson))
+            {
+                return gpProgressJson.ToDeserialized<GameProgress>();
+            }
+#endif
+
             return PlayerPrefs.GetString(PROGRESS_KEY)?
-              .ToDeserialized<GameProgress>();
+                .ToDeserialized<GameProgress>();
         }
     }
 }

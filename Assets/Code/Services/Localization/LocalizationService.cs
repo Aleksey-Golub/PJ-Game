@@ -48,7 +48,12 @@ namespace Code.Services
             Logger.Log($"[LocalizationService] GamePush current ISO language = {systemLang}");
 #endif
             string settingLang = appSettings.LanguageSettings.TwoLetterISOLanguageName;
+
+#if VK_GAMES
+            string defaultLang = "ru";
+#else
             string defaultLang = "en";
+#endif
 
             string loadingTwoLetterISOLanguageName =
                 !string.IsNullOrWhiteSpace(settingLang) && AvailableLanguagesContains(settingLang) ?

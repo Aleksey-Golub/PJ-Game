@@ -605,7 +605,7 @@ PlayerSettings:
   webGLPowerPreference: 2
   scriptingDefineSymbols:
     Standalone: ENEBLE_LOGS;ENEBLE_WARNINGS;LOG_SAVING;FAST_DEBUG;FAKE_ADS
-    WebGL: ENEBLE_LOGS;ENEBLE_WARNINGS;FAST_DEBUG
+    WebGL: ENEBLE_LOGS;ENEBLE_WARNINGS;FAST_DEBUG;GAME_PUSH;VK_GAMES
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

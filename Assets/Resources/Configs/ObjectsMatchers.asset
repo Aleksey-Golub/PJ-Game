@@ -25,6 +25,42 @@ MonoBehaviour:
   - GameObjectId: Chunk Pointer
     Template: {fileID: 5538979070672612155, guid: 75d3b0ea490130047894d55677fb08c9, type: 3}
     Type: 32
+  - GameObjectId: Ground Pointer
+    Template: {fileID: 5538979070672612155, guid: cb340bd6821967f4b9d6f91c324d5986, type: 3}
+    Type: 32
+  - GameObjectId: Ground Pointer Arrow
+    Template: {fileID: 4994262287624370625, guid: fa1d1c5a088233940826689160be8394, type: 3}
+    Type: 32
+  - GameObjectId: Tutorial msg 1
+    Template: {fileID: 5615048197524511184, guid: 86c37b053b1dd1045a7117235f1d3c40, type: 3}
+    Type: 32
+  - GameObjectId: Tutorial msg 2
+    Template: {fileID: 5615048197524511184, guid: f56e0102286a6c8428e3a6674ecfb224, type: 3}
+    Type: 32
+  - GameObjectId: Tutorial msg 3
+    Template: {fileID: 5615048197524511184, guid: 49ca7de920422394d81154a9ccace4f1, type: 3}
+    Type: 32
+  - GameObjectId: Tutorial msg 4
+    Template: {fileID: 5615048197524511184, guid: 0dd7a415592b2724e9eef6a1a93df0f4, type: 3}
+    Type: 32
+  - GameObjectId: Tutorial msg 5
+    Template: {fileID: 5615048197524511184, guid: e241da88da37b104d81eeb6da09c5506, type: 3}
+    Type: 32
+  - GameObjectId: Tutorial msg 6
+    Template: {fileID: 5615048197524511184, guid: 5924a463ba5e44c4db9361c51b8465a7, type: 3}
+    Type: 32
+  - GameObjectId: Tutorial msg 7
+    Template: {fileID: 5615048197524511184, guid: 4f942188d5de4ff4cbb5ee209541941a, type: 3}
+    Type: 32
+  - GameObjectId: Tutorial msg 8
+    Template: {fileID: 5615048197524511184, guid: ba6a2f85502129e4bbe5a34a3b53d95a, type: 3}
+    Type: 32
+  - GameObjectId: Tutorial msg 9
+    Template: {fileID: 5615048197524511184, guid: 88ffe94c6d1140849a29fc454a0524c9, type: 3}
+    Type: 32
+  - GameObjectId: Tutorial msg 10
+    Template: {fileID: 5615048197524511184, guid: 2d95cbca1f3479d4a9829bbfb5f4b4cc, type: 3}
+    Type: 32
   - GameObjectId: Sell Board
     Template: {fileID: 5468609326228704530, guid: 00d1604afd7f56041811867e1d22c7b9, type: 3}
     Type: 1

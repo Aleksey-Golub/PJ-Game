@@ -60,6 +60,8 @@ public class LocalizationStorage : ScriptableObject
             }
 
             EditorUtility.SetDirty(storage);
+
+            Debug.Log($"[LocalizationStorage] update successfully");
         }
 
         private string Prepare(string sourceText)

@@ -12,6 +12,7 @@ public class Inventory : ISavedProgressReader, ISavedProgressWriter
     internal event Action<ResourceType, int> ResourceCountChanged;
     internal event Action<ResourceType, int> ResourceAdded;
     internal event Action<ResourceType, int> ResourceRemoveed;
+    internal event Action<ToolType> ToolAdded;
 
     internal IReadOnlyDictionary<ResourceType, int> Storage => _storage;
 
@@ -98,6 +99,7 @@ public class Inventory : ISavedProgressReader, ISavedProgressWriter
     internal void Add(ToolType type)
     {
         _tools.Add(type);
+        ToolAdded?.Invoke(type);
     }
 
     internal bool Has(ToolType toolType)

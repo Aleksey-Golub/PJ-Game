@@ -249,7 +249,7 @@ namespace Code.Services
             Logger.Log($"[Audio] PauseAll()");
             _pause = true;
 
-            if (_musicSource != null)
+            if (_musicSource != null && _musicSource.AudioSource != null)
                 _musicSource.AudioSource.Pause();
 
             foreach (var s in _toCheckEnd)
@@ -261,7 +261,7 @@ namespace Code.Services
             Logger.Log($"[Audio] UnPauseAll()");
             _pause = false;
 
-            if (_musicSource != null)
+            if (_musicSource != null && _musicSource.AudioSource != null)
                 _musicSource.AudioSource.UnPause();
 
             foreach (var s in _toCheckEnd)

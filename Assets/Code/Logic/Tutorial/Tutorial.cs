@@ -7,13 +7,15 @@ using System.Collections;
 public class Tutorial : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter
 {
     [SerializeField] private TutorialConfig _config;
-
+    
     private IGameFactory _gameFactory;
     private IPersistentProgressService _progressService;
     private Player _player;
 
     private TutorialStage _currentStage;
     private bool _isCompleted;
+    private Timer _timer;
+    private float _lastTime = 0;
 
     public void Construct(IGameFactory gameFactory, IPersistentProgressService progressService, Player player)
     {
@@ -21,8 +23,20 @@ public class Tutorial : MonoBehaviour, ISavedProgressReader, ISavedProgressWrite
         _progressService = progressService;
         _player = player;
 
+        _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed += OnUpgradeItemsProgress_Changed;
+
         _player.Inventory.ResourceAdded += OnPlayerInventory_ResourceAdded;
         _player.Inventory.ResourceRemoveed += OnPlayerInventory_ResourceRemoveed;
+        _player.Inventory.ToolAdded += OnPlayerInventory_ToolAdded;
+    
+        _timer = new Timer();
+        _timer.Changed += OnTimerChanged;
+        _timer.Start(float.MaxValue);
+    }
+
+    private void Update()
+    {
+        _timer.OnUpdate(Time.deltaTime);
     }
 
     private void OnDestroy()
@@ -32,8 +46,13 @@ public class Tutorial : MonoBehaviour, ISavedProgressReader, ISavedProgressWrite
 
     private void CleanUp()
     {
+        _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Changed -= OnUpgradeItemsProgress_Changed;
+
         _player.Inventory.ResourceAdded -= OnPlayerInventory_ResourceAdded;
         _player.Inventory.ResourceRemoveed -= OnPlayerInventory_ResourceRemoveed;
+        _player.Inventory.ToolAdded -= OnPlayerInventory_ToolAdded;
+
+        _timer.Changed -= OnTimerChanged;
     }
 
     public void ReadProgress(GameProgress progress)
@@ -80,6 +99,22 @@ public class Tutorial : MonoBehaviour, ISavedProgressReader, ISavedProgressWrite
         }
     }
 
+    private void OnTimerChanged(Timer timer)
+    {
+        while (timer.Passed - _lastTime > 1)
+        {
+            _lastTime += 1;
+            _currentStage.OnOneSecondPassed();
+            CheckStageOrTutorialEnded();
+        }
+    }
+
+    private void OnUpgradeItemsProgress_Changed(string itemId, int newLevel)
+    {
+        _currentStage.OnUpgradeItemsProgress_Changed(itemId, newLevel);
+        CheckStageOrTutorialEnded();
+    }
+
     private void OnPlayerInventory_ResourceAdded(ResourceType type, int addedCount)
     {
         _currentStage.OnPlayerInventory_ResourceAdded(type, addedCount);
@@ -89,6 +124,12 @@ public class Tutorial : MonoBehaviour, ISavedProgressReader, ISavedProgressWrite
     private void OnPlayerInventory_ResourceRemoveed(ResourceType type, int removedCount)
     {
         _currentStage.OnPlayerInventory_ResourceRemoved(type, removedCount);
+        CheckStageOrTutorialEnded();
+    }
+
+    private void OnPlayerInventory_ToolAdded(ToolType type)
+    {
+        _currentStage.OnPlayerInventory_ToolAdded(type);
         CheckStageOrTutorialEnded();
     }
 

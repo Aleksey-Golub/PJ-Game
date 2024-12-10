@@ -14,4 +14,7 @@ public enum TutorialGoalType
     None = 0,
     ResourceAdded = 1,
     ResourceRemoved = 2,
+    ToolAdded = 3,
+    UpgradeTool = 4,
+    WaitSomeSeconds = 5,
 }

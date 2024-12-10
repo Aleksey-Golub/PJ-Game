@@ -7,6 +7,11 @@ namespace Code.Services
         private bool _stopped;
         private float _savedTimeScale;
 
+        public TimeService()
+        {
+            Time.timeScale = 1.0f;
+        }
+
         public void StopTime()
         {
             Logger.Log($"[TimeService] StopTime()");

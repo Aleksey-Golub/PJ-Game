@@ -108,6 +108,12 @@
       canvas.focus();
     });
 
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        window.unityInstance.SendMessage("GameBootstrapper", "DocumentVisibilitySetToHidden");
+      }
+    };
+
   </script>
 </body>
 

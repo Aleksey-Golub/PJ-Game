@@ -1,4 +1,5 @@
 ﻿using Code.Data;
+using System;
 using UnityEngine;
 
 namespace Code.Services
@@ -33,16 +34,29 @@ namespace Code.Services
 
         public AppSettings LoadAppSettings()
         {
+            AppSettings prefsAppSettings = PlayerPrefs.GetString(APP_SETTINGS_KEY)?.ToDeserialized<AppSettings>();
+
 #if GAME_PUSH && VK_GAMES
             var gpAppSettingsJson = GamePush.GP_Player.GetString(APP_SETTINGS_KEY);
             if (!string.IsNullOrWhiteSpace(gpAppSettingsJson))
             {
-                return gpAppSettingsJson.ToDeserialized<AppSettings>();
+                AppSettings gpAppSettings = gpAppSettingsJson.ToDeserialized<AppSettings>();
+
+                if (prefsAppSettings == null)
+                {
+                    return gpAppSettings;
+                }
+                else
+                {
+                    DateTime prefsTime = SaveLoadHelper.GetTimeFromString(prefsAppSettings.SaveTime);
+                    DateTime gpTime = SaveLoadHelper.GetTimeFromString(gpAppSettings.SaveTime);
+
+                    return DateTime.Compare(prefsTime, gpTime) < 0 ? gpAppSettings : prefsAppSettings;
+                }
             }
 #endif
 
-            return PlayerPrefs.GetString(APP_SETTINGS_KEY)?
-              .ToDeserialized<AppSettings>();
+            return prefsAppSettings;
         }
     }
 }

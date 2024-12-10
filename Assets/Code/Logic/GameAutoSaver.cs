@@ -9,7 +9,7 @@ public class GameAutoSaver : MonoBehaviour
     private Timer _autoSaveTimer;
 
 #if DEBUG && FAST_DEBUG
-    private void Awake() => _autosaveInterval = 2f;
+    private void Awake() => _autosaveInterval = 7f;
 #endif
 
     private void Start()
@@ -25,6 +25,7 @@ public class GameAutoSaver : MonoBehaviour
 
         PlatformLayer.WebGameResumed += OnGameResumed;
         PlatformLayer.WebGlWindowClosedOrRefreshed += OnWebGlWindowClosedOrRefreshed;
+        PlatformLayer.WebGlDocumentVisibilitySetToHidden += OnWebGlDocumentVisibilitySetToHidden;
 
         _autoSaveTimer = new Timer();
         _autoSaveTimer.Elapsed += AutoSaveProgress;
@@ -36,6 +37,7 @@ public class GameAutoSaver : MonoBehaviour
     {
         PlatformLayer.WebGameResumed -= OnGameResumed;
         PlatformLayer.WebGlWindowClosedOrRefreshed -= OnWebGlWindowClosedOrRefreshed;
+        PlatformLayer.WebGlDocumentVisibilitySetToHidden -= OnWebGlDocumentVisibilitySetToHidden;
     }
 
     private void Update()
@@ -69,6 +71,15 @@ public class GameAutoSaver : MonoBehaviour
     {
 #if DEBUG
         Logger.LogWarning($"[GameAutoSaver] On WebGlWindowClosedOrRefreshed save progress disabled");
+#else
+        SaveProgress();
+#endif
+    }
+    
+    private void OnWebGlDocumentVisibilitySetToHidden()
+    {
+#if DEBUG
+        Logger.LogWarning($"[GameAutoSaver] On WebGlDocumentVisibilitySetToHidden save progress disabled");
 #else
         SaveProgress();
 #endif

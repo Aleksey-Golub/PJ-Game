@@ -1,5 +1,6 @@
 using Code.Data;
 using Code.Infrastructure;
+using System;
 using UnityEngine;
 
 namespace Code.Services
@@ -39,6 +40,8 @@ namespace Code.Services
             foreach (ISavedProgressWriter resource in _toolFactory.DroppedResources)
                 resource.WriteToProgress(progress);
 
+            progress.SaveTime = SaveLoadHelper.GetNowTimeToString();
+
             string progressJSON = progress.ToJson();
 
 #if LOG_SAVING
@@ -55,16 +58,31 @@ namespace Code.Services
 
         public GameProgress LoadProgress()
         {
+            GameProgress prefsProgress = PlayerPrefs.GetString(PROGRESS_KEY)?.ToDeserialized<GameProgress>();
+
 #if GAME_PUSH && VK_GAMES
             var gpProgressJson = GamePush.GP_Player.GetString(PROGRESS_KEY);
             if (!string.IsNullOrWhiteSpace(gpProgressJson))
             {
-                return gpProgressJson.ToDeserialized<GameProgress>();
+                GameProgress gpProgress = gpProgressJson.ToDeserialized<GameProgress>();
+
+                if (prefsProgress == null)
+                {
+                    return gpProgress;
+                }
+                else
+                {
+                    DateTime prefsTime = SaveLoadHelper.GetTimeFromString(prefsProgress.SaveTime);
+                    DateTime gpTime = SaveLoadHelper.GetTimeFromString(gpProgress.SaveTime);
+
+                    Logger.Log($"[SaveLoadService] prefsTime= {prefsTime}, gpTime= {gpTime}");
+
+                    return DateTime.Compare(prefsTime, gpTime) < 0 ? gpProgress : prefsProgress;
+                }
             }
 #endif
 
-            return PlayerPrefs.GetString(PROGRESS_KEY)?
-                .ToDeserialized<GameProgress>();
+            return prefsProgress;
         }
     }
 }

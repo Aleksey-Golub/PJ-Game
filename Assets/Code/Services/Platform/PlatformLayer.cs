@@ -37,6 +37,7 @@ namespace Code.Services
         public static event Action WebGamePaused;
         public static event Action WebGameResumed;
         public static event Action WebGlWindowClosedOrRefreshed;
+        public static event Action WebGlDocumentVisibilitySetToHidden;
 
         public void Initialize()
         {
@@ -72,6 +73,12 @@ namespace Code.Services
         {
             Logger.Log("[PlatformLayer] WindowCloseOrRefresh() called");
             WebGlWindowClosedOrRefreshed?.Invoke();
+        }
+
+        public void DocumentVisibilitySetToHidden()
+        {
+            Logger.Log("[PlatformLayer] DocumentVisibilitySetToHidden() called");
+            WebGlDocumentVisibilitySetToHidden?.Invoke();
         }
     }
 }

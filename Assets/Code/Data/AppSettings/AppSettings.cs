@@ -7,6 +7,7 @@ namespace Code.Data
     {
         public LanguageSettings LanguageSettings;
         public AudioSettings AudioSettings;
+        public string SaveTime;
 
         public AppSettings()
         {

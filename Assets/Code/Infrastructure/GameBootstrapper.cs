@@ -38,5 +38,14 @@ namespace Code.Infrastructure
         {
             _platformLayer.WindowClosedOrRefreshed();
         }
+        
+        /// <summary>
+        /// Used from index.html
+        /// </summary>
+        [UsedImplicitly()]
+        public void DocumentVisibilitySetToHidden()
+        {
+            _platformLayer.DocumentVisibilitySetToHidden();
+        }
     }
 }

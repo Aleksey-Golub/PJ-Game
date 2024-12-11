@@ -178,3 +178,8 @@ MonoBehaviour:
       \u0447\u0442\u043E \u0442\u0435\u0431\u044F \u0436\u0434\u0435\u0442!"
     - "D\xFCnyay\u0131 ke\u015Ffetmeye devam edin.\nYeni alanlar ke\u015Ffedin.\nSona
       ula\u015F\u0131n ve ileride ne oldu\u011Funu \xF6\u011Frenin!"
+  - Key: k_boots_bonus_text
+    Values:
+    - "Speed \n{0} min"
+    - "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C \n{0} \u043C\u0438\u043D"
+    - "H\u0131z \n{0} min"

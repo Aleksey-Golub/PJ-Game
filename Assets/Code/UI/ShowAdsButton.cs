@@ -90,7 +90,7 @@ namespace Code.UI
         {
             _restorationTimer.Start(_restoreTime);
             _timeLeftPrev = _restoreTime;
-            _restoreTimerText.text = $"{TimeSpan.FromSeconds(_restoreTime).ToString("mm':'ss")}";
+            _restoreTimerText.text = $"{_restoreTime.ToStringFormated("mm':'ss")}";
 
             ShowState();
             _adsService.ShowRewardedVideo(() => _inventory.Add(_rewardResourceType, _rewardAmount));

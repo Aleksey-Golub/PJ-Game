@@ -50,7 +50,7 @@ namespace Code.Services
 
             PlayerPrefs.SetString(PROGRESS_KEY, progressJSON);
 
-#if GAME_PUSH && VK_GAMES
+#if GAME_PUSH && (VK_GAMES || YG)
             GamePush.GP_Player.Set(PROGRESS_KEY, progressJSON);
             GamePush.GP_Player.Sync();
 #endif
@@ -60,7 +60,7 @@ namespace Code.Services
         {
             GameProgress prefsProgress = PlayerPrefs.GetString(PROGRESS_KEY)?.ToDeserialized<GameProgress>();
 
-#if GAME_PUSH && VK_GAMES
+#if GAME_PUSH && (VK_GAMES || YG)
             var gpProgressJson = GamePush.GP_Player.GetString(PROGRESS_KEY);
             if (!string.IsNullOrWhiteSpace(gpProgressJson))
             {

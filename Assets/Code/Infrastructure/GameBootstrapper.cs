@@ -26,6 +26,8 @@ namespace Code.Infrastructure
 
         private void Update()
         {
+            //Debug.Log(Time.timeScale);
+
             foreach (var item in Updatables)
                 item.OnUpdate(Time.deltaTime);
         }

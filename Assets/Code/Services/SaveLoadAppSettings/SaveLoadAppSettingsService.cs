@@ -26,7 +26,7 @@ namespace Code.Services
 
             PlayerPrefs.SetString(APP_SETTINGS_KEY, appSettingsJSON);
 
-#if GAME_PUSH && VK_GAMES
+#if GAME_PUSH && (VK_GAMES || YG)
             GamePush.GP_Player.Set(APP_SETTINGS_KEY, appSettingsJSON);
             GamePush.GP_Player.Sync();
 #endif
@@ -36,7 +36,7 @@ namespace Code.Services
         {
             AppSettings prefsAppSettings = PlayerPrefs.GetString(APP_SETTINGS_KEY)?.ToDeserialized<AppSettings>();
 
-#if GAME_PUSH && VK_GAMES
+#if GAME_PUSH && (VK_GAMES || YG)
             var gpAppSettingsJson = GamePush.GP_Player.GetString(APP_SETTINGS_KEY);
             if (!string.IsNullOrWhiteSpace(gpAppSettingsJson))
             {

@@ -29,6 +29,56 @@ namespace Code.Services
 
         private Action _onVideoFinished;
 
+        public bool IsAdsExceptStickyShowing => IsPreloaderShowing || IsFullscreenShowing || IsRewardedShowing;
+
+        public bool IsStickyShowing
+        {
+            get
+            {
+#if DEBUG && FAKE_ADS
+                return false;
+#else
+                return GP_Init.isReady && GP_Ads.IsStickyPlaying();
+#endif
+            }
+        }
+
+        public bool IsPreloaderShowing
+        {
+            get
+            {
+#if DEBUG && FAKE_ADS
+                return false;
+#else
+                return GP_Init.isReady && GP_Ads.IsPreloaderPlaying();
+#endif
+            }
+        }
+
+        public bool IsFullscreenShowing
+        {
+            get
+            {
+#if DEBUG && FAKE_ADS
+                return false;
+#else
+                return GP_Init.isReady && GP_Ads.IsFullscreenPlaying();
+#endif
+            }
+        }
+
+        public bool IsRewardedShowing
+        {
+            get
+            {
+#if DEBUG && FAKE_ADS
+                return false;
+#else
+                return GP_Init.isReady && GP_Ads.IsRewardPlaying();
+#endif
+            }
+        }
+
         public void Initialize()
         {
             Logger.Log($"[AdsService] initializing...");

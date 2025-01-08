@@ -4,6 +4,12 @@ namespace Code.Services
 {
     public interface IAdsService : IService
     {
+        bool IsAdsExceptStickyShowing { get; }
+        bool IsStickyShowing { get; }
+        bool IsPreloaderShowing { get; }
+        bool IsFullscreenShowing { get; }
+        bool IsRewardedShowing { get; }
+
         event Action RewardedVideoReady;
 
         event Action AdsStart;

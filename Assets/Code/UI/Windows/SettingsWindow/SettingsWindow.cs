@@ -14,6 +14,7 @@ namespace Code.UI
         [SerializeField] private Slider _musicSlider;
         [SerializeField] private SwitchableLabel _languageSwitchableLabel;
         [SerializeField] private Button _removeProgressBtn;
+        [SerializeField] private Button _saveProgressBtn;
 
         private ISaveLoadAppSettingsService _saveLoadAppSettingsService;
 
@@ -25,8 +26,10 @@ namespace Code.UI
 
 #if DEBUG
             _removeProgressBtn.gameObject.SetActive(true);
+            _saveProgressBtn.gameObject.SetActive(true);
 #else
             _removeProgressBtn.gameObject.SetActive(false);
+            _saveProgressBtn.gameObject.SetActive(false);
 #endif
         }
 
@@ -62,6 +65,7 @@ namespace Code.UI
             _languageSwitchableLabel.RightClicked += OnLanguageSwitchableLabelRightClicked;
 
             _removeProgressBtn.onClick.AddListener(OnRemoveProgressButtonClick);
+            _saveProgressBtn.onClick.AddListener(OnSaveProgressButtonClick);
 
             LService.LanguageChanged += RefreshUI;
         }
@@ -84,6 +88,7 @@ namespace Code.UI
             _languageSwitchableLabel.RightClicked -= OnLanguageSwitchableLabelRightClicked;
 
             _removeProgressBtn.onClick.RemoveListener(OnRemoveProgressButtonClick);
+            _saveProgressBtn.onClick.RemoveListener(OnSaveProgressButtonClick);
 
             LService.LanguageChanged -= RefreshUI;
         }
@@ -155,6 +160,12 @@ namespace Code.UI
         private void OnRemoveProgressButtonClick()
         {
             PlayerPrefs.DeleteKey(SaveLoadService.PROGRESS_KEY);
+        }
+
+        private void OnSaveProgressButtonClick()
+        {
+            var saveLoadService = AllServices.Container.Single<ISaveLoadService>();
+            saveLoadService.SaveProgress();
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Code.Data
     {
         public PlayerProgress PlayerProgress;
         public WorldProgress WorldProgress;
+        public string SaveTime;
 
         public GameProgress(string initialLevel)
         {

@@ -1,4 +1,5 @@
 ﻿using Code.Data;
+using System;
 using UnityEngine;
 
 namespace Code.Services
@@ -21,13 +22,41 @@ namespace Code.Services
             _audio.WriteToAppSettings(_appSettingsService.Settings);
             LService.WriteToAppSettings(_appSettingsService.Settings);
 
-            PlayerPrefs.SetString(APP_SETTINGS_KEY, _appSettingsService.Settings.ToJson());
+            string appSettingsJSON = _appSettingsService.Settings.ToJson();
+
+            PlayerPrefs.SetString(APP_SETTINGS_KEY, appSettingsJSON);
+
+#if GAME_PUSH && (VK_GAMES || YG)
+            GamePush.GP_Player.Set(APP_SETTINGS_KEY, appSettingsJSON);
+            GamePush.GP_Player.Sync();
+#endif
         }
 
         public AppSettings LoadAppSettings()
         {
-            return PlayerPrefs.GetString(APP_SETTINGS_KEY)?
-              .ToDeserialized<AppSettings>();
+            AppSettings prefsAppSettings = PlayerPrefs.GetString(APP_SETTINGS_KEY)?.ToDeserialized<AppSettings>();
+
+#if GAME_PUSH && (VK_GAMES || YG)
+            var gpAppSettingsJson = GamePush.GP_Player.GetString(APP_SETTINGS_KEY);
+            if (!string.IsNullOrWhiteSpace(gpAppSettingsJson))
+            {
+                AppSettings gpAppSettings = gpAppSettingsJson.ToDeserialized<AppSettings>();
+
+                if (prefsAppSettings == null)
+                {
+                    return gpAppSettings;
+                }
+                else
+                {
+                    DateTime prefsTime = SaveLoadHelper.GetTimeFromString(prefsAppSettings.SaveTime);
+                    DateTime gpTime = SaveLoadHelper.GetTimeFromString(gpAppSettings.SaveTime);
+
+                    return DateTime.Compare(prefsTime, gpTime) < 0 ? gpAppSettings : prefsAppSettings;
+                }
+            }
+#endif
+
+            return prefsAppSettings;
         }
     }
 }

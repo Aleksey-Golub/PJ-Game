@@ -19,70 +19,167 @@ MonoBehaviour:
     Values:
     - en
     - ru
+    - tr
   - Key: k_language_name
     Values:
     - English
     - "\u0420\u0443\u0441\u0441\u043A\u0438\u0439"
+    - "T\xFCrk\xE7e"
   - Key: k_Sell_Items
     Values:
     - Sell items
     - "\u041F\u0440\u043E\u0434\u0430\u0442\u044C \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B"
+    - "\xDCr\xFCn satmak"
   - Key: k_Sell
     Values:
     - Sell
     - "\u041F\u0440\u043E\u0434\u0430\u0442\u044C"
+    - Satmak
   - Key: k_Upgrades
     Values:
     - Upgrades
     - "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u044F"
+    - "Y\xFCkseltmeler"
   - Key: k_Drop
     Values:
     - 'Drop:'
     - "\u042D\u0444\u0444\u0435\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u044C"
+    - 'Verimlilik:'
   - Key: k_Capacity
     Values:
     - 'Capacity:'
     - "\u0412\u043C\u0435\u0441\u0442\u0438\u043C\u043E\u0441\u0442\u044C"
+    - 'Kapasite:'
   - Key: k_Lvl
     Values:
     - Lvl
     - "\u0423\u0440."
+    - Seviye
   - Key: k_MAX
     Values:
     - MAX
     - "\u041C\u0410\u041A\u0421"
+    - MAX
   - Key: k_Settings
     Values:
     - Settings
     - "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+    - Ayarlar
   - Key: k_Sounds
     Values:
     - Sounds
     - "\u0417\u0432\u0443\u043A"
+    - Sesler
   - Key: k_Music
     Values:
     - Music
     - "\u041C\u0443\u0437\u044B\u043A\u0430"
+    - "M\xFCzik"
   - Key: k_on
     Values:
     - on
     - "\u0432\u043A\u043B"
+    - "\xFCzerinde"
   - Key: k_off
     Values:
     - off
     - "\u0432\u044B\u043A\u043B"
+    - "kapal\u0131"
   - Key: k_Hint_movement_desktop
     Values:
     - "Use arrows or WASD \nto move"
     - "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u0441\u0442\u0440\u0435\u043B\u043A\u0438
       \u0438\u043B\u0438 WASD \n\u0434\u043B\u044F \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F"
+    - "Hareket etmek i\xE7in oklar\u0131 veya WASD \ntu\u015Flar\u0131n\u0131 kullan\u0131n"
   - Key: k_Hint_movement_mobile
     Values:
     - "Swipe horizontal and vertical \nto move"
     - "\u0414\u0432\u0438\u0433\u0430\u0439 \u043F\u0430\u043B\u044C\u0446\u0435\u043C
       \n\u0432\u0432\u0435\u0440\u0445-\u0432\u043D\u0438\u0437 \u0438 \u0432\u043F\u0440\u0430\u0432\u043E-\u0432\u043B\u0435\u0432\u043E
       \n\u0434\u043B\u044F \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F"
+    - "Hareket ettirmek i\xE7in parma\u011F\u0131n\u0131z\u0131 yatay \nve dikey
+      olarak s\xFCr\xFCkleyin"
   - Key: k_UI_resource_pointer
     Values:
     - Your resources
     - "\u0422\u0432\u043E\u0438 \u0440\u0435\u0441\u0443\u0440\u0441\u044B"
+    - "Kaynaklar\u0131n\u0131z"
+  - Key: k_waitingForAd
+    Values:
+    - Waiting for Ad...
+    - "\u041E\u0436\u0438\u0434\u0430\u0435\u043C \u0440\u0435\u043A\u043B\u0430\u043C\u0443..."
+    - "Reklam i\xE7in bekliyorum..."
+  - Key: k_Tutorial_msg_1
+    Values:
+    - Pick up the Sickle
+    - "\u041F\u043E\u0434\u043D\u0438\u043C\u0438 \u0421\u0435\u0440\u043F"
+    - "Ora\u011F\u0131 al"
+  - Key: k_Tutorial_msg_2
+    Values:
+    - Collect 2 grass
+    - "\u0421\u043E\u0431\u0435\u0440\u0438 2 \u0442\u0440\u0430\u0432\u044B"
+    - "2 ot toplay\u0131n"
+  - Key: k_Tutorial_msg_3
+    Values:
+    - Open a new area
+    - "\u041E\u0442\u043A\u0440\u043E\u0439 \u043D\u043E\u0432\u0443\u044E \u043E\u0431\u043B\u0430\u0441\u0442\u044C"
+    - "Yeni bir alan a\xE7\u0131n"
+  - Key: k_Tutorial_msg_4
+    Values:
+    - Open another new area
+    - "\u041E\u0442\u043A\u0440\u043E\u0439 \u0435\u0449\u0435 \u043E\u0434\u043D\u0443
+      \u043D\u043E\u0432\u0443\u044E \u043E\u0431\u043B\u0430\u0441\u0442\u044C"
+    - "Ba\u015Fka bir yeni alan a\xE7\u0131n"
+  - Key: k_Tutorial_msg_5
+    Values:
+    - Trade grass for Axe
+    - "\u041E\u0431\u043C\u0435\u043D\u044F\u0439 \u0442\u0440\u0430\u0432\u0443
+      \u043D\u0430 \u0422\u043E\u043F\u043E\u0440"
+    - "Balta i\xE7in ot takas\u0131"
+  - Key: k_Tutorial_msg_6
+    Values:
+    - Open a new area for 3 wood
+    - "\u041E\u0442\u043A\u0440\u043E\u0439 \u043D\u043E\u0432\u0443\u044E \u043E\u0431\u043B\u0430\u0441\u0442\u044C
+      \u0437\u0430 3 \u0434\u0435\u0440\u0435\u0432\u0430"
+    - "3 ah\u015Fap i\xE7in yeni bir alan a\xE7\u0131n"
+  - Key: k_Tutorial_msg_7
+    Values:
+    - Sell resources for coins
+    - "\u041F\u0440\u043E\u0434\u0430\u0439 \u0440\u0435\u0441\u0443\u0440\u0441\u044B
+      \u0437\u0430 \u043C\u043E\u043D\u0435\u0442\u044B"
+    - "Madeni paralar i\xE7in kaynak satma"
+  - Key: k_Tutorial_msg_8
+    Values:
+    - Open a new area for coins
+    - "\u041E\u0442\u043A\u0440\u043E\u0439 \u043D\u043E\u0432\u0443\u044E \u043E\u0431\u043B\u0430\u0441\u0442\u044C
+      \u0437\u0430 \u043C\u043E\u043D\u0435\u0442\u044B"
+    - "Madeni paralar i\xE7in yeni bir alan a\xE7\u0131n"
+  - Key: k_Tutorial_msg_9
+    Values:
+    - "Spend 10 coins to upgrade your Sickle \nand collect more grass"
+    - "\u041F\u043E\u0442\u0440\u0430\u0442\u044C 10 \u043C\u043E\u043D\u0435\u0442,
+      \u0447\u0442\u043E\u0431\u044B \u0443\u043B\u0443\u0447\u0448\u0438\u0442\u044C
+      \u0421\u0435\u0440\u043F \n\u0438 \u0441\u043E\u0431\u0438\u0440\u0430\u0442\u044C
+      \u0431\u043E\u043B\u044C\u0448\u0435 \u0442\u0440\u0430\u0432\u044B"
+    - "Ora\u011F\u0131n\u0131z\u0131 y\xFCkseltmek i\xE7in 10 jeton harcay\u0131n
+      \nve daha fazla ot toplamak"
+  - Key: k_Tutorial_msg_10
+    Values:
+    - 'Keep exploring the world.
+
+      Discover new areas.
+
+      Reach the end
+      and find out what is ahead!'
+    - "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0430\u0439 \u0438\u0441\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u0442\u044C
+      \u043C\u0438\u0440. \n\u041E\u0442\u043A\u0440\u044B\u0432\u0430\u0439 \u043D\u043E\u0432\u044B\u0435
+      \u043E\u0431\u043B\u0430\u0441\u0442\u0438. \n\u0414\u043E\u0439\u0434\u0438
+      \u0434\u043E \u043A\u043E\u043D\u0446\u0430 \u0438 \u0443\u0437\u043D\u0430\u0439,
+      \u0447\u0442\u043E \u0442\u0435\u0431\u044F \u0436\u0434\u0435\u0442!"
+    - "D\xFCnyay\u0131 ke\u015Ffetmeye devam edin.\nYeni alanlar ke\u015Ffedin.\nSona
+      ula\u015F\u0131n ve ileride ne oldu\u011Funu \xF6\u011Frenin!"
+  - Key: k_boots_bonus_text
+    Values:
+    - "Speed \n{0} min"
+    - "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C \n{0} \u043C\u0438\u043D"
+    - "H\u0131z \n{0} min"

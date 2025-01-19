@@ -18,5 +18,7 @@ namespace Code.UI.Services
         void RefreshUpgradeBoardView();
         bool IsOpened(WindowId windowId);
         void Close(WindowId windowId);
+        void OpenPopup(UIPopupId uIPopupId);
+        void ClosePopup(UIPopupId uIPopupId);
     }
 }

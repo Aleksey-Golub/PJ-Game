@@ -9,7 +9,7 @@ public class GameAutoSaver : MonoBehaviour
     private Timer _autoSaveTimer;
 
 #if DEBUG && FAST_DEBUG
-    private void Awake() => _autosaveInterval = 2f;
+    private void Awake() => _autosaveInterval = 7f;
 #endif
 
     private void Start()
@@ -23,10 +23,21 @@ public class GameAutoSaver : MonoBehaviour
     {
         _saveLoadService = saveLoadService;
 
+        PlatformLayer.WebGameResumed += OnGameResumed;
+        PlatformLayer.WebGlWindowClosedOrRefreshed += OnWebGlWindowClosedOrRefreshed;
+        PlatformLayer.WebGlDocumentVisibilitySetToHidden += OnWebGlDocumentVisibilitySetToHidden;
+
         _autoSaveTimer = new Timer();
         _autoSaveTimer.Elapsed += AutoSaveProgress;
 
         StartTimer();
+    }
+
+    private void OnDestroy()
+    {
+        PlatformLayer.WebGameResumed -= OnGameResumed;
+        PlatformLayer.WebGlWindowClosedOrRefreshed -= OnWebGlWindowClosedOrRefreshed;
+        PlatformLayer.WebGlDocumentVisibilitySetToHidden -= OnWebGlDocumentVisibilitySetToHidden;
     }
 
     private void Update()
@@ -42,8 +53,35 @@ public class GameAutoSaver : MonoBehaviour
         StartTimer();
     }
 
+    private void SaveProgress()
+    {
+        Logger.Log("[GameAutoSaver] Save Progress");
+
+        _saveLoadService.SaveProgress();
+    }
+
     private void StartTimer()
     {
         _autoSaveTimer.Start(_autosaveInterval);
+    }
+
+    private void OnGameResumed() => SaveProgress();
+
+    private void OnWebGlWindowClosedOrRefreshed()
+    {
+#if DEBUG
+        Logger.LogWarning($"[GameAutoSaver] On WebGlWindowClosedOrRefreshed save progress disabled");
+#else
+        SaveProgress();
+#endif
+    }
+    
+    private void OnWebGlDocumentVisibilitySetToHidden()
+    {
+#if DEBUG
+        Logger.LogWarning($"[GameAutoSaver] On WebGlDocumentVisibilitySetToHidden save progress disabled");
+#else
+        SaveProgress();
+#endif
     }
 }

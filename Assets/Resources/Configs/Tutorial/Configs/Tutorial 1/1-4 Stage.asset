@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: 1-4 Stage
   m_EditorClassIdentifier: 
   <Number>k__BackingField: 4
-  <NextStageNumber>k__BackingField: -1
-  <IsFinal>k__BackingField: 1
+  <NextStageNumber>k__BackingField: 5
+  <IsFinal>k__BackingField: 0
   <OnEnterEvents>k__BackingField:
-  - {fileID: 11400000, guid: e961fc1f541d9e5479ca9bd76033bc2d, type: 2}
-  - {fileID: 11400000, guid: a9d22e12b5b1e824ab0a6230c69a645c, type: 2}
-  - {fileID: 11400000, guid: 769d284cf6569134cb662c1e936bc5c7, type: 2}
-  <Goals>k__BackingField: []
+  - {fileID: 11400000, guid: 6d7d930409259a64387826ff05ec00b5, type: 2}
+  - {fileID: 11400000, guid: aaaa00df4e7182246958ccda2c6a214f, type: 2}
+  - {fileID: 11400000, guid: 84cae4e347a17604ea32b24ff9b3ffc5, type: 2}
+  - {fileID: 11400000, guid: d47ad617fca5c044685abcbd05d80701, type: 2}
+  - {fileID: 11400000, guid: a8904999c3acdbe4d922e3a4a1f1327b, type: 2}
+  <Goals>k__BackingField:
+  - {fileID: 11400000, guid: 8c601d1db529f5842afe6c8577daae9a, type: 2}

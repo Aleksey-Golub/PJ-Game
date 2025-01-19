@@ -6,7 +6,8 @@ namespace Code.Infrastructure
     {
         private readonly IAudioService _audio;
         private readonly ITimeService _time;
-
+        private readonly IAdsService _ads;
+        
         public readonly GameStateMachine StateMachine;
 
         public Game(ICoroutineRunner coroutineRunner, IUpdater updater, LoadingCurtain curtain)
@@ -17,9 +18,23 @@ namespace Code.Infrastructure
             _audio = services.Single<IAudioService>();
             _time = services.Single<ITimeService>();
 
-            var ads = services.Single<IAdsService>();
-            ads.AdsExceptStickyStart += OnAdsExceptStickyStart;
-            ads.AdsExceptStickyClose += OnAdsExceptStickyClose;
+            _ads = services.Single<IAdsService>();
+            _ads.AdsExceptStickyStart += OnAdsExceptStickyStart;
+            _ads.AdsExceptStickyClose += OnAdsExceptStickyClose;
+            UnityEngine.Application.focusChanged += OnApplicationFocusChanged;
+        }
+
+        private void OnApplicationFocusChanged(bool focus)
+        {
+            Logger.Log($"[Game] focus chanded to {focus}");
+
+            if (_ads.IsAdsExceptStickyShowing)
+                return;
+
+            if (focus)
+                OnAdsExceptStickyClose(false);
+            else
+                OnAdsExceptStickyStart();
         }
 
         private void OnAdsExceptStickyStart()
@@ -28,7 +43,7 @@ namespace Code.Infrastructure
             _time.StopTime();
         }
 
-        private void OnAdsExceptStickyClose(bool obj)
+        private void OnAdsExceptStickyClose(bool result)
         {
             _audio.UnPauseAll();
             _time.ResumeTime();

@@ -1,22 +1,48 @@
-Key,en,ru,Comments
-k_language_name,English,Русский,
-k_Sell_Items,Sell items,Продать предметы,
-k_Sell,Sell,Продать,
-k_Upgrades,Upgrades,Улучшения,
-k_Drop,Drop:,Эффективность,
-k_Capacity,Capacity:,Вместимость,
-k_Lvl,Lvl,Ур.,
-k_MAX,MAX,МАКС,
-k_Settings,Settings,Настройки,
-k_Sounds,Sounds,Звук,
-k_Music,Music,Музыка,
-k_on,on,вкл,
-k_off,off,выкл,
+Key,en,ru,tr,Comments
+k_language_name,English,Русский,Türkçe,
+k_Sell_Items,Sell items,Продать предметы,Ürün satmak,
+k_Sell,Sell,Продать,Satmak,
+k_Upgrades,Upgrades,Улучшения,Yükseltmeler,
+k_Drop,Drop:,Эффективность,Verimlilik:,
+k_Capacity,Capacity:,Вместимость,Kapasite:,
+k_Lvl,Lvl,Ур.,Seviye,
+k_MAX,MAX,МАКС,MAX,
+k_Settings,Settings,Настройки,Ayarlar,
+k_Sounds,Sounds,Звук,Sesler,
+k_Music,Music,Музыка,Müzik,
+k_on,on,вкл,üzerinde,
+k_off,off,выкл,kapalı,
 k_Hint_movement_desktop,"Use arrows or WASD 
 to move","Используй стрелки или WASD 
-для движения",
+для движения","Hareket etmek için okları veya WASD 
+tuşlarını kullanın",
 k_Hint_movement_mobile,"Swipe horizontal and vertical 
 to move","Двигай пальцем 
 вверх-вниз и вправо-влево 
-для движения",
-k_UI_resource_pointer,Your resources,Твои ресурсы,
+для движения","Hareket ettirmek için parmağınızı yatay 
+ve dikey olarak sürükleyin",
+k_UI_resource_pointer,Your resources,Твои ресурсы,Kaynaklarınız,
+k_waitingForAd,Waiting for Ad...,Ожидаем рекламу...,Reklam için bekliyorum...,
+k_Tutorial_msg_1,Pick up the Sickle,Подними Серп,Orağı al,
+k_Tutorial_msg_2,Collect 2 grass,Собери 2 травы,2 ot toplayın,
+k_Tutorial_msg_3,Open a new area,Открой новую область,Yeni bir alan açın,
+k_Tutorial_msg_4,Open another new area,Открой еще одну новую область,Başka bir yeni alan açın,
+k_Tutorial_msg_5,Trade grass for Axe,Обменяй траву на Топор,Balta için ot takası,
+k_Tutorial_msg_6,Open a new area for 3 wood,Открой новую область за 3 дерева,3 ahşap için yeni bir alan açın,
+k_Tutorial_msg_7,Sell resources for coins,Продай ресурсы за монеты,Madeni paralar için kaynak satma,
+k_Tutorial_msg_8,Open a new area for coins,Открой новую область за монеты,Madeni paralar için yeni bir alan açın,
+k_Tutorial_msg_9,"Spend 10 coins to upgrade your Sickle 
+and collect more grass","Потрать 10 монет, чтобы улучшить Серп 
+и собирать больше травы","Orağınızı yükseltmek için 10 jeton harcayın 
+ve daha fazla ot toplamak",
+k_Tutorial_msg_10,"Keep exploring the world.
+Discover new areas.
+Reach the end and find out what is ahead!","Продолжай исследовать мир. 
+Открывай новые области. 
+Дойди до конца и узнай, что тебя ждет!","Dünyayı keşfetmeye devam edin.
+Yeni alanlar keşfedin.
+Sona ulaşın ve ileride ne olduğunu öğrenin!",
+k_boots_bonus_text,"Speed 
+{0} min","Скорость 
+{0} мин","Hız 
+{0} min",

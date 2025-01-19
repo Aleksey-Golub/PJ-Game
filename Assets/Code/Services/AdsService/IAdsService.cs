@@ -4,6 +4,12 @@ namespace Code.Services
 {
     public interface IAdsService : IService
     {
+        bool IsAdsExceptStickyShowing { get; }
+        bool IsStickyShowing { get; }
+        bool IsPreloaderShowing { get; }
+        bool IsFullscreenShowing { get; }
+        bool IsRewardedShowing { get; }
+
         event Action RewardedVideoReady;
 
         event Action AdsStart;
@@ -19,13 +25,21 @@ namespace Code.Services
         event Action<bool> PreloaderClose;
         event Action<bool> FullscreenClose;
         event Action<bool> RewardedClose;
+        event Action AdsExceptStickyCalling;
 
         void Initialize();
-        bool IsRewardedVideoReady();
-        void ShowRewardedVideo(Action onVideoFinished);
-        int GetRewardBasedOnInventory(ResourceType resourceType, int inInventory);
+
+        bool IsStickyAvailable();
+        bool IsPreloaderAvailable();
+        bool IsFullscreenAvailable();
+        bool IsRewardedAvailable();
+
         void ShowSticky();
         void ShowPreloader();
         void ShowFullscreen();
+        void ShowRewardedVideo(Action onVideoFinished);
+        int GetRewardBasedOnInventory(ResourceType resourceType, int inInventory);
+
+        bool IsRewardedVideoReady();
     }
 }

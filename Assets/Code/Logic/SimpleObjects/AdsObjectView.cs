@@ -1,4 +1,5 @@
 ﻿using Code.Services;
+using TMPro;
 using UnityEngine;
 
 public class AdsObjectView : MonoBehaviour
@@ -9,6 +10,8 @@ public class AdsObjectView : MonoBehaviour
     [SerializeField] private GameObject _progressFg;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private GameObject _shadow;
+    [Tooltip("Can be null")]
+    [SerializeField] private TextMeshPro _bonusText;
 
     [Header("Settings")]
     [Tooltip("Can be null")]
@@ -24,6 +27,11 @@ public class AdsObjectView : MonoBehaviour
 
         if (_animation != null)
             _animation.Play();
+    }
+
+    internal void SetBonusText(string text)
+    {
+        _bonusText.text = text;
     }
 
     internal void ShowProgress(float passed, float total)
@@ -46,12 +54,18 @@ public class AdsObjectView : MonoBehaviour
     {
         _spriteRenderer.sprite = _diedSprite;
         _shadow.SetActive(false);
+
+        if (_bonusText)
+            _bonusText.gameObject.SetActive(false);
     }
 
     internal virtual void ShowWhole()
     {
         _spriteRenderer.sprite = _wholeSprite;
         _shadow.SetActive(true);
+
+        if (_bonusText)
+            _bonusText.gameObject.SetActive(true);
     }
 
     internal void PlayRewardAcceptSound()

@@ -39,21 +39,31 @@ namespace Code.Services
 
         public void ReadAppSettings(AppSettings appSettings)
         {
+#if FAKE_ADS
             // ISO 639-1 ('ru', 'en', 'fr')
             string systemLang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-            Logger.Log("systemTwoLetterISOLanguageName = " + systemLang);
+            Logger.Log($"[LocalizationService] systemTwoLetterISOLanguageName = {systemLang}");
+#else
+            string systemLang = GamePush.GP_Language.CurrentISO();
+            Logger.Log($"[LocalizationService] GamePush current ISO language = {systemLang}");
+#endif
             string settingLang = appSettings.LanguageSettings.TwoLetterISOLanguageName;
-            string defaultLang = "en";
 
-            string loadingTwoLetterISOLanguageName = 
-                !string.IsNullOrWhiteSpace(settingLang) && AvailableLanguagesContains(settingLang) ? 
-                    settingLang : 
+#if VK_GAMES
+            string defaultLang = "ru";
+#else
+            string defaultLang = "en";
+#endif
+
+            string loadingTwoLetterISOLanguageName =
+                !string.IsNullOrWhiteSpace(settingLang) && AvailableLanguagesContains(settingLang) ?
+                    settingLang :
                     AvailableLanguagesContains(systemLang) ?
-                        systemLang : 
+                        systemLang :
                         AvailableLanguagesContains(defaultLang) ?
-                            defaultLang : 
+                            defaultLang :
                             _availableLanguages[0].TwoLetterISOLanguageName;
-            
+
             Load(loadingTwoLetterISOLanguageName);
         }
 

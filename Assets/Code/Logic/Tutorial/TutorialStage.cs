@@ -56,6 +56,27 @@ public class TutorialStage
             if (goal.GoalType == TutorialGoalType.ResourceRemoved && type.ToString() == goal.TargetId)
                 goal.CurrentProgress += removedCount;
     }
+    
+    internal void OnPlayerInventory_ToolAdded(ToolType type)
+    {
+        foreach (var goal in _goals)
+            if (goal.GoalType == TutorialGoalType.ToolAdded && type.ToString() == goal.TargetId)
+                goal.CurrentProgress += 1;
+    }
+    
+    internal void OnUpgradeItemsProgress_Changed(string itemId, int newLevel)
+    {
+        foreach (var goal in _goals)
+            if (goal.GoalType == TutorialGoalType.UpgradeTool && itemId == goal.TargetId)
+                goal.CurrentProgress += 1;
+    }
+
+    internal void OnOneSecondPassed()
+    {
+        foreach (var goal in _goals)
+            if (goal.GoalType == TutorialGoalType.WaitSomeSeconds)
+                goal.CurrentProgress += 1;
+    }
 
     internal int[] GetGoalsProgresses() => _goals.Select(g => g.CurrentProgress).ToArray();
 }

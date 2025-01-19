@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public static class Extentions
 {
@@ -49,5 +50,32 @@ public static class Extentions
 
         int prevIndex = index - 1;
         return prevIndex >= 0 ? list[prevIndex] : list[^1];
+    }
+
+    /// <summary>
+    /// Convert time in seconds to formated string.
+    /// Find more formats <see href="https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-timespan-format-strings">here</see>
+    /// </summary>
+    /// <param name="seconds"></param>
+    /// <param name="format"></param>
+    /// <returns></returns>
+    public static string ToStringFormated(this float seconds, string format = "mm':'ss")
+    {
+        return TimeSpan.FromSeconds(seconds).ToString(format);
+    }
+
+    public static string ToStringDynamicFormated(this float seconds)
+    {
+        string format = string.Empty;
+        if (seconds / (60 * 60 * 24) >= 1)
+            format = "%d':'hh':'mm':'ss";
+        else if (seconds / (60 * 60) >= 1)
+            format = "%h':'mm':'ss";
+        else if (seconds / (60) >= 1)
+            format = "%m':'ss";
+        else
+            format = "ss";
+
+        return TimeSpan.FromSeconds(seconds).ToString(format);
     }
 }

@@ -16,8 +16,6 @@ MonoBehaviour:
   <NextStageNumber>k__BackingField: 4
   <IsFinal>k__BackingField: 0
   <OnEnterEvents>k__BackingField:
-  - {fileID: 11400000, guid: 6d7d930409259a64387826ff05ec00b5, type: 2}
-  - {fileID: 11400000, guid: aaaa00df4e7182246958ccda2c6a214f, type: 2}
-  - {fileID: 11400000, guid: 84cae4e347a17604ea32b24ff9b3ffc5, type: 2}
+  - {fileID: 11400000, guid: dabc3d4fbdf3b30448408f4659c3df23, type: 2}
   <Goals>k__BackingField:
-  - {fileID: 11400000, guid: f2e579d34233c2149b8dd2bae5574198, type: 2}
+  - {fileID: 11400000, guid: 7a7cda354b08e9b4bbba15dd3246387e, type: 2}

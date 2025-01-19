@@ -11,7 +11,7 @@ namespace Code.Infrastructure
       
       if(bootstrapper != null) return;
 
-      Instantiate(BootstrapperPrefab);
+      Instantiate(BootstrapperPrefab).gameObject.name = "GameBootstrapper";
     }
   }
 }

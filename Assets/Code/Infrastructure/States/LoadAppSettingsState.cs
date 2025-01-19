@@ -46,6 +46,7 @@ namespace Code.Infrastructure
         private AppSettings NewAppSettings()
         {
             var appSettings = new AppSettings();
+            appSettings.AudioSettings.DefaultNormalizedVolume = 0.15f;
 
             return appSettings;
         }

@@ -10,5 +10,6 @@
         "GAME_PUSH",
         "VK_GAMES",
         "YG",
+        "RUSTORE",
     };
 }

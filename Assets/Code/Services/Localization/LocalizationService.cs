@@ -49,7 +49,7 @@ namespace Code.Services
 #endif
             string settingLang = appSettings.LanguageSettings.TwoLetterISOLanguageName;
 
-#if VK_GAMES
+#if VK_GAMES || RUSTORE
             string defaultLang = "ru";
 #else
             string defaultLang = "en";

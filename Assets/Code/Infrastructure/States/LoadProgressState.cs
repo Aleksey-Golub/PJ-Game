@@ -1,6 +1,7 @@
 using Code.Data;
 using Code.Services;
 using System;
+using UnityEngine;
 
 namespace Code.Infrastructure
 {
@@ -26,7 +27,16 @@ namespace Code.Infrastructure
 
         public void Enter()
         {
-            LoadProgressOrInitNew();
+            string version = Application.version;
+            Logger.Log(version);
+            try
+            {
+                LoadProgressOrInitNew();
+            }
+            catch (Exception e)
+            {
+                Logger.LogError($"[LoadProgressState] Exception on LoadProgressOrInitNew: {e}");
+            }
 
             _gameStateMachine.Enter<LoadLevelState, string>(_progressService.Progress.PlayerProgress.PositionOnLevel.Level);
         }

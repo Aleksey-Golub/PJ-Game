@@ -58,7 +58,9 @@ namespace Code.Services
 
         public GameProgress LoadProgress()
         {
-            GameProgress prefsProgress = PlayerPrefs.GetString(PROGRESS_KEY)?.ToDeserialized<GameProgress>();
+			string json = PlayerPrefs.GetString(PROGRESS_KEY);
+            //Debug.LogError(json);
+			GameProgress prefsProgress = json?.ToDeserialized<GameProgress>();
 
 #if GAME_PUSH && (VK_GAMES || YG)
             var gpProgressJson = GamePush.GP_Player.GetString(PROGRESS_KEY);

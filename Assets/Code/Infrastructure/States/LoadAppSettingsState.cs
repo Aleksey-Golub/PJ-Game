@@ -1,5 +1,6 @@
 ﻿using Code.Data;
 using Code.Services;
+using System;
 
 namespace Code.Infrastructure
 {
@@ -25,7 +26,14 @@ namespace Code.Infrastructure
 
         public void Enter()
         {
-            LoadAppSettingsOrInitNew();
+            try
+            {
+                LoadAppSettingsOrInitNew();
+            }
+            catch (Exception e)
+            {
+                Logger.LogError($"[LoadAppSettingsState] Exception on LoadAppSettingsOrInitNew: {e}");
+            }
 
             InformAppSettingsReaders();
 

@@ -1869,7 +1869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a5ceccafa6c8449acd5c85a773d5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showInterval: 300
+  _showInterval: 240
 --- !u!1001 &165352660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6442,7 +6442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6e5dae37c0cb846a460f3b77bc2f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _autosaveInterval: 30
+  _autosaveInterval: 50
 --- !u!4 &688232152
 Transform:
   m_ObjectHideFlags: 0

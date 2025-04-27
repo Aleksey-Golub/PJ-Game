@@ -15,6 +15,7 @@ namespace Code.UI
         [SerializeField] private SwitchableLabel _languageSwitchableLabel;
         [SerializeField] private Button _removeProgressBtn;
         [SerializeField] private Button _saveProgressBtn;
+        [SerializeField] private TextMeshProUGUI _versionText;
 
         private ISaveLoadAppSettingsService _saveLoadAppSettingsService;
 
@@ -153,8 +154,18 @@ namespace Code.UI
         {
             _header.text = LService.Localize("k_Settings");
             _languageSwitchableLabel.Init(LService.Localize("k_language_name"));
+            SetAppVersion();
             RefreshSounds();
             RefreshMusic();
+        }
+
+        private void SetAppVersion()
+        {
+#if DEBUG
+            _versionText.text = $"dev {Application.version}";
+#else
+            _versionText.text = Application.version;
+#endif
         }
 
         private void OnRemoveProgressButtonClick()

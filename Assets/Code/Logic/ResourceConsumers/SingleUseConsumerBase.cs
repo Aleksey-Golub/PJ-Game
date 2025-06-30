@@ -5,6 +5,9 @@ using UnityEngine;
 [SelectionBase]
 public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsumer, ISavedProgressReader, ISavedProgressWriter, IUniqueIdHolder, IPossibleSceneBuiltInItem, ICreatedByIdGameObject where T : ResourceConsumerView
 {
+    [SerializeField] private bool _sendAnalyticEventOnFilled;
+    [SerializeField] private Metrika.Event _onFilledAnalyticEvent;
+
     [field: SerializeField] public bool Available { get; protected set; } = true;
     [field: SerializeField] public bool SceneBuiltInItem { get; private set; }
     [field: SerializeField] public UniqueId UniqueId { get; private set; }
@@ -85,6 +88,9 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
         View.ShowHitAnimation();
         DropObject();
         Exhaust();
+
+        if (_sendAnalyticEventOnFilled)
+            Metrika.EventReached(_onFilledAnalyticEvent);
     }
 
     protected virtual bool HasChangesBetweenSavedStateAndCurrentState(SingleUseConsumerBaseOnScene data)

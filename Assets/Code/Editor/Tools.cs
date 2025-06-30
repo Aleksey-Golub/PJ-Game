@@ -16,14 +16,21 @@ namespace Code.Editor
         [MenuItem("Tools/Clear APP SETTINGS Prefs")]
         public static void ClearAppSettingsPrefs()
         {
-            PlayerPrefs.DeleteKey(SaveLoadAppSettingsService.APP_SETTINGS_KEY);;
+            PlayerPrefs.DeleteKey(SaveLoadAppSettingsService.APP_SETTINGS_KEY);
             PlayerPrefs.Save();
         }
 
         [MenuItem("Tools/Clear PROGRESS Prefs")]
         public static void ClearProgressPrefs()
         {
-            PlayerPrefs.DeleteKey(SaveLoadService.PROGRESS_KEY);;
+            PlayerPrefs.DeleteKey(SaveLoadService.PROGRESS_KEY);
+            PlayerPrefs.Save();
+        }
+
+        [MenuItem("Tools/Clear ANALYTIC Prefs")]
+        public static void ClearAnalyticsPrefs()
+        {
+            PlayerPrefs.DeleteKey(SaveLoadAnalyticService.ANALYTIC);
             PlayerPrefs.Save();
         }
     }

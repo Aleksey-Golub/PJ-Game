@@ -66,6 +66,7 @@ public class UpgradeBoard : SimpleObjectBase, ICreatedByIdGameObject
 
             _inventory.Remove(ResourceType.COIN, cost);
             _progressService.Progress.PlayerProgress.UpgradeItemsProgress.Upgrade(itemId);
+            Metrika.ItemUpgradeded(itemId, value);
 
             _uiMediator.RefreshUpgradeBoardView();
         }

@@ -40,6 +40,7 @@ namespace Code.Infrastructure
             RegisterInputService();
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IAppSettingsService>(new AppSettingsService());
+            _services.RegisterSingle<IAnalyticEventsService>(new AnalyticEventsService());
             RegisterAudioService(coroutineRunner);
 
             _services.RegisterSingle<IDropCountCalculatorService>(new DropCountCalculatorService(
@@ -103,6 +104,10 @@ namespace Code.Infrastructure
               _services.Single<IResourceFactory>(),
               _services.Single<IToolFactory>()
               ));
+
+            _services.RegisterSingle<ISaveLoadAnalyticService>(new SaveLoadAnalyticService(
+                _services.Single<IAnalyticEventsService>()
+                ));
         }
 
         private void RegisterResourceMergeService()
@@ -176,7 +181,7 @@ namespace Code.Infrastructure
             var ads = AllServices.Container.Single<IAdsService>();
             Logger.Log($"[BootstrapState] available ads: sticky= {ads.IsStickyAvailable()}, preload= {ads.IsPreloaderAvailable()}, fullscreen= {ads.IsFullscreenAvailable()}, rewarded= {ads.IsRewardedAvailable()}");
 
-            _stateMachine.Enter<LoadAppSettingsState>();
+            _stateMachine.Enter<LoadAnalyticEventsState>();
         }
     }
 }

@@ -349,6 +349,8 @@ namespace Code.Infrastructure
                 converter.Construct(_gameFactory._resourceFactory, _gameFactory._progressService, _gameFactory._audio, _gameFactory._effectFactory);
                 converter.Init();
                 GenerateIdIfApplicable(converter);
+
+                Metrika.ConverterBought(converter.Type);
             }
 
             void ICreatedByIdGameObjectVisitor.Visit(Workbench workbench)
@@ -363,6 +365,8 @@ namespace Code.Infrastructure
                 workshop.Construct(_gameFactory._audio, _gameFactory._effectFactory, _gameFactory);
                 workshop.Init();
                 GenerateIdIfApplicable(workshop);
+
+                Metrika.WorkshopBuilt(workshop.Type);
             }
 
             void ICreatedByIdGameObjectVisitor.Visit(Chunk chunk)

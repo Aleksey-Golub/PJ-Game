@@ -93,6 +93,10 @@ namespace Code.Infrastructure
             _audio.PlayAmbient();
             _loadingSceneName = null;
 
+            Metrika.EventReached(Metrika.Event.Game_Loaded);
+            Metrika.EventReached(Metrika.Event.FirstStart);
+            Metrika.StartPlayTimer();
+
             _stateMachine.Enter<GameLoopState>();
         }
 

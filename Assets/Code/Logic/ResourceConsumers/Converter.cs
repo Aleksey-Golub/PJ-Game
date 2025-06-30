@@ -34,6 +34,7 @@ public class Converter : MonoBehaviour, IResourceConsumer, ISavedProgressReader,
     public int PreferedConsumedValue => _preferedConsumedValue;
     public int FreeSpace => GetMaxUpload() - _currentPreUpload;
     public Vector3 TransitionalResourceFinalPosition => _transitionalResourceFinal.position;
+    public ConverterType Type => _config.Type;
 
     private string Id => UniqueId.Id;
 

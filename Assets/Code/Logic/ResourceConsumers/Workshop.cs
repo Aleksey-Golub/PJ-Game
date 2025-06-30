@@ -16,6 +16,8 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
 
     private IGameFactory _gameFactory;
 
+    public WorkshopType Type => _type;
+
     #region EDITOR
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()

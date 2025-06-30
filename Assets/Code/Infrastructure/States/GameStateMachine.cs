@@ -15,6 +15,11 @@ namespace Code.Infrastructure
       _states = new Dictionary<Type, IExitableState>
       {
         [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services, coroutineRunner, updater),
+        [typeof(LoadAnalyticEventsState)] = new LoadAnalyticEventsState(
+            this, 
+            services.Single<IAnalyticEventsService>(), 
+            services.Single<ISaveLoadAnalyticService>()
+            ),
         [typeof(LoadAppSettingsState)] = new LoadAppSettingsState(
             this, 
             services.Single<IAppSettingsService>(), 

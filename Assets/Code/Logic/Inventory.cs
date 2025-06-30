@@ -38,6 +38,9 @@ public class Inventory : ISavedProgressReader, ISavedProgressWriter
     internal void Add(ResourceType type, int value)
     {
         _storage[type] += value;
+
+        Metrika.ResourceAddedInInventory(type, value);
+        
         ResourceCountChanged?.Invoke(type, _storage[type]);
         ResourceAdded?.Invoke(type, value);
     }

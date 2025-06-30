@@ -8,6 +8,7 @@
         "FAST_DEBUG",
         "FAKE_ADS",
         "GAME_PUSH",
+
         "VK_GAMES",
         "YG",
         "RUSTORE",

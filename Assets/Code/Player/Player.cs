@@ -328,7 +328,10 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
         if (other.TryGetComponent(out Tool tool))
         {
             if (!_inventory.Has(tool.Type))
+            {
                 _inventory.Add(tool.Type);
+                Metrika.ToolCollected(tool);
+            }
 
             tool.Collect();
             string toolID = _configsService.GetConfigFor(tool.Type).ID;

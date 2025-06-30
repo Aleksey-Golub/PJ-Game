@@ -52,6 +52,9 @@ public class Metrika : MonoBehaviour
     private static AnalyticData _data;
     private static PlayTimer _playTimer;
     private static bool _gameLoaded = false;
+    /// <summary>
+    /// float - time in mins
+    /// </summary>
     private static readonly Dictionary<float, Event> _playTimeEventMap = new()
     {
         { 180f, Event.Play_180_Min },
@@ -275,7 +278,7 @@ public class Metrika : MonoBehaviour
     private static void OnPlayTimeChanged(float playTimeSeconds)
     {
         foreach (KeyValuePair<float, Event> pair in _playTimeEventMap)
-            if (playTimeSeconds * 60 > pair.Key)
+            if (playTimeSeconds > pair.Key * 60)
                 EventReached(pair.Value);
     }
 

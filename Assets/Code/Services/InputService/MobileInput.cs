@@ -34,6 +34,7 @@ namespace Code.Services
         {
             var prefab = Resources.Load<MobileInputElements>(ELEMENTS_PATH);
             _elements = Object.Instantiate(prefab);
+            (_elements.Joystick.transform as RectTransform).sizeDelta = new Vector2(Screen.width * 3, Screen.height * 3);
 
             Object.DontDestroyOnLoad(_elements);
         }

@@ -110,27 +110,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 52
-        width: 204
-        height: 204
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3df2fff0ba01bb3439101697a18f4408
-      internalID: -2007972119
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: sell item frame
       rect:
         serializedVersion: 2
@@ -786,9 +765,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 51
-        y: 1
+        y: 0
         width: 14
-        height: 15
+        height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1101,7 +1080,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 382
-        y: 65
+        y: 67
         width: 13
         height: 13
       alignment: 7
@@ -1310,8 +1289,8 @@ TextureImporter:
       name: SWORD
       rect:
         serializedVersion: 2
-        x: 444
-        y: 168
+        x: 365
+        y: 53
         width: 14
         height: 14
       alignment: 7
@@ -2003,8 +1982,8 @@ TextureImporter:
       name: 4x4
       rect:
         serializedVersion: 2
-        x: 149
-        y: 81
+        x: 344
+        y: 191
         width: 4
         height: 4
       alignment: 0
@@ -2129,8 +2108,8 @@ TextureImporter:
       name: arrow_swipe
       rect:
         serializedVersion: 2
-        x: 425
-        y: 11
+        x: 436
+        y: 4
         width: 72
         height: 24
       alignment: 0
@@ -2150,8 +2129,8 @@ TextureImporter:
       name: arrow_swipe_small
       rect:
         serializedVersion: 2
-        x: 438
-        y: 47
+        x: 463
+        y: 57
         width: 47
         height: 11
       alignment: 0

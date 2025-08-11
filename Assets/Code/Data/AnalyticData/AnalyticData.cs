@@ -42,7 +42,9 @@ namespace Code.Data
         public bool e_Play_40_Min;
         public bool e_Play_50_Min;
         public bool e_Play_60_Min;
+        public bool e_Play_90_Min;
         public bool e_Play_120_Min;
+        public bool e_Play_150_Min;
         public bool e_Play_180_Min;
     }
 }

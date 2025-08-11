@@ -42,7 +42,9 @@ public class Metrika : MonoBehaviour
         Play_40_Min  = 1040,
         Play_50_Min  = 1050,
         Play_60_Min  = 1060,
+        Play_90_Min  = 1090,
         Play_120_Min = 1120,
+        Play_150_Min = 1150,
         Play_180_Min = 1180,
     }
 
@@ -52,13 +54,16 @@ public class Metrika : MonoBehaviour
     private static AnalyticData _data;
     private static PlayTimer _playTimer;
     private static bool _gameLoaded = false;
+
     /// <summary>
     /// float - time in mins
     /// </summary>
     private static readonly Dictionary<float, Event> _playTimeEventMap = new()
     {
         { 180f, Event.Play_180_Min },
+        { 150f, Event.Play_150_Min },
         { 120f, Event.Play_120_Min },
+        {  90f, Event.Play_90_Min },
         {  60f, Event.Play_60_Min },
         {  50f, Event.Play_50_Min },
         {  40f, Event.Play_40_Min },
@@ -333,8 +338,12 @@ public class Metrika : MonoBehaviour
                 return ref _data.AnalyticEventsData.e_Play_50_Min;
             case Event.Play_60_Min:
                 return ref _data.AnalyticEventsData.e_Play_60_Min;
+            case Event.Play_90_Min:
+                return ref _data.AnalyticEventsData.e_Play_90_Min;
             case Event.Play_120_Min:
                 return ref _data.AnalyticEventsData.e_Play_120_Min;
+            case Event.Play_150_Min:
+                return ref _data.AnalyticEventsData.e_Play_150_Min;
             case Event.Play_180_Min:
                 return ref _data.AnalyticEventsData.e_Play_180_Min;
 

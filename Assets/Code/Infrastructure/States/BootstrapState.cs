@@ -31,8 +31,9 @@ namespace Code.Infrastructure
             _services.RegisterSingle<IGameStateMachine>(_stateMachine);
             _services.RegisterSingle<ICoroutineRunner>(coroutineRunner);
             _services.RegisterSingle<IUpdater>(updater);
+            RegisterIAPService();
 
-            RegisterAdsService();
+            RegisterAdsService(_services.Single<IIAPService>());
             _services.RegisterSingle<ITimeService>(new TimeService());
             RegisterLocalizationService();
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
@@ -76,6 +77,7 @@ namespace Code.Infrastructure
               _services.Single<IPersistentProgressService>(),
               _services.Single<IAudioService>(),
               _services.Single<ISaveLoadAppSettingsService>(),
+              _services.Single<IIAPService>(),
               _services.Single<IAdsService>(),
               _services.Single<IUpdater>()
               ));
@@ -140,9 +142,9 @@ namespace Code.Infrastructure
             _services.RegisterSingle(configs);
         }
 
-        private void RegisterAdsService()
+        private void RegisterAdsService(IIAPService iapService)
         {
-            IAdsService adsService = new AdsService();
+            IAdsService adsService = new AdsService(iapService);
             adsService.Initialize();
             _services.RegisterSingle<IAdsService>(adsService);
         }
@@ -154,6 +156,13 @@ namespace Code.Infrastructure
             //ILocalizationService localization = new LocalizationService();
             //localization.Load();
             //_services.RegisterSingle(localization);
+        }
+
+        private void RegisterIAPService()
+        {
+            IAPService iapService = new IAPService();
+            iapService.Initialize();
+            _services.RegisterSingle<IIAPService>(iapService);
         }
 
         private static IInputService GetInputService()

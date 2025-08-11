@@ -2167,6 +2167,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: PREMIUM_icon
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 52
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 119bf7f0c0ff07649aacf9f743dca41c
+      internalID: 1730991760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PREMIUM_buy
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 52
+        width: 40
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3846154}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e9e2d2f36d19fe4b915d33544577676
+      internalID: -1900280434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2186,6 +2228,8 @@ TextureImporter:
       Cow: -158344966
       Earth: 965670463
       PICKAXE: 1402700907
+      PREMIUM_buy: -1900280434
+      PREMIUM_icon: 1730991760
       Pig: -1711002262
       SICKLE: -964180368
       SWORD: 1356712221

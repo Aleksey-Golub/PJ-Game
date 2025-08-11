@@ -19,6 +19,7 @@ namespace Code.UI.Services
         private readonly IPersistentProgressService _progressService;
         private readonly IAudioService _audio;
         private readonly ISaveLoadAppSettingsService _saveLoadAppSettingsService;
+        private readonly IIAPService _iapService;
         private readonly IAdsService _adsService;
         private readonly IUpdater _updater;
 
@@ -28,6 +29,7 @@ namespace Code.UI.Services
             IPersistentProgressService progressService,
             IAudioService audio,
             ISaveLoadAppSettingsService saveLoadAppSettingsService,
+            IIAPService iapService,
             IAdsService adsService,
             IUpdater updater
             )
@@ -37,6 +39,7 @@ namespace Code.UI.Services
             _progressService = progressService;
             _audio = audio;
             _saveLoadAppSettingsService = saveLoadAppSettingsService;
+            _iapService = iapService;
             _adsService = adsService;
             _updater = updater;
         }
@@ -84,7 +87,7 @@ namespace Code.UI.Services
             switch (windowId)
             {
                 case WindowId.Settings:
-                    ((SettingsWindow)window).Construct(_audio, _saveLoadAppSettingsService);
+                    ((SettingsWindow)window).Construct(_audio, _saveLoadAppSettingsService, _iapService);
                     break;
                 //case WindowId.Sell:
                 //case WindowId.Upgrade:

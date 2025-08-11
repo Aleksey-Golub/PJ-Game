@@ -17,13 +17,18 @@ namespace Code.UI
         [SerializeField] private Button _saveProgressBtn;
         [SerializeField] private TextMeshProUGUI _versionText;
 
-        private ISaveLoadAppSettingsService _saveLoadAppSettingsService;
+        [SerializeField] private Button _premiumBtn;
+        [SerializeField] private TextMeshProUGUI _premiumText;
 
-        internal void Construct(IAudioService audio, ISaveLoadAppSettingsService saveLoadAppSettingsService)
+        private ISaveLoadAppSettingsService _saveLoadAppSettingsService;
+        private IIAPService _iapService;
+
+        internal void Construct(IAudioService audio, ISaveLoadAppSettingsService saveLoadAppSettingsService, IIAPService iapService)
         {
             base.Construct(audio);
 
             _saveLoadAppSettingsService = saveLoadAppSettingsService;
+            _iapService = iapService;
 
 #if DEBUG
             _removeProgressBtn.gameObject.SetActive(true);
@@ -68,6 +73,9 @@ namespace Code.UI
             _removeProgressBtn.onClick.AddListener(OnRemoveProgressButtonClick);
             _saveProgressBtn.onClick.AddListener(OnSaveProgressButtonClick);
 
+            _iapService.Purchased += OnSomePurchased;
+            _premiumBtn.onClick.AddListener(BuyPremium);
+
             LService.LanguageChanged += RefreshUI;
         }
 
@@ -90,6 +98,9 @@ namespace Code.UI
 
             _removeProgressBtn.onClick.RemoveListener(OnRemoveProgressButtonClick);
             _saveProgressBtn.onClick.RemoveListener(OnSaveProgressButtonClick);
+
+            _iapService.Purchased -= OnSomePurchased;
+            _premiumBtn.onClick.RemoveListener(BuyPremium);
 
             LService.LanguageChanged -= RefreshUI;
         }
@@ -130,6 +141,14 @@ namespace Code.UI
 
         private void RefreshMusic() => Refresh(AudioService.MUSIC, _musicButton, _musicSlider, LService.Localize("k_Music"));
 
+        private void RefreshPremium()
+        {
+            /*_iapService.FetchProducts();*/
+            bool premiumBought = _iapService.IsPremiumBought();
+            //_noAdsText.text = noAdsBought ? LService. : LService.;
+            _premiumBtn.interactable = !premiumBought;
+        }
+
         private void Refresh(string group, ButtonSwitcher switcher, Slider slider, string label)
         {
             AudioGroupData data = Audio.GetData(group);
@@ -157,6 +176,7 @@ namespace Code.UI
             SetAppVersion();
             RefreshSounds();
             RefreshMusic();
+            RefreshPremium();
         }
 
         private void SetAppVersion()
@@ -177,6 +197,16 @@ namespace Code.UI
         {
             var saveLoadService = AllServices.Container.Single<ISaveLoadService>();
             saveLoadService.SaveProgress();
+        }
+
+        private void OnSomePurchased(bool isPurchaseSuccessed)
+        {
+            RefreshPremium();
+        }
+
+        private void BuyPremium()
+        {
+            _iapService.PurchasePremium();
         }
     }
 }

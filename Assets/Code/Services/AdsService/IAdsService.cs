@@ -35,6 +35,7 @@ namespace Code.Services
         bool IsRewardedAvailable();
 
         void ShowSticky();
+        void CloseSticky();
         void ShowPreloader();
         void ShowFullscreen();
         void ShowRewardedVideo(Action onVideoFinished);

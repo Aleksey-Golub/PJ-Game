@@ -9,6 +9,8 @@ namespace Code.Services
 {
     public class AdsService : IAdsService
     {
+        private readonly IIAPService _iapService;
+
         public event Action RewardedVideoReady;
 
         public event Action AdsExceptStickyCalling;
@@ -79,6 +81,13 @@ namespace Code.Services
             }
         }
 
+        public AdsService(IIAPService iapService)
+        {
+            _iapService = iapService;
+
+            _iapService.Purchased += OnSomePurchased;
+        }
+
         public void Initialize()
         {
             Logger.Log($"[AdsService] initializing...");
@@ -136,6 +145,12 @@ namespace Code.Services
                 return;
             }
 
+            if (_iapService.IsPremiumBought())
+            {
+                Logger.LogWarning($"[AdsService] trying to show Sticky, but PREMIUM is bought");
+                return;
+            }
+
 #if DEBUG && FAKE_ADS
             StickyStart?.Invoke();
             AdsStart?.Invoke();
@@ -146,6 +161,22 @@ namespace Code.Services
             GP_Ads.ShowSticky();
 #endif
         }
+        
+        public void CloseSticky()
+        {
+            Logger.Log($"[AdsService] start CloseSticky()");
+
+            if (!IsStickyAvailable())
+            {
+                Logger.LogWarning($"[AdsService] trying to close Sticky, but it is not available");
+                return;
+            }
+
+#if DEBUG && FAKE_ADS
+#else
+            GP_Ads.CloseSticky();
+#endif
+        }
 
         public void ShowPreloader()
         {
@@ -154,6 +185,12 @@ namespace Code.Services
             if (!IsPreloaderAvailable())
             {
                 Logger.LogWarning($"[AdsService] trying to show Preload, but it is not available");
+                return;
+            }
+
+            if (_iapService.IsPremiumBought())
+            {
+                Logger.LogWarning($"[AdsService] trying to show Preload, but PREMIUM is bought");
                 return;
             }
 
@@ -179,6 +216,12 @@ namespace Code.Services
             if (!IsFullscreenAvailable())
             {
                 Logger.LogWarning($"[AdsService] trying to show Fullscreen, but it is not available");
+                return;
+            }
+
+            if (_iapService.IsPremiumBought())
+            {
+                Logger.LogWarning($"[AdsService] trying to show Fullscreen, but PREMIUM is bought");
                 return;
             }
 
@@ -252,6 +295,12 @@ namespace Code.Services
             _onVideoFinished = null;
 
             RewardedVideoReady?.Invoke();
+        }
+
+        private void OnSomePurchased(bool purchaseSuccessed)
+        {
+            if (_iapService.IsPremiumBought())
+                CloseSticky();
         }
 
 #if DEBUG && FAKE_ADS

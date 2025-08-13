@@ -22,6 +22,7 @@ namespace Code.UI.Services
         private readonly IIAPService _iapService;
         private readonly IAdsService _adsService;
         private readonly IUpdater _updater;
+        private readonly IUIMediator _uiMediator;
 
         public UIFactory(
             IAssetProvider assets,
@@ -31,7 +32,8 @@ namespace Code.UI.Services
             ISaveLoadAppSettingsService saveLoadAppSettingsService,
             IIAPService iapService,
             IAdsService adsService,
-            IUpdater updater
+            IUpdater updater,
+            IUIMediator uiMediator
             )
         {
             _assets = assets;
@@ -42,6 +44,7 @@ namespace Code.UI.Services
             _iapService = iapService;
             _adsService = adsService;
             _updater = updater;
+            _uiMediator = uiMediator;
         }
 
         public void CreateUIRoot()
@@ -87,7 +90,7 @@ namespace Code.UI.Services
             switch (windowId)
             {
                 case WindowId.Settings:
-                    ((SettingsWindow)window).Construct(_audio, _saveLoadAppSettingsService, _iapService);
+                    ((SettingsWindow)window).Construct(_audio, _saveLoadAppSettingsService, _iapService, _uiMediator);
                     break;
                 //case WindowId.Sell:
                 //case WindowId.Upgrade:

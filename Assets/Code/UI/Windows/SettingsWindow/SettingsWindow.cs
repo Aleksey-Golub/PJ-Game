@@ -1,4 +1,5 @@
 using Code.Services;
+using Code.UI.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,13 +23,15 @@ namespace Code.UI
 
         private ISaveLoadAppSettingsService _saveLoadAppSettingsService;
         private IIAPService _iapService;
+        private IUIMediator _uiMediator;
 
-        internal void Construct(IAudioService audio, ISaveLoadAppSettingsService saveLoadAppSettingsService, IIAPService iapService)
+        internal void Construct(IAudioService audio, ISaveLoadAppSettingsService saveLoadAppSettingsService, IIAPService iapService, IUIMediator uiMediator)
         {
             base.Construct(audio);
 
             _saveLoadAppSettingsService = saveLoadAppSettingsService;
             _iapService = iapService;
+            _uiMediator = uiMediator;
 
 #if DEBUG
             _removeProgressBtn.gameObject.SetActive(true);
@@ -206,7 +209,7 @@ namespace Code.UI
 
         private void BuyPremium()
         {
-            _iapService.PurchasePremium();
+            _uiMediator.Open(WindowId.BuyPremium);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Code.UI.Services
 {
     internal class UIMediator : IUIMediator
     {
-        private readonly IUIFactory _uIFactory;
+        private IUIFactory _uIFactory;
 
         private Hud _hud;
         private SellBoardView _sellBoardView;
@@ -18,7 +18,7 @@ namespace Code.UI.Services
         private readonly Dictionary<WindowId, WindowBase> _windowsCache = new();
         private readonly Dictionary<UIPopupId, UIPopup> _popupsCache = new();
 
-        public UIMediator(IUIFactory uIFactory)
+        public void PostConstruct(IUIFactory uIFactory)
         {
             _uIFactory = uIFactory;
         }

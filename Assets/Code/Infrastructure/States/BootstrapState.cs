@@ -71,6 +71,8 @@ namespace Code.Infrastructure
                 _services.Single<IAppSettingsService>(),
                 _services.Single<IAudioService>()));
 
+            _services.RegisterSingle<IUIMediator>(new UIMediator());
+            
             _services.RegisterSingle<IUIFactory>(new UIFactory(
               _services.Single<IAssetProvider>(),
               _services.Single<IConfigsService>(),
@@ -79,10 +81,9 @@ namespace Code.Infrastructure
               _services.Single<ISaveLoadAppSettingsService>(),
               _services.Single<IIAPService>(),
               _services.Single<IAdsService>(),
-              _services.Single<IUpdater>()
+              _services.Single<IUpdater>(),
+              _services.Single<IUIMediator>()
               ));
-
-            _services.RegisterSingle<IUIMediator>(new UIMediator(_services.Single<IUIFactory>()));
 
             _services.RegisterSingle<IGameFactory>(new GameFactory(
               _services.Single<IAssetProvider>(),
@@ -110,6 +111,8 @@ namespace Code.Infrastructure
             _services.RegisterSingle<ISaveLoadAnalyticService>(new SaveLoadAnalyticService(
                 _services.Single<IAnalyticEventsService>()
                 ));
+
+            _services.Single<IUIMediator>().PostConstruct(_services.Single<IUIFactory>());
         }
 
         private void RegisterResourceMergeService()

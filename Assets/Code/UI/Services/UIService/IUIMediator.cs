@@ -8,6 +8,7 @@ namespace Code.UI.Services
     public interface IUIMediator : IService
     {
         IInventoryView GetPlayerInventoryView();
+        void PostConstruct(IUIFactory uIFactory);
         void Init(Hud hud);
         void Open(WindowId windowId);
         void OpenSellBoardView(IReadOnlyDictionary<ResourceType, int> storage, Action<ResourceType> sellResource);

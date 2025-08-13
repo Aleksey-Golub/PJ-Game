@@ -91,6 +91,9 @@ namespace Code.UI.Services
                     break;
                 //case WindowId.Sell:
                 //case WindowId.Upgrade:
+                case WindowId.BuyPremium:
+                    ((BuyPremiumWindow)window).Construct(_audio, _iapService);
+                    break;
                 case WindowId.None:
                 default:
                     throw new NotImplementedException($"Not implemented for {windowId}");

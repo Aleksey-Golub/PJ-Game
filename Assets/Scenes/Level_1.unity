@@ -1836,7 +1836,7 @@ GameObject:
   - component: {fileID: 154727310}
   - component: {fileID: 154727311}
   m_Layer: 0
-  m_Name: Interstitial Ads Runner
+  m_Name: Interstitial Ads And Premium Runner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1870,6 +1870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInterval: 240
+  _showPremiumInterval: 600
 --- !u!1001 &165352660
 PrefabInstance:
   m_ObjectHideFlags: 0

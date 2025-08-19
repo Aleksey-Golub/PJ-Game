@@ -69,7 +69,11 @@ namespace Code.UI
         private void RefreshUI()
         {
             _header.text = LService.Localize("k_Premium_header");
+#if YG
+            _description.text = LService.Localize("k_Premium_description_YG");
+#else
             _description.text = LService.Localize("k_Premium_description");
+#endif
 
             RefreshPremium();
         }

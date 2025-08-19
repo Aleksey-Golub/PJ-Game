@@ -33,6 +33,18 @@ namespace Code.Services
 #endif
             }
         }
+        
+        public static string Id
+        {
+            get
+            {
+#if DEBUG && FAKE_ADS
+                return "no id";
+#else
+                return $"{GamePush.GP_Player.GetID()}";
+#endif
+            }
+        }
 
         public static event Action WebGamePaused;
         public static event Action WebGameResumed;

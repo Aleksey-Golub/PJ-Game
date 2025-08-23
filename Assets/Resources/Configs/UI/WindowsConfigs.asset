@@ -17,3 +17,5 @@ MonoBehaviour:
     Template: {fileID: 8667699189518216766, guid: bf77b4784e8120a4c9a0b2dbb49beef4, type: 3}
   - WindowId: 4
     Template: {fileID: 6024921160208930488, guid: df5c758689c84b94187a02315b840367, type: 3}
+  - WindowId: 5
+    Template: {fileID: 6897254640881311193, guid: b5908e3fe6216044da59ffe2a17317df, type: 3}

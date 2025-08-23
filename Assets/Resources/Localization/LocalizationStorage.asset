@@ -60,6 +60,16 @@ MonoBehaviour:
     - MAX
     - "\u041C\u0410\u041A\u0421"
     - MAX
+  - Key: k_GameMenu_header
+    Values:
+    - Menu
+    - "\u041C\u0435\u043D\u044E"
+    - Menu
+  - Key: k_Skins
+    Values:
+    - Skin
+    - "\u041E\u0431\u043B\u0438\u043A"
+    - Skin
   - Key: k_Settings
     Values:
     - Settings

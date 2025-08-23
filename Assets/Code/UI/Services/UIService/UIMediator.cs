@@ -79,6 +79,9 @@ namespace Code.UI.Services
                 case WindowId.BuyPremium:
                     ((BuyPremiumWindow)window).Open();
                     break;
+                case WindowId.GameMenu:
+                    ((GameMenuWindow)window).Open();
+                    break;
                 case WindowId.None:
                 default:
                     throw new NotImplementedException($"Not implemented for {windowId}");
@@ -121,6 +124,7 @@ namespace Code.UI.Services
         //Sell = 2,
         //Upgrade = 3,
         BuyPremium = 4,
+        GameMenu = 5,
     }
 
     public enum UIPopupId

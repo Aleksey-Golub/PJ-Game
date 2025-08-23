@@ -58,6 +58,9 @@ namespace Code.UI.Services
             WindowBase window = UnityEngine.Object.Instantiate(config.Template, _uiRoot);
             ConstructWindow(window, windowId);
 
+            foreach (OpenWindowButton openWindowButton in window.GetComponentsInChildren<OpenWindowButton>())
+                openWindowButton.Construct(_uiMediator, _audio);
+
             return window;
         }
 
@@ -90,19 +93,22 @@ namespace Code.UI.Services
             switch (windowId)
             {
                 case WindowId.Settings:
-                    ((SettingsWindow)window).Construct(_audio, _saveLoadAppSettingsService, _iapService, _uiMediator);
+                    ((SettingsWindow)window).Construct(_audio, _saveLoadAppSettingsService);
                     break;
                 //case WindowId.Sell:
                 //case WindowId.Upgrade:
                 case WindowId.BuyPremium:
                     ((BuyPremiumWindow)window).Construct(_audio, _iapService);
                     break;
+                case WindowId.GameMenu:
+                    ((GameMenuWindow)window).Construct(_audio, _iapService, _uiMediator);
+                    break;
                 case WindowId.None:
                 default:
                     throw new NotImplementedException($"Not implemented for {windowId}");
             }
         }
-        
+
         private void ConstructUiPopup(UIPopup popup, UIPopupId popupId)
         {
             popup.gameObject.name = $"{popupId.ToString()} popup";

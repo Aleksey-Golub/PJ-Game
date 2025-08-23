@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 8362515682821105150}
   - component: {fileID: 4446915354756773259}
   m_Layer: 5
-  m_Name: Settings Button
+  m_Name: GameMenu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 8362515682821105150}
-  _windowId: 1
+  _windowId: 5
   _clip: {fileID: 8300000, guid: a82921465fe981d4aaea40eb0b2ff2cb, type: 3}
   _closeWindowToo: 1
 --- !u!1 &8376075955479536795

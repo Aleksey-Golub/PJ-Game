@@ -253,7 +253,7 @@ namespace Code.Services
                 _musicSource.AudioSource.Pause();
 
             foreach (var s in _toCheckEnd)
-                s.Value.AudioSource.Pause();
+                s.Value?.AudioSource?.Pause();
         }
 
         public void UnPauseAll()
@@ -265,7 +265,7 @@ namespace Code.Services
                 _musicSource.AudioSource.UnPause();
 
             foreach (var s in _toCheckEnd)
-                s.Value.AudioSource.Pause();
+                s.Value?.AudioSource?.Pause();
         }
     }
 

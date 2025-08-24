@@ -12,12 +12,14 @@ namespace Code.Services
         IReadOnlyDictionary<ConverterType, ConverterConfig> ConverterConfigs { get; }
         IReadOnlyList<IUpgradable> UpgradablesConfigs { get; }
         IReadOnlyDictionary<EffectId, EffectConfig> EffectsConfigs { get; }
+        IReadOnlyDictionary<SkinId, SkinConfig> SkinsConfigs { get; }
         IReadOnlyDictionary<string, TutorialMatcher> TutorialsMatchers { get; }
 
         void Load();
         ResourceConfig GetConfigFor(ResourceType type);
         ToolConfig GetConfigFor(ToolType type);
         EffectConfig GetConfigFor(EffectId effectType);
+        SkinConfig GetConfigFor(SkinId skinId);
         WindowMatcher GetMatcherFor(WindowId windowId);
         ResourceSourceMatcher GetMatcherFor(ResourceSourceType type);
         ResourceStorageMatcher GetMatcherFor(ResourceStorageType type);

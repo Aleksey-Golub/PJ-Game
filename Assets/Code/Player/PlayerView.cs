@@ -37,6 +37,8 @@ internal class PlayerView : MonoBehaviour
         _gatheredResourcesPopups = new();
     }
 
+    internal void ChangeSkin(RuntimeAnimatorController skinAnimator) => _animator.runtimeAnimatorController = skinAnimator;
+
     internal void PlayMove(Vector2 direction, float velocity) => PlayMove(direction.x, direction.y, velocity);
 
     internal void PlayMove(float dirX, float dirY, float velocity)

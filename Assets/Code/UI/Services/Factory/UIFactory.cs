@@ -103,6 +103,9 @@ namespace Code.UI.Services
                 case WindowId.GameMenu:
                     ((GameMenuWindow)window).Construct(_audio, _iapService, _uiMediator);
                     break;
+                case WindowId.CharacterSkins:
+                    ((CharacterSkinsWindow)window).Construct(_audio, _configs, _progressService, _uiMediator);
+                    break;
                 case WindowId.None:
                 default:
                     throw new NotImplementedException($"Not implemented for {windowId}");

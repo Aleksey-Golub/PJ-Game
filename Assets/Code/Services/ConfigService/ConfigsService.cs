@@ -13,6 +13,7 @@ namespace Code.Services
         private const string RESOURCE_STORAGE_CONFIGS_PATH = "Configs/ResourceStorageConfigs/AllResourceStoragesConfigs";
         private const string CONVERTER_CONFIGS_PATH = "Configs/ConverterConfigs/AllConvertersConfigs";
         private const string EFFECTS_CONFIGS_PATH = "Configs/EffectsConfigs/EffectsConfigs";
+        private const string SKINS_CONFIGS_PATH = "Configs/SkinConfigs/SkinsConfigs";
 
         private const string WINDOWS_MATCHERS_PATH = "Configs/UI/WindowsConfigs";
         private const string RESOURCESOURCES_MATCHERS_PATH = "Configs/ResourceSourceConfigs/ResourceSourcesMatchers";
@@ -26,6 +27,7 @@ namespace Code.Services
         private Dictionary<ResourceStorageType, ResourceStorageConfig> _resourceStorageConfigs;
         private Dictionary<ConverterType, ConverterConfig> _converterConfigs;
         private Dictionary<EffectId, EffectConfig> _effectsConfigs;
+        private Dictionary<SkinId, SkinConfig> _skinsConfigs;
         private Dictionary<WindowId, WindowMatcher> _windowMatchers;
         private Dictionary<ResourceSourceType, ResourceSourceMatcher> _resourceSourcesMatchers;
         private Dictionary<ResourceStorageType, ResourceStorageMatcher> _resourceStoragesMatchers;
@@ -38,6 +40,7 @@ namespace Code.Services
         public IReadOnlyDictionary<ResourceStorageType, ResourceStorageConfig> ResourceStorageConfigs => _resourceStorageConfigs;
         public IReadOnlyDictionary<ConverterType, ConverterConfig> ConverterConfigs => _converterConfigs;
         public IReadOnlyDictionary<EffectId, EffectConfig> EffectsConfigs => _effectsConfigs;
+        public IReadOnlyDictionary<SkinId, SkinConfig> SkinsConfigs => _skinsConfigs;
         public IReadOnlyList<IUpgradable> UpgradablesConfigs { get; private set; }
         public IReadOnlyDictionary<string, TutorialMatcher> TutorialsMatchers => _tutorialsMatchers;
 
@@ -55,6 +58,7 @@ namespace Code.Services
             _simpleObjectsMatchers = Resources.Load<SimpleObjectsMatchers>(SIMPLEOBJECTS_MATCHERS_PATH).Matchers.ToDictionary(c => c.Type, c => c);
             _gameObjectsMatchers = Resources.Load<ObjectsMatchers>(GAMEOBJECTS_MATCHERS_PATH).Configs.ToDictionary(c => c.GameObjectId, c => c);
             _tutorialsMatchers = Resources.Load<TutorialsMatchers>(TUTORIALS_MATCHERS_PATH).Matchers.ToDictionary(c => c.SceneName, c => c);
+            _skinsConfigs = Resources.Load<SkinsConfigs>(SKINS_CONFIGS_PATH).Configs.ToDictionary(c => c.SkinId, c => c);
 
             UpgradablesConfigs = GetUpgradablesConfigs();
         }
@@ -72,6 +76,7 @@ namespace Code.Services
         public ResourceConfig GetConfigFor(ResourceType type) => _resourcesConfigs[type];
         public ToolConfig GetConfigFor(ToolType type) => _toolsConfigs[type];
         public EffectConfig GetConfigFor(EffectId effectType) => _effectsConfigs[effectType];
+        public SkinConfig GetConfigFor(SkinId skinId) => _skinsConfigs[skinId];
         public WindowMatcher GetMatcherFor(WindowId windowId) => _windowMatchers[windowId];
         public ResourceSourceMatcher GetMatcherFor(ResourceSourceType type) => _resourceSourcesMatchers[type];
         public ResourceStorageMatcher GetMatcherFor(ResourceStorageType type) => _resourceStoragesMatchers[type];

@@ -50,6 +50,7 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
     private Timer _speedUpTimer;
 
     private float CurrentSpeed => _isSpeedUp ? _speedUpSpeed : _speed;
+    private SkinsData SkinsData => _progressService.Progress.PlayerProgress.SkinsData;
 
     public Inventory Inventory => _inventory;
 
@@ -85,9 +86,11 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
         _progressService = progressService;
 
         _view.Construct(popupFactory);
+        ChangeSkin(SkinsData.SelectedSkinId);
 
         _inventory.ResourceCountChanged += _inventoryView.UpdateFor;
         _view.AttackDone += OnHitDone;
+        SkinsData.SelectedSkinChanged += ChangeSkin;
 
         _speedUpTimer = new Timer();
     }
@@ -101,6 +104,7 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
     {
         _view.AttackDone -= OnHitDone;
         _inventory.ResourceCountChanged -= _inventoryView.UpdateFor;
+        SkinsData.SelectedSkinChanged -= ChangeSkin;
     }
 
     #region Progress Read - Write
@@ -528,6 +532,12 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
             _upgradeBoard.Close();
             _upgradeBoard = null;
         }
+    }
+
+    private void ChangeSkin(SkinId skinId)
+    {
+        var skinAnimator = _configsService.GetConfigFor(skinId).Animator;
+        _view.ChangeSkin(skinAnimator);
     }
 
     private string CurrentLevel() => SceneLoader.CurrentLevel();

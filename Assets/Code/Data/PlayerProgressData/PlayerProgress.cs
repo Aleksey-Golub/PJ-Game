@@ -8,6 +8,7 @@
         public InventoryData InventoryData;
         public TimerData SpeedUpTimerData;
         public float SpeedUpSpeed;
+        public SkinsData SkinsData;
 
         public PlayerProgress(string initialLevel)
         {
@@ -15,6 +16,7 @@
             PositionOnLevel = new PositionOnLevel(initialLevel);
             InventoryData = new InventoryData();
             SpeedUpTimerData = new TimerData(false, 0, 0);
+            SkinsData = new SkinsData();
         }
     }
 }

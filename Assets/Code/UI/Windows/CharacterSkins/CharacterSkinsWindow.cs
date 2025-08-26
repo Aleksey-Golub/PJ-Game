@@ -156,8 +156,7 @@ namespace Code.UI
             switch (skinId)
             {
                 case SkinId.SupportSkin:
-                    // TODO show SUPPORT window
-                    Logger.Log($"Buy {SkinId.SupportSkin} clicked");
+                    _uiMediator.Open(WindowId.BuySupport);
                     break;
                 case SkinId.BaseSkin:
                     break;

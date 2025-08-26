@@ -58,6 +58,14 @@ namespace Code.UI.Services
             popup.Close();
         }
 
+        public void OpenOnTop(WindowId windowId)
+        {
+            Open(windowId);
+            WindowBase window = _windowsCache[windowId];
+
+            window.transform.SetAsLastSibling();
+        }
+
         public void Open(WindowId windowId)
         {
             if (IsOpened(windowId))

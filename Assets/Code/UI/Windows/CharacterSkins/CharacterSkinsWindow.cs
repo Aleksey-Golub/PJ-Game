@@ -156,7 +156,7 @@ namespace Code.UI
             switch (skinId)
             {
                 case SkinId.SupportSkin:
-                    _uiMediator.Open(WindowId.BuySupport);
+                    _uiMediator.OpenOnTop(WindowId.BuySupport);
                     break;
                 case SkinId.BaseSkin:
                     break;

@@ -10,6 +10,7 @@ namespace Code.UI.Services
         IInventoryView GetPlayerInventoryView();
         void PostConstruct(IUIFactory uIFactory);
         void Init(Hud hud);
+        void OpenOnTop(WindowId windowId);
         void Open(WindowId windowId);
         void OpenSellBoardView(IReadOnlyDictionary<ResourceType, int> storage, Action<ResourceType> sellResource);
         void CloseSellBoardView();

@@ -106,6 +106,9 @@ namespace Code.UI.Services
                 case WindowId.CharacterSkins:
                     ((CharacterSkinsWindow)window).Construct(_audio, _configs, _progressService, _uiMediator);
                     break;
+                case WindowId.BuySupport:
+                    ((BuySupportWindow)window).Construct(_audio, _iapService);
+                    break;
                 case WindowId.None:
                 default:
                     throw new NotImplementedException($"Not implemented for {windowId}");

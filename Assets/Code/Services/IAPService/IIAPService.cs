@@ -6,10 +6,13 @@ namespace Code.Services
     {
         event Action<bool> Purchased;
 
+        void PostConstruct(IPersistentProgressService progressService, ISaveLoadService saveService);
         /*void FetchProducts();*/
         void Initialize();
         bool IsPremiumBought();
+        bool IsSupportBought();
         void PurchasePremium();
-        void StartPurchase(string v);
+        void PurchaseSupport();
+        void StartPurchase(string purchaseId);
     }
 }

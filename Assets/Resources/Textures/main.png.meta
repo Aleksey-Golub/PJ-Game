@@ -2174,7 +2174,7 @@ TextureImporter:
         x: 162
         y: 52
         width: 40
-        height: 26
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2195,7 +2195,7 @@ TextureImporter:
         x: 120
         y: 52
         width: 40
-        height: 26
+        height: 31
       alignment: 9
       pivot: {x: 0.5, y: 0.3846154}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2205,6 +2205,48 @@ TextureImporter:
       bones: []
       spriteID: 6e9e2d2f36d19fe4b915d33544577676
       internalID: -1900280434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SUPPORT_buy
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 86
+        width: 40
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb40f0a2598df0b458b6e21564138793
+      internalID: 1327910188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SUPPORT_icon
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 86
+        width: 40
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2876218a45a67a64db52d77ebc02a74a
+      internalID: -12137980
       vertices: []
       indices: 
       edges: []
@@ -2232,6 +2274,8 @@ TextureImporter:
       PREMIUM_icon: 1730991760
       Pig: -1711002262
       SICKLE: -964180368
+      SUPPORT_buy: 1327910188
+      SUPPORT_icon: -12137980
       SWORD: 1356712221
       Store Carrot: -320451106
       Store Carrot Exhaused: 941803317

@@ -113,6 +113,7 @@ namespace Code.Infrastructure
                 ));
 
             _services.Single<IUIMediator>().PostConstruct(_services.Single<IUIFactory>());
+            _services.Single<IIAPService>().PostConstruct(_services.Single<IPersistentProgressService>(), _services.Single<ISaveLoadService>());
         }
 
         private void RegisterResourceMergeService()

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Code.Services
 {
@@ -7,9 +6,21 @@ namespace Code.Services
     {
         private const string PREMIUM_KEY = "Premium";
         private const string PREMIUM_ID = "PREMIUM";
+        private const string SUPPORT_KEY = "Support";
+        private const string SUPPORT_ID = "SUPPORT";
         private bool? _isPremiumBought;
+        private bool? _isSupportBought;
+
+        private IPersistentProgressService _progress;
+        private ISaveLoadService _saveService;
 
         public event Action<bool> Purchased;
+
+        public void PostConstruct(IPersistentProgressService progress, ISaveLoadService saveLoad)
+        {
+            _progress = progress;
+            _saveService = saveLoad;
+        }
 
         /*//
         //Подписка на события
@@ -65,6 +76,14 @@ namespace Code.Services
 
             return _isPremiumBought.Value;
         }
+        
+        public bool IsSupportBought()
+        {
+            if (!_isSupportBought.HasValue)
+                _isSupportBought = GamePush.GP_Player.GetBool(SUPPORT_KEY);
+
+            return _isSupportBought.Value;
+        }
 
         public void PurchasePremium()
         {
@@ -75,6 +94,17 @@ namespace Code.Services
             }
 
             StartPurchase(PREMIUM_ID);
+        }
+        
+        public void PurchaseSupport()
+        {
+            if (IsSupportBought())
+            {
+                Logger.LogWarning($"[IAPService] SUPPORT is already bought");
+                return;
+            }
+
+            StartPurchase(SUPPORT_ID);
         }
 
         public void StartPurchase(string purchaseId)
@@ -88,6 +118,16 @@ namespace Code.Services
             {
                 GamePush.GP_Player.Set(PREMIUM_KEY, true);
                 _isPremiumBought = true;
+
+                GamePush.GP_Player.Sync();
+            }
+            
+            if (productIdOrTag == SUPPORT_ID)
+            {
+                GamePush.GP_Player.Set(SUPPORT_KEY, true);
+                _isSupportBought = true;
+                _progress.Progress.PlayerProgress.SkinsData.AvailableSkins.Add(SkinId.SupportSkin);
+                _saveService.SaveProgress();
 
                 GamePush.GP_Player.Sync();
             }

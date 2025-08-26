@@ -1,30 +1,24 @@
 ﻿using Code.Services;
-using Code.UI.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Code.UI
 {
-    internal class GameMenuWindow : WindowBase
+    internal class BuySupportWindow : WindowBase
     {
         [SerializeField] private TextMeshProUGUI _header;
-
-        [SerializeField] private Button _premiumBtn;
-        [SerializeField] private TextMeshProUGUI _premiumText;
-        
+        [SerializeField] private TextMeshProUGUI _description;
         [SerializeField] private Button _supportBtn;
         [SerializeField] private TextMeshProUGUI _supportText;
 
         private IIAPService _iapService;
-        private IUIMediator _uiMediator;
 
-        internal void Construct(IAudioService audio, IIAPService iapService, IUIMediator uiMediator)
+        internal void Construct(IAudioService audio, IIAPService iapService)
         {
             base.Construct(audio);
 
             _iapService = iapService;
-            _uiMediator = uiMediator;
         }
 
         internal void Open()
@@ -42,7 +36,6 @@ namespace Code.UI
         protected override void SubscribeUpdates()
         {
             _iapService.Purchased += OnSomePurchased;
-            _premiumBtn.onClick.AddListener(BuyPremium);
             _supportBtn.onClick.AddListener(BuySupport);
 
             LService.LanguageChanged += RefreshUI;
@@ -53,7 +46,6 @@ namespace Code.UI
             base.Cleanup();
 
             _iapService.Purchased -= OnSomePurchased;
-            _premiumBtn.onClick.RemoveListener(BuyPremium);
             _supportBtn.onClick.RemoveListener(BuySupport);
 
             LService.LanguageChanged -= RefreshUI;
@@ -67,13 +59,6 @@ namespace Code.UI
 
         private void CloseSelf() => gameObject.SetActive(false);
 
-        private void RefreshPremium()
-        {
-            bool premiumBought = _iapService.IsPremiumBought();
-            //_noAdsText.text = noAdsBought ? LService. : LService.;
-            _premiumBtn.interactable = !premiumBought;
-        }
-        
         private void RefreshSupport()
         {
             bool supportBought = _iapService.IsSupportBought();
@@ -83,19 +68,20 @@ namespace Code.UI
 
         private void RefreshUI()
         {
-            _header.text = LService.Localize("k_GameMenu_header");
+            _header.text = LService.Localize("k_Support_header");
+            _description.text = LService.Localize("k_Support_description");
 
-            RefreshPremium();
             RefreshSupport();
         }
 
         private void OnSomePurchased(bool isPurchaseSuccessed)
         {
-            RefreshPremium();
             RefreshSupport();
         }
 
-        private void BuyPremium() => _uiMediator.Open(WindowId.BuyPremium);
-        private void BuySupport() => _uiMediator.Open(WindowId.BuySupport);
+        private void BuySupport()
+        {
+            _iapService.PurchaseSupport();
+        }
     }
 }

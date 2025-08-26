@@ -85,6 +85,9 @@ namespace Code.UI.Services
                 case WindowId.CharacterSkins:
                     ((CharacterSkinsWindow)window).Open();
                     break;
+                case WindowId.BuySupport:
+                    ((BuySupportWindow)window).Open();
+                    break;
                 case WindowId.None:
                 default:
                     throw new NotImplementedException($"Not implemented for {windowId}");
@@ -129,6 +132,7 @@ namespace Code.UI.Services
         BuyPremium = 4,
         GameMenu = 5,
         CharacterSkins = 6,
+        BuySupport = 7,
     }
 
     public enum UIPopupId

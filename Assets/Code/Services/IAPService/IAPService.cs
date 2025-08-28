@@ -126,7 +126,7 @@ namespace Code.Services
             {
                 GamePush.GP_Player.Set(SUPPORT_KEY, true);
                 _isSupportBought = true;
-                _progress.Progress.PlayerProgress.SkinsData.AvailableSkins.Add(SkinId.SupportSkin);
+                _progress.Progress.PlayerProgress.SkinsData.AddAvailableSkin(SkinId.SupportSkin);
                 _saveService.SaveProgress();
 
                 GamePush.GP_Player.Sync();

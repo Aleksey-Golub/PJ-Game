@@ -55,6 +55,7 @@ namespace Code.UI
         {
             LService.LanguageChanged += RefreshUI;
             SkinsData.SelectedSkinChanged += SelectedSkinChanged;
+            SkinsData.AvailableSkinsChanged += AvailableSkinsChanged;
         }
 
         protected override void Cleanup()
@@ -63,6 +64,7 @@ namespace Code.UI
 
             LService.LanguageChanged -= RefreshUI;
             SkinsData.SelectedSkinChanged -= SelectedSkinChanged;
+            SkinsData.AvailableSkinsChanged -= AvailableSkinsChanged;
         }
 
         protected override void OnCloseButtonClicked()
@@ -168,6 +170,7 @@ namespace Code.UI
         }
 
         private void SelectedSkinChanged(SkinId skinId) => SetViewsData();
+        private void AvailableSkinsChanged(SkinId skinId) => SetViewsData();
 
         [Serializable]
         public class SkinButtonColors

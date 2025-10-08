@@ -31,8 +31,10 @@ namespace Code.Services
         {
             IReadOnlyList<IMergingResource> droppedResources = _resourceFactory.DroppedResources;
 
-            foreach (var res in droppedResources)
+            // foreach (var res in droppedResources) аллоцирует память здесь!!!
+            for (var index = 0; index < droppedResources.Count; index++)
             {
+                var res = droppedResources[index];
                 res.UpdateDroppedTime(deltaTime);
             }
 

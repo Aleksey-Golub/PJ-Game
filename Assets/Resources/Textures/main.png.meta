@@ -2251,6 +2251,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: pine
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 51
+        width: 26
+        height: 43
+      alignment: 9
+      pivot: {x: 0.5, y: 0.07}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f8ace8bb98a12047a5f4298e05fa4e8
+      internalID: -236394621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rock
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 51
+        width: 15
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5, y: 0.33}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f4fac902021765489b10d5f3f65d0ed
+      internalID: -247551101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 67
+        width: 16
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ecd9747258cb14408d162490047150b
+      internalID: -145191806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2311,6 +2374,7 @@ TextureImporter:
       arrow_swipe: 986111177
       arrow_swipe_small: 262159369
       boots: -1288984483
+      bush: -145191806
       carrot: -1806721189
       close button: -2007050740
       cloud: -721475698
@@ -2330,9 +2394,11 @@ TextureImporter:
       mind_cloud: -1030577411
       music_off: 665058631
       music_on: 496096163
+      pine: -236394621
       pointer: -998875238
       pot_damaged: 1933690828
       pot_whole: -1094742133
+      rock: -247551101
       sell board: 174787419
       sell board panel: -1206609723
       sell button: -989307427

@@ -67,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 4493861247962964434, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -951334604, guid: 6a3409ce0964ac349a4c228c4ec7bc49, type: 3}
+      objectReference: {fileID: -236394621, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
     - target: {fileID: 4493861247962964434, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -79,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 6483354508862177738, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _wholeSprite
       value: 
-      objectReference: {fileID: -951334604, guid: 6a3409ce0964ac349a4c228c4ec7bc49, type: 3}
+      objectReference: {fileID: -236394621, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
     - target: {fileID: 6483354508862177738, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _hitAudioClip
       value: 

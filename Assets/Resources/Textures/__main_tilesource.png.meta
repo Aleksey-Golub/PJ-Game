@@ -2566,6 +2566,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: sand_0
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 494
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c37205a7c21f9de43929522080331875
+      internalID: -512581601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_0
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 494
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78c0d6df491069f479df81139eaaa8c1
+      internalID: -689664147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2673,6 +2715,8 @@ TextureImporter:
       marble_yellow_1: -1191076501
       marble_yellow_2: 1313084778
       marble_yellow_3: 1867674892
+      sand_0: -512581601
+      sand_hole_0: -689664147
       void: -1871159254
       wall_0: 409938601
       wall_1: -1027473768

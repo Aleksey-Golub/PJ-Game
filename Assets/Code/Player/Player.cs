@@ -7,6 +7,7 @@ using Code.UI;
 using Code.Data;
 using Code.Infrastructure;
 
+[SelectionBase]
 public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedProgressWriter
 {
     [Serializable]

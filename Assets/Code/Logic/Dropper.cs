@@ -53,7 +53,7 @@ internal struct DropData
         ResourceInPackCount = resourceInPackCount;
     }
 
-    internal static List<DropData> Get(Vector3 originePosition, DropSettings dropSettings, int count, out int notFittedCount)
+    internal static List<DropData> Get(Vector3 originePosition, DropSettings dropSettings, int count, out int notFittedCount, Vector3 orderedPosition = default)
     {
         int packsCount = dropSettings.DropGroupingStrategy == DropGroupingStrategy.Individual ? count : 1;
         int countInPack = count / packsCount;
@@ -79,6 +79,17 @@ internal struct DropData
                 for (int i = 0; i < packsCount; i++)
                 {
                     Vector3 finalPosition = originePosition;
+
+                    DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition, countInPack);
+                    result.Add(newDropData);
+                }
+                return result;
+            
+            case DropStrategy.OrderedPosition:
+
+                for (int i = 0; i < packsCount; i++)
+                {
+                    Vector3 finalPosition = orderedPosition;
 
                     DropData newDropData = new DropData(dropSettings.MoveAfterDropTime, finalPosition, countInPack);
                     result.Add(newDropData);
@@ -176,6 +187,7 @@ public enum DropStrategy
     RandomInsideCircle = 1,
     SamePosition = 2,
     RadialByCircle = 3,
+    OrderedPosition = 4,
 }
 
 public enum DropGroupingStrategy

@@ -1,5 +1,6 @@
 ﻿using Code.Services;
 using Code.UI.Services;
+using System;
 using System.Collections;
 
 namespace Code.Infrastructure
@@ -85,21 +86,7 @@ namespace Code.Infrastructure
               _services.Single<IUIMediator>()
               ));
 
-            _services.RegisterSingle<IGameFactory>(new GameFactory(
-              _services.Single<IAssetProvider>(),
-              _services.Single<IConfigsService>(),
-              _services.Single<IPersistentProgressService>(),
-              _services.Single<IUIMediator>(),
-              _services.Single<IAudioService>(),
-              _services.Single<IInputService>(),
-              _services.Single<IPopupFactory>(),
-              _services.Single<ITransitionalResourceFactory>(),
-              _services.Single<IResourceFactory>(),
-              _services.Single<IToolFactory>(),
-              _services.Single<IEffectFactory>(),
-              _services.Single<IDropCountCalculatorService>(),
-              _services.Single<IAdsService>()
-              ));
+            RegisterGameFactory();
 
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
               _services.Single<IPersistentProgressService>(),
@@ -114,6 +101,28 @@ namespace Code.Infrastructure
 
             _services.Single<IUIMediator>().PostConstruct(_services.Single<IUIFactory>());
             _services.Single<IIAPService>().PostConstruct(_services.Single<IPersistentProgressService>(), _services.Single<ISaveLoadService>());
+        }
+
+        private void RegisterGameFactory()
+        {
+            var gameFactory = new GameFactory(
+              _services.Single<IAssetProvider>(),
+              _services.Single<IConfigsService>(),
+              _services.Single<IPersistentProgressService>(),
+              _services.Single<IUIMediator>(),
+              _services.Single<IAudioService>(),
+              _services.Single<IInputService>(),
+              _services.Single<IPopupFactory>(),
+              _services.Single<ITransitionalResourceFactory>(),
+              _services.Single<IResourceFactory>(),
+              _services.Single<IToolFactory>(),
+              _services.Single<IEffectFactory>(),
+              _services.Single<IDropCountCalculatorService>(),
+              _services.Single<IAdsService>()
+              );
+
+            _services.RegisterSingle<IGameFactory>(gameFactory);
+            _services.RegisterSingle<IPlayerProvider>(gameFactory);
         }
 
         private void RegisterResourceMergeService()

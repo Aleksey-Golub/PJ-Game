@@ -242,8 +242,8 @@ MonoBehaviour:
   _startResourceCount: 0
   _restoreTime: 5
   _collider: {fileID: 9198028648432701519}
-  _dropSettings:
-    DropStrategy: 1
+  <DropSettings>k__BackingField:
+    DropStrategy: 4
     DropGroupingStrategy: 2
     DropRadius: 1.3
     MoveAfterDropTime: 0.6

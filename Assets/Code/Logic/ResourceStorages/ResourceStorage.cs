@@ -23,6 +23,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
 
     private IResourceFactory _resourceFactory;
     private IPersistentProgressService _progressService;
+    private IPlayerProvider _playerProvider;
     private IExhaustStrategy _exhaust;
     private float _restorationTimer = 0;
     private int _currentResourceCount;
@@ -50,16 +51,24 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
             var audio = AllServices.Container.Single<IAudioService>();
             var effectFactory = AllServices.Container.Single<IEffectFactory>();
             var gameFactory = AllServices.Container.Single<IGameFactory>();
+            var playerProvider = AllServices.Container.Single<IPlayerProvider>();
 
-            Construct(resourceFactory, progressService, audio, effectFactory);
+            Construct(resourceFactory, progressService, audio, effectFactory, playerProvider);
             gameFactory.RegisterProgressWatchersExternal(gameObject);
         }
     }
 
-    public void Construct(IResourceFactory resourceFactory, IPersistentProgressService progressService, IAudioService audio, IEffectFactory effectFactory)
+    public void Construct(
+        IResourceFactory resourceFactory, 
+        IPersistentProgressService progressService, 
+        IAudioService audio, 
+        IEffectFactory effectFactory,
+        IPlayerProvider playerProvider
+        )
     {
         _resourceFactory = resourceFactory;
         _progressService = progressService;
+        _playerProvider = playerProvider;
         _exhaust = new ExhaustStrategy(this, _collider);
 
         _view.Construct(audio, effectFactory);
@@ -180,7 +189,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
     {
         _view.PlayDropResourceSound();
 
-        var dropData = DropData.Get(transform.position, DropSettings, _currentResourceCount, out int notFittedInPacksCount);
+        var dropData = DropData.Get(transform.position, DropSettings, _currentResourceCount, out int notFittedInPacksCount, _playerProvider.GetPlayer().transform.position);
         Restore(notFittedInPacksCount);
 
         for (int i = 0; i < dropData.Count; i++)

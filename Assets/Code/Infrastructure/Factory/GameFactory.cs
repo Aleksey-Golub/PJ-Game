@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.Infrastructure
 {
-    public class GameFactory : IGameFactory
+    public class GameFactory : IGameFactory, IPlayerProvider
     {
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgressWriter> ProgressWriters { get; } = new List<ISavedProgressWriter>();
@@ -25,7 +25,7 @@ namespace Code.Infrastructure
         private readonly IAdsService _adsService;
         private readonly ITransitionalResourceFactory _transitionalResourceFactory;
         private readonly CreatedByIdGameObjectsConstructor _createdByIdGameObjectsConstructor;
-        private GameObject _heroGameObject;
+        private Player _hero;
 
         public GameFactory(
             IAssetProvider assets,
@@ -60,12 +60,14 @@ namespace Code.Infrastructure
             _createdByIdGameObjectsConstructor = new(this);
         }
 
+        public Player GetPlayer() => _hero;
+
         public GameObject CreateHero(GameObject at)
         {
-            _heroGameObject = InstantiateRegistered(AssetPath.HERO_PATH, at.transform.position);
-            _heroGameObject.GetComponent<Player>().Construct(_input, _uiMediator.GetPlayerInventoryView(), _configs, _popupFactory, _transitionalResourceFactory, _progressService);
+            _hero = InstantiateRegistered(AssetPath.HERO_PATH, at.transform.position).GetComponent<Player>();
+            _hero.Construct(_input, _uiMediator.GetPlayerInventoryView(), _configs, _popupFactory, _transitionalResourceFactory, _progressService);
 
-            return _heroGameObject;
+            return _hero.gameObject;
         }
 
         public Hud CreateHud()
@@ -95,7 +97,7 @@ namespace Code.Infrastructure
             ResourceStorageMatcher rStorageMatcher = _configs.GetMatcherFor(type);
             ResourceStorage resourceStorage = InstantiateRegistered(rStorageMatcher.Template, at);
 
-            resourceStorage.Construct(_resourceFactory, _progressService, _audio, _effectFactory);
+            resourceStorage.Construct(_resourceFactory, _progressService, _audio, _effectFactory, this);
 
             return resourceStorage;
         }
@@ -207,7 +209,7 @@ namespace Code.Infrastructure
             TutorialMatcher tutorialMatcher = _configs.GetMatcherForTutorial(sceneName);
             Tutorial tutorial = InstantiateRegistered(tutorialMatcher.Template).GetComponent<Tutorial>();
 
-            tutorial.Construct(this, _progressService, _heroGameObject.GetComponent<Player>());
+            tutorial.Construct(this, _progressService, _hero.GetComponent<Player>());
 
             return tutorial;
         }
@@ -233,6 +235,8 @@ namespace Code.Infrastructure
         {
             ProgressReaders.Clear();
             ProgressWriters.Clear();
+
+            _hero = null;
         }
 
         public void RegisterProgressWatchersExternal(GameObject gameObject) => RegisterProgressWatchers(gameObject);
@@ -340,7 +344,7 @@ namespace Code.Infrastructure
 
             void ICreatedByIdGameObjectVisitor.Visit(ResourceStorage resourceStorage)
             {
-                resourceStorage.Construct(_gameFactory._resourceFactory, _gameFactory._progressService, _gameFactory._audio, _gameFactory._effectFactory);
+                resourceStorage.Construct(_gameFactory._resourceFactory, _gameFactory._progressService, _gameFactory._audio, _gameFactory._effectFactory, _gameFactory);
                 GenerateIdIfApplicable(resourceStorage);
             }
 

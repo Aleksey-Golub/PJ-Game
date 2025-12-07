@@ -436,9 +436,9 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
             return;
         }
 
-        // var lastConsumers = _lastConsumersData.Keys.ToHashSet();
+        var lastConsumers = _lastConsumersData.Keys.ToHashSet();
         // ToHashSet() аллоцирует память каждый кадр!!!
-        var lastConsumers = _lastConsumersData.Keys;
+        //var lastConsumers = _lastConsumersData.Keys;
 
         // nothing to handle
         if (lastConsumers.Count == 0 && _currentConsumers.Count == 0)

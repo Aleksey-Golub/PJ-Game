@@ -59,6 +59,8 @@ namespace Code.UI
             }
         }
 
+        internal void SetActive(bool state) => gameObject.SetActive(state);
+
         private void OnButtonClicked()
         {
             _audio.PlaySfxAtUI(_upgradeButtonClickedClip);

@@ -78,22 +78,30 @@ namespace Code.UI
                 if (!config.IsUpgradable)
                     continue;
 
+                string itemId = config.ID;
+                _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(itemId, out int currentLevel);
+                bool isObtainedByPlayer = currentLevel != 0;
+
+                UpgradeItemView itemView = _views[config.ID];
+                itemView.SetActive(isObtainedByPlayer);
+
+                if (!isObtainedByPlayer)
+                    continue;
+
                 int maxLevel = config.GetMaxLevel();
                 string MAX = LService.Localize("k_MAX");
                 string lvl = LService.Localize("k_Lvl");
-                string itemId = config.ID;
-                _progressService.Progress.PlayerProgress.UpgradeItemsProgress.TryGet(itemId, out int currentLevel);
+                
                 int nextLevel = currentLevel + 1;
-
                 string levelText = currentLevel >= maxLevel ? $"{lvl} {MAX}" : $"{lvl} {nextLevel}";
                 if (currentLevel >= maxLevel)
                     nextLevel = maxLevel;
 
                 string upgradeText = GetUpgradeText(config, nextLevel);
                 string upgradeCostText = $"{config.GetUpgradeData(nextLevel).Cost}";
-                bool showButton = currentLevel < maxLevel && currentLevel != 0;
-
-                _views[config.ID].SetData(upgradeText, levelText, upgradeCostText, showButton);
+                bool showButton = currentLevel < maxLevel && isObtainedByPlayer;
+                
+                itemView.SetData(upgradeText, levelText, upgradeCostText, showButton);
             }
 
             SortViews();

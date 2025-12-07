@@ -8,6 +8,8 @@ internal class HitEffect : Effect
     
     internal override void Play()
     {
+        base.Play();
+
         _childEffect.localPosition = _offset + Random.insideUnitCircle * _spreadRadius;
         _hitEffectAnimator.Play(_hitEffectHash);
     }

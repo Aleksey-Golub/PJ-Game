@@ -2,6 +2,8 @@
 {
     internal override void Play()
     {
+        base.Play();
+
         _hitEffectAnimator.Play(_explosionEffectHash);
     }
 }

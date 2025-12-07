@@ -39,7 +39,12 @@ public abstract class Effect : MonoBehaviour, IPoolable
         IsConstructed = true;
     }
 
-    internal abstract void Play();
+    internal virtual void Play()
+    {
+        Invoke(nameof(RecycleSelf), 0.5f);
+    }
+
+    private void RecycleSelf() => _factory.Recycle(this);
 }
 
 public enum EffectId

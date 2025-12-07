@@ -16,3 +16,4 @@ MonoBehaviour:
   _sprite: {fileID: -2135758067, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   _upgradable: 0
   _upgradeDatas: []
+  <ID>k__BackingField: CarrotInGround

@@ -8,23 +8,12 @@ public class ResourceStorageConfig : ScriptableObject, IUpgradable
     [SerializeField] private Sprite _sprite;
     [SerializeField] private bool _upgradable;
     [SerializeField] private List<UpgradeStaticData> _upgradeDatas;
-    
-    private string _id;
+    [field: SerializeField] public string ID { get; private set; }
 
     public ResourceStorageType Type => _type;
     public Sprite Sprite => _sprite;
     public bool IsUpgradable => _upgradable;
     public UpgradableType UpgradableType => UpgradableType.ResourceStorage;
-    public string ID
-    {
-        get
-        {
-            if (_id is null)
-                _id = _type.ToString();
-
-            return _id;
-        }
-    }
 
     public UpgradeStaticData GetUpgradeData(int level)
     {

@@ -16,3 +16,4 @@ MonoBehaviour:
   _sprite: {fileID: -1709614984, guid: f0188f5a17348a844802906f05d597a7, type: 3}
   _upgradable: 0
   _upgradeDatas: []
+  <ID>k__BackingField: Chest

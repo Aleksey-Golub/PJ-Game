@@ -1,0 +1,5676 @@
+{
+	"PlayerProgress": {
+		"UpgradeItemsProgress": {
+			"UpgradeItemsData": {
+				"_keys": [
+					"SICKLE",
+					"AXE",
+					"PICKAXE",
+					"SWORD",
+					"CoinStorage",
+					"GrasStorage",
+					"WoodStorage",
+					"StoneStorage",
+					"EggStorage",
+					"CarrotStorage",
+					"WaterStorage",
+					"CowConverter",
+					"PigConverter",
+					"BUCKET"
+				],
+				"_values": [
+					5,
+					5,
+					5,
+					2,
+					3,
+					4,
+					4,
+					2,
+					1,
+					1,
+					1,
+					1,
+					1,
+					1
+				]
+			}
+		},
+		"PositionOnLevel": {
+			"Level": "Level_1",
+			"Position": {
+				"X": -9.477349281311036,
+				"Y": 1.704481601715088,
+				"Z": 0.0
+			},
+			"Direction": {
+				"X": -1.0,
+				"Y": 0.0
+			}
+		},
+		"InventoryData": {
+			"Tools": [
+				1,
+				2,
+				3,
+				4,
+				5
+			],
+			"ResourceStorageData": {
+				"_keys": [
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					13
+				],
+				"_values": [
+					35,
+					0,
+					35,
+					37,
+					22,
+					14,
+					43,
+					12,
+					23,
+					15,
+					22,
+					0,
+					0
+				]
+			}
+		},
+		"SpeedUpTimerData": {
+			"IsStarted": false,
+			"Passed": 0.0,
+			"Duration": 0.0
+		},
+		"SpeedUpSpeed": 1.0,
+		"SkinsData": {
+			"SelectedSkinId": 2,
+			"AvailableSkins": [
+				1,
+				2
+			]
+		}
+	},
+	"WorldProgress": {
+		"LevelsDatasDictionary": {
+			"_keys": [
+				"Level_1"
+			],
+			"_values": [
+				{
+					"Name": "Level_1",
+					"ResourcesDatas": {
+						"ResourcesOnScene": {
+							"_keys": [
+								"DontDestroyOnLoad_57f75450-4cd6-4b15-bf91-2f890d962bbe",
+								"DontDestroyOnLoad_aa8e74c4-5807-4a5c-bff7-2e97920901b6",
+								"DontDestroyOnLoad_b908f7b9-41c5-437f-a761-eb83b6b3da3e",
+								"DontDestroyOnLoad_b1b34ec8-ab1a-414c-ae5c-f09066cc9c3e",
+								"DontDestroyOnLoad_131d98bf-9be8-41ce-8dea-cdcbe60046c8",
+								"DontDestroyOnLoad_c1134959-8d97-4811-8f70-7d2c60cb70a3",
+								"DontDestroyOnLoad_d9577f0b-ad93-4990-8862-9bfe50ab52de"
+							],
+							"_values": [
+								{
+									"Position": {
+										"X": -3.7900640964508058,
+										"Y": 0.8422337770462036,
+										"Z": 0.0
+									},
+									"Count": 1,
+									"Type": 3
+								},
+								{
+									"Position": {
+										"X": -1.3223206996917725,
+										"Y": 14.629159927368164,
+										"Z": 0.0
+									},
+									"Count": 1,
+									"Type": 6
+								},
+								{
+									"Position": {
+										"X": -2.376213550567627,
+										"Y": 13.051040649414063,
+										"Z": 0.0
+									},
+									"Count": 1,
+									"Type": 6
+								},
+								{
+									"Position": {
+										"X": -3.2984721660614015,
+										"Y": 14.006407737731934,
+										"Z": 0.0
+									},
+									"Count": 1,
+									"Type": 6
+								},
+								{
+									"Position": {
+										"X": -14.417326927185059,
+										"Y": 25.33012580871582,
+										"Z": 0.0
+									},
+									"Count": 1,
+									"Type": 9
+								},
+								{
+									"Position": {
+										"X": -13.070669174194336,
+										"Y": 24.863637924194337,
+										"Z": 0.0
+									},
+									"Count": 1,
+									"Type": 9
+								},
+								{
+									"Position": {
+										"X": -14.203146934509278,
+										"Y": 26.78696060180664,
+										"Z": 0.0
+									},
+									"Count": 2,
+									"Type": 9
+								}
+							]
+						}
+					},
+					"ToolsDatas": {
+						"ToolsOnScene": {
+							"_keys": [],
+							"_values": []
+						}
+					},
+					"SpawnersDatas": {
+						"Exhausted": [
+							"GameScene_07a6f24c-db2f-4836-9ce1-387a729ca909"
+						]
+					},
+					"ResourceSourcesDatas": {
+						"ResourceSourcesOnScene": {
+							"_keys": [
+								"GameScene_5576ca42-93ac-44ab-be1b-81550f29a39a",
+								"GameScene_4fb57357-fbae-4e43-bbb3-bab9f67d40d7",
+								"GameScene_17a0495a-f88e-4d1f-a226-2e3ee0e01a89",
+								"Level_1_ae8690d0-609e-440a-9d1a-6b2c19423297",
+								"Level_1_4a6f66fb-d3fc-4147-90bd-0375bc2c8f6d",
+								"Level_1_ba55e9fe-1655-4889-83c7-585f8a79b913",
+								"Level_1_03af54bf-f80b-4453-87ce-7144d050fe43",
+								"Level_1_a33275d4-931b-4a1e-9057-9374d23ef2ac",
+								"Level_1_9f0e7f80-58f3-4d9a-9037-36aed20cdd51",
+								"Level_1_d689a0db-b64c-45de-980f-0bfe090d85b6",
+								"Level_1_9afce013-52e0-4115-ab1c-1bfd85f5e73c",
+								"Level_1_58dcb92c-d66d-4749-9448-a86a007b4217",
+								"Level_1_c9de22ae-f3a1-4914-bf62-c545897fb5d9",
+								"Level_1_dd6ef241-1c6a-41b3-a129-f0cf083de7ae",
+								"Level_1_d840ddd2-359d-4abb-8d07-8d1df24109e2",
+								"Level_1_eeda64e2-11f5-4869-9fe0-b0bc976c1984",
+								"Level_1_2125e403-40e2-4481-87a8-ab60ae278359",
+								"Level_1_9679cfd2-8eb5-4a05-9fd1-051f3e626617",
+								"Level_1_c38e0454-0b74-402c-9e42-5c28904a9b8b",
+								"Level_1_25a01573-71f3-43a1-ad41-594a8080a773",
+								"Level_1_1ece1c75-1c95-4dc4-8804-234e3c3ba99d",
+								"Level_1_99dc7cf6-258a-44e5-8983-aa12deb8c0e8",
+								"Level_1_f4b024ef-075a-4d6c-b658-6e6f51d63ff8",
+								"Level_1_37ac25dd-2535-493e-98af-bb33fff62c4e",
+								"Level_1_28300c3f-92cd-494e-a5f6-41aba21f658e",
+								"Level_1_6104662e-b258-4da9-b08c-dd226241c93c",
+								"Level_1_f98ae8dd-f8e6-4bff-995c-ef4ea4b33b25",
+								"Level_1_d5878705-c080-4bcc-92d3-e45e1dd62f7d",
+								"Level_1_e51b2078-65b4-4891-aca7-831850a152a9",
+								"Level_1_708d05fe-42aa-4b84-a7bb-86afc9f82b4e",
+								"Level_1_d8011ab5-a010-48c7-9d56-739f276802d8",
+								"Level_1_4aea93aa-292d-4788-8b07-0ea50a845ccc",
+								"Level_1_1bd6676e-c7ae-4e97-a10f-0c46b001ed21",
+								"Level_1_1d7e804e-1e8a-4f4d-8f05-4bea9a80f38e",
+								"Level_1_177f1fde-4ef5-4c73-8deb-2116df7ad517",
+								"Level_1_39f2a6d8-9cdd-486a-b7f9-ef9ff3135967",
+								"Level_1_31eb8f56-c53e-4b67-b3fa-243a0191dad0",
+								"Level_1_82c4040d-72ef-48b6-ab05-74cf4b17b97f",
+								"Level_1_129080a8-efdd-4cb2-a4f1-3f8d1ea9eca0",
+								"Level_1_672b267a-5d64-445a-8659-97196fcb3cbd",
+								"Level_1_b2a083e5-7ae2-4451-abe4-9d5d16bb48ce",
+								"Level_1_4a19c4f4-18f2-408d-a251-c766fbab7d51",
+								"Level_1_19345fd6-0893-4b2e-b34f-155c8473ba1c",
+								"Level_1_76dfea5f-88d3-407d-bd79-e83ca0e309e9",
+								"Level_1_ea3b83ec-5cda-40d4-a838-9e33460972df",
+								"Level_1_0db36e93-aedb-43c2-b604-c5c8f3f0aa58",
+								"Level_1_8a3a536c-7d02-4193-b114-5afeedaf0a9d",
+								"Level_1_9cb0c6ff-0c1a-4401-9373-14fba6eedc6d",
+								"Level_1_4d74bf8b-f875-4c84-8cb2-e00bec8db218",
+								"Level_1_62629d84-3ce4-471c-a7b2-d682d1fb58a5",
+								"Level_1_b11145de-b077-4f75-92eb-85302a939ca2",
+								"Level_1_c34ec6df-2261-4962-a977-e502a518520a",
+								"Level_1_5772dd60-5205-4c38-94ac-4165bffaf6bb",
+								"Level_1_99379c08-f11e-44d7-874b-c1ef76d62497",
+								"Level_1_eff16817-05ab-4c53-89fd-11b088a5b6ef",
+								"Level_1_d3c9fbb4-f8f5-47f0-8b2b-daceba990e33",
+								"Level_1_2b46bea9-4efc-421b-8001-cbdf97dcf812",
+								"Level_1_dfd19b14-da3f-4c42-9112-8f31dd313e5c",
+								"Level_1_c8a2e83e-c07c-4a78-aff9-9ca8d4fc23d4",
+								"Level_1_260510c5-2b9f-462e-9a6a-270fe9c0afb3",
+								"Level_1_8b6d43db-b83e-4d61-bbd3-9a7074210059",
+								"Level_1_2903ac55-c121-4436-810d-db1b54a786cf",
+								"Level_1_22e7069b-abfc-4788-a073-1daea604c516",
+								"Level_1_021d28a7-74ba-444b-84ea-46b3d2cb8073",
+								"Level_1_da19c0d6-9c77-44dc-9562-1be9f62303d8",
+								"Level_1_07295d84-3b81-40bf-85f5-e7c5f993923e",
+								"Level_1_19904cef-b9f9-45e1-a5f2-51991a37ed36",
+								"Level_1_14a16382-6b7d-4ebe-bb5c-d484c19df1fb",
+								"Level_1_beb4304b-86ab-4b5d-8aee-4223062f7954",
+								"Level_1_0d90d2be-263b-428e-bd57-eede86ff65be",
+								"Level_1_789ca822-69a7-4f69-9989-ef395ee0331c",
+								"Level_1_bd41ac3c-9384-4e9e-8c60-50c6d84b51f1",
+								"Level_1_81d68f96-cb0d-4c3b-bc76-bb6bdc181087",
+								"Level_1_76cefd7f-9a34-418c-b10a-0036cc757323",
+								"Level_1_1d889094-3ed1-4bd8-b719-ac5d6ac9dbdb",
+								"Level_1_c83b6931-f65f-4c92-b799-7c55fd143121",
+								"Level_1_3c18fd9b-1466-4e3b-99a9-ec19691b4546",
+								"Level_1_4c7a6f71-86f3-485c-9b31-7bf959d35514",
+								"Level_1_002f5cc9-941f-4d11-9f7f-6a4190c4e668",
+								"Level_1_c5a57bc7-e57c-412b-af12-6945a78edab2",
+								"Level_1_25eac910-e37a-4655-adc1-7b50791a128d",
+								"Level_1_08caf3dd-d7fc-495e-aa2f-0450b73314cd",
+								"Level_1_b8384158-3809-4b5a-be8d-e3f8d31ac109",
+								"Level_1_90c61f7f-e7aa-46a2-b0ff-4ccbea93cfbb",
+								"Level_1_e7e72d75-a1eb-41f5-a01b-87792cb970de",
+								"Level_1_3f0027f4-2faa-47a1-8f3e-cc108fbde4c6",
+								"Level_1_651ac76e-4d69-444e-9e0c-19ba9c155525",
+								"Level_1_1e685309-ab80-4b1a-87a6-64f40b62e0bb",
+								"Level_1_7bea2b44-5790-490a-807e-7df2b7f47ec8",
+								"Level_1_27714831-db0f-4930-a9c7-61b25db499e5",
+								"Level_1_f40d5db9-15b4-45c3-871d-83208c78d7cd",
+								"Level_1_c03a3a4e-18a7-4cf1-a94a-e4f7c594de5f",
+								"Level_1_032aaf57-cb6a-43b0-8ffb-aedcc1b21d25",
+								"Level_1_535b2319-7d01-4c3c-a6f3-c96d302b8e58",
+								"Level_1_84763cad-eaed-4682-8658-43a090a001b4",
+								"Level_1_4e8baaaf-332d-4ca8-a42c-5991ca6a6b2a",
+								"Level_1_e62494a5-4a59-49eb-98ce-989ccf18dc61",
+								"Level_1_ea3689be-0edd-494e-b882-8825387bbaf4",
+								"Level_1_160014c4-3c80-4b80-a1bb-4a5d1f65db73",
+								"Level_1_289b7c4d-984c-4c78-b967-4169e120a6d5",
+								"Level_1_422d0f8b-b28b-45f5-87d3-78c0d8c7e497",
+								"Level_1_f34fc925-6562-4a2f-a0ab-1e97e4018671",
+								"Level_1_38a0514a-9e1d-4a16-8780-ff4e1e5dedbc",
+								"Level_1_ec6ee07e-35b7-47e1-8545-c883264e1303",
+								"Level_1_f1575549-e284-4c37-80fe-0ab461b35f62",
+								"Level_1_913b4a6d-5e44-4317-9276-286995f4d409",
+								"Level_1_09874f0a-05c1-4ba4-add6-408c34e1f08d",
+								"Level_1_1d11f64e-04d8-4fe3-8315-9483ec41d9aa"
+							],
+							"_values": [
+								{
+									"Position": {
+										"X": -1.5800000429153443,
+										"Y": 1.25,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 2.630000114440918,
+										"Y": 2.5399999618530275,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -3.0299999713897707,
+										"Y": 2.7899999618530275,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -3.130000114440918,
+										"Y": 6.590000152587891,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -2.5299999713897707,
+										"Y": 6.869999885559082,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -0.8999999761581421,
+										"Y": 7.079999923706055,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 1.3799999952316285,
+										"Y": 6.3520002365112309,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 1.7000000476837159,
+										"Y": 6.650000095367432,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 2.306999921798706,
+										"Y": 6.639999866485596,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 4.800000190734863,
+										"Y": 4.869999885559082,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 6,
+									"DropResourceType": 3,
+									"DropResourceCount": 3,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 0
+								},
+								{
+									"Position": {
+										"X": 6.679999828338623,
+										"Y": 6.25,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 5.119999885559082,
+										"Y": 2.2699999809265138,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 6.369999885559082,
+										"Y": 1.149999976158142,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 11.069999694824219,
+										"Y": 10.789999961853028,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 10.430000305175782,
+										"Y": 4.880000114440918,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 10.960000038146973,
+										"Y": 5.190000057220459,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 14.210000038146973,
+										"Y": 10.369999885559082,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 9.369999885559082,
+										"Y": 14.699999809265137,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 14.220000267028809,
+										"Y": 5.300000190734863,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 14.710000038146973,
+										"Y": 5.119999885559082,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 15.140000343322754,
+										"Y": 5.489999771118164,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 18.709999084472658,
+										"Y": 5.119999885559082,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 18.209999084472658,
+										"Y": 14.369999885559082,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 6,
+									"DropResourceType": 1,
+									"DropResourceCount": 10,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 0
+								},
+								{
+									"Position": {
+										"X": 17.790000915527345,
+										"Y": 9.789999961853028,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 18.8799991607666,
+										"Y": 10.569999694824219,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 18.579999923706056,
+										"Y": 18.690000534057618,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 19.149999618530275,
+										"Y": 17.799999237060548,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 13.890000343322754,
+										"Y": 17.809999465942384,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 14.489999771118164,
+										"Y": 17.5,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 9.020000457763672,
+										"Y": 18.43000030517578,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 9.800000190734864,
+										"Y": 19.020000457763673,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 1.3899999856948853,
+										"Y": 13.479999542236329,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 1.909999966621399,
+										"Y": 13.0600004196167,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 2.5,
+										"Y": 13.449999809265137,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -6.409999847412109,
+										"Y": 14.369999885559082,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -5.599999904632568,
+										"Y": 14.319999694824219,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -6.409999847412109,
+										"Y": 13.789999961853028,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -5.599999904632568,
+										"Y": 13.739999771118164,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -6.21999979019165,
+										"Y": 10.5,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 1
+								},
+								{
+									"Position": {
+										"X": 2.2200000286102297,
+										"Y": 17.770000457763673,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 1
+								},
+								{
+									"Position": {
+										"X": -3.0,
+										"Y": 18.329999923706056,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -2.4600000381469728,
+										"Y": 18.709999084472658,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -11.039999961853028,
+										"Y": 12.819999694824219,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": -6.409999847412109,
+										"Y": 19.010000228881837,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -5.599999904632568,
+										"Y": 18.959999084472658,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -6.110000133514404,
+										"Y": 17.059999465942384,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 6,
+									"DropResourceType": 1,
+									"DropResourceCount": 20,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 0
+								},
+								{
+									"Position": {
+										"X": -10.949999809265137,
+										"Y": 18.309999465942384,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 10.220000267028809,
+										"Y": 21.299999237060548,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 6,
+									"DropResourceType": 1,
+									"DropResourceCount": 20,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 0
+								},
+								{
+									"Position": {
+										"X": 10.710000038146973,
+										"Y": 21.1200008392334,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 13.9399995803833,
+										"Y": 22.709999084472658,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 14.760000228881836,
+										"Y": 22.690000534057618,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 15.220000267028809,
+										"Y": 22.15999984741211,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 14.819999694824219,
+										"Y": 26.639999389648439,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 5.769999980926514,
+										"Y": 23.010000228881837,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 6.730000019073486,
+										"Y": 22.6200008392334,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 2.5299999713897707,
+										"Y": 23.3700008392334,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 10.319999694824219,
+										"Y": 26.770000457763673,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 14.368258476257325,
+										"Y": 55.45857238769531,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 5,
+									"DropResourceType": 7,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 3
+								},
+								{
+									"Position": {
+										"X": 2.8716986179351808,
+										"Y": 54.76219177246094,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 5,
+									"DropResourceType": 7,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 3
+								},
+								{
+									"Position": {
+										"X": 13.577926635742188,
+										"Y": 55.887638092041019,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 5,
+									"DropResourceType": 7,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 3
+								},
+								{
+									"Position": {
+										"X": 13.941014289855957,
+										"Y": 57.95849609375,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 5,
+									"DropResourceType": 7,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 3
+								},
+								{
+									"Position": {
+										"X": 14.753952026367188,
+										"Y": 58.332862854003909,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 5,
+									"DropResourceType": 7,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 3
+								},
+								{
+									"Position": {
+										"X": 6.900000095367432,
+										"Y": 30.920000076293947,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 5.190000057220459,
+										"Y": 30.739999771118165,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 1.0399999618530274,
+										"Y": 25.809999465942384,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 2.7799999713897707,
+										"Y": 25.530000686645509,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 0.9730000495910645,
+										"Y": 30.219999313354493,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": 1.6399999856948853,
+										"Y": 30.510000228881837,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": 2.180000066757202,
+										"Y": 30.709999084472658,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": 1.8700000047683716,
+										"Y": 29.399999618530275,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 6,
+									"DropResourceType": 7,
+									"DropResourceCount": 3,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 0
+								},
+								{
+									"Position": {
+										"X": -2.8899998664855959,
+										"Y": 30.3700008392334,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -1.4700000286102296,
+										"Y": 30.649999618530275,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": -3.0,
+										"Y": 22.329999923706056,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": -2.0899999141693117,
+										"Y": 21.56999969482422,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 6,
+									"DropResourceType": 1,
+									"DropResourceCount": 20,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 0
+								},
+								{
+									"Position": {
+										"X": -1.1399999856948853,
+										"Y": 22.510000228881837,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -5.260000228881836,
+										"Y": 31.170000076293947,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -10.960000038146973,
+										"Y": 23.010000228881837,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -11.359999656677246,
+										"Y": 26.75,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 1
+								},
+								{
+									"Position": {
+										"X": -9.819999694824219,
+										"Y": 29.469999313354493,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 1
+								},
+								{
+									"Position": {
+										"X": -13.369999885559082,
+										"Y": 22.6200008392334,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 3
+								},
+								{
+									"Position": {
+										"X": -15.020000457763672,
+										"Y": 30.639999389648439,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": -13.869999885559082,
+										"Y": 30.670000076293947,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": -13.329999923706055,
+										"Y": 29.34000015258789,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -18.040000915527345,
+										"Y": 21.670000076293947,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 6,
+									"DropResourceType": 10,
+									"DropResourceCount": 3,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 0
+								},
+								{
+									"Position": {
+										"X": -13.779999732971192,
+										"Y": 19.100000381469728,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -16.829999923706056,
+										"Y": 18.219999313354493,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -18.5,
+										"Y": 9.720000267028809,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -18.959999084472658,
+										"Y": 23.010000228881837,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 4,
+									"DropResourceType": 11,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 3
+								},
+								{
+									"Position": {
+										"X": -18.5,
+										"Y": 17.719999313354493,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 4,
+									"DropResourceType": 11,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 3
+								},
+								{
+									"Position": {
+										"X": -14.949999809265137,
+										"Y": 18.309999465942384,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 4,
+									"DropResourceType": 11,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 3
+								},
+								{
+									"Position": {
+										"X": -18.959999084472658,
+										"Y": 26.709999084472658,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 1
+								},
+								{
+									"Position": {
+										"X": -17.979999542236329,
+										"Y": 25.690000534057618,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 4,
+									"DropResourceType": 11,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 3
+								},
+								{
+									"Position": {
+										"X": -22.440000534057618,
+										"Y": 23.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 6,
+									"DropResourceType": 1,
+									"DropResourceCount": 10,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 0
+								},
+								{
+									"Position": {
+										"X": -22.940000534057618,
+										"Y": 17.510000228881837,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -21.31999969482422,
+										"Y": 18.399999618530275,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 4,
+									"DropResourceType": 11,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 3
+								},
+								{
+									"Position": {
+										"X": -12.979999542236329,
+										"Y": 9.260000228881836,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -9.199999809265137,
+										"Y": 9.850000381469727,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -15.020000457763672,
+										"Y": 6.360000133514404,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -13.380000114440918,
+										"Y": 6.710000038146973,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": -11.210000038146973,
+										"Y": 5.110000133514404,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -9.579999923706055,
+										"Y": 6.800000190734863,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -5.559999942779541,
+										"Y": 6.699999809265137,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": -15.270000457763672,
+										"Y": 1.5199999809265137,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 3,
+									"DropResourceType": 5,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 5
+								},
+								{
+									"Position": {
+										"X": -15.270000457763672,
+										"Y": -1.7899999618530274,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -11.270000457763672,
+										"Y": -3.1599998474121095,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 2,
+									"DropResourceType": 4,
+									"DropResourceCount": 2,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 4
+								},
+								{
+									"Position": {
+										"X": -7.269999980926514,
+										"Y": -3.1599998474121095,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -7.269999980926514,
+										"Y": 2.0799999237060549,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								},
+								{
+									"Position": {
+										"X": -4.980000019073486,
+										"Y": 1.3199999332427979,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"Type": 1,
+									"DropResourceType": 3,
+									"DropResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"CurrentHitPoints": 2
+								}
+							]
+						}
+					},
+					"ResourceStoragesDatas": {
+						"ResourceStoragesOnScene": {
+							"_keys": [
+								"Level_1_8301c81b-f370-48dd-9c22-4208edf8deae",
+								"Level_1_b8aa01a6-45cb-4b40-9bf0-07304e2fcf45",
+								"Level_1_85d00766-2304-497c-913a-0c870e4b26c7",
+								"Level_1_ccd4f8d8-9346-4bb4-8e13-437dbfb284d7",
+								"Level_1_adea030e-a3ae-4f89-8799-27284331749f",
+								"Level_1_bc12ec1a-6481-4869-b2a8-b077a5b08f5f",
+								"Level_1_4e361b22-53ac-418b-b44a-5c3b336f3d19",
+								"Level_1_e359e2a6-e96a-4a09-bc43-ba242c4b0602",
+								"Level_1_13cb8e5a-c26b-4b95-b0cd-8986ba459379",
+								"Level_1_b5dec58a-1ca9-4428-9a07-7848a8e283a4",
+								"Level_1_b24639b9-f15f-42b7-b11a-e1b2a246a115",
+								"Level_1_4b1b3209-2c75-46bc-83d5-ae8d575f8296",
+								"Level_1_abad6017-4230-4792-9222-c57b1b18eb7c",
+								"Level_1_e2bda11e-29f4-41e1-bae4-f79132d884a1",
+								"Level_1_dc760d7e-990c-4538-8be9-4fb486ebbc9e",
+								"Level_1_39d04d93-40e5-46a5-adfb-1a159b97eca9",
+								"Level_1_587d1a1f-ce55-4240-9add-100fcbb08bcc",
+								"Level_1_e331e7fe-c3c1-4677-ae8e-6fee76385d39",
+								"Level_1_a6685096-0ef0-4389-95db-b81bd7730473",
+								"Level_1_91b5ece0-0f72-466d-b50a-71227ea1bcc6",
+								"Level_1_c418ac2d-bfa4-456b-8503-9d0b9b9116d9",
+								"Level_1_61e85c7b-c910-4bb0-82cf-bbca246b4ec5",
+								"Level_1_8c4cc2e0-f3b2-4442-b52b-8efcadbaf80a",
+								"Level_1_e0ec34eb-5f71-4790-9c88-6b9cad1745be",
+								"Level_1_c96f83e1-ef1b-4615-9d9c-21014ee72281",
+								"Level_1_af4c5179-4a34-45f5-8684-ea49d9de332d",
+								"Level_1_dc582093-4391-49fc-b03d-55a4b5babc0d",
+								"Level_1_785ca193-26f8-4a4b-98d9-03420afbdd06"
+							],
+							"_values": [
+								{
+									"Position": {
+										"X": -1.9800000190734864,
+										"Y": 9.880000114440918,
+										"Z": 0.0
+									},
+									"Type": 2,
+									"DropResourceType": 3,
+									"CurrentResourceCount": 25,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": 18.219999313354493,
+										"Y": 5.300000190734863,
+										"Z": 0.0
+									},
+									"Type": 8,
+									"DropResourceType": 2,
+									"CurrentResourceCount": 0,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": 14.210000038146973,
+										"Y": 14.369999885559082,
+										"Z": 0.0
+									},
+									"Type": 3,
+									"DropResourceType": 4,
+									"CurrentResourceCount": 25,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": 17.649999618530275,
+										"Y": 17.790000915527345,
+										"Z": 0.0
+									},
+									"Type": 8,
+									"DropResourceType": 2,
+									"CurrentResourceCount": 0,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -9.850000381469727,
+										"Y": 13.6899995803833,
+										"Z": 0.0
+									},
+									"Type": 1,
+									"DropResourceType": 1,
+									"CurrentResourceCount": 20,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": 5.980000019073486,
+										"Y": 13.84000015258789,
+										"Z": 0.0
+									},
+									"Type": 4,
+									"DropResourceType": 5,
+									"CurrentResourceCount": 10,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": 14.239999771118164,
+										"Y": 25.690000534057618,
+										"Z": 0.0
+									},
+									"Type": 8,
+									"DropResourceType": 2,
+									"CurrentResourceCount": 0,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -2.0,
+										"Y": 25.770000457763673,
+										"Z": 0.0
+									},
+									"Type": 5,
+									"DropResourceType": 7,
+									"CurrentResourceCount": 5,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -2.0899999141693117,
+										"Y": 29.5,
+										"Z": 0.0
+									},
+									"Type": 8,
+									"DropResourceType": 2,
+									"CurrentResourceCount": 0,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -6.760000228881836,
+										"Y": 22.709999084472658,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -6.829999923706055,
+										"Y": 21.459999084472658,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -5.519999980926514,
+										"Y": 21.3700008392334,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -5.139999866485596,
+										"Y": 22.510000228881837,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -6.699999809265137,
+										"Y": 30.309999465942384,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -6.239999771118164,
+										"Y": 29.040000915527345,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -5.75,
+										"Y": 30.450000762939454,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -5.170000076293945,
+										"Y": 29.139999389648439,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -10.479999542236329,
+										"Y": 27.079999923706056,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -11.15999984741211,
+										"Y": 25.81999969482422,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -8.960000038146973,
+										"Y": 26.739999771118165,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -10.010000228881836,
+										"Y": 25.6200008392334,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -10.479999542236329,
+										"Y": 31.079999923706056,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -11.119999885559082,
+										"Y": 29.469999313354493,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -11.279999732971192,
+										"Y": 30.3799991607666,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -9.279999732971192,
+										"Y": 30.270000457763673,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -18.0,
+										"Y": 13.770000457763672,
+										"Z": 0.0
+									},
+									"Type": 7,
+									"DropResourceType": 10,
+									"CurrentResourceCount": 5,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -23.079999923706056,
+										"Y": 21.190000534057618,
+										"Z": 0.0
+									},
+									"Type": 9,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 1,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 25.809999465942384,
+										"Z": 0.0
+									},
+									"Type": 6,
+									"DropResourceType": 8,
+									"CurrentResourceCount": 4,
+									"RestorationTimer": 0.0,
+									"SceneBuiltInItem": false
+								}
+							]
+						}
+					},
+					"SimpleObjectsDatas": {
+						"SimpleObjectsOnScene": {
+							"_keys": [
+								"Level_1_ab8c9c47-59eb-484c-8abd-a15ab5674dd9",
+								"Level_1_4d4dac0b-8ee4-49ae-a637-9545eca2b359",
+								"Level_1_118e5747-cb78-4fb7-854b-b73aff6d4ee5",
+								"Level_1_1fdb3d29-883a-4c8c-b048-66a9c6cf2367",
+								"Level_1_0223d598-c6bc-4944-80a4-43b223ccac20",
+								"Level_1_9fda4122-d248-4614-9cfd-7da80e7845da",
+								"Level_1_57d13bb2-18f8-4d95-ab14-43b152a1ceb5"
+							],
+							"_values": [
+								{
+									"Position": {
+										"X": -3.2699999809265138,
+										"Y": 5.480000019073486,
+										"Z": 0.0
+									},
+									"Type": 10,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": 3.0440001487731935,
+										"Y": 10.09000015258789,
+										"Z": 0.0
+									},
+									"Type": 1,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": 6.050000190734863,
+										"Y": 10.0600004196167,
+										"Z": 0.0
+									},
+									"Type": 2,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": 10.75,
+										"Y": 13.640000343322754,
+										"Z": 0.0
+									},
+									"Type": 10,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -5.360000133514404,
+										"Y": 17.520000457763673,
+										"Z": 0.0
+									},
+									"Type": 10,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": 7.840000152587891,
+										"Y": 26.06999969482422,
+										"Z": 0.0
+									},
+									"Type": 10,
+									"SceneBuiltInItem": false
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": 1.8700000047683716,
+										"Z": 0.0
+									},
+									"Type": 3,
+									"SceneBuiltInItem": false
+								}
+							]
+						}
+					},
+					"WorkbenchesDatas": {
+						"WorkbenchesOnScene": {
+							"_keys": [
+								"Level_1_462945a9-ace3-43de-9a75-2a0e40ec29fd",
+								"Level_1_f7f9c312-f3fd-4151-a3bd-783e5b1758cb",
+								"Level_1_5c1e4b36-3612-4c94-be38-746f58e3709a",
+								"Level_1_b935dca6-3209-4ebd-92f9-803c2180fe84",
+								"Level_1_f242591f-8ecb-4967-9409-528bfa86e8c5",
+								"Level_1_e9cb35e0-be96-4045-917a-af8d061422e0",
+								"Level_1_a62f0fac-72d7-4585-8132-e5224c6f8d41",
+								"Level_1_0bdad38a-cec2-4ac8-935b-b9339330bc59",
+								"Level_1_0a402690-2d54-4130-95ba-3d64393bb82d",
+								"Level_1_9c871b32-9a9b-48c4-95ef-e2c4ca76f016",
+								"Level_1_0fa6d59e-65a8-4bbe-b9de-f7f45d4661c2",
+								"Level_1_52e3c2e5-a8c9-41c6-8126-3b4f4fe7f589",
+								"Level_1_4441f985-bf9d-4f12-86d5-e21c59570f6c",
+								"Level_1_86309882-54e1-4c76-9c63-0b7dc55d09a7",
+								"Level_1_75d9a1b8-1a11-43da-b67b-2f8e9b2aab02",
+								"Level_1_7d6a61b0-6285-474c-abbf-3878ee1f1296",
+								"Level_1_5d3a68d4-c102-472f-bc52-41a27577690e"
+							],
+							"_values": [
+								{
+									"Position": {
+										"X": 5.579999923706055,
+										"Y": 6.659999847412109,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 3,
+									"NeedResourceCount": 10,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 0,
+									"DropToolType": 2,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": 5.980000019073486,
+										"Y": 18.290000915527345,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 1,
+									"NeedResourceCount": 50,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 0,
+									"DropToolType": 3,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -9.779999732971192,
+										"Y": 19.100000381469728,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 7,
+									"NeedResourceCount": 20,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": 1.5099999904632569,
+										"Y": 22.420000076293947,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 3,
+									"NeedResourceCount": 50,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": 5.300000190734863,
+										"Y": 29.56999969482422,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 6,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 0,
+									"DropToolType": 4,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -14.5600004196167,
+										"Y": 29.610000610351564,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 8,
+									"NeedResourceCount": 20,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -14.5,
+										"Y": 13.720000267028809,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 150,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 0,
+									"DropToolType": 5,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 9.600000381469727,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 3,
+									"NeedResourceCount": 200,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": 9.609999656677246,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 100,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 5.639999866485596,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 5,
+									"NeedResourceCount": 50,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": 5.610000133514404,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 6,
+									"NeedResourceCount": 25,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 5.639999866485596,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 7,
+									"NeedResourceCount": 50,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 1.6399999856948853,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 8,
+									"NeedResourceCount": 50,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": -2.3600001335144045,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 9,
+									"NeedResourceCount": 25,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": -1.6399999856948853,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 10,
+									"NeedResourceCount": 40,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": -2.3600001335144045,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 40,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 1.6399999856948853,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 1,
+									"NeedResourceCount": 999,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"DropResourceType": 2,
+									"DropToolType": 0,
+									"DropCount": 1
+								}
+							]
+						}
+					},
+					"ChunksDatas": {
+						"ChunksOnScene": {
+							"_keys": [
+								"GameScene_7b0a03f5-483f-413c-a380-a771e66368f2",
+								"GameScene_623cea16-ad26-4dbd-9eb3-6a47ff457bda",
+								"GameScene_073d4ccd-c05d-4b33-9534-b02b2515dd5a",
+								"GameScene_bc3fab24-cf51-43d5-bd96-ecafdac5ea25",
+								"GameScene_512d8c8e-ebbf-4db0-8559-05bb5b5717e1",
+								"GameScene_18b8285d-2200-49ae-815f-3ad8dfdcd01c",
+								"GameScene_56150b51-6c64-4a31-a6c1-5f48dbd67130",
+								"GameScene_5e91af13-9676-4452-bae9-43ba15da4f3e",
+								"GameScene_e3dce286-da37-4beb-8eb9-04330703cb4c",
+								"GameScene_7f9d1bb0-f1a8-4744-b403-c80b27dd4442",
+								"GameScene_00a658e0-f1f6-4cdc-af79-0c5149bf1940",
+								"GameScene_d5f4fc61-aeb9-4c2a-b51f-3969581db631",
+								"GameScene_e350cc6e-ba54-4225-9456-dce856aa92e8",
+								"GameScene_d9a9f61a-1a51-48cd-b3cd-e6f72e2f5784",
+								"GameScene_62e440bf-2105-4b12-8a0a-4d2879265cee",
+								"GameScene_c7271dea-f268-4222-bcac-576890a44dcd",
+								"GameScene_8f389ccc-b140-4a00-a4ef-1cb9587e2e34",
+								"GameScene_00753ca3-4d08-4190-a480-7744ccc1c25d",
+								"GameScene_edf6c2f2-5399-47e6-b84f-6d6f580ded38",
+								"GameScene_7782cebe-b977-4f7d-9307-5072b07063f8",
+								"GameScene_0dff51d1-e84f-40c2-944a-ee76c168f148",
+								"GameScene_66c547a0-1ba7-4c0e-b304-75d532b89656",
+								"GameScene_f4dfe0c6-55dd-45de-a85d-6e50ae3e0071",
+								"GameScene_0bb2b87f-ef81-4e17-926c-17bbe7dd1d4d",
+								"GameScene_d65715f6-bfc6-4a0b-95b6-6db97f5f50ea",
+								"GameScene_e5a07f4d-0331-4135-8d80-440a48d265d7",
+								"GameScene_90f7bc64-6acc-4fd6-84bd-4c7b3ef4df34",
+								"GameScene_78a5342b-6756-4e2a-93c9-9c8ded055e62",
+								"GameScene_3eb20d91-dc39-488f-abb0-859c9abb8cb3",
+								"GameScene_347a8fb2-8b4b-46f1-a711-4525f8619616",
+								"GameScene_0d31adc7-587c-4410-9c89-53eed6971954",
+								"GameScene_725c9076-d5a9-4d0e-aac3-f5c81391e1f2",
+								"GameScene_0dca6d58-71e2-4303-aba3-120fae77335b",
+								"GameScene_6ef6ae91-6159-464b-8365-39ef0fdbb0b8",
+								"GameScene_9239693c-76c8-4893-870a-fae828d7dc4f",
+								"GameScene_14647ae0-a7cf-4f7c-91fe-a50ab2029321",
+								"GameScene_f31c6998-c5d1-499e-98cc-e024e3c4c8d5",
+								"GameScene_f6957fe7-647b-437a-b39e-bcd461ad4818",
+								"GameScene_7943e4a8-3ab7-4c34-9437-fa5748a1e953",
+								"GameScene_07b82250-247a-4710-814f-3de132d7fde0",
+								"GameScene_fd2c8125-45a9-4718-bd50-2eb6e66a4135",
+								"GameScene_b4d71d28-f1c1-4ced-af3e-7c31a17be296",
+								"GameScene_56de9855-64be-4c10-8f48-268aff056770",
+								"GameScene_77ab0938-7599-4f58-89c2-c49b003c8b41",
+								"GameScene_9412b49b-58e9-4579-8acc-27f719d65bc8",
+								"GameScene_f442d303-c49c-4abb-b57d-6cf641e22486",
+								"GameScene_f6f92b46-715e-4d85-bf80-15c0b346eeda",
+								"GameScene_9fa7dfb2-f01e-443a-816e-98f2bc604ce5",
+								"GameScene_6890c284-a493-4bf8-8e18-fb98bd04993d",
+								"GameScene_dab97134-de22-4c4e-a60c-18c6f8cd4a2a",
+								"GameScene_2ada7a79-fee1-4ec4-aad8-7608577776c4",
+								"GameScene_876e9a6f-956c-464c-bc8f-c313b03c2382",
+								"GameScene_669c5351-5d45-4e28-8321-2edc617bf5f8",
+								"GameScene_c88870f4-3b6c-4a4b-9939-d5e18515a2c3",
+								"GameScene_489c6add-b7a0-43c3-8097-54ba7e7627d3",
+								"GameScene_7411c20f-4426-4206-8d97-0851b21ff68c",
+								"GameScene_6409aa36-c9e7-4260-8b28-ef9823ff417f",
+								"GameScene_16eedbed-c946-483a-8325-5ca15408b6da",
+								"GameScene_3aa9d665-18af-4f81-be70-9f2cb8786bd3",
+								"GameScene_17a974c2-7d9b-4c29-ad35-b4ce58284d9a",
+								"GameScene_7a6fbc86-2019-4f48-82ee-2ff74e149b60",
+								"GameScene_ea32ad78-6af2-421f-8623-508af73b8f8c",
+								"GameScene_b35bea3b-bfd3-4e0f-8812-a3b281070302",
+								"GameScene_5b85ede8-0e25-4b0e-b703-e524a7349c0d",
+								"GameScene_3b4a55b0-6e3c-41b5-a1e7-7b09ed285ab4",
+								"GameScene_d16e881b-a76e-4471-825d-28c6d3564cbe",
+								"GameScene_8c4e9861-7310-433d-aedb-ae4dd815795b",
+								"GameScene_1e60fc38-908f-4686-9f92-6740f0c07ef3",
+								"GameScene_9b84bb36-bf11-4208-b89c-a507ee6ce8e8",
+								"GameScene_358fb7f7-fb3b-4727-a109-28aa1461fd81",
+								"GameScene_517276f2-5ec4-4aed-bcf9-eb4d9b79854c",
+								"GameScene_303afb89-1b80-403d-903b-ab31478b11ff"
+							],
+							"_values": [
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": 10.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Workbench 100 Wood to Gem",
+											"Position": {
+												"X": -10.0,
+												"Y": 9.609999656677246,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -9.199999809265137,
+												"Y": 9.850000381469727,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5005000233650208
+								},
+								{
+									"Position": {
+										"X": 10.0,
+										"Y": 10.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 1,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 11.069999694824219,
+												"Y": 10.789999961853028,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Ads Box 20 Wood",
+											"Position": {
+												"X": 9.140000343322754,
+												"Y": 10.470000267028809,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5004000663757324
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 30.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 8,
+									"NeedResourceCount": 8,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -6.699999809265137,
+												"Y": 30.309999465942384,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -6.239999771118164,
+												"Y": 29.040000915527345,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -5.75,
+												"Y": 30.450000762939454,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -5.170000076293945,
+												"Y": 29.139999389648439,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -5.260000228881836,
+												"Y": 31.170000076293947,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 14.0,
+										"Y": 22.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 5,
+									"NeedResourceCount": 10,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 13.9399995803833,
+												"Y": 22.709999084472658,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 14.760000228881836,
+												"Y": 22.690000534057618,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 15.220000267028809,
+												"Y": 22.15999984741211,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -22.0,
+										"Y": 18.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 6,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Dry Fruit Bush",
+											"Position": {
+												"X": -21.31999969482422,
+												"Y": 18.399999618530275,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -22.940000534057618,
+												"Y": 17.510000228881837,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": -2.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": -11.270000457763672,
+												"Y": -3.1599998474121095,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 40 Water to Gem",
+											"Position": {
+												"X": -10.0,
+												"Y": -1.6399999856948853,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5005000829696655
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 10.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 3,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -6.21999979019165,
+												"Y": 10.5,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Ads Box 30 Grass",
+											"Position": {
+												"X": -6.21999979019165,
+												"Y": 9.569999694824219,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 18.0,
+										"Y": 10.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 10,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 17.790000915527345,
+												"Y": 9.789999961853028,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 18.8799991607666,
+												"Y": 10.569999694824219,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 6.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": -5.559999942779541,
+												"Y": 6.699999809265137,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 50 Egg to Gem",
+											"Position": {
+												"X": -6.0,
+												"Y": 5.639999866485596,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5004000067710877
+								},
+								{
+									"Position": {
+										"X": 2.0,
+										"Y": 10.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 3,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Sell Board",
+											"Position": {
+												"X": 3.0440001487731935,
+												"Y": 10.09000015258789,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": -2.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -7.269999980926514,
+												"Y": -3.1599998474121095,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 40 Fruit to Gem",
+											"Position": {
+												"X": -6.0,
+												"Y": -2.3600001335144045,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5003999471664429
+								},
+								{
+									"Position": {
+										"X": -18.0,
+										"Y": 14.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 2,
+									"NeedResourceCount": 1,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Water  storage",
+											"Position": {
+												"X": -18.0,
+												"Y": 13.770000457763672,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -2.0,
+										"Y": 18.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 6,
+									"NeedResourceCount": 1,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -3.0,
+												"Y": 18.329999923706056,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -2.4600000381469728,
+												"Y": 18.709999084472658,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Ads Box 5 Milk",
+											"Position": {
+												"X": -1.5699999332427979,
+												"Y": 17.610000610351564,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 10.0,
+										"Y": 22.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 5,
+									"NeedResourceCount": 10,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pot 20 coin",
+											"Position": {
+												"X": 10.220000267028809,
+												"Y": 21.299999237060548,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 10.710000038146973,
+												"Y": 21.1200008392334,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 14.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 5,
+									"NeedResourceCount": 30,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Workbench 150 Wood to Bucket",
+											"Position": {
+												"X": -14.5,
+												"Y": 13.720000267028809,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 18.0,
+										"Y": 6.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 10,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Chest 1 Gem",
+											"Position": {
+												"X": 18.219999313354493,
+												"Y": 5.300000190734863,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 18.709999084472658,
+												"Y": 5.119999885559082,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 18.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 6,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -6.409999847412109,
+												"Y": 19.010000228881837,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -5.599999904632568,
+												"Y": 18.959999084472658,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pot 20 coin",
+											"Position": {
+												"X": -6.110000133514404,
+												"Y": 17.059999465942384,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Boots",
+											"Position": {
+												"X": -5.360000133514404,
+												"Y": 17.520000457763673,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 2.0,
+										"Y": 26.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 7,
+									"NeedResourceCount": 1,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 1.0399999618530274,
+												"Y": 25.809999465942384,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 2.7799999713897707,
+												"Y": 25.530000686645509,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Ads Box 10 Egg",
+											"Position": {
+												"X": 2.6500000953674318,
+												"Y": 26.81999969482422,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": 26.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 8,
+									"NeedResourceCount": 16,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -10.479999542236329,
+												"Y": 27.079999923706056,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -11.15999984741211,
+												"Y": 25.81999969482422,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -8.960000038146973,
+												"Y": 26.739999771118165,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -10.010000228881836,
+												"Y": 25.6200008392334,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -11.359999656677246,
+												"Y": 26.75,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 6.0,
+										"Y": 18.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 2,
+									"NeedResourceCount": 2,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Workbench 50 Coin to PickAxe",
+											"Position": {
+												"X": 5.980000019073486,
+												"Y": 18.290000915527345,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 2.0,
+										"Y": 14.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 2,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 1.3899999856948853,
+												"Y": 13.479999542236329,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 1.909999966621399,
+												"Y": 13.0600004196167,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 2.5,
+												"Y": 13.449999809265137,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5006999969482422
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": 22.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 8,
+									"NeedResourceCount": 1,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -10.960000038146973,
+												"Y": 23.010000228881837,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Ads Box 8 Carrot",
+											"Position": {
+												"X": -10.079999923706055,
+												"Y": 21.670000076293947,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -2.0,
+										"Y": 14.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 3,
+									"NeedResourceCount": 30,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Workshop 25 Coin to Cow",
+											"Position": {
+												"X": -2.0399999618530275,
+												"Y": 13.779999732971192,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -18.0,
+										"Y": 22.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 9,
+									"NeedResourceCount": 4,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Dry Fruit Bush",
+											"Position": {
+												"X": -18.959999084472658,
+												"Y": 23.010000228881837,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pot 3 water",
+											"Position": {
+												"X": -18.040000915527345,
+												"Y": 21.670000076293947,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": -2.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -15.270000457763672,
+												"Y": -1.7899999618530274,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 25 Dung to Gem",
+											"Position": {
+												"X": -14.0,
+												"Y": -2.3600001335144045,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5002000331878662
+								},
+								{
+									"Position": {
+										"X": -2.0,
+										"Y": 26.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 7,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Workshop 10 Egg to EggStore",
+											"Position": {
+												"X": -2.0,
+												"Y": 25.770000457763673,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5003000497817993
+								},
+								{
+									"Position": {
+										"X": 14.0,
+										"Y": 6.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 14.220000267028809,
+												"Y": 5.300000190734863,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 14.710000038146973,
+												"Y": 5.119999885559082,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 15.140000343322754,
+												"Y": 5.489999771118164,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 18.0,
+										"Y": 14.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 10,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pot 10 coin",
+											"Position": {
+												"X": 18.209999084472658,
+												"Y": 14.369999885559082,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 2.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": -15.270000457763672,
+												"Y": 1.5199999809265137,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 50 Carrot to Gem",
+											"Position": {
+												"X": -14.0,
+												"Y": 1.6399999856948853,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5004000067710877
+								},
+								{
+									"Position": {
+										"X": 14.0,
+										"Y": 10.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 14.210000038146973,
+												"Y": 10.369999885559082,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": 30.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 8,
+									"NeedResourceCount": 8,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -10.479999542236329,
+												"Y": 31.079999923706056,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -11.119999885559082,
+												"Y": 29.469999313354493,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -11.279999732971192,
+												"Y": 30.3799991607666,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -9.279999732971192,
+												"Y": 30.270000457763673,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -9.819999694824219,
+												"Y": 29.469999313354493,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 2.0,
+										"Y": 6.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 3,
+									"NeedResourceCount": 3,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 1.3799999952316285,
+												"Y": 6.3520002365112309,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 1.7000000476837159,
+												"Y": 6.650000095367432,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 2.306999921798706,
+												"Y": 6.639999866485596,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 6.0,
+										"Y": 10.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 1,
+									"NeedResourceCount": 10,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Upgrade Board",
+											"Position": {
+												"X": 6.050000190734863,
+												"Y": 10.0600004196167,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -2.0,
+										"Y": 10.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 3,
+									"NeedResourceCount": 15,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Grass  storage",
+											"Position": {
+												"X": -1.9800000190734864,
+												"Y": 9.880000114440918,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 6.0,
+										"Y": 2.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 3,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 5.119999885559082,
+												"Y": 2.2699999809265138,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 6.369999885559082,
+												"Y": 1.149999976158142,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5163000226020813
+								},
+								{
+									"Position": {
+										"X": -22.0,
+										"Y": 22.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 1,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pot 10 coin",
+											"Position": {
+												"X": -22.440000534057618,
+												"Y": 23.0,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -23.079999923706056,
+												"Y": 21.190000534057618,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Ads Box 8 Fruit",
+											"Position": {
+												"X": -21.139999389648439,
+												"Y": 21.989999771118165,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 14.0,
+										"Y": 14.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Workshop 20 Wood to WoodStore",
+											"Position": {
+												"X": 14.210000038146973,
+												"Y": 14.369999885559082,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.500499963760376
+								},
+								{
+									"Position": {
+										"X": 6.0,
+										"Y": 22.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 5,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 5.769999980926514,
+												"Y": 23.010000228881837,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 6.730000019073486,
+												"Y": 22.6200008392334,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 18.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 9,
+									"NeedResourceCount": 4,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Dry Fruit Bush",
+											"Position": {
+												"X": -14.949999809265137,
+												"Y": 18.309999465942384,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -13.779999732971192,
+												"Y": 19.100000381469728,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 10.0,
+										"Y": 14.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 9.369999885559082,
+												"Y": 14.699999809265137,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Boots",
+											"Position": {
+												"X": 10.75,
+												"Y": 13.640000343322754,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5003000497817993
+								},
+								{
+									"Position": {
+										"X": 10.0,
+										"Y": 6.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 1,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 10.430000305175782,
+												"Y": 4.880000114440918,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 10.960000038146973,
+												"Y": 5.190000057220459,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5005000233650208
+								},
+								{
+									"Position": {
+										"X": 18.0,
+										"Y": 18.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 15,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Chest 1 Gem",
+											"Position": {
+												"X": 17.649999618530275,
+												"Y": 17.790000915527345,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 18.579999923706056,
+												"Y": 18.690000534057618,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 19.149999618530275,
+												"Y": 17.799999237060548,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": 14.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 6,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": -11.039999961853028,
+												"Y": 12.819999694824219,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workshop 20 Coin to CoinStore",
+											"Position": {
+												"X": -9.850000381469727,
+												"Y": 13.6899995803833,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 6.0,
+										"Y": 14.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 2,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Workshop 5 Stone to StoneStore",
+											"Position": {
+												"X": 5.980000019073486,
+												"Y": 13.84000015258789,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5002999901771545
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 2.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -7.269999980926514,
+												"Y": 2.0799999237060549,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -4.980000019073486,
+												"Y": 1.3199999332427979,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 999 Coin to Gem",
+											"Position": {
+												"X": -6.0,
+												"Y": 1.6399999856948853,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5005000829696655
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 30.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 9,
+									"NeedResourceCount": 8,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": -15.020000457763672,
+												"Y": 30.639999389648439,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": -13.869999885559082,
+												"Y": 30.670000076293947,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -13.329999923706055,
+												"Y": 29.34000015258789,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 20 Carrot to Gem",
+											"Position": {
+												"X": -14.5600004196167,
+												"Y": 29.610000610351564,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 26.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 8,
+									"NeedResourceCount": 3,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Workshop 8 Carrot to CarrotStore",
+											"Position": {
+												"X": -6.0,
+												"Y": 25.809999465942384,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 22.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 9,
+									"NeedResourceCount": 1,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": -13.369999885559082,
+												"Y": 22.6200008392334,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Ads Box 4 Dung",
+											"Position": {
+												"X": -13.369999885559082,
+												"Y": 21.450000762939454,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 6.0,
+										"Y": 30.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 1,
+									"NeedResourceCount": 50,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Workbench 5 Milk to Sword",
+											"Position": {
+												"X": 5.300000190734863,
+												"Y": 29.56999969482422,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 6.900000095367432,
+												"Y": 30.920000076293947,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 5.190000057220459,
+												"Y": 30.739999771118165,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 14.0,
+										"Y": 18.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 20,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 13.890000343322754,
+												"Y": 17.809999465942384,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 14.489999771118164,
+												"Y": 17.5,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 22.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 2,
+									"NeedResourceCount": 2,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -6.760000228881836,
+												"Y": 22.709999084472658,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -6.829999923706055,
+												"Y": 21.459999084472658,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -5.519999980926514,
+												"Y": 21.3700008392334,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Carrot in ground",
+											"Position": {
+												"X": -5.139999866485596,
+												"Y": 22.510000228881837,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 14.0,
+										"Y": 26.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 5,
+									"NeedResourceCount": 15,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Chest 1 Gem",
+											"Position": {
+												"X": 14.239999771118164,
+												"Y": 25.690000534057618,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 14.819999694824219,
+												"Y": 26.639999389648439,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": 2.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 2,
+									"NeedResourceCount": 10,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Prize_First",
+											"Position": {
+												"X": -10.0,
+												"Y": 1.8700000047683716,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 6.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -15.020000457763672,
+												"Y": 6.360000133514404,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": -13.380000114440918,
+												"Y": 6.710000038146973,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 50 Stone to Gem",
+											"Position": {
+												"X": -14.0,
+												"Y": 5.639999866485596,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5004000663757324
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 10.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 50,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Workbench 200 Grass to Gem",
+											"Position": {
+												"X": -14.0,
+												"Y": 9.600000381469727,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -12.979999542236329,
+												"Y": 9.260000228881836,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 6.0,
+										"Y": 26.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 2,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Dungeon Slimes First",
+											"Position": {
+												"X": 5.5,
+												"Y": 26.06999969482422,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Boots",
+											"Position": {
+												"X": 7.840000152587891,
+												"Y": 26.06999969482422,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5005000233650208
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": 18.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 6,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -10.949999809265137,
+												"Y": 18.309999465942384,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 20 Egg to Gem",
+											"Position": {
+												"X": -9.779999732971192,
+												"Y": 19.100000381469728,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -2.0,
+										"Y": 22.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 7,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": -3.0,
+												"Y": 22.329999923706056,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pot 20 coin",
+											"Position": {
+												"X": -2.0899999141693117,
+												"Y": 21.56999969482422,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -1.1399999856948853,
+												"Y": 22.510000228881837,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 10.0,
+										"Y": 26.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 2,
+									"NeedResourceCount": 2,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 10.319999694824219,
+												"Y": 26.770000457763673,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 26.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 8,
+									"NeedResourceCount": 32,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Workshop 150 Coin to Pig",
+											"Position": {
+												"X": -14.0,
+												"Y": 25.68000030517578,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -2.0,
+										"Y": 30.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 7,
+									"NeedResourceCount": 15,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -2.8899998664855959,
+												"Y": 30.3700008392334,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Chest 1 Gem",
+											"Position": {
+												"X": -2.0899999141693117,
+												"Y": 29.5,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": -1.4700000286102296,
+												"Y": 30.649999618530275,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 2.0,
+										"Y": 30.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 7,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 0.9730000495910645,
+												"Y": 30.219999313354493,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 1.6399999856948853,
+												"Y": 30.510000228881837,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 2.180000066757202,
+												"Y": 30.709999084472658,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pot 3 egg",
+											"Position": {
+												"X": 1.8700000047683716,
+												"Y": 29.399999618530275,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 14.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 3,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -6.409999847412109,
+												"Y": 14.369999885559082,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -5.599999904632568,
+												"Y": 14.319999694824219,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -6.409999847412109,
+												"Y": 13.789999961853028,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -5.599999904632568,
+												"Y": 13.739999771118164,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5011000037193298
+								},
+								{
+									"Position": {
+										"X": -18.0,
+										"Y": 26.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 9,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Dry Fruit Bush",
+											"Position": {
+												"X": -17.979999542236329,
+												"Y": 25.690000534057618,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -18.959999084472658,
+												"Y": 26.709999084472658,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 6.0,
+										"Y": 6.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 3,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pot 3 grass",
+											"Position": {
+												"X": 4.800000190734863,
+												"Y": 4.869999885559082,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 10 Grass to Axe",
+											"Position": {
+												"X": 5.579999923706055,
+												"Y": 6.659999847412109,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": 6.679999828338623,
+												"Y": 6.25,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5009999871253967
+								},
+								{
+									"Position": {
+										"X": 2.0,
+										"Y": 18.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 5,
+									"NeedResourceCount": 1,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 2.2200000286102297,
+												"Y": 17.770000457763673,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Ads Box 10 Stone",
+											"Position": {
+												"X": 1.2799999713897706,
+												"Y": 18.799999237060548,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -18.0,
+										"Y": 10.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 10,
+									"NeedResourceCount": 1,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -18.5,
+												"Y": 9.720000267028809,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Ads Box 5 Water",
+											"Position": {
+												"X": -17.280000686645509,
+												"Y": 10.470000267028809,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 10.0,
+										"Y": 18.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 20,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Rock",
+											"Position": {
+												"X": 9.020000457763672,
+												"Y": 18.43000030517578,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 9.800000190734864,
+												"Y": 19.020000457763673,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": 2.0,
+										"Y": 22.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 5,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": 2.5299999713897707,
+												"Y": 23.3700008392334,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 50 Grass to Gem",
+											"Position": {
+												"X": 1.5099999904632569,
+												"Y": 22.420000076293947,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -18.0,
+										"Y": 18.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 9,
+									"NeedResourceCount": 4,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Dry Fruit Bush",
+											"Position": {
+												"X": -18.5,
+												"Y": 17.719999313354493,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -16.829999923706056,
+												"Y": 18.219999313354493,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								},
+								{
+									"Position": {
+										"X": -10.0,
+										"Y": 6.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 11,
+									"NeedResourceCount": 0,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": false,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -11.210000038146973,
+												"Y": 5.110000133514404,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -9.579999923706055,
+												"Y": 6.800000190734863,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Workbench 25 Milk to Gem",
+											"Position": {
+												"X": -10.0,
+												"Y": 5.610000133514404,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": true,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.5005000233650208
+								},
+								{
+									"Position": {
+										"X": -2.0,
+										"Y": 6.0,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": true,
+									"NeedResourceType": 3,
+									"NeedResourceCount": 2,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -3.130000114440918,
+												"Y": 6.590000152587891,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Bush",
+											"Position": {
+												"X": -2.5299999713897707,
+												"Y": 6.869999885559082,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Pine",
+											"Position": {
+												"X": -0.8999999761581421,
+												"Y": 7.079999923706055,
+												"Z": 0.0
+											}
+										},
+										{
+											"GameObjectId": "Boots",
+											"Position": {
+												"X": -3.2699999809265138,
+												"Y": 5.480000019073486,
+												"Z": 0.0
+											}
+										}
+									],
+									"Opened": true,
+									"OpenByOtherOnly": false,
+									"DelayedOpenStart": false,
+									"DelayedOpenElapsedTime": 0.0
+								}
+							]
+						}
+					},
+					"WorkshopsDatas": {
+						"WorkshopsOnScene": {
+							"_keys": [
+								"Level_1_8573275d-04a2-4ced-a549-f604e976e493",
+								"Level_1_9b7fbfe7-77dd-4dc8-adba-e5a18b95967b",
+								"Level_1_ae1fbc62-9b81-4c76-8ead-870b56494413",
+								"Level_1_d2a71235-6d1a-4a30-9972-8fb471314b8c",
+								"Level_1_7344d685-6e36-4202-b416-600446ec8287",
+								"Level_1_b1696f71-5834-4101-ac87-3651b805c62a",
+								"Level_1_e06bb138-26c9-449c-9180-d740c68e5fe8",
+								"Level_1_057cf538-d46e-4bc0-9b6d-93129f202a43",
+								"Level_1_6505cbbd-4718-4e6b-bf9e-8b0a752ad5c4",
+								"Level_1_6c4baeeb-9723-48ef-a862-9e294a4bc5ee",
+								"Level_1_f4e97daf-1ede-4689-b6ea-ed5bff1751cd",
+								"Level_1_8ad49a22-2ebc-4607-836a-559291672400"
+							],
+							"_values": [
+								{
+									"Position": {
+										"X": 14.210000038146973,
+										"Y": 14.369999885559082,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 4,
+									"NeedResourceCount": 20,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Wood  storage",
+											"Position": {
+												"X": 14.210000038146973,
+												"Y": 14.369999885559082,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 1
+								},
+								{
+									"Position": {
+										"X": 5.980000019073486,
+										"Y": 13.84000015258789,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 5,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Stone  storage",
+											"Position": {
+												"X": 5.980000019073486,
+												"Y": 13.84000015258789,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 1
+								},
+								{
+									"Position": {
+										"X": -2.0399999618530275,
+										"Y": 13.779999732971192,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 1,
+									"NeedResourceCount": 25,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Cow",
+											"Position": {
+												"X": -2.0399999618530275,
+												"Y": 13.779999732971192,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 1
+								},
+								{
+									"Position": {
+										"X": -9.850000381469727,
+										"Y": 13.6899995803833,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 1,
+									"NeedResourceCount": 20,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Coin storage",
+											"Position": {
+												"X": -9.850000381469727,
+												"Y": 13.6899995803833,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 1
+								},
+								{
+									"Position": {
+										"X": -2.0,
+										"Y": 25.770000457763673,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 7,
+									"NeedResourceCount": 10,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Egg  storage",
+											"Position": {
+												"X": -2.0,
+												"Y": 25.770000457763673,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 1
+								},
+								{
+									"Position": {
+										"X": -6.0,
+										"Y": 25.809999465942384,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 8,
+									"NeedResourceCount": 8,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Carrot crate",
+											"Position": {
+												"X": -6.0,
+												"Y": 25.809999465942384,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 1
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 25.68000030517578,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 1,
+									"NeedResourceCount": 150,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Pig",
+											"Position": {
+												"X": -14.0,
+												"Y": 25.68000030517578,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 1
+								},
+								{
+									"Position": {
+										"X": -18.959999084472658,
+										"Y": 23.010000228881837,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 10,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Fruit bush",
+											"Position": {
+												"X": -18.959999084472658,
+												"Y": 23.010000228881837,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 2
+								},
+								{
+									"Position": {
+										"X": -14.949999809265137,
+										"Y": 18.309999465942384,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 10,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Fruit bush",
+											"Position": {
+												"X": -14.949999809265137,
+												"Y": 18.309999465942384,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 2
+								},
+								{
+									"Position": {
+										"X": -18.5,
+										"Y": 17.719999313354493,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 10,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Fruit bush",
+											"Position": {
+												"X": -18.5,
+												"Y": 17.719999313354493,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 2
+								},
+								{
+									"Position": {
+										"X": -17.979999542236329,
+										"Y": 25.690000534057618,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 10,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Fruit bush",
+											"Position": {
+												"X": -17.979999542236329,
+												"Y": 25.690000534057618,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 2
+								},
+								{
+									"Position": {
+										"X": -21.31999969482422,
+										"Y": 18.399999618530275,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"NeedResourceType": 10,
+									"NeedResourceCount": 5,
+									"CurrentNeedResourceCount": 0,
+									"IsAvailable": true,
+									"SpawnData": [
+										{
+											"GameObjectId": "Fruit bush",
+											"Position": {
+												"X": -21.31999969482422,
+												"Y": 18.399999618530275,
+												"Z": 0.0
+											}
+										}
+									],
+									"Type": 2
+								}
+							]
+						}
+					},
+					"ConvertersDatas": {
+						"ConvertersOnScene": {
+							"_keys": [
+								"Level_1_68901eeb-eea9-4660-85ce-c5b3caa6b4e7",
+								"Level_1_45ba3b3b-61aa-4c47-a760-e9dcb7c65ea3"
+							],
+							"_values": [
+								{
+									"Position": {
+										"X": -2.0399999618530275,
+										"Y": 13.779999732971192,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"IsAvailable": true,
+									"Type": 1,
+									"CurrentUpload": 0,
+									"Timer": 0.0
+								},
+								{
+									"Position": {
+										"X": -14.0,
+										"Y": 25.68000030517578,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"IsAvailable": true,
+									"Type": 2,
+									"CurrentUpload": 0,
+									"Timer": 0.0
+								}
+							]
+						}
+					},
+					"DungeonsDatas": {
+						"DungeonsOnScene": {
+							"_keys": [
+								"Level_1_7a440755-3518-493b-9f9a-c7e65c5a51d8"
+							],
+							"_values": [
+								{
+									"Position": {
+										"X": 5.5,
+										"Y": 26.06999969482422,
+										"Z": 0.0
+									},
+									"SceneBuiltInItem": false,
+									"GameObjectId": "Dungeon Slimes First",
+									"SpawnData": [
+										{
+											"ResourceSourceGameObjectId": "Slime",
+											"LocalPositions": [
+												{
+													"X": 2.069999933242798,
+													"Y": 2.0,
+													"Z": 0.0
+												},
+												{
+													"X": 0.6499999761581421,
+													"Y": -2.0,
+													"Z": 0.0
+												},
+												{
+													"X": 6.099999904632568,
+													"Y": -1.0,
+													"Z": 0.0
+												},
+												{
+													"X": 4.590000152587891,
+													"Y": 0.0,
+													"Z": 0.0
+												},
+												{
+													"X": 8.1899995803833,
+													"Y": 0.0,
+													"Z": 0.0
+												}
+											]
+										}
+									],
+									"ResourceSourcesIds": [
+										"Level_1_2903ac55-c121-4436-810d-db1b54a786cf",
+										"Level_1_260510c5-2b9f-462e-9a6a-270fe9c0afb3",
+										"Level_1_dfd19b14-da3f-4c42-9112-8f31dd313e5c",
+										"Level_1_8b6d43db-b83e-4d61-bbd3-9a7074210059",
+										"Level_1_c8a2e83e-c07c-4a78-aff9-9ca8d4fc23d4"
+									],
+									"EntranceState": {
+										"IsForcedOpen": false,
+										"TimerData": {
+											"IsStarted": false,
+											"Passed": 0.0,
+											"Duration": 0.0
+										}
+									},
+									"ExitState": {
+										"IsForcedOpen": false,
+										"TimerData": {
+											"IsStarted": false,
+											"Passed": 0.0,
+											"Duration": 0.0
+										}
+									}
+								}
+							]
+						}
+					},
+					"AdsBoxesDatas": {
+						"AdsBoxesOnScene": {
+							"_keys": [
+								"Level_1_071cdc4d-368b-4896-8800-655763d07ae2",
+								"Level_1_6296e442-f28f-48c7-82aa-b98a02f4fb43",
+								"Level_1_14bc81bb-e566-44a5-a9da-a9259fddf95b",
+								"Level_1_5aaedd04-c5fc-4cff-bb14-4bfa24c40101",
+								"Level_1_79634c15-006d-4cd8-a622-5acb4d4bf8b3",
+								"Level_1_38eb395f-4a1a-4aab-8442-da0f5677df35",
+								"Level_1_9eb7a2fb-e62b-476d-a9c3-4f8b4dfa66bc",
+								"Level_1_4acd29f1-690a-4eda-beda-f4e72ae520c0",
+								"Level_1_81926fe3-e007-4940-aca8-31a617632e63"
+							],
+							"_values": [
+								{
+									"Position": {
+										"X": 9.140000343322754,
+										"Y": 10.470000267028809,
+										"Z": 0.0
+									},
+									"Type": 11,
+									"SceneBuiltInItem": false,
+									"DropResourceType": 4,
+									"DropResourceCount": 20
+								},
+								{
+									"Position": {
+										"X": -6.21999979019165,
+										"Y": 9.569999694824219,
+										"Z": 0.0
+									},
+									"Type": 11,
+									"SceneBuiltInItem": false,
+									"DropResourceType": 3,
+									"DropResourceCount": 30
+								},
+								{
+									"Position": {
+										"X": 1.2799999713897706,
+										"Y": 18.799999237060548,
+										"Z": 0.0
+									},
+									"Type": 11,
+									"SceneBuiltInItem": false,
+									"DropResourceType": 5,
+									"DropResourceCount": 10
+								},
+								{
+									"Position": {
+										"X": -1.5699999332427979,
+										"Y": 17.610000610351564,
+										"Z": 0.0
+									},
+									"Type": 11,
+									"SceneBuiltInItem": false,
+									"DropResourceType": 6,
+									"DropResourceCount": 5
+								},
+								{
+									"Position": {
+										"X": 2.6500000953674318,
+										"Y": 26.81999969482422,
+										"Z": 0.0
+									},
+									"Type": 11,
+									"SceneBuiltInItem": false,
+									"DropResourceType": 7,
+									"DropResourceCount": 10
+								},
+								{
+									"Position": {
+										"X": -10.079999923706055,
+										"Y": 21.670000076293947,
+										"Z": 0.0
+									},
+									"Type": 11,
+									"SceneBuiltInItem": false,
+									"DropResourceType": 8,
+									"DropResourceCount": 8
+								},
+								{
+									"Position": {
+										"X": -13.369999885559082,
+										"Y": 21.450000762939454,
+										"Z": 0.0
+									},
+									"Type": 11,
+									"SceneBuiltInItem": false,
+									"DropResourceType": 9,
+									"DropResourceCount": 4
+								},
+								{
+									"Position": {
+										"X": -17.280000686645509,
+										"Y": 10.470000267028809,
+										"Z": 0.0
+									},
+									"Type": 11,
+									"SceneBuiltInItem": false,
+									"DropResourceType": 10,
+									"DropResourceCount": 5
+								},
+								{
+									"Position": {
+										"X": -21.139999389648439,
+										"Y": 21.989999771118165,
+										"Z": 0.0
+									},
+									"Type": 11,
+									"SceneBuiltInItem": false,
+									"DropResourceType": 11,
+									"DropResourceCount": 8
+								}
+							]
+						}
+					},
+					"TutorialProgress": {
+						"IsCompleted": true,
+						"Stage": 12,
+						"GoalsProgresses": [],
+						"TutorialObjectsDatas": {
+							"TutorialObjectsOnScene": {
+								"_keys": [],
+								"_values": []
+							}
+						}
+					}
+				}
+			]
+		}
+	},
+	"SaveTime": "12/14/2025 15:48:00"
+}

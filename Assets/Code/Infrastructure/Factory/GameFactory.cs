@@ -87,7 +87,7 @@ namespace Code.Infrastructure
             ResourceSourceMatcher rSourceMatcher = _configs.GetMatcherFor(type);
             ResourceSource resourceSource = InstantiateRegistered(rSourceMatcher.Template, at, registerProgressWatchers);
 
-            resourceSource.Construct(_resourceFactory, _dropCountCalculatorService, _audio, _effectFactory);
+            resourceSource.Construct(_resourceFactory, _dropCountCalculatorService, _audio, _effectFactory, this, _progressService);
 
             return resourceSource;
         }
@@ -97,7 +97,7 @@ namespace Code.Infrastructure
             ResourceStorageMatcher rStorageMatcher = _configs.GetMatcherFor(type);
             ResourceStorage resourceStorage = InstantiateRegistered(rStorageMatcher.Template, at);
 
-            resourceStorage.Construct(_resourceFactory, _progressService, _audio, _effectFactory, this);
+            resourceStorage.Construct(_resourceFactory, _progressService, _audio, _effectFactory, this, this);
 
             return resourceStorage;
         }
@@ -136,7 +136,7 @@ namespace Code.Infrastructure
         public Workbench CreateWorkbench(Vector3 at)
         {
             Workbench workbench = InstantiateRegistered(AssetPath.WORKBENCH_BASE_PATH, at).GetComponent<Workbench>();
-            workbench.Construct(_resourceFactory, _toolFactory, _audio, _effectFactory);
+            workbench.Construct(_resourceFactory, _toolFactory, _audio, _effectFactory, this, _progressService);
 
             return workbench;
         }
@@ -166,7 +166,7 @@ namespace Code.Infrastructure
             }
 
             Workshop workshop = InstantiateRegistered(assetPath, at).GetComponent<Workshop>();
-            workshop.Construct(_audio, _effectFactory, this);
+            workshop.Construct(_audio, _effectFactory, this, _progressService);
 
             return workshop;
         }
@@ -338,13 +338,27 @@ namespace Code.Infrastructure
 
             void ICreatedByIdGameObjectVisitor.Visit(ResourceSource resourceSource)
             {
-                resourceSource.Construct(_gameFactory._resourceFactory, _gameFactory._dropCountCalculatorService, _gameFactory._audio, _gameFactory._effectFactory);
+                resourceSource.Construct(
+                    _gameFactory._resourceFactory, 
+                    _gameFactory._dropCountCalculatorService, 
+                    _gameFactory._audio, 
+                    _gameFactory._effectFactory,
+                    _gameFactory,
+                    _gameFactory._progressService
+                    );
                 GenerateIdIfApplicable(resourceSource);
             }
 
             void ICreatedByIdGameObjectVisitor.Visit(ResourceStorage resourceStorage)
             {
-                resourceStorage.Construct(_gameFactory._resourceFactory, _gameFactory._progressService, _gameFactory._audio, _gameFactory._effectFactory, _gameFactory);
+                resourceStorage.Construct(
+                    _gameFactory._resourceFactory, 
+                    _gameFactory._progressService, 
+                    _gameFactory._audio, 
+                    _gameFactory._effectFactory, 
+                    _gameFactory,
+                    _gameFactory
+                    );
                 GenerateIdIfApplicable(resourceStorage);
             }
 
@@ -359,14 +373,25 @@ namespace Code.Infrastructure
 
             void ICreatedByIdGameObjectVisitor.Visit(Workbench workbench)
             {
-                workbench.Construct(_gameFactory._resourceFactory, _gameFactory._toolFactory, _gameFactory._audio, _gameFactory._effectFactory);
+                workbench.Construct(
+                    _gameFactory._resourceFactory, 
+                    _gameFactory._toolFactory, 
+                    _gameFactory._audio, 
+                    _gameFactory._effectFactory,
+                    _gameFactory,
+                    _gameFactory._progressService
+                    );
                 workbench.Init();
                 GenerateIdIfApplicable(workbench);
             }
 
             void ICreatedByIdGameObjectVisitor.Visit(Workshop workshop)
             {
-                workshop.Construct(_gameFactory._audio, _gameFactory._effectFactory, _gameFactory);
+                workshop.Construct(
+                    _gameFactory._audio, 
+                    _gameFactory._effectFactory, 
+                    _gameFactory, 
+                    _gameFactory._progressService);
                 workshop.Init();
                 GenerateIdIfApplicable(workshop);
 

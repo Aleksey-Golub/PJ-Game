@@ -2,6 +2,7 @@
 using Code.Infrastructure;
 using Code.Services;
 using System;
+using System.Collections;
 using UnityEngine;
 
 [SelectionBase]
@@ -28,6 +29,8 @@ public class ResourceSource : MonoBehaviour,
     [SerializeField] protected float _restoreTime = 10;
     [field: SerializeField] public DropSettings DropSettings { get; private set; } = DropSettings.Default;
 
+    private IGameFactory _gameFactory;
+    private IPersistentProgressService _progressService;
     private IResourceFactory _resourceFactory;
     private IDropCountCalculatorService _dropCalculator;
     protected float _restorationTimer = 0;
@@ -49,8 +52,9 @@ public class ResourceSource : MonoBehaviour,
             var audio = AllServices.Container.Single<IAudioService>();
             var effectFactory = AllServices.Container.Single<IEffectFactory>();
             var gameFactory = AllServices.Container.Single<IGameFactory>();
+            var progressService = AllServices.Container.Single<IPersistentProgressService>();
 
-            Construct(resourceFactory, dropCountCalculatorService, audio, effectFactory);
+            Construct(resourceFactory, dropCountCalculatorService, audio, effectFactory, gameFactory, progressService);
             gameFactory.RegisterProgressWatchersExternal(gameObject);
         }
     }
@@ -59,11 +63,15 @@ public class ResourceSource : MonoBehaviour,
         IResourceFactory resourceFactory,
         IDropCountCalculatorService dropCountCalculatorService,
         IAudioService audio,
-        IEffectFactory effectFactory
+        IEffectFactory effectFactory,
+        IGameFactory gameFactory,
+        IPersistentProgressService progressService
         )
     {
         _resourceFactory = resourceFactory;
         _dropCalculator = dropCountCalculatorService;
+        _gameFactory = gameFactory;
+        _progressService = progressService;
 
         _view.Construct(audio, effectFactory);
 
@@ -117,7 +125,7 @@ public class ResourceSource : MonoBehaviour,
         {
             Exhaust();
             if (IsSingleUse)
-                InactivateSelf();
+                RemoveSelf();
         }
     }
 
@@ -160,7 +168,7 @@ public class ResourceSource : MonoBehaviour,
             Exhaust();
 
             if (IsSingleUse)
-                InactivateSelf();
+                RemoveSelf();
 
             return;
         }
@@ -206,9 +214,17 @@ public class ResourceSource : MonoBehaviour,
         _view.ShowHP(_currentHitPoints, _hitPoints);
     }
 
-    private void InactivateSelf()
+    private void RemoveSelf()
     {
-        gameObject.SetActive(false);
+        StartCoroutine(RemoveSelfCor());
+    }
+
+    private IEnumerator RemoveSelfCor()
+    {
+        yield return null;
+
+        _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].ResourceSourcesDatas.ResourceSourcesOnScene.Dictionary.Remove(UniqueId.Id);
+        _gameFactory.Recycle(gameObject);
     }
 
     private bool HasChangesBetweenSavedStateAndCurrentState(ResourceSourceOnSceneData data)

@@ -1,6 +1,8 @@
 ﻿using Code.Data;
 using Code.Infrastructure;
 using Code.Services;
+using System;
+using System.Collections;
 using UnityEngine;
 
 [SelectionBase]
@@ -23,6 +25,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
 
     private IResourceFactory _resourceFactory;
     private IPersistentProgressService _progressService;
+    private IGameFactory _gameFactory;
     private IPlayerProvider _playerProvider;
     private IExhaustStrategy _exhaust;
     private float _restorationTimer = 0;
@@ -53,7 +56,7 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
             var gameFactory = AllServices.Container.Single<IGameFactory>();
             var playerProvider = AllServices.Container.Single<IPlayerProvider>();
 
-            Construct(resourceFactory, progressService, audio, effectFactory, playerProvider);
+            Construct(resourceFactory, progressService, audio, effectFactory, playerProvider, gameFactory);
             gameFactory.RegisterProgressWatchersExternal(gameObject);
         }
     }
@@ -63,13 +66,14 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
         IPersistentProgressService progressService, 
         IAudioService audio, 
         IEffectFactory effectFactory,
-        IPlayerProvider playerProvider
-        )
+        IPlayerProvider playerProvider,
+        IGameFactory gameFactory)
     {
         _resourceFactory = resourceFactory;
         _progressService = progressService;
         _playerProvider = playerProvider;
-        _exhaust = new ExhaustStrategy(this, _collider);
+        _gameFactory = gameFactory;
+        _exhaust = new ExhaustStrategy(this, _collider, OnExhausted, disableSelf: false);
 
         _view.Construct(audio, effectFactory);
 
@@ -245,6 +249,19 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
             data.CurrentResourceCount != _currentResourceCount ||
             data.Position.AsUnityVector() != transform.position
             ;
+    }
+
+    private void OnExhausted()
+    {
+        StartCoroutine(RemoveSelfCor());
+    }
+
+    private IEnumerator RemoveSelfCor()
+    {
+        yield return null;
+
+        _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].ResourceStoragesDatas.ResourceStoragesOnScene.Dictionary.Remove(UniqueId.Id);
+        _gameFactory.Recycle(gameObject);
     }
 
     void ICreatedByIdGameObject.Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);

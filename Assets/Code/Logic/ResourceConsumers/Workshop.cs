@@ -3,6 +3,8 @@ using Code.Services;
 using UnityEngine;
 using Code.Data;
 using System.Linq;
+using System.Collections;
+using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -15,8 +17,12 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
     [SerializeField] private SpawnGameObjectData[] _spawnDatas;
 
     private IGameFactory _gameFactory;
+    private IPersistentProgressService _progressService;
 
     public WorkshopType Type => _type;
+
+    protected override Action OnExhaustCallback => OnExhausted;
+    protected override bool DisableSelfOnExhaused => false;
 
     #region EDITOR
 #if UNITY_EDITOR
@@ -38,18 +44,20 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
             var audio = AllServices.Container.Single<IAudioService>();
             var effectFactory = AllServices.Container.Single<IEffectFactory>();
             var gameFactory = AllServices.Container.Single<IGameFactory>();
+            var progressService = AllServices.Container.Single<IPersistentProgressService>();
 
-            Construct(audio, effectFactory, gameFactory);
+            Construct(audio, effectFactory, gameFactory, progressService);
             Init();
 
             gameFactory.RegisterProgressWatchersExternal(gameObject);
         }
     }
 
-    public void Construct(IAudioService audio, IEffectFactory effectFactory, IGameFactory gameFactory)
+    public void Construct(IAudioService audio, IEffectFactory effectFactory, IGameFactory gameFactory, IPersistentProgressService progressService)
     {
         Construct();
         _gameFactory = gameFactory;
+        _progressService = progressService;
 
         View.Construct(audio, effectFactory);
     }
@@ -113,6 +121,19 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
 
         foreach (SpawnGameObjectData data in _spawnDatas)
             _gameFactory.GetGameObject(data.GameObjectId, at: data.Point != null ? data.Point.position : data.Position);
+    }
+
+    private void OnExhausted()
+    {
+        StartCoroutine(RemoveSelfCor());
+    }
+
+    private IEnumerator RemoveSelfCor()
+    {
+        yield return null;
+
+        _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].WorkshopsDatas.WorkshopsOnScene.Dictionary.Remove(UniqueId.Id);
+        _gameFactory.Recycle(gameObject);
     }
 
     protected override void Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);

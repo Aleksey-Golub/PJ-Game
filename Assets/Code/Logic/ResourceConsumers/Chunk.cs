@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine;
 using Code.Data;
 using System.Linq;
+using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -23,6 +24,9 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
     private bool _opened;
     private bool _delayedOpenStart;
     private float _delayedOpenElapsedTime;
+
+    protected override Action OnExhaustCallback => null;
+    protected override bool DisableSelfOnExhaused => true;
 
     #region EDITOR
 #if UNITY_EDITOR

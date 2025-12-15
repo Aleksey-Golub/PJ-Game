@@ -1,6 +1,8 @@
 using Code.Data;
 using Code.Infrastructure;
 using Code.Services;
+using System;
+using System.Collections;
 using UnityEngine;
 
 [SelectionBase]
@@ -13,6 +15,11 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
     private IDropObjectConfig _dropConfig;
     private IResourceFactory _resourceFactory;
     private IToolFactory _toolFactory;
+    private IGameFactory _gameFactory;
+    private IPersistentProgressService _progressService;
+
+    protected override Action OnExhaustCallback => OnExhausted;
+    protected override bool DisableSelfOnExhaused => false;
 
     private void OnValidate()
     {
@@ -32,20 +39,29 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
             var audio = AllServices.Container.Single<IAudioService>();
             var effectFactory = AllServices.Container.Single<IEffectFactory>();
             var gameFactory = AllServices.Container.Single<IGameFactory>();
+            var progressService = AllServices.Container.Single<IPersistentProgressService>();
 
-            Construct(resourceFactory, toolFactory, audio, effectFactory);
+            Construct(resourceFactory, toolFactory, audio, effectFactory, gameFactory, progressService);
             Init();
 
             gameFactory.RegisterProgressWatchersExternal(gameObject);
         }
     }
 
-    public void Construct(IResourceFactory resourceFactory, IToolFactory toolFactory, IAudioService audio, IEffectFactory effectFactory)
+    public void Construct(
+        IResourceFactory resourceFactory, 
+        IToolFactory toolFactory, 
+        IAudioService audio, 
+        IEffectFactory effectFactory, 
+        IGameFactory gameFactory, 
+        IPersistentProgressService progressService)
     {
         Construct();
 
         _resourceFactory = resourceFactory;
         _toolFactory = toolFactory;
+        _gameFactory = gameFactory;
+        _progressService = progressService;
 
         _dropConfig = _dropConfigMono as IDropObjectConfig;
         View.Construct(audio, effectFactory);
@@ -136,6 +152,19 @@ public class Workbench : SingleUseConsumerBase<ResourceConsumerView>
         {
             Logger.LogError($"[Workbench] DropObject() error : 'Not implemented for {_dropConfig.GetType()}'");
         }
+    }
+
+    private void OnExhausted()
+    {
+        StartCoroutine(RemoveSelfCor());
+    }
+
+    private IEnumerator RemoveSelfCor()
+    {
+        yield return null;
+
+        _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].WorkbenchesDatas.WorkbenchesOnScene.Dictionary.Remove(UniqueId.Id);
+        _gameFactory.Recycle(gameObject);
     }
 
     protected override void Accept(ICreatedByIdGameObjectVisitor visitor) => visitor.Visit(this);

@@ -168,9 +168,6 @@ public class Dungeon : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter
         r.Dropped -= ResourceSourceDropped;
         _spawnedResourceSources.Remove(r);
 
-        _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].ResourceSourcesDatas.ResourceSourcesOnScene.Dictionary.Remove(r.UniqueId.Id);
-        _gameFactory.Recycle(r.gameObject);
-
         if (_spawnedResourceSources.Count == 0)
             OpenExit();
     }

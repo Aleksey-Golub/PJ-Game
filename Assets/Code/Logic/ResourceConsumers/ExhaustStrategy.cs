@@ -1,16 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class ExhaustStrategy : IExhaustStrategy
 {
     private readonly MonoBehaviour _owner;
     private readonly Collider2D _collider;
+    private readonly Action _onExhaused;
+    private readonly bool _disableSelf;
     private Coroutine _coroutine;
 
-    public ExhaustStrategy(MonoBehaviour owner, Collider2D collider = null)
+    public ExhaustStrategy(MonoBehaviour owner, Collider2D disablingCollider = null, System.Action onExhaused = null, bool disableSelf = true)
     {
         _owner = owner;
-        _collider = collider;
+        _collider = disablingCollider;
+        _onExhaused = onExhaused;
+        _disableSelf = disableSelf;
     }
 
     public void ExhaustDelayed(float delay)
@@ -39,7 +44,10 @@ public class ExhaustStrategy : IExhaustStrategy
 
     private void InactivateSelf()
     {
-        _owner.gameObject.SetActive(false);
+        _onExhaused?.Invoke();
+
+        if (_disableSelf)
+            _owner?.gameObject.SetActive(false);
     }
 
     private void DisableCollider()

@@ -1,5 +1,6 @@
 ﻿using Code.Data;
 using Code.Services;
+using System;
 using UnityEngine;
 
 [SelectionBase]
@@ -31,10 +32,12 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
 
     protected string Id => UniqueId.Id;
     protected Collider2D Collider => _collider;
+    protected abstract Action OnExhaustCallback { get; }
+    protected abstract bool DisableSelfOnExhaused { get; }
 
     protected void Construct()
     {
-        ExhaustStrategy = new ExhaustStrategy(this, _collider);
+        ExhaustStrategy = new ExhaustStrategy(this, _collider, OnExhaustCallback, DisableSelfOnExhaused);
     }
 
     public abstract void WriteToProgress(GameProgress progress);

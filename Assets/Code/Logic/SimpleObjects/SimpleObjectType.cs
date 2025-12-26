@@ -4,6 +4,7 @@
     SellBoard = 1,
     UpgradeBoard = 2,
     Prize_First = 3,
+    Prize_Last = 9,
     Boots = 10,
     AdsResourceBox = 11,
     TutorialOnly = 20,

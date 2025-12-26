@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: -2070636323162149814}
   - component: {fileID: 4280185962719019227}
   m_Layer: 0
-  m_Name: Prize_First
+  m_Name: Prize_Last
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SceneBuiltInItem>k__BackingField: 0
   <UniqueId>k__BackingField: {fileID: 4280185962719019227}
-  _type: 3
+  _type: 9
   _view: {fileID: 6017995466529422269}
 --- !u!114 &4280185962719019227
 MonoBehaviour:

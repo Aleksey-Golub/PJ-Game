@@ -116,6 +116,9 @@ namespace Code.Infrastructure
                     (simpleObject as UpgradeBoard).Construct(_uiMediator, _configs, _progressService);
                     break;
                 case SimpleObjectType.Prize_First:
+                    (simpleObject as FirstPrize).Construct(_audio, _effectFactory, this, _progressService, this);
+                    break;
+                case SimpleObjectType.Prize_Last:
                     (simpleObject as FinalPrize).Construct(_audio);
                     break;
                 case SimpleObjectType.Boots:
@@ -423,7 +426,19 @@ namespace Code.Infrastructure
                 GenerateIdIfApplicable(portal);
             }
 
+            void ICreatedByIdGameObjectVisitor.Visit(FirstPrize finalPrize)
+            {
+                finalPrize.Construct(
+                    _gameFactory._audio,
+                    _gameFactory._effectFactory,
+                    _gameFactory,
+                    _gameFactory._progressService,
+                    _gameFactory
+                    );
 
+                GenerateIdIfApplicable(finalPrize);
+            }
+            
             void ICreatedByIdGameObjectVisitor.Visit(FinalPrize finalPrize)
             {
                 finalPrize.Construct(_gameFactory._audio);

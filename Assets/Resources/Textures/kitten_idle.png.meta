@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -93,6 +93,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -100,8 +113,8 @@ TextureImporter:
       name: kitten_idle_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 37
+        x: 0
+        y: 1
         width: 16
         height: 16
       alignment: 7
@@ -121,8 +134,8 @@ TextureImporter:
       name: kitten_idle_1
       rect:
         serializedVersion: 2
-        x: 46
-        y: 37
+        x: 18
+        y: 1
         width: 16
         height: 16
       alignment: 7
@@ -142,8 +155,8 @@ TextureImporter:
       name: kitten_idle_2
       rect:
         serializedVersion: 2
-        x: 82
-        y: 37
+        x: 37
+        y: 1
         width: 16
         height: 16
       alignment: 7
@@ -163,8 +176,8 @@ TextureImporter:
       name: kitten_idle_3
       rect:
         serializedVersion: 2
-        x: 118
-        y: 37
+        x: 58
+        y: 1
         width: 16
         height: 16
       alignment: 7
@@ -184,8 +197,8 @@ TextureImporter:
       name: kitten_idle_4
       rect:
         serializedVersion: 2
-        x: 154
-        y: 37
+        x: 78
+        y: 1
         width: 16
         height: 16
       alignment: 7
@@ -205,8 +218,8 @@ TextureImporter:
       name: kitten_idle_5
       rect:
         serializedVersion: 2
-        x: 190
-        y: 37
+        x: 96
+        y: 1
         width: 16
         height: 16
       alignment: 7
@@ -226,8 +239,8 @@ TextureImporter:
       name: kitten_idle_6
       rect:
         serializedVersion: 2
-        x: 226
-        y: 37
+        x: 113
+        y: 1
         width: 16
         height: 16
       alignment: 7
@@ -247,8 +260,8 @@ TextureImporter:
       name: kitten_idle_7
       rect:
         serializedVersion: 2
-        x: 262
-        y: 37
+        x: 130
+        y: 1
         width: 16
         height: 16
       alignment: 7
@@ -260,6 +273,90 @@ TextureImporter:
       bones: []
       spriteID: ebdb2a1343bc77048b9db153a5ec413e
       internalID: -243001616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_1
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1
+        width: 37
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8fc4cbe72a33b04c8bc2742ca01ae37
+      internalID: 1631481236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_2
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 1
+        width: 37
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6f52eba5db540b448b91140142cc668
+      internalID: 1943555526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_3
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 1
+        width: 37
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b194557ea77d264185ac05519f8ef9b
+      internalID: 1526342575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slime_4
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 1
+        width: 37
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39bd6fb09e5f8b74693e46121c68282b
+      internalID: 1668492305
       vertices: []
       indices: 
       edges: []
@@ -283,6 +380,12 @@ TextureImporter:
       kitten_idle_5: -471348140
       kitten_idle_6: 638238317
       kitten_idle_7: -243001616
+      portal: 1721736840
+      portal_center: -1424078762
+      slime_1: 1631481236
+      slime_2: 1943555526
+      slime_3: 1526342575
+      slime_4: 1668492305
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

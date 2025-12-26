@@ -46,6 +46,7 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
     private UpgradeBoard _upgradeBoard;
     private bool _inUpgradeBoard;
 
+    private bool _movementBlocked;
     private bool _isSpeedUp;
     private float _speedUpSpeed = 1f;
     private Timer _speedUpTimer;
@@ -201,6 +202,9 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
         _speedUpTimer.StartAsPartialPassed(time, passed);
     }
 
+    internal void BlockMovement() => _movementBlocked = true;
+    internal void UnBlockMovement() => _movementBlocked = false;
+
     private void OnSpeedUpTimerElapsed(Timer speedUpTimer)
     {
         speedUpTimer.Elapsed -= OnSpeedUpTimerElapsed;
@@ -221,7 +225,7 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
         // movement
         _speedUpTimer.OnUpdate(Time.fixedDeltaTime);
 
-        if (_input.HasMoveInput())
+        if (_input.HasMoveInput() && !_movementBlocked)
         {
             float xMovement = _input.GetHorizontalAxisRaw();
             float yMovement = _input.GetVerticalAxisRaw();

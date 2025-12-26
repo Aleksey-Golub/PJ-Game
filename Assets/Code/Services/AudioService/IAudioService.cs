@@ -7,6 +7,8 @@ namespace Code.Services
         bool IsMuted(string group);
         void Load();
         void PlayAmbient();
+        void PauseAmbient();
+        void UnPauseAmbient();
         void PlayAmbient(AudioClip clip);
         string PlaySfxAtPosition(AudioClip clip, Vector3 position, string objectUniqueId = default, bool looping = false);
         void PlaySfxAtUI(AudioClip clip, string objectUniqueId = default, bool looping = false);

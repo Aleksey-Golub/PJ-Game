@@ -124,6 +124,18 @@ namespace Code.Services
             PlayAmbient(_ambient);
         }
 
+        public void PauseAmbient()
+        {
+            if (_musicSource != null && _musicSource.AudioSource != null)
+                _musicSource.AudioSource.Pause();
+        }
+
+        public void UnPauseAmbient()
+        {
+            if (_musicSource != null && _musicSource.AudioSource != null)
+                _musicSource.AudioSource.UnPause();
+        }
+
         public void PlayAmbient(AudioClip clip)
         {
             if (_musicSource == null)
@@ -249,8 +261,7 @@ namespace Code.Services
             Logger.Log($"[Audio] PauseAll()");
             _pause = true;
 
-            if (_musicSource != null && _musicSource.AudioSource != null)
-                _musicSource.AudioSource.Pause();
+            PauseAmbient();
 
             foreach (var s in _toCheckEnd)
                 s.Value?.AudioSource?.Pause();
@@ -261,8 +272,7 @@ namespace Code.Services
             Logger.Log($"[Audio] UnPauseAll()");
             _pause = false;
 
-            if (_musicSource != null && _musicSource.AudioSource != null)
-                _musicSource.AudioSource.UnPause();
+            UnPauseAmbient();
 
             foreach (var s in _toCheckEnd)
                 s.Value?.AudioSource?.Pause();

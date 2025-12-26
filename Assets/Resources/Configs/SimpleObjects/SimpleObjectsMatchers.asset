@@ -23,3 +23,7 @@ MonoBehaviour:
     Template: {fileID: 8664462723367386185, guid: 20122c66ea862a6479cc41bc2eabd0fc, type: 3}
   - Type: 11
     Template: {fileID: 9178216247915738724, guid: a8752735b90536e4886f35e28b174464, type: 3}
+  - Type: 50
+    Template: {fileID: 1588514324118812293, guid: b1817b432a3cbf040824c97aa24c3a21, type: 3}
+  - Type: 51
+    Template: {fileID: 1588514324118812293, guid: ca2f74d6f7c7aea4eaf38ab4319fc3d4, type: 3}

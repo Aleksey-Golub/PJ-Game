@@ -11,6 +11,7 @@ public interface ICreatedByIdGameObjectVisitor
     void Visit(Workshop workshop);
     void Visit(Chunk chunk);
     void Visit(Dungeon dungeon);
+    void Visit(Portal portal);
     void Visit(FinalPrize finalPrize);
     void Visit(BootsAdsObject bootsAdsObject);
     void Visit(AdsResourceBox adsResourceBox);

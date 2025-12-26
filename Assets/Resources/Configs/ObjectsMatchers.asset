@@ -61,6 +61,15 @@ MonoBehaviour:
   - GameObjectId: Tutorial msg 10
     Template: {fileID: 5615048197524511184, guid: 2d95cbca1f3479d4a9829bbfb5f4b4cc, type: 3}
     Type: 32
+  - GameObjectId: Portal Base
+    Template: {fileID: 5365857545424628188, guid: ffc8f800edd512b49a8f262102100bb7, type: 3}
+    Type: 1
+  - GameObjectId: Portal_1_2
+    Template: {fileID: 3487076201863745056, guid: b1817b432a3cbf040824c97aa24c3a21, type: 3}
+    Type: 1
+  - GameObjectId: Portal_2_1
+    Template: {fileID: 3487076201863745056, guid: ca2f74d6f7c7aea4eaf38ab4319fc3d4, type: 3}
+    Type: 1
   - GameObjectId: Sell Board
     Template: {fileID: 5468609326228704530, guid: 00d1604afd7f56041811867e1d22c7b9, type: 3}
     Type: 1

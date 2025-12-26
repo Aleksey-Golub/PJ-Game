@@ -124,6 +124,10 @@ namespace Code.Infrastructure
                 case SimpleObjectType.AdsResourceBox:
                     (simpleObject as AdsResourceBox).Construct(_adsService, _resourceFactory, _audio);
                     break;
+                case SimpleObjectType.Portal_1_2:
+                case SimpleObjectType.Portal_2_1:
+                    (simpleObject as Portal).Construct();
+                    break;
                 case SimpleObjectType.TutorialOnly:
                 case SimpleObjectType.None:
                 default:
@@ -412,6 +416,13 @@ namespace Code.Infrastructure
                 dungeon.Spawn();
                 GenerateIdIfApplicable(dungeon);
             }
+            
+            void ICreatedByIdGameObjectVisitor.Visit(Portal portal)
+            {
+                portal.Construct();
+                GenerateIdIfApplicable(portal);
+            }
+
 
             void ICreatedByIdGameObjectVisitor.Visit(FinalPrize finalPrize)
             {

@@ -2314,6 +2314,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: portal
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 51
+        width: 29
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.08}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e21ef759c9087a47b1b04142c9724b8
+      internalID: -1558221091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portal_center
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 51
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 485ddf15d97c68b4788634419eb005b5
+      internalID: 1921747715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2396,6 +2438,8 @@ TextureImporter:
       music_on: 496096163
       pine: -236394621
       pointer: -998875238
+      portal: -1558221091
+      portal_center: 1921747715
       pot_damaged: 1933690828
       pot_whole: -1094742133
       rock: -247551101

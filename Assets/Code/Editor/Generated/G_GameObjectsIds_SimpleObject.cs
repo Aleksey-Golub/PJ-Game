@@ -3,6 +3,9 @@ public static class G_GameObjectsIds_SimpleObject
     public static readonly string[] Ids = new string[]
     {
         "none",
+        "Portal Base",
+        "Portal_1_2",
+        "Portal_2_1",
         "Sell Board",
         "Upgrade Board",
         "Prize_First",

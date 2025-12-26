@@ -364,6 +364,11 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
             if (entrance.CanInteract(this))
                 entrance.Interact(this);
         }
+        
+        if (other.TryGetComponent(out Portal portal))
+        {
+            portal.Interact(this);
+        }
 
         if (other.TryGetComponent(out ResourceStorage resourceStorage))
         {

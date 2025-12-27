@@ -121,6 +121,9 @@ MonoBehaviour:
   - GameObjectId: Pine
     Template: {fileID: 6193472656297073183, guid: 95386233d68939749a9aadead7f72081, type: 3}
     Type: 2
+  - GameObjectId: Desert Tree
+    Template: {fileID: 6193472656297073183, guid: d149bd4d85664684abece35c1ce27eca, type: 3}
+    Type: 2
   - GameObjectId: Rock
     Template: {fileID: 7386530085354455567, guid: 60948b0b3b0aaa74082fb4d0b5548590, type: 3}
     Type: 2

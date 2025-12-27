@@ -2260,7 +2260,7 @@ TextureImporter:
         width: 26
         height: 43
       alignment: 9
-      pivot: {x: 0.5, y: 0.07}
+      pivot: {x: 0.5, y: 0.069767445}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2344,7 +2344,7 @@ TextureImporter:
         width: 13
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2352,6 +2352,48 @@ TextureImporter:
       bones: []
       spriteID: 485ddf15d97c68b4788634419eb005b5
       internalID: 1921747715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _stump_small
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 1
+        width: 15
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5, y: 0.36363637}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b682cc20cb188a45abed877b5ae89a9
+      internalID: 1481513187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_tree
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 95
+        width: 34
+        height: 43
+      alignment: 9
+      pivot: {x: 0.45588234, y: 0.093023255}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ec60792ee35de940b003843627e74de
+      internalID: -1716191859
       vertices: []
       indices: 
       edges: []
@@ -2409,6 +2451,7 @@ TextureImporter:
       _hit_effect_1: 462397261
       _hit_effect_2: 1163979227
       _hit_effect_3: 1437209520
+      _stump_small: 1481513187
       ads icon: -706577608
       ads icon dark: -115722810
       ads_box: 2040156088
@@ -2421,6 +2464,7 @@ TextureImporter:
       close button: -2007050740
       cloud: -721475698
       coin: -756613953
+      desert_tree: -1716191859
       dung: -1736698845
       finger: 1041573145
       fruit: -1746096017

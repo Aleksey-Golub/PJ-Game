@@ -5,6 +5,7 @@ public static class G_GameObjectsIds_ResourceSource
         "none",
         "Bush",
         "Pine",
+        "Desert Tree",
         "Rock",
         "Fruit bush",
         "Slime",

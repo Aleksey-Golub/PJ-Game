@@ -38,6 +38,7 @@ namespace Code.UI
             if (!_views.TryGetValue(resourceType, out InventoryResourceView resView))
             {
                 resView = CreateView(resourceType, newCount);
+                _views.Add(resourceType, resView);
             }
 
             resView.Set(newCount);

@@ -2,11 +2,14 @@
 
 internal class ResourceSourceHitByHitGathering : ResourceSource
 {
-    protected override bool DropConditionIsTrue() => true;
+    [SerializeField][Range(1, 2)] private int _hitsToDropOnePortionOfResource;
+
+    protected override bool DropConditionIsTrue() => _currentHitPoints % _hitsToDropOnePortionOfResource == 0;
 
     protected override void OnUpdate(float deltaTime)
     {
-        if (_currentHitPoints == _hitPoints)
+        // we cannot restore over max
+        if (_currentHitPoints + _hitsToDropOnePortionOfResource > _hitPoints)
             return;
 
         if (IsSingleUse)
@@ -14,10 +17,11 @@ internal class ResourceSourceHitByHitGathering : ResourceSource
 
         _restorationTimer += deltaTime;
 
-        if (_restorationTimer >= _restoreTime)
+        // we restore hitsToDropOnePortionOfResource count together
+        if (_restorationTimer >= _restoreTime * _hitsToDropOnePortionOfResource)
         {
             _restorationTimer = 0;
-            RestoreHP(1);
+            RestoreHP(_hitsToDropOnePortionOfResource);
         }
     }
 

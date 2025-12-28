@@ -266,6 +266,7 @@ MonoBehaviour:
     DropGroupingStrategy: 1
     DropRadius: 1.3
     MoveAfterDropTime: 0.6
+  _hitsToDropOnePortionOfResource: 1
 --- !u!114 &7009618060695402324
 MonoBehaviour:
   m_ObjectHideFlags: 0

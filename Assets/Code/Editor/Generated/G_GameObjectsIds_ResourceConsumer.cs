@@ -26,6 +26,8 @@ public static class G_GameObjectsIds_ResourceConsumer
         "Workbench 999 Coin to Gem",
         "Workshop Base",
         "Dry Fruit Bush",
+        "Point For Planting Phoenix Tree",
+        "Little Phoenix Tree",
         "Workshop 5 Stone to StoneStore",
         "Workshop 8 Carrot to CarrotStore",
         "Workshop 10 Egg to EggStore",

@@ -10,10 +10,15 @@ namespace Code.Infrastructure
         public const string HERO_PATH = "Player/Player";
         public const string WORKBENCH_BASE_PATH = "Environment/Workbenchs/Workbench Base";
         public const string CHUNK_BASE_PATH = "Environment/Chunks/Chunk";
+
         public const string WORKSHOP_BASE_PATH = "Environment/Workshops/Workshop Base";
         public const string DRYFRUITBUSH_PATH = "Environment/Workshops/Dry Fruit Bush";
+        public const string POINT_FOR_PLANTING_PHOENIX_TREE_PATH = "Environment/Workshops/Point For Planting Phoenix Tree";
+        public const string LITTLE_PHOENIX_TREE_PATH = "Environment/Workshops/Little Phoenix Tree";
+
         public const string COW_PATH = "Environment/Converters/Cow Variant";
         public const string PIG_PATH = "Environment/Converters/Pig Variant";
+
         public const string DUNGEON_BASE_PATH = "Environment/Dungeon/Dungeon Base";
     }
 }

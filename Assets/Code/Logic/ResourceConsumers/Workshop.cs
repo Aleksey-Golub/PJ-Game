@@ -144,4 +144,6 @@ public enum WorkshopType
     None = 0,
     WorkshopBase = 1,
     DryFruitBush = 2,
+    PointForPlantingPhoenixTree = 3,
+    LittlePhoenixTree = 4,
 }

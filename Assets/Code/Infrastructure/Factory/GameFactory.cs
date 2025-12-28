@@ -167,6 +167,12 @@ namespace Code.Infrastructure
                 case WorkshopType.DryFruitBush:
                     assetPath = AssetPath.DRYFRUITBUSH_PATH;
                     break;
+                case WorkshopType.PointForPlantingPhoenixTree:
+                    assetPath = AssetPath.POINT_FOR_PLANTING_PHOENIX_TREE_PATH;
+                    break;
+                case WorkshopType.LittlePhoenixTree:
+                    assetPath = AssetPath.LITTLE_PHOENIX_TREE_PATH;
+                    break;
                 case WorkshopType.None:
                 default:
                     throw new System.NotImplementedException($"[GameFactory] CreateWorkshop(). Not implemented for {type}");

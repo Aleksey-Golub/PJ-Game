@@ -31,5 +31,6 @@ public enum ResourceType
     WATER = 10,
     FRUIT = 11,
     IRON_ORE = 12,
-    IRON = 13
+    IRON = 13,
+    PHOENIX = 14,
 }

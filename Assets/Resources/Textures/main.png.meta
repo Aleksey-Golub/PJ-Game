@@ -2398,6 +2398,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: phoenix
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 66
+        width: 14
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84fb69e61d2450a428ae67efb257de01
+      internalID: 818646096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phoenix_tree
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 51
+        width: 29
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0.121212125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae142aad91c9bf747a47bb07f333171c
+      internalID: 1122343047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: place_for_planting
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 84
+        width: 12
+        height: 9
+      alignment: 9
+      pivot: {x: 0.5, y: 0.44444445}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8be636f0645df2f40812dba19d6b2210
+      internalID: -339651433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phoenix_tree_little
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 84
+        width: 18
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0d8b7e07b42ff4459688d22878f2779
+      internalID: -1161828719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2476,11 +2560,16 @@ TextureImporter:
       input_image: -1901630335
       iron: -343440380
       iron_ore: -1107001721
+      main_0: 1554485063
       milk: 1368875871
       mind_cloud: -1030577411
       music_off: 665058631
       music_on: 496096163
+      phoenix: 818646096
+      phoenix_tree: 1122343047
+      phoenix_tree_little: -1161828719
       pine: -236394621
+      place_for_planting: -339651433
       pointer: -998875238
       portal: -1558221091
       portal_center: 1921747715

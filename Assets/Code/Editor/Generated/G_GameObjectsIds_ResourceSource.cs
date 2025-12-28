@@ -8,6 +8,7 @@ public static class G_GameObjectsIds_ResourceSource
         "Desert Tree",
         "Rock",
         "Fruit bush",
+        "Phoenix Tree",
         "Slime",
         "Pot base",
         "Pot 3 egg",

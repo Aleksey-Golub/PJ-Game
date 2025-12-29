@@ -33,4 +33,5 @@ public enum ResourceType
     IRON_ORE = 12,
     IRON = 13,
     PHOENIX = 14,
+    SLIME_EGG_DESERT = 15,
 }

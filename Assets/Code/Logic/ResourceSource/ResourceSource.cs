@@ -250,4 +250,5 @@ public enum ResourceSourceType
     Pot = 6,
     DesertTree = 7,
     PhoenixTree = 8,
+    Slime_Desert = 9,
 }

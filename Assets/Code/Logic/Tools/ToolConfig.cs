@@ -40,4 +40,5 @@ public enum ToolType
     PICKAXE = 3,
     SWORD   = 4,
     BUCKET  = 5,
+    SCIMITAR = 6,
 }

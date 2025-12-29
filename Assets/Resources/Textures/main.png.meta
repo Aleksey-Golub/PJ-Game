@@ -2755,6 +2755,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: sandstone
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 173
+        width: 15
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2786b3a0076f796418e9407f39361595
+      internalID: 1858290500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coal
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 153
+        width: 15
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba68899fdbdc7934297f975864d69230
+      internalID: 1008306910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2821,6 +2863,7 @@ TextureImporter:
       carrot: -1806721189
       close button: -2007050740
       cloud: -721475698
+      coal: 1008306910
       coin: -756613953
       desert_tree: -1716191859
       dung: -1736698845
@@ -2849,6 +2892,7 @@ TextureImporter:
       pot_damaged: 1933690828
       pot_whole: -1094742133
       rock: -247551101
+      sandstone: 1858290500
       sell board: 174787419
       sell board panel: -1206609723
       sell button: -989307427

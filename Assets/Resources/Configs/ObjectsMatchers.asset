@@ -127,6 +127,9 @@ MonoBehaviour:
   - GameObjectId: Rock
     Template: {fileID: 7386530085354455567, guid: 60948b0b3b0aaa74082fb4d0b5548590, type: 3}
     Type: 2
+  - GameObjectId: Sandstone Rock
+    Template: {fileID: 7386530085354455567, guid: 211d3467ac6d28942b33d641e3d3f470, type: 3}
+    Type: 2
   - GameObjectId: Fruit bush
     Template: {fileID: 5516271038822587854, guid: 23bab3ca94ef1c44aa7519e9fc225f84, type: 3}
     Type: 2

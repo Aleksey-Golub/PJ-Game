@@ -7,6 +7,7 @@ public static class G_GameObjectsIds_ResourceSource
         "Pine",
         "Desert Tree",
         "Rock",
+        "Sandstone Rock",
         "Fruit bush",
         "Phoenix Tree",
         "Slime",

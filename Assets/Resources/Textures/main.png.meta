@@ -2797,6 +2797,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: sandstone_rock
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 84
+        width: 17
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5, y: 0.29411766}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2575f71e405c2da40a95396d01697df0
+      internalID: 1501151854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2893,6 +2914,7 @@ TextureImporter:
       pot_whole: -1094742133
       rock: -247551101
       sandstone: 1858290500
+      sandstone_rock: 1501151854
       sell board: 174787419
       sell board panel: -1206609723
       sell button: -989307427

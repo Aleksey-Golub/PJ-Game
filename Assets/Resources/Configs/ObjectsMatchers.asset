@@ -175,6 +175,9 @@ MonoBehaviour:
   - GameObjectId: Pig
     Template: {fileID: 613217426882335278, guid: 94700ca3fe878644ab8ffcf5f01e65b2, type: 3}
     Type: 8
+  - GameObjectId: Furnace Coal
+    Template: {fileID: 613217426882335278, guid: bb373c00bb3bea04a848a48502c9051a, type: 3}
+    Type: 8
   - GameObjectId: Pot base
     Template: {fileID: 5301705876624799288, guid: 7c114fcbd3fd30540b1804d4d43bf06b, type: 3}
     Type: 2

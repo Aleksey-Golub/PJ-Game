@@ -18,6 +18,7 @@ namespace Code.Infrastructure
 
         public const string COW_PATH = "Environment/Converters/Cow Variant";
         public const string PIG_PATH = "Environment/Converters/Pig Variant";
+        public const string FURNACE_COAL_PATH = "Environment/Converters/Furnace Coal Variant";
 
         public const string DUNGEON_BASE_PATH = "Environment/Dungeon/Dungeon Base";
     }

@@ -195,7 +195,9 @@ namespace Code.Infrastructure
                 case ConverterType.PigConverter:
                     assetPath = AssetPath.PIG_PATH;
                     break;
-                case ConverterType.FurnaceConverter:
+                case ConverterType.FurnaceCoalConverter:
+                    assetPath = AssetPath.FURNACE_COAL_PATH;
+                    break;
                 case ConverterType.None:
                 default:
                     throw new System.NotImplementedException($"[GameFactory] CreateWorkshop(). Not implemented for {type}");

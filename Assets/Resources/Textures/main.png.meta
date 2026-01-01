@@ -593,15 +593,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: __main.texturec-0-flipped_25
+      name: Furnace
       rect:
         serializedVersion: 2
-        x: 51
-        y: 21
-        width: 30
-        height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 49
+        y: 17
+        width: 34
+        height: 33
+      alignment: 9
+      pivot: {x: 0.5, y: 0.18181819}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2878,6 +2878,7 @@ TextureImporter:
       Chest Opened: -13380755
       Cow: -158344966
       Earth: 965670463
+      Furnace: -691325619
       PICKAXE: 1402700907
       PREMIUM_buy: -1900280434
       PREMIUM_icon: 1730991760
@@ -2904,7 +2905,6 @@ TextureImporter:
       __main.texturec-0-flipped_10: -1611873582
       __main.texturec-0-flipped_12: -1272085339
       __main.texturec-0-flipped_17: -1230980207
-      __main.texturec-0-flipped_25: -691325619
       __main.texturec-0-flipped_28: -1977366518
       __main.texturec-0-flipped_3: -1571978254
       __main.texturec-0-flipped_4: 752955290

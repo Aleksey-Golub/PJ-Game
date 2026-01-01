@@ -210,7 +210,7 @@ public class Metrika : MonoBehaviour
             case ConverterType.PigConverter:
                 Metrika.EventReached(Metrika.Event.BuyPig);
                 break;
-            case ConverterType.FurnaceConverter:
+            case ConverterType.FurnaceCoalConverter:
                 break;
             case ConverterType.None:
             default:

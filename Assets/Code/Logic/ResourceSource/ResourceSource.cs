@@ -252,4 +252,5 @@ public enum ResourceSourceType
     PhoenixTree = 8,
     Slime_Desert = 9,
     SandstoneRock = 10,
+    IronRock = 11,
 }

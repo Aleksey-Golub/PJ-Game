@@ -3,6 +3,7 @@
 public interface IUpgradable
 {
     Sprite Sprite { get; }
+    Sprite SecondarySprite { get; }
     bool IsUpgradable { get; }
     UpgradableType UpgradableType { get; }
     string ID { get; }

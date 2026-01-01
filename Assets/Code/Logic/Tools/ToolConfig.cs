@@ -6,11 +6,14 @@ public class ToolConfig : ScriptableObject, IDropObjectConfig, IUpgradable
 {
     [SerializeField] private ToolType _type;
     [SerializeField] private Sprite _sprite;
+    [Tooltip("Can be null")]
+    [SerializeField] private Sprite _secondarySprite;
     [SerializeField] private AudioClip _pickupAudio;
     [SerializeField] private bool _upgradable;
     [SerializeField] private List<UpgradeStaticData> _upgradeDatas;
 
     public Sprite Sprite => _sprite;
+    public Sprite SecondarySprite => _secondarySprite;
     public bool IsUpgradable => _upgradable;
     public UpgradableType UpgradableType => UpgradableType.Tool;
     public string ID => Type.ToString();

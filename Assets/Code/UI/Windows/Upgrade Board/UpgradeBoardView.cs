@@ -180,8 +180,9 @@ namespace Code.UI
 
                 string id = config.ID;
                 Sprite sprite = config.Sprite;
+                Sprite secondarySprite = config.SecondarySprite;
 
-                upgradeItemView.Init(sprite, id);
+                upgradeItemView.Init(sprite, secondarySprite, id);
 
                 upgradeItemView.UpgradeButtonClicked += OnUpgradeButtonClicked;
 

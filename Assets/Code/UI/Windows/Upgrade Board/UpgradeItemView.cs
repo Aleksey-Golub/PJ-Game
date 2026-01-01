@@ -11,6 +11,7 @@ namespace Code.UI
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField, Range(0, 1)] private float _inactiveAlpha = 0.6f;
         [SerializeField] private Image _upgradeItemImage;
+        [SerializeField] private Image _secondaryItemImage;
         [SerializeField] private TextMeshProUGUI _upgradeText;
         [SerializeField] private TextMeshProUGUI _levelText;
         [SerializeField] private TextMeshProUGUI _upgradeCostText;
@@ -39,10 +40,12 @@ namespace Code.UI
             _upgradeButton.onClick.RemoveListener(OnButtonClicked);
         }
 
-        internal void Init(Sprite sprite, string itemID)
+        internal void Init(Sprite sprite, Sprite secondarySprite, string itemID)
         {
             _itemID = itemID;
             _upgradeItemImage.sprite = sprite;
+            _secondaryItemImage.sprite = secondarySprite;
+            _secondaryItemImage.enabled = secondarySprite != null;
         }
 
         internal void SetData(string upgradeText, string levelText, string upgradeCostText, bool showButton)

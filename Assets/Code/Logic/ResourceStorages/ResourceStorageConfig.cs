@@ -6,12 +6,15 @@ public class ResourceStorageConfig : ScriptableObject, IUpgradable
 {
     [SerializeField] private ResourceStorageType _type;
     [SerializeField] private Sprite _sprite;
+    [Tooltip("Can be null")]
+    [SerializeField] private Sprite _secondarySprite;
     [SerializeField] private bool _upgradable;
     [SerializeField] private List<UpgradeStaticData> _upgradeDatas;
     [field: SerializeField] public string ID { get; private set; }
 
     public ResourceStorageType Type => _type;
     public Sprite Sprite => _sprite;
+    public Sprite SecondarySprite => _secondarySprite;
     public bool IsUpgradable => _upgradable;
     public UpgradableType UpgradableType => UpgradableType.ResourceStorage;
 

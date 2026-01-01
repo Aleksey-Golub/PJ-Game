@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 3
   _sprite: {fileID: -691325619, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
+  _secondarySprite: {fileID: 1008306910, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   _upgradable: 1
   _upgradeDatas:
   - Value: 15

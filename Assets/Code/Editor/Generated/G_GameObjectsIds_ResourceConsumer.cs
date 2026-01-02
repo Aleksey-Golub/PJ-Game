@@ -6,6 +6,7 @@ public static class G_GameObjectsIds_ResourceConsumer
         "Cow",
         "Pig",
         "Furnace Coal",
+        "Furnace Iron",
         "Workbench Base",
         "Workbench 5 Milk to Sword",
         "Workbench 10 Grass to Axe",

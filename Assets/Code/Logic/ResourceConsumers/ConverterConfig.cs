@@ -39,4 +39,5 @@ public enum ConverterType
     CowConverter = 1,
     PigConverter = 2,
     FurnaceCoalConverter = 3,
+    FurnaceIronConverter = 4,
 }

@@ -20,6 +20,18 @@ PrefabInstance:
       propertyPath: _wholeSprite
       value: 
       objectReference: {fileID: -691325619, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
+    - target: {fileID: 2660675285612508292, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _dropViews.Array.data[0].<ResourceType>k__BackingField
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660675285612508292, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needViews.Array.data[0].<ResourceType>k__BackingField
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660675285612508292, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _uploadViews.Array.data[0].<ResourceType>k__BackingField
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2773218516838111979, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
       propertyPath: m_Size.x
       value: 2.535955
@@ -42,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
       propertyPath: _converTime
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
       propertyPath: _singleUpload
@@ -60,6 +72,42 @@ PrefabInstance:
       propertyPath: _preferedConsumedValue
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _dropResourceSettings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.data[0].<MaxUpload>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.data[0].<SingleUpload>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _dropResourceSettings.Array.data[0].<DropCount>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.data[0].<NeedResourceConfig>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 318ec1cfa5006ba418b1f426e11fd934, type: 2}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.data[0].<PreferedConsumedValue>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.data[0].<TransitionalResourceFinal>k__BackingField
+      value: 
+      objectReference: {fileID: 4342304474408669378}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _dropResourceSettings.Array.data[0].<DropResourceConfig>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a72dc9be55604b429b080366130a3ce, type: 2}
     - target: {fileID: 6090533677572989586, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.3
@@ -169,3 +217,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+--- !u!4 &4342304474408669378 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1073683285250529884, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+  m_PrefabInstance: {fileID: 3649195168207604382}
+  m_PrefabAsset: {fileID: 0}

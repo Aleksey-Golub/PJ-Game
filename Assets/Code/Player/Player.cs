@@ -38,7 +38,7 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
     private IPersistentProgressService _progressService;
     private Inventory _inventory;
     private ToolType _lastAbsentTool;
-    private Dictionary<IResourceConsumer, ResourceConsumerNeeds> _lastConsumersData;
+    private Dictionary<IResourceConsumer, List<ResourceConsumerNeeds>> _lastConsumersData;
     private HashSet<IResourceConsumer> _currentConsumers = new();
 
     private SellBoard _sellBoard;
@@ -474,25 +474,31 @@ public class Player : MonoBehaviour, IDisposable, ISavedProgressReader, ISavedPr
         foreach (var cPair in _lastConsumersData)
         {
             var needs = cPair.Value;
-            IResourceConsumer consumer = cPair.Key;
-            var resourceType = needs.ResourceType;
-            _inventory.GetCount(resourceType, out int inInventoryCount);
-            int consumedValue = GetConsumesValue(inInventoryCount, needs.CurrentNeedResourceCount, consumer.PreferedConsumedValue);
-            consumedValue = Mathf.Min(consumedValue, consumer.FreeSpace);
-
-            if (consumedValue == 0)
-                continue;
-
-            if (_inventory.Has(resourceType, consumedValue))
+            foreach (var need in needs)
             {
-                _inventory.Reserve(resourceType, consumedValue);
+                IResourceConsumer consumer = cPair.Key;
+                var resourceType = need.ResourceType;
+                _inventory.GetCount(resourceType, out int inInventoryCount);
+                int consumedValue = GetConsumesValue(inInventoryCount, need.CurrentNeedResourceCount, consumer.GetPreferedConsumedValue(resourceType));
+                consumedValue = Mathf.Min(consumedValue, consumer.GetFreeSpace(resourceType));
 
-                var transitionalResource = _transitionalResourceFactory.Get(transform.position, Quaternion.identity);
-                transitionalResource.Init(_inventory, resourceType, consumer, consumedValue, _configsService.GetConfigFor(resourceType).Sprite);
-                transitionalResource.MoveTo(consumer.TransitionalResourceFinalPosition);
+                if (consumedValue == 0)
+                    continue;
 
-                consumer.ApplyPreUpload(consumedValue);
-                consumersHandledCount++;
+                if (_inventory.Has(resourceType, consumedValue))
+                {
+                    _inventory.Reserve(resourceType, consumedValue);
+
+                    var transitionalResource = _transitionalResourceFactory.Get(transform.position, Quaternion.identity);
+                    transitionalResource.Init(_inventory, resourceType, consumer, consumedValue, _configsService.GetConfigFor(resourceType).Sprite);
+                    transitionalResource.MoveTo(consumer.GetTransitionalResourceFinalPosition(resourceType));
+
+                    consumer.ApplyPreUpload(resourceType, consumedValue);
+                    consumersHandledCount++;
+
+                    // break to consume one resource at a time
+                    break;
+                }
             }
         }
 

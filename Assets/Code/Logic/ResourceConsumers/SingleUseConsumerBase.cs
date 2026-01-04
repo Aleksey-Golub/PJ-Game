@@ -1,6 +1,7 @@
 ﻿using Code.Data;
 using Code.Services;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
@@ -25,30 +26,30 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
     protected int CurrentPreUpload;
 
     public bool CanInteract => Available && CurrentNeedResourceCount != 0 && CurrentPreUpload < _needResourceCount;
-    public int PreferedConsumedValue => _preferedConsumedValue;
-    public int FreeSpace => _needResourceCount - CurrentPreUpload;
-
-    public Vector3 TransitionalResourceFinalPosition => _transitionalResourceFinal.position;
 
     protected string Id => UniqueId.Id;
     protected Collider2D Collider => _collider;
     protected abstract Action OnExhaustCallback { get; }
     protected abstract bool DisableSelfOnExhaused { get; }
 
+    private List<ResourceConsumerNeeds> _needs;
+
     protected void Construct()
     {
+        _needs = new() { new ResourceConsumerNeeds(_needResourceConfig.Type) };
+
         ExhaustStrategy = new ExhaustStrategy(this, _collider, OnExhaustCallback, DisableSelfOnExhaused);
     }
 
     public abstract void WriteToProgress(GameProgress progress);
     public abstract void ReadProgress(GameProgress progress);
 
-    public void ApplyPreUpload(int consumedValue)
+    public void ApplyPreUpload(ResourceType resourceType, int consumedValue)
     {
         CurrentPreUpload += consumedValue;
     }
 
-    public void Consume(int value)
+    public void Consume(ResourceType resourceType, int value)
     {
         CurrentNeedResourceCount -= value;
         View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount, Available);
@@ -59,13 +60,15 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
         }
     }
 
-    public ResourceConsumerNeeds GetNeeds()
+    public int GetPreferedConsumedValue(ResourceType resourceType) => _preferedConsumedValue;
+    public int GetFreeSpace(ResourceType resourceType) => _needResourceCount - CurrentPreUpload;
+    public Vector3 GetTransitionalResourceFinalPosition(ResourceType resourceType) => _transitionalResourceFinal.position;
+
+    public List<ResourceConsumerNeeds> GetNeeds()
     {
-        return new ResourceConsumerNeeds()
-        {
-            ResourceType = _needResourceConfig.Type,
-            CurrentNeedResourceCount = CurrentNeedResourceCount
-        };
+        _needs[0].CurrentNeedResourceCount = CurrentNeedResourceCount;
+
+        return _needs;
     }
 
     public void SetAvailable()

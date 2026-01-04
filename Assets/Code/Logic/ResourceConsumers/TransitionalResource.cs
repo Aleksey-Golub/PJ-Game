@@ -64,7 +64,7 @@ public class TransitionalResource : MonoBehaviour, IPoolable
 
         transform.position = finalPosition;
         _inventory.RemoveReserved(_resourceType, _consumedValue);
-        _consumer.Consume(_consumedValue);
+        _consumer.Consume(_resourceType, _consumedValue);
 
         _factory.Recycle(this);
     }

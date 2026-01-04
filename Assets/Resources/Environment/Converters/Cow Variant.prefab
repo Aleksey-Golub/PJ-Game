@@ -16,6 +16,18 @@ PrefabInstance:
       propertyPath: _wholeSprite
       value: 
       objectReference: {fileID: -158344966, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
+    - target: {fileID: 2660675285612508292, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _dropViews.Array.data[0].<ResourceType>k__BackingField
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660675285612508292, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needViews.Array.data[0].<ResourceType>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660675285612508292, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _uploadViews.Array.data[0].<ResourceType>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4190069127457577136, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
       propertyPath: m_Name
       value: Cow Variant
@@ -48,6 +60,42 @@ PrefabInstance:
       propertyPath: _preferedConsumedValue
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _dropResourceSettings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.data[0].<MaxUpload>k__BackingField
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.data[0].<SingleUpload>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _dropResourceSettings.Array.data[0].<DropCount>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.data[0].<NeedResourceConfig>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f03ea9796cb38a4ea385f3fed27ed73, type: 2}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.data[0].<PreferedConsumedValue>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _needSettings.Array.data[0].<TransitionalResourceFinal>k__BackingField
+      value: 
+      objectReference: {fileID: 7597746044708831779}
+    - target: {fileID: 5623336128910246262, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+      propertyPath: _dropResourceSettings.Array.data[0].<DropResourceConfig>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b95cb37bd4f05e4bb3d8735c8ffd0d9, type: 2}
     - target: {fileID: 6376353579908593909, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.54
@@ -93,3 +141,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+--- !u!4 &7597746044708831779 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1073683285250529884, guid: e65a4304398fa0742b88e8179fedad49, type: 3}
+  m_PrefabInstance: {fileID: 7464400305168193663}
+  m_PrefabAsset: {fileID: 0}

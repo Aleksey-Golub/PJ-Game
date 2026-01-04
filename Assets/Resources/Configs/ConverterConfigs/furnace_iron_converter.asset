@@ -18,10 +18,14 @@ MonoBehaviour:
   _upgradable: 1
   _upgradeDatas:
   - Value: 12
+    Value1: 8
     Cost: 0
   - Value: 15
+    Value1: 10
     Cost: 250
   - Value: 18
+    Value1: 12
     Cost: 500
   - Value: 21
+    Value1: 14
     Cost: 999

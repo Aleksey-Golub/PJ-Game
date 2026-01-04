@@ -1,4 +1,6 @@
-﻿namespace Code.Data
+﻿using System.Collections.Generic;
+
+namespace Code.Data
 {
     [System.Serializable]
     public class ConverterOnSceneData
@@ -8,6 +10,7 @@
         public bool IsAvailable;
         public ConverterType Type;
         public int CurrentUpload;
+        public List<UploadData> CurrentUploads = new();
         public float Timer;
 
         public ConverterOnSceneData(
@@ -15,7 +18,7 @@
             bool sceneBuiltInItem,
             bool isAvailable,
             ConverterType type,
-            int currentUpload,
+            List<UploadData> currentUploads,
             float timer
             )
         {
@@ -23,8 +26,21 @@
             SceneBuiltInItem = sceneBuiltInItem;
             IsAvailable = isAvailable;
             Type = type;
-            CurrentUpload = currentUpload;
+            CurrentUploads = currentUploads;
             Timer = timer;
+        }
+    }
+
+    [System.Serializable]
+    public class UploadData
+    {
+        public ResourceType ResourceType;
+        public int CurrentUpload;
+
+        public UploadData(ResourceType resourceType, int currentUpload)
+        {
+            ResourceType = resourceType;
+            CurrentUpload = currentUpload;
         }
     }
 }

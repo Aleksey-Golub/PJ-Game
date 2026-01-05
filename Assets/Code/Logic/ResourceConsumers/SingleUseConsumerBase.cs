@@ -36,8 +36,6 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
 
     protected void Construct()
     {
-        _needs = new() { new ResourceConsumerNeeds(_needResourceConfig.Type) };
-
         ExhaustStrategy = new ExhaustStrategy(this, _collider, OnExhaustCallback, DisableSelfOnExhaused);
     }
 
@@ -81,6 +79,8 @@ public abstract class SingleUseConsumerBase<T> : MonoBehaviour, IResourceConsume
     {
         CurrentNeedResourceCount = _needResourceCount;
         CurrentPreUpload = 0;
+
+        _needs = new() { new ResourceConsumerNeeds(_needResourceConfig.Type) };
 
         View.Init(_needResourceConfig.Sprite, CurrentNeedResourceCount, GetGenerateObjSprite());
         View.ShowNeeds(CurrentNeedResourceCount, _needResourceCount, Available);

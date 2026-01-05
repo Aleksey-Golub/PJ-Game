@@ -2570,12 +2570,12 @@ TextureImporter:
       name: sand_0
       rect:
         serializedVersion: 2
-        x: 402
+        x: 399
         y: 494
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2591,12 +2591,12 @@ TextureImporter:
       name: sand_hole_0
       rect:
         serializedVersion: 2
-        x: 422
-        y: 494
+        x: 475
+        y: 475
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2604,6 +2604,342 @@ TextureImporter:
       bones: []
       spriteID: 78c0d6df491069f479df81139eaaa8c1
       internalID: -689664147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_1
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 494
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ecaa454a1357048a9d702e020bf92b
+      internalID: -274448411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_2
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 494
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de339eaf6bcd12d408a693676bfad0b8
+      internalID: -935969887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_3
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 494
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bcdfbf1cc01f764882a0c3af8d5080f
+      internalID: 1443422334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_4
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 475
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5785ff2b4ea7654fbeb77dedb04e8d3
+      internalID: 1381187337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_5
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 475
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67bc2ad2f2fa4ea41ab6476cfdfdb16f
+      internalID: 1444909907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_6
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 437
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93fe48da72326544eafe7db26205ce5c
+      internalID: -252205246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_7
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 437
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13f1743deb629894eb0f02d430a20044
+      internalID: 1744987910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_8
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 437
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bb5bab9649bd3e4195335742a6a2ce9
+      internalID: -1072206259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_9
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 437
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312c64bbc05b9854d903b2bda6a06f3b
+      internalID: -2064042288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_10
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 437
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d653f09ae64a4c34286970e4fb11ca59
+      internalID: -675389734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_11
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 475
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de71090e13c8eb34ba0acde12199663e
+      internalID: 56217285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_12
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 475
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13970f83c8cd5d940a7a0320bbaea68a
+      internalID: 2070029762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_13
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 437
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df9988c9b9060964b95d76e9c1adeb17
+      internalID: 1383751377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_14
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 437
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d796aba7e712c974bacde467a08614f0
+      internalID: -1280528102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_15
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 475
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5dc329304cb8a04c953f843b6cb5667
+      internalID: -2124407448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sand_hole_16
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 437
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cda52716576e564499e65e521b319c9
+      internalID: 619406480
       vertices: []
       indices: 
       edges: []
@@ -2717,6 +3053,23 @@ TextureImporter:
       marble_yellow_3: 1867674892
       sand_0: -512581601
       sand_hole_0: -689664147
+      sand_hole_1: -274448411
+      sand_hole_10: -675389734
+      sand_hole_11: 56217285
+      sand_hole_12: 2070029762
+      sand_hole_13: 1383751377
+      sand_hole_14: -1280528102
+      sand_hole_15: -2124407448
+      sand_hole_16: -1883225523
+      sand_hole_17: -42601406
+      sand_hole_2: -935969887
+      sand_hole_3: 1443422334
+      sand_hole_4: 1381187337
+      sand_hole_5: 1444909907
+      sand_hole_6: -252205246
+      sand_hole_7: 1744987910
+      sand_hole_8: -1072206259
+      sand_hole_9: -2064042288
       void: -1871159254
       wall_0: 409938601
       wall_1: -1027473768

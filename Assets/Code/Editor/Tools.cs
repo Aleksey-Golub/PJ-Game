@@ -76,6 +76,14 @@ namespace Code.Editor
 
             LoadSave(savePath);
         }
+        
+        [MenuItem("Tools/Set PROGRESS Prefs/Load 1.5.0 full completed game (on start 2nd location)")]
+        public static void Load_1_5_0_Save_On_Start_2nd_Location()
+        {
+            string savePath = "Assets/Debug Saves/1.5.0 PJ VK save (on 2nd location).json";
+
+            LoadSave(savePath);
+        }
 
         private static void LoadSave(string savePath)
         {

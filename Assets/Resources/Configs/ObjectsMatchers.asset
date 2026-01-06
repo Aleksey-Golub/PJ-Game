@@ -235,6 +235,12 @@ MonoBehaviour:
   - GameObjectId: Workbench 150 Wood to Bucket
     Template: {fileID: 8268293617339757368, guid: bcb6ff1de23b7fb4bb3f504b012f6a5a, type: 3}
     Type: 8
+  - GameObjectId: Workbench 25 Sandstone to Gem
+    Template: {fileID: 7988530919723443325, guid: 1c17750c2942d2340908169ba81b9f34, type: 3}
+    Type: 8
+  - GameObjectId: Workbench 5 Iron to Scimitar
+    Template: {fileID: 8205934742663997677, guid: d6a370379a7d42644af0645d9d6ec45b, type: 3}
+    Type: 8
   - GameObjectId: Workbench 25 Dung to Gem
     Template: {fileID: 7988530919723443325, guid: df5901e46aa67ca4896c5e5df6751c94, type: 3}
     Type: 8

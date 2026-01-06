@@ -16,6 +16,8 @@ public static class G_GameObjectsIds_ResourceConsumer
         "Workbench 50 Wood to Gem",
         "Workbench 50 Grass to Gem",
         "Workbench 150 Wood to Bucket",
+        "Workbench 25 Sandstone to Gem",
+        "Workbench 5 Iron to Scimitar",
         "Workbench 25 Dung to Gem",
         "Workbench 25 Milk to Gem",
         "Workbench 40 Fruit to Gem",

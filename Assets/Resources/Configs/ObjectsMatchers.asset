@@ -193,6 +193,9 @@ MonoBehaviour:
   - GameObjectId: Pot 3 water
     Template: {fileID: 6878690249142335436, guid: 5cd2d740578fa5746b340685f817ca70, type: 3}
     Type: 2
+  - GameObjectId: Pot 3 sandstone
+    Template: {fileID: 6878690249142335436, guid: 673622fc15cba5947a24b89e11a499d6, type: 3}
+    Type: 2
   - GameObjectId: Pot 5 grass
     Template: {fileID: 6878690249142335436, guid: 922319fc585e8c24eac5de3443590654, type: 3}
     Type: 2
@@ -201,6 +204,9 @@ MonoBehaviour:
     Type: 2
   - GameObjectId: Pot 20 coin
     Template: {fileID: 6878690249142335436, guid: 2f60694470796d4408c50a90ae214ab7, type: 3}
+    Type: 2
+  - GameObjectId: Pot 50 coin
+    Template: {fileID: 6878690249142335436, guid: 619326795d0b9254fb1d4f62ca5b2e81, type: 3}
     Type: 2
   - GameObjectId: Chest base
     Template: {fileID: 7355017640260301671, guid: 330b9f57a0f2112489adb717b47019e2, type: 3}

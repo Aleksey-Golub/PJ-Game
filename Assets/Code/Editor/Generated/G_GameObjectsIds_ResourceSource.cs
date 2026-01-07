@@ -17,8 +17,10 @@ public static class G_GameObjectsIds_ResourceSource
         "Pot 3 egg",
         "Pot 3 grass",
         "Pot 3 water",
+        "Pot 3 sandstone",
         "Pot 5 grass",
         "Pot 10 coin",
-        "Pot 20 coin"
+        "Pot 20 coin",
+        "Pot 50 coin"
     };
 }

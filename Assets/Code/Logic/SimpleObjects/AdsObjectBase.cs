@@ -37,7 +37,10 @@ public abstract class AdsObjectBase<T> : SimpleObjectBase, ICreatedByIdGameObjec
             _isExhaust = true;
 
             _restorationTimer.Start(1f);
+
+#if !DEBUG_SHOW_ADS_OBJECTS
             View.ShowExhaust();
+#endif
         }
     }
 

@@ -8,6 +8,7 @@
         "FAST_DEBUG",
         "FAKE_ADS",
         "GAME_PUSH",
+        "DEBUG_SHOW_ADS_OBJECTS", // show Ads objects regardless Ads enabled
 
         "VK_GAMES",
         "YG",

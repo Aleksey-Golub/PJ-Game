@@ -6,6 +6,7 @@ public static class G_GameObjectsIds_SimpleObject
         "Portal Base",
         "Portal_1_2",
         "Portal_2_1",
+        "Bridge Completed (wood+nails+2 ropes)",
         "Sell Board",
         "Upgrade Board",
         "Prize_First",

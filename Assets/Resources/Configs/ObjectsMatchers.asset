@@ -70,6 +70,9 @@ MonoBehaviour:
   - GameObjectId: Portal_2_1
     Template: {fileID: 3487076201863745056, guid: ca2f74d6f7c7aea4eaf38ab4319fc3d4, type: 3}
     Type: 1
+  - GameObjectId: Bridge Completed (wood+nails+2 ropes)
+    Template: {fileID: 7298435369027114144, guid: fc2ae34f64d8efc44bb30f158e5411a8, type: 3}
+    Type: 1
   - GameObjectId: Sell Board
     Template: {fileID: 5468609326228704530, guid: 00d1604afd7f56041811867e1d22c7b9, type: 3}
     Type: 1

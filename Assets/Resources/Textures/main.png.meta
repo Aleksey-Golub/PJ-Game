@@ -2860,6 +2860,174 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: bridge_final(nails+2 ropes)
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 161
+        width: 47
+        height: 94
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aafa954303f20fa47b456caf13aeec0f
+      internalID: -1458451576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_final_support_NW
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 237
+        width: 11
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cb3dd2279d11da42989a065d73b5e56
+      internalID: 978941643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_final_support_NE
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 237
+        width: 11
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d7570d7a72fffd4bab16efb6fb1ed7c
+      internalID: -122981588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_final_support_SW
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 161
+        width: 11
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b61cbe48511c9244892162f1ee72830
+      internalID: 296707709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_final_support_SE
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 161
+        width: 11
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1afdafae505ec1547b3cf7363ab2b899
+      internalID: 86366224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_final_rope_W
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 179
+        width: 8
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecbba33ea315936449c23dbc70c5fa82
+      internalID: -1153839185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_final_rope_E
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 179
+        width: 8
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bb02a9083dcb79489aaabd498c595c0
+      internalID: 114713354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_final_snap_nails
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 169
+        width: 22
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c777cd7fcab9ad4ea7041539827cf2f
+      internalID: -1126030022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2923,6 +3091,14 @@ TextureImporter:
       arrow_swipe: 986111177
       arrow_swipe_small: 262159369
       boots: -1288984483
+      bridge_final(nails+2 ropes): -1458451576
+      bridge_final_rope_E: 114713354
+      bridge_final_rope_W: -1153839185
+      bridge_final_snap_nails: -1126030022
+      bridge_final_support_NE: -122981588
+      bridge_final_support_NW: 978941643
+      bridge_final_support_SE: 86366224
+      bridge_final_support_SW: 296707709
       bush: -145191806
       carrot: -1806721189
       close button: -2007050740

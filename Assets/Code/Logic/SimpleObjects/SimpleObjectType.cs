@@ -10,4 +10,5 @@
     TutorialOnly = 20,
     Portal_1_2 = 50,
     Portal_2_1 = 51,
+    BridgeCompleted_Wood_Nails_2_Ropes = 70,
 }

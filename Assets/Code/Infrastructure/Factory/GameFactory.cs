@@ -131,6 +131,9 @@ namespace Code.Infrastructure
                 case SimpleObjectType.Portal_2_1:
                     (simpleObject as Portal).Construct();
                     break;
+                case SimpleObjectType.BridgeCompleted_Wood_Nails_2_Ropes:
+                    (simpleObject as SimpleObject).Construct();
+                    break;
                 case SimpleObjectType.TutorialOnly:
                 case SimpleObjectType.None:
                 default:
@@ -334,6 +337,12 @@ namespace Code.Infrastructure
             public CreatedByIdGameObjectsConstructor(GameFactory gameFactory)
             {
                 _gameFactory = gameFactory;
+            }
+
+            void ICreatedByIdGameObjectVisitor.Visit(SimpleObject simpleObject)
+            {
+                simpleObject.Construct();
+                GenerateIdIfApplicable(simpleObject);
             }
 
             void ICreatedByIdGameObjectVisitor.Visit(TutorialOnly simpleObject)

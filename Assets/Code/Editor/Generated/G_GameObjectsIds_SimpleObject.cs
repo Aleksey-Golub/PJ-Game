@@ -19,6 +19,7 @@ public static class G_GameObjectsIds_SimpleObject
         "Ads Box 8 Fruit",
         "Ads Box 10 Egg",
         "Ads Box 10 Stone",
+        "Ads Box 10 Sandstone",
         "Ads Box 20 Wood",
         "Ads Box 30 Grass"
     };

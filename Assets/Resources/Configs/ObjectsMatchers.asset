@@ -109,6 +109,9 @@ MonoBehaviour:
   - GameObjectId: Ads Box 10 Stone
     Template: {fileID: 3023318839267767259, guid: 8e0718ab318c4a540b3e0f3a172c65bc, type: 3}
     Type: 1
+  - GameObjectId: Ads Box 10 Sandstone
+    Template: {fileID: 3023318839267767259, guid: 00b6b3a393fd9d040b2fbd8993257c19, type: 3}
+    Type: 1
   - GameObjectId: Ads Box 20 Wood
     Template: {fileID: 3023318839267767259, guid: c191c883317315c40ac7174e4a59c6ab, type: 3}
     Type: 1
@@ -207,6 +210,9 @@ MonoBehaviour:
     Type: 2
   - GameObjectId: Pot 50 coin
     Template: {fileID: 6878690249142335436, guid: 619326795d0b9254fb1d4f62ca5b2e81, type: 3}
+    Type: 2
+  - GameObjectId: Pot 5 iron ore
+    Template: {fileID: 6878690249142335436, guid: 024fed8542c2fc24894acd9a43b2c69a, type: 3}
     Type: 2
   - GameObjectId: Chest base
     Template: {fileID: 7355017640260301671, guid: 330b9f57a0f2112489adb717b47019e2, type: 3}
@@ -309,6 +315,12 @@ MonoBehaviour:
     Type: 8
   - GameObjectId: Workshop 150 Coin to Pig
     Template: {fileID: 2351629663921552638, guid: 92da7f59781f9cf41947cca6ec004459, type: 3}
+    Type: 8
+  - GameObjectId: Workshop 25 Sandstone to Furnace Coal
+    Template: {fileID: 34774306316643939, guid: 6064e4a76f843d249be07032cd6802de, type: 3}
+    Type: 8
+  - GameObjectId: Workshop 35 Sandstone to Furnace Iron
+    Template: {fileID: 34774306316643939, guid: 492ebdadd19ed1946b736e68133f7217, type: 3}
     Type: 8
   - GameObjectId: Dungeon Base
     Template: {fileID: 4832262605655957631, guid: 2aef2a424de892e4e9938cdae3eba559, type: 3}

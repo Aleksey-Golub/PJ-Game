@@ -21,6 +21,7 @@ public static class G_GameObjectsIds_ResourceSource
         "Pot 5 grass",
         "Pot 10 coin",
         "Pot 20 coin",
-        "Pot 50 coin"
+        "Pot 50 coin",
+        "Pot 5 iron ore"
     };
 }

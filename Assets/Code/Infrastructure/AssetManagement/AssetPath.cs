@@ -16,6 +16,12 @@ namespace Code.Infrastructure
         public const string POINT_FOR_PLANTING_PHOENIX_TREE_PATH = "Environment/Workshops/Point For Planting Phoenix Tree";
         public const string LITTLE_PHOENIX_TREE_PATH = "Environment/Workshops/Little Phoenix Tree";
 
+        public const string BRIDGE_PARTIAL_CRACKEDSUPPORTS_NORTH_PATH = "Environment/Workshops/Bridge Partial (cracked supports north)";
+        public const string BRIDGE_PARTIAL_RESTOREDSUPPORTS_PATH = "Environment/Workshops/Bridge Partial (restored supports)";
+        public const string BRIDGE_PARTIAL_FIRSTROPES_PATH = "Environment/Workshops/Bridge Partial (first ropes)";
+        public const string BRIDGE_PARTIAL_WOODWITHOUTNAILS_PATH = "Environment/Workshops/Bridge Partial (wood without nails)";
+        public const string BRIDGE_PARTIAL_WOODWITHNAILS_PATH = "Environment/Workshops/Bridge Partial (wood+nails)";
+
         public const string COW_PATH = "Environment/Converters/Cow Variant";
         public const string PIG_PATH = "Environment/Converters/Pig Variant";
         public const string FURNACE_COAL_PATH = "Environment/Converters/Furnace Coal Variant";

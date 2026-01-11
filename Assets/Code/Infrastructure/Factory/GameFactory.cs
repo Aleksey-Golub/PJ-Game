@@ -176,6 +176,21 @@ namespace Code.Infrastructure
                 case WorkshopType.LittlePhoenixTree:
                     assetPath = AssetPath.LITTLE_PHOENIX_TREE_PATH;
                     break;
+                case WorkshopType.Bridge_Partial_CrackedSupportNorth:
+                    assetPath = AssetPath.BRIDGE_PARTIAL_CRACKEDSUPPORTS_NORTH_PATH;
+                    break;
+                case WorkshopType.Bridge_Partial_RestoredSupports:
+                    assetPath = AssetPath.BRIDGE_PARTIAL_RESTOREDSUPPORTS_PATH;
+                    break;
+                case WorkshopType.Bridge_Partial_FirstRopes:
+                    assetPath = AssetPath.BRIDGE_PARTIAL_FIRSTROPES_PATH;
+                    break;
+                case WorkshopType.Bridge_Partial_WoodWithoutNails:
+                    assetPath = AssetPath.BRIDGE_PARTIAL_WOODWITHNAILS_PATH;
+                    break;
+                case WorkshopType.Bridge_Partial_WoodWithNails:
+                    assetPath = AssetPath.BRIDGE_PARTIAL_WOODWITHNAILS_PATH;
+                    break;
                 case WorkshopType.None:
                 default:
                     throw new System.NotImplementedException($"[GameFactory] CreateWorkshop(). Not implemented for {type}");

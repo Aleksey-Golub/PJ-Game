@@ -2864,7 +2864,7 @@ TextureImporter:
       name: bridge_final(nails+2 ropes)
       rect:
         serializedVersion: 2
-        x: 49
+        x: 156
         y: 161
         width: 47
         height: 94
@@ -2995,7 +2995,7 @@ TextureImporter:
         width: 8
         height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3016,7 +3016,7 @@ TextureImporter:
         width: 22
         height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3024,6 +3024,132 @@ TextureImporter:
       bones: []
       spriteID: 2c777cd7fcab9ad4ea7041539827cf2f
       internalID: -1126030022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_partial_rope_W
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 94
+        width: 3
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e60671408e989e4a8a932e75959a394
+      internalID: 892944291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_partial_rope_E
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 94
+        width: 3
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5605fed0db8fc45b974eb429a823ed
+      internalID: -789896350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_partial_support_restored
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 142
+        width: 11
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c8b10b13bbde94a9ef17021288ae62
+      internalID: 2110514322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_partial_support_cracked
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 242
+        width: 11
+        height: 13
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23076923}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aa6b7fbf62e131499f58a0b9c0a9604
+      internalID: -991994637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_partial_snap_without_nails
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 185
+        width: 23
+        height: 70
+      alignment: 9
+      pivot: {x: 0.47826087, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88c122be872131d43a75eb25ad14feae
+      internalID: 2041582861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bridge_partial_snap_nails
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 185
+        width: 23
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 490ef6d344360d34b9f4ad3954ce6d93
+      internalID: 1801251162
       vertices: []
       indices: 
       edges: []
@@ -3099,6 +3225,12 @@ TextureImporter:
       bridge_final_support_NW: 978941643
       bridge_final_support_SE: 86366224
       bridge_final_support_SW: 296707709
+      bridge_partial_rope_E: -789896350
+      bridge_partial_rope_W: 892944291
+      bridge_partial_snap_nails: 1801251162
+      bridge_partial_snap_without_nails: 1191273135
+      bridge_partial_support_cracked: -991994637
+      bridge_partial_support_restored: 2110514322
       bush: -145191806
       carrot: -1806721189
       close button: -2007050740

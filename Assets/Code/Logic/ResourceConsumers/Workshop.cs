@@ -146,4 +146,10 @@ public enum WorkshopType
     DryFruitBush = 2,
     PointForPlantingPhoenixTree = 3,
     LittlePhoenixTree = 4,
+    Bridge_Partial_CrackedSupportNorth = 50,
+    //Bridge_Partial_CrackedSupportSouth = 51, // reserved
+    Bridge_Partial_RestoredSupports = 53,
+    Bridge_Partial_FirstRopes = 55,
+    Bridge_Partial_WoodWithoutNails = 57,
+    Bridge_Partial_WoodWithNails = 59,
 }

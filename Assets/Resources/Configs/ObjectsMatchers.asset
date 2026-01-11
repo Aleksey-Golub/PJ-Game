@@ -298,6 +298,21 @@ MonoBehaviour:
   - GameObjectId: Little Phoenix Tree
     Template: {fileID: 8377299975734826862, guid: 8c5a145315c44684eba9366371b019f3, type: 3}
     Type: 8
+  - GameObjectId: Bridge Partial (cracked supports north)
+    Template: {fileID: 8377299975734826862, guid: c7525c0986510b64db75a611d0ef0c74, type: 3}
+    Type: 8
+  - GameObjectId: Bridge Partial (restored supports)
+    Template: {fileID: 8377299975734826862, guid: 8431ecb7c491d9048b79aeee28450ca8, type: 3}
+    Type: 8
+  - GameObjectId: Bridge Partial (first ropes)
+    Template: {fileID: 8377299975734826862, guid: f0049b41669499b4fab018fb1474653b, type: 3}
+    Type: 8
+  - GameObjectId: Bridge Partial (wood without nails)
+    Template: {fileID: 8377299975734826862, guid: f68b75276456c414fa9c7927a2554f8a, type: 3}
+    Type: 8
+  - GameObjectId: Bridge Partial (wood+nails)
+    Template: {fileID: 8377299975734826862, guid: 2db3fb4ca501cae4693d86f37bd04fe4, type: 3}
+    Type: 8
   - GameObjectId: Workshop 5 Stone to StoneStore
     Template: {fileID: 6581872928603576592, guid: f22d786bd965fed4196a97f2e410daa3, type: 3}
     Type: 8

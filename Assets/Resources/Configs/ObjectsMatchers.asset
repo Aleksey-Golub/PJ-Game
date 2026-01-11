@@ -340,6 +340,9 @@ MonoBehaviour:
   - GameObjectId: Workshop 35 Sandstone to Furnace Iron
     Template: {fileID: 34774306316643939, guid: 492ebdadd19ed1946b736e68133f7217, type: 3}
     Type: 8
+  - GameObjectId: Workshop 50 Stone to WaterStorage
+    Template: {fileID: 34774306316643939, guid: ccadc77b112ff4d429d4a21485f72ae2, type: 3}
+    Type: 8
   - GameObjectId: Dungeon Base
     Template: {fileID: 4832262605655957631, guid: 2aef2a424de892e4e9938cdae3eba559, type: 3}
     Type: 16

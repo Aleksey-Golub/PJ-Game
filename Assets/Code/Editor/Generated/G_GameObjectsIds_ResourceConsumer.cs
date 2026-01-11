@@ -45,6 +45,7 @@ public static class G_GameObjectsIds_ResourceConsumer
         "Workshop 25 Coin to Cow",
         "Workshop 150 Coin to Pig",
         "Workshop 25 Sandstone to Furnace Coal",
-        "Workshop 35 Sandstone to Furnace Iron"
+        "Workshop 35 Sandstone to Furnace Iron",
+        "Workshop 50 Stone to WaterStorage"
     };
 }

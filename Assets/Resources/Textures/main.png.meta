@@ -197,8 +197,8 @@ TextureImporter:
       name: close button
       rect:
         serializedVersion: 2
-        x: 294
-        y: 86
+        x: 281
+        y: 78
         width: 32
         height: 28
       alignment: 0
@@ -428,8 +428,8 @@ TextureImporter:
       name: sound_on
       rect:
         serializedVersion: 2
-        x: 338
-        y: 57
+        x: 319
+        y: 9
         width: 14
         height: 13
       alignment: 0
@@ -449,8 +449,8 @@ TextureImporter:
       name: sound_off
       rect:
         serializedVersion: 2
-        x: 341
-        y: 39
+        x: 336
+        y: 31
         width: 14
         height: 13
       alignment: 0
@@ -470,8 +470,8 @@ TextureImporter:
       name: settings
       rect:
         serializedVersion: 2
-        x: 341
-        y: 20
+        x: 336
+        y: 16
         width: 14
         height: 14
       alignment: 0
@@ -681,7 +681,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 340
-        y: 78
+        y: 80
         width: 20
         height: 18
       alignment: 7
@@ -848,8 +848,8 @@ TextureImporter:
       name: Pig
       rect:
         serializedVersion: 2
-        x: 282
-        y: 54
+        x: 281
+        y: 52
         width: 25
         height: 25
       alignment: 7
@@ -911,8 +911,8 @@ TextureImporter:
       name: __pine_stump
       rect:
         serializedVersion: 2
-        x: 321
-        y: 21
+        x: 319
+        y: 23
         width: 16
         height: 12
       alignment: 9
@@ -1394,8 +1394,8 @@ TextureImporter:
       name: stairs_up
       rect:
         serializedVersion: 2
-        x: 315
-        y: 57
+        x: 307
+        y: 52
         width: 17
         height: 23
       alignment: 7
@@ -1415,8 +1415,8 @@ TextureImporter:
       name: stairs_down
       rect:
         serializedVersion: 2
-        x: 321
-        y: 35
+        x: 319
+        y: 36
         width: 16
         height: 15
       alignment: 7
@@ -3154,6 +3154,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: stairs_up_brown
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 52
+        width: 17
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d12a99af8be66ab4a8048ce0adc6a565
+      internalID: 223815636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stairs_down_brown
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 46
+        width: 16
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a2d5d86e9e28540823fe2bff961926
+      internalID: -1266874904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stairs_flat_brown
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 62
+        width: 17
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4367a07eab8b28b4c92f214d068b9f13
+      internalID: -2015472078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -3250,6 +3313,7 @@ TextureImporter:
       iron: -343440380
       iron_ore: -1107001721
       iron_rock: 422494416
+      main_1: 184031556
       milk: 1368875871
       mind_cloud: -1030577411
       music_off: 665058631
@@ -3308,8 +3372,11 @@ TextureImporter:
       speedUp_3: 666959028
       square marker: -1680720229
       stairs_down: -1723563639
+      stairs_down_brown: -1266874904
       stairs_flat: 2038853318
+      stairs_flat_brown: -2015472078
       stairs_up: 906421399
+      stairs_up_brown: 223815636
       stone: 623669451
       water: -1335790571
       wood: 1605545508

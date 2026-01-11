@@ -346,3 +346,6 @@ MonoBehaviour:
   - GameObjectId: Dungeon Slimes First
     Template: {fileID: 8181099005682108660, guid: b3133d088abcc1e45ab03e7c0a3ac0fa, type: 3}
     Type: 16
+  - GameObjectId: Dungeon Slimes Desert
+    Template: {fileID: 8181099005682108660, guid: 3817e06376f7d974e921ee12e1a7d8cc, type: 3}
+    Type: 16

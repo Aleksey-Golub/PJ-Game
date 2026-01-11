@@ -4,6 +4,7 @@ public static class G_GameObjectsIds_Dungeon
     {
         "none",
         "Dungeon Base",
-        "Dungeon Slimes First"
+        "Dungeon Slimes First",
+        "Dungeon Slimes Desert"
     };
 }

@@ -742,11 +742,12 @@ MonoBehaviour:
   _progressFg: {fileID: 1058114267182957339}
   _spriteRenderer: {fileID: 2208096938450847730}
   _shadow: {fileID: 1751594056655754247}
+  _bonusText: {fileID: 0}
+  _infoCloud: {fileID: 9183876234684171123}
   _diedSprite: {fileID: 0}
   _wholeSprite: {fileID: 2040156088, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   _rewardAcceptedClip: {fileID: 8300000, guid: d4561b7cd9c13464b8cbf03dfbedaec7, type: 3}
   _dropResourceAudioClip: {fileID: 8300000, guid: 6551217db40144341aef431aed8d54c5, type: 3}
-  _dropCloud: {fileID: 9183876234684171123}
   _dropResourceRenderer: {fileID: 6364416242906463669}
   _dropCounText: {fileID: 8248460073210967534}
 --- !u!114 &8191163781726128395

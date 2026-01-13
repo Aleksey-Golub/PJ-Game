@@ -12,6 +12,7 @@ public class AdsObjectView : MonoBehaviour
     [SerializeField] private GameObject _shadow;
     [Tooltip("Can be null")]
     [SerializeField] private TextMeshPro _bonusText;
+    [SerializeField] private GameObject _infoCloud;
 
     [Header("Settings")]
     [Tooltip("Can be null")]
@@ -55,8 +56,8 @@ public class AdsObjectView : MonoBehaviour
         _spriteRenderer.sprite = _diedSprite;
         _shadow.SetActive(false);
 
-        if (_bonusText)
-            _bonusText.gameObject.SetActive(false);
+        if (_infoCloud)
+            _infoCloud.SetActive(false);
     }
 
     internal virtual void ShowWhole()
@@ -64,8 +65,8 @@ public class AdsObjectView : MonoBehaviour
         _spriteRenderer.sprite = _wholeSprite;
         _shadow.SetActive(true);
 
-        if (_bonusText)
-            _bonusText.gameObject.SetActive(true);
+        if (_infoCloud)
+            _infoCloud.SetActive(true);
     }
 
     internal void PlayRewardAcceptSound()

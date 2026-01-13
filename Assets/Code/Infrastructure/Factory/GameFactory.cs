@@ -129,7 +129,7 @@ namespace Code.Infrastructure
                     break;
                 case SimpleObjectType.Portal_1_2:
                 case SimpleObjectType.Portal_2_1:
-                    (simpleObject as Portal).Construct();
+                    (simpleObject as Portal).Construct(_audio);
                     break;
                 case SimpleObjectType.BridgeCompleted_Wood_Nails_2_Ropes:
                     (simpleObject as SimpleObject).Construct();
@@ -457,7 +457,7 @@ namespace Code.Infrastructure
             
             void ICreatedByIdGameObjectVisitor.Visit(Portal portal)
             {
-                portal.Construct();
+                portal.Construct(_gameFactory._audio);
                 GenerateIdIfApplicable(portal);
             }
 

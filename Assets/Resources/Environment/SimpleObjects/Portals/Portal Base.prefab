@@ -419,6 +419,7 @@ MonoBehaviour:
   <UniqueId>k__BackingField: {fileID: 8991548472897842235}
   _teleportPoint: {fileID: 1781699915799317333}
   _portalType: 0
+  _teleportClip: {fileID: 8300000, guid: f76593c72b2cec14f8af2571f6b1dcac, type: 3}
 --- !u!114 &8991548472897842235
 MonoBehaviour:
   m_ObjectHideFlags: 0

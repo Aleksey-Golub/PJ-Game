@@ -282,6 +282,8 @@ MonoBehaviour:
   _mover: {fileID: 840535553055331096}
   _animator: {fileID: 3616679847468120476}
   _rambleBoolName: Jump
+  _triesToFindTargetPoint: 10
+  _moveMaxDuration: 3
   _stayTime: {x: 2, y: 5}
   _radiusToMove: {x: 1, y: 2}
 --- !u!50 &6921183617928382592

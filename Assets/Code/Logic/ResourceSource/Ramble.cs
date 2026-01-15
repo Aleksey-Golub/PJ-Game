@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 internal class Ramble : MonoBehaviour
 {
     [SerializeField] private RambleMoverBase _mover;
@@ -7,14 +11,37 @@ internal class Ramble : MonoBehaviour
     [SerializeField] private string _rambleBoolName = "Jump";
 
     [Header("Settings")]
+    [Tooltip("Tries count to find target point before use self position instead")]
+    [SerializeField] private int _triesToFindTargetPoint = 10;
+    [Tooltip("Used to stop endless duration. Usefull set as Max move radius devided by Speed")]
+    [SerializeField] private float _moveMaxDuration = 10;
     [SerializeField] private Vector2 _stayTime = new Vector2(2, 5);
     [SerializeField] private Vector2 _radiusToMove = new Vector2(1, 2);
 
     private Vector3 _targetPoint;
     private bool _isMoving;
+    private float _moveTimer;
     private float _stayTimer;
     private float _stayDelay;
     private int _rambleHash;
+
+    #region EDITOR
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 selfPosition = transform.position;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(_targetPoint, 0.15f);
+        Gizmos.DrawLine(selfPosition, _targetPoint);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(selfPosition, _radiusToMove.x);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(selfPosition, _radiusToMove.y);
+    }
+#endif
+    #endregion
 
     private void Awake()
     {
@@ -31,8 +58,9 @@ internal class Ramble : MonoBehaviour
 
     private void Update()
     {
-        _stayTimer += Time.deltaTime;
+        float deltaTime = Time.deltaTime;
 
+        _stayTimer += deltaTime;
         if (!_isMoving && _stayTimer >= _stayDelay)
         {
             _targetPoint = GetTargetPoint();
@@ -43,7 +71,11 @@ internal class Ramble : MonoBehaviour
 
         if (_isMoving)
         {
+            _moveTimer += deltaTime;
             _mover.MoveTo(_targetPoint);
+
+            if (_moveTimer >= _moveMaxDuration)
+                OnMoverReached();
         }
     }
 
@@ -52,6 +84,7 @@ internal class Ramble : MonoBehaviour
         _isMoving = false;
         _animator.SetBool(_rambleHash, false);
         _stayTimer = 0;
+        _moveTimer = 0;
     }
 
     private Vector3 GetTargetPoint()
@@ -74,7 +107,7 @@ internal class Ramble : MonoBehaviour
 
         return IsBreaked() ? transform.position : result;
 
-        bool IsBreaked() => k > 10;
+        bool IsBreaked() => k > _triesToFindTargetPoint;
     }
 
     private void SetNewStayDelay()

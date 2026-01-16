@@ -3217,6 +3217,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: poppy_bush
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 106
+        width: 25
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8e8204b061dbf44f9a9ca8ed9b8b599
+      internalID: -239230256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poppy_bush_exhausted
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 105
+        width: 25
+        height: 13
+      alignment: 9
+      pivot: {x: 0.5, y: 0.30769232}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df26018c5570e2c41847465b2f146bf7
+      internalID: -346823157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poppy
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 100
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d192779c732c7243b212bd10e276da0
+      internalID: 268427430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -3325,6 +3388,14 @@ TextureImporter:
       place_for_planting: -339651433
       plus: -569221757
       pointer: -998875238
+      poppy: 268427430
+      poppy_1: -496972247
+      poppy_2: -1527012815
+      poppy_3: -967456400
+      poppy_bush: -239230256
+      poppy_bush_1: -1672101713
+      poppy_bush_2: -630108782
+      poppy_bush_exhausted: -346823157
       portal: -1558221091
       portal_center: 1921747715
       pot_damaged: 1933690828

@@ -157,6 +157,9 @@ MonoBehaviour:
   - GameObjectId: Slime Desert
     Template: {fileID: 7126236964075378665, guid: 5bd58d28b8e042542a93087bf15547c1, type: 3}
     Type: 2
+  - GameObjectId: Poppy Bush
+    Template: {fileID: 2478993273050370983, guid: 37d81f891b667a64ca3cb58da5398101, type: 3}
+    Type: 2
   - GameObjectId: Carrot crate
     Template: {fileID: 6347430455194814507, guid: 87f2b338a55ab094fb4bca9b4bfbf085, type: 3}
     Type: 4

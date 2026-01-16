@@ -13,6 +13,7 @@ public static class G_GameObjectsIds_ResourceSource
         "Phoenix Tree",
         "Slime",
         "Slime Desert",
+        "Poppy Bush",
         "Pot base",
         "Pot 3 egg",
         "Pot 3 grass",

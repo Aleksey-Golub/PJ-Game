@@ -36,4 +36,5 @@ public enum ResourceType
     SLIME_EGG_DESERT = 15,
     SANDSTONE = 16,
     COAL = 17,
+    POPPY = 18,
 }

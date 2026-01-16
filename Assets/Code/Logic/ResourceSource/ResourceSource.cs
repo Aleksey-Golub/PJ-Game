@@ -253,4 +253,5 @@ public enum ResourceSourceType
     Slime_Desert = 9,
     SandstoneRock = 10,
     IronRock = 11,
+    PoppyBush = 12,
 }

@@ -127,6 +127,9 @@ MonoBehaviour:
   - GameObjectId: Ads Box 8 Iron Ore
     Template: {fileID: 3023318839267767259, guid: 7e8688796f8431440af3adbb77bb4d21, type: 3}
     Type: 1
+  - GameObjectId: Ads Box 4 Iron
+    Template: {fileID: 3023318839267767259, guid: 0017476420deea7479995862df3bfea2, type: 3}
+    Type: 1
   - GameObjectId: Bush
     Template: {fileID: 2478993273050370983, guid: 89eaa2b354cda3545a8c093c64bd9b3a, type: 3}
     Type: 2
@@ -264,6 +267,9 @@ MonoBehaviour:
     Type: 8
   - GameObjectId: Workbench 5 Iron to Scimitar
     Template: {fileID: 8205934742663997677, guid: d6a370379a7d42644af0645d9d6ec45b, type: 3}
+    Type: 8
+  - GameObjectId: Workbench 15 Desert Egg to Gem
+    Template: {fileID: 410053835367323695, guid: fe4dcfa9e17ca0341ad63f6e5a4fe6cf, type: 3}
     Type: 8
   - GameObjectId: Workbench 25 Dung to Gem
     Template: {fileID: 7988530919723443325, guid: df5901e46aa67ca4896c5e5df6751c94, type: 3}

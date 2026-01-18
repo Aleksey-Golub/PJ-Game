@@ -74,7 +74,6 @@ public class FirstPrize : SimpleObjectBase, ICreatedByIdGameObject
 
         _playerInTrigger = true;
 
-        Debug.Log($"@@@ OnTriggerEnter player");
         _view.ShowInteract();
         _view.PlayInteractSound();
 
@@ -104,15 +103,12 @@ public class FirstPrize : SimpleObjectBase, ICreatedByIdGameObject
 
         _playerInTrigger = false;
 
-        Debug.Log($"@@@ OnTriggerExit player");
         _view.HideInteract();
         _view.StopInteractSound();
     }
 
     private void SpawnPortal()
     {
-        Debug.Log($"@@@ Spawn Portal");
-
         _view.PlaySpawnPortalSound();
         _view.ShowSpawnPortalEffect();
 
@@ -122,8 +118,11 @@ public class FirstPrize : SimpleObjectBase, ICreatedByIdGameObject
 
     private void RemoveSelf()
     {
-        // remove from progress
-        //Destroy(gameObject);
+        if (SceneBuiltInItem)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
 
         _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[SceneLoader.CurrentLevel()].SimpleObjectsDatas.SimpleObjectsOnScene.Dictionary.Remove(UniqueId.Id);
         _gameFactory.Recycle(gameObject);

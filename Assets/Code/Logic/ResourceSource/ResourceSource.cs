@@ -216,6 +216,12 @@ public class ResourceSource : MonoBehaviour,
 
     private void RemoveSelf()
     {
+        if (SceneBuiltInItem)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         StartCoroutine(RemoveSelfCor());
     }
 

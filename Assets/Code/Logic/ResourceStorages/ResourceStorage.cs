@@ -253,6 +253,12 @@ public class ResourceStorage : MonoBehaviour, ISavedProgressReader, ISavedProgre
 
     private void OnExhausted()
     {
+        if (SceneBuiltInItem)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         StartCoroutine(RemoveSelfCor());
     }
 

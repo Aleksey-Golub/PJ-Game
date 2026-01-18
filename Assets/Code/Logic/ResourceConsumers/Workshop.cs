@@ -125,6 +125,12 @@ public class Workshop : SingleUseConsumerBase<ResourceConsumerView>
 
     private void OnExhausted()
     {
+        if (SceneBuiltInItem)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         StartCoroutine(RemoveSelfCor());
     }
 

@@ -2886,7 +2886,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 237
+        y: 166
         width: 11
         height: 18
       alignment: 9
@@ -2906,8 +2906,8 @@ TextureImporter:
       name: bridge_final_support_NE
       rect:
         serializedVersion: 2
-        x: 37
-        y: 237
+        x: 25
+        y: 166
         width: 11
         height: 18
       alignment: 9
@@ -2927,8 +2927,8 @@ TextureImporter:
       name: bridge_final_support_SW
       rect:
         serializedVersion: 2
-        x: 1
-        y: 161
+        x: 13
+        y: 139
         width: 11
         height: 18
       alignment: 9
@@ -2948,8 +2948,8 @@ TextureImporter:
       name: bridge_final_support_SE
       rect:
         serializedVersion: 2
-        x: 37
-        y: 161
+        x: 25
+        y: 139
         width: 11
         height: 18
       alignment: 9
@@ -2969,8 +2969,8 @@ TextureImporter:
       name: bridge_final_rope_W
       rect:
         serializedVersion: 2
-        x: 5
-        y: 179
+        x: 72
+        y: 197
         width: 8
         height: 58
       alignment: 0
@@ -2990,8 +2990,8 @@ TextureImporter:
       name: bridge_final_rope_E
       rect:
         serializedVersion: 2
-        x: 35
-        y: 179
+        x: 81
+        y: 197
         width: 8
         height: 58
       alignment: 0
@@ -3011,8 +3011,8 @@ TextureImporter:
       name: bridge_final_snap_nails
       rect:
         serializedVersion: 2
-        x: 13
-        y: 169
+        x: 1
+        y: 185
         width: 22
         height: 70
       alignment: 0
@@ -3032,7 +3032,7 @@ TextureImporter:
       name: bridge_partial_rope_W
       rect:
         serializedVersion: 2
-        x: 36
+        x: 37
         y: 94
         width: 3
         height: 58
@@ -3053,7 +3053,7 @@ TextureImporter:
       name: bridge_partial_rope_E
       rect:
         serializedVersion: 2
-        x: 40
+        x: 41
         y: 94
         width: 3
         height: 58
@@ -3075,7 +3075,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 142
+        y: 139
         width: 11
         height: 18
       alignment: 9
@@ -3096,7 +3096,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 13
-        y: 242
+        y: 171
         width: 11
         height: 13
       alignment: 9
@@ -3116,7 +3116,7 @@ TextureImporter:
       name: bridge_partial_snap_without_nails
       rect:
         serializedVersion: 2
-        x: 49
+        x: 24
         y: 185
         width: 23
         height: 70
@@ -3137,7 +3137,7 @@ TextureImporter:
       name: bridge_partial_snap_nails
       rect:
         serializedVersion: 2
-        x: 72
+        x: 48
         y: 185
         width: 23
         height: 70
@@ -3280,6 +3280,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: poppy_bush_little
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 119
+        width: 17
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5, y: 0.22727273}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd90975a23d478b49bb7f6cb7ccbe999
+      internalID: 1578542457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush_little
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 119
+        width: 13
+        height: 9
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2777778}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a7a22c533668e041bba27485e0c5893
+      internalID: -173458630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_tree_little
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 131
+        width: 18
+        height: 26
+      alignment: 9
+      pivot: {x: 0.33333334, y: 0.13461539}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ead0d4c3dd9f04db6195225a49f1bb
+      internalID: -995410502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -3358,12 +3421,14 @@ TextureImporter:
       bridge_partial_support_cracked: -991994637
       bridge_partial_support_restored: 2110514322
       bush: -145191806
+      bush_little: -173458630
       carrot: -1806721189
       close button: -2007050740
       cloud: -721475698
       coal: 1008306910
       coin: -756613953
       desert_tree: -1716191859
+      desert_tree_little: -995410502
       dung: -1736698845
       finger: 1041573145
       fruit: -1746096017
@@ -3396,6 +3461,7 @@ TextureImporter:
       poppy_bush_1: -1672101713
       poppy_bush_2: -630108782
       poppy_bush_exhausted: -346823157
+      poppy_bush_little: 1578542457
       portal: -1558221091
       portal_center: 1921747715
       pot_damaged: 1933690828

@@ -13,8 +13,11 @@ namespace Code.Infrastructure
 
         public const string WORKSHOP_BASE_PATH = "Environment/Workshops/Workshop Base";
         public const string DRYFRUITBUSH_PATH = "Environment/Workshops/Dry Fruit Bush";
-        public const string POINT_FOR_PLANTING_PHOENIX_TREE_PATH = "Environment/Workshops/Point For Planting Phoenix Tree";
+        public const string POINT_FOR_PLANTING_PATH = "Environment/Workshops/Point For Planting Base";
         public const string LITTLE_PHOENIX_TREE_PATH = "Environment/Workshops/Little Phoenix Tree";
+        public const string LITTLE_BUSH_PATH = "Environment/Workshops/Little Bush";
+        public const string LITTLE_DESERT_TREE_PATH = "Environment/Workshops/Little Desert Tree";
+        public const string LITTLE_POPPY_BUSH_PATH = "Environment/Workshops/Little Poppy Bush";
 
         public const string BRIDGE_PARTIAL_CRACKEDSUPPORTS_NORTH_PATH = "Environment/Workshops/Bridge Partial (cracked supports north)";
         public const string BRIDGE_PARTIAL_RESTOREDSUPPORTS_PATH = "Environment/Workshops/Bridge Partial (restored supports)";

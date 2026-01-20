@@ -194,6 +194,13 @@ public class Metrika : MonoBehaviour
             case WorkshopType.DryFruitBush:
                 Metrika.EventReached(Metrika.Event.FirstFruitBush);
                 break;
+            case WorkshopType.PointForPlanting:
+            case WorkshopType.LittlePhoenixTree:
+            case WorkshopType.Bridge_Partial_CrackedSupportNorth:
+            case WorkshopType.Bridge_Partial_RestoredSupports:
+            case WorkshopType.Bridge_Partial_FirstRopes:
+            case WorkshopType.Bridge_Partial_WoodWithoutNails:
+            case WorkshopType.Bridge_Partial_WoodWithNails:
             case WorkshopType.None:
             default:
                 break;
@@ -211,7 +218,7 @@ public class Metrika : MonoBehaviour
                 Metrika.EventReached(Metrika.Event.BuyPig);
                 break;
             case ConverterType.FurnaceCoalConverter:
-                break;
+            case ConverterType.FurnaceIronConverter:
             case ConverterType.None:
             default:
                 break;

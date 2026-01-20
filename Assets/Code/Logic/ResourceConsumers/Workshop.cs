@@ -150,8 +150,11 @@ public enum WorkshopType
     None = 0,
     WorkshopBase = 1,
     DryFruitBush = 2,
-    PointForPlantingPhoenixTree = 3,
+    PointForPlanting = 3,
     LittlePhoenixTree = 4,
+    LittleBush = 5,
+    LittleDesertTree = 6,
+    LittlePoppyBush = 7,
     Bridge_Partial_CrackedSupportNorth = 50,
     //Bridge_Partial_CrackedSupportSouth = 51, // reserved
     Bridge_Partial_RestoredSupports = 53,

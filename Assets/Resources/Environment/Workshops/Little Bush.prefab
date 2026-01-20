@@ -72,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: -339651433, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -173458630, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,8 +110,8 @@ Transform:
   m_GameObject: {fileID: 1703103387629146735}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.157, y: 0.137, z: 0}
-  m_LocalScale: {x: 0.48042002, y: 0.48042002, z: 0.48042002}
+  m_LocalPosition: {x: -0.171, y: 0.137, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3224238424813724347}
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 11
-  m_Sprite: {fileID: 1605545508, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
+  m_Sprite: {fileID: -1335790571, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -235,7 +235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.883, y: 0.493}
+  m_AnchoredPosition: {x: 0.599, y: 0.41}
   m_SizeDelta: {x: 0.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8912082034007628098
@@ -597,7 +597,7 @@ Transform:
   m_GameObject: {fileID: 7789171587301732967}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0021, y: 0.673, z: 0}
+  m_LocalPosition: {x: -0.0021, y: 1.286, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 757873309983448514}
   - component: {fileID: 8712205242452939932}
   m_Layer: 0
-  m_Name: Point For Planting Phoenix Tree
+  m_Name: Little Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -740,7 +740,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8377299975734826862}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -765,7 +765,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.12}
+  m_Offset: {x: 0, y: 0.06}
   serializedVersion: 2
   m_Radius: 0.1981818
 --- !u!111 &3038428441021045121
@@ -803,13 +803,13 @@ MonoBehaviour:
   <UniqueId>k__BackingField: {fileID: 8712205242452939932}
   View: {fileID: 757873309983448514}
   _collider: {fileID: 711750896507664534}
-  _needResourceConfig: {fileID: 11400000, guid: 318ec1cfa5006ba418b1f426e11fd934, type: 2}
-  _needResourceCount: 20
+  _needResourceConfig: {fileID: 11400000, guid: be0099c985df4ee4eb479cf234b33e24, type: 2}
+  _needResourceCount: 2
   _preferedConsumedValue: -1
   _transitionalResourceFinal: {fileID: 2694871646836225384}
-  _type: 3
+  _type: 5
   _spawnDatas:
-  - GameObjectId: Little Phoenix Tree
+  - GameObjectId: Bush
     Point: {fileID: 4416775832208801865}
     Position: {x: 0, y: 0, z: 0}
 --- !u!114 &757873309983448514
@@ -825,13 +825,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cloud: {fileID: 3495978848447921547}
-  _resourceNeedImage: {fileID: 1895421006151499600}
-  _generateObjImage: {fileID: 4324095233566430247}
-  _needText: {fileID: 2058253434102702468}
   _spriteRenderer: {fileID: 416362097661063030}
   _animation: {fileID: 3038428441021045121}
   _hitEffectType: 0
   _effectTemplate: {fileID: 7251468672199821436}
+  _resourceNeedImage: {fileID: 1895421006151499600}
+  _needText: {fileID: 2058253434102702468}
+  _generateObjImage: {fileID: 4324095233566430247}
+  _needViews: []
+  _dropViews: []
   _diedSprite: {fileID: 0}
   _wholeSprite: {fileID: -363025930, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
   _changeSortingOrderWhenExhaust: 0

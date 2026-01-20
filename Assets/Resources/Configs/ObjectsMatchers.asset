@@ -307,11 +307,44 @@ MonoBehaviour:
   - GameObjectId: Dry Fruit Bush
     Template: {fileID: 8377299975734826862, guid: 422903e07b505314bbdb6b25ea26ad3b, type: 3}
     Type: 8
-  - GameObjectId: Point For Planting Phoenix Tree
-    Template: {fileID: 8377299975734826862, guid: 30a79615fb0057c45a44ba40bd539133, type: 3}
+  - GameObjectId: Point For Planting Base
+    Template: {fileID: 8377299975734826862, guid: 869277b4a64683446a14947b6064ec70, type: 3}
+    Type: 8
+  - GameObjectId: Point For Planting Bush 1
+    Template: {fileID: 8174456798099704084, guid: cf6b3382d160b2f4abd511a3a0a2b8fe, type: 3}
+    Type: 8
+  - GameObjectId: Point For Planting Bush 2
+    Template: {fileID: 8174456798099704084, guid: f941376dff72c584b8d589141a901058, type: 3}
+    Type: 8
+  - GameObjectId: Little Bush
+    Template: {fileID: 8377299975734826862, guid: 63201fcfe2dc48c46b0e4d9dbfbb5b80, type: 3}
+    Type: 8
+  - GameObjectId: Point For Planting Desert Tree 1
+    Template: {fileID: 8174456798099704084, guid: 4a581a4c5cf877646bd555b635d945f3, type: 3}
+    Type: 8
+  - GameObjectId: Point For Planting Desert Tree 2
+    Template: {fileID: 8174456798099704084, guid: 6c2bb22d3794dde4792f5b1ff5e43b05, type: 3}
+    Type: 8
+  - GameObjectId: Little Desert Tree
+    Template: {fileID: 8377299975734826862, guid: 0c040e446f0710944882b2a1903c08f5, type: 3}
+    Type: 8
+  - GameObjectId: Point For Planting Phoenix Tree 1
+    Template: {fileID: 8174456798099704084, guid: 536555dfc17cf654b990bc09738168a1, type: 3}
+    Type: 8
+  - GameObjectId: Point For Planting Phoenix Tree 2
+    Template: {fileID: 8174456798099704084, guid: a7e2b34a1ce6b1248b6b55dc450f279f, type: 3}
     Type: 8
   - GameObjectId: Little Phoenix Tree
     Template: {fileID: 8377299975734826862, guid: 8c5a145315c44684eba9366371b019f3, type: 3}
+    Type: 8
+  - GameObjectId: Point For Planting Poppy Bush 1
+    Template: {fileID: 8174456798099704084, guid: df03f723109bc6b4798e7c1444cc771a, type: 3}
+    Type: 8
+  - GameObjectId: Point For Planting Poppy Bush 2
+    Template: {fileID: 8174456798099704084, guid: 28ec131cb700dc949b5b77734e655d53, type: 3}
+    Type: 8
+  - GameObjectId: Little Poppy Bush
+    Template: {fileID: 8377299975734826862, guid: d5dc06f7b2469d04ead297e42f2d5fe8, type: 3}
     Type: 8
   - GameObjectId: Bridge Partial (cracked supports north)
     Template: {fileID: 8377299975734826862, guid: c7525c0986510b64db75a611d0ef0c74, type: 3}

@@ -83,7 +83,7 @@ PrefabInstance:
     - target: {fileID: 6483354508862177738, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _wholeSprite
       value: 
-      objectReference: {fileID: -1672101713, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
+      objectReference: {fileID: -239230256, guid: 18c03d6bde786a347b6aa3f245d42ff7, type: 3}
     - target: {fileID: 6483354508862177738, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _hitAudioClip
       value: 
@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _restoreTime
-      value: 6
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7791035349006889402, guid: 4e2ac1dd4e96a9e4c9a1efe9004f7b50, type: 3}
       propertyPath: _needToolType

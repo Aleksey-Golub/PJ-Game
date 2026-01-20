@@ -170,11 +170,20 @@ namespace Code.Infrastructure
                 case WorkshopType.DryFruitBush:
                     assetPath = AssetPath.DRYFRUITBUSH_PATH;
                     break;
-                case WorkshopType.PointForPlantingPhoenixTree:
-                    assetPath = AssetPath.POINT_FOR_PLANTING_PHOENIX_TREE_PATH;
+                case WorkshopType.PointForPlanting:
+                    assetPath = AssetPath.POINT_FOR_PLANTING_PATH;
                     break;
                 case WorkshopType.LittlePhoenixTree:
                     assetPath = AssetPath.LITTLE_PHOENIX_TREE_PATH;
+                    break;
+                case WorkshopType.LittleBush:
+                    assetPath = AssetPath.LITTLE_BUSH_PATH;
+                    break;
+                case WorkshopType.LittleDesertTree:
+                    assetPath = AssetPath.LITTLE_DESERT_TREE_PATH;
+                    break;
+                case WorkshopType.LittlePoppyBush:
+                    assetPath = AssetPath.LITTLE_POPPY_BUSH_PATH;
                     break;
                 case WorkshopType.Bridge_Partial_CrackedSupportNorth:
                     assetPath = AssetPath.BRIDGE_PARTIAL_CRACKEDSUPPORTS_NORTH_PATH;

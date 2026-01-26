@@ -136,6 +136,9 @@ MonoBehaviour:
   - GameObjectId: Ads Box 4 Iron
     Template: {fileID: 3023318839267767259, guid: 0017476420deea7479995862df3bfea2, type: 3}
     Type: 1
+  - GameObjectId: Ads Box 8 Poppy
+    Template: {fileID: 3023318839267767259, guid: 6b039d19376f46143baae30b66e62101, type: 3}
+    Type: 1
   - GameObjectId: Bush
     Template: {fileID: 2478993273050370983, guid: 89eaa2b354cda3545a8c093c64bd9b3a, type: 3}
     Type: 2

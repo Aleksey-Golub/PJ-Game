@@ -27,6 +27,7 @@ public static class G_GameObjectsIds_SimpleObject
         "Ads Box 30 Grass",
         "Ads Box 5 Coal",
         "Ads Box 8 Iron Ore",
-        "Ads Box 4 Iron"
+        "Ads Box 4 Iron",
+        "Ads Box 8 Poppy"
     };
 }

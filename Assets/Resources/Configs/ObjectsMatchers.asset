@@ -304,6 +304,15 @@ MonoBehaviour:
   - GameObjectId: Workbench 999 Coin to Gem
     Template: {fileID: 7988530919723443325, guid: e93329c22e7fa66449e1ad228599a5b3, type: 3}
     Type: 8
+  - GameObjectId: Workbench 25 Iron to Gem
+    Template: {fileID: 7988530919723443325, guid: 4ba719067ee433b41aefd769ee4b2572, type: 3}
+    Type: 8
+  - GameObjectId: Workbench 30 Poppy to Gem
+    Template: {fileID: 7988530919723443325, guid: 5259043f0d3214b41826703f89523e98, type: 3}
+    Type: 8
+  - GameObjectId: Workbench 40 Phoenix to Gem
+    Template: {fileID: 7988530919723443325, guid: 000e78c15fffb3045a320911f3c09881, type: 3}
+    Type: 8
   - GameObjectId: Workshop Base
     Template: {fileID: 3508747559550001708, guid: f0089661c698e7940a6d4750713422a4, type: 3}
     Type: 8

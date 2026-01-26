@@ -85,6 +85,9 @@ MonoBehaviour:
   - GameObjectId: Prize_First
     Template: {fileID: 7186441436483478544, guid: 5a4eb5f6053157144b175d09bc6f7b24, type: 3}
     Type: 1
+  - GameObjectId: Prize_Second
+    Template: {fileID: 7186441436483478544, guid: f7b41ce8b3aec304294a30cec1abb07f, type: 3}
+    Type: 1
   - GameObjectId: Prize_Last
     Template: {fileID: 7186441436483478544, guid: cea4af2aee0db0940b18d0faa9d76f4f, type: 3}
     Type: 1
@@ -411,6 +414,9 @@ MonoBehaviour:
     Type: 8
   - GameObjectId: Workshop 50 Stone to WaterStorage
     Template: {fileID: 34774306316643939, guid: ccadc77b112ff4d429d4a21485f72ae2, type: 3}
+    Type: 8
+  - GameObjectId: Special Second Prize Spawner
+    Template: {fileID: 8377299975734826862, guid: 7d861c7abbd0854429cecedb307e4382, type: 3}
     Type: 8
   - GameObjectId: Dungeon Base
     Template: {fileID: 4832262605655957631, guid: 2aef2a424de892e4e9938cdae3eba559, type: 3}

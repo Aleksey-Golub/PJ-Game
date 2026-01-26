@@ -25,6 +25,7 @@ namespace Code.Infrastructure
         public const string BRIDGE_PARTIAL_FIRSTROPES_PATH = "Environment/Workshops/Bridge Partial (first ropes)";
         public const string BRIDGE_PARTIAL_WOODWITHOUTNAILS_PATH = "Environment/Workshops/Bridge Partial (wood without nails)";
         public const string BRIDGE_PARTIAL_WOODWITHNAILS_PATH = "Environment/Workshops/Bridge Partial (wood+nails)";
+        public const string SPECIAL_SECOND_PRIZE_SPAWNER_PATH = "Environment/Workshops/Special Second Prize Spawner";
 
         public const string COW_PATH = "Environment/Converters/Cow Variant";
         public const string PIG_PATH = "Environment/Converters/Pig Variant";

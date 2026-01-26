@@ -161,4 +161,5 @@ public enum WorkshopType
     Bridge_Partial_FirstRopes = 55,
     Bridge_Partial_WoodWithoutNails = 57,
     Bridge_Partial_WoodWithNails = 59,
+    Special_Second_Prize_Spawner = 80,
 }

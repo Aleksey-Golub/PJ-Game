@@ -118,6 +118,9 @@ namespace Code.Infrastructure
                 case SimpleObjectType.Prize_First:
                     (simpleObject as FirstPrize).Construct(_audio, _effectFactory, this, _progressService, this);
                     break;
+                case SimpleObjectType.Prize_Second:
+                    (simpleObject as FinalPrize).Construct(_audio);
+                    break;
                 case SimpleObjectType.Prize_Last:
                     (simpleObject as FinalPrize).Construct(_audio);
                     break;
@@ -205,6 +208,9 @@ namespace Code.Infrastructure
                     break;
                 case WorkshopType.Bridge_Partial_WoodWithNails:
                     assetPath = AssetPath.BRIDGE_PARTIAL_WOODWITHNAILS_PATH;
+                    break;
+                case WorkshopType.Special_Second_Prize_Spawner:
+                    assetPath = AssetPath.SPECIAL_SECOND_PRIZE_SPAWNER_PATH;
                     break;
                 case WorkshopType.None:
                 default:

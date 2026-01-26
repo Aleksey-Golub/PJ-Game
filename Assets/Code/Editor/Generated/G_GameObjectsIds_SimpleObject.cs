@@ -11,6 +11,7 @@ public static class G_GameObjectsIds_SimpleObject
         "Sell Board",
         "Upgrade Board",
         "Prize_First",
+        "Prize_Second",
         "Prize_Last",
         "Boots",
         "Ads Resource Box Base",

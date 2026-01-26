@@ -352,6 +352,12 @@ MonoBehaviour:
   - GameObjectId: Point For Planting Poppy Bush 1
     Template: {fileID: 8174456798099704084, guid: df03f723109bc6b4798e7c1444cc771a, type: 3}
     Type: 8
+  - GameObjectId: Point For Planting Poppy Bush 1 (Special 1)
+    Template: {fileID: 8174456798099704084, guid: 6db41e7b1569751428127698e675a813, type: 3}
+    Type: 8
+  - GameObjectId: Point For Planting Poppy Bush 1 (Special 2)
+    Template: {fileID: 8174456798099704084, guid: d17c951580fc1f9418d7224b36b26173, type: 3}
+    Type: 8
   - GameObjectId: Point For Planting Poppy Bush 2
     Template: {fileID: 8174456798099704084, guid: 28ec131cb700dc949b5b77734e655d53, type: 3}
     Type: 8

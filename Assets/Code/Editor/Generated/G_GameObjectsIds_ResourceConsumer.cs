@@ -45,6 +45,8 @@ public static class G_GameObjectsIds_ResourceConsumer
         "Point For Planting Phoenix Tree 2",
         "Little Phoenix Tree",
         "Point For Planting Poppy Bush 1",
+        "Point For Planting Poppy Bush 1 (Special 1)",
+        "Point For Planting Poppy Bush 1 (Special 2)",
         "Point For Planting Poppy Bush 2",
         "Little Poppy Bush",
         "Bridge Partial (cracked supports north)",

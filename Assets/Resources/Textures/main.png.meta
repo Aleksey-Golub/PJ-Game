@@ -2700,8 +2700,8 @@ TextureImporter:
         y: 77
         width: 14
         height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2856,27 +2856,6 @@ TextureImporter:
       bones: []
       spriteID: a7fd4f25d9040a040b44a55b4bbb958d
       internalID: -569221757
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bridge_final(nails+2 ropes)
-      rect:
-        serializedVersion: 2
-        x: 156
-        y: 161
-        width: 47
-        height: 94
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aafa954303f20fa47b456caf13aeec0f
-      internalID: -1458451576
       vertices: []
       indices: 
       edges: []

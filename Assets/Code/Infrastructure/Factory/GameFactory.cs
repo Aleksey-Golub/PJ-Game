@@ -134,6 +134,9 @@ namespace Code.Infrastructure
                 case SimpleObjectType.BridgeCompleted_Wood_Nails_2_Ropes:
                     (simpleObject as SimpleObject).Construct();
                     break;
+                case SimpleObjectType.Desert_Tornado:
+                    (simpleObject as SimpleObject).Construct();
+                    break;
                 case SimpleObjectType.TutorialOnly:
                 case SimpleObjectType.None:
                 default:

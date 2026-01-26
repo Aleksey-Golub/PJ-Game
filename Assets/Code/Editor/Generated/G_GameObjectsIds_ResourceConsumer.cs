@@ -50,6 +50,7 @@ public static class G_GameObjectsIds_ResourceConsumer
         "Point For Planting Poppy Bush 2",
         "Little Poppy Bush",
         "Bridge Partial (cracked supports north)",
+        "Bridge Partial (cracked supports south)",
         "Bridge Partial (restored supports)",
         "Bridge Partial (first ropes)",
         "Bridge Partial (wood without nails)",

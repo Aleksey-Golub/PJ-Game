@@ -20,6 +20,7 @@ namespace Code.Infrastructure
         public const string LITTLE_POPPY_BUSH_PATH = "Environment/Workshops/Little Poppy Bush";
 
         public const string BRIDGE_PARTIAL_CRACKEDSUPPORTS_NORTH_PATH = "Environment/Workshops/Bridge Partial (cracked supports north)";
+        public const string BRIDGE_PARTIAL_CRACKEDSUPPORTS_SOUTH_PATH = "Environment/Workshops/Bridge Partial (cracked supports south)";
         public const string BRIDGE_PARTIAL_RESTOREDSUPPORTS_PATH = "Environment/Workshops/Bridge Partial (restored supports)";
         public const string BRIDGE_PARTIAL_FIRSTROPES_PATH = "Environment/Workshops/Bridge Partial (first ropes)";
         public const string BRIDGE_PARTIAL_WOODWITHOUTNAILS_PATH = "Environment/Workshops/Bridge Partial (wood without nails)";

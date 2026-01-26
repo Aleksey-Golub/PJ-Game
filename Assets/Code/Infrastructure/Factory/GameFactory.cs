@@ -191,6 +191,9 @@ namespace Code.Infrastructure
                 case WorkshopType.Bridge_Partial_CrackedSupportNorth:
                     assetPath = AssetPath.BRIDGE_PARTIAL_CRACKEDSUPPORTS_NORTH_PATH;
                     break;
+                case WorkshopType.Bridge_Partial_CrackedSupportSouth:
+                    assetPath = AssetPath.BRIDGE_PARTIAL_CRACKEDSUPPORTS_SOUTH_PATH;
+                    break;
                 case WorkshopType.Bridge_Partial_RestoredSupports:
                     assetPath = AssetPath.BRIDGE_PARTIAL_RESTOREDSUPPORTS_PATH;
                     break;
@@ -198,7 +201,7 @@ namespace Code.Infrastructure
                     assetPath = AssetPath.BRIDGE_PARTIAL_FIRSTROPES_PATH;
                     break;
                 case WorkshopType.Bridge_Partial_WoodWithoutNails:
-                    assetPath = AssetPath.BRIDGE_PARTIAL_WOODWITHNAILS_PATH;
+                    assetPath = AssetPath.BRIDGE_PARTIAL_WOODWITHOUTNAILS_PATH;
                     break;
                 case WorkshopType.Bridge_Partial_WoodWithNails:
                     assetPath = AssetPath.BRIDGE_PARTIAL_WOODWITHNAILS_PATH;

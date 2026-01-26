@@ -367,6 +367,9 @@ MonoBehaviour:
   - GameObjectId: Bridge Partial (cracked supports north)
     Template: {fileID: 8377299975734826862, guid: c7525c0986510b64db75a611d0ef0c74, type: 3}
     Type: 8
+  - GameObjectId: Bridge Partial (cracked supports south)
+    Template: {fileID: 8377299975734826862, guid: 1bf4d40b287acb44083f524b3e4e4127, type: 3}
+    Type: 8
   - GameObjectId: Bridge Partial (restored supports)
     Template: {fileID: 8377299975734826862, guid: 8431ecb7c491d9048b79aeee28450ca8, type: 3}
     Type: 8

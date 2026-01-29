@@ -15,6 +15,7 @@ internal class FirstPrizeView : MonoBehaviour
     [SerializeField] private float _slimeAppearanceDelay = 1f;
     [SerializeField] private float _slimeDisappearanceDelay = 1f;
     [SerializeField] private float _slimeAfterDisappearanceDelay = 0.5f;
+    [SerializeField] private GameObject _pointer;
     [SerializeField] private EffectId _slimeAppearanceEffectType;
     [SerializeField] private Transform _slimeAppearanceEffectTemplate;
     [SerializeField] private AudioClip _slimeAppearanceSound;
@@ -51,6 +52,7 @@ internal class FirstPrizeView : MonoBehaviour
 
     internal IEnumerator PlayCutScene()
     {
+        _pointer.SetActive(false);
         yield return new WaitForSeconds(_slimeAppearanceDelay);
         PlaySlimeAppearance();
         yield return new WaitForSeconds(_slimeDisappearanceDelay);

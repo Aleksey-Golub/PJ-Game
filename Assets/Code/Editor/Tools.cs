@@ -61,7 +61,7 @@ namespace Code.Editor
             Debug.Log($"PROGRESS Prefs wrote into file='{path}'");
         }
         
-        [MenuItem("Tools/Set PROGRESS Prefs/Load 1.5.0 full completed game (before end of 1st location)")]
+        [MenuItem("Tools/Set PROGRESS Prefs/Load 1.5.0 full completed game (before end of 1st location)", priority = 1)]
         public static void Load_1_5_0_Save_Before_FirstPrize()
         {
             string savePath = "Assets/Debug Saves/1.5.0 PJ VK save (before First Prize).json";
@@ -69,7 +69,7 @@ namespace Code.Editor
             LoadSave(savePath);
         }
         
-        [MenuItem("Tools/Set PROGRESS Prefs/Load 1.5.0 full completed game (Near First Prize)")]
+        [MenuItem("Tools/Set PROGRESS Prefs/Load 1.5.0 full completed game (Near First Prize)", priority = 5)]
         public static void Load_1_5_0_Save_Near_FirstPrize()
         {
             string savePath = "Assets/Debug Saves/1.5.0 PJ VK save (near First Prize).json";
@@ -77,10 +77,18 @@ namespace Code.Editor
             LoadSave(savePath);
         }
         
-        [MenuItem("Tools/Set PROGRESS Prefs/Load 1.5.0 full completed game (on start 2nd location)")]
-        public static void Load_1_5_0_Save_On_Start_2nd_Location()
+        [MenuItem("Tools/Set PROGRESS Prefs/Load 1.6.0 EDITOR save (before end bridge of 2nd locatioan)", priority = 10)]
+        public static void Load_1_6_0_Save_Before_EndBridgeOfSecondLocation()
         {
-            string savePath = "Assets/Debug Saves/1.5.0 PJ VK save (on 2nd location).json";
+            string savePath = "Assets/Debug Saves/1.6.0 EDITOR save (before end bridge of 2nd locatioan).json";
+
+            LoadSave(savePath);
+        }
+        
+        [MenuItem("Tools/Set PROGRESS Prefs/Load 1.6.0 EDITOR save (near 2nd prize)", priority = 15)]
+        public static void Load_1_6_0_EDITOR_Save_Near_SecondPrize()
+        {
+            string savePath = "Assets/Debug Saves/1.6.0 EDITOR save (near 2nd prize).json";
 
             LoadSave(savePath);
         }

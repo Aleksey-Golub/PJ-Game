@@ -23,7 +23,7 @@ public class InterstitialAdsAndPremiumRunner : MonoBehaviour
     private Coroutine _showSupportCoroutine;
     private readonly WaitForSeconds _wait = new WaitForSeconds(5f);
 
-#if DEBUG && FAST_DEBUG
+#if DEBUG && FAST_DEBUG_ADS_INTERVAL
     private void Awake() => _showInterval = 20f;
     private void Awake() => _showPremiumInterval = 50f;
     private void Awake() => _showSupportInterval = 60f;

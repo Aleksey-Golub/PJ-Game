@@ -8,7 +8,7 @@ public class GameAutoSaver : MonoBehaviour
     private ISaveLoadService _saveLoadService;
     private Timer _autoSaveTimer;
 
-#if DEBUG && FAST_DEBUG
+#if DEBUG && FAST_DEBUG_AUTOSAVE
     private void Awake() => _autosaveInterval = 7f;
 #endif
 

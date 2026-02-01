@@ -3305,6 +3305,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6f03ea9796cb38a4ea385f3fed27ed73, type: 2}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _onFilledAnalyticEvent
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -3314,6 +3318,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: <Available>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _sendAnalyticEventOnFilled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
@@ -13038,12 +13046,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ab299d3c5278ea24d828166789623b05, type: 2}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _onFilledAnalyticEvent
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: <Available>k__BackingField
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _sendAnalyticEventOnFilled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.data[0].Point
@@ -15840,6 +15856,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d4a16d5341c09e149a9f7fd0248de5ee, type: 2}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _onFilledAnalyticEvent
+      value: 210
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -15850,6 +15870,10 @@ PrefabInstance:
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: <Available>k__BackingField
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _sendAnalyticEventOnFilled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _chunksToOpen.Array.data[0]
@@ -56030,6 +56054,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ab299d3c5278ea24d828166789623b05, type: 2}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _onFilledAnalyticEvent
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -56040,6 +56068,10 @@ PrefabInstance:
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: <Available>k__BackingField
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _sendAnalyticEventOnFilled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _chunksToOpen.Array.data[0]
@@ -56667,12 +56699,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4a72dc9be55604b429b080366130a3ce, type: 2}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _onFilledAnalyticEvent
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: <Available>k__BackingField
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _sendAnalyticEventOnFilled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.data[0].Point
@@ -59264,6 +59304,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d4a16d5341c09e149a9f7fd0248de5ee, type: 2}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _onFilledAnalyticEvent
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -59274,6 +59318,10 @@ PrefabInstance:
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: <Available>k__BackingField
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _sendAnalyticEventOnFilled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _chunksToOpen.Array.data[0]
@@ -63584,6 +63632,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: bb8bbba833ec5d644b3a2bb0bb6342c9, type: 2}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _onFilledAnalyticEvent
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -63594,6 +63646,10 @@ PrefabInstance:
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: <Available>k__BackingField
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _sendAnalyticEventOnFilled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _chunksToOpen.Array.data[0]
@@ -63745,6 +63801,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 60dac604b7c6c104dbbc7f4579777a8b, type: 2}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _onFilledAnalyticEvent
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _spawnDatas.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -63755,6 +63815,10 @@ PrefabInstance:
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: <Available>k__BackingField
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
+      propertyPath: _sendAnalyticEventOnFilled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3518718039559736877, guid: a9d7811f2ba881f46aef5d3b91bcd144, type: 3}
       propertyPath: _chunksToOpen.Array.data[0]

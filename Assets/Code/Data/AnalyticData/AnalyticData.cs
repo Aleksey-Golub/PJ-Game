@@ -19,6 +19,7 @@ namespace Code.Data
     {
         public bool e_dummy;
 
+        // 1st location
         public bool e_FirstStart;
         public bool e_CollectSickle;
         public bool e_CollectAxe;
@@ -32,6 +33,19 @@ namespace Code.Data
         public bool e_FirstFruitBush;
         public bool e_OpenFirstPrizeChunk;
 
+        // 2nd location
+        public bool e_OpenFirstChunk_2ndLocation;
+        public bool e_OpenFirstDiamondChunk_2ndLocation;
+        public bool e_OpenFirstCoalChunk_2ndLocation;
+        public bool e_OpenSecondIronOreChunk_2ndLocation;
+        public bool e_CollectScimitar;
+        public bool e_OpenPhoenixTreeChunk_2ndLocation;
+        public bool e_OpenChunkWithTornado_2ndLocation;
+        public bool e_OpenFirstPoppyChunk_2ndLocation;
+        public bool e_OpenFinalBridgeChunk_2ndLocation;
+        public bool e_BuySecondPrize_2ndLocation;
+
+        // playtime
         public float playTimeSeconds;
         public bool e_Play_5_Min;
         public bool e_Play_10_Min;
@@ -46,5 +60,9 @@ namespace Code.Data
         public bool e_Play_120_Min;
         public bool e_Play_150_Min;
         public bool e_Play_180_Min;
+        public bool e_Play_210_Min;
+        public bool e_Play_240_Min;
+        public bool e_Play_270_Min;
+        public bool e_Play_300_Min;
     }
 }

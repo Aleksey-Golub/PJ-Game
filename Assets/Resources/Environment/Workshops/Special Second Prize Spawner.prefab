@@ -870,8 +870,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427018c82d42f4d419382b15d9590f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sendAnalyticEventOnFilled: 0
-  _onFilledAnalyticEvent: 0
+  _sendAnalyticEventOnFilled: 1
+  _onFilledAnalyticEvent: 220
   <Available>k__BackingField: 1
   <SceneBuiltInItem>k__BackingField: 0
   <UniqueId>k__BackingField: {fileID: 8712205242452939932}

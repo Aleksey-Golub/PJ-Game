@@ -19,7 +19,8 @@ public class Metrika : MonoBehaviour
         None                = 0,
         Game_Loaded         = 1,
 
-        FirstStart          = 10,
+        // 1st location
+        FirstStart = 10,
         CollectSickle       = 20,
         CollectAxe          = 30,
         FirstUpgradeSickle  = 40,
@@ -31,6 +32,18 @@ public class Metrika : MonoBehaviour
         CollectBucket       = 100,
         FirstFruitBush      = 110,
         OpenFirstPrizeChunk = 120,
+
+        // 2nd location
+        OpenFirstChunk_2ndLocation          = 130,
+        OpenFirstDiamondChunk_2ndLocation   = 140, // 22,10
+        OpenFirstCoalChunk_2ndLocation      = 150, // for 3 coal, -10,14
+        OpenSecondIronOreChunk_2ndLocation  = 160, // for 15 iron ore, -6,30
+        CollectScimitar                     = 170,
+        OpenPhoenixTreeChunk_2ndLocation    = 180, // for 10 iron, 6,30
+        OpenChunkWithTornado_2ndLocation    = 190,
+        OpenFirstPoppyChunk_2ndLocation     = 200, // for 2 poppy, 18,22
+        OpenFinalBridgeChunk_2ndLocation    = 210, // for 30 poppy, 6,34
+        BuySecondPrize_2ndLocation          = 220,
 
         // dont forget to add it to <time, Event> dictionary
         Play_5_Min   = 1005,
@@ -46,6 +59,10 @@ public class Metrika : MonoBehaviour
         Play_120_Min = 1120,
         Play_150_Min = 1150,
         Play_180_Min = 1180,
+        Play_210_Min = 1210,
+        Play_240_Min = 1240,
+        Play_270_Min = 1270,
+        Play_300_Min = 1300,
     }
 
     private const string ENABLE_ANALYTICS = "EnableAnalytics";
@@ -60,6 +77,10 @@ public class Metrika : MonoBehaviour
     /// </summary>
     private static readonly Dictionary<float, Event> _playTimeEventMap = new()
     {
+        { 300f, Event.Play_300_Min },
+        { 270f, Event.Play_270_Min },
+        { 240f, Event.Play_240_Min },
+        { 210f, Event.Play_210_Min },
         { 180f, Event.Play_180_Min },
         { 150f, Event.Play_150_Min },
         { 120f, Event.Play_120_Min },
@@ -169,6 +190,8 @@ public class Metrika : MonoBehaviour
                         break;
                     case ToolType.BUCKET:
                         break;
+                    case ToolType.SCIMITAR:
+                        break;
                     case ToolType.None:
                     default:
                         break;
@@ -194,6 +217,11 @@ public class Metrika : MonoBehaviour
             case WorkshopType.DryFruitBush:
                 Metrika.EventReached(Metrika.Event.FirstFruitBush);
                 break;
+            case WorkshopType.LittleBush:
+            case WorkshopType.LittleDesertTree:
+            case WorkshopType.LittlePoppyBush:
+            case WorkshopType.Bridge_Partial_CrackedSupportSouth:
+            case WorkshopType.Special_Second_Prize_Spawner:
             case WorkshopType.PointForPlanting:
             case WorkshopType.LittlePhoenixTree:
             case WorkshopType.Bridge_Partial_CrackedSupportNorth:
@@ -256,6 +284,16 @@ public class Metrika : MonoBehaviour
                 break;
             case ResourceType.IRON:
                 break;
+            case ResourceType.PHOENIX:
+                break;
+            case ResourceType.SLIME_EGG_DESERT:
+                break;
+            case ResourceType.SANDSTONE:
+                break;
+            case ResourceType.COAL:
+                break;
+            case ResourceType.POPPY:
+                break;
             case ResourceType.None:
             default:
                 break;
@@ -281,6 +319,9 @@ public class Metrika : MonoBehaviour
             case ToolType.BUCKET:
                 Metrika.EventReached(Metrika.Event.CollectBucket);
                 break;
+            case ToolType.SCIMITAR:
+                Metrika.EventReached(Metrika.Event.CollectScimitar);
+                break;
             case ToolType.None:
             default:
                 break;
@@ -302,6 +343,7 @@ public class Metrika : MonoBehaviour
 
         switch (@event)
         {
+            // 1st location
             case Event.FirstStart:
                 return ref _data.AnalyticEventsData.e_FirstStart;
             case Event.CollectSickle:
@@ -327,6 +369,29 @@ public class Metrika : MonoBehaviour
             case Event.OpenFirstPrizeChunk:
                 return ref _data.AnalyticEventsData.e_OpenFirstPrizeChunk;
 
+            // 2nd location
+            case Event.OpenFirstChunk_2ndLocation:
+                return ref _data.AnalyticEventsData.e_OpenFirstChunk_2ndLocation;
+            case Event.OpenFirstDiamondChunk_2ndLocation:
+                return ref _data.AnalyticEventsData.e_OpenFirstDiamondChunk_2ndLocation;
+            case Event.OpenFirstCoalChunk_2ndLocation:
+                return ref _data.AnalyticEventsData.e_OpenFirstCoalChunk_2ndLocation;
+            case Event.OpenSecondIronOreChunk_2ndLocation:
+                return ref _data.AnalyticEventsData.e_OpenSecondIronOreChunk_2ndLocation;
+            case Event.CollectScimitar:
+                return ref _data.AnalyticEventsData.e_CollectScimitar;
+            case Event.OpenPhoenixTreeChunk_2ndLocation:
+                return ref _data.AnalyticEventsData.e_OpenPhoenixTreeChunk_2ndLocation;
+            case Event.OpenChunkWithTornado_2ndLocation:
+                return ref _data.AnalyticEventsData.e_OpenChunkWithTornado_2ndLocation;
+            case Event.OpenFirstPoppyChunk_2ndLocation:
+                return ref _data.AnalyticEventsData.e_OpenFirstPoppyChunk_2ndLocation;
+            case Event.OpenFinalBridgeChunk_2ndLocation:
+                return ref _data.AnalyticEventsData.e_OpenFinalBridgeChunk_2ndLocation;
+            case Event.BuySecondPrize_2ndLocation:
+                return ref _data.AnalyticEventsData.e_BuySecondPrize_2ndLocation;
+
+            // playtime
             case Event.Play_5_Min:
                 return ref _data.AnalyticEventsData.e_Play_5_Min;
             case Event.Play_10_Min:
@@ -353,6 +418,14 @@ public class Metrika : MonoBehaviour
                 return ref _data.AnalyticEventsData.e_Play_150_Min;
             case Event.Play_180_Min:
                 return ref _data.AnalyticEventsData.e_Play_180_Min;
+            case Event.Play_210_Min:
+                return ref _data.AnalyticEventsData.e_Play_210_Min;
+            case Event.Play_240_Min:
+                return ref _data.AnalyticEventsData.e_Play_240_Min;
+            case Event.Play_270_Min:
+                return ref _data.AnalyticEventsData.e_Play_270_Min;
+            case Event.Play_300_Min:
+                return ref _data.AnalyticEventsData.e_Play_300_Min;
 
             case Event.Game_Loaded:
                 // to save runtime only to prevent multiple call runtime

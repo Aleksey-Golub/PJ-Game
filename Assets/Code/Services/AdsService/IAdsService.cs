@@ -38,7 +38,7 @@ namespace Code.Services
         void CloseSticky();
         void ShowPreloader();
         void ShowFullscreen();
-        void ShowRewardedVideo(Action onVideoFinished);
+        void ShowRewardedVideo(Action onRewardedReward);
         int GetRewardBasedOnInventory(ResourceType resourceType, int inInventory);
 
         bool IsRewardedVideoReady();

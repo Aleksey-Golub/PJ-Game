@@ -45,6 +45,18 @@ namespace Code.Data
         public bool e_OpenFinalBridgeChunk_2ndLocation;
         public bool e_BuySecondPrize_2ndLocation;
 
+        // ads
+        /// <summary> Amount of successfully watched Interstitial ads </summary>
+        public int e_Ads_Interstitial_Successed;
+        /// <summary> Amount of tracked with Analytic Interstitial ads </summary>
+        public int e_Ads_Interstitial_Successed_Tracked;
+        /// <summary> Amount of successfully watched Rewarded ads </summary>
+        public int e_Ads_Rewarded_Successed;
+        /// <summary> Amount of tracked with Analytic Rewarded ads </summary>
+        public int e_Ads_Rewarded_Successed_Tracked;
+        public bool e_Ads_Premium_Bought;
+        public bool e_Ads_Support_Bought;
+
         // playtime
         public float playTimeSeconds;
         public bool e_Play_5_Min;

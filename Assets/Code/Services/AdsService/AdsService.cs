@@ -29,7 +29,7 @@ namespace Code.Services
         public event Action<bool> FullscreenClose;
         public event Action<bool> RewardedClose;
 
-        private Action _onVideoFinished;
+        private Action _onRewardedReward;
 
         public bool IsAdsExceptStickyShowing => IsPreloaderShowing || IsFullscreenShowing || IsRewardedShowing;
 
@@ -249,7 +249,7 @@ namespace Code.Services
 #endif
         }
 
-        public void ShowRewardedVideo(Action onVideoFinished)
+        public void ShowRewardedVideo(Action onRewardedReward)
         {
             Logger.Log($"[AdsService] start ShowRewarded()");
 
@@ -259,7 +259,7 @@ namespace Code.Services
                 return;
             }
 
-            _onVideoFinished = onVideoFinished;
+            _onRewardedReward = onRewardedReward;
             
             AdsExceptStickyCalling?.Invoke();
 
@@ -268,13 +268,13 @@ namespace Code.Services
             AdsStart?.Invoke();
             AdsExceptStickyStart?.Invoke();
 
-            OnRewardedVideoFinished("");
+            OnRewardedVideoFinishedSuccessfully("");
 
             RewardedClose?.Invoke(true);
             AdsClose?.Invoke(true);
             AdsExceptStickyClose?.Invoke(true);
 #else
-            GP_Ads.ShowRewarded(onRewardedReward: OnRewardedVideoFinished);
+            GP_Ads.ShowRewarded(onRewardedReward: OnRewardedVideoFinishedSuccessfully);
 #endif
         }
 
@@ -289,10 +289,10 @@ namespace Code.Services
             };
         }
 
-        private void OnRewardedVideoFinished(string rewardId)
+        private void OnRewardedVideoFinishedSuccessfully(string rewardId)
         {
-            _onVideoFinished?.Invoke();
-            _onVideoFinished = null;
+            _onRewardedReward?.Invoke();
+            _onRewardedReward = null;
 
             RewardedVideoReady?.Invoke();
         }
@@ -394,6 +394,9 @@ namespace Code.Services
             FullscreenClose?.Invoke(success);
             AdsClose?.Invoke(success);
             AdsExceptStickyClose?.Invoke(success);
+
+            if (success)
+                Metrika.Event_AdsInterstitialSuccessed();
         }
 
         private void OnRewardedClose(bool success)
@@ -403,6 +406,9 @@ namespace Code.Services
             RewardedClose?.Invoke(success);
             AdsClose?.Invoke(success);
             AdsExceptStickyClose?.Invoke(success);
+
+            if (success)
+                Metrika.Event_Ads_Rewarded_Successed();
         }
         #endregion
 #endif

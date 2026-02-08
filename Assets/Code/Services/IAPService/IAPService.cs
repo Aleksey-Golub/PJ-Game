@@ -119,7 +119,8 @@ namespace Code.Services
                 GamePush.GP_Player.Set(PREMIUM_KEY, true);
                 _isPremiumBought = true;
 
-                GamePush.GP_Player.Sync();
+                //GamePush.GP_Player.Sync(); // Metrika syncs too
+                Metrika.EventReached(Metrika.Event.Ads_Premium_Bought);
             }
             
             if (productIdOrTag == SUPPORT_ID)
@@ -129,7 +130,8 @@ namespace Code.Services
                 _progress.Progress.PlayerProgress.SkinsData.AddAvailableSkin(SkinId.SupportSkin);
                 _saveService.SaveProgress();
 
-                GamePush.GP_Player.Sync();
+                //GamePush.GP_Player.Sync(); // Metrika syncs too
+                Metrika.EventReached(Metrika.Event.Ads_Support_Bought);
             }
 
             Logger.LogWarning($"[IAPService] OnPurchaseSuccess={productIdOrTag}");

@@ -45,6 +45,12 @@ public class Metrika : MonoBehaviour
         OpenFinalBridgeChunk_2ndLocation    = 210, // for 30 poppy, 6,34
         BuySecondPrize_2ndLocation          = 220,
 
+        // ads events
+        Ads_Interstitial_Successed  = 900,
+        Ads_Rewarded_Successed      = 901,
+        Ads_Premium_Bought          = 902,
+        Ads_Support_Bought          = 903,
+
         // dont forget to add it to <time, Event> dictionary
         Play_5_Min   = 1005,
         Play_10_Min  = 1010,
@@ -65,7 +71,13 @@ public class Metrika : MonoBehaviour
         Play_300_Min = 1300,
     }
 
-    private const string ENABLE_ANALYTICS = "EnableAnalytics";
+#if VK_GAMES
+    private const string ENABLE_ANALYTICS_KEY = "EnableAnalytics_VK";
+    private static readonly bool _isAnalyticsAvailable = true;
+#else
+    private const string ENABLE_ANALYTICS_KEY = "EnableAnalytics_DEFAULT";
+    private static readonly bool _isAnalyticsAvailable = false;
+#endif
 
     private static ISaveLoadAnalyticService _saveLoadAnalytic;
     private static AnalyticData _data;
@@ -109,9 +121,14 @@ public class Metrika : MonoBehaviour
     {
         _saveLoadAnalytic = saveLoadAnalytic;
         _data = data;
+
+        if (_isAnalyticsAvailable)
+        {
 #if GAME_PUSH
-        _isAnalyticsEnabled = GamePush.GP_Variables.GetBool(ENABLE_ANALYTICS);
+        _isAnalyticsEnabled = GamePush.GP_Variables.GetBool(ENABLE_ANALYTICS_KEY);
 #endif
+        }
+
         Logger.Log($"[Metrika] Initialized: AnalyticsEnabled={_isAnalyticsEnabled}");
     }
 
@@ -328,6 +345,38 @@ public class Metrika : MonoBehaviour
         }
     }
 
+    internal static void Event_AdsInterstitialSuccessed()
+    {
+        _data.AnalyticEventsData.e_Ads_Interstitial_Successed++;
+
+#if GAME_PUSH && (VK_GAMES)
+        string eventName = Metrika.Event.Ads_Interstitial_Successed.ToString();
+        for (int i = _data.AnalyticEventsData.e_Ads_Interstitial_Successed_Tracked + 1; i <= _data.AnalyticEventsData.e_Ads_Interstitial_Successed; i++)
+        {
+            GamePush.GP_Analytics.Goal(eventName, i);
+        }
+        _data.AnalyticEventsData.e_Ads_Interstitial_Successed_Tracked = _data.AnalyticEventsData.e_Ads_Interstitial_Successed;
+#endif
+
+        Metrika.EventReached(Metrika.Event.Ads_Interstitial_Successed);
+    }
+
+    internal static void Event_Ads_Rewarded_Successed()
+    {
+        _data.AnalyticEventsData.e_Ads_Rewarded_Successed++;
+
+#if GAME_PUSH && (VK_GAMES)
+        string eventName = Metrika.Event.Ads_Rewarded_Successed.ToString();
+        for (int i = _data.AnalyticEventsData.e_Ads_Rewarded_Successed_Tracked + 1; i <= _data.AnalyticEventsData.e_Ads_Rewarded_Successed; i++)
+        {
+            GamePush.GP_Analytics.Goal(eventName, i);
+        }
+        _data.AnalyticEventsData.e_Ads_Rewarded_Successed_Tracked = _data.AnalyticEventsData.e_Ads_Rewarded_Successed;
+#endif
+
+        Metrika.EventReached(Metrika.Event.Ads_Rewarded_Successed);
+    }
+
     private static void OnPlayTimeChanged(float playTimeSeconds)
     {
         foreach (KeyValuePair<float, Event> pair in _playTimeEventMap)
@@ -430,6 +479,16 @@ public class Metrika : MonoBehaviour
             case Event.Game_Loaded:
                 // to save runtime only to prevent multiple call runtime
                 return ref _gameLoaded;
+
+            // ads events
+            case Event.Ads_Interstitial_Successed:
+                return ref _data.AnalyticEventsData.e_dummy;
+            case Event.Ads_Rewarded_Successed:
+                return ref _data.AnalyticEventsData.e_dummy;
+            case Event.Ads_Premium_Bought:
+                return ref _data.AnalyticEventsData.e_Ads_Premium_Bought;
+            case Event.Ads_Support_Bought:
+                return ref _data.AnalyticEventsData.e_Ads_Support_Bought;
             case Event.None:
             default:
                 Logger.LogWarning($"[Metrika.NeedToSendEvent] unhandled event='{@event}'");

@@ -26,9 +26,12 @@ namespace Code.Services
 
             PlayerPrefs.SetString(APP_SETTINGS_KEY, appSettingsJSON);
 
-#if GAME_PUSH && (VK_GAMES || YG)
-            GamePush.GP_Player.Set(APP_SETTINGS_KEY, appSettingsJSON);
-            GamePush.GP_Player.Sync();
+#if GAME_PUSH
+            if (GamePush.GP_Platform.Type() is not GamePush.Platform.RUSTORE)
+            {
+                GamePush.GP_Player.Set(APP_SETTINGS_KEY, appSettingsJSON);
+                GamePush.GP_Player.Sync();
+            }
 #endif
         }
 
@@ -36,22 +39,25 @@ namespace Code.Services
         {
             AppSettings prefsAppSettings = PlayerPrefs.GetString(APP_SETTINGS_KEY)?.ToDeserialized<AppSettings>();
 
-#if GAME_PUSH && (VK_GAMES || YG)
-            var gpAppSettingsJson = GamePush.GP_Player.GetString(APP_SETTINGS_KEY);
-            if (!string.IsNullOrWhiteSpace(gpAppSettingsJson))
+#if GAME_PUSH && !UNITY_EDITOR
+            if (GamePush.GP_Platform.Type() is not GamePush.Platform.RUSTORE)
             {
-                AppSettings gpAppSettings = gpAppSettingsJson.ToDeserialized<AppSettings>();
-
-                if (prefsAppSettings == null)
+                var gpAppSettingsJson = GamePush.GP_Player.GetString(APP_SETTINGS_KEY);
+                if (!string.IsNullOrWhiteSpace(gpAppSettingsJson))
                 {
-                    return gpAppSettings;
-                }
-                else
-                {
-                    DateTime prefsTime = SaveLoadHelper.GetTimeFromString(prefsAppSettings.SaveTime);
-                    DateTime gpTime = SaveLoadHelper.GetTimeFromString(gpAppSettings.SaveTime);
+                    AppSettings gpAppSettings = gpAppSettingsJson.ToDeserialized<AppSettings>();
 
-                    return DateTime.Compare(prefsTime, gpTime) < 0 ? gpAppSettings : prefsAppSettings;
+                    if (prefsAppSettings == null)
+                    {
+                        return gpAppSettings;
+                    }
+                    else
+                    {
+                        DateTime prefsTime = SaveLoadHelper.GetTimeFromString(prefsAppSettings.SaveTime);
+                        DateTime gpTime = SaveLoadHelper.GetTimeFromString(gpAppSettings.SaveTime);
+
+                        return DateTime.Compare(prefsTime, gpTime) < 0 ? gpAppSettings : prefsAppSettings;
+                    }
                 }
             }
 #endif

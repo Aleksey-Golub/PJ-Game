@@ -71,13 +71,8 @@ public class Metrika : MonoBehaviour
         Play_300_Min = 1300,
     }
 
-#if VK_GAMES
-    private const string ENABLE_ANALYTICS_KEY = "EnableAnalytics_VK";
-    private static readonly bool _isAnalyticsAvailable = true;
-#else
-    private const string ENABLE_ANALYTICS_KEY = "EnableAnalytics_DEFAULT";
-    private static readonly bool _isAnalyticsAvailable = false;
-#endif
+    private static string _enableAnalyticsKey = "EnableAnalytics_DEFAULT";
+    private static bool _isAnalyticsAvailable = false;
 
     private static ISaveLoadAnalyticService _saveLoadAnalytic;
     private static AnalyticData _data;
@@ -122,14 +117,27 @@ public class Metrika : MonoBehaviour
         _saveLoadAnalytic = saveLoadAnalytic;
         _data = data;
 
+        SetPlatformSettings();
+
         if (_isAnalyticsAvailable)
         {
 #if GAME_PUSH
-        _isAnalyticsEnabled = GamePush.GP_Variables.GetBool(ENABLE_ANALYTICS_KEY);
+            _isAnalyticsEnabled = GamePush.GP_Variables.GetBool(_enableAnalyticsKey);
 #endif
         }
 
         Logger.Log($"[Metrika] Initialized: AnalyticsEnabled={_isAnalyticsEnabled}");
+
+        static void SetPlatformSettings()
+        {
+#if GAME_PUSH
+            if (GamePush.GP_Platform.Type() is GamePush.Platform.VK)
+            {
+                _enableAnalyticsKey = "EnableAnalytics_VK";
+                _isAnalyticsAvailable = true;
+            }
+#endif
+        }
     }
 
     public static void StartPlayTimer()
@@ -156,36 +164,23 @@ public class Metrika : MonoBehaviour
 
     public static void EventReached(Event eventType)
     {
+#if !UNITY_EDITOR && UNITY_WEBGL
         string eventName = $"{(int)eventType}_{eventType}";
-#if !UNITY_EDITOR && UNITY_WEBGL && VK_GAMES
-        ref bool field = ref GetEventData(eventType);
-        if (_isAnalyticsEnabled && !field)
+        if (GamePush.GP_Platform.Type() is GamePush.Platform.VK)
         {
-            Analytics_Goal(eventName);
-            field = true;
-            Logger.Log($"[Metrika] EventReached: {eventName}. Send to Metrika");
-            _saveLoadAnalytic.SaveAnalytic();
+            ref bool field = ref GetEventData(eventType);
+            if (_isAnalyticsEnabled && !field)
+            {
+                Analytics_Goal(eventName);
+                field = true;
+                Logger.Log($"[Metrika] EventReached: {eventName}. Send to Metrika");
+                _saveLoadAnalytic.SaveAnalytic();
 
-            return;
+                return;
+            }
         }
 #endif
     }
-
-    /*
-    public static void GoalReached(string @event, string value)
-    {
-        string eventName = $"{@event}_{value}";
-#if !UNITY_EDITOR && UNITY_WEBGL && VK_GAMES
-        if (_isAnalyticsEnabled)
-            Analytics_Goal(eventName);
-#endif
-        Logger.Log($"[Metrika] complex GoalReached: {eventName}");
-    }
-
-    public static void GoalReached(string eventName, int value)
-    {
-        GoalReached(eventName, value.ToString());
-    }*/
 
     internal static void ItemUpgradeded(string itemId, int currentLevel)
     {
@@ -349,13 +344,16 @@ public class Metrika : MonoBehaviour
     {
         _data.AnalyticEventsData.e_Ads_Interstitial_Successed++;
 
-#if GAME_PUSH && (VK_GAMES)
-        string eventName = Metrika.Event.Ads_Interstitial_Successed.ToString();
-        for (int i = _data.AnalyticEventsData.e_Ads_Interstitial_Successed_Tracked + 1; i <= _data.AnalyticEventsData.e_Ads_Interstitial_Successed; i++)
+#if GAME_PUSH
+        if (GamePush.GP_Platform.Type() is GamePush.Platform.VK)
         {
-            GamePush.GP_Analytics.Goal(eventName, i);
+            string eventName = Metrika.Event.Ads_Interstitial_Successed.ToString();
+            for (int i = _data.AnalyticEventsData.e_Ads_Interstitial_Successed_Tracked + 1; i <= _data.AnalyticEventsData.e_Ads_Interstitial_Successed; i++)
+            {
+                GamePush.GP_Analytics.Goal(eventName, i);
+            }
+            _data.AnalyticEventsData.e_Ads_Interstitial_Successed_Tracked = _data.AnalyticEventsData.e_Ads_Interstitial_Successed;
         }
-        _data.AnalyticEventsData.e_Ads_Interstitial_Successed_Tracked = _data.AnalyticEventsData.e_Ads_Interstitial_Successed;
 #endif
 
         Metrika.EventReached(Metrika.Event.Ads_Interstitial_Successed);
@@ -365,13 +363,16 @@ public class Metrika : MonoBehaviour
     {
         _data.AnalyticEventsData.e_Ads_Rewarded_Successed++;
 
-#if GAME_PUSH && (VK_GAMES)
-        string eventName = Metrika.Event.Ads_Rewarded_Successed.ToString();
-        for (int i = _data.AnalyticEventsData.e_Ads_Rewarded_Successed_Tracked + 1; i <= _data.AnalyticEventsData.e_Ads_Rewarded_Successed; i++)
+#if GAME_PUSH
+        if (GamePush.GP_Platform.Type() is GamePush.Platform.VK)
         {
-            GamePush.GP_Analytics.Goal(eventName, i);
+            string eventName = Metrika.Event.Ads_Rewarded_Successed.ToString();
+            for (int i = _data.AnalyticEventsData.e_Ads_Rewarded_Successed_Tracked + 1; i <= _data.AnalyticEventsData.e_Ads_Rewarded_Successed; i++)
+            {
+                GamePush.GP_Analytics.Goal(eventName, i);
+            }
+            _data.AnalyticEventsData.e_Ads_Rewarded_Successed_Tracked = _data.AnalyticEventsData.e_Ads_Rewarded_Successed;
         }
-        _data.AnalyticEventsData.e_Ads_Rewarded_Successed_Tracked = _data.AnalyticEventsData.e_Ads_Rewarded_Successed;
 #endif
 
         Metrika.EventReached(Metrika.Event.Ads_Rewarded_Successed);

@@ -49,10 +49,15 @@ namespace Code.Services
 #endif
 
             PlayerPrefs.SetString(PROGRESS_KEY, progressJSON);
+            Logger.Log($"[SaveLoadService] PROGRESS saved locally");
 
-#if GAME_PUSH && (VK_GAMES || YG)
-            GamePush.GP_Player.Set(PROGRESS_KEY, progressJSON);
-            GamePush.GP_Player.Sync();
+#if GAME_PUSH
+            if (GamePush.GP_Platform.Type() is not GamePush.Platform.RUSTORE)
+            {
+                GamePush.GP_Player.Set(PROGRESS_KEY, progressJSON);
+                GamePush.GP_Player.Sync();
+                Logger.Log($"[SaveLoadService] PROGRESS saved on GP");
+            }
 #endif
         }
 
@@ -62,24 +67,27 @@ namespace Code.Services
             //Debug.LogError(json);
 			GameProgress prefsProgress = json?.ToDeserialized<GameProgress>();
 
-#if GAME_PUSH && (VK_GAMES || YG)
-            var gpProgressJson = GamePush.GP_Player.GetString(PROGRESS_KEY);
-            if (!string.IsNullOrWhiteSpace(gpProgressJson))
+#if GAME_PUSH && !UNITY_EDITOR
+            if (GamePush.GP_Platform.Type() is not GamePush.Platform.RUSTORE)
             {
-                GameProgress gpProgress = gpProgressJson.ToDeserialized<GameProgress>();
-
-                if (prefsProgress == null)
+                var gpProgressJson = GamePush.GP_Player.GetString(PROGRESS_KEY);
+                if (!string.IsNullOrWhiteSpace(gpProgressJson))
                 {
-                    return gpProgress;
-                }
-                else
-                {
-                    DateTime prefsTime = SaveLoadHelper.GetTimeFromString(prefsProgress.SaveTime);
-                    DateTime gpTime = SaveLoadHelper.GetTimeFromString(gpProgress.SaveTime);
+                    GameProgress gpProgress = gpProgressJson.ToDeserialized<GameProgress>();
 
-                    Logger.Log($"[SaveLoadService] prefsTime= {prefsTime}, gpTime= {gpTime}");
+                    if (prefsProgress == null)
+                    {
+                        return gpProgress;
+                    }
+                    else
+                    {
+                        DateTime prefsTime = SaveLoadHelper.GetTimeFromString(prefsProgress.SaveTime);
+                        DateTime gpTime = SaveLoadHelper.GetTimeFromString(gpProgress.SaveTime);
 
-                    return DateTime.Compare(prefsTime, gpTime) < 0 ? gpProgress : prefsProgress;
+                        Logger.Log($"[SaveLoadService] prefsTime= {prefsTime}, gpTime= {gpTime}");
+
+                        return DateTime.Compare(prefsTime, gpTime) < 0 ? gpProgress : prefsProgress;
+                    }
                 }
             }
 #endif

@@ -27,9 +27,12 @@ namespace Code.Services
 
             PlayerPrefs.SetString(ANALYTIC, dataJSON);
 
-#if GAME_PUSH && (VK_GAMES || YG)
-            GamePush.GP_Player.Set(ANALYTIC, dataJSON);
-            GamePush.GP_Player.Sync();
+#if GAME_PUSH
+            if (GamePush.GP_Platform.Type() is not GamePush.Platform.RUSTORE)
+            {
+                GamePush.GP_Player.Set(ANALYTIC, dataJSON);
+                GamePush.GP_Player.Sync();
+            }
 #endif
         }
 
@@ -39,24 +42,27 @@ namespace Code.Services
             //Debug.LogError(json);
             AnalyticData prefsData = json?.ToDeserialized<AnalyticData>();
 
-#if GAME_PUSH && (VK_GAMES || YG)
-            var gpDataJson = GamePush.GP_Player.GetString(ANALYTIC);
-            if (!string.IsNullOrWhiteSpace(gpDataJson))
+#if GAME_PUSH && !UNITY_EDITOR
+            if (GamePush.GP_Platform.Type() is not GamePush.Platform.RUSTORE)
             {
-                AnalyticData gpData = gpDataJson.ToDeserialized<AnalyticData>();
-
-                if (prefsData == null)
+                var gpDataJson = GamePush.GP_Player.GetString(ANALYTIC);
+                if (!string.IsNullOrWhiteSpace(gpDataJson))
                 {
-                    return gpData;
-                }
-                else
-                {
-                    DateTime prefsTime = SaveLoadHelper.GetTimeFromString(prefsData.SaveTime);
-                    DateTime gpTime = SaveLoadHelper.GetTimeFromString(gpData.SaveTime);
+                    AnalyticData gpData = gpDataJson.ToDeserialized<AnalyticData>();
 
-                    Logger.Log($"[SaveLoadAnalyticService] prefsTime= {prefsTime}, gpTime= {gpTime}");
+                    if (prefsData == null)
+                    {
+                        return gpData;
+                    }
+                    else
+                    {
+                        DateTime prefsTime = SaveLoadHelper.GetTimeFromString(prefsData.SaveTime);
+                        DateTime gpTime = SaveLoadHelper.GetTimeFromString(gpData.SaveTime);
 
-                    return DateTime.Compare(prefsTime, gpTime) < 0 ? gpData : prefsData;
+                        Logger.Log($"[SaveLoadAnalyticService] prefsTime= {prefsTime}, gpTime= {gpTime}");
+
+                        return DateTime.Compare(prefsTime, gpTime) < 0 ? gpData : prefsData;
+                    }
                 }
             }
 #endif

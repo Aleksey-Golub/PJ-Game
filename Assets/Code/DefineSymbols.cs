@@ -11,9 +11,5 @@
         "FAKE_ADS",
         "GAME_PUSH",
         "DEBUG_SHOW_ADS_OBJECTS",   // show Ads objects regardless Ads enabled, usefull for testing in EDITOR
-
-        "VK_GAMES",
-        "YG",
-        "RUSTORE",
     };
 }

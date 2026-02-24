@@ -49,11 +49,11 @@ namespace Code.Services
 #endif
             string settingLang = appSettings.LanguageSettings.TwoLetterISOLanguageName;
 
-#if VK_GAMES || RUSTORE
-            string defaultLang = "ru";
-#else
             string defaultLang = "en";
-#endif
+            if (GamePush.GP_Platform.Type() is GamePush.Platform.RUSTORE or GamePush.Platform.VK)
+            {
+                defaultLang = "ru";
+            }
 
             string loadingTwoLetterISOLanguageName =
                 !string.IsNullOrWhiteSpace(settingLang) && AvailableLanguagesContains(settingLang) ?

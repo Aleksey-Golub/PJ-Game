@@ -41,6 +41,7 @@ namespace Code.Infrastructure
         public void Enter()
         {
             PlatformLayer.SetGameReady();
+            PlatformLayer.SetGameplayStart();
 
             _adsService.AdsExceptStickyCalling += OnAdsExceptStickyCalling;
             _adsService.AdsExceptStickyClose += OnAdsExceptStickyClose;

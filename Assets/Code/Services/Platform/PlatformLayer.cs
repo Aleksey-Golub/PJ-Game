@@ -81,6 +81,28 @@ namespace Code.Services
 #endif
         }
 
+        /// <summary>
+        /// Call this when gameplay is started: start new level, unpause game.
+        /// </summary>
+        public static void SetGameplayStart()
+        {
+#if DEBUG && FAKE_ADS
+#else
+            GamePush.GP_Game.GameplayStart();
+#endif
+        }
+
+        /// <summary>
+        /// Call this when gameplay is ended: end new level, pause game, exit to MainMenu.
+        /// </summary>
+        public static void SetGameplayStop()
+        {
+#if DEBUG && FAKE_ADS
+#else
+            GamePush.GP_Game.GameplayStop();
+#endif
+        }
+
         public void WindowClosedOrRefreshed()
         {
             Logger.Log("[PlatformLayer] WindowCloseOrRefresh() called");

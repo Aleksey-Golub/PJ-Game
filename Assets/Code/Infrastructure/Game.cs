@@ -41,12 +41,16 @@ namespace Code.Infrastructure
         {
             _audio.PauseAll();
             _time.StopTime();
+
+            PlatformLayer.SetGameplayStop();
         }
 
         private void OnAdsExceptStickyClose(bool result)
         {
             _audio.UnPauseAll();
             _time.ResumeTime();
+
+            PlatformLayer.SetGameplayStart();
         }
     }
 }

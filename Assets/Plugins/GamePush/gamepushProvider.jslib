@@ -279,8 +279,6 @@ mergeInto(LibraryManager.library, {
     },
     /* LEADER BOARD SCOPED */
 
-
-
     /* ACHIEVEMENTS */
     GP_Achievements_Open: function () {
         _GP().AchievementsOpen();
@@ -291,8 +289,7 @@ mergeInto(LibraryManager.library, {
     GP_Achievements_Unlock: function (idOrTag) {
         _GP().AchievementsUnlock(UTF8ToString(idOrTag));
     },
-
-
+    
     GP_Achievements_SetProgress: function (idOrTag, progress) {
         _GP().AchievementsSetProgress(UTF8ToString(idOrTag), progress);
     },
@@ -337,8 +334,7 @@ mergeInto(LibraryManager.library, {
     /* Subscription */
 
     /* PAYMENTS */
-
-
+    
 
     /* FULLSCREEN */
     GP_Fullscreen_Open: function () {
@@ -1151,4 +1147,72 @@ mergeInto(LibraryManager.library, {
         _GP().StorageSetGlobalBool(UTF8ToString(key), UTF8ToString(value));
     },
     /* STORAGE */
+
+
+    /* WINDOWS */
+
+    GP_Windows_ShowDefaultConfirm: function () {
+        _GP().WindowsShowConfirmDefault();
+    },
+
+    GP_Windows_ShowConfirm: function (
+        title, 
+        description, 
+        textConfirm, 
+        textCancel, 
+        invertButtonColors) {
+        _GP().WindowsShowConfirm(
+            UTF8ToString(title), 
+            UTF8ToString(description), 
+            UTF8ToString(textConfirm), 
+            UTF8ToString(textCancel),
+            UTF8ToString(invertButtonColors));
+    },
+
+    /* WINDOWS */
+
+    /* SOUNDS */
+
+    GP_Sounds_IsMuted: function () {
+        var value = _GP().SoundsIsMuted();
+        return _ToBuff(value);
+    },
+
+     GP_Sounds_IsSFXMuted: function () {
+        var value = _GP().SoundsIsSFXMuted();
+        return _ToBuff(value);
+    },
+
+     GP_Sounds_IsMusicMuted: function () {
+        var value = _GP().SoundsIsMusicMuted();
+        return _ToBuff(value);
+    },
+
+    GP_Sounds_Mute: function () {
+        _GP().SoundsMute();
+    },
+
+    GP_Sounds_MuteSFX: function () {
+        _GP().SoundsMuteSFX();
+    },
+
+    GP_Sounds_MuteMusic: function () {
+        _GP().SoundsMuteMusic();
+    },
+
+     GP_Sounds_Unmute: function () {
+        _GP().SoundsUnmute();
+    },
+
+    GP_Sounds_UnmuteSFX: function () {
+        _GP().SoundsUnmuteSFX();
+    },
+
+    GP_Sounds_UnmuteMusic: function () {
+        _GP().SoundsUnmuteMusic();
+    },
+
+
+    /* SOUNDS */
+    
 });

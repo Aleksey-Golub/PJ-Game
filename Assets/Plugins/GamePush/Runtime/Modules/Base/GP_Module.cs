@@ -6,7 +6,7 @@ namespace GamePush
 {
     public class GP_Module : MonoBehaviour, IGP_Module
     {
-        private static ModuleName _name = ModuleName.None;
+        private static ModuleName _name;
         protected static ModuleName Name
         {
             get => _name;
@@ -16,7 +16,6 @@ namespace GamePush
         protected static void SetModuleName(ModuleName name) =>
             Name = name;
 
-        //protected static void ConsoleLog(string log) =>
-        //    GP_Logger.SystemLog(log);
+        //protected static void ConsoleLog(string log) { }
     }
 }

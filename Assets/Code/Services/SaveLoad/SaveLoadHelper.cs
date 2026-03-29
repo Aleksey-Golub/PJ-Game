@@ -13,7 +13,11 @@ namespace Code.Services
             }
             catch (Exception e)
             {
-                string msg = $"[SaveLoadHelper] GetTimeFromString() exception: {e}. \nCan not parse '{time}'. Return new DateTime()";
+                string timeValue = time == null ? "null" : time == string.Empty ? "emptyString" : "unknown";
+                string msg = 
+                    $"[SaveLoadHelper] GetTimeFromString() can not parse time='{time}', timeValue='{timeValue}'. Return new DateTime(). \n" +
+                    $"exception: {e}.";
+
                 Logger.LogError(msg);
 #if GAME_PUSH
                 GamePush.GP_Player.Set(Constants.EXCEPTION_DATETIME_PARSE_KEY, msg);

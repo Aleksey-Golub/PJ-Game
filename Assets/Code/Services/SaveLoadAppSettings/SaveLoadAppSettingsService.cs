@@ -22,6 +22,8 @@ namespace Code.Services
             _audio.WriteToAppSettings(_appSettingsService.Settings);
             LService.WriteToAppSettings(_appSettingsService.Settings);
 
+            _appSettingsService.Settings.SaveTime = SaveLoadHelper.GetNowTimeToString();
+
             string appSettingsJSON = _appSettingsService.Settings.ToJson();
 
             PlayerPrefs.SetString(APP_SETTINGS_KEY, appSettingsJSON);

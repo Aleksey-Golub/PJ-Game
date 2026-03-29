@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using System;
 
 namespace Code.Services
 {
     public interface IAudioService : IService, ISavedAppSettingsReader, ISavedAppSettingsWriter
     {
+        event Action<string> GroupChanged;
+
         bool IsMuted(string group);
         void Load();
         void PlayAmbient();
@@ -15,6 +18,8 @@ namespace Code.Services
         bool IsSfxPlaying(AudioClip clip, string audioSourceId, string objectUniqueId);
         void StopSfx(AudioClip clip, string audioSourceId, string objectUniqueId);
         void SwitchMute(string group);
+        void Mute(string group);
+        void UnMute(string group);
         void SetNormalizedVolume(string group, float value);
         float GetNormalizedVolume(string group);
         AudioGroupData GetData(string group);

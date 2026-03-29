@@ -69,6 +69,7 @@ namespace Code.UI
             _saveProgressBtn.onClick.AddListener(OnSaveProgressButtonClick);
 
             LService.LanguageChanged += RefreshUI;
+            Audio.GroupChanged += OnAudioGroupChanged;
         }
 
         protected override void Cleanup()
@@ -92,6 +93,7 @@ namespace Code.UI
             _saveProgressBtn.onClick.RemoveListener(OnSaveProgressButtonClick);
 
             LService.LanguageChanged -= RefreshUI;
+            Audio.GroupChanged -= OnAudioGroupChanged;
         }
 
         protected override void OnCloseButtonClicked()
@@ -107,13 +109,13 @@ namespace Code.UI
         private void OnSoundButtonClicked(ButtonSwitcher button)
         {
             Audio.SwitchMute(AudioService.SFX);
-            RefreshSounds();
+            //RefreshSounds();
         }
 
         private void OnMusicButtonClicked(ButtonSwitcher button)
         {
             Audio.SwitchMute(AudioService.MUSIC);
-            RefreshMusic();
+            //RefreshMusic();
         }
 
         private void OnSoundSliderValueChanged(float newValue)
@@ -155,6 +157,13 @@ namespace Code.UI
             _header.text = LService.Localize("k_Settings");
             _languageSwitchableLabel.Init(LService.Localize("k_language_name"));
             SetAppVersion();
+            RefreshAudioBlocks();
+        }
+
+        private void OnAudioGroupChanged(string group) => RefreshAudioBlocks();
+
+        private void RefreshAudioBlocks()
+        {
             RefreshSounds();
             RefreshMusic();
         }

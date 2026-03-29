@@ -21,7 +21,10 @@ namespace Code.Infrastructure
             _ads = services.Single<IAdsService>();
             _ads.AdsExceptStickyStart += OnAdsExceptStickyStart;
             _ads.AdsExceptStickyClose += OnAdsExceptStickyClose;
-            UnityEngine.Application.focusChanged += OnApplicationFocusChanged;
+
+            //UnityEngine.Application.focusChanged += OnApplicationFocusChanged;
+            PlatformLayer.WebGamePaused += () => OnApplicationFocusChanged(false);
+            PlatformLayer.WebGameResumed += () => OnApplicationFocusChanged(true);
         }
 
         private void OnApplicationFocusChanged(bool focus)

@@ -7,6 +7,10 @@ using Code.Data;
 using System;
 using Object = UnityEngine.Object;
 
+#if GAME_PUSH
+using GamePush;
+#endif
+
 namespace Code.Services
 {
     internal class AudioService : IAudioService
@@ -34,6 +38,8 @@ namespace Code.Services
         private bool _pause;
         private readonly ICoroutineRunner _coroutineRunner;
 
+        public event Action<string> GroupChanged;
+
         internal AudioService(ICoroutineRunner coroutineRunner)
         {
             _coroutineRunner = coroutineRunner;
@@ -53,6 +59,16 @@ namespace Code.Services
             CreatePool();
 
             _coroutineRunner.StartCoroutine(CheckClipsEndedCoroutine());
+
+#if GAME_PUSH
+            GP_Sounds.OnMute += () => OnMuteStateChanged(GPTypeToGroupName(SoundType.All), true);
+            GP_Sounds.OnMuteSFX += () => OnMuteStateChanged(GPTypeToGroupName(SoundType.SFX), true);
+            GP_Sounds.OnMuteMusic += () => OnMuteStateChanged(GPTypeToGroupName(SoundType.Music), true);
+
+            GP_Sounds.OnUnmute += () => OnMuteStateChanged(GPTypeToGroupName(SoundType.All), false);
+            GP_Sounds.OnUnmuteMusic += () => OnMuteStateChanged(GPTypeToGroupName(SoundType.Music), false);
+            GP_Sounds.OnUnmuteSFX += () => OnMuteStateChanged(GPTypeToGroupName(SoundType.SFX), false);
+#endif
         }
 
         public AudioGroupData GetData(string group) => _groups[group];
@@ -61,10 +77,34 @@ namespace Code.Services
 
         public void SwitchMute(string group)
         {
-            _groups[group].IsMuted = !_groups[group].IsMuted;
+            bool isMute = !_groups[group].IsMuted;
+            SetMuteState(group, isMute);
+        }
+
+        public void Mute(string group) => SetMuteState(group, isMute: true);
+
+        public void UnMute(string group) => SetMuteState(group, isMute: false);
+
+        private void SetMuteState(string group, bool isMute)
+        {
+#if GAME_PUSH
+            if (isMute)
+                GP_Sounds.Mute(GroupNameToGPType(group));
+            else
+                GP_Sounds.Unmute(GroupNameToGPType(group));
+#else
+            OnMuteStateChanged(group, isMute);
+#endif
+        }
+
+        private void OnMuteStateChanged(string group, bool isMute)
+        {
+            _groups[group].IsMuted = isMute;
 
             float newNormValue = IsMuted(group) ? 0 : _groups[group].LastNormalizedValue;
             SetNormalizedVolumeInner(group, newNormValue);
+
+            GroupChanged?.Invoke(group);
         }
 
         public void SetNormalizedVolume(string group, float value)
@@ -165,7 +205,10 @@ namespace Code.Services
             {
                 foreach (AudioGroupData g in _groups.Values)
                 {
-                    g.LastNormalizedValue = appSettings.AudioSettings.DefaultNormalizedVolume;
+                    g.LastNormalizedValue = 
+                        g.Name == MASTER 
+                        ? appSettings.AudioSettings.DefaultMasterNormalizedVolume 
+                        : appSettings.AudioSettings.DefaultNormalizedVolume;
                     SetNormalizedVolume(g.Name, g.LastNormalizedValue);
                 }
 
@@ -246,6 +289,7 @@ namespace Code.Services
         {
             _groups.Add(SFX, new AudioGroupData(SFX, _audioMixer.FindMatchingGroups(SFX)[0], false, 1));
             _groups.Add(MUSIC, new AudioGroupData(MUSIC, _audioMixer.FindMatchingGroups(MUSIC)[0], false, 1));
+            _groups.Add(MASTER, new AudioGroupData(MASTER, _audioMixer.FindMatchingGroups(MASTER)[0], false, 1));
         }
 
         private void SetNormalizedVolumeInner(string group, float value)
@@ -277,6 +321,30 @@ namespace Code.Services
             foreach (var s in _toCheckEnd)
                 s.Value?.AudioSource?.Pause();
         }
+
+#if GAME_PUSH
+        private SoundType GroupNameToGPType(string group)
+        {
+            return group switch
+            {
+                MASTER => SoundType.All,
+                MUSIC => SoundType.Music,
+                SFX => SoundType.SFX,
+                _ => SoundType.All,
+            };
+        }
+
+        private string GPTypeToGroupName(SoundType type)
+        {
+            return type switch
+            {
+                SoundType.All => MASTER,
+                SoundType.SFX => SFX,
+                SoundType.Music => MUSIC,
+                _ => MASTER,
+            };
+        }
+#endif
     }
 
     public class AudioGroupData

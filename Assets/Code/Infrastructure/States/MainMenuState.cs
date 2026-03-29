@@ -11,7 +11,7 @@
 
         public void Enter()
         {
-            _gameStateMachine.Enter<LoadProgressState>();
+            _gameStateMachine.Enter<LoadPurchasedIAPDataState>();
         }
 
         public void Exit()

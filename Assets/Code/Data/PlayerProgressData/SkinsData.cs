@@ -18,10 +18,15 @@ namespace Code.Data
             SelectedSkinChanged?.Invoke(SelectedSkinId);
         }
 
-        public void AddAvailableSkin(SkinId skinId)
+        public bool TryAddAvailableSkin(SkinId skinId)
         {
+            if (AvailableSkins.Contains(skinId))
+                return false;
+
             AvailableSkins.Add(skinId);
             AvailableSkinsChanged?.Invoke(skinId);
+
+            return true;
         }
     }
 }

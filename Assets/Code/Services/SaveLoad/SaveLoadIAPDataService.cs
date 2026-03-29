@@ -1,55 +1,55 @@
 ﻿using Code.Data;
-using System;
 using UnityEngine;
+using System;
 
 namespace Code.Services
 {
-    public class SaveLoadAnalyticService : ISaveLoadAnalyticService
+    public class SaveLoadIAPDataService : ISaveLoadIAPDataService
     {
-        public const string ANALYTIC = "Analytic";
+        public const string IAP_DATA = "IAPData";
 
-        private readonly IAnalyticEventsService _analyticEventsService;
+        private readonly IIAPService _iapService;
 
-        public SaveLoadAnalyticService(
-            IAnalyticEventsService analyticEventsService
+        public SaveLoadIAPDataService (
+            IIAPService iapService
             )
         {
-            _analyticEventsService = analyticEventsService;
+            _iapService = iapService;
         }
 
-        public void SaveAnalytic()
+        public void SaveIAPData()
         {
-            AnalyticData analyticEvents = _analyticEventsService.AnalyticData;
+            PlayerIAPsData purchasedIAPData = _iapService.PlayerIAPsData;
 
-            analyticEvents.SaveTime = SaveLoadHelper.GetNowTimeToString();
+            purchasedIAPData.SaveTime = SaveLoadHelper.GetNowTimeToString();
 
-            string dataJSON = analyticEvents.ToJson();
+            string dataJSON = purchasedIAPData.ToJson();
 
-            PlayerPrefs.SetString(ANALYTIC, dataJSON);
+            PlayerPrefs.SetString(IAP_DATA, dataJSON);
 
 #if GAME_PUSH
             if (GamePush.GP_Platform.Type() is not GamePush.Platform.RUSTORE)
             {
-                GamePush.GP_Player.Set(ANALYTIC, dataJSON);
+                GamePush.GP_Player.Set(IAP_DATA, dataJSON);
                 GamePush.GP_Player.Sync();
             }
 #endif
         }
 
-        public AnalyticData LoadAnalytic()
+        public PlayerIAPsData LoadIAPData()
         {
-			string json = PlayerPrefs.GetString(ANALYTIC);
+            string json = PlayerPrefs.GetString(IAP_DATA);
             //Debug.LogError(json);
-            AnalyticData prefsData = json?.ToDeserialized<AnalyticData>();
+            PlayerIAPsData prefsData = json?.ToDeserialized<PlayerIAPsData>();
 
 #if GAME_PUSH && !UNITY_EDITOR
             var gpPlatform = GamePush.GP_Platform.Type();
             if (gpPlatform is not GamePush.Platform.RUSTORE)
             {
-                var gpDataJson = GamePush.GP_Player.GetString(ANALYTIC);
+                var gpDataJson = GamePush.GP_Player.GetString(IAP_DATA);
                 if (!string.IsNullOrWhiteSpace(gpDataJson))
                 {
-                    AnalyticData gpData = gpDataJson.ToDeserialized<AnalyticData>();
+                    PlayerIAPsData gpData = gpDataJson.ToDeserialized<PlayerIAPsData>();
 
                     if (prefsData == null)
                     {
@@ -60,7 +60,7 @@ namespace Code.Services
                         DateTime prefsTime = SaveLoadHelper.GetTimeFromString(prefsData.SaveTime);
                         DateTime gpTime = SaveLoadHelper.GetTimeFromString(gpData.SaveTime);
 
-                        Logger.Log($"[SaveLoadAnalyticService] prefsTime= {prefsTime}, gpTime= {gpTime}");
+                        Logger.Log($"[SaveLoadIAPDataService] prefsTime= {prefsTime}, gpTime= {gpTime}");
 
                         if (gpPlatform is GamePush.Platform.VK)
                             return DateTime.Compare(prefsTime, gpTime) <= 0 ? gpData : prefsData;

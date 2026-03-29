@@ -33,11 +33,17 @@ namespace Code.Infrastructure
         [typeof(MainMenuState)] = new MainMenuState(
             this
             ),
+        [typeof(LoadPurchasedIAPDataState)] = new LoadPurchasedIAPDataState(
+            this, 
+            services.Single<IIAPService>(), 
+            services.Single<ISaveLoadIAPDataService>()
+            ),
         [typeof(LoadProgressState)] = new LoadProgressState(
             this, 
             services.Single<IPersistentProgressService>(), 
             services.Single<IConfigsService>(), 
-            services.Single<ISaveLoadService>()
+            services.Single<ISaveLoadService>(),
+            services.Single<IIAPService>()
             ),
         [typeof(LoadLevelState)] = new LoadLevelState(
             this, 

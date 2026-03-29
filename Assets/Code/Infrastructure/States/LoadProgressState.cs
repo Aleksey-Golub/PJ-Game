@@ -11,18 +11,21 @@ namespace Code.Infrastructure
         private readonly IPersistentProgressService _progressService;
         private readonly IConfigsService _configs;
         private readonly ISaveLoadService _saveLoadProgress;
+        private readonly IIAPService _iapService;
 
         public LoadProgressState(
             GameStateMachine gameStateMachine,
             IPersistentProgressService progressService,
             IConfigsService configs,
-            ISaveLoadService saveLoadProgress
+            ISaveLoadService saveLoadProgress,
+            IIAPService iapService
             )
         {
             _gameStateMachine = gameStateMachine;
             _progressService = progressService;
             _configs = configs;
             _saveLoadProgress = saveLoadProgress;
+            _iapService = iapService;
         }
 
         public void Enter()
@@ -37,6 +40,8 @@ namespace Code.Infrastructure
             {
                 Logger.LogError($"[LoadProgressState] Exception on LoadProgressOrInitNew: {e}");
             }
+
+            _iapService.CheckIAPRewardsGained();
 
             _gameStateMachine.Enter<LoadLevelState, string>(_progressService.Progress.PlayerProgress.PositionOnLevel.Level);
         }

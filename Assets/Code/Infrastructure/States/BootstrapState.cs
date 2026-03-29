@@ -98,9 +98,16 @@ namespace Code.Infrastructure
             _services.RegisterSingle<ISaveLoadAnalyticService>(new SaveLoadAnalyticService(
                 _services.Single<IAnalyticEventsService>()
                 ));
+            _services.RegisterSingle<ISaveLoadIAPDataService>(new SaveLoadIAPDataService(
+                _services.Single<IIAPService>()
+                ));
 
             _services.Single<IUIMediator>().PostConstruct(_services.Single<IUIFactory>());
-            _services.Single<IIAPService>().PostConstruct(_services.Single<IPersistentProgressService>(), _services.Single<ISaveLoadService>());
+            _services.Single<IIAPService>().PostConstruct(
+                _services.Single<IPersistentProgressService>(), 
+                _services.Single<ISaveLoadService>(),
+                _services.Single<ISaveLoadIAPDataService>()
+                );
         }
 
         private void RegisterGameFactory()

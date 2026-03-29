@@ -1,7 +1,7 @@
 using Code.Data;
 using Code.Infrastructure;
-using System;
 using UnityEngine;
+using System;
 
 namespace Code.Services
 {
@@ -48,28 +48,58 @@ namespace Code.Services
             Debug.Log(progressJSON);
 #endif
 
-            PlayerPrefs.SetString(PROGRESS_KEY, progressJSON);
-            Logger.Log($"[SaveLoadService] PROGRESS saved locally");
+#if GAME_PUSH && !UNITY_EDITOR
+            var gpPlatform = GamePush.GP_Platform.Type();
+            if (gpPlatform is GamePush.Platform.RUSTORE)
+            {
+                PlayerPrefs.SetString(PROGRESS_KEY, progressJSON);
+                Logger.Log($"[SaveLoadService] PROGRESS saved locally");
+            }
+            else if (gpPlatform is GamePush.Platform.VK)
+            {
+                PlayerPrefs.SetString(PROGRESS_KEY, progressJSON);
+                Logger.Log($"[SaveLoadService] PROGRESS saved locally");
 
-#if GAME_PUSH
-            if (GamePush.GP_Platform.Type() is not GamePush.Platform.RUSTORE)
+                GamePush.GP_Player.Set(PROGRESS_KEY, progressJSON);
+                GamePush.GP_Player.Sync();
+                Logger.Log($"[SaveLoadService] PROGRESS saved on GP");
+            }
+            else
             {
                 GamePush.GP_Player.Set(PROGRESS_KEY, progressJSON);
                 GamePush.GP_Player.Sync();
                 Logger.Log($"[SaveLoadService] PROGRESS saved on GP");
             }
+
+            return;
 #endif
+
+            PlayerPrefs.SetString(PROGRESS_KEY, progressJSON);
+            Logger.Log($"[SaveLoadService] PROGRESS saved locally general");
         }
 
         public GameProgress LoadProgress()
         {
-			string json = PlayerPrefs.GetString(PROGRESS_KEY);
-            //Debug.LogError(json);
-			GameProgress prefsProgress = json?.ToDeserialized<GameProgress>();
+            string json;
+            GameProgress prefsProgress;
 
 #if GAME_PUSH && !UNITY_EDITOR
-            if (GamePush.GP_Platform.Type() is not GamePush.Platform.RUSTORE)
+            var gpPlatform = GamePush.GP_Platform.Type();
+            if (gpPlatform is GamePush.Platform.RUSTORE)
             {
+                json = PlayerPrefs.GetString(PROGRESS_KEY);
+                //Debug.LogError(json);
+                prefsProgress = json?.ToDeserialized<GameProgress>();
+
+                Logger.Log($"[SaveLoadService] Load from prefs");
+                return prefsProgress;
+            }
+            else if (gpPlatform is GamePush.Platform.VK)
+            {
+                json = PlayerPrefs.GetString(PROGRESS_KEY);
+                //Debug.LogError(json);
+                prefsProgress = json?.ToDeserialized<GameProgress>();
+
                 var gpProgressJson = GamePush.GP_Player.GetString(PROGRESS_KEY);
                 if (!string.IsNullOrWhiteSpace(gpProgressJson))
                 {
@@ -86,11 +116,25 @@ namespace Code.Services
 
                         Logger.Log($"[SaveLoadService] prefsTime= {prefsTime}, gpTime= {gpTime}");
 
-                        return DateTime.Compare(prefsTime, gpTime) < 0 ? gpProgress : prefsProgress;
+                        return DateTime.Compare(prefsTime, gpTime) <= 0 ? gpProgress : prefsProgress;
                     }
                 }
             }
+            else
+            {
+                var gpProgressJson = GamePush.GP_Player.GetString(PROGRESS_KEY);
+                GameProgress gpProgress = gpProgressJson.ToDeserialized<GameProgress>();
+
+                Logger.Log($"[SaveLoadService] Load from GP");
+                return gpProgress;
+            }
 #endif
+
+            json = PlayerPrefs.GetString(PROGRESS_KEY);
+            //Debug.LogError(json);
+            prefsProgress = json?.ToDeserialized<GameProgress>();
+
+            Logger.Log($"[SaveLoadService] Load from prefs general");
 
             return prefsProgress;
         }

@@ -15,15 +15,20 @@ namespace Code.UI
         
         [SerializeField] private Button _supportBtn;
         [SerializeField] private TextMeshProUGUI _supportText;
+        
+        [SerializeField] private Button _settingsBtn;
+        [SerializeField] private Button _skinsBtn;
 
         private IIAPService _iapService;
+        private IAdsService _adsService;
         private IUIMediator _uiMediator;
 
-        internal void Construct(IAudioService audio, IIAPService iapService, IUIMediator uiMediator)
+        internal void Construct(IAudioService audio, IIAPService iapService, IAdsService adsService, IUIMediator uiMediator)
         {
             base.Construct(audio);
 
             _iapService = iapService;
+            _adsService = adsService;
             _uiMediator = uiMediator;
         }
 
@@ -70,15 +75,34 @@ namespace Code.UI
         private void RefreshPremium()
         {
             bool premiumBought = _iapService.IsPremiumBought();
+            bool isPaymentsAvailable = _iapService.IsPaymentsAvailable();
+            bool isFullscreenAdsAvailable = _adsService.IsFullscreenAvailable();
             //_noAdsText.text = noAdsBought ? LService. : LService.;
-            _premiumBtn.interactable = !premiumBought;
+            _premiumBtn.interactable = !premiumBought && isFullscreenAdsAvailable;
+            _premiumBtn.gameObject.SetActive(isPaymentsAvailable && isFullscreenAdsAvailable);
         }
         
         private void RefreshSupport()
         {
             bool supportBought = _iapService.IsSupportBought();
+            bool isPaymentsAvailable = _iapService.IsPaymentsAvailable();
             //_noAdsText.text = noAdsBought ? LService. : LService.;
             _supportBtn.interactable = !supportBought;
+            _supportBtn.gameObject.SetActive(isPaymentsAvailable);
+
+            bool isFullscreenAdsAvailable = _adsService.IsFullscreenAvailable();
+            if (!isFullscreenAdsAvailable)
+            {
+                var position = _supportBtn.gameObject.transform.localPosition;
+                position.x = 0;
+                _supportBtn.gameObject.transform.localPosition = position;
+            }
+        }
+
+        private void RefreshSkinsButton()
+        {
+            bool isPaymentsAvailable = _iapService.IsPaymentsAvailable();
+            _skinsBtn.gameObject.SetActive(isPaymentsAvailable);
         }
 
         private void RefreshUI()
@@ -87,6 +111,7 @@ namespace Code.UI
 
             RefreshPremium();
             RefreshSupport();
+            RefreshSkinsButton();
         }
 
         private void OnSomePurchased(bool isPurchaseSuccessed)

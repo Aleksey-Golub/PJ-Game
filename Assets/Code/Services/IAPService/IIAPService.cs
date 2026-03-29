@@ -9,6 +9,7 @@ namespace Code.Services
         void PostConstruct(IPersistentProgressService progressService, ISaveLoadService saveService);
         /*void FetchProducts();*/
         void Initialize();
+        bool IsPaymentsAvailable();
         bool IsPremiumBought();
         bool IsSupportBought();
         void PurchasePremium();

@@ -54,6 +54,8 @@ namespace Code.Infrastructure
 
         private GameProgress NewProgress()
         {
+            Logger.Log($"[LoadProgressState] call NewProgress()");
+
             var progress = new GameProgress(initialLevel: Scenes.LEVEL_1_SCENE);
 
             // set some data here

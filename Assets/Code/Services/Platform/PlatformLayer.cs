@@ -111,8 +111,12 @@ namespace Code.Services
 
         public void DocumentVisibilitySetToHidden()
         {
+#if !GAME_PUSH
             Logger.Log("[PlatformLayer] DocumentVisibilitySetToHidden() called");
             WebGlDocumentVisibilitySetToHidden?.Invoke();
+#else
+            Logger.Log("[PlatformLayer] DocumentVisibilitySetToHidden() call disabled for GP");
+#endif
         }
     }
 }

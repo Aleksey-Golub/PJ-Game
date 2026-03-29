@@ -50,6 +50,8 @@ namespace Code.Infrastructure
 
         private AnalyticData NewAnalyticEvents()
         {
+            Logger.Log($"[LoadAnalyticEventsState] call NewAnalyticEvents()");
+
             var data = new AnalyticData();
             // set default data here
 

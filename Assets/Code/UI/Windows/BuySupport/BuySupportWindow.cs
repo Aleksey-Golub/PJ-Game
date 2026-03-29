@@ -62,8 +62,10 @@ namespace Code.UI
         private void RefreshSupport()
         {
             bool supportBought = _iapService.IsSupportBought();
-            //_noAdsText.text = noAdsBought ? LService. : LService.;
             _supportBtn.interactable = !supportBought;
+
+            var premiumData = _iapService.GetProductDataOrNull(Constants.SUPPORT_TAG);
+            _supportText.text = $"{premiumData?.price} {premiumData?.currencySymbol}";
         }
 
         private void RefreshUI()

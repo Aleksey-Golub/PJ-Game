@@ -68,6 +68,11 @@ namespace Code.Services
         {
             /*OnEnable();*/
         }
+        public bool IsPaymentsAvailable()
+        {
+            //return true; //
+            return GamePush.GP_Payments.IsPaymentsAvailable();
+        }
 
         public bool IsPremiumBought()
         {

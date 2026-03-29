@@ -16,6 +16,8 @@ namespace Code.Infrastructure
 
         private void Awake()
         {
+            Logger.Log("[GameBootstrapper] Awake");
+
             _platformLayer.Initialize();
 
             _game = new Game(this, this, Instantiate(_curtainPrefab));

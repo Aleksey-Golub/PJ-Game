@@ -101,7 +101,7 @@ namespace Code.UI.Services
                     ((BuyPremiumWindow)window).Construct(_audio, _iapService);
                     break;
                 case WindowId.GameMenu:
-                    ((GameMenuWindow)window).Construct(_audio, _iapService, _uiMediator);
+                    ((GameMenuWindow)window).Construct(_audio, _iapService, _adsService, _uiMediator);
                     break;
                 case WindowId.CharacterSkins:
                     ((CharacterSkinsWindow)window).Construct(_audio, _configs, _progressService, _uiMediator);

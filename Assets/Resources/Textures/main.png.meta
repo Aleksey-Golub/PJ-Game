@@ -3331,7 +3331,7 @@ TextureImporter:
         width: 17
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 2, z: 0, w: 2}
       outline: []
       physicsShape: []
@@ -3339,6 +3339,90 @@ TextureImporter:
       bones: []
       spriteID: abf8a05122f576d4c8a42e1505ee3ee8
       internalID: 92513724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SUPPORT_buy_gray
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 118
+        width: 40
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ec0f6dbcf377be46b2f47eabd40221b
+      internalID: -2105576887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PREMIUM_buy_gray
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 118
+        width: 40
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed80c6c527d9a8549af4c9188a7e0b8e
+      internalID: -1395473023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PREMIUM_icon_small
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 64
+        width: 40
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad4d68e6e6d7c43478784de4e8bcdd6d
+      internalID: 1320716609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SUPPORT_icon_smal
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 98
+        width: 40
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d318bb19cb57bc04c8e5d5bfcde39544
+      internalID: -707763627
       vertices: []
       indices: 
       edges: []
@@ -3364,12 +3448,16 @@ TextureImporter:
       Furnace: -691325619
       PICKAXE: 1402700907
       PREMIUM_buy: -1900280434
+      PREMIUM_buy_gray: 184031556
       PREMIUM_icon: 1730991760
+      PREMIUM_icon_small: 1320716609
       Pig: -1711002262
       SCIMITAR: -1783438029
       SICKLE: -964180368
       SUPPORT_buy: 1327910188
+      SUPPORT_buy_gray: -2105576887
       SUPPORT_icon: -12137980
+      SUPPORT_icon_smal: -707763627
       SWORD: 1356712221
       Store Carrot: -320451106
       Store Carrot Exhaused: 941803317
@@ -3442,7 +3530,6 @@ TextureImporter:
       iron: -343440380
       iron_ore: -1107001721
       iron_rock: 422494416
-      main_1: 184031556
       milk: 1368875871
       mind_cloud: -1030577411
       music_off: 665058631

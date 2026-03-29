@@ -40,6 +40,8 @@ namespace Code.Infrastructure
 
         public void Enter()
         {
+            Logger.Log($"[GameLoopState] Entering() ...");
+
             PlatformLayer.SetGameReady();
             PlatformLayer.SetGameplayStart();
 

@@ -119,6 +119,7 @@ namespace Code.Services
 
         public bool IsFullscreenAvailable()
         {
+            //return false; //
 #if DEBUG && FAKE_ADS
             return true;
 #else
@@ -323,14 +324,14 @@ namespace Code.Services
         #region Ads Events Handlers
         private void OnAdsStart()
         {
-            Logger.Log($"[AdsService] ADs start");
+            Logger.Log($"[AdsService] on ADs start");
 
             AdsStart?.Invoke();
         }
 
         private void OnStickyStart()
         {
-            Logger.Log($"[AdsService] Sticky start");
+            Logger.Log($"[AdsService] on Sticky start");
 
             StickyStart?.Invoke();
             AdsStart?.Invoke();
@@ -338,7 +339,7 @@ namespace Code.Services
 
         private void OnPreloaderStart()
         {
-            Logger.Log($"[AdsService] Preloader start");
+            Logger.Log($"[AdsService] on Preloader start");
 
             PreloaderStart?.Invoke();
             AdsStart?.Invoke();
@@ -347,7 +348,7 @@ namespace Code.Services
 
         private void OnFullscreenStart()
         {
-            Logger.Log($"[AdsService] Fullscreen start");
+            Logger.Log($"[AdsService] on Fullscreen start");
 
             FullscreenStart?.Invoke();
             AdsStart?.Invoke();
@@ -356,7 +357,7 @@ namespace Code.Services
 
         private void OnRewardedStart()
         {
-            Logger.Log($"[AdsService] Rewarded start");
+            Logger.Log($"[AdsService] on Rewarded start");
 
             RewardedStart?.Invoke();
             AdsStart?.Invoke();
@@ -365,14 +366,14 @@ namespace Code.Services
 
         private void OnAdsClose(bool success)
         {
-            Logger.Log($"[AdsService] Ads close {success}");
+            Logger.Log($"[AdsService] on Ads close {success}");
 
             AdsClose?.Invoke(success);
         }
 
         private void OnStickyClose()
         {
-            Logger.Log($"[AdsService] Sticky close");
+            Logger.Log($"[AdsService] on Sticky close");
 
             StickyClose?.Invoke();
             AdsClose?.Invoke(true);
@@ -380,7 +381,7 @@ namespace Code.Services
 
         private void OnPreloaderClose(bool success)
         {
-            Logger.Log($"[AdsService] Preloader close {success}");
+            Logger.Log($"[AdsService] on Preloader close {success}");
 
             PreloaderClose?.Invoke(success);
             AdsClose?.Invoke(success);
@@ -389,7 +390,7 @@ namespace Code.Services
 
         private void OnFullScreenClose(bool success)
         {
-            Logger.Log($"[AdsService] Fullscreen close {success}");
+            Logger.Log($"[AdsService] on Fullscreen close {success}");
 
             FullscreenClose?.Invoke(success);
             AdsClose?.Invoke(success);
@@ -401,7 +402,7 @@ namespace Code.Services
 
         private void OnRewardedClose(bool success)
         {
-            Logger.Log($"[AdsService] Rewarded close {success}");
+            Logger.Log($"[AdsService] on Rewarded close {success}");
 
             RewardedClose?.Invoke(success);
             AdsClose?.Invoke(success);

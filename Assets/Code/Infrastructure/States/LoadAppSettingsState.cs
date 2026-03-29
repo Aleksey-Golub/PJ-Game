@@ -53,6 +53,8 @@ namespace Code.Infrastructure
 
         private AppSettings NewAppSettings()
         {
+            Logger.Log($"[LoadAppSettingsState] call NewAppSettings()");
+
             var appSettings = new AppSettings();
             appSettings.AudioSettings.DefaultNormalizedVolume = 0.15f;
 

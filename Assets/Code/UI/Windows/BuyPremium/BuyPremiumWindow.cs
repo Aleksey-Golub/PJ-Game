@@ -62,8 +62,10 @@ namespace Code.UI
         private void RefreshPremium()
         {
             bool premiumBought = _iapService.IsPremiumBought();
-            //_noAdsText.text = noAdsBought ? LService. : LService.;
             _premiumBtn.interactable = !premiumBought;
+
+            var premiumData = _iapService.GetProductDataOrNull(Constants.PREMIUM_TAG);
+            _premiumText.text = $"{premiumData?.price} {premiumData?.currencySymbol}";
         }
 
         private void RefreshUI()
@@ -73,6 +75,10 @@ namespace Code.UI
             if (GamePush.GP_Platform.Type() is GamePush.Platform.YANDEX)
             {
                 _description.text = LService.Localize("k_Premium_description_YG");
+            }
+            else
+            {
+                _description.text = LService.Localize("k_Premium_description");
             }
 #else
             _description.text = LService.Localize("k_Premium_description");

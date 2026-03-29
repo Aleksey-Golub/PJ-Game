@@ -87,6 +87,18 @@ public class InterstitialAdsAndPremiumRunner : MonoBehaviour
     
     private void ShowPremium(Timer timer)
     {
+        if (!_adsService.IsFullscreenAvailable())
+        {
+            Logger.Log("[InterstitialAdsRunner] Ads unavailable");
+            return;
+        }
+
+        if (!_iapService.IsPaymentsAvailable())
+        {
+            Logger.Log("[InterstitialAdsRunner] Payments unavailable for Premium");
+            return;
+        }
+
         if (_iapService.IsPremiumBought())
             return;
 
@@ -109,6 +121,12 @@ public class InterstitialAdsAndPremiumRunner : MonoBehaviour
     
     private void ShowSupport(Timer timer)
     {
+        if (!_iapService.IsPaymentsAvailable())
+        {
+            Logger.Log("[InterstitialAdsRunner] Payments unavailable for Support");
+            return;
+        }
+
         if (_iapService.IsSupportBought())
             return;
 

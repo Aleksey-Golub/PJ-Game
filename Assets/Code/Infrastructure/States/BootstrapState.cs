@@ -33,14 +33,14 @@ namespace Code.Infrastructure
             _services.RegisterSingle<ICoroutineRunner>(coroutineRunner);
             _services.RegisterSingle<IUpdater>(updater);
             RegisterIAPService();
+            _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
 
-            RegisterAdsService(_services.Single<IIAPService>());
+            RegisterAdsService(_services.Single<IIAPService>(), _services.Single<IPersistentProgressService>());
             _services.RegisterSingle<ITimeService>(new TimeService());
             RegisterLocalizationService();
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             RegisterConfigService();
             RegisterInputService();
-            _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IAppSettingsService>(new AppSettingsService());
             _services.RegisterSingle<IAnalyticEventsService>(new AnalyticEventsService());
             RegisterAudioService(coroutineRunner);
@@ -162,9 +162,9 @@ namespace Code.Infrastructure
             _services.RegisterSingle(configs);
         }
 
-        private void RegisterAdsService(IIAPService iapService)
+        private void RegisterAdsService(IIAPService iapService, IPersistentProgressService progressService)
         {
-            IAdsService adsService = new AdsService(iapService);
+            IAdsService adsService = new AdsService(iapService, progressService);
             adsService.Initialize();
             _services.RegisterSingle<IAdsService>(adsService);
         }

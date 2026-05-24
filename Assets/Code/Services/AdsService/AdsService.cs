@@ -10,6 +10,7 @@ namespace Code.Services
     public class AdsService : IAdsService
     {
         private readonly IIAPService _iapService;
+        private readonly IPersistentProgressService _progressService;
 
         public event Action RewardedVideoReady;
 
@@ -82,9 +83,10 @@ namespace Code.Services
             }
         }
 
-        public AdsService(IIAPService iapService)
+        public AdsService(IIAPService iapService, IPersistentProgressService progressService)
         {
             _iapService = iapService;
+            _progressService = progressService;
 
             _iapService.Purchased += OnSomePurchased;
         }
@@ -229,6 +231,12 @@ namespace Code.Services
         public void ShowFullscreen()
         {
             Logger.Log($"[AdsService] start ShowFullScreen()");
+
+            if (!IsTutorialCompleted())
+            {
+                Logger.LogWarning($"[AdsService] trying to show Fullscreen, but tutorial is not completed");
+                return;
+            }
 
             if (!IsFullscreenAvailable())
             {
@@ -426,6 +434,11 @@ namespace Code.Services
 
             if (success)
                 Metrika.Event_Ads_Rewarded_Successed();
+        }
+
+        private bool IsTutorialCompleted()
+        {
+            return _progressService.Progress.WorldProgress.LevelsDatasDictionary.Dictionary[Scenes.LEVEL_1_SCENE].TutorialProgress.IsCompleted;
         }
 
         public void SetCanStartShowFullscreenByTrigger()

@@ -42,6 +42,7 @@ namespace Code.UI
             _button.onClick.AddListener(OnClick);
 
             _adsService.RewardedVideoReady += OnRewardedVideoReady;
+            _adsService.RewardedClose += OnRewardedClose;
             _restorationTimer.Elapsed += OnRestorationTimerElapsed;
         }
 
@@ -66,6 +67,7 @@ namespace Code.UI
             _button.onClick.RemoveListener(OnClick);
 
             _adsService.RewardedVideoReady -= OnRewardedVideoReady;
+            _adsService.RewardedClose -= OnRewardedClose;
             _restorationTimer.Elapsed -= OnRestorationTimerElapsed;
         }
 
@@ -98,6 +100,13 @@ namespace Code.UI
 
         private void OnRewardedVideoReady() => ShowState();
         private void OnRestorationTimerElapsed(Timer timer) => ShowState();
+        private void OnRewardedClose(bool result)
+        {
+            if (result == false)
+            {
+                _restorationTimer.OnUpdate(_restoreTime);
+            }
+        }
 
         private void ShowState()
         {

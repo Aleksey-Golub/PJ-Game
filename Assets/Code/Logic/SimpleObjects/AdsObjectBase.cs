@@ -23,6 +23,7 @@ public abstract class AdsObjectBase<T> : SimpleObjectBase, ICreatedByIdGameObjec
     {
         _adsService = adsService;
         _adsService.RewardedVideoReady += OnRewardedVideoReady;
+        _adsService.RewardedClose += OnRewardedClose;
 
         _adsTimer = new Timer();
         _adsTimer.Changed += OnAdsTimerChanged;
@@ -53,7 +54,10 @@ public abstract class AdsObjectBase<T> : SimpleObjectBase, ICreatedByIdGameObjec
             _restorationTimer.Elapsed -= OnRestorationTimerElapsed;
 
         if (_adsService != null)
+        {
             _adsService.RewardedVideoReady -= OnRewardedVideoReady;
+            _adsService.RewardedClose -= OnRewardedClose;
+        }
     }
 
     private void Update() => OnUpdate(Time.deltaTime);
@@ -135,6 +139,14 @@ public abstract class AdsObjectBase<T> : SimpleObjectBase, ICreatedByIdGameObjec
     {
         if (_restorationTimer.IsElapsed && _isExhaust)
             Restore();
+    }
+
+    private void OnRewardedClose(bool result)
+    {
+        if (result == false)
+        {
+            _restorationTimer.OnUpdate(_restoreTime);
+        }
     }
 
     private void OnRestorationTimerElapsed(Timer timer)

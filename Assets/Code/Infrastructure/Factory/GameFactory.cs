@@ -132,7 +132,7 @@ namespace Code.Infrastructure
                     break;
                 case SimpleObjectType.Portal_1_2:
                 case SimpleObjectType.Portal_2_1:
-                    (simpleObject as Portal).Construct(_audio);
+                    (simpleObject as Portal).Construct(_audio, _adsService);
                     break;
                 case SimpleObjectType.BridgeCompleted_Wood_Nails_2_Ropes:
                     (simpleObject as SimpleObject).Construct();
@@ -160,7 +160,7 @@ namespace Code.Infrastructure
         public Chunk CreateChunk(Vector3 at)
         {
             Chunk chunk = InstantiateRegistered(AssetPath.CHUNK_BASE_PATH, at).GetComponent<Chunk>();
-            chunk.Construct(_audio, _effectFactory, this);
+            chunk.Construct(_audio, _effectFactory, this, _adsService);
 
             return chunk;
         }
@@ -256,7 +256,7 @@ namespace Code.Infrastructure
             GameObjectMatcher gameObjectMatcher = _configs.GetMatcherFor(gameObjectId);
             Dungeon dungeon = InstantiateRegistered(gameObjectMatcher.Template, at).GetComponent<Dungeon>();
 
-            dungeon.Construct(this, _audio, _effectFactory, _progressService);
+            dungeon.Construct(this, _audio, _effectFactory, _progressService, _adsService);
 
             return dungeon;
         }
@@ -463,14 +463,14 @@ namespace Code.Infrastructure
 
             void ICreatedByIdGameObjectVisitor.Visit(Chunk chunk)
             {
-                chunk.Construct(_gameFactory._audio, _gameFactory._effectFactory, _gameFactory);
+                chunk.Construct(_gameFactory._audio, _gameFactory._effectFactory, _gameFactory, _gameFactory._adsService);
                 chunk.Init();
                 GenerateIdIfApplicable(chunk);
             }
 
             void ICreatedByIdGameObjectVisitor.Visit(Dungeon dungeon)
             {
-                dungeon.Construct(_gameFactory, _gameFactory._audio, _gameFactory._effectFactory, _gameFactory._progressService);
+                dungeon.Construct(_gameFactory, _gameFactory._audio, _gameFactory._effectFactory, _gameFactory._progressService, _gameFactory._adsService);
 
                 dungeon.Spawn();
                 GenerateIdIfApplicable(dungeon);
@@ -478,7 +478,7 @@ namespace Code.Infrastructure
             
             void ICreatedByIdGameObjectVisitor.Visit(Portal portal)
             {
-                portal.Construct(_gameFactory._audio);
+                portal.Construct(_gameFactory._audio, _gameFactory._adsService);
                 GenerateIdIfApplicable(portal);
             }
 

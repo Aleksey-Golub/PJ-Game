@@ -21,6 +21,7 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
     [SerializeField] private float _openDelay = 0.5f;
 
     private IGameFactory _gameFactory;
+    private IAdsService _adsService;
     private bool _opened;
     private bool _delayedOpenStart;
     private float _delayedOpenElapsedTime;
@@ -54,18 +55,20 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
             var audio = AllServices.Container.Single<IAudioService>();
             var effectFactory = AllServices.Container.Single<IEffectFactory>();
             var gameFactory = AllServices.Container.Single<IGameFactory>();
+            var adsService = AllServices.Container.Single<IAdsService>();
 
-            Construct(audio, effectFactory, gameFactory);
+            Construct(audio, effectFactory, gameFactory, adsService);
             Init();
 
             gameFactory.RegisterProgressWatchersExternal(gameObject);
         }
     }
 
-    public void Construct(IAudioService audio, IEffectFactory effectFactory, IGameFactory gameFactory)
+    public void Construct(IAudioService audio, IEffectFactory effectFactory, IGameFactory gameFactory, IAdsService adsService)
     {
         Construct();
         _gameFactory = gameFactory;
+        _adsService = adsService;
 
         View.Construct(audio, effectFactory);
     }
@@ -144,6 +147,9 @@ public class Chunk : SingleUseConsumerBase<ChunkView>
         base.OnFilled();
 
         _opened = true;
+
+        if (_chunksToOpen.Length == 0)
+            _adsService.TryStartShowFullscreenByTrigger();
     }
 
     protected override void DropObject()

@@ -23,6 +23,7 @@ public class Dungeon : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter
 
     private IGameFactory _gameFactory;
     private IPersistentProgressService _progressService;
+    private IAdsService _adsService;
     private List<ResourceSource> _spawnedResourceSources;
 
     private string Id => UniqueId.Id;
@@ -51,8 +52,9 @@ public class Dungeon : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter
             var audio = AllServices.Container.Single<IAudioService>();
             var effectFactory = AllServices.Container.Single<IEffectFactory>();
             var progressService = AllServices.Container.Single<IPersistentProgressService>();
+            var adsService = AllServices.Container.Single<IAdsService>();
 
-            Construct(gameFactory, audio, effectFactory, progressService);
+            Construct(gameFactory, audio, effectFactory, progressService, adsService);
             gameFactory.RegisterProgressWatchersExternal(gameObject);
 
             if (IsFirstStartOfLevel())
@@ -70,10 +72,17 @@ public class Dungeon : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter
         }
     }
 
-    public void Construct(IGameFactory gameFactory, IAudioService audio, IEffectFactory effectFactory, IPersistentProgressService progressService)
+    public void Construct(
+        IGameFactory gameFactory, 
+        IAudioService audio, 
+        IEffectFactory effectFactory, 
+        IPersistentProgressService progressService, 
+        IAdsService adsService
+        )
     {
         _gameFactory = gameFactory;
         _progressService = progressService;
+        _adsService = adsService;
 
         _entrance.Construct(audio, effectFactory);
         _exit.Construct(audio, effectFactory);
@@ -161,6 +170,8 @@ public class Dungeon : MonoBehaviour, ISavedProgressReader, ISavedProgressWriter
         _entrance.ReStart();
         Spawn();
         _exit.ForceClose();
+
+        _adsService.TryStartShowFullscreenByTrigger();
     }
 
     private void ResourceSourceDropped(ResourceSource r)

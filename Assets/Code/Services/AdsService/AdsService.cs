@@ -30,6 +30,7 @@ namespace Code.Services
         public event Action<bool> RewardedClose;
 
         private Action _onRewardedReward;
+        private bool _canStartShowFullscreenByTrigger;
 
         public bool IsAdsExceptStickyShowing => IsPreloaderShowing || IsFullscreenShowing || IsRewardedShowing;
 
@@ -208,6 +209,21 @@ namespace Code.Services
 #else
             GP_Ads.ShowPreloader();
 #endif
+        }
+
+        public bool TryStartShowFullscreenByTrigger()
+        {
+            Logger.Log($"[AdsService] start TryStartShowFullscreenByTrigger()");
+
+            if (_canStartShowFullscreenByTrigger)
+            {
+                _canStartShowFullscreenByTrigger = false;
+                ShowFullscreen();
+
+                return true;
+            }
+
+            return false;
         }
 
         public void ShowFullscreen()
@@ -411,6 +427,14 @@ namespace Code.Services
             if (success)
                 Metrika.Event_Ads_Rewarded_Successed();
         }
+
+        public void SetCanStartShowFullscreenByTrigger()
+        {
+            Logger.Log($"[AdsService] SetCanStartShowFullscreenByTrigger()");
+
+            _canStartShowFullscreenByTrigger = true;
+        }
+
         #endregion
 #endif
     }

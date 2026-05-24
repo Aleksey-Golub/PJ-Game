@@ -37,10 +37,12 @@ namespace Code.Services
         void ShowSticky();
         void CloseSticky();
         void ShowPreloader();
+        bool TryStartShowFullscreenByTrigger();
         void ShowFullscreen();
         void ShowRewardedVideo(Action onRewardedReward);
         int GetRewardBasedOnInventory(ResourceType resourceType, int inInventory);
 
         bool IsRewardedVideoReady();
+        void SetCanStartShowFullscreenByTrigger();
     }
 }

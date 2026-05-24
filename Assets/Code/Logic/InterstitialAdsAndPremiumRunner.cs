@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public class InterstitialAdsAndPremiumRunner : MonoBehaviour
 {
+    [Tooltip("Show Interstitial interval")]
     [SerializeField, Min(1f)] private float _showInterval = 240f;
     [SerializeField, Min(1f)] private float _showPremiumInterval = 600f;
     [SerializeField, Min(1f)] private float _showSupportInterval = 720f;
@@ -79,10 +80,20 @@ public class InterstitialAdsAndPremiumRunner : MonoBehaviour
 
     private void ShowInterstitial(Timer timer)
     {
-        Logger.Log("[InterstitialAdsRunner] ShowInterstitial");
+        if (PlatformLayer.AdsWithTriggersUsed())
+        {
+            Logger.Log("[InterstitialAdsRunner] Can start ShowInterstitial by triggers");
 
-        _adsService.ShowFullscreen();
-        StartInterstitialTimer();
+            _adsService.SetCanStartShowFullscreenByTrigger();
+            StartInterstitialTimer();
+        }
+        else
+        {
+            Logger.Log("[InterstitialAdsRunner] ShowInterstitial");
+
+            _adsService.ShowFullscreen();
+            StartInterstitialTimer();
+        }
     }
     
     private void ShowPremium(Timer timer)

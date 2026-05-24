@@ -71,6 +71,20 @@ namespace Code.Services
         }
 
         /// <summary>
+        /// Is it need to show interstitial ads by special triggers and timer together, not by timer only
+        /// </summary>
+        /// <returns></returns>
+        public static bool AdsWithTriggersUsed()
+        {
+#if DEBUG && FAKE_ADS
+            return false;
+#else
+            var gpPlatform = GamePush.GP_Platform.Type();
+            return gpPlatform is GamePush.Platform.CRAZY_GAMES;
+#endif
+        }
+
+        /// <summary>
         /// Call this when game fully available to player: all progress bars, downloads etc ended; MainMenu or level avalable.
         /// </summary>
         public static void SetGameReady()

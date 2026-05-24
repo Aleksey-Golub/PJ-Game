@@ -743,8 +743,8 @@ TextureImporter:
       name: Cow
       rect:
         serializedVersion: 2
-        x: 86
-        y: 0
+        x: 484
+        y: 169
         width: 26
         height: 24
       alignment: 7
@@ -848,8 +848,8 @@ TextureImporter:
       name: Pig
       rect:
         serializedVersion: 2
-        x: 281
-        y: 52
+        x: 484
+        y: 143
         width: 25
         height: 25
       alignment: 7
@@ -1226,8 +1226,8 @@ TextureImporter:
       name: SICKLE
       rect:
         serializedVersion: 2
-        x: 367
-        y: 151
+        x: 381
+        y: 35
         width: 14
         height: 14
       alignment: 7
@@ -1247,8 +1247,8 @@ TextureImporter:
       name: SWORD
       rect:
         serializedVersion: 2
-        x: 365
-        y: 53
+        x: 440
+        y: 35
         width: 14
         height: 14
       alignment: 7
@@ -1268,8 +1268,8 @@ TextureImporter:
       name: AXE
       rect:
         serializedVersion: 2
-        x: 217
-        y: 35
+        x: 400
+        y: 34
         width: 16
         height: 16
       alignment: 7
@@ -1289,8 +1289,8 @@ TextureImporter:
       name: PICKAXE
       rect:
         serializedVersion: 2
-        x: 234
-        y: 35
+        x: 420
+        y: 33
         width: 16
         height: 16
       alignment: 7
@@ -2218,7 +2218,7 @@ TextureImporter:
         width: 26
         height: 43
       alignment: 9
-      pivot: {x: 0.5, y: 0.069767445}
+      pivot: {x: 0.48076922, y: 0.093023255}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2257,10 +2257,10 @@ TextureImporter:
         serializedVersion: 2
         x: 28
         y: 67
-        width: 16
-        height: 16
+        width: 17
+        height: 17
       alignment: 9
-      pivot: {x: 0.5, y: 0.0625}
+      pivot: {x: 0.47058824, y: 0.11764706}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2403,11 +2403,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 28
-        y: 84
+        y: 85
         width: 12
-        height: 9
+        height: 8
       alignment: 9
-      pivot: {x: 0.5, y: 0.44444445}
+      pivot: {x: 0.5, y: 0.375}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3415,7 +3415,7 @@ TextureImporter:
         width: 40
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

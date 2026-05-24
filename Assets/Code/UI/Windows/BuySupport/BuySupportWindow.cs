@@ -1,4 +1,5 @@
 ﻿using Code.Services;
+using Code.UI.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,9 +15,9 @@ namespace Code.UI
 
         private IIAPService _iapService;
 
-        internal void Construct(IAudioService audio, IIAPService iapService)
+        internal void Construct(IUIMediator uiMediator, IAudioService audio, IIAPService iapService)
         {
-            base.Construct(audio);
+            base.Construct(uiMediator, audio);
 
             _iapService = iapService;
         }
@@ -49,12 +50,6 @@ namespace Code.UI
             _supportBtn.onClick.RemoveListener(BuySupport);
 
             LService.LanguageChanged -= RefreshUI;
-        }
-
-        protected override void OnCloseButtonClicked()
-        {
-            base.OnCloseButtonClicked();
-            CloseSelf();
         }
 
         private void CloseSelf() => gameObject.SetActive(false);

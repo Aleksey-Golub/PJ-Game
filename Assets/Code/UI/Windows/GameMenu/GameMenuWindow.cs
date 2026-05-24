@@ -25,7 +25,7 @@ namespace Code.UI
 
         internal void Construct(IAudioService audio, IIAPService iapService, IAdsService adsService, IUIMediator uiMediator)
         {
-            base.Construct(audio);
+            base.Construct(uiMediator, audio);
 
             _iapService = iapService;
             _adsService = adsService;
@@ -62,12 +62,6 @@ namespace Code.UI
             _supportBtn.onClick.RemoveListener(BuySupport);
 
             LService.LanguageChanged -= RefreshUI;
-        }
-
-        protected override void OnCloseButtonClicked()
-        {
-            base.OnCloseButtonClicked();
-            CloseSelf();
         }
 
         private void CloseSelf() => gameObject.SetActive(false);

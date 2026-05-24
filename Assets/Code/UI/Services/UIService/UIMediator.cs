@@ -1,6 +1,8 @@
 ﻿using Code.Infrastructure;
+using Code.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Code.UI.Services
 {
@@ -18,9 +20,15 @@ namespace Code.UI.Services
         private readonly Dictionary<WindowId, WindowBase> _windowsCache = new();
         private readonly Dictionary<UIPopupId, UIPopup> _popupsCache = new();
 
+        private event Action WindowOpened;
+        private event Action WindowClosed;
+
         public void PostConstruct(IUIFactory uIFactory)
         {
             _uIFactory = uIFactory;
+
+            WindowOpened += OnWindowOpened;
+            WindowClosed += OnWindowClosed;
         }
 
         public void Init(Hud hud)
@@ -100,6 +108,8 @@ namespace Code.UI.Services
                 default:
                     throw new NotImplementedException($"Not implemented for {windowId}");
             }
+
+            WindowOpened?.Invoke();
         }
 
         public IInventoryView GetPlayerInventoryView()
@@ -117,17 +127,62 @@ namespace Code.UI.Services
             return _popupsCache.TryGetValue(popupId, out UIPopup popup) && popup.IsOpened;
         }
 
-        public void OpenSellBoardView(IReadOnlyDictionary<ResourceType, int> storage, Action<ResourceType> onSellResource) => SellBoardView.Open(storage, onSellResource);
-        public void CloseSellBoardView() => SellBoardView.Close();
+        public void OpenSellBoardView(IReadOnlyDictionary<ResourceType, int> storage, Action<ResourceType> onSellResource)
+        {
+            SellBoardView.Open(storage, onSellResource);
+
+            WindowOpened?.Invoke();
+        }
+
+        public void CloseSellBoardView()
+        {
+            SellBoardView.Close();
+
+            WindowClosed?.Invoke();
+        }
+
         public void RefreshSellBoardView(IReadOnlyDictionary<ResourceType, int> storage) => SellBoardView.Refresh(storage);
-        public void OpenUpgradeBoardView(Action<string> OnUpgradeItem, Inventory inventory) => UpgradeBoardView.Open(OnUpgradeItem, inventory);
-        public void CloseUpgradeBoardView() => UpgradeBoardView.Close();
+        public void OpenUpgradeBoardView(Action<string> OnUpgradeItem, Inventory inventory)
+        {
+            UpgradeBoardView.Open(OnUpgradeItem, inventory);
+
+            WindowOpened?.Invoke();
+        }
+
+        public void CloseUpgradeBoardView()
+        {
+            UpgradeBoardView.Close();
+
+            WindowClosed?.Invoke();
+        }
+
         public void RefreshUpgradeBoardView() => UpgradeBoardView.Refresh();
 
         public void Close(WindowId windowId)
         {
             if (_windowsCache.TryGetValue(windowId, out WindowBase window) && window.IsOpened)
                 window.Close();
+
+            WindowClosed?.Invoke();
+        }
+
+        private void OnWindowOpened()
+        {
+            PlatformLayer.SetGameplayStop();
+        }
+
+        private void OnWindowClosed()
+        {
+            if (AllClosed())
+                PlatformLayer.SetGameplayStart();
+        }
+
+        private bool AllClosed()
+        {
+            return
+                _windowsCache.All(pair => pair.Value.IsOpened == false)
+                && (_sellBoardView == null || (_sellBoardView != null && _sellBoardView.IsOpened == false))
+                && (_upgradeBoardView == null || (_upgradeBoardView != null && _upgradeBoardView.IsOpened == false));
         }
     }
 

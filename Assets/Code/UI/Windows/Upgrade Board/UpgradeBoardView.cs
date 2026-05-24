@@ -1,5 +1,6 @@
 using Code.Infrastructure;
 using Code.Services;
+using Code.UI.Services;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -17,6 +18,7 @@ namespace Code.UI
         [SerializeField] private AudioClip _closeButtonClickedClip;
         [SerializeField] private ShowAdsButton _adsButton;
 
+        private IUIMediator _uiMediator;
         private IConfigsService _configs;
         private IPersistentProgressService _progressService;
         private IAudioService _audio;
@@ -24,7 +26,10 @@ namespace Code.UI
         private Dictionary<string, UpgradeItemView> _views;
         private Action<string> _upgradeResourceCalback;
 
+        internal bool IsOpened => gameObject.activeInHierarchy;
+
         internal void Coustruct(
+            IUIMediator uiMediator,
             IConfigsService configs,
             IPersistentProgressService progressService,
             IAudioService audio,
@@ -33,6 +38,7 @@ namespace Code.UI
             )
         {
             _views = new();
+            _uiMediator = uiMediator;
             _configs = configs;
             _progressService = progressService;
             _audio = audio;
@@ -165,7 +171,8 @@ namespace Code.UI
         private void CloseFromUI()
         {
             _audio.PlaySfxAtUI(_closeButtonClickedClip);
-            Close();
+
+            _uiMediator.CloseUpgradeBoardView();
         }
 
         private void FillViews()

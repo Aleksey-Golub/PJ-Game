@@ -1,4 +1,5 @@
 using Code.Services;
+using Code.UI.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,9 +20,9 @@ namespace Code.UI
 
         private ISaveLoadAppSettingsService _saveLoadAppSettingsService;
 
-        internal void Construct(IAudioService audio, ISaveLoadAppSettingsService saveLoadAppSettingsService)
+        internal void Construct(IUIMediator uiMediator, IAudioService audio, ISaveLoadAppSettingsService saveLoadAppSettingsService)
         {
-            base.Construct(audio);
+            base.Construct(uiMediator, audio);
 
             _saveLoadAppSettingsService = saveLoadAppSettingsService;
 
@@ -98,10 +99,9 @@ namespace Code.UI
 
         protected override void OnCloseButtonClicked()
         {
-            base.OnCloseButtonClicked();
-            CloseSelf();
-
             _saveLoadAppSettingsService.SaveAppSettings();
+            
+            base.OnCloseButtonClicked();
         }
 
         private void CloseSelf() => gameObject.SetActive(false);

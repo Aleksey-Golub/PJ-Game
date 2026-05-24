@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5cbfa79459ae94892898c2fc868f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WindowId: 4
   _closeButton: {fileID: 8893645343448149995}
   _closeButtonClip: {fileID: 8300000, guid: a82921465fe981d4aaea40eb0b2ff2cb, type: 3}
   _header: {fileID: 2266155117978952694}

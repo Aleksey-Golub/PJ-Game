@@ -699,7 +699,7 @@ GameObject:
   - component: {fileID: 6273825526765302991}
   - component: {fileID: 857559900459927184}
   m_Layer: 5
-  m_Name: Upgrade Board View
+  m_Name: UpgradeBoardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

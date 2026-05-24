@@ -27,7 +27,7 @@ namespace Code.UI
 
         internal void Construct(IAudioService audio, IConfigsService configService, IPersistentProgressService progressService, IUIMediator uiMediator)
         {
-            base.Construct(audio);
+            base.Construct(uiMediator, audio);
 
             _configService = configService;
             _progressService = progressService;
@@ -65,12 +65,6 @@ namespace Code.UI
             LService.LanguageChanged -= RefreshUI;
             SkinsData.SelectedSkinChanged -= SelectedSkinChanged;
             SkinsData.AvailableSkinsChanged -= AvailableSkinsChanged;
-        }
-
-        protected override void OnCloseButtonClicked()
-        {
-            base.OnCloseButtonClicked();
-            CloseSelf();
         }
 
         private void CloseSelf() => gameObject.SetActive(false);

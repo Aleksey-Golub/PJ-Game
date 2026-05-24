@@ -1,4 +1,5 @@
 ﻿using Code.Services;
+using Code.UI.Services;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,15 +7,18 @@ namespace Code.UI
 {
     public abstract class WindowBase : MonoBehaviour
     {
+        [SerializeField] protected WindowId WindowId;
         [SerializeField] private Button _closeButton;
         [SerializeField] private AudioClip _closeButtonClip;
 
+        protected IUIMediator UIMediator;
         protected IAudioService Audio;
 
         internal virtual bool IsOpened => gameObject.activeInHierarchy;
 
-        protected void Construct(IAudioService audio)
+        protected void Construct(IUIMediator uiMediator, IAudioService audio)
         {
+            UIMediator = uiMediator;
             Audio = audio;
         }
 
@@ -46,6 +50,8 @@ namespace Code.UI
         {
             if (_closeButtonClip)
                 Audio.PlaySfxAtUI(_closeButtonClip);
+
+            UIMediator.Close(WindowId);
         }
     }
 }

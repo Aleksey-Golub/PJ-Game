@@ -8,8 +8,8 @@ namespace Code.UI.Services
     public class UIFactory : IUIFactory
     {
         private const string UI_ROOT_PATH = "UI/UI Root";
-        private const string UPGRADEBOARDVIEW_PATH = "UI/Windows/Upgrade/Upgrade Board View";
-        private const string SELLBOARDVIEW_PATH = "UI/Windows/Sell/Sell Board View";
+        private const string UPGRADEBOARDVIEW_PATH = "UI/Windows/Upgrade/UpgradeBoardView";
+        private const string SELLBOARDVIEW_PATH = "UI/Windows/Sell/SellBoardView";
         private const string UI_POPUP_PATH = "UI/UI Popups/UI Popup";
 
         private readonly IAssetProvider _assets;
@@ -75,7 +75,7 @@ namespace Code.UI.Services
         public UpgradeBoardView CreateUpgradeBoardView()
         {
             UpgradeBoardView upgradeBoardView = _assets.Instantiate(UPGRADEBOARDVIEW_PATH, _uiRoot).GetComponent<UpgradeBoardView>();
-            upgradeBoardView.Coustruct(_configs, _progressService, _audio, _adsService, _updater);
+            upgradeBoardView.Coustruct(_uiMediator, _configs, _progressService, _audio, _adsService, _updater);
 
             return upgradeBoardView;
         }
@@ -83,7 +83,7 @@ namespace Code.UI.Services
         public SellBoardView CreateSellBoardView()
         {
             SellBoardView sellBoardView = _assets.Instantiate(SELLBOARDVIEW_PATH, _uiRoot).GetComponent<SellBoardView>();
-            sellBoardView.Coustruct(_configs, _audio);
+            sellBoardView.Coustruct(_uiMediator, _configs, _audio);
 
             return sellBoardView;
         }
@@ -93,12 +93,12 @@ namespace Code.UI.Services
             switch (windowId)
             {
                 case WindowId.Settings:
-                    ((SettingsWindow)window).Construct(_audio, _saveLoadAppSettingsService);
+                    ((SettingsWindow)window).Construct(_uiMediator, _audio, _saveLoadAppSettingsService);
                     break;
                 //case WindowId.Sell:
                 //case WindowId.Upgrade:
                 case WindowId.BuyPremium:
-                    ((BuyPremiumWindow)window).Construct(_audio, _iapService);
+                    ((BuyPremiumWindow)window).Construct(_uiMediator, _audio, _iapService);
                     break;
                 case WindowId.GameMenu:
                     ((GameMenuWindow)window).Construct(_audio, _iapService, _adsService, _uiMediator);
@@ -107,7 +107,7 @@ namespace Code.UI.Services
                     ((CharacterSkinsWindow)window).Construct(_audio, _configs, _progressService, _uiMediator);
                     break;
                 case WindowId.BuySupport:
-                    ((BuySupportWindow)window).Construct(_audio, _iapService);
+                    ((BuySupportWindow)window).Construct(_uiMediator, _audio, _iapService);
                     break;
                 case WindowId.None:
                 default:

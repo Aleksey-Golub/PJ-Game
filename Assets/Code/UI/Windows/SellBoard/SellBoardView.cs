@@ -1,4 +1,5 @@
 using Code.Services;
+using Code.UI.Services;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -15,15 +16,19 @@ namespace Code.UI
         [SerializeField] private Button _closeButton;
         [SerializeField] private AudioClip _closeButtonClickedClip;
 
+        private IUIMediator _uiMediator;
         private IConfigsService _resourceConfigService;
         private IAudioService _audio;
         
         private Dictionary<ResourceType, SellItemView> _views;
         private Action<ResourceType> _sellResourceCalback;
 
-        internal void Coustruct(IConfigsService configService, IAudioService audio)
+        internal bool IsOpened => gameObject.activeInHierarchy;
+
+        internal void Coustruct(IUIMediator uiMediator, IConfigsService configService, IAudioService audio)
         {
             _views = new();
+            _uiMediator = uiMediator;
             _resourceConfigService = configService;
             _audio = audio;
             LService.LanguageChanged += RefreshUI;
@@ -77,7 +82,8 @@ namespace Code.UI
         private void CloseFromUI()
         {
             _audio.PlaySfxAtUI(_closeButtonClickedClip);
-            Close();
+
+            _uiMediator.CloseSellBoardView();
         }
 
         private void FillViews()

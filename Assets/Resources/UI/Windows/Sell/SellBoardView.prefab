@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8283304956617082117}
   - component: {fileID: 8783891922806040246}
   m_Layer: 5
-  m_Name: Sell Board View
+  m_Name: SellBoardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -85,6 +85,9 @@ namespace Code.Services
         public bool IsPaymentsAvailable()
         {
             //return true; //
+            if (GamePush.GP_Platform.Type() is GamePush.Platform.RUSTORE)
+                return false;
+
             return GamePush.GP_Payments.IsPaymentsAvailable();
         }
 
